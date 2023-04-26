@@ -2,9 +2,9 @@
 
 # -- Project information
 
-project = 'Lumache'
-copyright = '2021, Graziella'
-author = 'Graziella'
+project = 'Delta User Documentation'
+copyright = '2023, University of Illinois'
+author = 'NCSA'
 
 release = '0.1'
 version = '0.1.0'
