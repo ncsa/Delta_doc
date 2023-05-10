@@ -18,6 +18,7 @@ Contents
    status_updates
    architecture
    fee_overview
+   accounts/index
    accessing/index
    citizenship
    file_mgmt/index
