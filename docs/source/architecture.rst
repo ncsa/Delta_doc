@@ -1,12 +1,18 @@
 System Architecture
---------------------
+=======================
 
-- Model Compute Nodes
+Model Compute Nodes
+----------------------
 
-- Login Nodes
+Login Nodes
+--------------
 
-- Specialized Nodes
+Specialized Nodes
+---------------------
 
-- Network
+Network
+------------
 
-- File Systems
+File Systems
+---------------
+
