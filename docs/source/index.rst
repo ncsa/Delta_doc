@@ -19,7 +19,6 @@ Contents
    architecture
    fee_overview
    accounts/index
-   support/index
    accessing/index
    citizenship
    file_mgmt/index
@@ -28,5 +27,7 @@ Contents
    software/index
    visualization
    containers
+   services/index
+   debug_perf/index
    protected_data
    help
