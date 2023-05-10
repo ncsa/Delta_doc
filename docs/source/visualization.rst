@@ -1,5 +1,9 @@
 Visualization
 =====================
 
-Paraview
--------------
+Paraview (Client/Server)
+---------------------------
+
+Visit Client & Server
+-------------------------
+
