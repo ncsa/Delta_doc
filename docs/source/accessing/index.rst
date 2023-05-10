@@ -1,15 +1,9 @@
 Accessing The System
 =========================
 
-Account And Group
+Logging In 
 --------------------
 
-Management Tools
--------------------
-
-Local Identity
------------------
-
-ACCESS Identity
---------------------
+Compute Node External Connectivity
+---------------------------------------
 
