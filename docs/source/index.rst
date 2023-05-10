@@ -23,8 +23,9 @@ Contents
    accessing/index
    citizenship
    file_mgmt/index
-   software/index
+   prog_env/index
    running_jobs/index
+   software/index
    visualization
    containers
    protected_data
