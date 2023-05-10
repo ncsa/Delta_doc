@@ -19,6 +19,7 @@ Contents
    architecture
    fee_overview
    accounts/index
+   support/index
    accessing/index
    citizenship
    file_mgmt/index
