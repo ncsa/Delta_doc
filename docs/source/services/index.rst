@@ -4,7 +4,7 @@ Services
 Open OnDemand
 -------------------------
 
-Custimizing Open OnDemand
+Customizing Open OnDemand
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Globus
