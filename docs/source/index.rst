@@ -24,7 +24,10 @@ Delta's CPU nodes are each powered by two 64-core AMD EPYC 7763 ("Milan") proces
 
 Delta has 124 standard CPU nodes, 100 4-way A100-based GPU nodes, 100 4-way A40-based GPU nodes, 5 8-way A100-based GPU nodes, and 1 8-way MI100-based GPU node.  Every Delta node has high-performance node-local SSD storage (740 GB for CPU nodes, 1.5 TB for GPU nodes), and is connected to the 7 PB Lustre parallel filesystem via the high-speed interconnect.  The Delta resource uses the SLURM workload manager for job scheduling.  
 
-Delta supports the ACCESS core software stack, including remote login, remote computation, data movement, science workflow support, and science gateway support toolkits.
+Delta supports the\ `ACCESS core software
+stack <https://access-ci.atlassian.net/wiki/spaces/ACCESSdocumentation/pages/72421302>`__,
+including remote login, remote computation, data movement, science
+workflow support, and science gateway support toolkits.
 
 Contents
 --------
