@@ -568,6 +568,15 @@ Then in a terminal session:
 
 See also:
 
+Scheduler
+-------------
+
+**For information, consult:**
+
+https://slurm.schedmd.com/quickstart.html
+
+250 slurm quick reference guide
+
 Monitoring a Node During a Job
 ---------------------------------
 
