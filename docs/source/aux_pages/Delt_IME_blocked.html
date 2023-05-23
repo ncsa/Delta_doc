@@ -1,0 +1,144 @@
+es.&nbsp;</p><ac:structured-macro ac:name="warning" ac:schema-version="1" ac:macro-id="b0408544-9eff-40f4-904a-d4c222ba15b7"><ac:parameter ac:name="title">IME and metadata</ac:parameter><ac:rich-text-body>
+    <p>IME performance for directory/metadata operations is slower than /scratch (it is not the place to extract or copy millions of files).&nbsp; Do those operations (rsync, tar, etc) in /scratch.</p></ac:rich-text-body></ac:structured-macro>
+<p>To get additional performance from the IME software features without changing IO routines, use the posix2ime library (LD_PRELOAD'd), to intercept standard Posix IO calls with IME API calls.&nbsp; We have included a module <em>posix2ime</em>&nbsp;that does this for you (read more about posix2ime below).</p><ac:structured-macro ac:name="info" ac:schema-version="1" ac:macro-id="ab3a3fc5-beac-4313-8b56-bccd13e52564"><ac:parameter ac:name="title">shared namespace: /ime , /scratch</ac:parameter><ac:rich-text-body>
+    <p>The /scratch and /ime file systems share the same name space. The <strong>rm</strong> command will delete files on both file systems.&nbsp;</p></ac:rich-text-body></ac:structured-macro>
+<p>You can purge the contents of files from the cache , but not the presence of the file. Please see below.&nbsp;</p>
+<p class="p1">There are some important caveats when using the /ime file system for something other than a <strong>read-cache</strong>. See section 2.2 Data Consistency Model in the <ac:link><ri:attachment ri:filename="IME 1.4 Developer Guide.pdf" /><ac:plain-text-link-body><![CDATA[developer guide document]]></ac:plain-text-link-body></ac:link> .</p>
+<blockquote>
+  <p class="p1">Users must maintain close-to-open consistency when multiple clients access the same files. This requirement guarantees that any other client will see the latest changes made by one client as soon as the client opens the file. A client must synchronize all file data and metadata changes when it closes a file and unconditionally retrieve a file&rsquo;s attributes when it opens a file, ignoring any information it may have cached about the file. IME implements an enhanced close-to-open consistency model, allowing IME to be lock free.</p></blockquote>
+<h2>IME commands</h2>
+<p>Please see the man page for ime-ctl or the attached <ac:link><ri:attachment ri:filename="IME 1.4 Developer Guide.pdf" /><ac:plain-text-link-body><![CDATA[developer guide document]]></ac:plain-text-link-body></ac:link> for details.</p>
+<h3>Stage in and out single files</h3>
+<p>The ime-ctl command is used to stage and purge files from the caching /ime file system.</p>
+<pre>
+ime-ctl --prestage /ime/abcd/${USER}/file01]]></ac:plain-text-body></ac:structured-macro>
+<p>The ime-ctl command is used to stage and purge files from the caching /ime file system.</p>
+<pre>
+ime-ctl --prestage /ime/abcd/${USER}/file01
+</pre>
+
+<p class="auto-cursor-target">To sync the contents of a file created or changed that resides on /ime</p>
+<pre>
+ime-ctl --sync /ime/abcd/${USER}/file01]]></ac:plain-text-body></ac:structured-macro>
+<p class="auto-cursor-target">To sync the contents of a file created or changed that resides on /ime</p>
+<pre>
+ime-ctl --sync /ime/abcd/${USER}/file01
+</pre>
+
+<p class="auto-cursor-target">To purge the cached contents of a file on /ime</p>
+<pre>
+ime-ctl --purge /ime/abcd/${USER}/file01]]></ac:plain-text-body></ac:structured-macro>
+<p class="auto-cursor-target">To purge the cached contents of a file on /ime</p>
+<pre>
+ime-ctl --purge /ime/abcd/${USER}/file01
+</pre>
+
+<p>Note that purging a file only clears the contents of the file from /ime. The /scratch and /ime file systems share the same name space which allows files and directories to be seen from either the caching front-end /ime or back-end /scratch.</p>
+<h3>Staging multiple files and directories</h3>
+<p>To recursively stage the contents of a directory and the files and directories below, in this case a directory called /scratch/abcd/${USER}/data_di, use the recursive&nbsp;</p>
+<pre>
+ime-ctl --prestage --recursive --block /ime/abcd/${USER}/data_dir]]></ac:plain-text-body></ac:structured-macro>
+<p>To recursively stage the contents of a directory and the files and directories below, in this case a directory called /scratch/abcd/${USER}/data_di, use the recursive&nbsp;</p>
+<pre>
+ime-ctl --prestage --recursive --block /ime/abcd/${USER}/data_dir
+</pre>
+
+<p>The&nbsp;<span class="s1"><code>--block option</code> makes sure the stage or sync is complete before returning.</span></p>
+<h3>Checking file stage/cache status</h3>
+<p>To check if a file has been staged to the IME cache in <code>/ime</code> or has its contents synced back to the back-end file system use the <code>ime-ctl --frag-stat </code>command.</p>
+<p>In this example a file that was created as <code>/scratch/abcd/${USER}/file01</code> that has not been staged to /ime. The file will be visible as<code> /ime/abcd/${USER}/file01.</code></p>
+<p>Not staged to /ime: all entries are showing &quot;0&quot; for the Dirty, Clean and Syncing entries.&nbsp;</p>
+<pre>
+$ ime-ctl --frag-stat /ime/abcd/${USER}/file01
+   File: `/ime/abcd/${USER}/file01'
+         Number of bytes:
+  Dirty: 0
+  Clean: 0
+Syncing: 0
+Data on Slices:
+</pre>
+
+<p class="auto-cursor-target">After staging the file to /ime, the number of bytes in the &quot;Clean&quot; category show that the data on the cache is current.</p>
+<pre>
+$ ime-ctl --prestage /ime/abcd/${USER}/file01
+$ ime-ctl --frag-stat /ime/abcd/${USER}/file01
+   File: `/ime/abcd/${USER}/file01'
+         Number of bytes:
+  Dirty: 0
+  Clean: 16777216
+Syncing: 0
+Data on Slices:  0
+</pre>
+
+<p>If the file<code> /ime/abcd/${USER}/file01 </code>was modified (appended, replaced, etc) one would see entries in the Dirty category:</p>
+<pre>
+$ ime-ctl --frag-stat /ime/abcd/${USER}/file01
+   File: `/ime/abcd/${USER}/file01'
+         Number of bytes:
+  Dirty: 8388608
+  Clean: 16777216
+Syncing: 0
+Data on Slices:  0
+</pre>
+
+<p>After using <code>ime-ctl --sync</code>&nbsp; to flush the changes to the back-end file system, the dirty entries will be back to 0.&nbsp;</p>
+<pre>
+$ ime-ctl --sync /ime/abcd/${USER}/file01
+$ ime-ctl --frag-stat /ime/abcd/${USER}/file01
+   File: `/ime/abcd/${USER}/file01'
+         Number of bytes:
+  Dirty: 0
+  Clean: 25165824
+Syncing: 0
+Data on Slices:  0
+</pre>
+
+<h2>IME posix2ime library</h2>
+<p>The posix2ime module is available and loading it will LD_PRELOAD the library for your shell or batch script and all subsequent commands.&nbsp; The library is described at: <a href="https://github.com/DDNStorage/posix_2_ime">DDNStorage/posix_2_ime: POSIX to IME Native API (github.com)</a> .&nbsp;</p><ac:structured-macro ac:name="info" ac:schema-version="1" ac:macro-id="0f9f15e6-24a1-4b22-851e-7db5248f7f46"><ac:parameter ac:name="title">posix2ime requires dedicated nodes</ac:parameter><ac:rich-text-body>At this time, use of the posix2ime library requires dedicated ( #SBATCH --exclusive ) nodes for your job script or srun command.</ac:rich-text-body></ac:structured-macro>
+<p class="auto-cursor-target"><br /></p>
+<pre>
+#!/bin/bash
+#SBATCH --mem=64g
+#SBATCH --nodes=4
+#SBATCH --ntasks-per-node=4
+#SBATCH --exclusive
+#SBATCH --cpus-per-task=16
+#SBATCH --partition=cpu
+#SBATCH --account=bbka-delta-cpu
+#SBATCH --time=00:15:00
+#SBATCH --job-name=posix2ime-ior-dedicated
+
+BFS_DIR=/scratch/bbka/arnoldg/ime_example
+IME_DIR=/ime/bbka/arnoldg/ime_example
+SAMPLE_INPUT_FILE=myinputfile
+
+# do many-files operations in /scratch before
+# using ime: cd $BFS_DIR; tar xvf inputbundle.tar ...
+
+# bring the scratch directory into IME
+ime-ctl --recursive --block --prestage $IME_DIR
+
+# run the job/workflow in IME
+# do serialized commands (avoiding many-files types of operations)
+cd $IME_DIR
+stat $SAMPLE_INPUT_FILE
+
+# Use posix2ime for large block and/or parallel i/o
+module load posix2ime
+time srun /u/arnoldg/ior/src/ior -F -b64m
+# turn off posix2ime
+unset LD_PRELOAD  # turns off posix2ime module
+
+# synchronize IME back out to the Scratch directory ( $BFS_DIR )
+ime-ctl --recursive --block --sync $IME_DIR
+
+exit
+</pre>
+
+<p><br /></p>
+<p><br /></p>
+<h2>Attachments</h2>
+<p><ac:structured-macro ac:name="attachments" ac:schema-version="1" ac:macro-id="53e41527-8363-46b3-a54e-37ed069a34e0" /></p>~
+
+
+

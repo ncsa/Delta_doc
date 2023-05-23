@@ -1,0 +1,43 @@
+<p><ac:structured-macro ac:name="toc" ac:schema-version="1" ac:macro-id="c71bab1d-b247-422b-aa1f-03cf1d41f0b9" /></p>
+<h2>run and collect data</h2>
+<p>Run a batch job and collect data:</p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="d371b6d1-f2ff-4fb3-a624-e7ab6c21dd39"><ac:parameter ac:name="title">batch script commands</ac:parameter><ac:plain-text-body><![CDATA[...
+#SBATCH --constraint=perf  # perf,nvperf for gpu nodes
+
+cd $SLURM_SUBMIT_DIR
+export PATH=/sw/external/amd/AMDuProf_Linux_x64_4.0.341/bin:$PATH
+
+set -v
+srun AMDuProfCLI collect --config tbp  -o `pwd`/uprof_tbp  `pwd`/stream.22gb
+srun AMDuProfCLI collect --config inst_access  -o `pwd`/uprof_inst_access  `pwd`/stream.22gb
+srun AMDuProfCLI collect --config assess  -o `pwd`/uprof_assess  `pwd`/stream.22gb
+srun AMDuProfCLI collect --config assess_ext  -o `pwd`/uprof_assess_ext  `pwd`/stream.22gb]]></ac:plain-text-body></ac:structured-macro>
+<h2>generate report</h2>
+<p>After collecting data from a batch job, generate reports with the AMDuProfCLI report option.</p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="d0938ef7-5ebc-42e4-b8f5-15ac9ed5fcf4"><ac:parameter ac:name="title">generate report</ac:parameter><ac:plain-text-body><![CDATA[[arnoldg@dt-login03 uprof_tbp]$ export PATH=/sw/external/amd/AMDuProf_Linux_x64_4.0.341/bin:$PATH
+[arnoldg@dt-login03 uprof_tbp]$ AMDuProfCLI report -i AMDuProf-stream-TBP_Dec-19-2022_09-40-27/
+/sw/external/amd/AMDuProf_Linux_x64_4.0.341/bin/AMDuProfCLI
+Translation started ...
+Translation finished
+Generated database file : cpu
+Report generation started...
+Generating report file...
+
+Report generation completed...
+
+Generated report file: /projects/bbka/slurm_test_scripts/cpu/stream/uprof_tbp/AMDuProf-stream-TBP_Dec-19-2022_09-40-27/report.csv]]></ac:plain-text-body></ac:structured-macro>
+<h2 class="auto-cursor-target">visualize and explore report data</h2>
+<p class="auto-cursor-target">You can view the data in AMDuProf on Delta or locally on a copy you install at your desktop system.&nbsp; If you install locally, you may need to replicate some paths or add paths to the binary in order to get full functionality.</p>
+<p class="auto-cursor-target">Launch AMDuProf&nbsp; ( no CLI suffice for the GUI ), and import the profile session from a completed batch job run with AMDuProfCLI collect ...</p>
+<p class="auto-cursor-target"><ac:image><ri:attachment ri:filename="uprof_import_profile_session.png" /></ac:image></p>
+<p class="auto-cursor-target">The summary view give a high level overview of how time was spent.&nbsp; This is the tbp time-based-profile summary.</p>
+<p class="auto-cursor-target"><ac:image><ri:attachment ri:filename="uprof_summary.png" /></ac:image></p>
+<p class="auto-cursor-target">The Analyze tab shows hot routines or lines in more detail.&nbsp; The tbp , assess, and&nbsp; inst_access Analyze views follow.</p>
+<p><ac:image><ri:attachment ri:filename="uprof_analyze.png" /></ac:image></p>
+<p><ac:image><ri:attachment ri:filename="uprof_assess_summary.png" /></ac:image></p>
+<p><ac:image><ri:attachment ri:filename="uprof_inst_access.png" /></ac:image></p>
+<p class="auto-cursor-target">Selecting one of the lines or routines will take you to the Sources view where you can see the assembly used in that portion of code.</p>
+<p class="auto-cursor-target"><ac:image><ri:attachment ri:filename="uprof_sources.png" /></ac:image></p>
+<p class="auto-cursor-target">The Session Info is under the Summary tab and displays more detail about the profiling session.</p>
+<p class="auto-cursor-target"><ac:image><ri:attachment ri:filename="uprof_session_info.png" /></ac:image></p>
+<h2 class="auto-cursor-target">References:</h2>
+<p class="auto-cursor-target"><a href="https://www.amd.com/content/dam/amd/en/documents/developer/uprof-v4.0-gaGA-user-guide.pdf">https://www.amd.com/content/dam/amd/en/documents/developer/uprof-v4.0-gaGA-user-guide.pdf</a></p>
+

@@ -1,0 +1,184 @@
+<p><ac:structured-macro ac:name="toc" ac:schema-version="1" ac:macro-id="41eec2ed-d9ab-48bf-8bb0-8c3bad3c64d6" /></p>
+<h3>Recent Changes</h3>
+<p>To address a problem with <code>PATH</code> ordering when using anaconda3 modules, a warning in the module was put in place to caution loading an anaconda3 
+module while in a virtual environment, or if <code>conda init</code> has been used to modify one's environment.</p><ac:structured-macro ac:name="code" 
+ac:schema-version="1" ac:macro-id="c623c7dc-b824-4f78-b136-ed234f738674"><ac:plain-text-body><![CDATA[(base) [arnoldg@dt-login03 ~]$ module load anaconda3_gpu
+A conda environment has been detected CONDA_PREFIX=
+/sw/external/python/anaconda3 
+anaconda3_gpu is loaded. Consider running conda deactivate and reloading it.]]></ac:plain-text-body></ac:structured-macro>
+<p>see also: <a 
+href="https://docs.conda.io/projects/conda/en/latest/configuration.html">https://docs.conda.io/projects/conda/en/latest/configuration.html</a>&nbsp; , if you 
+want to disable automatic conda environment activation</p>
+<h3>Batch Jobs</h3>
+<p>Batch jobs will honor the commands you execute within them.&nbsp; Purge/unload/load modules, or deactivate/activate environments as needed for that job.</p>
+<p>A clean slate job might resemble:</p><ac:structured-macro ac:name="code" ac:schema-version="1" 
+ac:macro-id="f4060a52-d1b7-45dc-87cb-3b1aea4e97d1"><ac:parameter ac:name="title">user has a conda init clause in 
+bashrc</ac:parameter><ac:plain-text-body><![CDATA[conda deactivate
+conda deactivate  # just making sure
+module purge
+module reset  # load the default Delta modules
+
+conda activate base
+# commands to load modules and activate environs
+]]></ac:plain-text-body></ac:structured-macro>
+<p>Non-python/conda HPC users would see per-job stderr from the <em>conda deactivate</em> above:</p><ac:structured-macro ac:name="code" ac:schema-version="1" 
+ac:macro-id="5f7cf95d-868b-4f57-9fb0-458a6486b7a7"><ac:parameter ac:name="title">user has never ran &quot;conda init 
+bash&quot;</ac:parameter><ac:plain-text-body><![CDATA[[arnoldg@dt-login03 ~]$ conda deactivate
+bash: conda: command not found
+[arnoldg@dt-login03 ~]$ 
+
+# or
+
+[arnoldg@dt-login03 ~]$ conda deactivate
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda deactivate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+]]></ac:plain-text-body></ac:structured-macro>
+<h3>Jupyter with Open OnDemand</h3>
+<p>Jupyter and jupyter-lab will find the environments in your $HOME/.conda/envs -- your login shell should reflect what you want to see from 
+Jupyter.&nbsp;&nbsp;</p>
+<p>The list of avail. kernels for Jupyter should be the same as what you see from a login shell and python3 ( <a 
+href="https://github.com/Anaconda-Platform/nb_conda_kernels">https://github.com/Anaconda-Platform/nb_conda_kernels</a> ).&nbsp;</p>
+<p><strong>Jupyter needs to be installed in every virtual environment where you want to use with Jupyter-lab or Jupyter-notebook.</strong></p>
+<p style="margin-left: 40.0px;"><strong>$ conda install jupyter</strong></p><ac:structured-macro ac:name="code" ac:schema-version="1" 
+ac:macro-id="fdd5a666-d530-4936-8e29-5d9de12be705"><ac:parameter 
+ac:name="title">nb_python_kernels</ac:parameter><ac:plain-text-body><![CDATA[[arnoldg@dt-login03 jupyter_notebook_config.d]$ python3 -m nb_conda_kernels list
+[ListKernelSpecs] WARNING | Config option `kernel_spec_manager_class` not recognized by `ListKernelSpecs`.
+[ListKernelSpecs] [nb_conda_kernels] enabled, 8 kernels found
+Available kernels:
+  conda-env-westpa20-py           /projects/bbka/arnoldg/westpa20/share/jupyter/kernels/python3
+  conda-root-py                   /sw/external/python/anaconda3/share/jupyter/kernels/python3
+  conda-env-anaconda3_Rcpu-r      /sw/external/python/anaconda3_rcpu/share/jupyter/kernels/ir
+  conda-env-anaconda3_Rcpu-py     /sw/external/python/anaconda3_rcpu/share/jupyter/kernels/python3
+  conda-env-westpa-2022.03-py     /sw/external/python/westpa-2022.03/share/jupyter/kernels/python3
+  conda-env-.conda-myclone-py     /u/arnoldg/.conda/envs/myclone/share/jupyter/kernels/python3
+  conda-env-.conda-mynewenv-r     /u/arnoldg/.conda/envs/mynewenv/share/jupyter/kernels/ir
+  conda-env-.conda-mynewenv-py    /u/arnoldg/.conda/envs/mynewenv/share/jupyter/kernels/python3
+  python3                         /sw/external/python/anaconda3_gpu/share/jupyter/kernels/python3
+
+]]></ac:plain-text-body></ac:structured-macro>
+<h5>For debugging purposes, try jupyter-lab from a terminal:</h5>
+<p>Of interest are the Searching path at the beginning, and the nb_conda_kernels outputs.</p><ac:structured-macro ac:name="code" ac:schema-version="1" 
+ac:macro-id="4dd82a13-ed9c-4bf2-a5c7-4af5d98ec1eb"><ac:parameter ac:name="title">jupyter-lab 
+--log-level=0</ac:parameter><ac:plain-text-body><![CDATA[[arnoldg@dt-login03 jupyter_notebook_config.d]$ jupyter-lab --log-level=0
+[D 2023-02-20 12:48:50.533 ServerApp] Searching ['/u/arnoldg/.jupyter', '/u/arnoldg/.local/etc/jupyter', '/sw/external/python/anaconda3/etc/jupyter', 
+'/usr/local/etc/jupyter', '/etc/jupyter'] for config files
+[D 2023-02-20 12:48:50.533 ServerApp] Looking for jupyter_config in /etc/jupyter
+[D 2023-02-20 12:48:50.533 ServerApp] Looking for jupyter_config in /usr/local/etc/jupyter
+[D 2023-02-20 12:48:50.533 ServerApp] Looking for jupyter_config in /sw/external/python/anaconda3/etc/jupyter
+[D 2023-02-20 12:48:50.534 ServerApp] Loaded config file: /sw/external/python/anaconda3/etc/jupyter/jupyter_config.json
+[D 2023-02-20 12:48:50.534 ServerApp] Looking for jupyter_config in /u/arnoldg/.local/etc/jupyter
+[D 2023-02-20 12:48:50.534 ServerApp] Looking for jupyter_config in /u/arnoldg/.jupyter
+[D 2023-02-20 12:48:50.537 ServerApp] Looking for jupyter_server_config in /etc/jupyter
+[D 2023-02-20 12:48:50.537 ServerApp] Looking for jupyter_server_config in /usr/local/etc/jupyter
+[D 2023-02-20 12:48:50.537 ServerApp] Looking for jupyter_server_config in /sw/external/python/anaconda3/etc/jupyter
+[D 2023-02-20 12:48:50.537 ServerApp] Looking for jupyter_server_config in /u/arnoldg/.local/etc/jupyter
+[D 2023-02-20 12:48:50.537 ServerApp] Looking for jupyter_server_config in /u/arnoldg/.jupyter
+[D 2023-02-20 12:48:50.538 ServerApp] Paths used for configuration of jupyter_server_config: 
+    	/etc/jupyter/jupyter_server_config.json
+[D 2023-02-20 12:48:50.538 ServerApp] Paths used for configuration of jupyter_server_config: 
+    	/usr/local/etc/jupyter/jupyter_server_config.json
+[D 2023-02-20 12:48:50.539 ServerApp] Paths used for configuration of jupyter_server_config: 
+    	/sw/external/python/anaconda3/etc/jupyter/jupyter_server_config.d/jupyterlab.json
+    	/sw/external/python/anaconda3/etc/jupyter/jupyter_server_config.d/nbclassic.json
+    	/sw/external/python/anaconda3/etc/jupyter/jupyter_server_config.d/notebook_shim.json
+    	/sw/external/python/anaconda3/etc/jupyter/jupyter_server_config.d/panel-client-jupyter.json
+    	/sw/external/python/anaconda3/etc/jupyter/jupyter_server_config.json
+[D 2023-02-20 12:48:50.541 ServerApp] Paths used for configuration of jupyter_server_config: 
+    	/u/arnoldg/.local/etc/jupyter/jupyter_server_config.d/ipyparallel.json
+    	/u/arnoldg/.local/etc/jupyter/jupyter_server_config.json
+[D 2023-02-20 12:48:50.541 ServerApp] Paths used for configuration of jupyter_server_config: 
+    	/u/arnoldg/.jupyter/jupyter_server_config.json
+Note: detected 128 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+Note: NumExpr detected 128 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+NumExpr defaulting to 8 threads.
+[I 2023-02-20 12:48:51.954 ServerApp] ipyparallel | extension was successfully linked.
+[W 2023-02-20 12:48:51.957 LabApp] Config option `kernel_spec_manager_class` not recognized by `LabApp`.
+[W 2023-02-20 12:48:51.958 LabApp] Config option `kernel_spec_manager_class` not recognized by `LabApp`.
+[W 2023-02-20 12:48:51.960 LabApp] Config option `kernel_spec_manager_class` not recognized by `LabApp`.
+[I 2023-02-20 12:48:51.961 ServerApp] jupyterlab | extension was successfully linked.
+[W 2023-02-20 12:48:51.962 NotebookApp] Config option `kernel_spec_manager_class` not recognized by `NotebookApp`.
+[W 2023-02-20 12:48:51.963 NotebookApp] Config option `kernel_spec_manager_class` not recognized by `NotebookApp`.
+[W 2023-02-20 12:48:51.965 NotebookApp] Config option `kernel_spec_manager_class` not recognized by `NotebookApp`.
+[I 2023-02-20 12:48:51.965 ServerApp] nbclassic | extension was successfully linked.
+[D 2023-02-20 12:48:51.968 ServerApp] Paths used for configuration of jupyter_notebook_config: 
+    	/u/arnoldg/.jupyter/jupyter_notebook_config.json
+[D 2023-02-20 12:48:51.968 ServerApp] Paths used for configuration of jupyter_notebook_config: 
+    	/etc/jupyter/jupyter_notebook_config.json
+[D 2023-02-20 12:48:51.969 ServerApp] Paths used for configuration of jupyter_notebook_config: 
+    	/usr/local/etc/jupyter/jupyter_notebook_config.json
+[D 2023-02-20 12:48:51.969 ServerApp] Paths used for configuration of jupyter_notebook_config: 
+    	/sw/external/python/anaconda3/etc/jupyter/jupyter_notebook_config.d/jupyterlab.json
+    	/sw/external/python/anaconda3/etc/jupyter/jupyter_notebook_config.d/panel-client-jupyter.json
+    	/sw/external/python/anaconda3/etc/jupyter/jupyter_notebook_config.json
+[D 2023-02-20 12:48:51.971 ServerApp] Paths used for configuration of jupyter_notebook_config: 
+    	/u/arnoldg/.local/etc/jupyter/jupyter_notebook_config.d/ipyparallel.json
+    	/u/arnoldg/.local/etc/jupyter/jupyter_notebook_config.json
+[D 2023-02-20 12:48:51.971 ServerApp] Paths used for configuration of jupyter_notebook_config: 
+    	/u/arnoldg/.jupyter/jupyter_notebook_config.json
+[I 2023-02-20 12:48:51.971 ServerApp] notebook_shim | extension was successfully linked.
+[I 2023-02-20 12:48:51.972 ServerApp] panel.io.jupyter_server_extension | extension was successfully linked.
+[D 2023-02-20 12:48:51.972 ServerApp] Config changed: {'JupyterApp': {'kernel_spec_manager_class': 'nb_conda_kernels.CondaKernelSpecManager'}, 'NotebookApp': 
+{}, 'ServerApp': {'log_level': 0, 'jpserver_extensions': <LazyConfigValue value={'jupyterlab': True, 'ipyparallel': True, 'nbclassic': True, 'notebook_shim': 
+True, 'panel.io.jupyter_server_extension': True}>}}
+[D 2023-02-20 12:48:51.972 ServerApp] Raising open file limit: soft 1024->4096; hard 262144->262144
+[D 2023-02-20 12:48:51.972 ServerApp] [nb_conda_kernels] refreshing conda info
+[I 2023-02-20 12:48:54.607 ServerApp] [nb_conda_kernels] enabled, 8 kernels found
+[I 2023-02-20 12:48:54.645 ServerApp] notebook_shim | extension was successfully loaded.
+[I 2023-02-20 12:48:54.648 ServerApp] Loading IPython parallel extension
+[I 2023-02-20 12:48:54.648 ServerApp] ipyparallel | extension was successfully loaded.
+[I 2023-02-20 12:48:54.649 LabApp] JupyterLab extension loaded from /sw/external/python/anaconda3/lib/python3.9/site-packages/jupyterlab
+[I 2023-02-20 12:48:54.649 LabApp] JupyterLab application directory is /sw/external/python/anaconda3/share/jupyter/lab
+[I 2023-02-20 12:48:54.652 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2023-02-20 12:48:54.660 ServerApp] nbclassic | extension was successfully loaded.
+[I 2023-02-20 12:48:54.660 ServerApp] panel.io.jupyter_server_extension | extension was successfully loaded.
+[I 2023-02-20 12:48:54.661 ServerApp] The port 8888 is already in use, trying another port.
+[I 2023-02-20 12:48:54.661 ServerApp] Serving notebooks from local directory: /u/arnoldg/.local/etc/jupyter/jupyter_notebook_config.d
+[I 2023-02-20 12:48:54.661 ServerApp] Jupyter Server 1.23.4 is running at:
+[I 2023-02-20 12:48:54.661 ServerApp] http://localhost:8889/lab?token=a728f76b935d157d2eecc6a32810cf4e88ae1bc53701f4f6
+[I 2023-02-20 12:48:54.661 ServerApp]  or http://127.0.0.1:8889/lab?token=a728f76b935d157d2eecc6a32810cf4e88ae1bc53701f4f6
+[I 2023-02-20 12:48:54.661 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 2023-02-20 12:48:54.880 ServerApp] 
+    
+    To access the server, open this file in a browser:
+        file:///u/arnoldg/.local/share/jupyter/runtime/jpserver-1287615-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:8889/lab?token=a728f76b935d157d2eecc6a32810cf4e88ae1bc53701f4f6
+     or http://127.0.0.1:8889/lab?token=a728f76b935d157d2eecc6a32810cf4e88ae1bc53701f4f6
+/usr/bin/xdg-open: line 862: x-www-browser: command not found
+/usr/bin/xdg-open: line 862: firefox: command not found
+/usr/bin/xdg-open: line 862: iceweasel: command not found
+/usr/bin/xdg-open: line 862: seamonkey: command not found
+/usr/bin/xdg-open: line 862: mozilla: command not found
+/usr/bin/xdg-open: line 862: epiphany: command not found
+/usr/bin/xdg-open: line 862: konqueror: command not found
+/usr/bin/xdg-open: line 862: chromium: command not found
+/usr/bin/xdg-open: line 862: chromium-browser: command not found
+/usr/bin/xdg-open: line 862: google-chrome: command not found
+/usr/bin/xdg-open: line 862: www-browser: command not found
+/usr/bin/xdg-open: line 862: links2: command not found
+/usr/bin/xdg-open: line 862: elinks: command not found
+/usr/bin/xdg-open: line 862: links: command not found
+/usr/bin/xdg-open: line 862: lynx: command not found
+/usr/bin/xdg-open: line 862: w3m: command not found
+xdg-open: no method available for opening 'file:///u/arnoldg/.local/share/jupyter/runtime/jpserver-1287615-open.html'
+
+
+
+]]></ac:plain-text-body></ac:structured-macro>
+<p><br /></p>
+<p class="auto-cursor-target"><br /></p>

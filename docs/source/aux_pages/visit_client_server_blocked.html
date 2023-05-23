@@ -1,0 +1,20 @@
+<p>Following: <a 
+href="https://www.sdsc.edu/education_and_training/tutorials1/visit.html">https://www.sdsc.edu/education_and_training/tutorials1/visit.html</a></p>
+<p>Here are the screenshots for using Delta in a similar way:</p><ac:structured-macro ac:name="info" ac:schema-version="1" 
+ac:macro-id="91f17365-5aac-45f4-9443-d3cb15d0a489"><ac:parameter ac:name="title">pick a unique login node, .bashrc on delta</ac:parameter><ac:rich-text-body>
+<p>Choose either dt-login01 or dt-login02&nbsp; (not dt-login) to keep ssh tunnel connections working smoothly.</p>
+<p>Be sure to ssh to that login node <strong>before</strong>&nbsp; you proceed (if you have not logged into it before).&nbsp; Visit cannot deal with the initial 
+login confirmation of a new host key.</p>
+<p>Add to your $HOME/.bashrc (for the remote visit gui):</p>
+<p>module load visit</p></ac:rich-text-body></ac:structured-macro>
+<p>Adjust Maximum processors to fit your requirements.&nbsp;</p>
+<p><ac:image><ri:attachment ri:filename="visit_host_settings.png" /></ac:image></p>
+<p><ac:image><ri:attachment ri:filename="visit-mpi-settings.png" /></ac:image></p>
+<p>The &quot;-interactive&quot; version of a partition is shown.&nbsp; Note those partitions are for quick tests up to 30 minutes.&nbsp; Choose another 
+partition for longer sessions.</p>
+<p>Partitions and accounts should match: gpu partitions go with gpu account endings, cpu partitions with cpu account endings.</p>
+<p><ac:image><ri:attachment ri:filename="visit-mpi-parallel.png" /></ac:image><ac:image><ri:attachment ri:filename="visit-mpi-parallel-adv.png" 
+/></ac:image></p>
+<p>Options &rarr; Save Settings after filling in the above.</p>
+<p>Proceeding with the tutorial, this is the view from the client and noise.silo example (found in the visit installation data/) ...</p>
+<p><ac:image><ri:attachment ri:filename="visit-mpi-noise-final.png" /></ac:image></p>

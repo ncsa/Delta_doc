@@ -1,0 +1,34 @@
+<p><ac:structured-macro ac:name="toc" ac:schema-version="1" ac:macro-id="8b2ccb36-dd6e-48f2-a3a9-47d62a827538" /></p>
+<h1>Remote - SSH</h1>
+<p>Follow: <a href="https://code.visualstudio.com/docs/remote/ssh">https://code.visualstudio.com/docs/remote/ssh</a></p>
+<p>As stated in the guide, install &quot;Remote - SSH&quot; into Visual Studio:</p>
+<p><ac:image ac:height="250"><ri:attachment ri:filename="Screenshot 2022-10-28 at 7.46.15 AM.png" /></ac:image></p>
+<p>Then continue to follow the guide to setup a remote connection to Delta. &nbsp;It helps if you have a local $HOME/.ssh/config with your commonly used hosts 
+already present on the laptop and ssh client where you will be using visual studio. &nbsp;Here's an example entry for Delta. &nbsp;Change your username to your 
+login name on Delta. &nbsp;Visual Studio will show hosts in your config in a pick list.</p><ac:structured-macro ac:name="code" ac:schema-version="1" 
+ac:macro-id="71233af4-56a0-4158-a9fa-803214a419aa"><ac:parameter ac:name="title">ssh config</ac:parameter><ac:plain-text-body><![CDATA[Host delta
+        HostName login.delta.ncsa.illinois.edu
+        User arnoldg
+        ForwardX11 True]]></ac:plain-text-body></ac:structured-macro>
+<p>Once connected, you can work with the remote system as if it were local. &nbsp;When Visual Studio needs to install extension items on the remote system, they 
+will go into your $HOME/.vscode-server on Delta. &nbsp;Visual Studio takes care of all the details for you:</p><ac:structured-macro ac:name="code" 
+ac:schema-version="1" ac:macro-id="88dd3666-0471-42cd-b3d2-6c11072948e0"><ac:parameter ac:name="title">remote server VS 
+extensions</ac:parameter><ac:plain-text-body><![CDATA[[arnoldg@dt-login03 ~]$ du -sh .vscode-server/
+523M	.vscode-server/
+[arnoldg@dt-login03 ~]$ ]]></ac:plain-text-body></ac:structured-macro>
+<p>Proceed to F1 &rarr; Remote SSH and connect to Delta, then following the guide, use Visual Studio as normal. &nbsp;This is an example of working with a C 
+file remote on Delta.</p>
+<p><ac:image><ri:attachment ri:filename="Screenshot 2022-10-28 at 7.53.56 AM.png" /></ac:image></p>
+<h1>Remote Jupyter&nbsp;</h1>
+<p>See: <a 
+href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server">https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server</a>&nbsp;and 
+<ac:link ac:anchor="Jupyternotebooks"><ri:page ri:content-title="Delta User Guide" /></ac:link>&nbsp; (open 2 new browser tabs).</p>
+<p>Install the Jupyter extension for Visual Studio if you have not already done so. &nbsp;</p>
+<p>Complete the 1st step from the Delta User guide where you srun a jupyter-notebook on a compute node. &nbsp;Make note of and copy the 1st URL after the job is 
+running. &nbsp;That is the URI you will provide to Visual Studio's &quot;Connect to a Remote Jupyter Server&quot; after clicking the Kernels button. &nbsp;You 
+may also need to select the remote jupyter kernel under the kernels in VScode.</p>
+<p><ac:image ac:height="400"><ri:attachment ri:filename="Screenshot 2022-10-28 at 8.21.00 AM.png" /></ac:image></p>
+<p><ac:image><ri:attachment ri:filename="Screenshot 2022-10-28 at 8.20.21 AM.png" /></ac:image></p>
+<p><br /></p>
+<p><br /></p>
+<p><br /></p>
