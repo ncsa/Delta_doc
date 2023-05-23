@@ -405,8 +405,128 @@ Jobs that do not specify a dependency on the WORK(/projects) and SCRATCH
 Job Management
 -----------------
 
+Batch jobs are submitted through a *job script* (as in the examples
+above) using the sbatch command. Job scripts generally start with a
+series of SLURM *directives* that describe requirements of the job such
+as number of nodes, wall time required, etc… to the batch
+system/scheduler (SLURM directives can also be specified as options on
+the sbatch command line; command line options take precedence over those
+in the script). The rest of the batch script consists of user commands.
+
+The syntax for sbatch is:
+
+**sbatch** [list of sbatch options] script_name
+
+Refer to the sbatch man page for detailed information on the options.
+
+squeue/scontrol/sinfo
+^^^^^^^^^^^^^^^^^^^^^
+
+Commands that display batch job and partition information .
+
++-------------------------+-------------------------------------------+
+| SLURM EXAMPLE COMMAND   | DESCRIPTION                               |
++-------------------------+-------------------------------------------+
+| squeue -a               | List the status of all jobs on the        |
+|                         | system.                                   |
++-------------------------+-------------------------------------------+
+| squeue -u $USER         | List the status of all your jobs in the   |
+|                         | batch system.                             |
++-------------------------+-------------------------------------------+
+| squeue -j JobID         | List nodes allocated to a running job in  |
+|                         | addition to basic information..           |
++-------------------------+-------------------------------------------+
+| scontrol show job JobID | List detailed information on a particular |
+|                         | job.                                      |
++-------------------------+-------------------------------------------+
+| sinfo -a                | List summary information on all the       |
+|                         | partition.                                |
++-------------------------+-------------------------------------------+
+
+See the manual (man) pages for other available options.
+
+**srun**
+
+The srun command initiates an interactive job on compute nodes.
+
+For example, the following command:
+
+::
+
+   srun -A account_name --time=00:30:00 --nodes=1 --ntasks-per-node=16 \
+   --partition=gpuA100x4 --gpus=1 --mem=16g --pty /bin/bash
+
+will run an interactive job in the gpuA100x4 partition with a wall clock
+limit of 30 minutes, using one node and 16 cores per node and 1 gpu. You
+can also use other sbatch options such as those documented above.
+
+After you enter the command, you will have to wait for SLURM to start
+the job. As with any job, your interactive job will wait in the queue
+until the specified number of nodes is available. If you specify a small
+number of nodes for smaller amounts of time, the wait should be shorter
+because your job will backfill among larger jobs. You will see something
+like this:
+
+``srun: job 123456 queued and waiting for resources``
+
+Once the job starts, you will see:
+
+``srun: job 123456 has been allocated resources``
+
+and will be presented with an interactive shell prompt on the launch
+node. At this point, you can use the appropriate command to start your
+program.
+
+When you are done with your work, you can use the exit command to end
+the job.
+
+**scancel**
+
+The scancel command deletes a queued job or terminates a running job.
+
+-  scancel JobID deletes/terminates a job.
+
 Job Status
 -----------------
+
+NODELIST(REASON)
+
+MaxGRESPerAccount - a user has exceeded the number of cores or gpus
+allotted per user or project for a given partition.
+
+| 
+
+Useful Batch Job Environment Variablesslurm_environment_variables
+
++-------+-----------+-------------------------------------+
+| D     | SLURM     | DETAIL DESCRIPTION                  |
+| ESCRI | EN        |                                     |
+| PTION | VIRONMENT |                                     |
+|       | VARIABLE  |                                     |
++=======+===========+=====================================+
+| JobID | $SLU      | Job identifier assigned to the job  |
+|       | RM_JOB_ID |                                     |
++-------+-----------+-------------------------------------+
+| Job   | $SLURM_S  | By default, jobs start in the       |
+| Submi | UBMIT_DIR | directory that the job was          |
+| ssion |           | submitted from. So the "cd          |
+| Dire  |           | $SLURM_SUBMIT_DIR" command is not   |
+| ctory |           | needed.                             |
++-------+-----------+-------------------------------------+
+| Mac   | $SLURM    | variable name that contains the     |
+| hine( | _NODELIST | list of nodes assigned to the batch |
+| node) |           | job                                 |
+| list  |           |                                     |
++-------+-----------+-------------------------------------+
+| Array | $         | each member of a job array is       |
+| JobID | SLURM_ARR | assigned a unique identifier        |
+|       | AY_JOB_ID |                                     |
+|       | $S        |                                     |
+|       | LURM_ARRA |                                     |
+|       | Y_TASK_ID |                                     |
++-------+-----------+-------------------------------------+
+
+See the sbatch man page for additional environment variables available.
 
 Monitoring a Node During a Job
 ---------------------------------
