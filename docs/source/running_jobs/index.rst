@@ -666,6 +666,23 @@ date.
 
 Pre-emptive jobs will be supported at a future date.
 
+Job Policies
+----------------
+
+The default job requeue or restart policy is set to not allow jobs to be
+automatically requeued or restarted (as of 12/19/2022).
+
+To enable automatic requeue and restart of a job by slurm, please add
+the following slurm directive
+
+::
+
+   --requeue 
+
+When a job is requeued due to an evant like a node failure, thebatch
+script is initiated from its beginning. Job scripts need to be written
+to handle automatically restarting from checkpoints etc.
+
 Monitoring a Node During a Job
 ---------------------------------
 
