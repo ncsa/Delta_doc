@@ -577,6 +577,95 @@ https://slurm.schedmd.com/quickstart.html
 
 250 slurm quick reference guide
 
+Partitions (Queues)
+-----------------------
+
+Table.Delta Production Default Partition Values
+
+======================= ==========
+Property                Value
+Default Memory per core 1000 MB
+Default Wallclock time  30 minutes
+======================= ==========
+
+Table.Delta Production Partitions/Queues
+
++----------+----------+----------+----------+----------+----------+
+| **P      | **Node   | **Max    | **Max    | **Max    | **Charge |
+| artition | Type**   | Nodes    | Du       | Running  | Factor** |
+| /Queue** |          | per      | ration** | in       |          |
+|          |          | Job**    |          | Queue/   |          |
+|          |          |          |          | user\*** |          |
++----------+----------+----------+----------+----------+----------+
+| cpu      | CPU      | TBD      | 48 hr    | TBD      | 1.0      |
++----------+----------+----------+----------+----------+----------+
+| cpu-int  | CPU      | TBD      | 30 min   | TBD      | 2.0      |
+| eractive |          |          |          |          |          |
++----------+----------+----------+----------+----------+----------+
+| g        | quad     | TBD      | 48 hr    | TBD      | 1.0      |
+| puA100x4 | A100     |          |          |          |          |
+|          |          |          |          |          |          |
+| gpu      |          |          |          |          |          |
+| A100x4\* |          |          |          |          |          |
+|          |          |          |          |          |          |
+| (        |          |          |          |          |          |
+| asterisk |          |          |          |          |          |
+| i        |          |          |          |          |          |
+| ndicates |          |          |          |          |          |
+| this is  |          |          |          |          |          |
+| the      |          |          |          |          |          |
+| default  |          |          |          |          |          |
+| queue,   |          |          |          |          |          |
+| but      |          |          |          |          |          |
+| submit   |          |          |          |          |          |
+| jobs to  |          |          |          |          |          |
+| gp       |          |          |          |          |          |
+| uA100x4) |          |          |          |          |          |
++----------+----------+----------+----------+----------+----------+
+| gpuA1    | q        | TBD      | 1 hr     | TBD      | 2.0      |
+| 00x4-int | uad-A100 |          |          |          |          |
+| eractive |          |          |          |          |          |
++----------+----------+----------+----------+----------+----------+
+| g        | o        | TBD      | 48 hr    | TBD      | 1.5      |
+| puA100x8 | cta-A100 |          |          |          |          |
++----------+----------+----------+----------+----------+----------+
+| gpuA1    | o        | TBD      | 1 hr     | TBD      | 3.0      |
+| 00x8-int | cta-A100 |          |          |          |          |
+| eractive |          |          |          |          |          |
++----------+----------+----------+----------+----------+----------+
+| gpuA40x4 | quad-A40 | TBD      | 48 hr    | TBD      | 0.6      |
++----------+----------+----------+----------+----------+----------+
+| gpuA     | quad-A40 | TBD      | 1 hr     | TBD      | 1.2      |
+| 40x4-int |          |          |          |          |          |
+| eractive |          |          |          |          |          |
++----------+----------+----------+----------+----------+----------+
+| gp       | oc       | TBD      | 48 hr    | TBD      | 1.0      |
+| uMI100x8 | ta-MI100 |          |          |          |          |
++----------+----------+----------+----------+----------+----------+
+| gpuMI1   | oc       | TBD      | 1 hr     | TBD      | 2.0      |
+| 00x8-int | ta-MI100 |          |          |          |          |
+| eractive |          |          |          |          |          |
++----------+----------+----------+----------+----------+----------+
+
+sview view of slurm partitions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Node Policies
+~~~~~~~~~~~~~
+
+Node-sharing is the default for jobs. Node-exclusive mode can be
+obtained by specifying all the consumable resources for that node type
+or adding the following Slurm options:
+
+::
+
+   --exclusive --mem=0
+
+GPU NVIDIA MIG (GPU slicing) for the A100 will be supported at a future
+date.
+
+Pre-emptive jobs will be supported at a future date.
+
 Monitoring a Node During a Job
 ---------------------------------
 
