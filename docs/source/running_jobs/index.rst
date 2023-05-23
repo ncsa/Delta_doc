@@ -388,6 +388,14 @@ this case an xterm) do the following:
 
 .. _file-system-dependency-specification-for-jobs-1:
 
+File System Dependency Specification for Jobs
+---------------------------------------------
+
+Please see the section on setting job file system dependencies for jobs.
+
+Jobs that do not specify a dependency on the WORK(/projects) and SCRATCH
+(/scratch) will be assumed to depend only on the HOME (/u) file system.
+
 Job Management
 -----------------
 
