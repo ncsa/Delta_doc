@@ -528,6 +528,46 @@ Useful Batch Job Environment Variablesslurm_environment_variables
 
 See the sbatch man page for additional environment variables available.
 
+
+Accessing the Compute Nodes
+-------------------------------
+
+Delta implements the Slurm batch environment to manage access to the
+compute nodes. Use the Slurm commands to run batch jobs or for
+interactive access to compute nodes. See:
+https://slurm.schedmd.com/quickstart.html for an introduction to Slurm.
+There are two ways to access compute nodes on Delta.
+
+Batch jobs can be used to access compute nodes. Slurm provides a
+convenient direct way to submit batch jobs. See
+https://slurm.schedmd.com/heterogeneous_jobs.html#submitting for
+details. Slurm supports job arrays for easy management of a set of
+similar jobs,
+see:\ `job_array.html <https://slurm.schedmd.com/job_array.html>`__\ .
+
+Sample Slurm batch job scripts are provided in the section below.
+
+Direct ssh access to a compute node in a running batch job from a
+dt-loginNN node is enabled, once the job has started.
+
+::
+
+   $ squeue --job jobid
+                JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+                12345       cpu     bash   gbauer  R       0:17      1 cn001
+
+Then in a terminal session:
+
+::
+
+   $ ssh cn001
+   cn001.delta.internal.ncsa.edu (172.28.22.64)
+     OS: RedHat 8.4   HW: HPE   CPU: 128x    RAM: 252 GB
+     Site: mgmt  Role: compute
+   $
+
+See also:
+
 Monitoring a Node During a Job
 ---------------------------------
 
