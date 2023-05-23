@@ -290,8 +290,103 @@ Sample Scripts
 
 -  Parametric / Array / HTC jobs
 
-Interactive Jobs
+Interactive Sessions
 -------------------------
+
+Interactive sessions can be implemented in several ways depending on
+what is needed.
+
+To start up a bash shell terminal on a cpu or gpu node
+
+-  single core with 16GB of memory, with one task on a cpu node
+
+::
+
+   srun --account=account_name --partition=cpu-interactive \
+     --nodes=1 --tasks=1 --tasks-per-node=1 \
+     --cpus-per-task=4 --mem=16g \
+     --pty bash
+
+-  single core with 20GB of memory, with one task on a A40 gpu node
+
+::
+
+   srun --account=account_name --partition=gpuA40x4-interactive \
+     --nodes=1 --gpus-per-node=1 --tasks=1 \
+     --tasks-per-node=16 --cpus-per-task=1 --mem=20g \
+     --pty bash
+
+| 
+
+MPI interactive jobs: use salloc followed by srun
+
+Since interactive jobs are already a child process of srun, one cannot
+srun (or mpirun) applications from within them. Within standard batch
+jobs submitted via sbatch, use *srun* to launch MPI codes. For true
+interactive MPI, use salloc in place of srun shown above, then "srun
+my_mpi.exe" after you get a prompt from salloc ( exit to end the salloc
+interactive allocation).
+
+| 
+
+::
+
+   [arnoldg@dt-login01 collective]$ cat osu_reduce.salloc
+   salloc --account=bbka-delta-cpu --partition=cpu-interactive \
+     --nodes=2 --tasks-per-node=4 \
+     --cpus-per-task=2 --mem=0
+
+   [arnoldg@dt-login01 collective]$ ./osu_reduce.salloc
+   salloc: Pending job allocation 1180009
+   salloc: job 1180009 queued and waiting for resources
+   salloc: job 1180009 has been allocated resources
+   salloc: Granted job allocation 1180009
+   salloc: Waiting for resource configuration
+   salloc: Nodes cn[009-010] are ready for job
+   [arnoldg@dt-login01 collective]$ srun osu_reduce
+
+   # OSU MPI Reduce Latency Test v5.9
+   # Size       Avg Latency(us)
+   4                       1.76
+   8                       1.70
+   16                      1.72
+   32                      1.80
+   64                      2.06
+   128                     2.00
+   256                     2.29
+   512                     2.39
+   1024                    2.66
+   2048                    3.29
+   4096                    4.24
+   8192                    2.36
+   16384                   3.91
+   32768                   6.37
+   65536                  10.49
+   131072                 26.84
+   262144                198.38
+   524288                342.45
+   1048576               687.78
+   [arnoldg@dt-login01 collective]$ exit
+   exit
+   salloc: Relinquishing job allocation 1180009
+   [arnoldg@dt-login01 collective]$ 
+
+Interactive X11 Support
+~~~~~~~~~~~~~~~~~~~~~~~
+
+To run an X11 based application on a compute node in an interactive
+session, the use of the ``--x11`` switch with ``srun`` is needed. For
+example, to run a single core job that uses 1g of memory with X11 (in
+this case an xterm) do the following:
+
+::
+
+   srun -A abcd-delta-cpu  --partition=cpu-interactive \
+     --nodes=1 --tasks=1 --tasks-per-node=1 \
+     --cpus-per-task=2 --mem=16g \
+     --x11  xterm
+
+.. _file-system-dependency-specification-for-jobs-1:
 
 Job Management
 -----------------
