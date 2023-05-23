@@ -19,7 +19,8 @@ described below (or you may install your own python versions):
       `comparison <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html>`__
       (1/2 way down the page)
       
-#. `mamba (clone of conda but faster to use), see <https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html>`__
+#. mamba (clone of conda but faster to use), see 
+      `<https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html>`__
 
 #. `pip3 <https://docs.python.org/3/installing/index.html>`__ : pip3
    install --user <python_package>
