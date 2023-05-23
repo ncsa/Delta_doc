@@ -34,6 +34,7 @@ Contents
 
 .. toctree::
    :maxdepth: 2
+   
    status_updates
    architecture
    fee_overview
