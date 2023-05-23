@@ -135,17 +135,160 @@ project. Example usage:
                            Example:2023-01-03-01:23:21)
      --detail              detail output, per-job [svchydroswmanage@hydrol1 scripts]$ 
 
-Local Account Charging
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Job Accounting Considerations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Reviewing Job Chargest for a Project
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 Sample Scripts
 -------------------------
+
+-  Serial jobs on CPU nodes
+
+   ::
+
+      $ cat job.slurm
+      #!/bin/bash
+      #SBATCH --mem=16g
+      #SBATCH --nodes=1
+      #SBATCH --ntasks-per-node=1
+      #SBATCH --cpus-per-task=4    # <- match to OMP_NUM_THREADS
+      #SBATCH --partition=cpu      # <- or one of: gpuA100x4 gpuA40x4 gpuA100x8 gpuMI100x8
+      #SBATCH --account=account_name
+      #SBATCH --job-name=myjobtest
+      #SBATCH --time=00:10:00      # hh:mm:ss for the job
+      #SBATCH --constraint="scratch"
+      ### GPU options ###
+      ##SBATCH --gpus-per-node=2
+      ##SBATCH --gpu-bind=none     # <- or closest
+      ##SBATCH --mail-user=you@yourinstitution.edu
+      ##SBATCH --mail-type="BEGIN,END" See sbatch or srun man pages for more email options
+
+
+      module reset # drop modules and explicitly load the ones needed
+                   # (good job metadata and reproducibility)
+                   # $WORK and $SCRATCH are now set
+      module load python  # ... or any appropriate modules
+      module list  # job documentation and metadata
+      echo "job is starting on `hostname`"
+      srun python3 myprog.py
+
+   | 
+
+-  MPI on CPU nodes
+
+   ::
+
+      #!/bin/bash
+      #SBATCH --mem=16g
+      #SBATCH --nodes=2
+      #SBATCH --ntasks-per-node=32
+      #SBATCH --cpus-per-task=2    # <- match to OMP_NUM_THREADS
+      #SBATCH --partition=cpu      # <- or one of: gpuA100x4 gpuA40x4 gpuA100x8 gpuMI100x8
+      #SBATCH --account=account_name
+      #SBATCH --job-name=mympi
+      #SBATCH --time=00:10:00      # hh:mm:ss for the job
+      #SBATCH --constraint="scratch"
+      ### GPU options ###
+      ##SBATCH --gpus-per-node=2
+      ##SBATCH --gpu-bind=none     # <- or closest ##SBATCH --mail-user=you@yourinstitution.edu
+      ##SBATCH --mail-type="BEGIN,END" See sbatch or srun man pages for more email options
+
+      module reset # drop modules and explicitly load the ones needed
+                   # (good job metadata and reproducibility)
+                   # $WORK and $SCRATCH are now set
+      module load gcc/11.2.0 openmpi  # ... or any appropriate modules
+      module list  # job documentation and metadata
+      echo "job is starting on `hostname`"
+      srun osu_reduce
+
+   | 
+
+-  OpenMP on CPU nodes
+
+   ::
+
+      #!/bin/bash
+      #SBATCH --mem=16g
+      #SBATCH --nodes=1
+      #SBATCH --ntasks-per-node=1
+      #SBATCH --cpus-per-task=32   # <- match to OMP_NUM_THREADS
+      #SBATCH --partition=cpu      # <- or one of: gpuA100x4 gpuA40x4 gpuA100x8 gpuMI100x8
+      #SBATCH --account=account_name
+      #SBATCH --job-name=myopenmp
+      #SBATCH --time=00:10:00      # hh:mm:ss for the job
+      #SBATCH --constraint="scratch"
+      ### GPU options ###
+      ##SBATCH --gpus-per-node=2
+      ##SBATCH --gpu-bind=none     # <- or closest
+      ##SBATCH --mail-user=you@yourinstitution.edu
+      ##SBATCH --mail-type="BEGIN,END" See sbatch or srun man pages for more email options
+
+      module reset # drop modules and explicitly load the ones needed
+                   # (good job metadata and reproducibility)
+                   # $WORK and $SCRATCH are now set
+      module load gcc/11.2.0  # ... or any appropriate modules
+      module list  # job documentation and metadata
+      echo "job is starting on `hostname`"
+      export OMP_NUM_THREADS=32
+      srun stream_gcc
+
+   | 
+
+-  Hybrid (MPI + OpenMP or MPI+X) on CPU nodes
+
+   ::
+
+      #!/bin/bash
+      #SBATCH --mem=16g
+      #SBATCH --nodes=2
+      #SBATCH --ntasks-per-node=4
+      #SBATCH --cpus-per-task=4    # <- match to OMP_NUM_THREADS
+      #SBATCH --partition=cpu      # <- or one of: gpuA100x4 gpuA40x4 gpuA100x8 gpuMI100x8
+      #SBATCH --account=account_name
+      #SBATCH --job-name=mympi+x
+      #SBATCH --time=00:10:00      # hh:mm:ss for the job
+      #SBATCH --constraint="scratch"
+      ### GPU options ###
+      ##SBATCH --gpus-per-node=2
+      ##SBATCH --gpu-bind=none     # <- or closest
+      ##SBATCH --mail-user=you@yourinstitution.edu
+      ##SBATCH --mail-type="BEGIN,END" See sbatch or srun man pages for more email options
+
+      module reset # drop modules and explicitly load the ones needed
+                   # (good job metadata and reproducibility)
+                   # $WORK and $SCRATCH are now set
+      module load gcc/11.2.0 openmpi # ... or any appropriate modules
+      module list  # job documentation and metadata
+      echo "job is starting on `hostname`"
+      export OMP_NUM_THREADS=4
+      srun xthi
+
+   | 
+
+-  4 gpus together on a compute node
+
+   ::
+
+      #!/bin/bash
+      #SBATCH --job-name="a.out_symmetric"
+      #SBATCH --output="a.out.%j.%N.out"
+      #SBATCH --partition=gpuA100x4
+      #SBATCH --mem=208G
+      #SBATCH --nodes=1
+      #SBATCH --ntasks-per-node=4  # could be 1 for py-torch
+      #SBATCH --cpus-per-task=16   # spread out to use 1 core per numa, set to 64 if tasks is 1
+      #SBATCH --constraint="scratch"
+      #SBATCH --gpus-per-node=4
+      #SBATCH --gpu-bind=closest   # select a cpu close to gpu on pci bus topology
+      #SBATCH --account=bbjw-delta-gpu
+      #SBATCH --exclusive  # dedicated node for this job
+      #SBATCH --no-requeue
+      #SBATCH -t 04:00:00
+
+      export OMP_NUM_THREADS=1  # if code is not multithreaded, otherwise set to 8 or 16
+      srun -N 1 -n 4 ./a.out > myjob.out
+      # py-torch example, --ntasks-per-node=1 --cpus-per-task=64
+      # srun python3 multiple_gpu.py
+
+   | 
+
+-  Parametric / Array / HTC jobs
 
 Interactive Jobs
 -------------------------
