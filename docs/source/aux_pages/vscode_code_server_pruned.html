@@ -1,9 +1,9 @@
 <p>We can run the code-server for vscode on Delta in manual mode (without OpenOnDemand) following these steps:</p>
 <ol>
 <li>
-<p class="auto-cursor-target">Start the server.</p><ac:structured-macro ac:name="code" ac:schema-version="1" 
-ac:macro-id="e66d7c77-91fb-4099-9a88-1186dfc2da9c"><ac:parameter 
-ac:name="title">/sw/external/vscode/code-server/bin/code-server</ac:parameter><ac:plain-text-body><![CDATA[[arnoldg@dt-login03 bin]$  ./code-server --bind-addr 
+<p class="auto-cursor-target">Start the server.</p>
+<pre>
+[arnoldg@dt-login03 bin]$  ./code-server --bind-addr 
 dt-login03:8899
 [2023-04-14T15:57:03.059Z] info  code-server 4.11.0 85e083580dec27ef19827ff42d3c9257d56ea7e3
 [2023-04-14T15:57:03.060Z] info  Using user-data-dir ~/.local/share/code-server
@@ -20,8 +20,9 @@ dt-login03:8899
 <p class="auto-cursor-target"><br /></p></li>
 <li>
 <p class="auto-cursor-target">Ssh to the login node where the server is waiting.  Read the config.yaml noted above and copy the password to your 
-clipboard.</p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="7ddf5d6e-977b-4147-9748-e20f3afde4f6"><ac:parameter ac:name="title">ssh 
-tunnel to login node running code-server</ac:parameter><ac:plain-text-body><![CDATA[(base) galen@macbookair-m1-042020 ~ % ssh -l arnoldg -L 
+clipboard.</p>
+<pre>
+(base) galen@macbookair-m1-042020 ~ % ssh -l arnoldg -L 
 127.0.0.1:8899:dt-login03.delta.ncsa.illinois.edu:8899 dt-login03.delta.ncsa.illinois.edu
 ...
 Success. Logging you in...

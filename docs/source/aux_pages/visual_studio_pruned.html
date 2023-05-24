@@ -5,17 +5,18 @@
 <p><ac:image ac:height="250"><ri:attachment ri:filename="Screenshot 2022-10-28 at 7.46.15 AM.png" /></ac:image></p>
 <p>Then continue to follow the guide to setup a remote connection to Delta.  It helps if you have a local $HOME/.ssh/config with your commonly used hosts 
 already present on the laptop and ssh client where you will be using visual studio.  Here's an example entry for Delta.  Change your username to your 
-login name on Delta.  Visual Studio will show hosts in your config in a pick list.</p><ac:structured-macro ac:name="code" ac:schema-version="1" 
-ac:macro-id="71233af4-56a0-4158-a9fa-803214a419aa"><ac:parameter ac:name="title">ssh config</ac:parameter><ac:plain-text-body><![CDATA[Host delta
+login name on Delta.  Visual Studio will show hosts in your config in a pick list.</p>
+<pre>
+Host delta
         HostName login.delta.ncsa.illinois.edu
         User arnoldg
         ForwardX11 True
 </pre>
 
 <p>Once connected, you can work with the remote system as if it were local.  When Visual Studio needs to install extension items on the remote system, they 
-will go into your $HOME/.vscode-server on Delta.  Visual Studio takes care of all the details for you:</p><ac:structured-macro ac:name="code" 
-ac:schema-version="1" ac:macro-id="88dd3666-0471-42cd-b3d2-6c11072948e0"><ac:parameter ac:name="title">remote server VS 
-extensions</ac:parameter><ac:plain-text-body><![CDATA[[arnoldg@dt-login03 ~]$ du -sh .vscode-server/
+will go into your $HOME/.vscode-server on Delta.  Visual Studio takes care of all the details for you:</p>
+<pre>
+[arnoldg@dt-login03 ~]$ du -sh .vscode-server/
 523M	.vscode-server/
 [arnoldg@dt-login03 ~]$ 
 </pre>

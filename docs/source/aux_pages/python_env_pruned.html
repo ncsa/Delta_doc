@@ -1,8 +1,9 @@
 <p><ac:structured-macro ac:name="toc" ac:schema-version="1" ac:macro-id="41eec2ed-d9ab-48bf-8bb0-8c3bad3c64d6" /></p>
 <h3>Recent Changes</h3>
 <p>To address a problem with <code>PATH</code> ordering when using anaconda3 modules, a warning in the module was put in place to caution loading an anaconda3 
-module while in a virtual environment, or if <code>conda init</code> has been used to modify one's environment.</p><ac:structured-macro ac:name="code" 
-ac:schema-version="1" ac:macro-id="c623c7dc-b824-4f78-b136-ed234f738674"><ac:plain-text-body><![CDATA[(base) [arnoldg@dt-login03 ~]$ module load anaconda3_gpu
+module while in a virtual environment, or if <code>conda init</code> has been used to modify one's environment.</p>
+<pre>
+(base) [arnoldg@dt-login03 ~]$ module load anaconda3_gpu
 A conda environment has been detected CONDA_PREFIX=
 /sw/external/python/anaconda3 
 anaconda3_gpu is loaded. Consider running conda deactivate and reloading it.
@@ -13,9 +14,9 @@ href="https://docs.conda.io/projects/conda/en/latest/configuration.html">https:/
 want to disable automatic conda environment activation</p>
 <h3>Batch Jobs</h3>
 <p>Batch jobs will honor the commands you execute within them.  Purge/unload/load modules, or deactivate/activate environments as needed for that job.</p>
-<p>A clean slate job might resemble:</p><ac:structured-macro ac:name="code" ac:schema-version="1" 
-ac:macro-id="f4060a52-d1b7-45dc-87cb-3b1aea4e97d1"><ac:parameter ac:name="title">user has a conda init clause in 
-bashrc</ac:parameter><ac:plain-text-body><![CDATA[conda deactivate
+<p>A clean slate job might resemble:</p>
+<pre>
+conda deactivate
 conda deactivate  # just making sure
 module purge
 module reset  # load the default Delta modules
@@ -25,9 +26,9 @@ conda activate base
 
 </pre>
 
-<p>Non-python/conda HPC users would see per-job stderr from the <em>conda deactivate</em> above:</p><ac:structured-macro ac:name="code" ac:schema-version="1" 
-ac:macro-id="5f7cf95d-868b-4f57-9fb0-458a6486b7a7"><ac:parameter ac:name="title">user has never ran &quot;conda init 
-bash&quot;</ac:parameter><ac:plain-text-body><![CDATA[[arnoldg@dt-login03 ~]$ conda deactivate
+<p>Non-python/conda HPC users would see per-job stderr from the <em>conda deactivate</em> above:</p>
+<pre>
+[arnoldg@dt-login03 ~]$ conda deactivate
 bash: conda: command not found
 [arnoldg@dt-login03 ~]$ 
 
@@ -60,9 +61,9 @@ Jupyter.  </p>
 <p>The list of avail. kernels for Jupyter should be the same as what you see from a login shell and python3 ( <a 
 href="https://github.com/Anaconda-Platform/nb_conda_kernels">https://github.com/Anaconda-Platform/nb_conda_kernels</a> ). </p>
 <p><strong>Jupyter needs to be installed in every virtual environment where you want to use with Jupyter-lab or Jupyter-notebook.</strong></p>
-<p style="margin-left: 40.0px;"><strong>$ conda install jupyter</strong></p><ac:structured-macro ac:name="code" ac:schema-version="1" 
-ac:macro-id="fdd5a666-d530-4936-8e29-5d9de12be705"><ac:parameter 
-ac:name="title">nb_python_kernels</ac:parameter><ac:plain-text-body><![CDATA[[arnoldg@dt-login03 jupyter_notebook_config.d]$ python3 -m nb_conda_kernels list
+<p style="margin-left: 40.0px;"><strong>$ conda install jupyter</strong></p>
+<pre>
+[arnoldg@dt-login03 jupyter_notebook_config.d]$ python3 -m nb_conda_kernels list
 [ListKernelSpecs] WARNING | Config option `kernel_spec_manager_class` not recognized by `ListKernelSpecs`.
 [ListKernelSpecs] [nb_conda_kernels] enabled, 8 kernels found
 Available kernels:
@@ -80,9 +81,9 @@ Available kernels:
 </pre>
 
 <h5>For debugging purposes, try jupyter-lab from a terminal:</h5>
-<p>Of interest are the Searching path at the beginning, and the nb_conda_kernels outputs.</p><ac:structured-macro ac:name="code" ac:schema-version="1" 
-ac:macro-id="4dd82a13-ed9c-4bf2-a5c7-4af5d98ec1eb"><ac:parameter ac:name="title">jupyter-lab 
---log-level=0</ac:parameter><ac:plain-text-body><![CDATA[[arnoldg@dt-login03 jupyter_notebook_config.d]$ jupyter-lab --log-level=0
+<p>Of interest are the Searching path at the beginning, and the nb_conda_kernels outputs.</p>
+<pre>
+[arnoldg@dt-login03 jupyter_notebook_config.d]$ jupyter-lab --log-level=0
 [D 2023-02-20 12:48:50.533 ServerApp] Searching ['/u/arnoldg/.jupyter', '/u/arnoldg/.local/etc/jupyter', '/sw/external/python/anaconda3/etc/jupyter', 
 '/usr/local/etc/jupyter', '/etc/jupyter'] for config files
 [D 2023-02-20 12:48:50.533 ServerApp] Looking for jupyter_config in /etc/jupyter

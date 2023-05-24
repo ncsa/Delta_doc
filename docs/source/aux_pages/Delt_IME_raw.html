@@ -33,21 +33,16 @@ enhanced close-to-open consistency model, allowing IME to be lock free.</p></blo
 <p>Please see the man page for ime-ctl or the attached <ac:link><ri:attachment ri:filename="IME 1.4 Developer Guide.pdf" 
 /><ac:plain-text-link-body><![CDATA[developer guide document]]></ac:plain-text-link-body></ac:link> for details.</p>
 <h3>Stage in and out single files</h3>
-<p>The ime-ctl command is used to stage and purge files from the caching /ime file system.</p><ac:structured-macro ac:name="code" ac:schema-version="1" 
-ac:macro-id="91b6eed1-73f3-4efe-96ac-079ce8545072"><ac:parameter ac:name="language">bash</ac:parameter><ac:plain-text-body><![CDATA[ime-ctl --prestage 
+<p>The ime-ctl command is used to stage and purge files from the caching /ime file system.</p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="91b6eed1-73f3-4efe-96ac-079ce8545072"><ac:parameter ac:name="language">bash</ac:parameter><ac:plain-text-body><![CDATA[ime-ctl --prestage 
 /ime/abcd/${USER}/file01]]></ac:plain-text-body></ac:structured-macro>
-<p class="auto-cursor-target">To sync the contents of a file created or changed that resides on /ime</p><ac:structured-macro ac:name="code" 
-ac:schema-version="1" ac:macro-id="db7d32ed-230c-4116-b0f1-b69d4ce20a1f"><ac:parameter 
-ac:name="language">bash</ac:parameter><ac:plain-text-body><![CDATA[ime-ctl --sync /ime/abcd/${USER}/file01]]></ac:plain-text-body></ac:structured-macro>
-<p class="auto-cursor-target">To purge the cached contents of a file on /ime</p><ac:structured-macro ac:name="code" ac:schema-version="1" 
-ac:macro-id="d8c57c9e-1626-4235-84ba-1fdf2eb983a5"><ac:parameter ac:name="language">bash</ac:parameter><ac:plain-text-body><![CDATA[ime-ctl --purge 
+<p class="auto-cursor-target">To sync the contents of a file created or changed that resides on /ime</p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="db7d32ed-230c-4116-b0f1-b69d4ce20a1f"><ac:parameter ac:name="language">bash</ac:parameter><ac:plain-text-body><![CDATA[ime-ctl --sync /ime/abcd/${USER}/file01]]></ac:plain-text-body></ac:structured-macro>
+<p class="auto-cursor-target">To purge the cached contents of a file on /ime</p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="d8c57c9e-1626-4235-84ba-1fdf2eb983a5"><ac:parameter ac:name="language">bash</ac:parameter><ac:plain-text-body><![CDATA[ime-ctl --purge 
 /ime/abcd/${USER}/file01]]></ac:plain-text-body></ac:structured-macro>
 <p>Note that purging a file only clears the contents of the file from /ime. The /scratch and /ime file systems share the same name space which allows files and 
 directories to be seen from either the caching front-end /ime or back-end /scratch.</p>
 <h3>Staging multiple files and directories</h3>
 <p>To recursively stage the contents of a directory and the files and directories below, in this case a directory called /scratch/abcd/${USER}/data_di, use the 
-recursive&nbsp;</p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="c49f544b-2e12-4b4e-a57c-71aa702ba99e"><ac:parameter 
-ac:name="language">bash</ac:parameter><ac:plain-text-body><![CDATA[ime-ctl --prestage --recursive --block 
+recursive&nbsp;</p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="c49f544b-2e12-4b4e-a57c-71aa702ba99e"><ac:parameter ac:name="language">bash</ac:parameter><ac:plain-text-body><![CDATA[ime-ctl --prestage --recursive --block 
 /ime/abcd/${USER}/data_dir]]></ac:plain-text-body></ac:structured-macro>
 <p>The&nbsp;<span class="s1"><code>--block option</code> makes sure the stage or sync is complete before returning.</span></p>
 <h3>Checking file stage/cache status</h3>
@@ -55,8 +50,7 @@ ac:name="language">bash</ac:parameter><ac:plain-text-body><![CDATA[ime-ctl --pre
 --frag-stat </code>command.</p>
 <p>In this example a file that was created as <code>/scratch/abcd/${USER}/file01</code> that has not been staged to /ime. The file will be visible as<code> 
 /ime/abcd/${USER}/file01.</code></p>
-<p>Not staged to /ime: all entries are showing &quot;0&quot; for the Dirty, Clean and Syncing entries.&nbsp;</p><ac:structured-macro ac:name="code" 
-ac:schema-version="1" ac:macro-id="85a0ad09-8166-45af-ad04-a7e99b483f74"><ac:parameter ac:name="language">bash</ac:parameter><ac:plain-text-body><![CDATA[$ 
+<p>Not staged to /ime: all entries are showing &quot;0&quot; for the Dirty, Clean and Syncing entries.&nbsp;</p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="85a0ad09-8166-45af-ad04-a7e99b483f74"><ac:parameter ac:name="language">bash</ac:parameter><ac:plain-text-body><![CDATA[$ 
 ime-ctl --frag-stat /ime/abcd/${USER}/file01
    File: `/ime/abcd/${USER}/file01'
          Number of bytes:
@@ -65,8 +59,7 @@ ime-ctl --frag-stat /ime/abcd/${USER}/file01
 Syncing: 0
 Data on Slices:]]></ac:plain-text-body></ac:structured-macro>
 <p class="auto-cursor-target">After staging the file to /ime, the number of bytes in the &quot;Clean&quot; category show that the data on the cache is 
-current.</p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="e4fe9295-6870-4259-8dad-bea88fe601d4"><ac:parameter 
-ac:name="language">bash</ac:parameter><ac:plain-text-body><![CDATA[$ ime-ctl --prestage /ime/abcd/${USER}/file01
+current.</p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="e4fe9295-6870-4259-8dad-bea88fe601d4"><ac:parameter ac:name="language">bash</ac:parameter><ac:plain-text-body><![CDATA[$ ime-ctl --prestage /ime/abcd/${USER}/file01
 $ ime-ctl --frag-stat /ime/abcd/${USER}/file01
    File: `/ime/abcd/${USER}/file01'
          Number of bytes:
@@ -74,9 +67,7 @@ $ ime-ctl --frag-stat /ime/abcd/${USER}/file01
   Clean: 16777216
 Syncing: 0
 Data on Slices:  0]]></ac:plain-text-body></ac:structured-macro>
-<p>If the file<code> /ime/abcd/${USER}/file01 </code>was modified (appended, replaced, etc) one would see entries in the Dirty category:</p><ac:structured-macro 
-ac:name="code" ac:schema-version="1" ac:macro-id="40f7ce9f-c652-488d-82a3-3b20dd5ceec5"><ac:parameter 
-ac:name="language">bash</ac:parameter><ac:plain-text-body><![CDATA[$ ime-ctl --frag-stat /ime/abcd/${USER}/file01
+<p>If the file<code> /ime/abcd/${USER}/file01 </code>was modified (appended, replaced, etc) one would see entries in the Dirty category:</p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="40f7ce9f-c652-488d-82a3-3b20dd5ceec5"><ac:parameter ac:name="language">bash</ac:parameter><ac:plain-text-body><![CDATA[$ ime-ctl --frag-stat /ime/abcd/${USER}/file01
    File: `/ime/abcd/${USER}/file01'
          Number of bytes:
   Dirty: 8388608
@@ -84,8 +75,7 @@ ac:name="language">bash</ac:parameter><ac:plain-text-body><![CDATA[$ ime-ctl --f
 Syncing: 0
 Data on Slices:  0]]></ac:plain-text-body></ac:structured-macro>
 <p>After using <code>ime-ctl --sync</code>&nbsp; to flush the changes to the back-end file system, the dirty entries will be back to 
-0.&nbsp;</p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="136bb7d8-bdf0-4674-b477-18c278b0b8f7"><ac:parameter 
-ac:name="language">bash</ac:parameter><ac:plain-text-body><![CDATA[$ ime-ctl --sync /ime/abcd/${USER}/file01
+0.&nbsp;</p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="136bb7d8-bdf0-4674-b477-18c278b0b8f7"><ac:parameter ac:name="language">bash</ac:parameter><ac:plain-text-body><![CDATA[$ ime-ctl --sync /ime/abcd/${USER}/file01
 $ ime-ctl --frag-stat /ime/abcd/${USER}/file01
    File: `/ime/abcd/${USER}/file01'
          Number of bytes:
@@ -99,9 +89,7 @@ described at: <a href="https://github.com/DDNStorage/posix_2_ime">DDNStorage/pos
 .&nbsp;</p><ac:structured-macro ac:name="info" ac:schema-version="1" ac:macro-id="0f9f15e6-24a1-4b22-851e-7db5248f7f46"><ac:parameter ac:name="title">posix2ime 
 requires dedicated nodes</ac:parameter><ac:rich-text-body>At this time, use of the posix2ime library requires dedicated ( #SBATCH --exclusive ) nodes for your 
 job script or srun command.</ac:rich-text-body></ac:structured-macro>
-<p class="auto-cursor-target"><br /></p><ac:structured-macro ac:name="code" ac:schema-version="1" 
-ac:macro-id="f853f0c7-2347-498f-98b3-ea09965db9f5"><ac:parameter ac:name="title">posix2ime work in progress</ac:parameter><ac:parameter 
-ac:name="linenumbers">true</ac:parameter><ac:plain-text-body><![CDATA[#!/bin/bash 
+<p class="auto-cursor-target"><br /></p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="f853f0c7-2347-498f-98b3-ea09965db9f5"><ac:parameter ac:name="title">posix2ime work in progress</ac:parameter><ac:parameter ac:name="linenumbers">true</ac:parameter><ac:plain-text-body><![CDATA[#!/bin/bash 
 #SBATCH --mem=64g
 #SBATCH --nodes=4
 #SBATCH --ntasks-per-node=4

@@ -1,8 +1,9 @@
 <h2><s>client - server</s></h2>
 <p><a 
 href="https://engaging-web.mit.edu/eofe-wiki/software/paraview_client_server_mode/">https://engaging-web.mit.edu/eofe-wiki/software/paraview_client_server_mode/</a></p>
-<p>Seems<strong> broken currently</strong>, when setting up ssh tunnel as shown, get this on the client side:</p><ac:structured-macro ac:name="code" 
-ac:schema-version="1" ac:macro-id="dced1edb-a84d-4e0c-8c47-122235a57f27"><ac:plain-text-body><![CDATA[Connection failed during handshake. 
+<p>Seems<strong> broken currently</strong>, when setting up ssh tunnel as shown, get this on the client side:</p>
+<pre>
+Connection failed during handshake. 
 vtkSocketCommunicator::GetVersion()
  returns different values on the two connecting processes
  (Current value: 100).
@@ -13,8 +14,9 @@ vtkSocketCommunicator::GetVersion()
 href="https://help.itc.rwth-aachen.de/en/service/rhr4fjjutttf/article/b4a7b9e11b054a7d8096834ea03a1686/">https://help.itc.rwth-aachen.de/en/service/rhr4fjjutttf/article/b4a7b9e11b054a7d8096834ea03a1686/</a></p>
 <h2 class="auto-cursor-target">pvpython and pvbatch work and are available:</h2>
 <p class="auto-cursor-target">Suggest: <a href="https://www.paraview.org/Wiki/PvPython_and_PvBatch">https://www.paraview.org/Wiki/PvPython_and_PvBatch</a>&nbsp; 
-and using just the pvbatch part of paraview:</p><ac:structured-macro ac:name="code" ac:schema-version="1" 
-ac:macro-id="b03f5ad5-6ea9-47f6-b95e-7f041a1ae3d7"><ac:plain-text-body><![CDATA[[arnoldg@dt-login02 ~]$ cd paraview_pvbatch/
+and using just the pvbatch part of paraview:</p>
+<pre>
+[arnoldg@dt-login02 ~]$ cd paraview_pvbatch/
 [arnoldg@dt-login02 paraview_pvbatch]$ vi greenSphere.py  # sample from URL above for pvpython
 [arnoldg@dt-login02 paraview_pvbatch]$ pvpython greenSphere.py 
 [arnoldg@dt-login02 paraview_pvbatch]$ ls
