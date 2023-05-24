@@ -138,8 +138,8 @@ project. Example usage:
 Performance tools
 -----------------
 
--  
--  
+-  [was a link to AMDuProf guide wiki page]
+-  [was a link to NVIDIA Nsight Systems wiki page]
 
 Sample Scripts
 -------------------------
