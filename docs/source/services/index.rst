@@ -21,5 +21,8 @@ To customize your JupyterLab experience for Python or R, see:
 Customizing Open OnDemand
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Delta Science Gateway
+---------------------
+
 Globus
 -------------------------
