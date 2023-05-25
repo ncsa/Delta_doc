@@ -51,5 +51,4 @@ Contents
    debug_perf/index
    protected_data
    help
-   migrate
    
