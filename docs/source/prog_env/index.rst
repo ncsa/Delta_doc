@@ -266,6 +266,9 @@ See also:
 https://developer.amd.com/resources/rocm-learning-center/fundamentals-of-hip-programming/
 , https://rocmdocs.amd.com/en/latest/
 
+Delta IME
+--------------
+
 .. toctree::
    :maxdepth: 2
    
