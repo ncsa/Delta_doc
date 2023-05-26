@@ -686,6 +686,13 @@ to handle automatically restarting from checkpoints etc.
 Monitoring a Node During a Job
 ---------------------------------
 
+.. toctree::
+   :maxdepth: 2
+   
+  monitor_node/index 
+
+
+
 Refunds
 ------------
 
