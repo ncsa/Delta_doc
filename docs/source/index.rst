@@ -1,5 +1,6 @@
 ..  image:: delta_front.png
     :alt: 12 racks in a machine room, with overhead power, with red to orange "DELTA" wrap on the rack doors.  
+    :width: 500px
 
 ################################################
 NCSA Delta System User Guide
