@@ -85,11 +85,15 @@ password prompt for DUO (push to device or passcode from DUO app).
    Upgrade to at least version 3.2.0 before Dec 12, 2022. See:
    https://docs.globus.org/ca-update-2022/#notice
 
-   -  Use the Delta collection "**NCSA Delta**".
-   -  
+   -  Use the Delta collection "**NCSA Delta**" (see screen capture below)
    -  Please see the following documentation on using Globus
 
       -  https://docs.globus.org/how-to/get-started/
+
+..  image:: globus_on_delta.jpeg
+    :alt: Globus on Delta
+    :width: 700px
+
 
 Sharing Files with Collaborators
 --------------------------------
