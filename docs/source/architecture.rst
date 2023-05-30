@@ -21,7 +21,6 @@ processor:\ https://www.amd.com/system/files/documents/amd-epyc-7003-sb-hpc-esi-
 
 ..  image:: amd-7003-series.png
     :alt: EPYC 7003 Series Architecture Quick Look
-    :width: 700px
 
 Table. CPU Compute Node Specifications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
