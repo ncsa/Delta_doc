@@ -16,6 +16,9 @@ Milan processors can be found in the `AMD Compiler Options Quick
 Reference Guide for Epyc 7xx3
 processors <https://developer.amd.com/wp-content/resources/Compiler%20Options%20Quick%20Ref%20Guide%20for%20AMD%20EPYC%207xx3%20Series%20Processors.pdf>`__.
 
+..  image:: Compiler_Options_Quick_Ref_Guide_for_AMD_EPYC_7xx3_Series_Processors.pdf
+    :alt: Compiler Options Quick Ref Guide for AMD EPYC 7xx3 Series Processors
+    :width: 200px
 
 Modules
 -------------------------
