@@ -653,6 +653,10 @@ Table.Delta Production Partitions/Queues
 sview view of slurm partitions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+..  image:: sview_sinfo.png
+    :alt: sview view of SLURM partitions
+    :width: 300px
+
 Node Policies
 ~~~~~~~~~~~~~
 
