@@ -16,6 +16,10 @@ partition as shown below. The account names end in -cpu and -gpu. The
 matching partition would start with cpu or gpu (as in gpuA100x4
 interactive).
 
+..  image:: jlab_config_partition.png
+    :alt: Jupyter Lab partition configuration
+    :width: 400px
+
 To customize your JupyterLab experience for Python or R, see:
 
 Customizing Open OnDemand
