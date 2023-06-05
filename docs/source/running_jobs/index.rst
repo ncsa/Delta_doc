@@ -575,7 +575,10 @@ Scheduler
 
 https://slurm.schedmd.com/quickstart.html
 
-250 slurm quick reference guide
+..  image:: slurm_summary.pdf
+    :alt: SLURM quick reference guide
+    :width: 700px
+slurm quick reference guide
 
 Partitions (Queues)
 -----------------------
