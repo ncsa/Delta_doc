@@ -420,7 +420,7 @@ The syntax for sbatch is:
 Refer to the sbatch man page for detailed information on the options.
 
 squeue/scontrol/sinfo
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 
 Commands that display batch job and partition information .
 
