@@ -385,65 +385,60 @@ WORK=/projects/<account>/$USER , SCRATCH=/scratch/<account>/$USER .
 
 | 
 
-+-------------+-------------+-------------+-------------+-------------+
-| **File      | **Quota**   | **          | **Purged**  | **Key       |
-| System**    |             | Snapshots** |             | Features**  |
-+-------------+-------------+-------------+-------------+-------------+
-| HOME (/u)   | **25GB.**   | No/TBA      | No          | Area for    |
-|             | 400,000     |             |             | software,   |
-|             | files per   |             |             | scripts,    |
-|             | user.       |             |             | job files,  |
-|             |             |             |             | etc.        |
-|             |             |             |             | **NOT**     |
-|             |             |             |             | intended as |
-|             |             |             |             | a           |
-|             |             |             |             | source/     |
-|             |             |             |             | destination |
-|             |             |             |             | for I/O     |
-|             |             |             |             | during jobs |
-+-------------+-------------+-------------+-------------+-------------+
-| WORK        | **500 GB**. | No/TBA      | No          | Area for    |
-| (/projects) | Up to 1-25  |             |             | shared data |
-|             | TB by       |             |             | for a       |
-|             | allocation  |             |             | project,    |
-|             | request.    |             |             | common data |
-|             | Large       |             |             | sets,       |
-|             | requests    |             |             | software,   |
-|             | may have a  |             |             | results,    |
-|             | monetary    |             |             | etc.        |
-|             | fee.        |             |             |             |
-+-------------+-------------+-------------+-------------+-------------+
-| SCRATCH     | **1000      | No          | Yes**.      | Area for    |
-| (/scratch)  | GB**. Up to |             | Purging is  | c           |
-|             | 1-100 TB by |             | based on a  | omputation, |
-|             | allocation  |             | 30-day last | largest     |
-|             | request.    |             | access      | a           |
-|             |             |             | policy.     | llocations, |
-|             |             |             | \*\*        | where I/O   |
-|             |             |             | Purging is  | from jobs   |
-|             |             |             | not         | should      |
-|             |             |             | currently   | occur       |
-|             |             |             | enabled but |             |
-|             |             |             | will be     |             |
-|             |             |             | when        |             |
-|             |             |             | warranted,  |             |
-|             |             |             | with a      |             |
-|             |             |             | 30-day      |             |
-|             |             |             | notice.     |             |
-+-------------+-------------+-------------+-------------+-------------+
-| /tmp        | **0.74      | No          | After each  | Locally     |
-|             | (CPU) or    |             | job         | attached    |
-|             | 1.50 TB     |             |             | disk for    |
-|             | (GPU)**     |             |             | fast small  |
-|             | shared or   |             |             | file IO.    |
-|             | dedicated   |             |             |             |
-|             | depending   |             |             |             |
-|             | on node     |             |             |             |
-|             | usage by    |             |             |             |
-|             | job(s), no  |             |             |             |
-|             | quotas in   |             |             |             |
-|             | place       |             |             |             |
-+-------------+-------------+-------------+-------------+-------------+
++-------------+-------------+-------------+-------------+--------------+
+| **File      | **Quota**   | **          | **Purged**  | **Key        |
+| System**    |             | Snapshots** |             | Features**   |
++-------------+-------------+-------------+-------------+--------------+
+| HOME (/u)   | **50GB.**   | No/TBA      | No          | Area for     |
+|             | 600,000     |             |             | software,    |
+|             | files per   |             |             | scripts,     |
+|             | user.       |             |             | job files,   |
+|             |             |             |             | etc.         |
+|             |             |             |             | **NOT**      |
+|             |             |             |             |              |
+|             |             |             |             | intended as  |
+|             |             |             |             | a            |
+|             |             |             |             | source/      |
+|             |             |             |             | destination  |
+|             |             |             |             | for I/O      |
+|             |             |             |             | during jobs  |
++-------------+-------------+-------------+-------------+--------------+
+| WORK        | **500 GB**. | No/TBA      | No          | Area for     |
+| (/projects) | Up to 1-25  |             |             | shared data  |
+|             | TB by       |             |             | for a        |
+|             | allocation  |             |             | project,     |
+|             | request.    |             |             | common data  |
+|             | Large       |             |             | sets,        |
+|             | requests    |             |             | software,    |
+|             | may have a  |             |             | results,     |
+|             | monetary    |             |             | etc.         |
+|             | fee.        |             |             |              |
++-------------+-------------+-------------+-------------+--------------+
+| SCRATCH     | **1000      | No          | no          | Area for     |
+| (/scratch)  | GB**. Up to |             |             | c            |
+|             | 1-100 TB by |             |             | omputation,  |
+|             | allocation  |             |             | largest      |
+|             | request.    |             |             |              |
+|             |             |             |             | allocations, |
+|             |             |             |             | where I/O    |
+|             |             |             |             | from jobs    |
+|             |             |             |             | should       |
+|             |             |             |             | occur        |
++-------------+-------------+-------------+-------------+--------------+
+| /tmp        | **0.74      | No          | After each  | Locally      |
+|             | (CPU) or    |             | job         | attached     |
+|             | 1.50 TB     |             |             | disk for     |
+|             | (GPU)**     |             |             | fast small   |
+|             | shared or   |             |             | file IO.     |
+|             | dedicated   |             |             |              |
+|             |             |             |             |              |
+|             | depending   |             |             |              |
+|             | on node     |             |             |              |
+|             | usage by    |             |             |              |
+|             | job(s), no  |             |             |              |
+|             | quotas in   |             |             |              |
+|             | place       |             |             |              |
++-------------+-------------+-------------+-------------+--------------+
 
 quota usage
            
