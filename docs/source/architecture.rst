@@ -408,6 +408,7 @@ WORK=/projects/<account>/$USER , SCRATCH=/scratch/<account>/$USER .
 |             | TB by       |             |             | for a        |
 |             | allocation  |             |             | project,     |
 |             | request.    |             |             | common data  |
+|             |             |             |             |              |
 |             | Large       |             |             | sets,        |
 |             | requests    |             |             | software,    |
 |             | may have a  |             |             | results,     |
