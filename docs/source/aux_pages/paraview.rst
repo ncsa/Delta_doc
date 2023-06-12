@@ -34,3 +34,7 @@ just the pvbatch part of paraview:
    greenSphere.py  greenSphereScreenshot.png
 
 greenSphereScreenshot.png :
+
+..  image:: images/paraview/greenSphere.png
+    :alt: green sphere
+    :width: 500px
