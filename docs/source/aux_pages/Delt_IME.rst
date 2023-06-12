@@ -62,8 +62,7 @@ Model in the developer guide document .
 IME commands
 ------------
 
-Please see the man page for ime-ctl or the attached developer guide
-document for details.
+Please see the man page for ime-ctl or the attached :download:`developer guide document <images/Delt_IME/IME 1.4 Developer Guide.pdf>` for details.
 
 Stage in and out single files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
