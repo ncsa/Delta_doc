@@ -55,6 +55,14 @@ multiple jobs. Codes that need to perform i/o to many small files should
 target /tmp on each node of the job and save results to other
 filesystems before the job ends.
 
+Delta IME
+--------------
+
+.. toctree::
+   :maxdepth: 2
+   
+   ddn_ime
+
 Transferring Data
 --------------------
 To transfer files to and from the Delta system :
