@@ -163,6 +163,15 @@ Run application on Delta
 
 MPI rank example result (viewing with nsight on local desktop )
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  image:: /docs/source/aux_pages/images/nvidia_nsight/01_gms_nsys.png
+    :alt: MPI rank example
+    :width: 1000px
+
+..  image:: /docs/source/aux_pages/images/nvidia_nsight/02_gmx_nsys_gpusummary.png
+    :alt: summary
+    :width: 1000px
+
 Copy resultant files to your local laptop ( Downloads/ or Documents/ )
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 scp is shown below, you could also use globus online, sftp, or an sshfs
@@ -212,6 +221,14 @@ Open NVIDIA Nsight Systems
 Under the File menu, select "open" then navigate to your Downloads/
 folder and select the nsys\* file of interest (nays-report-b26d.nsys-rep
 in this example). Explore the data in the GUI application.
+
+..  image:: /docs/source/aux_pages/images/nvidia_nsight/03_nsight-systems-timeline.jpg
+    :alt: timeline
+    :width: 1000px
+
+..  image:: /docs/source/aux_pages/images/nvidia_nsight/04_nsight-systems-analysis.jpg
+    :alt: analysis
+    :width: 1000px
 
 See also: `NVTX source code annotations blog article at
 NVIDIA <https://developer.nvidia.com/blog/nvidia-tools-extension-api-nvtx-annotation-tool-for-profiling-code-in-python-and-c-c/>`__
@@ -346,6 +363,10 @@ Delta script and nsight-systems view of the resulting report
 (Transferred the report1.nsys-rep back to local system using Globus
 Online , sftp ... )
 
+..  image:: /docs/source/aux_pages/images/nvidia_nsight/05_nsight-systems-win.png
+    :alt: window
+    :width: 1000px
+
 Nsight-systems setup on local workstation to use with Delta
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -385,13 +406,25 @@ need to define it so that nsight-systems will present you with the
 transferred to local via GO/sftp/rsync or viewable via the sshfs fuse
 mount like shown above:
 
+..  image:: /docs/source/aux_pages/images/nvidia_nsight/06_nsight-systems-project-target.png
+    :alt: project target
+    :width: 1000px
+
 Then open the profile report generated from an *srun nsys* ... at Delta.
 (navigate to Download or the live sshfs fuse mount )
+
+..  image:: /docs/source/aux_pages/images/nvidia_nsight/07-nsight-systems-file-open-sshfs.png
+    :alt: profile report
+    :width: 1000px
 
 Proceed to use nsight-systems. A stats view of the GPU Summary is shown.
 This is usually a good performance analysis starting point showing
 utilization of kernels vs times to transfer data between the host
 computer and the gpu accelerator.
+
+..  image:: /docs/source/aux_pages/images/nvidia_nsight/08-nsight-systems-stats-system-view.png
+    :alt: GPU stats summary
+    :width: 1000px
 
 | 
 
