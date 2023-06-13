@@ -54,17 +54,45 @@ functionality.
 Launch AMDuProf ( no CLI suffice for the GUI ), and import the profile
 session from a completed batch job run with AMDuProfCLI collect ...
 
+..  image:: /docs/source/aux_pages/images/amduprof/01_uprof_import_profile_session.png
+    :alt: import profile session
+    :width: 1000px
+    
 The summary view give a high level overview of how time was spent. This
 is the tbp time-based-profile summary.
+
+..  image:: /docs/source/aux_pages/images/amduprof/02_uprof_summary.png
+    :alt: summary view
+    :width: 1000px
 
 The Analyze tab shows hot routines or lines in more detail. The tbp ,
 assess, and inst_access Analyze views follow.
 
+..  image:: /docs/source/aux_pages/images/amduprof/03_uprof_analyze.png
+    :alt: analyze tab
+    :width: 1000px
+
+..  image:: /docs/source/aux_pages/images/amduprof/04_uprof_assess_summary.png
+    :alt: assess summary
+    :width: 1000px
+
+..  image:: /docs/source/aux_pages/images/amduprof/05_uprof_inst_access.png
+    :alt: inst_access
+    :width: 1000px
+
 Selecting one of the lines or routines will take you to the Sources view
 where you can see the assembly used in that portion of code.
 
+..  image:: /docs/source/aux_pages/images/amduprof/06_uprof_sources.png
+    :alt: sources view
+    :width: 1000px
+
 The Session Info is under the Summary tab and displays more detail about
 the profiling session.
+
+..  image:: /docs/source/aux_pages/images/amduprof/07_uprof_session_info.png
+    :alt: session summary info
+    :width: 1000px
 
 References:
 ~~~~~~~~~~~~~~~~~
