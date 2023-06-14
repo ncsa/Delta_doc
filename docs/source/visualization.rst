@@ -43,6 +43,10 @@ just the pvbatch part of paraview:
 
 greenSphereScreenshot.png :
 
+..  image:: /docs/source/aux_pages/images/paraview/greenSphere.png
+    :alt: green sphere
+    :width: 500px
+
 Visit Client & Server
 -------------------------
 
