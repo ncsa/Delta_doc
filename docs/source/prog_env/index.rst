@@ -271,8 +271,8 @@ https://developer.amd.com/resources/rocm-learning-center/fundamentals-of-hip-pro
 
 
    
-Visual Studio
------------------
+Visual Studio Code
+------------------
 
 vscode code-server
 ==================
