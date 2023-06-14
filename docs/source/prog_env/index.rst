@@ -272,10 +272,10 @@ https://developer.amd.com/resources/rocm-learning-center/fundamentals-of-hip-pro
 
    
 Visual Studio Code
-------------------
+==================
 
 vscode code-server
-==================
+------------------
 
 We can run the code-server for vscode on Delta in manual mode (without
 OpenOnDemand) following these steps:
@@ -332,7 +332,7 @@ OpenOnDemand) following these steps:
     :width: 1000px
 
 Remote - SSH
-============
+------------
 
 Follow: https://code.visualstudio.com/docs/remote/ssh
 
@@ -376,7 +376,7 @@ C file remote on Delta.
     :width: 1000px
 
 Remote Jupyter
-==============
+--------------
 
 See:
 https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server
