@@ -9,7 +9,7 @@ computing environment.
 
 Conceptually the storage subsystem looks like the following
 
-..  image:: /docs/source/aux_pages/images/Delt_IME/Delta_IME.png
+..  image:: ../aux_pages/images/Delt_IME/Delta_IME.png
     :alt: Storage subsystem
     :width: 400px
 
