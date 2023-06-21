@@ -61,36 +61,36 @@ session from a completed batch job run with AMDuProfCLI collect ...
 The summary view give a high level overview of how time was spent. This
 is the tbp time-based-profile summary.
 
-..  image:: /docs/source/aux_pages/images/amduprof/02_uprof_summary.png
+..  image:: ../aux_pages/images/amduprof/02_uprof_summary.png
     :alt: summary view
     :width: 1000px
 
 The Analyze tab shows hot routines or lines in more detail. The tbp ,
 assess, and inst_access Analyze views follow.
 
-..  image:: /docs/source/aux_pages/images/amduprof/03_uprof_analyze.png
+..  image:: ../aux_pages/images/amduprof/03_uprof_analyze.png
     :alt: analyze tab
     :width: 1000px
 
-..  image:: /docs/source/aux_pages/images/amduprof/04_uprof_assess_summary.png
+..  image:: ../aux_pages/images/amduprof/04_uprof_assess_summary.png
     :alt: assess summary
     :width: 1000px
 
-..  image:: /docs/source/aux_pages/images/amduprof/05_uprof_inst_access.png
+..  image:: ../aux_pages/images/amduprof/05_uprof_inst_access.png
     :alt: inst_access
     :width: 1000px
 
 Selecting one of the lines or routines will take you to the Sources view
 where you can see the assembly used in that portion of code.
 
-..  image:: /docs/source/aux_pages/images/amduprof/06_uprof_sources.png
+..  image:: ../aux_pages/images/amduprof/06_uprof_sources.png
     :alt: sources view
     :width: 1000px
 
 The Session Info is under the Summary tab and displays more detail about
 the profiling session.
 
-..  image:: /docs/source/aux_pages/images/amduprof/07_uprof_session_info.png
+..  image:: ../aux_pages/images/amduprof/07_uprof_session_info.png
     :alt: session summary info
     :width: 1000px
 
@@ -164,11 +164,11 @@ Run application on Delta
 MPI rank example result (viewing with nsight on local desktop )
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  image:: /docs/source/aux_pages/images/nvidia_nsight/01_gms_nsys.png
+..  image:: ../aux_pages/images/nvidia_nsight/01_gms_nsys.png
     :alt: MPI rank example
     :width: 1000px
 
-..  image:: /docs/source/aux_pages/images/nvidia_nsight/02_gmx_nsys_gpusummary.png
+..  image:: ../aux_pages/images/nvidia_nsight/02_gmx_nsys_gpusummary.png
     :alt: summary
     :width: 1000px
 
@@ -222,11 +222,11 @@ Under the File menu, select "open" then navigate to your Downloads/
 folder and select the nsys\* file of interest (nays-report-b26d.nsys-rep
 in this example). Explore the data in the GUI application.
 
-..  image:: /docs/source/aux_pages/images/nvidia_nsight/03_nsight-systems-timeline.jpg
+..  image:: ../aux_pages/images/nvidia_nsight/03_nsight-systems-timeline.jpg
     :alt: timeline
     :width: 1000px
 
-..  image:: /docs/source/aux_pages/images/nvidia_nsight/04_nsight-systems-analysis.jpg
+..  image:: ../aux_pages/images/nvidia_nsight/04_nsight-systems-analysis.jpg
     :alt: analysis
     :width: 1000px
 
@@ -363,7 +363,7 @@ Delta script and nsight-systems view of the resulting report
 (Transferred the report1.nsys-rep back to local system using Globus
 Online , sftp ... )
 
-..  image:: /docs/source/aux_pages/images/nvidia_nsight/05_nsight-systems-win.png
+..  image:: ../aux_pages/images/nvidia_nsight/05_nsight-systems-win.png
     :alt: window
     :width: 1000px
 
@@ -406,14 +406,14 @@ need to define it so that nsight-systems will present you with the
 transferred to local via GO/sftp/rsync or viewable via the sshfs fuse
 mount like shown above:
 
-..  image:: /docs/source/aux_pages/images/nvidia_nsight/06_nsight-systems-project-target.png
+..  image:: ../aux_pages/images/nvidia_nsight/06_nsight-systems-project-target.png
     :alt: project target
     :width: 1000px
 
 Then open the profile report generated from an *srun nsys* ... at Delta.
 (navigate to Download or the live sshfs fuse mount )
 
-..  image:: /docs/source/aux_pages/images/nvidia_nsight/07-nsight-systems-file-open-sshfs.png
+..  image:: ../aux_pages/images/nvidia_nsight/07-nsight-systems-file-open-sshfs.png
     :alt: profile report
     :width: 1000px
 
@@ -422,7 +422,7 @@ This is usually a good performance analysis starting point showing
 utilization of kernels vs times to transfer data between the host
 computer and the gpu accelerator.
 
-..  image:: /docs/source/aux_pages/images/nvidia_nsight/08-nsight-systems-stats-system-view.png
+..  image:: ../aux_pages/images/nvidia_nsight/08-nsight-systems-stats-system-view.png
     :alt: GPU stats summary
     :width: 1000px
 
