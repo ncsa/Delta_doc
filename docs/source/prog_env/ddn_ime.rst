@@ -7,6 +7,10 @@ computing environment.
 
 Conceptually the storage subsystem looks like the following
 
+..  image:: ../aux_pages/images/Delt_IME/Delta_IME.png
+    :alt: Storage subsystem
+    :width: 400px
+
 © DDN 2020
 
 How to use IME
