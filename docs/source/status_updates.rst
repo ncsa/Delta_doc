@@ -1,3 +1,5 @@
+.. _status:
+
 Delta Status Updates
 -------------------------
 System status, planned outages, and maintenance info:
