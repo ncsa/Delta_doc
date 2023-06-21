@@ -35,25 +35,25 @@ strace, ps ...).
 
 nvidia-smi :
 
-..  image:: /docs/source/aux_pages/images/mon_node/01_nvidia-smi.png
+..  image:: ../aux_pages/images/mon_node/01_nvidia-smi.png
     :alt: nvidia smi
     :width: 1000px
 
 nvtop :
 
-..  image:: /docs/source/aux_pages/images/mon_node/02_nvtop.png
+..  image:: ../aux_pages/images/mon_node/02_nvtop.png
     :alt: nvtop
     :width: 1000px
 
 nvitop :
 
-..  image:: /docs/source/aux_pages/images/mon_node/03_nvitop.png
+..  image:: ../aux_pages/images/mon_node/03_nvitop.png
     :alt: nvitop
     :width: 1000px
 
 top -u $USER :
 
-..  image:: /docs/source/aux_pages/images/mon_node/04_top.png
+..  image:: ../aux_pages/images/mon_node/04_top.png
     :alt: top
     :width: 1000px
 
@@ -66,19 +66,19 @@ Add grafana back end examples when available.  https://metrics.ncsa.illinois.edu
 
 Make sure to sign in at the lower left of the initial page:
 
-..  image:: /docs/source/aux_pages/images/mon_node/05_sign_in_icon.png
+..  image:: ../aux_pages/images/mon_node/05_sign_in_icon.png
     :alt: sign in icon
     :width: 1000px
 
 Then navigate to the part of Delta metrics of interest.
 
-..  image:: /docs/source/aux_pages/images/mon_node/06_grafana_metrics_home.png
+..  image:: ../aux_pages/images/mon_node/06_grafana_metrics_home.png
     :alt: metrics home
     :width: 1000px
 
 You may choose a node from the list of nodes and get detail information in real time.
 
-..  image:: /docs/source/aux_pages/images/mon_node/07_grafana_metrics_details.png
+..  image:: ../aux_pages/images/mon_node/07_grafana_metrics_details.png
     :alt: get detailed info
     :width: 1000px
 
