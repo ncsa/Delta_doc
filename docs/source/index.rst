@@ -8,7 +8,7 @@ NCSA Delta System User Guide
 
 *Delta* is in production.
 
-System status, planned outages, and maintenance info:
+System status, planned outages, and maintenance info: :ref:`ref-target`
 
 Introduction
 =================
