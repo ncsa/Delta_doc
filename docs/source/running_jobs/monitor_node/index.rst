@@ -68,7 +68,6 @@ Make sure to sign in at the lower left of the initial page:
 
 ..  image:: ../../aux_pages/images/mon_node/05_sign_in_icon.png
     :alt: sign in icon
-    :width: 1000px
 
 Then navigate to the part of Delta metrics of interest.
 
