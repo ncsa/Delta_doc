@@ -54,7 +54,7 @@ functionality.
 Launch AMDuProf ( no CLI suffice for the GUI ), and import the profile
 session from a completed batch job run with AMDuProfCLI collect ...
 
-..  image:: /docs/source/aux_pages/images/amduprof/01_uprof_import_profile_session.png
+..  image:: ../aux_pages/images/amduprof/01_uprof_import_profile_session.png
     :alt: import profile session
     :width: 1000px
     
