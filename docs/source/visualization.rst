@@ -43,7 +43,7 @@ just the pvbatch part of paraview:
 
 greenSphereScreenshot.png :
 
-..  image:: /docs/source/aux_pages/images/paraview/greenSphere.png
+..  image:: ../aux_pages/images/paraview/greenSphere.png
     :alt: green sphere
     :width: 500px
 
@@ -70,11 +70,11 @@ module load visit
 
 Adjust Maximum processors to fit your requirements.
 
-..  image:: /docs/source/aux_pages/images/visit_client_server/01_visit_host_settings.png
+..  image:: ../aux_pages/images/visit_client_server/01_visit_host_settings.png
     :alt: delta host profile settings
     :width: 1000px
 
-..  image:: /docs/source/aux_pages/images/visit_client_server/02_visit-mpi-settings.png
+..  image:: ../aux_pages/images/visit_client_server/02_visit-mpi-settings.png
     :alt: cpu interactive mpi launch profile
     :width: 1000px
 
@@ -85,11 +85,11 @@ partition for longer sessions.
 Partitions and accounts should match: gpu partitions go with gpu account
 endings, cpu partitions with cpu account endings.
 
-..  image:: /docs/source/aux_pages/images/visit_client_server/03_visit-mpi-parallel.png
+..  image:: ../aux_pages/images/visit_client_server/03_visit-mpi-parallel.png
     :alt: mpi parallel launch settings
     :width: 1000px
 
-..  image:: /docs/source/aux_pages/images/visit_client_server/04_visit-mpi-parallel-adv.png
+..  image:: ../aux_pages/images/visit_client_server/04_visit-mpi-parallel-adv.png
     :alt: mpi parallel advanced settings
     :width: 1000px
 
@@ -98,6 +98,6 @@ Options → Save Settings after filling in the above.
 Proceeding with the tutorial, this is the view from the client and
 noise.silo example (found in the visit installation data/) ...
 
-..  image:: /docs/source/aux_pages/images/visit_client_server/05_visit-mpi-noise-final.png
+..  image:: ../aux_pages/images/visit_client_server/05_visit-mpi-noise-final.png
     :alt: client view of noise example
     :width: 1000px
