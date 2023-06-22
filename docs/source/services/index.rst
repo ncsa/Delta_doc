@@ -238,10 +238,6 @@ Proceed to use R:
 Debugging OpenOnDemand problems:
 ================================
 
-For internal staff debugging (also useful for new OOD
+For internal staff debugging (also useful for new OOD applications)
 
-Delta Science Gateway
----------------------
 
-Globus
--------------------------
