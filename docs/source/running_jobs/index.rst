@@ -141,9 +141,9 @@ Performance tools
 - See the AMDuProf and Nvidia tools described here.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    
-  debug_perf/index 
+   debug_perf/index 
 
 Sample Scripts
 -------------------------
