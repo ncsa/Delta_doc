@@ -135,13 +135,7 @@ project. Example usage:
                            Example:2023-01-03-01:23:21)
      --detail              detail output, per-job [svchydroswmanage@hydrol1 scripts]$ 
 
-Performance tools
------------------
 
-.. toctree::
-   :maxdepth: 2
-   
-   debug_perf/index 
 
 Sample Scripts
 -------------------------
