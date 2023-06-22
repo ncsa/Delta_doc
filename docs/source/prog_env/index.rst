@@ -327,7 +327,7 @@ OpenOnDemand) following these steps:
    http://127.0.0.1:8899 . Login with the password copied from above and
    begin using vscode in your browser.
 
-..  image:: /docs/source/aux_pages/images/vscode_code_server/vscode_in_browser.png
+..  image:: ../aux_pages/images/vscode_code_server/vscode_in_browser.png
     :alt: vscode in a web browser
     :width: 1000px
 
@@ -338,7 +338,7 @@ Follow: https://code.visualstudio.com/docs/remote/ssh
 
 As stated in the guide, install "Remote - SSH" into Visual Studio:
 
-..  image:: /docs/source/aux_pages/images/visual_studio/01_remote_ssh.png
+..  image:: ../aux_pages/images/visual_studio/01_remote_ssh.png
     :alt: remote ssh extension in visual studio
     :width: 500px
 
@@ -371,7 +371,7 @@ Proceed to F1 → Remote SSH and connect to Delta, then following the
 guide, use Visual Studio as normal. This is an example of working with a
 C file remote on Delta.
 
-..  image:: /docs/source/aux_pages/images/visual_studio/02_remote_c_file.png
+..  image:: ../aux_pages/images/visual_studio/02_remote_c_file.png
     :alt: using visual studio to work with a C file on delta
     :width: 1000px
 
@@ -392,11 +392,11 @@ Studio's "Connect to a Remote Jupyter Server" after clicking the Kernels
 button. You may also need to select the remote jupyter kernel under the
 kernels in VScode.
 
-..  image:: /docs/source/aux_pages/images/visual_studio/03_jupyter_url.png
+..  image:: ../aux_pages/images/visual_studio/03_jupyter_url.png
     :alt: terminal with Jupyter workbook URL to use
     :width: 600px
 
-..  image:: /docs/source/aux_pages/images/visual_studio/04_jupyter_in_vscode.png
+..  image:: ../aux_pages/images/visual_studio/04_jupyter_in_vscode.png
     :alt: accessing Jupyter notebook using visual studio
     :width: 1000px
 
