@@ -138,10 +138,8 @@ project. Example usage:
 Performance tools
 -----------------
 
-- See the AMDuProf and Nvidia tools described here.
-
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    
    debug_perf/index 
 
