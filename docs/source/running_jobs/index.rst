@@ -138,8 +138,12 @@ project. Example usage:
 Performance tools
 -----------------
 
--  [was a link to AMDuProf guide wiki page]
--  [was a link to NVIDIA Nsight Systems wiki page]
+- See the AMDuProf and Nvidia tools described here.
+
+.. toctree::
+   :maxdepth: 2
+   
+  debug_perf/index 
 
 Sample Scripts
 -------------------------
