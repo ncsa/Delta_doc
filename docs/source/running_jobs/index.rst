@@ -568,6 +568,11 @@ Then in a terminal session:
 
 See also:
 
+.. toctree::
+   :maxdepth: 2
+   
+  monitor_node/index 
+
 Scheduler
 -------------
 
