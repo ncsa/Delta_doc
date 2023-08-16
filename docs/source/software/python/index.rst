@@ -1,6 +1,15 @@
 Python
 ==========
 
+.. note::
+   When submitting support issues for python, please provide the following and understand that Delta support staff time is a finite resource while python developments (new       
+   software and modules) are growing at nearly infinite velocity.
+
+   - python version or environment used ( describe fully, with the commands needed to reproduce )
+   - error output or log from what went wrong ( screenshots are more difficult to work with than text data, we don't run trained inference on screenshots attached to Jira )
+   - pertinent URLs describing what you were following/attempting (if applicable), note that URL recipes specific to vendors may be difficult to reproduce when not using their cloud resources (Ex: Google colab )
+
+
 On Delta, you may install your own python software stacks as needed.
 There are a couple choices when customizing your python setup. You may
 *use any of these methods* with any of the python versions or instances
