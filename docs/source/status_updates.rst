@@ -1,13 +1,13 @@
 .. _status:
 
-Delta Status Updates
--------------------------
-System status, planned outages, and maintenance info:
+Status Updates and Notices
+---------------------------
+System status, planned outages, and maintenance information:
 
-current outages - https://support.access-ci.org/outages
+Current outages - https://support.access-ci.org/outages
 
-infrastructure news -
-https://operations.access-ci.org/infrastructure_news.
+Infrastructure news -
+https://operations.access-ci.org/infrastructure_news
 
-Delta Affinity Group site with links to news, slack channel for users :
-https://support.access-ci.org/affinity-groups/delta.
+Delta Affinity Group site with links to news and Slack channel for users - 
+https://support.access-ci.org/affinity-groups/delta
