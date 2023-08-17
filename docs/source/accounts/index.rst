@@ -1,16 +1,7 @@
 Account Administration
 ========================
 
-Account and Group
--------------------
-
 Management Tools
------------------
-
-Local Identity
-----------------
-
-ACCESS Identity
 -----------------
 
 ACCESS projects use the `ACCESS user portal <https://support.access-ci.org/>`_ for project and account management.
