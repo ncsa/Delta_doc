@@ -12,11 +12,9 @@ The Delta compute ecosystem is composed of five node types:
 - Dual-socket 8-way NVIDIA A100 GPU compute nodes
 - Single socket 8-way AMD MI100 GPU compute nodes
 
-The CPU-only and 4-way GPU nodes have 256 GB of RAM per node.
-The 8-way GPU nodes have 2 TB of RAM. 
+| The CPU-only and 4-way GPU nodes have 256 GB of RAM per node; the 8-way GPU nodes have 2 TB of RAM. 
 
-The CPU-only node has 0.74 TB of local storage. 
-All GPU nodes have 1.5 TB of local storage.
+The CPU-only node has 0.74 TB of local storage; all GPU nodes have 1.5 TB of local storage.
 
 Each socket contains an AMD 7763 processor. Consistent with AMD's advice for HPC nodes and our own testing, all Delta nodes have Simultaneous Multi Treading (SMT) turned off.  
 
@@ -85,10 +83,10 @@ The AMD CPUs are set for 4 NUMA domains per socket (NPS=4).
 The AMD CPUs are set for 4 NUMA domains per socket (NPS=4).
 
 4-way NVIDIA A40 Mapping and GPU-CPU Affinitization
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 | The A40 GPUs are connected via PCIe Gen4 and have the following affinitization to NUMA nodes on the CPU. 
-Note that the relationship between GPU index and NUMA domain are inverse.
+Note that the relationship between GPU index and NUMA domain is inverse.
 
 ==== ==== ==== ==== ==== === ============ =============
      GPU0 GPU1 GPU2 GPU3 HSN CPU Affinity NUMA Affinity
@@ -148,8 +146,8 @@ HSN  SYS  SYS  SYS  PHB  X
 
 The AMD CPUs are set for 4 NUMA domains per socket (NPS=4).
 
-Table. 4-way NVIDIA A100 Mapping and GPU-CPU Affinitization
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+4-way NVIDIA A100 Mapping and GPU-CPU Affinitization
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 ==== ==== ==== ==== ==== === ============ =============
      GPU0 GPU1 GPU2 GPU3 HSN CPU Affinity NUMA Affinity
@@ -210,7 +208,7 @@ HSN  SYS  SYS  SYS  PHB  X
 The AMD CPUs are set for 4 NUMA domains per socket (NPS=4).
 
 8-way NVIDIA A100 Mapping and GPU-CPU Affinitization
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 +------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
 |      | GPU0 | GPU1 | GPU2 | GPU3 | GPU4 | GPU5 | GPU6 | GPU7 | HSN | CPU Affinity | NUMA Affinity |
@@ -292,7 +290,7 @@ collection) and nodes in support of other services.
 
 Network
 ------------
-Delta is connected to the NPCF core router & exit infrastructure via two
+Delta is connected to the NPCF core router and exit infrastructure via two
 100Gbps connections, NCSA's 400Gbps+ of WAN connectivity carry traffic
 to/from users on an optimal peering.
 
@@ -315,8 +313,8 @@ are accessible on the Delta DTN Endpoints. The aggregate performance of
 this subsystem is 70GB/s and it has 6PB of usable space. These file
 systems run Lustre via DDN's ExaScaler 6 stack (Lustre 2.14 based).
 
-Hardware:
-^^^^^^^^^^
+Hardware
+$$$$$$$$$
 
 DDN SFA7990XE (Quantity: 3), each unit contains:
 
@@ -338,12 +336,12 @@ File size Stripe count
 ========= ============
 
 Best Practices
-^^^^^^^^^^^^^^^
+$$$$$$$$$$$$$$$
 
 To reduce the load on the file system metadata services, the ls option for context dependent font coloring, **--**\ color, is disabled by default.
 
 Future Hardware
-^^^^^^^^^^^^^^^^
+$$$$$$$$$$$$$$$$$
 
 An additional pool of NVME flash from DDN was installed in early
 summer 2022. This flash is initially deployed as a tier for "hot" data
@@ -368,7 +366,7 @@ system running DDN's Exascaler 6 Lustre stack. See the `Taiga and Granite
 NCSA wiki site <https://wiki.ncsa.illinois.edu/pages/viewpage.action?pageId=148538533>`_ for more information.
 
 Hardware
-^^^^^^^^^^
+$$$$$$$$$$
 
 DDN SFA400NVXE (Quantity: 2), each unit contains:
 
@@ -475,25 +473,24 @@ not depend on which project group the file is written with.
 File System Dependency Specification for Jobs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We request that jobs specify file system or systems being used in order
-for us to respond to resource availability issues. We assume that all
-jobs depend on the HOME file system.
+NCSA requests that jobs specify the file system or systems being used to enable response to resource availability issues. 
+All jobs are assumed to depend on the HOME file system.
 
 **Table of Slurm Feature/Constraint Labels**
 
 ================= ======================== ==================
-File system       Feature/constraint label Note
+File System       Feature/Constraint Label Note
 WORK (/projects)  projects                 
 SCRACH (/scratch) scratch                  
 IME (/ime)        ime                      depends on scratch
 TAIGA (/taiga)    taiga                    
 ================= ======================== ==================
 
-The Slurm constraint specifier and slurm Feature attribute for jobs are
+The Slurm constraint specifier and Slurm Feature attribute for jobs are
 used to add file system dependencies to a job.
 
 Slurm Feature Specification
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 For already submitted and pending (PD) jobs, please use the Slurm
 Feature attribute as follows:
@@ -516,18 +513,17 @@ To verify the setting:
    $ scontrol show job 713210 | grep Feature
       Features=scratch&ime DelayBoot=00:00:00
 
-Slurm constraint Specification
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Slurm Constraint Specification
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 To add Slurm job constraint attributes when submitting a job with sbatch
-(or with srun as a command line argument) use the following:
+(or with srun as a command line argument) use:
 
 .. code-block::
 
    #SBATCH --constraint="constraint1&constraint2.."
 
-For example, to add scratch and ime constraints to when submitting a
-job:
+For example, to add scratch and ime constraints when submitting a job:
 
 .. code-block::
 
