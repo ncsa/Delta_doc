@@ -1,6 +1,26 @@
 System Architecture
 =======================
 
+Delta is designed to help applications transition from CPU-only to GPU
+or hybrid CPU-GPU codes. Delta has some important architectural features
+to facilitate new discovery and insight:
+
+-  A single processor architecture (AMD) across all node types: CPU and
+   GPU
+-  Support for NVIDIA A100 MIG GPU partitioning allowing for fractional
+   use of the A100s if your workload isn't able to exploit an entire
+   A100 efficiently
+-  Ray tracing hardware support from the NVIDIA A40 GPUs
+-  Nine large memory (2 TB) nodes
+-  A low latency and high bandwidth HPE/Cray Slingshot interconnect
+   between compute nodes
+-  Lustre for home, projects, and scratch file systems
+-  Support for relaxed and non-posix IO (feature not yet implemented)
+-  Shared-node jobs and the single core and single MIG GPU slice
+-  Resources for persistent services in support of Gateways, Open
+   OnDemand, and Data Transport nodes
+-  Unique AMD MI-100 resource
+
 Model Compute Nodes
 ----------------------
 
@@ -99,10 +119,8 @@ HSN  SYS  SYS  SYS  PHB  X
 
 | Table Legend:
 - X = Self
-- SYS = Connection traversing PCIe as well as the SMP interconnect between
-- NUMA nodes (e.g., QPI/UPI)
-- NODE = Connection traversing PCIe as well as the interconnect between
-- PCIe Host Bridges within a NUMA node
+- SYS = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)
+- NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node
 - PHB = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)
 - NV# = Connection traversing a bonded set of # NVLinks
 
@@ -160,10 +178,8 @@ HSN  SYS  SYS  SYS  PHB  X
 
 | Table Legend:
 - X = Self
-- SYS = Connection traversing PCIe as well as the SMP interconnect between
-- NUMA nodes (e.g., QPI/UPI)
-- NODE = Connection traversing PCIe as well as the interconnect between
-- PCIe Host Bridges within a NUMA node
+- SYS = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)
+- NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node
 - PHB = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)
 - NV# = Connection traversing a bonded set of # NVLinks
 
@@ -234,10 +250,8 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 | Table Legend:
 - X = Self
-- SYS = Connection traversing PCIe as well as the SMP interconnect between
-- NUMA nodes (e.g., QPI/UPI)
-- NODE = Connection traversing PCIe as well as the interconnect between
-- PCIe Host Bridges within a NUMA node
+- SYS = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)
+- NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node
 - PHB = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)
 - NV# = Connection traversing a bonded set of # NVLinks
 
