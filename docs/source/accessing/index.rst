@@ -17,14 +17,14 @@ For ACCESS awarded projects, to find your local NCSA username go to your `ACCESS
 | dt-login01.delta.ncsa.illinois.edu |                                                        |
 |                                    |    ssh -Y username@dt-login01.delta.ncsa.illinois.edu  |
 |                                    |                                                        |
-|                                    |  ( -Y allows X11 forwarding from Linux hosts )         |
+|                                    | ( -Y allows X11 forwarding from Linux hosts )          |
 |                                    |                                                        |    
 +------------------------------------+--------------------------------------------------------+
 | dt-login02.delta.ncsa.illinois.edu | .. code-block:: terminal                               |
 |                                    |                                                        |
 |                                    |    ssh -l username dt-login02.delta.ncsa.illinois.edu  |
 |                                    |                                                        |
-|                                    |  ( -l username alt. syntax for user@host )             |
+|                                    | ( -l username alt. syntax for ``user@host`` )          |
 |                                    |                                                        |
 +------------------------------------+--------------------------------------------------------+
 | | **login.delta.ncsa.illinois.edu**| .. code-block:: terminal                               |
