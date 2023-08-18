@@ -75,13 +75,8 @@ To transfer files to and from the Delta system :
 
    -  See the following documentation on using Globus: https://docs.globus.org/how-to/get-started/ .
 
-Delta Infinite Memory Engine (IME)
+Infinite Memory Engine (IME)
 -----------------------------------
-
-.. toctree::
-   :maxdepth: 2
-   
-   ddn_ime
 
 What is DDN IME?
 ~~~~~~~~~~~~~~~~~
@@ -119,7 +114,7 @@ command will delete files on both file systems.
 
 You can purge the contents of files from the cache, but not the presence of the file. Please see :ref:`purge` below.
 
-There are some important caveats when using the /ime file system for something other than a **read-cache**. See section 2.2 Data Consistency Model in the :download:`developer guide document </docs/source/aux_pages/images/Delt_IME/IME 1.4 Developer Guide.pdf>`.
+There are some important caveats when using the /ime file system for something other than a **read-cache**. See section 2.2 Data Consistency Model in the :download:`developer guide document </docs/source/aux_pages/images/Delt_IME/IME1.4DeveloperGuide.pdf>`.
 
    Users must maintain close-to-open consistency when multiple clients
    access the same files. This requirement guarantees that any other
@@ -133,7 +128,7 @@ There are some important caveats when using the /ime file system for something o
 IME Commands
 ~~~~~~~~~~~~~
 
-Please see the man page for ime-ctl or the attached :download:`developer guide document </docs/source/aux_pages/images/Delt_IME/IME 1.4 Developer Guide.pdf>` for details.
+Please see the man page for ime-ctl or the attached :download:`developer guide document </docs/source/aux_pages/images/Delt_IME/IME1.4DeveloperGuide.pdf>` for details.
 
 .. _purge:
 
