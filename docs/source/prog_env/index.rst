@@ -8,7 +8,7 @@ Modules provide access to the compiler + MPI environment.
 
 The default environment includes the GCC 11.2.0 compiler + OpenMPI with support for cuda and gdrcopy; nvcc is in the cuda module and is loaded by default.
 
-AMD recommended compiler flags for GNU, AOCC, and Intel compilers for Milan processors can be found in the `AMD Compiler Options Quick Reference Guide for Epyc 7xx3 processors <https://developer.amd.com/wp-content/resources/Compiler%20Options%20Quick%20Ref%20Guide%20for%20AMD%20EPYC%207xx3%20Series%20Processors.pdf>`_.
+AMD recommended compiler flags for GNU, AOCC, and Intel compilers for Milan processors can be found in the `AMD Compiler Options Quick Reference Guide for Epyc 7xx3 processors <https://www.amd.com/system/files/TechDocs/compiler-options-quick-ref-guide-epyc-7xx3-series-processors.pdf>`_.
 
 ..  image:: Compiler_Options_Quick_Ref_Guide_for_AMD_EPYC_7xx3_Series_Processors.pdf
     :alt: Compiler Options Quick Ref Guide for AMD EPYC 7xx3 Series Processors
@@ -20,7 +20,7 @@ Serial
 To build (compile and link) a serial program in Fortran, C, and C++:
 
 =================== ================= ====================
-gcc                 aocc              nvhpc
+GCC                 AOCC              NVHPC
 =================== ================= ====================
 gfortran *myprog*.f flang *myprog*.f  nvfortran *myprog*.f
 gcc *myprog*.c      clang *myprog*.c  nvc *myprog*.c
@@ -32,14 +32,14 @@ MPI
 To build (compile and link) a MPI program in Fortran, C, and C++:
 
 +----------------------------------+--------------------------------------------+--------------------------------------+
-| MPI Implementation               | modulefiles for                            | Build Commands                       |
+| MPI Implementation               | Module Files for                           | Build Commands                       |
 |                                  | MPI/Compiler                               |                                      |
 +==================================+============================================+======================================+
 |                                  | .. code-block::                            |                                      |
 |                                  |                                            |                                      |
 | OpenMPI                          |    aocc/3.20 openmpi                       | +-------------+-------------------+  |
-| (`Home Page`_ / `Documentation`_)|                                            | | Fortran 77: | mpif77 myprog.f   |  |
-|                                  | .. code-block::                            | |             |                   |  |
+|                                  |                                            | | Fortran 77: | mpif77 myprog.f   |  |
+| (`Home Page`_ / `Documentation`_)| .. code-block::                            | |             |                   |  |
 |                                  |                                            | +-------------+-------------------+  |
 |                                  |    gcc/11.2.0 openmpi                      | | Fortran 90: | mpif90 myprog.f90 |  |
 |                                  |                                            | |             |                   |  |
@@ -64,11 +64,11 @@ OpenMP
 To build an OpenMP program, use the -fopenmp /-mp option:
 
 ================================ ============================ =======================
-gcc                              aocc                         nvhpc
+GCC                              AOCC                         NVHPC
 ================================ ============================ =======================
-gfortran -fopenmp *myprog*.f     flang -fopenmp *myprog*.f    nvfortran -mp
-gcc -fopenmp *myprog*.c          clang -fopenmp *myprog*.c    nvc -mp *myprog*.c
-g++ -fopenmp *myprog*.cc         clang -fopenmp *myprog*.cc   *myprog*.cc
+gfortran -fopenmp *myprog*.f     flang -fopenmp *myprog*.f    nvfortran -mp *myprog*.f
+gcc -fopenmp *myprog*.c          clang -fopenmp *myprog*.c    nvc -mp *myprog*.c 
+g++ -fopenmp *myprog*.cc         clang -fopenmp *myprog*.cc   nvc++ -mp *myprog*.cc
 ================================ ============================ =======================
 
 Hybrid MPI/OpenMP
@@ -161,7 +161,7 @@ A version of xthi is also available from ORNL:
 
 .. code-block::
 
-   % git clone https://github.com/olcf/XC30-Training/blob/master/affinity/Xthi.c]]>
+   % git clone https://github.com/olcf/XC30-Training/blob/master/affinity/Xthi.c
 
 OpenACC
 -------------------------
@@ -170,7 +170,7 @@ To build an OpenACC program, use the -acc option and the -mp option for
 multi-threaded:
 
 ========================= ================================
-Non-Multithreaded          Multithreaded
+Non-Multi-threaded          Multi-threaded
 ========================= ================================
 nvfortran -acc *myprog*.f   nvfortran -acc -mp *myprog*.f
 nvc -acc *myprog*.c         nvc -acc -mp *myprog*.c
@@ -183,7 +183,6 @@ CUDA
 Cuda compilers (nvcc) are included in the cuda module which is loaded by default under modtree/gpu. For the cuda fortran compiler and other Nvidia development tools, load the "nvhpc" module.
 
 | **nv* commands when nvhpc is loaded:**
-
 .. code-block::
 
    [arnoldg@dt-login03 namd]$ nv
@@ -206,11 +205,12 @@ HIP/ROCm
 -------------------------
 
 To access the development environment for the gpuMI100x8 partition, start a job on the node with srun or sbatch. 
-Then set your PATH to prefix /opt/rocm/bin where the HIP and ROCM tools are installed. 
-A sample batch script to obtain an xterm is shown along with setting the path on the compute node:
+
+Next, set your PATH to prefix /opt/rocm/bin where the HIP and ROCm tools are installed. 
+
+A sample batch script to obtain an xterm is shown below along with setting the path on the compute node.
 
 | **interactive xterm batch script for slurm:**
-
 .. code-block::
 
    #!/bin/bash -x
@@ -227,7 +227,6 @@ A sample batch script to obtain an xterm is shown along with setting the path on
      xterm
 
 | **AMD HIP development environment on gpud01:**
-
 .. code-block::
 
    [arnoldg@gpud01 bin]$ export PATH=/opt/rocm/bin:$PATH
@@ -235,7 +234,7 @@ A sample batch script to obtain an xterm is shown along with setting the path on
    No Arguments passed, exiting ...
    [arnoldg@gpud01 bin]$ 
 
-See also: https://developer.amd.com/resources/rocm-learning-center/fundamentals-of-hip-programming/ , https://rocmdocs.amd.com/en/latest/
+See also: https://docs.amd.com/projects/HIP/en/docs-5.0.0/index.html , https://rocmdocs.amd.com/en/latest/
    
 Visual Studio Code
 ---------------------
@@ -248,7 +247,6 @@ The code-server for vscode can be run on Delta in manual mode (without OpenOnDem
 #. Start the server.
 
    | **/sw/external/vscode/code-server/bin/code-server:**
-
    .. code-block::
 
       [arnoldg@dt-login03 bin]$  ./code-server --bind-addr 
@@ -265,7 +263,6 @@ The code-server for vscode can be run on Delta in manual mode (without OpenOnDem
 #. SSH to the login node where the server is waiting. Read the config.yaml noted above and copy the password to your clipboard.
 
    | **SSH tunnel to login node running code-server:**
-   
    .. code-block::
 
       (base) galen@macbookair-m1-042020 ~ % ssh -l arnoldg -L 
@@ -287,7 +284,7 @@ The code-server for vscode can be run on Delta in manual mode (without OpenOnDem
       password: 9e8081e80d9999c3c525fe26
       cert: false
 
-#. Open a local browser on your desktop system with URL = http://127.0.0.1:8899 . Login with the password copied from above and begin using vscode in your browser.
+#. Open a local browser on your desktop system with URL = http://127.0.0.1:8899. Login with the password copied from above and begin using vscode in your browser.
 
    ..  image:: ../aux_pages/images/vscode_code_server/vscode_in_browser.png
        :alt: vscode in a web browser
@@ -304,12 +301,11 @@ As stated in the guide, install "Remote - SSH" into Visual Studio:
     :alt: remote ssh extension in visual studio
     :width: 500px
 
-Continue to follow the guide to setup a remote connection to Delta.
-It helps if you have a local $HOME/.ssh/config with your commonly used hosts already present on the laptop and ssh client where you will be using visual studio. 
-Here's an example entry for Delta. Change your username to your login name on Delta. Visual Studio will show hosts in your config in a pick list.
+Continue to follow the guide to set up a remote connection to Delta.
+It helps if you have a local $HOME/.ssh/config with your commonly used hosts already present on the laptop and SSH client where you will be using Visual Studio. 
+Here is an example entry for Delta, change your username to your login name on Delta. Visual Studio will show hosts in your config in a pick list.
 
 | **SSH config:**
-
 .. code-block::
 
    Host delta
@@ -318,18 +314,17 @@ Here's an example entry for Delta. Change your username to your login name on De
            ForwardX11 True
 
 Once connected, you can work with the remote system as if it were local.
-When Visual Studio needs to install extension items on the remote system, they will go into your $HOME/.vscode-server on Delta. 
+When Visual Studio needs to install extension items on the remote system, it will go into your $HOME/.vscode-server on Delta. 
 Visual Studio takes care of all the details for you:
 
 | **remote server VS extensions:**
-
 .. code-block::
 
    [arnoldg@dt-login03 ~]$ du -sh .vscode-server/
    523M    .vscode-server/
    [arnoldg@dt-login03 ~]$ 
 
-Proceed to F1 → Remote SSH and connect to Delta, then following the guide, use Visual Studio as normal. 
+Proceed to F1 → Remote SSH and connect to Delta. Then, following the guide, use Visual Studio as normal. 
 This is an example of working with a C file remote on Delta:
 
 ..  image:: ../aux_pages/images/visual_studio/02_remote_c_file.png
@@ -341,9 +336,9 @@ Remote Jupyter
 
 See: https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server and (open 2 new browser tabs).
 
-Install the Jupyter extension for Visual Studio if you have not already done so.
+Install the Jupyter extension for Visual Studio, if you have not already done so.
 
-Complete the first step from the Delta User guide where you srun a jupyter-notebook on a compute node. 
+Complete the first step from the Delta user guide where you srun a jupyter-notebook on a compute node. 
 Make note of and copy the first URL after the job is running. 
 That is the URI you will provide to Visual Studio's "Connect to a Remote Jupyter Server" after clicking the Kernels button. 
 You may also need to select the remote jupyter kernel under the kernels in VScode.
