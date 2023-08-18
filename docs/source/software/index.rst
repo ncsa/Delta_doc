@@ -22,93 +22,60 @@ same default compiler and MPI but without cuda. Use module spider
 package_name to search for software in lmod and see the steps to load it
 for your environment.
 
-+----------------------------------+----------------------------------+
-| module (lmod) command            | example                          |
-+----------------------------------+----------------------------------+
-| .. container:: content-wrapper   | .. container:: content-wrapper   |
-|                                  |                                  |
-|    module list                   |    |                             |
-|                                  |                                  |
-|    (display the currently loaded |    ::                            |
-|    modules)                      |                                  |
-|                                  |       $ module list              |
-|    |                             |                                  |
-|                                  |       Currently Loaded Modules:  |
-|                                  |         1) gcc/11.2.0   3        |
-|                                  | ) openmpi/4.1.2   5) modtree/gpu |
-|                                  |                                  |
-|                                  |   2) ucx/1.11.2   4) cuda/11.6.1 |
-|                                  |                                  |
-|                                  |    |                             |
-+----------------------------------+----------------------------------+
-| module load <package_name>       | .. container:: content-wrapper   |
-|                                  |                                  |
-| (loads a package or metamodule   |    |                             |
-| such as modtree/gpu or netcdf-c) |                                  |
-|                                  |    ::                            |
-|                                  |                                  |
-|                                  |       $ module load modtree/cpu  |
-|                                  |                                  |
-|                                  |                                  |
-|                                  |     Due to MODULEPATH changes, t |
-|                                  | he following have been reloaded: |
-|                                  |         1) gcc/11.2.0     2)     |
-|                                  |  openmpi/4.1.2     3) ucx/1.11.2 |
-|                                  |                                  |
-|                                  |       The following have been    |
-|                                  |  reloaded with a version change: |
-|                                  |                                  |
-|                                  |    1) modtree/gpu => modtree/cpu |
-|                                  |                                  |
-|                                  |    |                             |
-+----------------------------------+----------------------------------+
-| module spider <package_name>     | .. container:: content-wrapper   |
-|                                  |                                  |
-| (finds modules and displays the  |    |                             |
-| ways to load them)               |                                  |
-|                                  |    ::                            |
-| |                                |                                  |
-|                                  |       $ module spider openblas   |
-| module -r spider "regular        |                                  |
-| expression"                      |       ------------               |
-|                                  | -------------------------------- |
-|                                  | -------------------------------- |
-|                                  |                                  |
-|                                  |        openblas: openblas/0.3.20 |
-|                                  |       ------------               |
-|                                  | -------------------------------- |
-|                                  | -------------------------------- |
-|                                  |                                  |
-|                                  |           You will nee           |
-|                                  | d to load all module(s) on any o |
-|                                  | ne of the lines below before the |
-|                                  |        "openblas/0.3.            |
-|                                  | 20" module is available to load. |
-|                                  |                                  |
-|                                  |             aocc/3.2.0           |
-|                                  |             gcc/11.2.0           |
-|                                  |                                  |
-|                                  |           Help:                  |
-|                                  |             Ope                  |
-|                                  | nBLAS: An optimized BLAS library |
-|                                  |       $ module -r spider "^r$"   |
-|                                  |                                  |
-|                                  |       ------------               |
-|                                  | -------------------------------- |
-|                                  | -------------------------------- |
-|                                  |         r:                       |
-|                                  |       ------------               |
-|                                  | -------------------------------- |
-|                                  | -------------------------------- |
-|                                  |            Versions:             |
-|                                  |               r/4.1.3            |
-|                                  |       ...                        |
-|                                  |                                  |
-|                                  |    |                             |
-+----------------------------------+----------------------------------+
++----------------------------------+--------------------------------------------------------------------------------------+
+| module (lmod) command            | example                                                                              |
++----------------------------------+--------------------------------------------------------------------------------------+
+|                                  |                                                                                      |
+|                                  |   .. code-block::                                                                    |
+| module list                      |                                                                                      |
+|                                  |      $ module list                                                                   |
+| (display the currently loaded    |                                                                                      |
+| modules)                         |      Currently Loaded Modules:                                                       |
+|                                  |      1) gcc/11.2.0   3) openmpi/4.1.2   5) modtree/gpu                               |
+|                                  |      2) ucx/1.11.2   4) cuda/11.6.1                                                  |
+|                                  |                                                                                      |
+|                                  |                                                                                      |
++----------------------------------+--------------------------------------------------------------------------------------+
+| module load <package_name>       |                                                                                      |
+|                                  |   .. code-block::                                                                    |
+| (loads a package or metamodule   |                                                                                      |
+| such as modtree/gpu or netcdf-c) |      $ module load modtree/cpu                                                       |
+|                                  |                                                                                      |
+|                                  |      Due to MODULEPATH changes, the following have been reloaded:                    |
+|                                  |      1) gcc/11.2.0     2) openmpi/4.1.2     3) ucx/1.11.2                            |
+|                                  |                                                                                      |
+|                                  |      The following have been reloaded with a version change:                         |
+|                                  |      1) modtree/gpu => modtree/cpu                                                   |
+|                                  |                                                                                      |
++----------------------------------+--------------------------------------------------------------------------------------+
+| module spider <package_name>     |                                                                                      |
+|                                  |   .. code-block::                                                                    |
+| (finds modules and displays the  |                                                                                      |
+| ways to load them)               |      $ module spider openblas                                                        |
+|                                  |                                                                                      |
+|                                  |      ---------------------------------------------------------------------------     |
+|                                  |      openblas: openblas/0.3.20                                                       |
+|                                  |      ----------------------------------------------------------------------------    |
+|                                  |      You will need to load all module(s) on any one of the lines below before the    |
+|                                  |      "openblas/0.3.20" module is available to load.                                  |
+| module -r spider "regular        |                                                                                      |
+| expression"                      |            aocc/3.2.0                                                                |
+|                                  |            gcc/11.2.0                                                                |
+|                                  |                                                                                      |
+|                                  |         Help:                                                                        |
+|                                  |           OpenBLAS: An optimized BLAS library                                        |
+|                                  |      $ module -r spider "^r$"                                                        |
+|                                  |                                                                                      |
+|                                  |      ----------------------------------------------------------------------------    |
+|                                  |        r:                                                                            |
+|                                  |      ----------------------------------------------------------------------------    |
+|                                  |          Versions:                                                                   |
+|                                  |             r/4.1.                                                                   |
+|                                  |      ...                                                                             |
+|                                  |                                                                                      |
++----------------------------------+--------------------------------------------------------------------------------------+
 
-see also: `User Guide for
-Lmod <https://lmod.readthedocs.io/en/latest/010_user.html>`__
+see also: `User Guide for Lmod <https://lmod.readthedocs.io/en/latest/010_user.html>`_.
 
 Please open a service request ticket by sending email to
 help@ncsa.illinois.edu for help with software not currently installed on
@@ -120,19 +87,17 @@ assistance. For general installation requests the Delta project office
 will review requests for broad use and installation effort.
 
 Intel_AI_toolkit
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 
 The Intel AI toolkit module contains a subset of what you'll find in
 anaconda_cpu. It contains conda environments optimized for cpu
 execution: pytorch & tensorflow. We have seen up to 2x speedup when
 using the Intel_AI_toolkit compared to the stock anaconda_cpu. For best
 results, set OMP_NUM_THREADS to the number of cores you'd like to use (
---cpus-per-task in slurm ). See also:
-https://www.intel.com/content/www/us/en/developer/tools/oneapi/ai-analytics-toolkit.html
-.
+--cpus-per-task in slurm ). See also: https://www.intel.com/content/www/us/en/developer/tools/oneapi/ai-analytics-toolkit.html.
 
 anaconda3_gpu (for cuda) , anaconda3_mi100 (for rocm)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Similar to the setup for anaconda_cpu, we have gpu versions of anaconda3
 (module load anaconda3_gpu) and have installed pytorch and tensorflow
@@ -143,7 +108,7 @@ Delta staff know if there are generally useful modules you would like us
 to try to install for the broader community. A sample tensorflow test
 script:
 
-::
+.. code-block::
 
    #!/bin/bash
    #SBATCH --mem=64g
@@ -175,7 +140,7 @@ script:
    exit
 
 Jupyter notebooks
-^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 The Detla Open OnDemand portal provides an easier way to start a Jupyter
 notebook. Please see to access the portal.
@@ -185,115 +150,85 @@ anaconda3 module. *Don't run jupyter on the shared login nodes.*
 Instead, follow these steps to attach a jupyter notebook running on a
 compute node to your local web browser:
 
-+-----------------------+----------------------------------------------+
-| 1) Start a jupyter    | .. container:: content-wrapper               |
-| job via srun and note |                                              |
-| the hostname (*you    |    |                                         |
-| pick the port number  |                                              |
-| for --port*).         |    ::                                        |
-|                       |                                              |
-|                       |       $ srun --account=                      |
-|                       | wxyz-delta-cpu --partition=cpu-interactive \ |
-|                       |         --time=00:30:00 --mem=32g \          |
-|                       |         jupyter-notebook --no-browser \      |
-|                       |         --port=8991 --ip=0.0.0.0             |
-|                       |       ...                                    |
-|                       |                                              |
-|                       |         Or copy and paste one of these URLs: |
-|                       |               http://cn                      |
-|                       | 093.delta.internal.ncsa.edu:8891/?token=e5b5 |
-|                       | 00e5aef67b1471ed1842b2676e0c0ae4b5652656feea |
-|                       |                                              |
-|                       |         or http://127.0.0.1:8991/?token=e5b5 |
-|                       | 00e5aef67b1471ed1842b2676e0c0ae4b5652656feea |
-|                       |                                              |
-|                       |    Use the 2nd URL in step 3. Note the       |
-|                       |    internal hostname in the cluster for step |
-|                       |    2.                                        |
-|                       |                                              |
-|                       |    --------------                            |
-|                       |                                              |
-|                       |    When using a container with a gpu node,   |
-|                       |    run the container's jupyter-notebook:     |
-|                       |                                              |
-|                       |    ::                                        |
-|                       |                                              |
-|                       |       # container notebook examp             |
-|                       | le showing how to access a directory outside |
-|                       |                                              |
-|                       | # of $HOME ( /projects/bbka in the example ) |
-|                       |       $ srun --account=wxyz-d                |
-|                       | elta-gpu --partition=gpuA100x4-interactive \ |
-|                       |         -                                    |
-|                       | -time=00:30:00 --mem=64g --gpus-per-node=1 \ |
-|                       |                                              |
-|                       | singularity run --nv --bind /projects/bbka \ |
-|                       |         /sw/exter                            |
-|                       | nal/NGC/pytorch:22.02-py3 jupyter-notebook \ |
-|                       |         --notebook-dir /projects/wxyz \      |
-|                       |                                              |
-|                       |        --no-browser --port=8991 --ip=0.0.0.0 |
-|                       |       ...                                    |
-|                       |       http://hostname:8888/?token=73d9       |
-|                       | 6b99f2cfc4c3932a3433d1b8003c052081c5411795d5 |
-|                       |                                              |
-|                       |    In step 3 to start the notebook in your   |
-|                       |    browser, replace                          |
-|                       |    `htt                                      |
-|                       | p://hostname:8888/ <http://hostname:8888>`__ |
-|                       |    with http://127.0.0.1:*8991/ ( the port   |
-|                       |    number you selected with --port= )*       |
-|                       |                                              |
-|                       |    You may not see the job hostname when     |
-|                       |    running with a container, find it with    |
-|                       |    squeue:                                   |
-|                       |                                              |
-|                       |    ::                                        |
-|                       |                                              |
-|                       |       $ squeue -u $USER                      |
-|                       |                                              |
-|                       |                  JOBID PARTITION     NAME    |
-|                       |   USER ST       TIME  NODES NODELIST(REASON) |
-|                       |                   156071 gpuA100x4 si        |
-|                       | ngular  arnoldg  R       1:00      1 gpua045 |
-|                       |                                              |
-|                       |    Then specifu the host your job is using   |
-|                       |    in the next step (gpua045 for example ).  |
-+-----------------------+----------------------------------------------+
-| 2) From your local    | .. container:: content-wrapper               |
-| desktop or laptop     |                                              |
-| create an ssh tunnel  |    |                                         |
-| to the compute node   |                                              |
-| via a login node of   |    ::                                        |
-| delta.                |                                              |
-|                       |       $ ssh -l my_delta_username \           |
-|                       |         -L 127.0.0                           |
-|                       | .1:8991:cn093.delta.internal.ncsa.edu:8991 \ |
-|                       |         dt-login.delta.ncsa.illinois.edu     |
-|                       |                                              |
-|                       |    Authenticate with your login and 2-factor |
-|                       |    as usual.                                 |
-+-----------------------+----------------------------------------------+
-| .. container::        | .. container:: content-wrapper               |
-| content-wrapper       |                                              |
-|                       |                                              |
-|    3) Paste the 2nd   |                                              |
-|    URL (containing    |                                              |
-|    12                 |                                              |
-| 7.0.0.1:*port_number* |                                              |
-|    and the token      |                                              |
-|    string) from step  |                                              |
-|    1 into your        |                                              |
-|    browser and you    |                                              |
-|    will be connected  |                                              |
-|    to the jupyter     |                                              |
-|    instance running   |                                              |
-|    on your compute    |                                              |
-|    node of Delta.     |                                              |
-+-----------------------+----------------------------------------------+
++-----------------------+---------------------------------------------------------------------------------------------------------------+
+| 1) Start a jupyter    |  srun jupyter ( anaconda3_cpu on a cpu node ):                                                                |
+| job via srun and note |                                                                                                               |
+| the hostname (*you    |  .. code-block::                                                                                              |
+| pick the port number  |                                                                                                               |
+| for --port*).         |     $ srun --account=wxyz-delta-cpu --partition=cpu-interactive \                                             |
+|                       |       --time=00:30:00 --mem=32g \                                                                             |
+|                       |       jupyter-notebook --no-browser \                                                                         |
+|                       |       --port=8991 --ip=0.0.0.0                                                                                |
+|                       |     ...                                                                                                       |
+|                       |         Or copy and paste one of these URLs:                                                                  |
+|                       |             http://cn093.delta.internal.ncsa.edu:8891/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea |
+|                       |          or http://127.0.0.1:8991/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea                     |
+|                       |                                                                                                               |
+|                       |  Use the 2nd URL in step 3.  Note the internal hostname in the cluster for step 2.                            |
+|                       |                                                                                                               |
+|                       |  When using a container with a gpu node, run the container's jupyter-notebook:                                |
+|                       |                                                                                                               |
+|                       |  NGC container for gpus, jupyter-notebook, bind a directory                                                   |
+|                       |                                                                                                               |
+|                       |  .. code-block::                                                                                              |
+|                       |                                                                                                               |
+|                       |     # container notebook example showing how to access a directory outside                                    |
+|                       |     # of $HOME ( /projects/bbka in the example )                                                              |
+|                       |     $ srun --account=wxyz-delta-gpu --partition=gpuA100x4-interactive \                                       |
+|                       |       --time=00:30:00 --mem=64g --gpus-per-node=1 \                                                           |
+|                       |       singularity run --nv --bind /projects/bbka \                                                            |
+|                       |       /sw/external/NGC/pytorch:22.02-py3 jupyter-notebook \                                                   |
+|                       |       --notebook-dir /projects/wxyz \                                                                         |
+|                       |       --no-browser --port=8991 --ip=0.0.0.0                                                                   |
+|                       |     ...                                                                                                       |
+|                       |     http://hostname:8888/?token=73d96b99f2cfc4c3932a3433d1b8003c052081c5411795d5                              |
+|                       |                                                                                                               |
+|                       |  In step 3 to start the notebook in your browser, replace http://hostname:8888/ with http://127.0.0.1:8991/   |
+|                       |    ( the port number you selected with --port= )                                                              |
+|                       |                                                                                                               |
+|                       |  You may not see the job hostname when running with a container, find it with squeue:                         |
+|                       |                                                                                                               |
+|                       |  squeue -u $USER                                                                                              |
+|                       |                                                                                                               |
+|                       |  .. code-block::                                                                                              |
+|                       |                                                                                                               |
+|                       |     $ squeue -u $USER                                                                                         |
+|                       |                  JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)                      |
+|                       |                 156071 gpuA100x4 singular  arnoldg  R       1:00      1 gpua045                               |
+|                       |                                                                                                               |
+|                       |  Then specify the host your job is using in the next step (gpua045 for example ).                             |
+|                       |                                                                                                               |
+|                       |                                                                                                               |
++-----------------------+---------------------------------------------------------------------------------------------------------------+
+| 2) From your local    |                                                                                                               |
+| desktop or laptop     |  ssh tunnel for jupyter                                                                                       |
+| create an ssh tunnel  |                                                                                                               |
+| to the compute node   |  .. code-block::                                                                                              |
+| via a login node of   |                                                                                                               |
+| delta.                |     $ ssh -l my_delta_username \                                                                              |
+|                       |       -L 127.0.0.1:8991:cn093.delta.internal.ncsa.edu:8991 \                                                  |
+|                       |       dt-login.delta.ncsa.illinois.edu                                                                        |
+|                       |                                                                                                               |
+|                       |  Authenticate with your login and 2-factor as usual.                                                          |
+|                       |                                                                                                               |
++-----------------------+---------------------------------------------------------------------------------------------------------------+
+| 3) Paste the 2nd      |                                                                                                               |
+|    URL (containing    |                                                                                                               |
+|    127.0.0.1:         |                                                                                                               |
+|    *port_number*      |                                                                                                               |
+|    and the token      |                                                                                                               |
+|    string) from step  |                                                                                                               |
+|    1 into your        |                                                                                                               |
+|    browser and you    |                                                                                                               |
+|    will be connected  |                                                                                                               |
+|    to the jupyter     |                                                                                                               |
+|    instance running   |                                                                                                               |
+|    on your compute    |                                                                                                               |
+|    node of Delta.     |                                                                                                               |
++-----------------------+---------------------------------------------------------------------------------------------------------------+
 
 Python (a recent or latest version)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 If you do not need all of the extra modules provided by Anaconda, use
 the basic python installation under the gcc module. You can add modules
