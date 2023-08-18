@@ -49,10 +49,7 @@ Transferring Data
 .. note::
 
    | **GUI applications need to support Duo multi-factor authentication (MFA)**
-
-   | Many GUI apps that support ssh/scp/sftp will work with Duo MFA. 
-   A good first step is to use the interactive (not stored/saved) password option with those apps. 
-   The interactive login should present you with the first password prompt (your kerberos password) followed by the second password prompt for Duo (push to device or passcode from the Duo app).
+   | Many GUI apps that support ssh/scp/sftp will work with Duo MFA. A good first step is to use the interactive (not stored/saved) password option with those apps. The interactive login should present you with the first password prompt (your kerberos password) followed by the second password prompt for Duo (push to device or passcode from the Duo app).
 
 To transfer files to and from the Delta system:
 
@@ -102,9 +99,7 @@ It is possible to use exiting utilities and applications with files residing or 
 .. warning::
 
    | **IME and metadata**
-
-   | IME performance for directory/metadata operations is slower than /scratch (it is not the place to extract or copy millions of files). 
-   Do those operations (rsync, tar, etc) in /scratch.
+   | IME performance for directory/metadata operations is slower than /scratch (it is not the place to extract or copy millions of files). Do those operations (rsync, tar, etc) in /scratch.
 
 To get additional performance from the IME software features without changing i/o routines, use the posix2ime library (LD_PRELOAD'd), to
 intercept standard POSIX i/o calls with IME API calls. 
