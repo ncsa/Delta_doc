@@ -1,30 +1,18 @@
 Programming Environment (Building Software)
 ===============================================
 
-The Delta programming environment supports the GNU, AMD (AOCC), Intel
-and NVIDIA HPC compilers. Support for the HPE/Cray Programming
-environment is forthcoming.
+The Delta programming environment supports the GNU, AMD (AOCC), Intel and NVIDIA HPC compilers. 
+Support for the HPE/Cray Programming environment is forthcoming.
 
 Modules provide access to the compiler + MPI environment.
 
-The default environment includes the GCC 11.2.0 compiler + OpenMPI with
-support for cuda and gdrcopy. nvcc is in the cuda module and is loaded
-by default.
+The default environment includes the GCC 11.2.0 compiler + OpenMPI with support for cuda and gdrcopy; nvcc is in the cuda module and is loaded by default.
 
-AMD recommended compiler flags for GNU, AOCC, and Intel compilers for
-Milan processors can be found in the `AMD Compiler Options Quick
-Reference Guide for Epyc 7xx3
-processors <https://developer.amd.com/wp-content/resources/Compiler%20Options%20Quick%20Ref%20Guide%20for%20AMD%20EPYC%207xx3%20Series%20Processors.pdf>`__.
+AMD recommended compiler flags for GNU, AOCC, and Intel compilers for Milan processors can be found in the `AMD Compiler Options Quick Reference Guide for Epyc 7xx3 processors <https://developer.amd.com/wp-content/resources/Compiler%20Options%20Quick%20Ref%20Guide%20for%20AMD%20EPYC%207xx3%20Series%20Processors.pdf>`_.
 
 ..  image:: Compiler_Options_Quick_Ref_Guide_for_AMD_EPYC_7xx3_Series_Processors.pdf
     :alt: Compiler Options Quick Ref Guide for AMD EPYC 7xx3 Series Processors
     :width: 200px
-
-Modules
--------------------------
-
-Compilers
--------------------------
 
 Serial
 ----------
@@ -33,6 +21,7 @@ To build (compile and link) a serial program in Fortran, C, and C++:
 
 =================== ================= ====================
 gcc                 aocc              nvhpc
+=================== ================= ====================
 gfortran *myprog*.f flang *myprog*.f  nvfortran *myprog*.f
 gcc *myprog*.c      clang *myprog*.c  nvc *myprog*.c
 g++ *myprog*.cc     clang *myprog*.cc nvc++ *myprog*.cc
@@ -42,83 +31,68 @@ MPI
 -------------------------
 To build (compile and link) a MPI program in Fortran, C, and C++:
 
-+----------------------+----------------------+----------------------+
-| MPI Implementation   | modulefiles for      | Build Commands       |
-|                      | MPI/Compiler         |                      |
-+----------------------+----------------------+----------------------+
-| |                    | ::                   | |                    |
-|                      |                      |                      |
-| | OpenMPI            |                      | +-------+-------+    |
-| | (`Home             |   aocc/3.2.0 openmpi | | Fo    | m     |    |
-|   Page <http://w     |                      | | rtran | pif77 |    |
-| ww.open-mpi.org/>`__ |                      | | 77:   | *mypr |    |
-|   /                  |                      | |       | og*.f |    |
-|   `Document          |   gcc/11.2.0 openmpi | +-------+-------+    |
-| ation <http://www.op |                      | | Fo    | m     |    |
-| en-mpi.org/doc/>`__) |                      | | rtran | pif90 |    |
-|                      |                      | | 90:   | *m    |    |
-|                      |   nvhpc/22.2 openmpi | |       | yprog |    |
-|                      |                      | |       | *.f90 |    |
-|                      |                      | +-------+-------+    |
-|                      |    intel-oneapi      | | C:    | mpicc |    |
-|                      | -compilers/2022.0.2  | |       | *mypr |    |
-|                      |    openmpi           | |       | og*.c |    |
-|                      |                      | +-------+-------+    |
-|                      |                      | | C++:  | m     |    |
-|                      |                      | |       | pic++ |    |
-|                      |                      | |       | *     |    |
-|                      |                      | |       | mypro |    |
-|                      |                      | |       | g*.cc |    |
-|                      |                      | +-------+-------+    |
-|                      |                      |                      |
-|                      |                      | |                    |
-+----------------------+----------------------+----------------------+
++----------------------------------+--------------------------------------------+--------------------------------------+
+| MPI Implementation               | modulefiles for                            | Build Commands                       |
+|                                  | MPI/Compiler                               |                                      |
++==================================+============================================+======================================+
+|                                  | .. code-block::                            |                                      |
+|                                  |                                            |                                      |
+| OpenMPI                          |    aocc/3.20 openmpi                       | +-------------+-------------------+  |
+| (`Home Page`_ / `Documentation`_)|                                            | | Fortran 77: | mpif77 myprog.f   |  |
+|                                  | .. code-block::                            | |             |                   |  |
+|                                  |                                            | +-------------+-------------------+  |
+|                                  |    gcc/11.2.0 openmpi                      | | Fortran 90: | mpif90 myprog.f90 |  |
+|                                  |                                            | |             |                   |  |
+|                                  | .. code-block::                            | |             |                   |  |
+|                                  |                                            | +-------------+-------------------+  |
+|                                  |    nvhpc/22.2 openmpi                      | | C:          | mpicc myprog.c    |  |
+|                                  |                                            | |             |                   |  |
+|                                  | .. code-block::                            | +-------------+-------------------+  |
+|                                  |                                            | | C++:        | mpic++ myprog.cc  |  |
+|                                  |    intel-openapi-compilers/2022.02 openmpi | |             |                   |  |
+|                                  |                                            | +-------------+-------------------+  |
+|                                  |                                            |                                      |
++----------------------------------+--------------------------------------------+--------------------------------------+
 
-Python
--------------------------
+.. _Home Page: http://www.open-mpi.org
+
+.. _Documentation: http://www.open-mpi.org/doc
 
 OpenMP
 -------------------------
 
 To build an OpenMP program, use the -fopenmp /-mp option:
 
-+----------------------+----------------------+----------------------+
-| gcc                  | aocc                 | nvhpc                |
-+----------------------+----------------------+----------------------+
-| gfortran -fopenmp    | flang -fopenmp       | nvfortran -mp        |
-| *myprog*.f           | *myprog*.f           | *myprog*.f           |
-| gcc -fopenmp         | clang -fopenmp       | nvc -mp *myprog*.c   |
-| *myprog*.c           | *myprog*.c           | nvc++ -mp            |
-| g++ -fopenmp         | clang -fopenmp       | *myprog*.cc          |
-| *myprog*.cc          | *myprog*.cc          |                      |
-+----------------------+----------------------+----------------------+
+================================ ============================ =======================
+gcc                              aocc                         nvhpc
+================================ ============================ =======================
+gfortran -fopenmp *myprog*.f     flang -fopenmp *myprog*.f    nvfortran -mp
+gcc -fopenmp *myprog*.c          clang -fopenmp *myprog*.c    nvc -mp *myprog*.c
+g++ -fopenmp *myprog*.cc         clang -fopenmp *myprog*.cc   *myprog*.cc
+================================ ============================ =======================
 
 Hybrid MPI/OpenMP
 -------------------
 
-To build an MPI/OpenMP hybrid program, use the -fopenmp / -mp option
-with the MPI compiling commands:
+To build an MPI/OpenMP hybrid program, use the -fopenmp / -mp option with the MPI compiling commands:
 
 ============================ =======================
 GCC                            PGI/NVHPC
+============================ =======================
 mpif77 -fopenmp *myprog*.f     mpif77 -mp *myprog*.f
 mpif90 -fopenmp *myprog*.f90   mpif90 -mp *myprog*.f90
 mpicc -fopenmp *myprog*.c      mpicc -mp *myprog*.c
 mpic++ -fopenmp *myprog*.cc    mpic++ -mp *myprog*.cc
 ============================ =======================
 
-Cray xthi.c sample code
+Cray xthi.c Sample Code
 ---------------------------
 
-`Document - XC Series User Application Placement Guide CLE6..0UP01
-S-2496 \| HPE
-Support <https://support.hpe.com/hpesc/public/docDisplay?docId=a00114008en_us&page=Run_an_OpenMP_Application.html>`__
+`Document - XC Series User Application Placement Guide CLE6..0UP01 S-2496 | HPE Support <https://support.hpe.com/hpesc/public/docDisplay?docId=a00114008en_us&page=Run_an_OpenMP_Application.html>`_
 
-This code can be compiled using the methods show above. The code appears
-in some of the batch script examples below to demonstrate core placement
-options.
+This code can be compiled using the methods show above. The code appears in some of the batch script examples below to demonstrate core placement options.
 
-::
+.. code-block::
 
    #define _GNU_SOURCE
 
@@ -183,14 +157,11 @@ options.
      return(0);
    }
 
-A version of xthi is also available from ORNL
+A version of xthi is also available from ORNL:
 
-::
+.. code-block::
 
    % git clone https://github.com/olcf/XC30-Training/blob/master/affinity/Xthi.c]]>
-         A version of xthi is also available from ORNL
-
-   % git clone https://github.com/olcf/XC30-Training/blob/master/affinity/Xthi.c
 
 OpenACC
 -------------------------
@@ -198,21 +169,22 @@ OpenACC
 To build an OpenACC program, use the -acc option and the -mp option for
 multi-threaded:
 
-========================= =============================
-NON-MULTITHREADED           MULTITHREADED
+========================= ================================
+Non-Multithreaded          Multithreaded
+========================= ================================
 nvfortran -acc *myprog*.f   nvfortran -acc -mp *myprog*.f
 nvc -acc *myprog*.c         nvc -acc -mp *myprog*.c
 nvc++ -acc *myprog*.cc      nvc++ -acc -mp *myprog*.cc
-========================= =============================
+========================= ================================
 
 CUDA
 -------------------------
 
-Cuda compilers (nvcc) are included in the cuda module which is loaded by
-default under modtree/gpu. For the cuda fortran compiler and other
-Nvidia development tools, load the "nvhpc" module.
+Cuda compilers (nvcc) are included in the cuda module which is loaded by default under modtree/gpu. For the cuda fortran compiler and other Nvidia development tools, load the "nvhpc" module.
 
-::
+| **nv* commands when nvhpc is loaded:**
+
+.. code-block::
 
    [arnoldg@dt-login03 namd]$ nv
    nvaccelerror             nvidia-bug-report.sh     nvlink
@@ -233,13 +205,13 @@ See also: https://developer.nvidia.com/hpc-sdk
 HIP/ROCm
 -------------------------
 
-To access the development environment for the gpuMI100x8 partition,
-start a job on the node with srun or sbatch. Then set your PATH to
-prefix /opt/rocm/bin where the HIP and ROCM tools are installed. A
-sample batch script to obtain an xterm is shown along with setting the
-path on the compute node:
+To access the development environment for the gpuMI100x8 partition, start a job on the node with srun or sbatch. 
+Then set your PATH to prefix /opt/rocm/bin where the HIP and ROCM tools are installed. 
+A sample batch script to obtain an xterm is shown along with setting the path on the compute node:
 
-::
+| **interactive xterm batch script for slurm:**
+
+.. code-block::
 
    #!/bin/bash -x
 
@@ -254,35 +226,30 @@ path on the compute node:
      $GPUS --x11 \
      xterm
 
-| 
+| **AMD HIP development environment on gpud01:**
 
-::
+.. code-block::
 
    [arnoldg@gpud01 bin]$ export PATH=/opt/rocm/bin:$PATH
    [arnoldg@gpud01 bin]$ hipcc
    No Arguments passed, exiting ...
    [arnoldg@gpud01 bin]$ 
 
-| 
-
-See also:
-https://developer.amd.com/resources/rocm-learning-center/fundamentals-of-hip-programming/
-, https://rocmdocs.amd.com/en/latest/
-
-
+See also: https://developer.amd.com/resources/rocm-learning-center/fundamentals-of-hip-programming/ , https://rocmdocs.amd.com/en/latest/
    
 Visual Studio Code
 ---------------------
 
 vscode code-server
-~~~~~~~~~~~~~~~~~~~~~~~`
+~~~~~~~~~~~~~~~~~~~~
 
-We can run the code-server for vscode on Delta in manual mode (without
-OpenOnDemand) following these steps:
+The code-server for vscode can be run on Delta in manual mode (without OpenOnDemand) by following these steps:
 
 #. Start the server.
 
-   ::
+   | **/sw/external/vscode/code-server/bin/code-server:**
+
+   .. code-block::
 
       [arnoldg@dt-login03 bin]$  ./code-server --bind-addr 
       dt-login03:8899
@@ -295,12 +262,11 @@ OpenOnDemand) following these steps:
       [2023-04-14T15:57:03.133Z] info    - Not serving HTTPS
       [10:57:12] 
 
-   | 
+#. SSH to the login node where the server is waiting. Read the config.yaml noted above and copy the password to your clipboard.
 
-#. Ssh to the login node where the server is waiting. Read the
-   config.yaml noted above and copy the password to your clipboard.
-
-   ::
+   | **SSH tunnel to login node running code-server:**
+   
+   .. code-block::
 
       (base) galen@macbookair-m1-042020 ~ % ssh -l arnoldg -L 
       127.0.0.1:8899:dt-login03.delta.ncsa.illinois.edu:8899 dt-login03.delta.ncsa.illinois.edu
@@ -321,15 +287,11 @@ OpenOnDemand) following these steps:
       password: 9e8081e80d9999c3c525fe26
       cert: false
 
-   | 
+#. Open a local browser on your desktop system with URL = http://127.0.0.1:8899 . Login with the password copied from above and begin using vscode in your browser.
 
-#. Open a local browser on your desktop system with URL =
-   http://127.0.0.1:8899 . Login with the password copied from above and
-   begin using vscode in your browser.
-
-..  image:: ../aux_pages/images/vscode_code_server/vscode_in_browser.png
-    :alt: vscode in a web browser
-    :width: 1000px
+   ..  image:: ../aux_pages/images/vscode_code_server/vscode_in_browser.png
+       :alt: vscode in a web browser
+       :width: 1000px
 
 Remote - SSH
 ~~~~~~~~~~~~~~~~~
@@ -342,14 +304,13 @@ As stated in the guide, install "Remote - SSH" into Visual Studio:
     :alt: remote ssh extension in visual studio
     :width: 500px
 
-Then continue to follow the guide to setup a remote connection to Delta.
-It helps if you have a local $HOME/.ssh/config with your commonly used
-hosts already present on the laptop and ssh client where you will be
-using visual studio. Here's an example entry for Delta. Change your
-username to your login name on Delta. Visual Studio will show hosts in
-your config in a pick list.
+Continue to follow the guide to setup a remote connection to Delta.
+It helps if you have a local $HOME/.ssh/config with your commonly used hosts already present on the laptop and ssh client where you will be using visual studio. 
+Here's an example entry for Delta. Change your username to your login name on Delta. Visual Studio will show hosts in your config in a pick list.
 
-::
+| **SSH config:**
+
+.. code-block::
 
    Host delta
            HostName login.delta.ncsa.illinois.edu
@@ -357,19 +318,19 @@ your config in a pick list.
            ForwardX11 True
 
 Once connected, you can work with the remote system as if it were local.
-When Visual Studio needs to install extension items on the remote
-system, they will go into your $HOME/.vscode-server on Delta. Visual
-Studio takes care of all the details for you:
+When Visual Studio needs to install extension items on the remote system, they will go into your $HOME/.vscode-server on Delta. 
+Visual Studio takes care of all the details for you:
 
-::
+| **remote server VS extensions:**
+
+.. code-block::
 
    [arnoldg@dt-login03 ~]$ du -sh .vscode-server/
    523M    .vscode-server/
    [arnoldg@dt-login03 ~]$ 
 
-Proceed to F1 → Remote SSH and connect to Delta, then following the
-guide, use Visual Studio as normal. This is an example of working with a
-C file remote on Delta.
+Proceed to F1 → Remote SSH and connect to Delta, then following the guide, use Visual Studio as normal. 
+This is an example of working with a C file remote on Delta:
 
 ..  image:: ../aux_pages/images/visual_studio/02_remote_c_file.png
     :alt: using visual studio to work with a C file on delta
@@ -378,19 +339,14 @@ C file remote on Delta.
 Remote Jupyter
 ~~~~~~~~~~~~~~~~~
 
-See:
-https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server
-and (open 2 new browser tabs).
+See: https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server and (open 2 new browser tabs).
 
-Install the Jupyter extension for Visual Studio if you have not already
-done so.
+Install the Jupyter extension for Visual Studio if you have not already done so.
 
-Complete the 1st step from the Delta User guide where you srun a
-jupyter-notebook on a compute node. Make note of and copy the 1st URL
-after the job is running. That is the URI you will provide to Visual
-Studio's "Connect to a Remote Jupyter Server" after clicking the Kernels
-button. You may also need to select the remote jupyter kernel under the
-kernels in VScode.
+Complete the first step from the Delta User guide where you srun a jupyter-notebook on a compute node. 
+Make note of and copy the first URL after the job is running. 
+That is the URI you will provide to Visual Studio's "Connect to a Remote Jupyter Server" after clicking the Kernels button. 
+You may also need to select the remote jupyter kernel under the kernels in VScode.
 
 ..  image:: ../aux_pages/images/visual_studio/03_jupyter_url.png
     :alt: terminal with Jupyter workbook URL to use
@@ -399,9 +355,3 @@ kernels in VScode.
 ..  image:: ../aux_pages/images/visual_studio/04_jupyter_in_vscode.png
     :alt: accessing Jupyter notebook using visual studio
     :width: 1000px
-
-| 
-
-| 
-
-| 
