@@ -339,8 +339,9 @@ See: https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-t
 Install the Jupyter extension for Visual Studio, if you have not already done so.
 
 Complete the first step from the Delta user guide where you srun a jupyter-notebook on a compute node. 
-Make note of and copy the first URL after the job is running. 
-That is the URI you will provide to Visual Studio's "Connect to a Remote Jupyter Server" after clicking the Kernels button. 
+
+Make note of and copy the first URL after the job is running, that is the URI you will provide to Visual Studio's "Connect to a Remote Jupyter Server" after clicking the Kernels button. 
+
 You may also need to select the remote jupyter kernel under the kernels in VScode.
 
 ..  image:: ../aux_pages/images/visual_studio/03_jupyter_url.png
