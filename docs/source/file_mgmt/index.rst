@@ -6,8 +6,8 @@ File Systems
 
 Each user has a home directory, ``$HOME``, located at ``/u/$USER``.
 
-For example, a user (with username auser) who has an allocated project with a local project serial code **abcd** will see the following entries in their ``$HOME`` and entries in the project and scratch file systems.
-To determine the mapping of ACCESS project to local project please use the ``accounts`` command.
+For example, a user (with username: **auser**) who has an allocated project with a local project serial code **abcd** will see the following entries in their ``$HOME`` and entries in the projects and scratch file systems.
+To determine the mapping of ACCESS project to local project, use the ``accounts`` command.
 
 Directory access changes can be made using the `facl <https://linux.die.net/man/1/setfacl>`_ command. 
 Contact NCSA (see :ref:`help`) if you need assistance enabling access to specific users and projects.
@@ -35,25 +35,26 @@ Contact NCSA (see :ref:`help`) if you need assistance enabling access to specifi
    drwxrws---+ 2 buser delta_abcd 6 Feb 21 11:54 buser
    ...
 
-To avoid issues when file systems become unstable or non-responsive, we recommend not putting symbolic links from ``$HOME`` to the project and scratch spaces.
+To avoid issues when file systems become unstable or non-responsive, do not put symbolic links from ``$HOME`` to the projects and scratch spaces.
 
-/tmp on compute nodes (job duration)
+/tmp on Compute Nodes (Job Duration)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The high performance ssd storage (740GB cpu, 1.5TB gpu) is available in /tmp (*unique to each node and job–not a shared filesystem*) and may contain less than the expected free space if the node(s) are running multiple jobs. 
+The high performance ssd storage (740GB CPU, 1.5TB GPU) is available in /tmp (*unique to each node and job – not a shared filesystem*) and may contain less than the expected free space if the node(s) are running multiple jobs. 
 Codes that need to perform i/o to many small files should target /tmp on each node of the job and save results to other filesystems before the job ends.
 
 Transferring Data
 --------------------
-To transfer files to and from the Delta system :
 
 .. note::
 
-   | **GUI apps need to support Duo multi-factor authentication (MFA)**
-   
-   Many GUI applications that support ssh/scp/sftp will work with Duo. 
+   | **GUI applications need to support Duo multi-factor authentication (MFA)**
+
+   | Many GUI apps that support ssh/scp/sftp will work with Duo MFA. 
    A good first step is to use the interactive (not stored/saved) password option with those apps. 
-   The interactive login should present you with the first password prompt (your kerberos password) followed by the second password prompt for Duo (push to device or passcode from Duo app).
+   The interactive login should present you with the first password prompt (your kerberos password) followed by the second password prompt for Duo (push to device or passcode from the Duo app).
+
+To transfer files to and from the Delta system:
 
 -  scp - Use for small to modest transfers to avoid impacting the usability of the Delta login node (*login.delta.ncsa.illinois.edu*).
 
@@ -65,7 +66,7 @@ To transfer files to and from the Delta system :
 
    - | **Upgrade your Globus Connect Personal**
      
-     | Upgrade to at least version 3.2.0 before Dec 12, 2022. See: https://docs.globus.org/ca-update-2022/#notice
+     | Upgrade to at least version 3.2.0 before Dec 12, 2022. See: https://docs.globus.org/ca-update-2022/#notice .
 
    -  Use the Delta collection "**NCSA Delta**" (see screen capture below).
       
@@ -94,7 +95,7 @@ Conceptually the storage subsystem looks like the following:
 How to Use IME
 ~~~~~~~~~~~~~~~
 
-The preferred way to use the Delta IME is as a **read-cache** for frequently read data and as a **write/read cache** for small file io.
+The preferred way to use the Delta IME is as a **read-cache** for frequently read data and as a **write/read cache** for small file i/o.
 
 It is possible to use exiting utilities and applications with files residing or created on /ime. Performance will be equal to or better than using /scratch directly for i/o to files.
 
@@ -102,28 +103,22 @@ It is possible to use exiting utilities and applications with files residing or 
 
    | **IME and metadata**
 
-   IME performance for directory/metadata operations is slower than /scratch (it is not the place to extract or copy millions of files). Do those operations (rsync, tar, etc) in /scratch.
+   | IME performance for directory/metadata operations is slower than /scratch (it is not the place to extract or copy millions of files). 
+   Do those operations (rsync, tar, etc) in /scratch.
 
-To get additional performance from the IME software features without changing IO routines, use the posix2ime library (LD_PRELOAD'd), to
-intercept standard Posix IO calls with IME API calls. 
-We have included a module *posix2ime* that does this for you (read more about posix2ime below).
+To get additional performance from the IME software features without changing i/o routines, use the posix2ime library (LD_PRELOAD'd), to
+intercept standard POSIX i/o calls with IME API calls. 
+These is an included module, *posix2ime*, that does this for you (see more about posix2ime at :ref:`posix2', below).
 
 | **shared namespace: /ime , /scratch**
-The /scratch and /ime file systems share the same name space. The **rm**
-command will delete files on both file systems.
+| The /scratch and /ime file systems share the same name space. The **rm** command will delete files on both file systems.
 
-You can purge the contents of files from the cache, but not the presence of the file. Please see :ref:`purge` below.
+You can purge the contents of files from the cache, but not the presence of the file. Please see :ref:`purge`, below.
 
 There are some important caveats when using the /ime file system for something other than a **read-cache**. See section 2.2 Data Consistency Model in the :download:`developer guide document </docs/source/aux_pages/images/Delt_IME/IME1.4DeveloperGuide.pdf>`.
 
-   Users must maintain close-to-open consistency when multiple clients
-   access the same files. This requirement guarantees that any other
-   client will see the latest changes made by one client as soon as the
-   client opens the file. A client must synchronize all file data and
-   metadata changes when it closes a file and unconditionally retrieve a
-   file’s attributes when it opens a file, ignoring any information it
-   may have cached about the file. IME implements an enhanced
-   close-to-open consistency model, allowing IME to be lock free.
+   *Users must maintain close-to-open consistency when multiple clients access the same files. This requirement guarantees that any other client will see the latest changes made by one client as soon as the client opens the file. 
+   A client must synchronize all file data and metadata changes when it closes a file and unconditionally retrieve a file’s attributes when it opens a file, ignoring any information it may have cached about the file. IME implements an enhanced close-to-open consistency model, allowing IME to be lock free.*
 
 IME Commands
 ~~~~~~~~~~~~~
@@ -164,25 +159,24 @@ The /scratch and /ime file systems share the same name space which allows files 
 Staging Multiple Files and Directories
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-To recursively stage the contents of a directory and the files and directories below, in this case a directory called /scratch/abcd/${USER}/data_di, use the recursive
+To recursively stage the contents of a directory and the files and directories, see below. In this case, a directory called /scratch/abcd/${USER}/data_di uses the recursive.
 
 .. code-block::
 
    ime-ctl --prestage --recursive --block 
    /ime/abcd/${USER}/data_dir
 
-The ``--block`` option makes sure the stage or sync is complete before returning.
+The ``--block`` option ensures the stage or sync is complete before returning.
 
 Checking File Stage/Cache Status
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 To check if a file has been staged to the IME cache in ``/ime`` or has its contents synced back to the back-end file system use the ``ime-ctl  --frag-stat`` command.
 
-In this example a file that was created as ``/scratch/abcd/${USER}/file01`` that has not been staged to /ime. 
-The file will be visible as\ ``/ime/abcd/${USER}/file01.``
+In this example, a file that was created as ``/scratch/abcd/${USER}/file01`` has not been staged to /ime. 
+The file will be visible as ``/ime/abcd/${USER}/file01``.
 
-Not staged to /ime, all entries are showing "0" for the Dirty, Clean and
-Syncing entries.
+Not staged to /ime, all entries are showing "0" for the Dirty, Clean and Syncing entries:
 
 .. code-block::
 
@@ -195,7 +189,7 @@ Syncing entries.
    Syncing: 0
    Data on Slices:
 
-After staging the file to /ime, the number of bytes in the "Clean" category show that the data on the cache is current.
+After staging the file to /ime, the number of bytes in the "Clean" category show that the data on the cache is current:
 
 .. code-block::
 
@@ -208,7 +202,7 @@ After staging the file to /ime, the number of bytes in the "Clean" category show
    Syncing: 0
    Data on Slices:  0
 
-If the file\ ``/ime/abcd/${USER}/file01`` was modified (appended, replaced, etc) one would see entries in the Dirty category:
+If the file ``/ime/abcd/${USER}/file01`` was modified (appended, replaced, and so on) one would see entries in the Dirty category:
 
 .. code-block::
 
@@ -220,7 +214,7 @@ If the file\ ``/ime/abcd/${USER}/file01`` was modified (appended, replaced, etc)
    Syncing: 0
    Data on Slices:  0
 
-After using ``ime-ctl --sync`` to flush the changes to the back-end file system, the dirty entries will be back to 0.
+After using ``ime-ctl --sync`` to flush the changes to the back-end file system, the dirty entries will be back to 0:
 
 .. code-block::
 
@@ -233,6 +227,8 @@ After using ``ime-ctl --sync`` to flush the changes to the back-end file system,
    Syncing: 0
    Data on Slices:  0
 
+.. _posix2:
+
 IME posix2ime Library
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -242,7 +238,7 @@ The library is described at: `DDNStorage/posix_2_ime: POSIX to IME Native API (g
 .. note::
 
    | **posix2ime requires dedicated nodes**
-   At this time, use of the posix2ime library requires dedicated ( #SBATCH --exclusive ) nodes for your job script or srun command.
+   | At this time, use of the posix2ime library requires dedicated ( #SBATCH --exclusive ) nodes for your job script or srun command.
 
 .. code-block::
 
