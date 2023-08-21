@@ -1,13 +1,7 @@
 Acknowledge
 ===============
 
-To acknowledge the NCSA Delta system in particular, please include the
-following:
+For information on how to properly acknowledge the NCSA Delta system or Delta Project/NCSA Staff see: https://delta.ncsa.illinois.edu/using-delta/citation-acknowledgement-in-publications/
 
-This research is part of the Delta research computing project, which is
-supported by the National Science Foundation (award OCI 2005572), and
-the State of Illinois. Delta is a joint effort of the University of
-Illinois at Urbana-Champaign and its National Center for Supercomputing
-Applications.
 
--  `How to Acknowledge ACCESS <https://access-ci.org/about/>`__
+For information on how to properly acknowledge ACCESS, see: https://access-ci.org/about/
