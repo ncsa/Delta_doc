@@ -4,32 +4,26 @@ Python Environments with Anaconda3 on Delta
 Recent Changes
 ---------------
 
-To address a problem with ``PATH`` ordering when using anaconda3
-modules, a warning in the module was put in place to caution loading an
-anaconda3 module while in a virtual environment, or if ``conda init``
-has been used to modify one's environment.
+To address a problem with ``PATH`` ordering when using anaconda3 modules, a warning in the module was put in place to caution loading an anaconda3 module while in a virtual environment, or if ``conda init`` has been used to modify one's environment.
 
-::
+.. code-block::
 
    (base) [arnoldg@dt-login03 ~]$ module load anaconda3_gpu
    A conda environment has been detected CONDA_PREFIX=
    /sw/external/python/anaconda3 
    anaconda3_gpu is loaded. Consider running conda deactivate and reloading it.
 
-see also:
-https://docs.conda.io/projects/conda/en/latest/configuration.html , if
-you want to disable automatic conda environment activation
+See also: https://docs.conda.io/projects/conda/en/latest/configuration.html, if you want to disable automatic conda environment activation.
 
 Batch Jobs
 ---------------
 
 Batch jobs will honor the commands you execute within them.
-Purge/unload/load modules, or deactivate/activate environments as needed
-for that job.
+Purge/unload/load modules, or deactivate/activate environments as needed for that job.
 
-A clean slate job might resemble:
+A clean slate job might resemble (user has a conda init clause in bashrc):
 
-::
+.. code-block::
 
    conda deactivate
    conda deactivate  # just making sure
@@ -39,10 +33,9 @@ A clean slate job might resemble:
    conda activate base
    # commands to load modules and activate environs
 
-Non-python/conda HPC users would see per-job stderr from the *conda
-deactivate* above:
+Non-python/conda HPC users would see per-job stderr from the *conda deactivate* above (user has never run "conda init bash"):
 
-::
+.. code-block::
 
    [arnoldg@dt-login03 ~]$ conda deactivate
    bash: conda: command not found
@@ -72,20 +65,17 @@ deactivate* above:
 Jupyter with Open OnDemand
 ----------------------------------
 
-Jupyter and jupyter-lab will find the environments in your
-$HOME/.conda/envs -- your login shell should reflect what you want to
-see from Jupyter.
+Jupyter and jupyter-lab will find the environments in your $HOME/.conda/envs -- your login shell should reflect what you want to see from Jupyter.
 
-The list of avail. kernels for Jupyter should be the same as what you
-see from a login shell and python3 (
-https://github.com/Anaconda-Platform/nb_conda_kernels ).
+The list of available kernels for Jupyter should be the same as what you see from a login shell and python3 (https://github.com/Anaconda-Platform/nb_conda_kernels).
 
-**Jupyter needs to be installed in every virtual environment where you
-want to use with Jupyter-lab or Jupyter-notebook.**
+**Jupyter needs to be installed in every virtual environment where you want to use Jupyter-lab or Jupyter-notebook.**
+$ conda install jupyter
 
-**$ conda install jupyter**
 
-::
+**nb_python_kernel**
+
+.. code-block::
 
    [arnoldg@dt-login03 jupyter_notebook_config.d]$ python3 -m nb_conda_kernels list
    [ListKernelSpecs] WARNING | Config option `kernel_spec_manager_class` not recognized by `ListKernelSpecs`.
@@ -101,13 +91,14 @@ want to use with Jupyter-lab or Jupyter-notebook.**
      conda-env-.conda-mynewenv-py    /u/arnoldg/.conda/envs/mynewenv/share/jupyter/kernels/python3
      python3                         /sw/external/python/anaconda3_gpu/share/jupyter/kernels/python3
 
-For debugging purposes, try jupyter-lab from a terminal:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Debugging
+~~~~~~~~~~~
 
-Of interest are the Searching path at the beginning, and the
-nb_conda_kernels outputs.
+For debugging,try jupyter-lab from a terminal:
 
-::
+Of interest are the Searching path at the beginning, and the nb_conda_kernels outputs.
+
+.. code-block::
 
    [arnoldg@dt-login03 jupyter_notebook_config.d]$ jupyter-lab --log-level=0
    [D 2023-02-20 12:48:50.533 ServerApp] Searching ['/u/arnoldg/.jupyter', '/u/arnoldg/.local/etc/jupyter', '/sw/external/python/anaconda3/etc/jupyter', 
@@ -211,7 +202,3 @@ nb_conda_kernels outputs.
    /usr/bin/xdg-open: line 862: w3m: command not found
    xdg-open: no method available for opening 'file:///u/arnoldg/.local/share/jupyter/runtime/jpserver-1287615-open.html'
 
-
-| 
-
-| 
