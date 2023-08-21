@@ -1,27 +1,24 @@
+.. _contain:
+
 Containers
 ==============
 
 Apptainer (formerly Singularity)
 --------------------------------
 
-Container support on Delta is provided by Apptainer/Singularity.
+Container support on Delta is provided by Apptainer.
 
-Docker images can be converted to Singularity sif format via the
-``singularity pull`` command. Commands can be run from within a
-container using ``singularity run`` command (or apptainer run).
+Docker images can be converted to Singularity sif format via the ``singularity pull`` command. 
+Commands can be run from within a container using the ``singularity run`` command (or ``apptainer run``).
 
-If you encounter quota issues with Apptainer/Singularity caching in
-``~/.singularity`` , the environment variable ``SINGULARITY_CACHEDIR``
-can be used to use a different location such as a scratch space.
+If you encounter quota issues with Apptainer caching in ``~/.singularity``, the environment variable ``SINGULARITY_CACHEDIR`` can be used to use a different location such as a scratch space.
 
-Your $HOME is automatically available from containers run via
-Apptainer/Singularity. You can "pip3 install --user" against a
-container's python, setup virtualenv's or similar while useing a
-containerized application. Just run the container's /bin/bash to get a
-Apptainer> prompt (or use *apptainer shell <container>* for a quick look
-from a login node ). Here's an srun example of that with tensorflow:
+Your ``$HOME`` is automatically available from containers run via Apptainer. 
+You can "pip3 install --user" against a container's python, setup virtual environments, or similar while using a containerized application. 
+Just run the container's /bin/bash to get an Apptainer> prompt (or use *apptainer shell <container>* for a quick look from a login node). 
+Below is an srun example of that with TensorFlow:
 
-::
+.. code-block::
 
    $ srun \
     --mem=32g \
@@ -44,17 +41,16 @@ from a login node ). Here's an srun example of that with tensorflow:
    Apptainer> python --version
    Python 3.8.10
 
-| 
-
 NVIDIA NGC Containers
 ---------------------
 
-Delta provides NVIDIA NGC Docker containers that we have pre-built with
-Singularity/Apptainer. Look for the latest binary containers in
-**/sw/external/NGC/** . The containers are used as shown in the sample
-scripts below:
+Delta provides NVIDIA NGC Docker containers that are pre-built with Apptainer. Look for the latest binary containers in **/sw/external/NGC/** . 
+The containers are used as shown in the sample scripts below:
 
-::
+PyTorch Example Script
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
 
    #!/bin/bash
    #SBATCH --mem=64g
@@ -81,9 +77,10 @@ scripts below:
    apptainer run --nv \
     /sw/external/NGC/pytorch:22.02-py3 python3 tensor_gpu.py
 
-| 
+TensorFlow Example Script
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block::
 
    #!/bin/bash
    #SBATCH --mem=64g
@@ -114,7 +111,7 @@ scripts below:
 Container list (as of March, 2022)
 ----------------------------------
 
-::
+.. code-block::
 
    caffe:20.03-py3 caffe2:18.08-py3
    catalog.txt
@@ -149,18 +146,18 @@ Container list (as of March, 2022)
    theano:18.08
    torch:18.08-py2
 
-see also: https://catalog.ngc.nvidia.com/orgs/nvidia/containers
+See also: https://catalog.ngc.nvidia.com/orgs/nvidia/containers
 
 AMD Infinity Hub containers for MI100
 -------------------------------------
 
-The AMD node in partition gpuMI100x8 (-interactive) will run containers
-from the `AMD Infinity
-Hub <https://www.amd.com/en/technologies/infinity-hub>`__. The Delta
-team has pre loaded the following containers in **/sw/external/MI100**
-and will retrieve others upon request.
+The AMD node in partition gpuMI100x8 (-interactive) will run containers from the `AMD Infinity Hub <https://www.amd.com/en/technologies/infinity-hub>`_.
+The Delta team has pre-loaded the following containers in **/sw/external/MI100** and will retrieve others upon request.
 
-::
+AMD MI100 Containers in /sw/external/MI100
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
 
    cp2k_8.2.sif
    gromacs_2021.1.sif
@@ -172,9 +169,10 @@ and will retrieve others upon request.
    pytorch_rocm5.0_ubuntu18.04_py3.7_pytorch_1.10.0.sif
    tensorflow_rocm5.0-tf2.7-dev.sif
 
-A sample batch script for pytorch resembles:
+Sample Batch Script for PyTorch 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block::
 
    #!/bin/bash
    #SBATCH --mem=64g
@@ -207,29 +205,21 @@ A sample batch script for pytorch resembles:
 
    exit
 
-| 
-
 Other Containers
 ----------------
 
 Extreme-scale Scientific Software Stack (E4S)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The E4S container with GPU (cuda and rocm) support is provided for users
-of specific ECP packages made available by the E4S project
-(https://e4s-project.github.io/). The singularity image is available as
-:
+The E4S container with GPU (cuda and ROCm) support is provided for users of specific Exascale Computing Project (ECP) packages made available by the E4S project (https://e4s-project.github.io/). The singularity image is available as:
 
-::
+.. code-block::
 
    /sw/external/E4S/e4s-gpu-x86_64.sif
-       
 
-::
+To use E4S with NVIDIA GPUs:
 
-   To use E4S with NVIDIA GPUs
-
-::
+.. code-block::
 
    $ srun --account=account_name --partition=gpuA100-interactive \
      --nodes=1 --gpus-per-node=1 --tasks=1 --tasks-per-node=1 \
@@ -238,10 +228,7 @@ of specific ECP packages made available by the E4S project
    $ singularity exec --cleanenv /sw/external/E4S/e4s-gpu-x86_64.sif \
      /bin/bash --rcfile /etc/bash.bashrc
 
-| 
+The Spack package inside of the image will interact with a local Spack installation. 
+If ~/.spack directory exists, it might need to be renamed.
 
-The spack package inside of the image will interact with a local spack
-installation. If ~/.spack directory exists, it might need to be renamed.
-
-More information can be found at
-https://e4s-project.github.io/download.html
+More information can be found at: https://e4s-project.github.io/download.html
