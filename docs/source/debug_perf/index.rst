@@ -4,11 +4,11 @@ Debugging And Performance Analysis
 AMDuProf Guide
 -----------------
 
-run and collect data
+Run and Collect Data
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Run a batch job and collect data:
 
-::
+.. code-block::
 
    ...
    #SBATCH --constraint=perf  # perf,nvperf for gpu nodes
@@ -22,13 +22,12 @@ Run a batch job and collect data:
    srun AMDuProfCLI collect --config assess  -o `pwd`/uprof_assess  `pwd`/stream.22gb
    srun AMDuProfCLI collect --config assess_ext  -o `pwd`/uprof_assess_ext  `pwd`/stream.22gb
 
-generate report
+Generate Report
 ~~~~~~~~~~~~~~~~~
 
-After collecting data from a batch job, generate reports with the
-AMDuProfCLI report option.
+After collecting data from a batch job, generate reports with the AMDuProfCLI report option.
 
-::
+.. code-block::
 
    [arnoldg@dt-login03 uprof_tbp]$ export PATH=/sw/external/amd/AMDuProf_Linux_x64_4.0.341/bin:$PATH
    [arnoldg@dt-login03 uprof_tbp]$ AMDuProfCLI report -i AMDuProf-stream-TBP_Dec-19-2022_09-40-27/
@@ -43,30 +42,25 @@ AMDuProfCLI report option.
 
    Generated report file: /projects/bbka/slurm_test_scripts/cpu/stream/uprof_tbp/AMDuProf-stream-TBP_Dec-19-2022_09-40-27/report.csv
 
-visualize and explore report data
+Visualize and Explore Report Data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can view the data in AMDuProf on Delta or locally on a copy you
-install at your desktop system. If you install locally, you may need to
-replicate some paths or add paths to the binary in order to get full
-functionality.
+You can view the data in AMDuProf on Delta or locally on a copy you install at your desktop system. 
+If you install locally, you may need to replicate some paths or add paths to the binary in order to get full functionality.
 
-Launch AMDuProf ( no CLI suffice for the GUI ), and import the profile
-session from a completed batch job run with AMDuProfCLI collect ...
+Launch AMDuProf (no CLI suffice for the GUI) and import the profile session from a completed batch job run with AMDuProfCLI collect.
 
 ..  image:: ../aux_pages/images/amduprof/01_uprof_import_profile_session.png
     :alt: import profile session
     :width: 1000px
     
-The summary view give a high level overview of how time was spent. This
-is the tbp time-based-profile summary.
+The summary view gives a high-level overview of how time was spent. This is the tbp time-based-profile summary.
 
 ..  image:: ../aux_pages/images/amduprof/02_uprof_summary.png
     :alt: summary view
     :width: 1000px
 
-The Analyze tab shows hot routines or lines in more detail. The tbp ,
-assess, and inst_access Analyze views follow.
+The Analyze tab shows hot routines or lines in more detail. The tbp, assess, and inst_access Analyze views follow.
 
 ..  image:: ../aux_pages/images/amduprof/03_uprof_analyze.png
     :alt: analyze tab
@@ -80,15 +74,13 @@ assess, and inst_access Analyze views follow.
     :alt: inst_access
     :width: 1000px
 
-Selecting one of the lines or routines will take you to the Sources view
-where you can see the assembly used in that portion of code.
+Selecting one of the lines or routines will take you to the Sources view where you can see the assembly used in that portion of code.
 
 ..  image:: ../aux_pages/images/amduprof/06_uprof_sources.png
     :alt: sources view
     :width: 1000px
 
-The Session Info is under the Summary tab and displays more detail about
-the profiling session.
+The Session Info is under the Summary tab and displays more detail about the profiling session.
 
 ..  image:: ../aux_pages/images/amduprof/07_uprof_session_info.png
     :alt: session summary info
@@ -101,44 +93,36 @@ https://www.amd.com/content/dam/amd/en/documents/developer/uprof-v4.0-gaGA-user-
 NVIDIA Nsight Systems
 -------------------------
 
-Installation (Delta system, rgpu02 preliminary documentation)
+Installation (Delta System, rgpu02 Preliminary Documentation)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-For admins/sw team: Use **Spack** to install cuda, and the nsys command
-for Nsight Systems is included.
+For admins/sw team: Use **Spack** to install cuda, and the nsys command for Nsight Systems is included.
 
-| 
-
-::
+.. code-block::
 
    [arnoldg@rgpu02 rgpu02]$ module load cuda
    [arnoldg@rgpu02 rgpu02]$ which nsys
    ~/rgpu02/spack/opt/spack/linux-rhel8-zen/gcc-8.5.0/cuda-11.6.0-7ortdmqooz7ikzxpl4dvsqhqiflglvsa/bin/nsys
    [arnoldg@rgpu02 rgpu02]$ 
 
-Installation (NVIDIA Nsight Systems client on local desktop/laptop)
+Installation (NVIDIA Nsight Systems Client on Local Desktop/Laptop)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Open https://developer.nvidia.com/tools-overview and navigate to the
-*Developer Tools Downloads* button, then select *Nsight Systems* and
-your operating system. If you don't have an account at
-developer.nvidia.com set one up when prompted and when you have
-completed the forms, your download will begin. Install the application
-on your local machine. You will download output files from the server
-command line application and use the GUI locally on your laptop.
+Open https://developer.nvidia.com/tools-overview and navigate to the *Developer Tools Downloads* button, then select *Nsight Systems* and your operating system. 
+If you don't have an account at developer.nvidia.com set one up when prompted and when you have completed the forms, your download will begin. 
+Install the application on your local machine. 
+You will download output files from the server command line application and use the GUI locally on your laptop.
 
 Run application on Delta
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block::
 
    $ srun nsys profile -o /path/to/mynysys.out --stats=true ./a.out]]>
    Run application on Delta
 
    $ srun nsys profile -o /path/to/mynysys.out --stats=true ./a.out
 
-| 
-
-::
+.. code-block::
 
    [arnoldg@dt-login03 gromacs]$ cat nsys_wrap.sh 
    #!/bin/bash
@@ -149,9 +133,7 @@ Run application on Delta
      "$@"
    fi
 
-| 
-
-::
+.. code-block::
 
    #SBATCH --constraint=perf,nvperf
    ...
@@ -161,7 +143,7 @@ Run application on Delta
 
    # see https://docs.nvidia.com/nsight-systems/UserGuide/index.html#cli-analyze-mpi-codes
 
-MPI rank example result (viewing with nsight on local desktop )
+MPI Rank Example Result (Viewing with Nsight on Local Desktop )
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ..  image:: ../aux_pages/images/nvidia_nsight/01_gms_nsys.png
@@ -172,12 +154,12 @@ MPI rank example result (viewing with nsight on local desktop )
     :alt: summary
     :width: 1000px
 
-Copy resultant files to your local laptop ( Downloads/ or Documents/ )
+Copy Resultant Files to Your Local Laptop (Downloads/ or Documents/)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-scp is shown below, you could also use globus online, sftp, or an sshfs
-mount from your laptop.
 
-::
+scp is shown below, you could also use globus online, sftp, or an sshfs mount from your laptop.
+
+.. code-block::
 
    # Delta
    [arnoldg@rgpu02 rgpu02]$ ls /tmp/nsys*
@@ -218,9 +200,8 @@ mount from your laptop.
 Open NVIDIA Nsight Systems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Under the File menu, select "open" then navigate to your Downloads/
-folder and select the nsys\* file of interest (nays-report-b26d.nsys-rep
-in this example). Explore the data in the GUI application.
+Under the File menu, select "open" then navigate to your Downloads/ folder and select the nsys\* file of interest (nays-report-b26d.nsys-rep in this example). 
+Explore the data in the GUI application.
 
 ..  image:: ../aux_pages/images/nvidia_nsight/03_nsight-systems-timeline.jpg
     :alt: timeline
@@ -230,9 +211,7 @@ in this example). Explore the data in the GUI application.
     :alt: analysis
     :width: 1000px
 
-See also: `NVTX source code annotations blog article at
-NVIDIA <https://developer.nvidia.com/blog/nvidia-tools-extension-api-nvtx-annotation-tool-for-profiling-code-in-python-and-c-c/>`__
-(can annotate c/c++/python GPU or CPU code)
+See also: `NVTX source code annotations blog article at NVIDIA <https://developer.nvidia.com/blog/nvidia-tools-extension-api-nvtx-annotation-tool-for-profiling-code-in-python-and-c-c/>`__ (can annotate c/c++/python GPU or CPU code)
 
 Python with NVTX
 ~~~~~~~~~~~~~~~~~~~~
@@ -240,7 +219,7 @@ Python with NVTX
 Install:
 $$$$$$$$$$$$$
 
-::
+.. code-block::
 
    [arnoldg@rgpu02 nvtx]$ module load python cuda
    [arnoldg@rgpu02 nvtx]$ C_INCLUDE_PATH=$CUDA_HOME/include pip install nvtx
@@ -260,7 +239,8 @@ $$$$$$$$$$$$$
 
 Run with nsys cli:
 ~~~~~~~~~~~~~~~~~~~~~~~
-::
+
+.. code-block::
 
    [arnoldg@rgpu02 nvtx]$ nsys profile -o nvtx_simple.profile --stats=true ./nvtx_simple.py 
 
@@ -317,19 +297,17 @@ Run with nsys cli:
        /tmp/nsys-report-e498.sqlite
    [arnoldg@rgpu02 nvtx]$ 
 
-| 
-
-::
+.. code-block::
 
    nsys profile --gpu-metrics-device=all \
        --gpu-metrics-frequency=20000    # get metrics from the cuda libs/api
 
    ncu --metrics "regex:.*"    # get all gpu metrics from the hardware
 
-Delta script and nsight-systems view of the resulting report
+Delta Script and Nsight-systems View of the Resulting Report
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block::
 
    #!/bin/bash
    #SBATCH --job-name="numba_profile"
@@ -360,28 +338,23 @@ Delta script and nsight-systems view of the resulting report
 
    dcgmi profile --resume
 
-(Transferred the report1.nsys-rep back to local system using Globus
-Online , sftp ... )
+(Transferred the report1.nsys-rep back to local system using Globus Online , sftp ... )
 
 ..  image:: ../aux_pages/images/nvidia_nsight/05_nsight-systems-win.png
     :alt: window
     :width: 1000px
 
-Nsight-systems setup on local workstation to use with Delta
+Nsight-systems Setup on Local Workstation to Use with Delta
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Login to: https://developer.nvidia.com/nsight-systems (make an account
-if you need to), and download the client for your MacOS, Windows, or
-Linux local system.
+Login to: https://developer.nvidia.com/nsight-systems (make an account if you need to), and download the client for your MacOS, Windows, or Linux local system.
 
-You can use Globus Online, rsync, sftp, or sshfs (linux) to transfer
-files (or view files as local filesystem mounts in the case of sshfs )
-with the local nsight-systems client.
+You can use Globus Online, rsync, sftp, or sshfs (linux) to transfer files (or view files as local filesystem mounts in the case of sshfs) with the local nsight-systems client.
 
-sshfs mount example for linux box to Delta
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sshfs Mount Example for Linux Box to Delta
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block::
 
    galen@galen-HP-ProBook-455-G6:~$ sshfs arnoldg@dt-login03.delta.ncsa.illinois.edu:/projects/bbka delta_projects/
    arnoldg@dt-login03.delta.ncsa.illinois.edu's password: 
@@ -399,45 +372,31 @@ sshfs mount example for linux box to Delta
    Filesystem                                                 Size  Used Avail Use% Mounted on
    arnoldg@dt-login03.delta.ncsa.illinois.edu:/projects/bbka 1000T   60T  941T   6% /home/galen/delta_projects
 
-Launch nsight-systems and define a target under the default opening
-view. Even if you cannot get nsight-systems to ssh to the target, you
-need to define it so that nsight-systems will present you with the
-.nsys-rep file type when you try to open a profile from delta that was
-transferred to local via GO/sftp/rsync or viewable via the sshfs fuse
-mount like shown above:
+Launch nsight-systems and define a target under the default opening view. 
+Even if you cannot get nsight-systems to ssh to the target, you need to define it so that nsight-systems will present you with the .nsys-rep file type when you try to open a profile from delta that was transferred to local via GO/sftp/rsync or viewable via the sshfs fuse mount like shown above:
 
 ..  image:: ../aux_pages/images/nvidia_nsight/06_nsight-systems-project-target.png
     :alt: project target
     :width: 1000px
 
-Then open the profile report generated from an *srun nsys* ... at Delta.
-(navigate to Download or the live sshfs fuse mount )
+Then open the profile report generated from an *srun nsys* ... at Delta (navigate to Download or the live sshfs fuse mount).
 
 ..  image:: ../aux_pages/images/nvidia_nsight/07-nsight-systems-file-open-sshfs.png
     :alt: profile report
     :width: 1000px
 
-Proceed to use nsight-systems. A stats view of the GPU Summary is shown.
-This is usually a good performance analysis starting point showing
-utilization of kernels vs times to transfer data between the host
-computer and the gpu accelerator.
+Proceed to use nsight-systems. 
+A stats view of the GPU Summary is shown. 
+This is usually a good performance analysis starting point showing utilization of kernels vs times to transfer data between the host computer and the gpu accelerator.
 
 ..  image:: ../aux_pages/images/nvidia_nsight/08-nsight-systems-stats-system-view.png
     :alt: GPU stats summary
     :width: 1000px
 
-| 
-
 https://docs.nvidia.com/cuda/cuda-c-programming-guide
 
-`User Guide :: Nsight Systems Documentation
-(nvidia.com) <https://docs.nvidia.com/nsight-systems/UserGuide/index.html>`__
-(nsys higher level and cuda api )
+`User Guide :: Nsight Systems Documentation (nvidia.com) <https://docs.nvidia.com/nsight-systems/UserGuide/index.html>`_ (nsys higher level and cuda api )
 
-`Nsight Compute CLI :: Nsight Compute Documentation
-(nvidia.com) <https://docs.nvidia.com/nsight-compute/NsightComputeCli/index.html>`__
-( ncu lower level and counters )
+`Nsight Compute CLI :: Nsight Compute Documentation (nvidia.com) <https://docs.nvidia.com/nsight-compute/NsightComputeCli/index.html>`_ (ncu lower level and counters )
 
-`GitHub -
-quasiben/nvtx-examples <https://github.com/quasiben/nvtx-examples>`__ (
-sample python test codes )
+`GitHub - quasiben/nvtx-examples <https://github.com/quasiben/nvtx-examples>`_ (sample python test codes )
