@@ -1,29 +1,21 @@
 Installed Software
 ======================
 
-Delta software is provisioned, when possible, using spack to produce
-modules for use via the lmod based module system. Select NVIDIA NGC
-containers are made available (see the container section below) and are
-periodically updated from the NVIDIA NGC site. An automated list of
-available software can be found on the ACCESS website.
+Delta software is provisioned, when possible, using Spack to produce modules for use via the lmod based module system. 
+Select NVIDIA NGC containers are made available (see the container section) and are periodically updated from the NVIDIA NGC site. 
+An automated list of available software can be found on the ACCESS website.
 
-modules/lmod
+Modules/Lmod
 -----------------
 
-Delta provides two sets of modules and a variety of compilers in each
-set. The default environment is **modtree/gpu** which loads a recent
-version of gnu compilers , the openmpi implementation of MPI, and cuda.
-The environment with gpu support will build binaries that run on both
-the gpu nodes (with cuda) and cpu nodes (potentially with warning
-messages because those nodes lack cuda drivers). For situations where
-the same version of software is to be deployed on both gpu and cpu nodes
-but with separate builds, the **modtree/cpu** environment provides the
-same default compiler and MPI but without cuda. Use module spider
-package_name to search for software in lmod and see the steps to load it
-for your environment.
+Delta provides two sets of modules and a variety of compilers in each set. 
+The default environment is **modtree/gpu** which loads a recent version of gnu compilers, the openmpi implementation of MPI, and CUDA.
+The environment with GPU support will build binaries that run on both the GPU nodes (with CUDA) and CPU nodes (potentially with warning messages because those nodes lack CUDA drivers). 
+For situations where the same version of software is to be deployed on GPU and CPU nodes but with separate builds, the **modtree/cpu** environment provides the same default compiler and MPI but without CUDA. 
+Use module spider package_name to search for software in Lmod and see the steps to load it for your environment.
 
 +----------------------------------+--------------------------------------------------------------------------------------+
-| module (lmod) Command            | Example                                                                              |
+| Module (Lmod) Command            | Example                                                                              |
 +==================================+======================================================================================+
 |                                  |                                                                                      |
 |                                  |   .. code-block::                                                                    |
@@ -75,38 +67,33 @@ for your environment.
 |                                  |                                                                                      |
 +----------------------------------+--------------------------------------------------------------------------------------+
 
-see also: `User Guide for Lmod <https://lmod.readthedocs.io/en/latest/010_user.html>`_.
+See also: `User Guide for Lmod <https://lmod.readthedocs.io/en/latest/010_user.html>`_.
 
-Please open a service request ticket by sending email to
-help@ncsa.illinois.edu for help with software not currently installed on
-the Delta system. For single user or single project use cases the
-preference is for the user to use the spack software package manager to
-install software locally against the system spack installation as
-documented <here>. Delta support staff are available to provide limited
-assistance. For general installation requests the Delta project office
-will review requests for broad use and installation effort.
+Please open a service request ticket (link to Help) for help with software not currently installed on the Delta system. 
 
-Intel_AI_toolkit
-~~~~~~~~~~~~~~~~~
+For single user or single project use cases the preference is for the user to use the Spack software package manager to install software locally against the system Spack installation. 
+Delta support staff are available to provide limited assistance. 
 
-The Intel AI toolkit module contains a subset of what you'll find in
-anaconda_cpu. It contains conda environments optimized for cpu
-execution: pytorch & tensorflow. We have seen up to 2x speedup when
-using the Intel_AI_toolkit compared to the stock anaconda_cpu. For best
-results, set OMP_NUM_THREADS to the number of cores you'd like to use (
---cpus-per-task in slurm ). See also: https://www.intel.com/content/www/us/en/developer/tools/oneapi/ai-analytics-toolkit.html.
+For general installation requests, the Delta project office will review requests for broad use and installation effort.
 
-anaconda3_gpu (for cuda) , anaconda3_mi100 (for rocm)
+Intel AI Analytics Toolkit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Intel AI Analytics Toolkit (AI Kit) module contains a subset of what you will find in anaconda_cpu. 
+It contains conda environments optimized for CPU execution: PyTorch & TensorFlow. 
+We have seen up to 2x speedup when using the AI Kit compared to the stock anaconda_cpu. 
+For best results, set OMP_NUM_THREADS to the number of cores you'd like to use ( --cpus-per-task in Slurm). 
+See also: https://www.intel.com/content/www/us/en/developer/tools/oneapi/ai-analytics-toolkit.html.
+
+anaconda3_gpu (for CUDA) , anaconda3_mi100 (for ROCm)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Similar to the setup for anaconda_cpu, we have gpu versions of anaconda3
-(module load anaconda3_gpu) and have installed pytorch and tensorflow
-cuda aware python modules into these versions. You may use these module
-when working with the gpu nodes. See *conda list* after loading the
-module to review what is already installed. As with anaconda3_cpu, let
-Delta staff know if there are generally useful modules you would like us
-to try to install for the broader community. A sample tensorflow test
-script:
+Similar to the setup for anaconda_cpu, Delta has GPU versions of anaconda3 (module load anaconda3_gpu) and installed PyTorch and TensorFlow
+CUDA aware python modules into these versions. 
+You may use these modules when working with the GPU nodes. 
+See *conda list* after loading the module to review what is already installed. 
+As with anaconda3_cpu, notify Delta staff if there are generally useful modules you would like installed for the broader community. 
+A sample TensorFlow test script:
 
 .. code-block::
 
@@ -139,20 +126,20 @@ script:
      tf_gpu.py
    exit
 
-Jupyter notebooks
+.. _jupyter:
+
+Jupyter Notebooks
 ~~~~~~~~~~~~~~~~~~~
 
-The Detla Open OnDemand portal provides an easier way to start a Jupyter
-notebook. Please see to access the portal.
+The Detla Open OnDemand portal provides an easier way to start a Jupyter notebook. Please see Open OnDemand to access the portal.
 
-The jupyter notebook executables are in your $PATH after loading the
-anaconda3 module. *Don't run jupyter on the shared login nodes.*
-Instead, follow these steps to attach a jupyter notebook running on a
-compute node to your local web browser:
+The Jupyter notebook executables are in your ``$PATH`` after loading the anaconda3 module. 
+**Do not run Jupyter on the shared login nodes.**
+Instead, follow these steps to attach a Jupyter notebook running on a compute node to your local web browser:
 
-#. Start a jupyter job via srun and note the hostname (*you pick the port number for --port*).
+#. Start a Jupyter job via srun and note the hostname (*you pick the port number for --port*).
 
-   | **srun jupyter ( anaconda3_cpu on a cpu node ):**
+   | **srun Jupyter ( anaconda3_cpu on a CPU node ):**
    
    .. code-block::
       
@@ -167,9 +154,9 @@ compute node to your local web browser:
 
    Note the internal hostname in the cluster for step 2. You will use the second URL in step 3.
 
-   When using a container with a gpu node, run the container's jupyter-notebook:
+   When using a container with a GPU node, run the container's jupyter-notebook:
 
-   | **NGC container for gpus, jupyter-notebook, bind a directory:**
+   | **NGC container for GPUs, jupyter-notebook, bind a directory:**
 
    .. code-block::
 
@@ -184,7 +171,7 @@ compute node to your local web browser:
       ...
       http://hostname:8888/?token=73d96b99f2cfc4c3932a3433d1b8003c052081c5411795d5
 
-   In step 3, to start the notebook in your browser, replace http://hostname:8888/ with http://127.0.0.1:8991/   (the port number you selected with --port=)
+   In step 3, to start the notebook in your browser, replace http://hostname:8888/ with http://127.0.0.1:8991/ (the port number you selected with --port=)
 
    You may not see the job hostname when running with a container, find it with squeue:
 
@@ -196,11 +183,11 @@ compute node to your local web browser:
                    JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
                   156071 gpuA100x4 singular  arnoldg  R       1:00      1 gpua045
 
-   Then specifu the host your job is using in the next step (gpua045 for example ).
+   Then specify the host your job is using in the next step (gpua045, for example).
 
 #. From your local desktop or laptop create an SSH tunnel to the compute node via a login node of Delta.
 
-   | **ssh tunnel for jupyter:**
+   | **SSH tunnel for Jupyter:**
 
    .. code-block::
 
@@ -210,7 +197,7 @@ compute node to your local web browser:
 
    Authenticate with your login and 2-factor as usual.
 
-#. Paste the second URL (containing 127.0.0.1:port_number and the token string) from step 1 into your browser and you will be connected to the jupyter instance running on your compute node of Delta.
+#. Paste the second URL (containing 127.0.0.1:port_number and the token string) from step 1 into your browser and you will be connected to the Jupyter instance running on your compute node of Delta.
 
    .. image:: jupyter_screenshot.jpg
       :alt: Jupyter screenshot
@@ -223,7 +210,7 @@ Python (a recent or latest version)
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 If you do not need all of the extra modules provided by Anaconda, use the basic python installation under the gcc module. 
-You can add modules via "*pip3 install --user <modulename>*", `setup virtual environments <https://packaging.python.org/en/latest/tutorials/installing-packages/>`_, and customize as needed for your workflow but starting from a smaller installed base of python than Anaconda.
+You can add modules via "*pip3 install --user <modulename>*", `setup virtual environments <https://packaging.python.org/en/latest/tutorials/installing-packages/>`_, and customize, as needed, for your workflow starting from a smaller installed base of python than Anaconda.
 
 .. code-block::
 
@@ -236,7 +223,7 @@ You can add modules via "*pip3 install --user <modulename>*", `setup virtual env
      1) modtree/gpu   3) gcc/11.2.0    5) ucx/1.11.2      7) python/3.10.4
      2) default       4) cuda/11.6.1   6) openmpi/4.1.2
 
-This is the list of modules available in the python from "pip3 list":
+This is the list of modules available in python from "pip3 list":
 
 .. code-block::
 
@@ -258,12 +245,11 @@ This is the list of modules available in the python from "pip3 list":
    setuptools         58.1.0
    urllib3            1.26.9
 
-R
--------------------------
+Python
+----------
 .. toctree::
    :maxdepth: 2
    
    python/index
    python_env/index
-   R/index
    
