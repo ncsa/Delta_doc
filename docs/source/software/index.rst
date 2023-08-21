@@ -23,8 +23,8 @@ package_name to search for software in lmod and see the steps to load it
 for your environment.
 
 +----------------------------------+--------------------------------------------------------------------------------------+
-| module (lmod) command            | example                                                                              |
-+----------------------------------+--------------------------------------------------------------------------------------+
+| module (lmod) Command            | Example                                                                              |
++==================================+======================================================================================+
 |                                  |                                                                                      |
 |                                  |   .. code-block::                                                                    |
 | module list                      |                                                                                      |
@@ -150,94 +150,82 @@ anaconda3 module. *Don't run jupyter on the shared login nodes.*
 Instead, follow these steps to attach a jupyter notebook running on a
 compute node to your local web browser:
 
-+-----------------------+---------------------------------------------------------------------------------------------------------------+
-| 1) Start a jupyter    |  srun jupyter ( anaconda3_cpu on a cpu node ):                                                                |
-| job via srun and note |                                                                                                               |
-| the hostname (*you    |  .. code-block::                                                                                              |
-| pick the port number  |                                                                                                               |
-| for --port*).         |     $ srun --account=wxyz-delta-cpu --partition=cpu-interactive \                                             |
-|                       |       --time=00:30:00 --mem=32g \                                                                             |
-|                       |       jupyter-notebook --no-browser \                                                                         |
-|                       |       --port=8991 --ip=0.0.0.0                                                                                |
-|                       |     ...                                                                                                       |
-|                       |         Or copy and paste one of these URLs:                                                                  |
-|                       |             http://cn093.delta.internal.ncsa.edu:8891/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea |
-|                       |          or http://127.0.0.1:8991/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea                     |
-|                       |                                                                                                               |
-|                       |  Use the 2nd URL in step 3.  Note the internal hostname in the cluster for step 2.                            |
-|                       |                                                                                                               |
-|                       |  When using a container with a gpu node, run the container's jupyter-notebook:                                |
-|                       |                                                                                                               |
-|                       |  NGC container for gpus, jupyter-notebook, bind a directory                                                   |
-|                       |                                                                                                               |
-|                       |  .. code-block::                                                                                              |
-|                       |                                                                                                               |
-|                       |     # container notebook example showing how to access a directory outside                                    |
-|                       |     # of $HOME ( /projects/bbka in the example )                                                              |
-|                       |     $ srun --account=wxyz-delta-gpu --partition=gpuA100x4-interactive \                                       |
-|                       |       --time=00:30:00 --mem=64g --gpus-per-node=1 \                                                           |
-|                       |       singularity run --nv --bind /projects/bbka \                                                            |
-|                       |       /sw/external/NGC/pytorch:22.02-py3 jupyter-notebook \                                                   |
-|                       |       --notebook-dir /projects/wxyz \                                                                         |
-|                       |       --no-browser --port=8991 --ip=0.0.0.0                                                                   |
-|                       |     ...                                                                                                       |
-|                       |     http://hostname:8888/?token=73d96b99f2cfc4c3932a3433d1b8003c052081c5411795d5                              |
-|                       |                                                                                                               |
-|                       |  In step 3 to start the notebook in your browser, replace http://hostname:8888/ with http://127.0.0.1:8991/   |
-|                       |    ( the port number you selected with --port= )                                                              |
-|                       |                                                                                                               |
-|                       |  You may not see the job hostname when running with a container, find it with squeue:                         |
-|                       |                                                                                                               |
-|                       |  squeue -u $USER                                                                                              |
-|                       |                                                                                                               |
-|                       |  .. code-block::                                                                                              |
-|                       |                                                                                                               |
-|                       |     $ squeue -u $USER                                                                                         |
-|                       |                  JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)                      |
-|                       |                 156071 gpuA100x4 singular  arnoldg  R       1:00      1 gpua045                               |
-|                       |                                                                                                               |
-|                       |  Then specify the host your job is using in the next step (gpua045 for example ).                             |
-|                       |                                                                                                               |
-|                       |                                                                                                               |
-+-----------------------+---------------------------------------------------------------------------------------------------------------+
-| 2) From your local    |                                                                                                               |
-| desktop or laptop     |  ssh tunnel for jupyter                                                                                       |
-| create an ssh tunnel  |                                                                                                               |
-| to the compute node   |  .. code-block::                                                                                              |
-| via a login node of   |                                                                                                               |
-| delta.                |     $ ssh -l my_delta_username \                                                                              |
-|                       |       -L 127.0.0.1:8991:cn093.delta.internal.ncsa.edu:8991 \                                                  |
-|                       |       dt-login.delta.ncsa.illinois.edu                                                                        |
-|                       |                                                                                                               |
-|                       |  Authenticate with your login and 2-factor as usual.                                                          |
-|                       |                                                                                                               |
-+-----------------------+---------------------------------------------------------------------------------------------------------------+
-| 3) Paste the 2nd      |                                                                                                               |
-|    URL (containing    |                                                                                                               |
-|    127.0.0.1:         |                                                                                                               |
-|    *port_number*      |                                                                                                               |
-|    and the token      |                                                                                                               |
-|    string) from step  |                                                                                                               |
-|    1 into your        |                                                                                                               |
-|    browser and you    |                                                                                                               |
-|    will be connected  |                                                                                                               |
-|    to the jupyter     |                                                                                                               |
-|    instance running   |                                                                                                               |
-|    on your compute    |                                                                                                               |
-|    node of Delta.     |                                                                                                               |
-+-----------------------+---------------------------------------------------------------------------------------------------------------+
+#. Start a jupyter job via srun and note the hostname (*you pick the port number for --port*).
+
+   | **srun jupyter ( anaconda3_cpu on a cpu node ):**
+   
+   .. code-block::
+      
+      $ srun --account=wxyz-delta-cpu --partition=cpu-interactive \
+        --time=00:30:00 --mem=32g \
+        jupyter-notebook --no-browser \
+        --port=8991 --ip=0.0.0.0
+      ...
+          Or copy and paste one of these URLs:
+              http://cn093.delta.internal.ncsa.edu:8891/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
+           or http://127.0.0.1:8991/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
+
+   Note the internal hostname in the cluster for step 2. You will use the second URL in step 3.
+
+   When using a container with a gpu node, run the container's jupyter-notebook:
+
+   | **NGC container for gpus, jupyter-notebook, bind a directory:**
+
+   .. code-block::
+
+      # container notebook example showing how to access a directory outside
+      # of $HOME ( /projects/bbka in the example )
+      $ srun --account=wxyz-delta-gpu --partition=gpuA100x4-interactive \
+        --time=00:30:00 --mem=64g --gpus-per-node=1 \
+        singularity run --nv --bind /projects/bbka \
+        /sw/external/NGC/pytorch:22.02-py3 jupyter-notebook \
+        --notebook-dir /projects/wxyz \
+        --no-browser --port=8991 --ip=0.0.0.0
+      ...
+      http://hostname:8888/?token=73d96b99f2cfc4c3932a3433d1b8003c052081c5411795d5
+
+   In step 3, to start the notebook in your browser, replace http://hostname:8888/ with http://127.0.0.1:8991/   (the port number you selected with --port=)
+
+   You may not see the job hostname when running with a container, find it with squeue:
+
+   | **squeue -u $USER:**
+
+   .. code-block::
+
+      $ squeue -u $USER
+                   JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+                  156071 gpuA100x4 singular  arnoldg  R       1:00      1 gpua045
+
+   Then specifu the host your job is using in the next step (gpua045 for example ).
+
+#. From your local desktop or laptop create an SSH tunnel to the compute node via a login node of Delta.
+
+   | **ssh tunnel for jupyter:**
+
+   .. code-block::
+
+      $ ssh -l my_delta_username \
+        -L 127.0.0.1:8991:cn093.delta.internal.ncsa.edu:8991 \
+        dt-login.delta.ncsa.illinois.edu
+
+   Authenticate with your login and 2-factor as usual.
+
+#. Paste the second URL (containing 127.0.0.1:port_number and the token string) from step 1 into your browser and you will be connected to the jupyter instance running on your compute node of Delta.
+
+   .. image:: jupyter_screenshot.jpg
+      :alt: Jupyter screenshot
+      :width: 700
+
+   .. image:: jupyter_logo.png
+      :alt: Jupyter logo
 
 Python (a recent or latest version)
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-If you do not need all of the extra modules provided by Anaconda, use
-the basic python installation under the gcc module. You can add modules
-via "*pip3 install --user <modulename>*", `setup virtual
-environments <https://packaging.python.org/en/latest/tutorials/installing-packages/>`__,
-and customize as needed for your workflow but starting from a smaller
-installed base of python than Anaconda.
+If you do not need all of the extra modules provided by Anaconda, use the basic python installation under the gcc module. 
+You can add modules via "*pip3 install --user <modulename>*", `setup virtual environments <https://packaging.python.org/en/latest/tutorials/installing-packages/>`_, and customize as needed for your workflow but starting from a smaller installed base of python than Anaconda.
 
-::
+.. code-block::
 
    $ module load gcc python
    $ which python
@@ -250,7 +238,7 @@ installed base of python than Anaconda.
 
 This is the list of modules available in the python from "pip3 list":
 
-::
+.. code-block::
 
    Package            Version
    ------------------ ---------
