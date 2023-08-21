@@ -46,9 +46,7 @@ Following: https://www.sdsc.edu/education_and_training/tutorials1/visit.html, be
 .. note::
    Pick a unique login node, .bashrc on Delta.
 
-   Choose either dt-login01 or dt-login02 (not dt-login) to keep SSH tunnel connections working smoothly.
-
-   Be sure to SSH to that login node **before** you proceed (if you have not logged into it before). Visit cannot deal with the initial login confirmation of a new host key.
+   Choose either dt-login01 or dt-login02 (not dt-login) to keep SSH tunnel connections working smoothly. Be sure to SSH to that login node **before** you proceed (if you have not logged into it before). Visit cannot deal with the initial login confirmation of a new host key.
 
    Add to your $HOME/.bashrc (for the remote visit gui):
 
