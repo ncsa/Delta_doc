@@ -6,7 +6,7 @@ Accounting
 
 The charge unit for Delta is the service unit (SU). 
 This corresponds to the equivalent use of one compute core utilizing less than or equal to 2G of memory for one hour, or 1 GPU or fractional GPU using less than the corresponding amount of memory or cores for 1 hour (see table below). 
-*Keep in mind that your charges are based on the resources that are reserved for your job and do not necessarily reflect how the resources are used.*
+**Charges are based on the resources that are reserved for your job and do not necessarily reflect how the resources are used.**
 Charges are based on either the number of cores or the fraction of the memory requested, whichever is larger. 
 The minimum charge for any job is 1 SU.
 
@@ -59,16 +59,16 @@ Job Accounting Considerations
 QOSGrpBillingMinutes
 ~~~~~~~~~~~~~~~~~~~~~~
 
-If you see QOSGrpBillingMinutes under the Reason column for the squeue command, like:
+If you see QOSGrpBillingMinutes under the Reason column for the squeue command, as in:
 
 .. code-block::
 
                 JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
               1204221       cpu    myjob     .... PD       0:00      5 (QOSGrpBillingMinutes)
 
-Then the resource allocation specified for the job (i.e. xyzt-delta-cpu) does not have sufficient balance to run the job based on the # of resources requested and the wallclock time. 
-Sometimes it maybe other jobs from the same project that in the same QOSGrpBillingMinutes state are could cause other jobs using the same resource allocation that are preventing a job that would "fit" from running. 
-The PI of the project needs to put in a supplement request using the same XRAS proposal system that was used for the current award (ACCESS or NCSA).
+Then the resource allocation specified for the job (i.e. xyzt-delta-cpu) does not have sufficient balance to run the job based on the number of resources requested and the wallclock time. 
+Sometimes it may be other jobs from the same project, also in the QOSGrpBillingMinutes state, using the same resource allocation that are preventing a job that would normally "fit" from running.
+To resolve, the PI of the project needs to put in a supplement request using the same XRAS proposal system that was used for the current award (ACCESS or NCSA).
 
 Reviewing Job Charges for a Project (jobcharge)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -128,11 +128,12 @@ jobcharge in /sw/user/scripts/ will show job charges by user for a project. Exam
      --detail              detail output, per-job [svchydroswmanage@hydrol1 scripts]$ 
 
 
+.. _examples:
 
 Sample Scripts
 ----------------
 
-Serial jobs on CPU nodes
+Serial Jobs on CPU Nodes
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block::
@@ -163,7 +164,7 @@ Serial jobs on CPU nodes
    echo "job is starting on `hostname`"
    srun python3 myprog.py
 
-MPI on CPU nodes
+MPI on CPU Nodes
 ~~~~~~~~~~~~~~~~
 
 .. code-block::
@@ -191,7 +192,7 @@ MPI on CPU nodes
    echo "job is starting on `hostname`"
    srun osu_reduce
 
-OpenMP on CPU nodes
+OpenMP on CPU Nodes
 ~~~~~~~~~~~~~~~~~~~~
 
 .. code-block::
@@ -221,7 +222,7 @@ OpenMP on CPU nodes
    export OMP_NUM_THREADS=32
    srun stream_gcc 
 
-Hybrid (MPI + OpenMP or MPI+X) on CPU nodes
+Hybrid (MPI + OpenMP or MPI+X) on CPU Nodes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block::
@@ -251,7 +252,7 @@ Hybrid (MPI + OpenMP or MPI+X) on CPU nodes
    export OMP_NUM_THREADS=4
    srun xthi 
 
-4 gpus together on a compute node
+4 GPUs Together on a Compute Node
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block::
@@ -277,7 +278,7 @@ Hybrid (MPI + OpenMP or MPI+X) on CPU nodes
    # py-torch example, --ntasks-per-node=1 --cpus-per-task=64
    # srun python3 multiple_gpu.py
 
-Parametric / Array / HTC jobs
+Parametric / Array / HTC Jobs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Not yet implemented.
@@ -285,9 +286,9 @@ Not yet implemented.
 Interactive Sessions
 -------------------------
 
-Interactive sessions can be implemented in several ways depending on what is needed. To start up a bash shell terminal on a cpu or gpu node:
+Interactive sessions can be implemented in several ways, depending on what is needed. To start up a bash shell terminal on a CPU or GPU node:
 
-single core with 16GB of memory, with one task on a cpu node
+Single Core with 16GB of Memory, with One Task on a CPU Node
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block::
@@ -297,7 +298,7 @@ single core with 16GB of memory, with one task on a cpu node
      --cpus-per-task=4 --mem=16g \
      --pty bash
 
-single core with 20GB of memory, with one task on a A40 gpu node
+Single Core with 20GB of Memory, with One Task on a A40 GPU Node
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block::
@@ -307,12 +308,12 @@ single core with 20GB of memory, with one task on a A40 gpu node
      --tasks-per-node=16 --cpus-per-task=1 --mem=20g \
      --pty bash 
 
-MPI interactive jobs: use salloc followed by srun
+MPI Interactive Jobs: Use salloc Followed by srun
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Since interactive jobs are already a child process of srun, one cannot srun (or mpirun) applications from within them. 
-Within standard batch jobs submitted via sbatch, use *srun* to launch MPI codes. 
-For true interactive MPI, use salloc in place of srun shown above, then "srun my_mpi.exe" after you get a prompt from salloc ( exit to end the salloc interactive allocation).
+Within standard batch jobs submitted via sbatch, use ``srun`` to launch MPI codes. 
+For true interactive MPI, use ``salloc`` in place of srun shown above, then "srun my_mpi.exe" after you get a prompt from salloc (exit to end the salloc interactive allocation).
 
 .. code-block::
 
@@ -360,7 +361,7 @@ Interactive X11 Support
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 To run an X11 based application on a compute node in an interactive session, the use of the ``--x11`` switch with ``srun`` is needed. 
-For example, to run a single core job that uses 1g of memory with X11 (in this case an xterm) do the following:
+For example, to run a single core job that uses 1G of memory with X11 (in this case an xterm) do the following:
 
 .. code-block::
 
@@ -376,13 +377,13 @@ File System Dependency Specification for Jobs
 
 Please see the **link** section on setting job file system dependencies for jobs.
 
-Jobs that do not specify a dependency on the WORK(/projects) and SCRATCH (/scratch) will be assumed to depend only on the HOME (/u) file system.
+Jobs that do not specify a dependency on the WORK (/projects) and SCRATCH (/scratch) will be assumed to depend only on the HOME (/u) file system.
 
 Job Management
 -----------------
 
-Batch jobs are submitted through a *job script* (as in the examples above) using the sbatch command. 
-Job scripts generally start with a series of SLURM *directives* that describe requirements of the job such as number of nodes, wall time required, etc… to the batch system/scheduler (SLURM directives can also be specified as options on the sbatch command line; command line options take precedence over those in the script). 
+Batch jobs are submitted through a *job script* (as in the :ref:`examples`) using the sbatch command. 
+Job scripts generally start with a series of Slurm *directives* that describe requirements of the job such as number of nodes and wall time required to the batch system/scheduler (Slurm directives can also be specified as options on the sbatch command line; command line options take precedence over those in the script). 
 The rest of the batch script consists of user commands.
 
 The syntax for sbatch is: **sbatch** [list of sbatch options] script_name
@@ -395,8 +396,8 @@ squeue/scontrol/sinfo
 Commands that display batch job and partition information.
 
 +-------------------------+-------------------------------------------+
-| SLURM EXAMPLE COMMAND   | DESCRIPTION                               |
-+-------------------------+-------------------------------------------+
+| Slurm Example Command   | Description                               |
++=========================+===========================================+
 | squeue -a               | List the status of all jobs on the        |
 |                         | system.                                   |
 +-------------------------+-------------------------------------------+
@@ -415,20 +416,19 @@ Commands that display batch job and partition information.
 
 See the manual (man) pages for other available options.
 
-**srun**
+srun
+~~~~~
 
 The srun command initiates an interactive job on compute nodes.
 
-For example, the following commandwill run an interactive job in the gpuA100x4 partition with a wall clock limit of 30 minutes, using one node and 16 cores per node and 1 gpu:
+For example, the following command will run an interactive job in the gpuA100x4 partition with a wall clock limit of 30 minutes, using one node and 16 cores per node and 1 GPU:
 
 .. code-block::
 
    srun -A account_name --time=00:30:00 --nodes=1 --ntasks-per-node=16 \
    --partition=gpuA100x4 --gpus=1 --mem=16g --pty /bin/bash
 
-You can also use other sbatch options such as those documented above.
-
-After you enter the command, you will have to wait for SLURM to start the job. 
+After you enter the command, you will have to wait for Slurm to start the job. 
 As with any job, your interactive job will wait in the queue until the specified number of nodes is available. 
 If you specify a small number of nodes for smaller amounts of time, the wait should be shorter because your job will backfill among larger jobs. 
 You will see something like this:
@@ -439,12 +439,13 @@ Once the job starts, you will see:
 
 ``srun: job 123456 has been allocated resources``
 
-And will be presented with an interactive shell prompt on the launch
-node. At this point, you can use the appropriate command to start your program.
+You will also be presented with an interactive shell prompt on the launch node. 
+At this point, you can use the appropriate command to start your program.
 
-When you are done with your work, you can use the exit command to end the job.
+When you are done with your work, you can use the ``exit`` command to end the job.
 
-**scancel**
+scancel
+~~~~~~~~
 
 The scancel command deletes a queued job or terminates a running job.
 
@@ -455,13 +456,11 @@ The scancel command deletes a queued job or terminates a running job.
 Deletes/terminates the job with the associated JobID.
 
 Job Status
------------------
+~~~~~~~~~~~
 
-NODELIST(REASON)
+If the *NODELIST(REASON)* is MaxGRESPerAccount that means that a user has exceeded the number of cores or GPUs allotted per user or project for a given partition.
 
-MaxGRESPerAccount - a user has exceeded the number of cores or gpus allotted per user or project for a given partition.
-
-Useful Batch Job Environment Variablesslurm_environment_variables
+Useful Batch Job Environment Variables slurm_environment_variables
 
 +-------------------------+-------------------------------------------+----------------------------------------------+
 | Description             | Slurm Environment Variable                | Detail Description                           |
@@ -493,11 +492,12 @@ There are two ways to access compute nodes on Delta.
 Batch jobs can be used to access compute nodes. 
 Slurm provides a convenient direct way to submit batch jobs. 
 See https://slurm.schedmd.com/heterogeneous_jobs.html#submitting for details. 
-Slurm supports job arrays for easy management of a set of similar jobs, see: `job_array.html <https://slurm.schedmd.com/job_array.html>`_.
 
-Sample Slurm batch job scripts are provided in the section below.
+Slurm supports job arrays for easy management of a set of similar jobs, see: https://slurm.schedmd.com/job_array.html.
 
-Direct ssh access to a compute node in a running batch job from a dt-loginNN node is enabled, once the job has started.
+Sample Slurm batch job scripts are provided in the :ref:`examples` section.
+
+Direct SSH access to a compute node in a running batch job from a dt-loginNN node is enabled once the job has started.
 
 .. code-block::
 
@@ -525,27 +525,26 @@ See also:
 Scheduler
 -------------
 
-**For information, consult:** https://slurm.schedmd.com/quickstart.html
+For information, see the Slurm quick reference guide: https://slurm.schedmd.com/quickstart.html
 
 ..  image:: slurm_summary.pdf
-    :alt: SLURM quick reference guide
+    :alt: Slurm quick reference guide
     :width: 700px
-
-slurm quick reference guide
 
 Partitions (Queues)
 -----------------------
 
-Table.Delta Production Default Partition Values
-
-======================= ==========
+======================= ==================
+Delta Production Default Partition Values
+------------------------------------------
 Property                Value
+======================= ==================
 Default Memory per core 1000 MB
 Default Wallclock time  30 minutes
-======================= ==========
+======================= ==================
 
-Delta Production Partitions/Queues
-
++-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+|Delta Production Partitions/Queues                                                                                |
 +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
 | Partition/Queue       | Node Type | Max Nodes per Job | Max Duration | Max Running in Queue/user | Charge Factor |
 +=======================+===========+===================+==============+===========================+===============+
@@ -579,12 +578,12 @@ Delta Production Partitions/Queues
 | gpuMI100x8-interactive| octa-MI100| TBD               | 1 hr         | TBD                       | 2.0           |
 +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
 
-sview view of slurm partitions
+sview View of Slurm Partitions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ..  image:: sview_sinfo.png
-    :alt: sview view of SLURM partitions
-    :width: 300px
+    :alt: sview view of Slurm partitions
+    :width: 500
 
 Node Policies
 ~~~~~~~~~~~~~
@@ -605,14 +604,14 @@ Job Policies
 
 The default job requeue or restart policy is set to not allow jobs to be automatically requeued or restarted (as of 12/19/2022).
 
-To enable automatic requeue and restart of a job by slurm, please add the following slurm directive
+To enable automatic requeue and restart of a job by Slurm, please add the following slurm directive:
 
 .. code-block::
 
    --requeue 
 
-When a job is requeued due to an evant like a node failure, thebatch script is initiated from its beginning. 
-Job scripts need to be written to handle automatically restarting from checkpoints etc.
+When a job is requeued due to an event like a node failure, the batch script is initiated from its beginning. 
+Job scripts need to be written to handle automatically restarting from checkpoints.
 
 Monitoring a Node During a Job
 ---------------------------------
