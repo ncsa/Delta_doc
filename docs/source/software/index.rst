@@ -154,16 +154,16 @@ compute node to your local web browser:
 
    | **srun jupyter ( anaconda3_cpu on a cpu node ):**
    
-   .. code-block::
+   | .. code-block::
       
-      $ srun --account=wxyz-delta-cpu --partition=cpu-interactive \
-        --time=00:30:00 --mem=32g \
-        jupyter-notebook --no-browser \
-        --port=8991 --ip=0.0.0.0
-      ...
-          Or copy and paste one of these URLs:
-              http://cn093.delta.internal.ncsa.edu:8891/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
-           or http://127.0.0.1:8991/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
+        $ srun --account=wxyz-delta-cpu --partition=cpu-interactive \
+          --time=00:30:00 --mem=32g \
+          jupyter-notebook --no-browser \
+          --port=8991 --ip=0.0.0.0
+        ...
+            Or copy and paste one of these URLs:
+                http://cn093.delta.internal.ncsa.edu:8891/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
+             or http://127.0.0.1:8991/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
 
    Note the internal hostname in the cluster for step 2. You will use the second URL in step 3.
 
