@@ -295,7 +295,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 Login Nodes
 --------------
-Login nodes provide interactive support for code compilation.
+Login nodes provide interactive support for code compilation. See :ref:`access` for more information.
 
 Specialized Nodes
 ---------------------
