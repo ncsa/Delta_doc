@@ -71,7 +71,7 @@ Use module spider package_name to search for software in Lmod and see the steps 
 
 See also: `User Guide for Lmod <https://lmod.readthedocs.io/en/latest/010_user.html>`_.
 
-Please open a service request ticket (link to Help) for help with software not currently installed on the Delta system. 
+Please submit a support request (:ref:`help`) for help with software not currently installed on the Delta system. 
 
 For single user or single project use cases the preference is for the user to use the Spack software package manager to install software locally against the system Spack installation. 
 Delta support staff are available to provide limited assistance. 
@@ -133,7 +133,7 @@ A sample TensorFlow test script:
 Jupyter Notebooks
 ~~~~~~~~~~~~~~~~~~~
 
-The Detla Open OnDemand portal provides an easier way to start a Jupyter notebook. Please see Open OnDemand to access the portal.
+The Detla Open OnDemand portal provides an easier way to start a Jupyter notebook. Please see :ref:`openon` to access the portal.
 
 The Jupyter notebook executables are in your ``$PATH`` after loading the anaconda3 module. 
 **Do not run Jupyter on the shared login nodes.**
