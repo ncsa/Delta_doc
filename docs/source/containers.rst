@@ -8,8 +8,8 @@ Apptainer (formerly Singularity)
 
 Container support on Delta is provided by Apptainer.
 
-Docker images can be converted to Singularity sif format via the ``singularity pull`` command. 
-Commands can be run from within a container using the ``singularity run`` command (or ``apptainer run``).
+Docker images can be converted to Singularity sif format via the `singularity pull <https://docs.sylabs.io/guides/3.2/user-guide/cli/singularity_pull.html#singularity-pull>`_ command. 
+Commands can be run from within a container using the `singularity run <https://docs.sylabs.io/guides/3.2/user-guide/cli/singularity_run.html#singularity-run>`_ command (or ``apptainer run``).
 
 If you encounter quota issues with Apptainer caching in ``~/.singularity``, the environment variable ``SINGULARITY_CACHEDIR`` can be used to use a different location such as a scratch space.
 
@@ -148,7 +148,7 @@ Container list (as of March, 2022)
    theano:18.08
    torch:18.08-py2
 
-See also: https://catalog.ngc.nvidia.com/orgs/nvidia/containers
+See also: https://catalog.ngc.nvidia.com/?filters=resourceType|container|Container
 
 AMD Infinity Hub containers for MI100
 -------------------------------------
