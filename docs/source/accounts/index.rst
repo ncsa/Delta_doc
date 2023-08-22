@@ -11,11 +11,11 @@ Non-ACCESS project and account management, such as adding someone to a project, 
 Configuring Your Account
 ----------------------------
 
-Bash is the default shell. To change the default shell, submit a support request.
+Bash is the default shell. To change the default shell, submit a support request (:ref:`help`).
 
 Environment variables: ACCESS CUE, SLURM batch
 
-Using Modules
+Using :ref:`module`
 
 Allocation Policies
 -----------------------
