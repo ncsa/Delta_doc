@@ -1,13 +1,9 @@
 Monitoring A Node During A Job
------------------------------
+-------------------------------
 
-You have ssh access to nodes in your running job(s) . A couple basic
-monitoring tools are demonstrated in the example transcript here. Screen
-shots are appended so that you can see the output from the tools. Most
-common linux utilities are available from the compute nodes (free,
-strace, ps ...).
+You have SSH access to nodes in your running job(s). Some of the basic monitoring tools are demonstrated in the example transcript here. Screen shots are appended so that you can see the output from the tools. Most common Linux utilities are available from the compute nodes (free, strace, ps, and so on).
 
-::
+.. code-block::
 
    [arnoldg@dt-login03 python]$ squeue -u $USER
                 JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -33,56 +29,45 @@ strace, ps ...).
 
    [arnoldg@gpub045 ~]$ top -u $USER
 
-nvidia-smi :
+nvidia-smi:
 
 ..  image:: ../../aux_pages/images/mon_node/01_nvidia-smi.png
     :alt: nvidia smi
     :width: 1000px
 
-nvtop :
+nvtop:
 
 ..  image:: ../../aux_pages/images/mon_node/02_nvtop.png
     :alt: nvtop
     :width: 1000px
 
-nvitop :
+nvitop:
 
 ..  image:: ../../aux_pages/images/mon_node/03_nvitop.png
     :alt: nvitop
     :width: 1000px
 
-top -u $USER :
+top -u $USER:
 
 ..  image:: ../../aux_pages/images/mon_node/04_top.png
     :alt: top
     :width: 1000px
 
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-Galen comments to be integrated?:
+Monitoring Nodes Using Grafana
+---------------------------------
 
-TODO:
+#. Navigate to: https://metrics.ncsa.illinois.edu
 
-Add grafana back end examples when available.  https://metrics.ncsa.illinois.edu
+#. Sign in (top-right of page):
 
-Make sure to sign in at the lower left of the initial page:
+#. Navigate to the part of Delta metrics of interest.
 
-..  image:: ../../aux_pages/images/mon_node/05_sign_in_icon.png
-    :alt: sign in icon
+   ..  image:: ../../aux_pages/images/mon_node/06_grafana_metrics_home.png
+       :alt: metrics home
+       :width: 1000px
 
-Then navigate to the part of Delta metrics of interest.
+   You may choose a node from the list of nodes and get detail information in real time.
 
-..  image:: ../../aux_pages/images/mon_node/06_grafana_metrics_home.png
-    :alt: metrics home
-    :width: 1000px
-
-You may choose a node from the list of nodes and get detail information in real time.
-
-..  image:: ../../aux_pages/images/mon_node/07_grafana_metrics_details.png
-    :alt: get detailed info
-    :width: 1000px
-
-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-| 
-
-~
+   ..  image:: ../../aux_pages/images/mon_node/07_grafana_metrics_details.png
+       :alt: get detailed info
+       :width: 1000px
