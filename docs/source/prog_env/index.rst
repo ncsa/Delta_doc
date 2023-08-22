@@ -334,7 +334,7 @@ This is an example of working with a C file remote on Delta:
 Remote Jupyter
 ~~~~~~~~~~~~~~~~~
 
-See: https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server and (open 2 new browser tabs).
+See: https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server and :ref:`jupyter` (open 2 new browser tabs).
 
 Install the Jupyter extension for Visual Studio, if you have not already done so.
 
