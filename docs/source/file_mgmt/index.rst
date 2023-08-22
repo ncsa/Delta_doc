@@ -10,7 +10,7 @@ For example, a user (with username: **auser**) who has an allocated project with
 To determine the mapping of ACCESS project to local project, use the ``accounts`` command.
 
 Directory access changes can be made using the `facl <https://linux.die.net/man/1/setfacl>`_ command. 
-Contact NCSA (see :ref:`help`) if you need assistance enabling access to specific users and projects.
+Submit a support request (see :ref:`help`) if you need assistance enabling access to specific users and projects.
 
 .. code-block:: bash
 
