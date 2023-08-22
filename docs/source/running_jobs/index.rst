@@ -375,7 +375,7 @@ For example, to run a single core job that uses 1G of memory with X11 (in this c
 File System Dependency Specification for Jobs
 ---------------------------------------------
 
-Please see the **link** section on setting job file system dependencies for jobs.
+Please see the :ref:`depend_arch`section in System Architecture for information on setting job file system dependencies for jobs.
 
 Jobs that do not specify a dependency on the WORK (/projects) and SCRATCH (/scratch) will be assumed to depend only on the HOME (/u) file system.
 
