@@ -41,6 +41,8 @@ Below is an srun example of that with TensorFlow:
    Apptainer> python --version
    Python 3.8.10
 
+.. _nvidia-contain:
+
 NVIDIA NGC Containers
 ---------------------
 
