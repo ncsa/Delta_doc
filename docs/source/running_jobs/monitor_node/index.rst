@@ -58,7 +58,11 @@ Monitoring Nodes Using Grafana
 
 #. Navigate to: https://metrics.ncsa.illinois.edu
 
-#. Sign in (top-right of page):
+#. Sign in (top-right of page).
+
+   .. image:: ../../aux_pages/images/mon_node/metrics_signin_icon.png
+      :alt: sign in icon
+      :width: 400
 
 #. Navigate to the part of Delta metrics of interest.
 
