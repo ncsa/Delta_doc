@@ -484,6 +484,8 @@ not depend on which project group the file is written with.
    | /scratch/bbbb  | 24k   | 9.766T| 10.74T| 6     | 500000 | 550000 |
    ------------------------------------------------------------------------------------------
 
+.. _depend-arch:
+
 File System Dependency Specification for Jobs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
