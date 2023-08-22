@@ -2,7 +2,7 @@ Installed Software
 ======================
 
 Delta software is provisioned, when possible, using Spack to produce modules for use via the lmod based module system. 
-Select NVIDIA NGC containers are made available (see the container section) and are periodically updated from the NVIDIA NGC site. 
+Select NVIDIA NGC containers are made available (see :ref:`contain`) and are periodically updated from the NVIDIA NGC site. 
 An automated list of available software can be found on the ACCESS website.
 
 .. _module:
