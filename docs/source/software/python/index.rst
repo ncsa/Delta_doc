@@ -2,7 +2,7 @@ Python
 ==========
 
 .. note::
-   When submitting support issues for python, please provide the following and understand that Delta support staff time is a finite resource while python developments (new software and modules) are growing at nearly infinite velocity.
+   When submitting support requests (:ref:`help`) for python, please provide the following and understand that Delta support staff time is a finite resource while python developments (new software and modules) are growing at nearly infinite velocity.
 
    - Python version or environment used (describe fully, with the commands needed to reproduce)
    - Error output or log from what went wrong (screenshots are more difficult to work with than text data, we donot run trained inference on screenshots attached to Jira)
@@ -32,7 +32,7 @@ You may *use any of these methods* with any of the python versions or instances 
 Examples using all of the above are shown at this site covering scikit-learn-intelex (an Intel accelerated scikit learn subset library for x86_64 architecture): https://github.com/intel/scikit-learn-intelex/blob/master/INSTALL.md
 
 .. note::
-   The Nvidia NGC containers on Delta provide optimized python frameworks built for Delta's A100 and A40 GPUs. 
+   The :ref:`nvidia-contain` on Delta provide optimized python frameworks built for Delta's A100 and A40 GPUs. 
    Delta staff recommend using an NGC container when possible with the GPU nodes (or use the anaconda3_gpu module).
 
 The default gcc (latest version) programming environment for either modtree/cpu or modtree/gpu contains:
