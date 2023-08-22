@@ -6,7 +6,7 @@ Support for the HPE/Cray Programming environment is forthcoming.
 
 Modules provide access to the compiler + MPI environment.
 
-The default environment includes the GCC 11.2.0 compiler + OpenMPI with support for cuda and gdrcopy; nvcc is in the cuda module and is loaded by default.
+The default environment includes the GCC 11.2.0 compiler + OpenMPI with support for CUDA and gdrcopy; nvcc is in the CUDA module and is loaded by default.
 
 AMD recommended compiler flags for GNU, AOCC, and Intel compilers for Milan processors can be found in the `AMD Compiler Options Quick Reference Guide for Epyc 7xx3 processors <https://www.amd.com/system/files/TechDocs/compiler-options-quick-ref-guide-epyc-7xx3-series-processors.pdf>`_.
 
@@ -180,7 +180,7 @@ nvc++ -acc *myprog*.cc      nvc++ -acc -mp *myprog*.cc
 CUDA
 -------------------------
 
-Cuda compilers (nvcc) are included in the cuda module which is loaded by default under modtree/gpu. For the cuda fortran compiler and other Nvidia development tools, load the "nvhpc" module.
+CUDA compilers (NVCC) are included in the CUDA module which is loaded by default under modtree/gpu. For the CUDA Fortran compiler and other NVIDIA development tools, load the "nvhpc" module.
 
 | **nv* commands when nvhpc is loaded:**
 .. code-block::
