@@ -110,7 +110,7 @@ These is an included module, *posix2ime*, that does this for you (see more about
 
 You can purge the contents of files from the cache, but not the presence of the file. Please see :ref:`purge`, below.
 
-There are some important caveats when using the /ime file system for something other than a **read-cache**. See section 2.2 Data Consistency Model in the :download:`developer guide document </../../aux_pages/images/Delt_IME/IME1.4DeveloperGuide.pdf>`.
+There are some important caveats when using the /ime file system for something other than a **read-cache**. See section 2.2 Data Consistency Model in the `developer guide document </../../aux_pages/images/Delt_IME/IME1.4DeveloperGuide.pdf>`_.
 
    *Users must maintain close-to-open consistency when multiple clients access the same files. This requirement guarantees that any other client will see the latest changes made by one client as soon as the client opens the file. 
    A client must synchronize all file data and metadata changes when it closes a file and unconditionally retrieve a file’s attributes when it opens a file, ignoring any information it may have cached about the file. IME implements an enhanced close-to-open consistency model, allowing IME to be lock free.*
