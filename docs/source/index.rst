@@ -1,32 +1,44 @@
+################################################
+Delta System User Documentation
+################################################
+
 ..  image:: delta_front.png
     :alt: 12 racks in a machine room, with overhead power, with red to orange "DELTA" wrap on the rack doors.  
     :width: 700px
 
-################################################
-NCSA Delta System User Guide
-################################################
-
-*Delta* is in production.
-
-System status, planned outages, and maintenance info: :ref:`status`
-
 Introduction
-=================
+=============
 
-*Delta* is a dedicated,\ `ACCESS <https://access-ci.org>`__\ -allocated
-resource designed by HPE and NCSA, delivering a highly capable GPU-focused compute environment for GPU and CPU workloads.  Besides offering a mix of standard and reduced precision GPU resources, Delta also offers GPU-dense nodes with both NVIDIA and AMD GPUs.  Delta provides high performance node-local SSD scratch filesystems, as well as both standard Lustre and relaxed-POSIX parallel filesystems spanning the entire resource.
+Delta is a dedicated, `ACCESS <https://access-ci.org>`_-allocated resource designed by HPE and NCSA, delivering a highly capable GPU-focused compute environment for GPU and CPU workloads.  
+In addition to offering a mix of standard and reduced precision GPU resources, Delta also offers GPU-dense nodes with both NVIDIA and AMD GPUs.  
+Delta provides high performance node-local SSD scratch filesystems, as well as both standard Lustre and relaxed-POSIX parallel filesystems spanning the entire resource.
 
-Delta's CPU nodes are each powered by two 64-core AMD EPYC 7763 ("Milan") processors, with 256 GB of DDR4 memory.  The Delta GPU resource has four node types: one with 4 NVIDIA A100 GPUs (40 GB HBM2 RAM each) connected via NVLINK and 1 64-core AMD EPYC 7763 ("Milan") processor, the second with 4 NVIDIA A40 GPUs (48 GB GDDR6 RAM) connected via PCIe 4.0 and 1 64-core AMD EPYC 7763 ("Milan") processor, the third with 8 NVIDIA A100 GPUs in a dual socket AMD EPYC 7763 (128-cores per node) node with 2 TB of DDR4 RAM and NVLINK,  and the fourth with 8 AMD MI100 GPUs (32GB HBM2 RAM each) in a dual socket AMD EPYC 7763 (128-cores per node) node with 2 TB of DDR4 RAM and PCIe 4.0. 
+Envisioned to lead change across the dimensions of computing, storage, and usability, Delta employs standards-based, fully customized science gateways with per-domain interfaces provided alongside the traditional command-line batch system interface. 
+Enabled science gateways seamlessly integrate Delta into the cyberinfrastructure ecosystem alongside other resources to enable complex, multi-system workflows. 
+To advance applications, the Delta project team continues the applications-focused, outcomes-oriented approach to drive the transition to GPU-accelerated applications alongside gateway-based productivity advances. 
+Integrated with the NSF's Advanced Cyberinfrastructure Coordination Ecosystem: Services & Support (ACCESS) ecosystems, Delta leverages the substantial portfolio of services and support offered therein and together deliver unprecedented advances in researcher productivity.
 
-Delta has 124 standard CPU nodes, 100 4-way A100-based GPU nodes, 100 4-way A40-based GPU nodes, 5 8-way A100-based GPU nodes, and 1 8-way MI100-based GPU node.  Every Delta node has high-performance node-local SSD storage (740 GB for CPU nodes, 1.5 TB for GPU nodes), and is connected to the 7 PB Lustre parallel filesystem via the high-speed interconnect.  The Delta resource uses the SLURM workload manager for job scheduling.  
+Delta supports the `ACCESS core software stack <https://access-ci.atlassian.net/wiki/spaces/ACCESSdocumentation/pages/72421302>`_, including remote login, remote computation, data movement, science workflow support, and science gateway support toolkits.
 
-Delta supports the\ `ACCESS core software
-stack <https://access-ci.atlassian.net/wiki/spaces/ACCESSdocumentation/pages/72421302>`__,
-including remote login, remote computation, data movement, science
-workflow support, and science gateway support toolkits.
+Status Updates and Notices
+============================
+
+Current outages - https://support.access-ci.org/outages
+
+Infrastructure news - https://operations.access-ci.org/infrastructure_news
+
+Delta Affinity Group site with links to news and Slack channel for users - https://support.access-ci.org/affinity-groups/delta
+
+Getting Started with High Performance Computing
+================================================
+
+**There are no specific prerequisite courses or high performance computing (HPC) experience required before using Delta.** However, if you are unfamiliar with using a HPC cluster, it is highly recommended that you take NCSA’s short tutorial `Using an HPC Cluster for Scientific Applications <https://www.hpc-training.org/xsede/moodle/enrol/index.php?id=71>`_ before continuing.
+
+You can also browse the full list of NCSA's `HPC-Moodle Self-Paced Tutorials <https://www.hpc-training.org/xsede/moodle/course/index.php?categoryid=11>`_ to learn more about other HPC topics.
+
 
 Contents
---------
+=========
 
 .. toctree::
    :maxdepth: 2
