@@ -313,7 +313,7 @@ Network
 ------------
 Delta is connected to the NPCF core router and exit infrastructure via two 100Gbps connections, NCSA's 400Gbps+ of WAN connectivity carry traffic to/from users on an optimal peering.
 
-Delta resources are inter-connected with HPE/Cray's 100Gbps/200Gbps SlingShot interconnect.
+Delta resources are inter-connected with HPE/Cray's 100Gbps/200Gbps Slingshot interconnect.
 
 File Systems
 ---------------
@@ -384,7 +384,7 @@ DDN SFA400NVXE (Quantity: 2), each unit contains:
 DDN SFA18XE (Quantity: 1), each unit contains:
 
 -  10 x SS9012 enclosures
--  NVME for for metadata and small files
+-  NVME for metadata and small files
 
 A "module reset" in a job script will populate $WORK and $SCRATCH environment variables automatically, or you may set them as WORK=/projects/<account>/$USER , SCRATCH=/scratch/<account>/$USER .
 
@@ -483,7 +483,7 @@ NCSA requests that jobs specify the file system or systems being used to enable 
 All jobs are assumed to depend on the HOME file system.
 
 ================= ======================== ==================
-Slurm Feature/Contraint Labels
+Slurm Feature/Constraint Labels
 -------------------------------------------------------------
 File System       Feature/Constraint Label Note
 ================= ======================== ==================
