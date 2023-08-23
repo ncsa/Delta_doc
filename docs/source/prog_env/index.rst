@@ -6,7 +6,7 @@ Support for the HPE/Cray Programming environment is forthcoming.
 
 Modules provide access to the compiler + MPI environment.
 
-The default environment includes the GCC 11.2.0 compiler + OpenMPI with support for CUDA and gdrcopy; nvcc is in the CUDA module and is loaded by default.
+The default environment includes the GCC 11.2.0 compiler + OpenMPI with support for CUDA and gdrcopy; NVCC is in the CUDA module and is loaded by default.
 
 AMD recommended compiler flags for GNU, AOCC, and Intel compilers for Milan processors can be found in the `AMD Compiler Options Quick Reference Guide for Epyc 7xx3 processors <https://www.amd.com/system/files/TechDocs/compiler-options-quick-ref-guide-epyc-7xx3-series-processors.pdf>`_.
 
@@ -166,8 +166,7 @@ A version of xthi is also available from ORNL:
 OpenACC
 -------------------------
 
-To build an OpenACC program, use the -acc option and the -mp option for
-multi-threaded:
+To build an OpenACC program, use the -acc option and the -mp option for multi-threaded:
 
 ========================= ================================
 Non-Multi-threaded          Multi-threaded
@@ -182,7 +181,9 @@ CUDA
 
 CUDA compilers (NVCC) are included in the CUDA module which is loaded by default under modtree/gpu. For the CUDA Fortran compiler and other NVIDIA development tools, load the "nvhpc" module.
 
-| **nv* commands when nvhpc is loaded:**
+nv* commands when nvhpc is loaded
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. code-block::
 
    [arnoldg@dt-login03 namd]$ nv
@@ -201,16 +202,15 @@ CUDA compilers (NVCC) are included in the CUDA module which is loaded by default
 See also: https://developer.nvidia.com/hpc-sdk
 
 
-HIP/ROCm
+HIP/ROCm (AMD MI100)
 -------------------------
 
 To access the development environment for the gpuMI100x8 partition, start a job on the node with srun or sbatch. 
 
 Next, set your PATH to prefix /opt/rocm/bin where the HIP and ROCm tools are installed. 
 
-A sample batch script to obtain an xterm is shown below along with setting the path on the compute node.
+A sample batch script to obtain an xterm (interactive xterm batch script for Slurm) is shown below:
 
-| **interactive xterm batch script for slurm:**
 .. code-block::
 
    #!/bin/bash -x
@@ -226,7 +226,8 @@ A sample batch script to obtain an xterm is shown below along with setting the p
      $GPUS --x11 \
      xterm
 
-| **AMD HIP development environment on gpud01:**
+AMD HIP development environment on gpud01 (setting the path on the compute node):
+
 .. code-block::
 
    [arnoldg@gpud01 bin]$ export PATH=/opt/rocm/bin:$PATH
@@ -234,15 +235,15 @@ A sample batch script to obtain an xterm is shown below along with setting the p
    No Arguments passed, exiting ...
    [arnoldg@gpud01 bin]$ 
 
-See also: https://docs.amd.com/projects/HIP/en/docs-5.0.0/index.html , https://rocmdocs.amd.com/en/latest/
+See also: https://docs.amd.com/projects/HIP/en/docs-5.0.0/index.html and https://rocmdocs.amd.com/en/latest/
    
 Visual Studio Code
 ---------------------
 
-vscode code-server
+VS Code code-server
 ~~~~~~~~~~~~~~~~~~~~
 
-The code-server for vscode can be run on Delta in manual mode (without OpenOnDemand) by following these steps:
+The code-server for VS Code can be run on Delta in manual mode (without Open OnDemand) by following these steps:
 
 #. Start the server.
 
@@ -284,7 +285,7 @@ The code-server for vscode can be run on Delta in manual mode (without OpenOnDem
       password: 9e8081e80d9999c3c525fe26
       cert: false
 
-#. Open a local browser on your desktop system with URL = http://127.0.0.1:8899. Login with the password copied from above and begin using vscode in your browser.
+#. Open a local browser on your desktop system with URL = http://127.0.0.1:8899. Log in with the password copied from above and begin using VS Code in your browser.
 
    ..  image:: ../aux_pages/images/vscode_code_server/vscode_in_browser.png
        :alt: vscode in a web browser
@@ -295,54 +296,54 @@ Remote - SSH
 
 Follow: https://code.visualstudio.com/docs/remote/ssh
 
-As stated in the guide, install "Remote - SSH" into Visual Studio:
+#. As stated in the guide, install "Remote - SSH" into Visual Studio:
 
-..  image:: ../aux_pages/images/visual_studio/01_remote_ssh.png
-    :alt: remote ssh extension in visual studio
-    :width: 500px
+   ..  image:: ../aux_pages/images/visual_studio/01_remote_ssh.png
+       :alt: remote ssh extension in visual studio
+       :width: 500px
 
-Continue to follow the guide to set up a remote connection to Delta.
-It helps if you have a local $HOME/.ssh/config with your commonly used hosts already present on the laptop and SSH client where you will be using Visual Studio. 
-Here is an example entry for Delta, change your username to your login name on Delta. Visual Studio will show hosts in your config in a pick list.
+#. Continue to follow the guide to set up a remote connection to Delta.
+   It helps if you have a local $HOME/.ssh/config with your commonly used hosts already present on the laptop and SSH client where you will be using Visual Studio. 
+   Here is an example entry for Delta, change your username to your login name on Delta. Visual Studio will show hosts in your config in a pick list.
 
-| **SSH config:**
-.. code-block::
+   | **SSH config:**
+   .. code-block::
+   
+      Host delta
+              HostName login.delta.ncsa.illinois.edu
+              User arnoldg
+              ForwardX11 True
 
-   Host delta
-           HostName login.delta.ncsa.illinois.edu
-           User arnoldg
-           ForwardX11 True
+#. Once connected, you can work with the remote system as if it were local.
+   When Visual Studio needs to install extension items on the remote system, it will go into your $HOME/.vscode-server on Delta. 
+   Visual Studio takes care of all the details for you:
 
-Once connected, you can work with the remote system as if it were local.
-When Visual Studio needs to install extension items on the remote system, it will go into your $HOME/.vscode-server on Delta. 
-Visual Studio takes care of all the details for you:
+   | **remote server VS extensions:**
+   .. code-block::
 
-| **remote server VS extensions:**
-.. code-block::
+      [arnoldg@dt-login03 ~]$ du -sh .vscode-server/
+      523M    .vscode-server/
+      [arnoldg@dt-login03 ~]$ 
 
-   [arnoldg@dt-login03 ~]$ du -sh .vscode-server/
-   523M    .vscode-server/
-   [arnoldg@dt-login03 ~]$ 
+#. Proceed to F1 → Remote SSH and connect to Delta. Then, following the guide, use Visual Studio as normal. 
+   This is an example of working with a C file remote on Delta:
 
-Proceed to F1 → Remote SSH and connect to Delta. Then, following the guide, use Visual Studio as normal. 
-This is an example of working with a C file remote on Delta:
-
-..  image:: ../aux_pages/images/visual_studio/02_remote_c_file.png
-    :alt: using visual studio to work with a C file on delta
-    :width: 1000px
+   ..  image:: ../aux_pages/images/visual_studio/02_remote_c_file.png
+       :alt: using visual studio to work with a C file on delta
+       :width: 1000px
 
 Remote Jupyter
 ~~~~~~~~~~~~~~~~~
 
-See: https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server and :ref:`jupyter` (open 2 new browser tabs).
+See: https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server and :ref:`jupyter` (open two new browser tabs).
 
-Install the Jupyter extension for Visual Studio, if you have not already done so.
+#. Install the Jupyter extension for Visual Studio, if you have not already done so.
 
-Complete the first step from the Delta user guide where you srun a jupyter-notebook on a compute node. 
+#. Complete the first step from the Delta user guide (second link above) where you srun a jupyter-notebook on a compute node. 
 
-Make note of and copy the first URL after the job is running, that is the URI you will provide to Visual Studio's "Connect to a Remote Jupyter Server" after clicking the Kernels button. 
+#. Make note of and copy the first URL after the job is running, that is the URI you will provide to Visual Studio's "Connect to a Remote Jupyter Server" after clicking the Kernels button. 
 
-You may also need to select the remote jupyter kernel under the kernels in VScode.
+   You may also need to select the remote jupyter kernel under the kernels in VScode.
 
 ..  image:: ../aux_pages/images/visual_studio/03_jupyter_url.png
     :alt: terminal with Jupyter workbook URL to use
