@@ -397,6 +397,7 @@ A "module reset" in a job script will populate $WORK and $SCRATCH environment va
 |             | files per   |              |             | scripts,     |
 |             | user.       |              |             | job files,   |
 |             |             |              |             | and so on.   |
+|             |             |              |             |              |
 |             |             |              |             | **NOT**      |
 |             |             |              |             | intended as  |
 |             |             |              |             | a            |
@@ -411,6 +412,7 @@ A "module reset" in a job script will populate $WORK and $SCRATCH environment va
 |             | allocation  |              |             | project,     |
 |             | request.    |              |             | common data  |
 |             |             |              |             | sets,        |
+|             |             |              |             |              |
 |             | Large       |              |             | software,    |
 |             | requests    |              |             | results,     |
 |             | may have a  |              |             | and so on.   |
@@ -422,6 +424,7 @@ A "module reset" in a job script will populate $WORK and $SCRATCH environment va
 |             | 1-100 TB by |              |             | largest      |
 |             | allocation  |              |             | allocations, |
 |             | request.    |              |             | where I/O    |
+|             |             |              |             |              |
 |             |             |              |             | from jobs    |
 |             |             |              |             | should       |
 |             |             |              |             | occur.       |
@@ -432,6 +435,7 @@ A "module reset" in a job script will populate $WORK and $SCRATCH environment va
 |             | (GPU)**     |              |             | fast small   |
 |             | shared or   |              |             | file IO.     |
 |             | dedicated   |              |             |              |
+|             |             |              |             |              |
 |             | depending   |              |             |              |
 |             | on node     |              |             |              |
 |             | usage by    |              |             |              |
