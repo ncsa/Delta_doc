@@ -3,12 +3,15 @@ Visualization
 
 Delta A40 nodes support NVIDIA raytracing hardware.
 
-Paraview (Client/Server)
----------------------------
+Paraview 
+----------
+
+Client Server Mode
+~~~~~~~~~~~~~~~~~~~~
 
 https://engaging-web.mit.edu/eofe-wiki/software/paraview_client_server_mode/
 
-Seems **broken currently**, when setting up SSH tunnel as shown, get this on the client side:
+Client server mode appears to be **broken currently**, when setting up SSH tunnel as shown, you get this on the client side:
 
 .. code-block::
 
@@ -17,7 +20,7 @@ Seems **broken currently**, when setting up SSH tunnel as shown, get this on the
     returns different values on the two connecting processes
     (Current value: 100).
 
-At least one site does not support client-server anymore (due to issues like this): https://help.itc.rwth-aachen.de/en/service/rhr4fjjutttf/article/b4a7b9e11b054a7d8096834ea03a1686/
+At least one site does not support client-server anymore (due to issues like this): https://help.itc.rwth-aachen.de/en/service/rhr4fjjutttf/article/b98c687822874a30b740ef09f4330e7b/
 
 pvpython and pvbatch Work and are Available:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -38,7 +41,7 @@ greenSphereScreenshot.png:
     :alt: green sphere
     :width: 500px
 
-Visit Client & Server
+VisIt Client-Server Mode
 -------------------------
 
 Following: https://www.sdsc.edu/education_and_training/tutorials1/visit.html, below are the screenshots for using Delta in a similar way.
