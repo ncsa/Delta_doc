@@ -62,7 +62,7 @@ To transfer files to and from the Delta system:
 
 -  Globus - Use for large data transfers.
 
-   - **Upgrade your Globus Connect Personal** to at least version 3.2.0 before Dec 12, 2022. See: https://docs.globus.org/ca-update-2022/#notice .
+   - **Upgrade your Globus Connect Personal** to at least version 3.2.0 before Dec 12, 2022. See: https://docs.globus.org/ca-update-2022/#notice.
 
    -  Use the Delta collection "**NCSA Delta**" (see screen capture below).
       
