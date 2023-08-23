@@ -86,8 +86,20 @@ The Session Info is under the Summary tab and displays more detail about the pro
     :alt: session summary info
     :width: 1000px
 
+Rooflines
+-----------
+
+Rooflines are currently disabled: https://www.amd.com/content/dam/amd/en/documents/developer/uprof-v4.0-gaGA-user-guide.pdf (section 3.5.2). Below are the roofline error messages from OS.
+
+.. code-block::
+
+   srun AMDuProfPcm roofline -o stream-roofline.csv -- ./stream.22gb
+   Error: NMI watchdog is enabled. NMI uses one Core HW PMC counter.
+   Please disable NMI watchdog - run with root privilege: echo 0 > /proc/sys/kernel/nmi_watchdog
+   srun: error: cn061: task 0: Exited with exit code 255
+
 References:
-~~~~~~~~~~~~~~~~~
+------------
 https://www.amd.com/content/dam/amd/en/documents/developer/uprof-v4.0-gaGA-user-guide.pdf
 
 NVIDIA Nsight Systems
