@@ -10,11 +10,11 @@ Direct access to the Delta login nodes is via SSH using your NCSA username, pass
 
 See `NCSA Allocation and Account Management <https://wiki.ncsa.illinois.edu/display/USSPPRT/NCSA+Allocation+and+Account+Management>`_ for the steps to change your NCSA password for direct access and set up NCSA Duo. 
 
-For ACCESS awarded projects, to find your local NCSA username go to your `ACCESS Profile page <https://allocations.access-ci.org/profile>`_ and scroll to the bottom for the **Resource Provider Site Usernames** table. Contact help@ncsa.illinois.edu for assistance if you do not know your NCSA username.
+For ACCESS awarded projects, to find your local NCSA username go to your `ACCESS Profile page <https://allocations.access-ci.org/profile>`_ and scroll to the bottom for the **Resource Provider Site Usernames** table. If you do not know your NCSA username, submit a support request (:ref:`help`) for assistance.
 
 +------------------------------------+--------------------------------------------------------+
-| **Login Node Hostname**            | **Example Usage with SSH**                             |
-+------------------------------------+--------------------------------------------------------+
+|   Login Node Hostname              |   Example Usage with SSH                               |
++====================================+========================================================+
 |                                    | .. code-block:: terminal                               |
 | dt-login01.delta.ncsa.illinois.edu |                                                        |
 |                                    |    ssh -Y username@dt-login01.delta.ncsa.illinois.edu  |
@@ -29,19 +29,21 @@ For ACCESS awarded projects, to find your local NCSA username go to your `ACCESS
 |                                    | ( -l username alt. syntax for ``user@host`` )          |
 |                                    |                                                        |
 +------------------------------------+--------------------------------------------------------+
-| | **login.delta.ncsa.illinois.edu**| .. code-block:: terminal                               |
+| **login.delta.ncsa.illinois.edu**  | .. code-block:: terminal                               |
 |                                    |                                                        |    
 | (round robin DNS name for the set  |    ssh username@login.delta.ncsa.illinois.edu          |   
 | of login nodes)                    |                                                        |    
 +------------------------------------+--------------------------------------------------------+
 
-Use of ssh-key pairs is disabled for general use. Please contact NCSA Help at help@ncsa.illinois.edu for key-pair use by Gateway allocations.
+Use of SSH key pairs is disabled for general use. Please submit a support request (:ref:`help`) for key pair use by Gateway allocations.
 
 Maintaining Persistent Sessions: tmux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 tmux is available on the login nodes to maintain persistent sessions.
-See the tmux man page for more information. After making note of the hostname, use the targeted login hostnames (dt-login01 or dt-login02) to attach to the login node where you started tmux. Avoid the round-robin hostname when using tmux.
+See the tmux man page for more information. 
+After making note of the hostname, use the targeted login hostnames (dt-login01 or dt-login02) to attach to the login node where you started tmux. 
+Avoid the round-robin hostname when using tmux.
 
 SSH Keyboard-Interactive
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -55,8 +57,7 @@ For command line SSH clients, use the following settings if you have trouble log
 Open OnDemand
 -------------
 
-An Open OnDemand shell interface is available at:
-https://openondemand.delta.ncsa.illinois.edu/pun/sys/shell/ssh/dt-login02
+An Open OnDemand shell interface is available at: https://openondemand.delta.ncsa.illinois.edu/pun/sys/shell/ssh/dt-login02.
 
 ..  image:: ood-shell-access.png
     :alt: Delta OpenOnDemand shell access
