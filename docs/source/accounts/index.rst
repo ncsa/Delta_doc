@@ -23,7 +23,7 @@ Allocation Policies
 ACCESS awarded projects and allocations should receive periodic messages regarding approaching project expiration.
 
 - An ACCESS project is marked for inactivation once it has no valid resource allocation on the system.
-- Current ACCESS policy is for user access to be removed if a user is not a member of any active project on Delta.
+- Current ACCESS policy is for user access to be removed if a user is not a member of any *active* project on Delta.
 
 Illinois awarded projects and allocations currently *do not* receive periodic messages regarding approaching project expiration.
 
@@ -33,7 +33,7 @@ Illinois awarded projects and allocations currently *do not* receive periodic me
 There is a 30-day grace period for expired Delta projects to allow for data management access only.
 
 Allocation Supplements and Extensions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------------
 
 Request resource allocation supplements (compute, GPU, or storage) and extensions via the appropriate XRAS website.
 
