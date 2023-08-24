@@ -4,7 +4,7 @@ Getting Help
 ================
 
 - For ACCESS allocations issues, create a ticket via the `ACCESS Help page <https://support.access-ci.org/open-a-ticket>`_.
-|
+
 - For all other issues, regardless of allocation type, please submit a support request by emailing help@ncsa.illinois.edu.   
   
   - Include "Delta" in the email subject along with an explanatory name for your problem.  
