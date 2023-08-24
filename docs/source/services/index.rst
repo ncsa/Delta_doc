@@ -8,11 +8,10 @@ Open OnDemand
 
 The Delta Open OnDemand portal is now available for use. Current supported Interactive apps: Jupyter notebooks.
 
-To connect to the Open OnDemand portal, point a browser to https://openondemand.delta.ncsa.illinois.edu/ and use your NCSA username and password with NCSA Duo on the CILogin page.
+To connect to the Open OnDemand portal, point a browser to https://openondemand.delta.ncsa.illinois.edu/, and use your NCSA username and password with NCSA Duo on the CILogin page.
 
 Make sure to match the account to charge with the resource partition as shown below. 
-The account names end in -cpu and -gpu. 
-The matching partition would start with cpu or gpu (as in gpuA100x4 interactive).
+The account names end in -cpu and -gpu; the matching partition would start with cpu or gpu (as in gpuA100x4 interactive).
 
 ..  image:: jlab_config_partition.png
     :alt: Jupyter Lab partition configuration
@@ -26,7 +25,7 @@ Customizing JupyterLab with Anaconda Environments
 
 #. Load an anaconda_<cpu, gpu, mi100> that you want to use as your base installation and initialize your default login shell to use conda environments.
 
-   **conda init bash**
+   **conda init bash:**
 
    .. code-block::
 
@@ -54,7 +53,7 @@ Customizing JupyterLab with Anaconda Environments
       .. note::
          If you will be making custom environments for more than one partition type (cpu, gpu, mi100), it may be helpful to include that metadata in the name of your environment.
 
-      Install jupyter into the environment in order to use it with OpenOnDemand. This option adds about 150 python modules to your environment and requires about 1.3 GB in your ``$HOME``. Setup time: about 10 minutes.
+      Install jupyter into the environment in order to use it with Open OnDemand. This option adds about 150 python modules to your environment and requires about 1.3 GB in your ``$HOME``. Setup time: about 10 minutes.
 
       .. code-block::
 
@@ -122,7 +121,7 @@ Customizing JupyterLab with Anaconda Environments
    b. Create a new clone of your chosen anaconda3_<cpu, gpu, mi100> module:
 
       Jupyter (and everything else from your loaded anaconda3\_ module will be copied into this environment). 
-      This option adds about 500 python modules to your environment and requires about 6.3 GB in your $HOME. Install time can be up to 30 minutes.
+      This option adds about 500 python modules to your environment and requires about 6.3 GB in your ``$HOME``. Install time can be up to 30 minutes.
 
       .. code-block::
 
@@ -155,11 +154,11 @@ Customizing JupyterLab with Anaconda Environments
          (myclone) du -sh $HOME/.conda/envs/myclone
          6.3G    /u/arnoldg/.conda/envs/myclone
 
-3. Start an OpenOnDemand :ref:`jupyter` session and access one of your environments (remember to match your partition and account types for gpu, cpu), then select the matching kernel for your Jupyter work.
+3. Start an Open OnDemand :ref:`jupyter` session and access one of your environments (remember to match your partition and account types for gpu, cpu), then select the matching kernel for your Jupyter work.
 
-4. Launch Jupyterlab
+4. Launch JupyterLab
 
-   a. After filling in the OpenOnDemand form and submitting your job, it will start in a few minutes showing the "Connect to Jupyter" button when ready.
+   a. After filling in the Open OnDemand form and submitting your job, it will start in a few minutes showing the "Connect to Jupyter" button when ready.
 
       ..  image:: ../aux_pages/images/customize_Delt_OOD/01_connect-to-jupyter.png
           :alt: connect to Jupyter button
@@ -209,4 +208,4 @@ Proceed to use R:
 Debugging Open OnDemand Problems
 ---------------------------------
 
-For internal staff debugging (also useful for new OOD applications: `debugging jupyterlab, Open OnDemand <https://wiki.ncsa.illinois.edu/display/DELTA/debugging+jupyterlab+%2C+OpenOnDemand>`_).
+For internal staff debugging (also useful for new OOD applications): `debugging jupyterlab, Open OnDemand <https://wiki.ncsa.illinois.edu/display/DELTA/debugging+jupyterlab+%2C+OpenOnDemand>`_.
