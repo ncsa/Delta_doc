@@ -32,6 +32,8 @@ Illinois awarded projects and allocations currently *do not* receive periodic me
 
 There is a 30-day grace period for expired Delta projects to allow for data management access only.
 
+.. _all_sup:
+
 Allocation Supplements and Extensions
 ---------------------------------------
 
