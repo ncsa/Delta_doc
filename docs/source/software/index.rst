@@ -86,6 +86,8 @@ We have seen up to 2x speedup when using the AI Kit compared to the stock anacon
 For best results, set OMP_NUM_THREADS to the number of cores you'd like to use ( --cpus-per-task in Slurm). 
 See also: https://www.intel.com/content/www/us/en/developer/tools/oneapi/ai-analytics-toolkit.html.
 
+.. _anaconda_gpu:
+
 anaconda3_gpu (for CUDA) , anaconda3_mi100 (for ROCm)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
