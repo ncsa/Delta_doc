@@ -47,7 +47,7 @@ Use python from the anaconda3_cpu module if you need some of the modules provide
 See the `Managing Environments <https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html#managing-environments>`_ section of the conda getting started guide to learn how to customize conda for your workflow and add extra python modules to your environment. 
 NCSA staff recommend starting with anaconda3_cpu for modtree/cpu and the CPU nodes.
 **Do not use this module with GPUs, use anaconda3_gpu instead** (:ref:`anaconda_gpu`).
-The Delta team frequently updates anaconda3_\* to track the latest packages.
+The Delta team frequently updates anaconda3_* to track the latest packages.
 
 .. note::
    If you use anaconda with NGC containers, take care to use python from the container and not python from Anaconda or one of its environments. 
