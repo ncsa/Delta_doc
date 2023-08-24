@@ -27,14 +27,14 @@ The minimum charge for any job is 1 SU.
 |          | 8-way MI100 | 16    | 1 MI100      | 250 GB     |
 +----------+-------------+-------+--------------+------------+
 
-Please note that a weighting factor will discount the charge for the reduced-precision A40 nodes, as well as the novel AMD MI100 based node - this will be documented through the ACCESS SU converter.
+Note, a weighting factor will discount the charge for the reduced-precision A40 nodes, as well as the novel AMD MI100 based node - this will be documented through the ACCESS SU converter.
 
 Local Account Charging
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Use the ``accounts`` command to list the accounts available for charging. 
 CPU and GPU resources will have individual charge names. 
-For example in the following, **``abcd-delta-cpu``** and **``abcd-delta-gpu``** are available for user gbauer to use for the CPU and GPU resources.
+For example, in the following, **``abcd-delta-cpu``** and **``abcd-delta-gpu``** are available for user gbauer to use for the CPU and GPU resources.
 
 .. code-block::
 
@@ -66,9 +66,9 @@ If you see QOSGrpBillingMinutes under the Reason column for the squeue command, 
                 JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
               1204221       cpu    myjob     .... PD       0:00      5 (QOSGrpBillingMinutes)
 
-Then the resource allocation specified for the job (i.e. xyzt-delta-cpu) does not have sufficient balance to run the job based on the number of resources requested and the wallclock time. 
+Then the resource allocation specified for the job (i.e. xyzt-delta-cpu) does not have sufficient balance to run the job based on the number of resources requested and the wall-clock time. 
 Sometimes it may be other jobs from the same project, also in the QOSGrpBillingMinutes state, using the same resource allocation that are preventing a job that would normally "fit" from running.
-To resolve, the PI of the project needs to put in a supplement request using the same XRAS proposal system that was used for the current award (ACCESS or NCSA).
+To resolve this, the PI of the project needs to put in a supplement request using the same XRAS proposal system that was used for the current award, see :ref:`all_sup`.
 
 Reviewing Job Charges for a Project (jobcharge)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -281,37 +281,35 @@ Hybrid (MPI + OpenMP or MPI+X) on CPU Nodes
 Parametric / Array / HTC Jobs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Not yet implemented.
+- Not yet implemented.
 
 Interactive Sessions
 -------------------------
 
 Interactive sessions can be implemented in several ways, depending on what is needed. To start up a bash shell terminal on a CPU or GPU node:
 
-Single Core with 16GB of Memory, with One Task on a CPU Node
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Single core with 16GB of memory, with one task on a CPU node
 
-.. code-block::
+  .. code-block::
 
-   srun --account=account_name --partition=cpu-interactive \
-     --nodes=1 --tasks=1 --tasks-per-node=1 \
-     --cpus-per-task=4 --mem=16g \
-     --pty bash
+     srun --account=account_name --partition=cpu-interactive \
+       --nodes=1 --tasks=1 --tasks-per-node=1 \
+       --cpus-per-task=4 --mem=16g \
+       --pty bash
 
-Single Core with 20GB of Memory, with One Task on a A40 GPU Node
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Single core with 20GB of memory, with one task on a A40 GPU node
 
-.. code-block::
+  .. code-block::
 
-   srun --account=account_name --partition=gpuA40x4-interactive \
-     --nodes=1 --gpus-per-node=1 --tasks=1 \
-     --tasks-per-node=16 --cpus-per-task=1 --mem=20g \
-     --pty bash 
+     srun --account=account_name --partition=gpuA40x4-interactive \
+       --nodes=1 --gpus-per-node=1 --tasks=1 \
+       --tasks-per-node=16 --cpus-per-task=1 --mem=20g \
+       --pty bash 
 
 MPI Interactive Jobs: Use salloc Followed by srun
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Since interactive jobs are already a child process of srun, one cannot srun (or mpirun) applications from within them. 
+Interactive jobs are already a child process of srun, therefore, one cannot srun (or mpirun) applications from within them. 
 Within standard batch jobs submitted via sbatch, use ``srun`` to launch MPI codes. 
 For true interactive MPI, use ``salloc`` in place of srun shown above, then "srun my_mpi.exe" after you get a prompt from salloc (exit to end the salloc interactive allocation).
 
@@ -377,18 +375,16 @@ File System Dependency Specification for Jobs
 
 Please see the :ref:`depend_arch`section in System Architecture for information on setting job file system dependencies for jobs.
 
-Jobs that do not specify a dependency on the WORK (/projects) and SCRATCH (/scratch) will be assumed to depend only on the HOME (/u) file system.
+Jobs that do not specify a dependency on WORK (/projects) and SCRATCH (/scratch) will be assumed to depend only on the HOME (/u) file system.
 
 Job Management
 -----------------
 
 Batch jobs are submitted through a *job script* (as in the :ref:`examples`) using the sbatch command. 
-Job scripts generally start with a series of Slurm *directives* that describe requirements of the job such as number of nodes and wall time required to the batch system/scheduler (Slurm directives can also be specified as options on the sbatch command line; command line options take precedence over those in the script). 
+Job scripts generally start with a series of Slurm *directives* that describe requirements of the job, such as number of nodes and wall time required, to the batch system/scheduler (Slurm directives can also be specified as options on the sbatch command line; command line options take precedence over those in the script). 
 The rest of the batch script consists of user commands.
 
-The syntax for sbatch is: **sbatch** [list of sbatch options] script_name
-
-Refer to the sbatch man page for detailed information on the options.
+The syntax for sbatch is: **sbatch** [list of sbatch options] script_name. Refer to the sbatch man page for detailed information on the options.
 
 squeue/scontrol/sinfo
 ~~~~~~~~~~~~~~~~~~~~~
@@ -398,30 +394,30 @@ Commands that display batch job and partition information.
 +-------------------------+-------------------------------------------+
 | Slurm Example Command   | Description                               |
 +=========================+===========================================+
-| squeue -a               | List the status of all jobs on the        |
+| squeue -a               | Lists the status of all jobs on the       |
 |                         | system.                                   |
 +-------------------------+-------------------------------------------+
-| squeue -u $USER         | List the status of all your jobs in the   |
+| squeue -u $USER         | Lists the status of all your jobs in the  |
 |                         | batch system.                             |
 +-------------------------+-------------------------------------------+
-| squeue -j JobID         | List nodes allocated to a running job in  |
+| squeue -j JobID         | Lists nodes allocated to a running job in |
 |                         | addition to basic information..           |
 +-------------------------+-------------------------------------------+
-| scontrol show job JobID | List detailed information on a particular |
+| scontrol show job JobID | Lists detailed information on a particular|
 |                         | job.                                      |
 +-------------------------+-------------------------------------------+
-| sinfo -a                | List summary information on all the       |
+| sinfo -a                | Lists summary information on all the      |
 |                         | partition.                                |
 +-------------------------+-------------------------------------------+
 
-See the manual (man) pages for other available options.
+See the man pages for other available options.
 
 srun
 ~~~~~
 
-The srun command initiates an interactive job on compute nodes.
+The **srun** command initiates an interactive job on compute nodes.
 
-For example, the following command will run an interactive job in the gpuA100x4 partition with a wall clock limit of 30 minutes, using one node and 16 cores per node and 1 GPU:
+For example, the following command will run an interactive job in the gpuA100x4 partition with a wall-clock time limit of 30 minutes, using one node and 16 cores per node and 1 GPU:
 
 .. code-block::
 
@@ -433,11 +429,15 @@ As with any job, your interactive job will wait in the queue until the specified
 If you specify a small number of nodes for smaller amounts of time, the wait should be shorter because your job will backfill among larger jobs. 
 You will see something like this:
 
-``srun: job 123456 queued and waiting for resources``
+.. code-block::
+
+   srun: job 123456 queued and waiting for resources
 
 Once the job starts, you will see:
 
-``srun: job 123456 has been allocated resources``
+.. code-block::
+
+   srun: job 123456 has been allocated resources
 
 You will also be presented with an interactive shell prompt on the launch node. 
 At this point, you can use the appropriate command to start your program.
@@ -447,35 +447,38 @@ When you are done with your work, you can use the ``exit`` command to end the jo
 scancel
 ~~~~~~~~
 
-The scancel command deletes a queued job or terminates a running job.
+The scancel command deletes a queued job or terminates a running job. The example below deletes/terminates the job with the associated JobID.
 
 .. code-block::
 
    scancel JobID 
 
-Deletes/terminates the job with the associated JobID.
-
 Job Status
 ~~~~~~~~~~~
 
-If the *NODELIST(REASON)* is MaxGRESPerAccount that means that a user has exceeded the number of cores or GPUs allotted per user or project for a given partition.
+If the NODELIST(REASON) is MaxGRESPerAccount, that means that a user has exceeded the number of cores or GPUs allotted per user or project for a given partition.
 
-Useful Batch Job Environment Variables slurm_environment_variables
+Useful Batch Job Environment Variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 +-------------------------+-------------------------------------------+----------------------------------------------+
 | Description             | Slurm Environment Variable                | Detail Description                           |
 +=========================+===========================================+==============================================+
 | Array JobID             | $SLURM_ARRAY_JOB_ID                       | Each member of a job array is assigned       |
+|                         |                                           |                                              |
 |                         | $SLURM_ARRAY_TASK_ID                      | a unique identifier                          |
 +-------------------------+-------------------------------------------+----------------------------------------------+
 | Job Submission Directory| $SLURM_SUBMIT_DIR                         | By default, jobs start in the directory      |
+|                         |                                           |                                              |
 |                         |                                           | that the job was submitted from. So the      |
+|                         |                                           |                                              |
 |                         |                                           | "cd $SLURM_SUBMIT_DIR" command is not needed.|
 +-------------------------+-------------------------------------------+----------------------------------------------+
 | JobID                   | $SLURM_JOB_ID                             | Job identifier assigned to the job           |
 +-------------------------+-------------------------------------------+----------------------------------------------+
-| Machine(node) list      | $SLURM_NODELIST                           | Variable name that contains the list of nodes|
-|                         |                                           | assigned to the batch job                    |
+| Machine(node) list      | $SLURM_NODELIST                           | Variable name that contains the list of      |
+|                         |                                           |                                              |
+|                         |                                           | nodes assigned to the batch job              |
 +-------------------------+-------------------------------------------+----------------------------------------------+
 
 See the sbatch man page for additional environment variables available.
@@ -490,14 +493,12 @@ See: https://slurm.schedmd.com/quickstart.html for an introduction to Slurm.
 There are two ways to access compute nodes on Delta.
 
 Batch jobs can be used to access compute nodes. 
-Slurm provides a convenient direct way to submit batch jobs. 
-See https://slurm.schedmd.com/heterogeneous_jobs.html#submitting for details. 
-
-Slurm supports job arrays for easy management of a set of similar jobs, see: https://slurm.schedmd.com/job_array.html.
+Slurm provides a convenient direct way to submit batch jobs, see: https://slurm.schedmd.com/heterogeneous_jobs.html#submitting. 
+Slurm also supports job arrays for easy management of a set of similar jobs, see: https://slurm.schedmd.com/job_array.html.
 
 Sample Slurm batch job scripts are provided in the :ref:`examples` section.
 
-Direct SSH access to a compute node in a running batch job from a dt-loginNN node is enabled once the job has started.
+Direct SSH access to a compute node in a running batch job from a dt-loginNN node is enabled once the job has started:
 
 .. code-block::
 
@@ -534,19 +535,23 @@ For information, see the Slurm quick reference guide: https://slurm.schedmd.com/
 Partitions (Queues)
 -----------------------
 
-======================= ==================
 Delta Production Default Partition Values
-------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+======================= ==================
 Property                Value
 ======================= ==================
 Default Memory per core 1000 MB
-Default Wallclock time  30 minutes
+Default Wall-clock time 30 minutes
 ======================= ==================
 
+Delta Production Partitions/Queues
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-|Delta Production Partitions/Queues                                                                                |
-+-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-| Partition/Queue       | Node Type | Max Nodes per Job | Max Duration | Max Running in Queue/user | Charge Factor |
+| Partition/Queue       | Node Type | Max Nodes         | Max Duration | Max Running in            | Charge Factor |
+|                       |           |                   |              |                           |               |
+|                       |           | per Job           |              | Queue/user*               |               |
 +=======================+===========+===================+==============+===========================+===============+
 | cpu                   | CPU       | TBD               | 48 hr        | TBD                       | 1.0           |
 +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
@@ -556,12 +561,12 @@ Default Wallclock time  30 minutes
 |                       |           |                   |              |                           |               |
 | gpuA100x4*            |           |                   |              |                           |               |
 |                       |           |                   |              |                           |               |
-| (asterisk             |           |                   |              |                           |               |
-| indicates this        |           |                   |              |                           |               |
+| (* indicates this     |           |                   |              |                           |               |
 | is the default        |           |                   |              |                           |               |
-| queue, but            |           |                   |              |                           |               |
-| submit jobs to        |           |                   |              |                           |               |
-| gpuA100x4)            |           |                   |              |                           |               |
+|                       |           |                   |              |                           |               |
+| queue, but submit jobs|           |                   |              |                           |               |
+|                       |           |                   |              |                           |               |
+| to gpuA100x4)         |           |                   |              |                           |               |
 +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
 | gpuA100x4-interactive | quad-A100 | TBD               | 1 hr         | TBD                       | 2.0           |
 +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
@@ -603,8 +608,7 @@ Job Policies
 ----------------
 
 The default job requeue or restart policy is set to not allow jobs to be automatically requeued or restarted (as of 12/19/2022).
-
-To enable automatic requeue and restart of a job by Slurm, please add the following slurm directive:
+To enable automatic requeue and restart of a job by Slurm, please add the following Slurm directive:
 
 .. code-block::
 
@@ -626,4 +630,4 @@ Refunds
 
 Refunds are considered, when appropriate, for jobs that failed due to circumstances beyond user control.
 
-To request a refund, email help@ncsa.illinois.edu. Please include the batch job ids and the standard error and output files produced by the job(s).
+To request a refund, submit a support request (:ref:`help`). Please include the batch job ids and the standard error and output files produced by the job(s).
