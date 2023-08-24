@@ -1,42 +1,35 @@
 System Architecture
 =======================
 
-Delta is designed to help applications transition from CPU-only to GPU
-or hybrid CPU-GPU codes. Delta has some important architectural features
-to facilitate new discovery and insight:
+Delta is designed to help applications transition from CPU-only to GPU or hybrid CPU-GPU codes. 
+Delta has some important architectural features to facilitate new discovery and insight:
 
--  A single processor architecture (AMD) across all node types: CPU and
-   GPU
--  Support for NVIDIA A100 MIG GPU partitioning allowing for fractional
-   use of the A100s if your workload isn't able to exploit an entire
-   A100 efficiently
--  Ray tracing hardware support from the NVIDIA A40 GPUs
+-  A single processor architecture (AMD) across all node types: CPU and GPU
+-  Support for NVIDIA A100 MIG GPU partitioning, allowing for fractional use of the A100s if your workload is not able to exploit an entire A100 efficiently
+-  Raytracing hardware support from the NVIDIA A40 GPUs
 -  Nine large memory (2 TB) nodes
--  A low latency and high bandwidth HPE/Cray Slingshot interconnect
-   between compute nodes
+-  A low latency and high bandwidth HPE/Cray Slingshot interconnect between compute nodes
 -  Lustre for home, projects, and scratch file systems
--  Support for relaxed and non-posix IO (feature not yet implemented)
+-  Support for relaxed and non-POSIX I/O (feature not yet implemented)
 -  Shared-node jobs and the single core and single MIG GPU slice
--  Resources for persistent services in support of Gateways, Open
-   OnDemand, and Data Transport nodes
--  Unique AMD MI-100 resource
+-  Resources for persistent services in support of Gateways, Open OnDemand, and Data Transport nodes
+-  Unique AMD MI100 resource
 
 Model Compute Nodes
 ----------------------
 
 The Delta compute ecosystem is composed of five node types:
 
-- Dual-socket CPU-only compute nodes
-- Single socket 4-way NVIDIA A100 GPU compute nodes
-- Single socket 4-way NVIDIA A40 GPU compute nodes
-- Dual-socket 8-way NVIDIA A100 GPU compute nodes
-- Single socket 8-way AMD MI100 GPU compute nodes
+- Dual-socket, CPU-only compute nodes
+- Single socket, 4-way NVIDIA A100 GPU compute nodes
+- Single socket, 4-way NVIDIA A40 GPU compute nodes
+- Dual-socket, 8-way NVIDIA A100 GPU compute nodes
+- Single socket, 8-way AMD MI100 GPU compute nodes
 
 | The CPU-only and 4-way GPU nodes have 256 GB of RAM per node; the 8-way GPU nodes have 2 TB of RAM. 
+| The CPU-only node has 0.74 TB of local storage; all GPU nodes have 1.5 TB of local storage.
 
-The CPU-only node has 0.74 TB of local storage; all GPU nodes have 1.5 TB of local storage.
-
-Each socket contains an AMD 7763 processor. Consistent with AMD's advice for HPC nodes and our own testing, all Delta nodes have Simultaneous Multi Treading (SMT) turned off.  
+Each socket contains an AMD 7763 processor. Consistent with AMD's advice for HPC nodes and NCSA's testing, all Delta nodes have Simultaneous Multi Treading (SMT) turned off.  
 
 ..  image:: amd-7003-series.png
     :alt: EPYC 7003 Series Architecture Quick Look
@@ -46,6 +39,7 @@ CPU Compute Node Specifications
 
 ========================= ===================
 Specification             Value
+========================= ===================
 Number of nodes           132
 CPU                       AMD EPYC 7763
                           "Milan" (PCIe Gen4)
@@ -62,12 +56,12 @@ Local storage (TB)        0.74 TB
 
 The AMD CPUs are set for 4 NUMA domains per socket (NPS=4).
 
-4-way NVIDIA A40 GPU Compute Node Specifications
+4-Way NVIDIA A40 GPU Compute Node Specifications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 +---------------------------+-----------------------------------------+
 | Specification             | Value                                   |
-+---------------------------+-----------------------------------------+
++===========================+=========================================+
 | Number of nodes           | 100                                     |
 +---------------------------+-----------------------------------------+
 | GPU                       | NVIDIA A40                              |
@@ -102,34 +96,39 @@ The AMD CPUs are set for 4 NUMA domains per socket (NPS=4).
 
 The AMD CPUs are set for 4 NUMA domains per socket (NPS=4).
 
-4-way NVIDIA A40 Mapping and GPU-CPU Affinitization
+4-Way NVIDIA A40 Mapping and GPU-CPU Affinitization
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-| The A40 GPUs are connected via PCIe Gen4 and have the following affinitization to NUMA nodes on the CPU. 
-Note that the relationship between GPU index and NUMA domain is inverse.
+The A40 GPUs are connected via PCIe Gen4 and have the following affinitization to NUMA nodes on the CPU. Note that the relationship between GPU index and NUMA domain is inverse.
 
-==== ==== ==== ==== ==== === ============ =============
-     GPU0 GPU1 GPU2 GPU3 HSN CPU Affinity NUMA Affinity
-GPU0 X    SYS  SYS  SYS  SYS 48-63        3
-GPU1 SYS  X    SYS  SYS  SYS 32-47        2
-GPU2 SYS  SYS  X    SYS  SYS 16-31        1
-GPU3 SYS  SYS  SYS  X    PHB 0-15         0
-HSN  SYS  SYS  SYS  PHB  X                
-==== ==== ==== ==== ==== === ============ =============
++--------+----+----+----+----+---+------------+-------------+
+|        |GPU0|GPU1|GPU2|GPU3|HSN|CPU Affinity|NUMA Affinity|
++========+====+====+====+====+===+============+=============+
+|**GPU0**|X   |SYS |SYS |SYS |SYS|48-63       |3            |
++--------+----+----+----+----+---+------------+-------------+
+|**GPU1**|SYS |X   |SYS |SYS |SYS|32-47       |2            |
++--------+----+----+----+----+---+------------+-------------+
+|**GPU2**|SYS |SYS |X   |SYS |SYS|16-31       |1            |
++--------+----+----+----+----+---+------------+-------------+
+|**GPU3**|SYS |SYS |SYS |X   |PHB|0-15        |0            |
++--------+----+----+----+----+---+------------+-------------+
+|**HSN** |SYS |SYS |SYS |PHB |X  |            |             |
++--------+----+----+----+----+---+------------+-------------+
 
-| Table Legend:
+Table Legend:
+
 - X = Self
 - SYS = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)
 - NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node
 - PHB = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)
 - NV# = Connection traversing a bonded set of # NVLinks
 
-4-way NVIDIA A100 GPU Compute Node Specifications
+4-Way NVIDIA A100 GPU Compute Node Specifications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 +---------------------------+-----------------------------------------+
 | Specification             | Value                                   |
-+---------------------------+-----------------------------------------+
++===========================+=========================================+
 | Number of nodes           | 100                                     |
 +---------------------------+-----------------------------------------+
 | GPU                       | NVIDIA A100                             |
@@ -164,31 +163,37 @@ HSN  SYS  SYS  SYS  PHB  X
 
 The AMD CPUs are set for 4 NUMA domains per socket (NPS=4).
 
-4-way NVIDIA A100 Mapping and GPU-CPU Affinitization
+4-Way NVIDIA A100 Mapping and GPU-CPU Affinitization
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-==== ==== ==== ==== ==== === ============ =============
-     GPU0 GPU1 GPU2 GPU3 HSN CPU Affinity NUMA Affinity
-GPU0 X    NV4  NV4  NV4  SYS 48-63        3
-GPU1 NV4  X    NV4  NV4  SYS 32-47        2
-GPU2 NV4  NV4  X    NV4  SYS 16-31        1
-GPU3 NV4  NV4  NV4  X    PHB 0-15         0
-HSN  SYS  SYS  SYS  PHB  X                
-==== ==== ==== ==== ==== === ============ =============
++--------+----+----+----+----+---+------------+-------------+
+|        |GPU0|GPU1|GPU2|GPU3|HSN|CPU Affinity|NUMA Affinity|
++========+====+====+====+====+===+============+=============+
+|**GPU0**|X   |NV4 |NV4 |NV4 |SYS|48-63       |3            |
++--------+----+----+----+----+---+------------+-------------+
+|**GPU1**|NV4 |X   |NV4 |NV4 |SYS|32-47       |2            |
++--------+----+----+----+----+---+------------+-------------+
+|**GPU2**|NV4 |NV4 |X   |NV4 |SYS|16-31       |1            |
++--------+----+----+----+----+---+------------+-------------+
+|**GPU3**|NV4 |NV4 |NV4 |X   |PHB|0-15        |0            |
++--------+----+----+----+----+---+------------+-------------+
+|**HSN** |SYS |SYS |SYS |PHB |X  |            |             |
++--------+----+----+----+----+---+------------+-------------+
 
-| Table Legend:
+Table Legend:
+
 - X = Self
 - SYS = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)
 - NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node
 - PHB = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)
 - NV# = Connection traversing a bonded set of # NVLinks
 
-8-way NVIDIA A100 GPU Large Memory Compute Node Specifications
+8-Way NVIDIA A100 GPU Large Memory Compute Node Specifications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 +---------------------------+-----------------------------------------+
 | Specification             | Value                                   |
-+---------------------------+-----------------------------------------+
++===========================+=========================================+
 | Number of nodes           | 6                                       |
 +---------------------------+-----------------------------------------+
 | GPU                       | NVIDIA A100                             |
@@ -223,44 +228,45 @@ HSN  SYS  SYS  SYS  PHB  X
 
 The AMD CPUs are set for 4 NUMA domains per socket (NPS=4).
 
-8-way NVIDIA A100 Mapping and GPU-CPU Affinitization
+8-Way NVIDIA A100 Mapping and GPU-CPU Affinitization
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-+------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
-|      | GPU0 | GPU1 | GPU2 | GPU3 | GPU4 | GPU5 | GPU6 | GPU7 | HSN | CPU Affinity | NUMA Affinity |
-+------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
-| GPU0 | X    | NV12 | NV12 | NV12 | NV12 | NV12 | NV12 | NV12 | SYS | 48-63        | 3             |
-+------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
-| GPU1 | NV12 | X    | NV12 | NV12 | NV12 | NV12 | NV12 | NV12 | SYS | 48-63        | 3             |
-+------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
-| GPU2 | NV12 | NV12 | X    | NV12 | NV12 | NV12 | NV12 | NV12 | SYS | 16-31        | 1             |
-+------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
-| GPU3 | NV12 | NV12 | NV12 | X    | NV12 | NV12 | NV12 | NV12 | SYS | 16-31        | 1             |
-+------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
-| GPU4 | NV12 | NV12 | NV12 | NV12 | X    | NV12 | NV12 | NV12 | SYS | 112-127      | 7             |
-+------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
-| GPU5 | NV12 | NV12 | NV12 | NV12 | NV12 | X    | NV12 | NV12 | SYS | 112-127      | 7             |
-+------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
-| GPU6 | NV12 | NV12 | NV12 | NV12 | NV12 | NV12 | X    | NV12 | SYS | 80-95        | 5             |
-+------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
-| GPU7 | NV12 | NV12 | NV12 | NV12 | NV12 | NV12 | NV12 | X    | SYS | 80-95        | 5             |
-+------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
-| HSN  | SYS  | SYS  | SYS  | SYS  | SYS  | SYS  | SYS  | SYS  | X   |              |               |
-+------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
++--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
+|        | GPU0 | GPU1 | GPU2 | GPU3 | GPU4 | GPU5 | GPU6 | GPU7 | HSN | CPU Affinity | NUMA Affinity |
++========+======+======+======+======+======+======+======+======+=====+==============+===============+
+|**GPU0**| X    | NV12 | NV12 | NV12 | NV12 | NV12 | NV12 | NV12 | SYS | 48-63        | 3             |
++--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
+|**GPU1**| NV12 | X    | NV12 | NV12 | NV12 | NV12 | NV12 | NV12 | SYS | 48-63        | 3             |
++--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
+|**GPU2**| NV12 | NV12 | X    | NV12 | NV12 | NV12 | NV12 | NV12 | SYS | 16-31        | 1             |
++--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
+|**GPU3**| NV12 | NV12 | NV12 | X    | NV12 | NV12 | NV12 | NV12 | SYS | 16-31        | 1             |
++--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
+|**GPU4**| NV12 | NV12 | NV12 | NV12 | X    | NV12 | NV12 | NV12 | SYS | 112-127      | 7             |
++--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
+|**GPU5**| NV12 | NV12 | NV12 | NV12 | NV12 | X    | NV12 | NV12 | SYS | 112-127      | 7             |
++--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
+|**GPU6**| NV12 | NV12 | NV12 | NV12 | NV12 | NV12 | X    | NV12 | SYS | 80-95        | 5             |
++--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
+|**GPU7**| NV12 | NV12 | NV12 | NV12 | NV12 | NV12 | NV12 | X    | SYS | 80-95        | 5             |
++--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
+|**HSN** | SYS  | SYS  | SYS  | SYS  | SYS  | SYS  | SYS  | SYS  | X   |              |               |
++--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
 
-| Table Legend:
+Table Legend:
+
 - X = Self
 - SYS = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)
 - NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node
 - PHB = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)
 - NV# = Connection traversing a bonded set of # NVLinks
 
-8-way AMD MI100 GPU Large Memory Compute Node Specifications
+8-Way AMD MI100 GPU Large Memory Compute Node Specifications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 +---------------------------+-----------------------------------------+
 | Specification             | Value                                   |
-+---------------------------+-----------------------------------------+
++===========================+=========================================+
 | Number of nodes           | 1                                       |
 +---------------------------+-----------------------------------------+
 | GPU                       | AMD MI100                               |
@@ -295,37 +301,32 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 Login Nodes
 --------------
+
 Login nodes provide interactive support for code compilation. See :ref:`access` for more information.
 
 Specialized Nodes
 ---------------------
-Delta will support data transfer nodes (serving the "NCSA Delta" Globus
-collection) and nodes in support of other services.
+
+Delta will support data transfer nodes (serving the "NCSA Delta" Globus collection) and nodes in support of other services.
 
 Network
 ------------
-Delta is connected to the NPCF core router and exit infrastructure via two
-100Gbps connections, NCSA's 400Gbps+ of WAN connectivity carry traffic
-to/from users on an optimal peering.
+Delta is connected to the NPCF core router and exit infrastructure via two 100Gbps connections, NCSA's 400Gbps+ of WAN connectivity carry traffic to/from users on an optimal peering.
 
-Delta resources are inter-connected with HPE/Cray's 100Gbps/200Gbps
-SlingShot interconnect.
+Delta resources are inter-connected with HPE/Cray's 100Gbps/200Gbps Slingshot interconnect.
 
 File Systems
 ---------------
 
-Users of Delta have access to 3 file systems at the time of system
-launch, a fourth relaxed-POSIX file system will be made available at a
-later date.
+Users of Delta have access to three file systems at the time of system launch, a fourth relaxed-POSIX file system will be made available at a later date.
 
 Delta
 ~~~~~~
 
-The Delta storage infrastructure provides users with their HOME and
-SCRATCH areas. These file systems are mounted across all Delta nodes and
-are accessible on the Delta DTN Endpoints. The aggregate performance of
-this subsystem is 70GB/s and it has 6PB of usable space. These file
-systems run Lustre via DDN's ExaScaler 6 stack (Lustre 2.14 based).
+The Delta storage infrastructure provides users with their HOME and SCRATCH areas. 
+These file systems are mounted across all Delta nodes and are accessible on the Delta DTN Endpoints. 
+The aggregate performance of this subsystem is 70GB/s and it has 6PB of usable space. 
+These file systems run Lustre via DDN's ExaScaler 6 stack (Lustre 2.14 based).
 
 Hardware
 $$$$$$$$$
@@ -338,12 +339,12 @@ DDN SFA7990XE (Quantity: 3), each unit contains:
 
 The HOME file system has 4 OSTs and is set with a default stripe size of 1.
 
-The SCRATCH file system has 8 OSTs and has Lustre Progressive File
-Layout (PFL) enabled which automatically restripes a file as the file
-grows. The thresholds for PFL striping for SCRATCH are:
+The SCRATCH file system has 8 OSTs and has Lustre Progressive File Layout (PFL) enabled which automatically restripes a file as the file grows. 
+The thresholds for PFL striping for SCRATCH are:
 
 ========= ============
-File size Stripe count
+File Size Stripe Count
+========= ============
 0-32M     1 OST
 32M-512M  4 OST
 512M+     8 OST
@@ -352,32 +353,25 @@ File size Stripe count
 Best Practices
 $$$$$$$$$$$$$$$
 
-To reduce the load on the file system metadata services, the ls option for context dependent font coloring, **--**\ color, is disabled by default.
+To reduce the load on the file system metadata services, the ls option for context dependent font coloring, **--color**, is disabled by default.
 
 Future Hardware
 $$$$$$$$$$$$$$$$$
 
-An additional pool of NVME flash from DDN was installed in early
-summer 2022. This flash is initially deployed as a tier for "hot" data
-in scratch. This subsystem will have an aggregate performance of 500GB/s
-and will have 3PB of raw capacity. As noted above, this subsystem will
-transition to an independent relaxed-POSIX namespace file system,
-communications on that timeline will be announced as updates are
-available.
+An additional pool of NVME flash from DDN was installed in early summer 2022. 
+This flash is initially deployed as a tier for "hot" data in SCRATCH. 
+This subsystem will have an aggregate performance of 500GB/s and will have 3PB of raw capacity. 
+This subsystem will transition to an independent relaxed-POSIX namespace file system, communications on that timeline will be announced as updates are available.
 
 Taiga
 ~~~~~~
 
-Taiga is NCSA’s global file system which provides users with their $WORK
-area. This file system is mounted across all Delta systems at /taiga
-(note that Taiga is used to provision the Delta /projects file system
-from /taiga/nsf/delta) and is accessible on both the Delta and Taiga
-DTN endpoints. For NCSA and Illinois researchers, Taiga is also mounted
-across NCSA's HAL, HOLL-I, and Radiant compute environments. This
-storage subsystem has an aggregate performance of 110GB/s and 1PB of its
-capacity allocated to users of the Delta system. /taiga is a Lustre file
-system running DDN's Exascaler 6 Lustre stack. See the `Taiga and Granite
-NCSA wiki site <https://wiki.ncsa.illinois.edu/pages/viewpage.action?pageId=148538533>`_ for more information.
+Taiga is NCSA’s global file system which provides users with their $WORK area. 
+This file system is mounted across all Delta systems at /taiga (note that Taiga is used to provision the Delta /projects file system from /taiga/nsf/delta) and is accessible on both the Delta and Taiga DTN endpoints. 
+For NCSA and Illinois researchers, Taiga is also mounted across NCSA's HAL, HOLL-I, and Radiant compute environments. 
+This storage subsystem has an aggregate performance of 110GB/s and 1PB of its capacity is allocated to users of the Delta system. 
+/taiga is a Lustre file system running DDN's Exascaler 6 Lustre stack. 
+See the `Taiga and Granite NCSA wiki site <https://wiki.ncsa.illinois.edu/pages/viewpage.action?pageId=148538533>`_ for more information.
 
 Hardware
 $$$$$$$$$$
@@ -390,12 +384,9 @@ DDN SFA400NVXE (Quantity: 2), each unit contains:
 DDN SFA18XE (Quantity: 1), each unit contains:
 
 -  10 x SS9012 enclosures
--  NVME for for metadata and small files
+-  NVME for metadata and small files
 
-| **$WORK and $SCRATCH**
-A "module reset" in a job script will populate $WORK and $SCRATCH
-environment variables automatically, or you may set them as
-WORK=/projects/<account>/$USER , SCRATCH=/scratch/<account>/$USER .
+A "module reset" in a job script will populate $WORK and $SCRATCH environment variables automatically, or you may set them as WORK=/projects/<account>/$USER , SCRATCH=/scratch/<account>/$USER .
 
 +-------------+-------------+--------------+-------------+--------------+
 | **File      | **Quota**   | **Snapshots**| **Purged**  | **Key        |
@@ -405,38 +396,38 @@ WORK=/projects/<account>/$USER , SCRATCH=/scratch/<account>/$USER .
 |             | 600,000     |              |             | software,    |
 |             | files per   |              |             | scripts,     |
 |             | user.       |              |             | job files,   |
-|             |             |              |             | etc.         |
-|             |             |              |             | **NOT**      |
+|             |             |              |             | and so on.   |
 |             |             |              |             |              |
+|             |             |              |             | **NOT**      |
 |             |             |              |             | intended as  |
 |             |             |              |             | a            |
 |             |             |              |             | source/      |
 |             |             |              |             | destination  |
 |             |             |              |             | for I/O      |
-|             |             |              |             | during jobs  |
+|             |             |              |             | during jobs. |
 +-------------+-------------+--------------+-------------+--------------+
 | WORK        | **500 GB**. | No/TBA       | No          | Area for     |
 | (/projects) | Up to 1-25  |              |             | shared data  |
 |             | TB by       |              |             | for a        |
 |             | allocation  |              |             | project,     |
 |             | request.    |              |             | common data  |
+|             |             |              |             | sets,        |
 |             |             |              |             |              |
-|             | Large       |              |             | sets,        |
-|             | requests    |              |             | software,    |
-|             | may have a  |              |             | results,     |
-|             | monetary    |              |             | etc.         |
+|             | Large       |              |             | software,    |
+|             | requests    |              |             | results,     |
+|             | may have a  |              |             | and so on.   |
+|             | monetary    |              |             |              |
 |             | fee.        |              |             |              |
 +-------------+-------------+--------------+-------------+--------------+
 | SCRATCH     | **1000      | No           | No          | Area for     |
-| (/scratch)  | GB**. Up to |              |             | c            |
-|             | 1-100 TB by |              |             | omputation,  |
-|             | allocation  |              |             | largest      |
-|             | request.    |              |             |              |
-|             |             |              |             | allocations, |
-|             |             |              |             | where I/O    |
+| (/scratch)  | GB**. Up to |              |             | computation, |
+|             | 1-100 TB by |              |             | largest      |
+|             | allocation  |              |             | allocations, |
+|             | request.    |              |             | where I/O    |
+|             |             |              |             |              |
 |             |             |              |             | from jobs    |
 |             |             |              |             | should       |
-|             |             |              |             | occur        |
+|             |             |              |             | occur.       |
 +-------------+-------------+--------------+-------------+--------------+
 | /tmp        | **0.74      | No           | After each  | Locally      |
 |             | (CPU) or    |              | job         | attached     |
@@ -450,16 +441,15 @@ WORK=/projects/<account>/$USER , SCRATCH=/scratch/<account>/$USER .
 |             | usage by    |              |             |              |
 |             | job(s), no  |              |             |              |
 |             | quotas in   |              |             |              |
-|             | place       |              |             |              |
+|             | place.      |              |             |              |
 +-------------+-------------+--------------+-------------+--------------+
 
 Quota Usage
 ~~~~~~~~~~~~
 
-The **quota** command allows you to view your use of the file systems
-and use by your projects. Below is a sample output for a person, "user",
-who is in two projects: aaaa and bbbb. The home directory quota does
-not depend on which project group the file is written with.
+The **quota** command allows you to view your use of the file systems and use by your projects. 
+Below is a sample output for a person, "user", who is in two projects: aaaa and bbbb. 
+The home directory quota does not depend on which project group the file is written with.
 
 .. code-block::
 
@@ -484,7 +474,7 @@ not depend on which project group the file is written with.
    | /scratch/bbbb  | 24k   | 9.766T| 10.74T| 6     | 500000 | 550000 |
    ------------------------------------------------------------------------------------------
 
-.. _depend-arch:
+.. _depend_arch:
 
 File System Dependency Specification for Jobs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -492,31 +482,29 @@ File System Dependency Specification for Jobs
 NCSA requests that jobs specify the file system or systems being used to enable response to resource availability issues. 
 All jobs are assumed to depend on the HOME file system.
 
-**Table of Slurm Feature/Constraint Labels**
-
 ================= ======================== ==================
+Slurm Feature/Constraint Labels
+-------------------------------------------------------------
 File System       Feature/Constraint Label Note
+================= ======================== ==================
 WORK (/projects)  projects                 
 SCRACH (/scratch) scratch                  
 IME (/ime)        ime                      depends on scratch
 TAIGA (/taiga)    taiga                    
 ================= ======================== ==================
 
-The Slurm constraint specifier and Slurm Feature attribute for jobs are
-used to add file system dependencies to a job.
+The Slurm constraint specifier and Slurm Feature attribute for jobs are used to add file system dependencies to a job.
 
 Slurm Feature Specification
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-For already submitted and pending (PD) jobs, please use the Slurm
-Feature attribute as follows:
+For already submitted and pending (PD) jobs, please use the Slurm Feature attribute as follows:
 
 .. code-block::
 
    $ scontrol update job=JOBID Features="feature1&feature2"
 
-For example, to add scratch and ime Features to an already submitted
-job:
+For example, to add scratch and ime Features to an already submitted job:
 
 .. code-block::
 
@@ -532,8 +520,7 @@ To verify the setting:
 Slurm Constraint Specification
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-To add Slurm job constraint attributes when submitting a job with sbatch
-(or with srun as a command line argument) use:
+To add Slurm job constraint attributes when submitting a job with sbatch (or with srun as a command line argument) use:
 
 .. code-block::
 

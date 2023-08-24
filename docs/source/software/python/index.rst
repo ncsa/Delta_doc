@@ -2,7 +2,7 @@ Python
 ==========
 
 .. note::
-   When submitting support requests (:ref:`help`) for python, please provide the following and understand that Delta support staff time is a finite resource while python developments (new software and modules) are growing at nearly infinite velocity.
+   When submitting support requests (:ref:`help`) for python, please provide the following and understand that Delta support staff time is a finite resource while python developments (new software and modules) are growing at nearly infinite velocity:
 
    - Python version or environment used (describe fully, with the commands needed to reproduce)
    - Error output or log from what went wrong (screenshots are more difficult to work with than text data, we donot run trained inference on screenshots attached to Jira)
@@ -13,21 +13,21 @@ On Delta, you may install your own python software stacks, as needed.
 There are choices when customizing your python setup. 
 You may *use any of these methods* with any of the python versions or instances described below (or you may install your own python versions):
 
-#. `venv (python virtual environment) <https://docs.python.org/3/library/venv.html>`_
+- `venv (python virtual environment) <https://docs.python.org/3/library/venv.html>`_
 
-   Can name environments (metadata) and have multiple environments per python version or instance.
+  Can name environments (metadata) and have multiple environments per python version or instance.
 
-#. `conda environments <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>`_
+- `conda environments <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>`_
 
-   Similar to venv but with more flexibility, see this `comparison table <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html#virtual-environments>`_.
+  Similar to venv but with more flexibility, see this `comparison table <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html#virtual-environments>`_.
       
-#. `micromamba <https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html>`_ (micromamba is a clone of conda but faster to use)
+- `micromamba <https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html>`_ (micromamba is a clone of conda but faster to use)
    
-   Use micromamba install guide and then use conda commands the usual way.
+  Use micromamba install guide and then use conda commands the usual way.
 
-#. `pip3 <https://docs.python.org/3/installing/index.html>`_: pip3 install --user <python_package>
+- `pip3 <https://docs.python.org/3/installing/index.html>`_: pip3 install --user <python_package>
 
-   Useful when you only need one python environment per python version or instance.
+  Useful when you only need one python environment per python version or instance.
 
 Examples using all of the above are shown at this site covering scikit-learn-intelex (an Intel accelerated scikit learn subset library for x86_64 architecture): https://github.com/intel/scikit-learn-intelex/blob/master/INSTALL.md
 
@@ -35,7 +35,7 @@ Examples using all of the above are shown at this site covering scikit-learn-int
    The :ref:`nvidia-contain` on Delta provide optimized python frameworks built for Delta's A100 and A40 GPUs. 
    Delta staff recommend using an NGC container when possible with the GPU nodes (or use the anaconda3_gpu module).
 
-The default gcc (latest version) programming environment for either modtree/cpu or modtree/gpu contains:
+The default GCC (latest version) programming environment for either modtree/cpu or modtree/gpu contains:
 
 Anaconda
 ---------
@@ -46,8 +46,8 @@ anaconda3_cpu
 Use python from the anaconda3_cpu module if you need some of the modules provided by Anaconda in your python workflow. 
 See the `Managing Environments <https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html#managing-environments>`_ section of the conda getting started guide to learn how to customize conda for your workflow and add extra python modules to your environment. 
 NCSA staff recommend starting with anaconda3_cpu for modtree/cpu and the CPU nodes.
-**Do not use this module with GPUs, use anaconda3_gpu instead.**
-The Delta team frequently updates anaconda3_\* to track the latest packages.
+**Do not use this module with GPUs, use anaconda3_gpu instead** (:ref:`anaconda_gpu`).
+The Delta team frequently updates anaconda3_* to track the latest packages.
 
 .. note::
    If you use anaconda with NGC containers, take care to use python from the container and not python from Anaconda or one of its environments. 
@@ -55,7 +55,7 @@ The Delta team frequently updates anaconda3_\* to track the latest packages.
    You may --bind the Anaconda directory or other paths into the container so that you can start your conda environments with the container's python (/usr/bin/python).
 
 https://repo.anaconda.com/archive/ contains previous Anaconda versions.
-The bundles are not small, but using one from Anaconda would ensure that you get software that was built to work together. 
+The bundles are not small, but using one from Anaconda will ensure that you get software that was built to work together. 
 If you require an older version of a python lib/module, NCSA staff suggest looking back in time at the Anaconda site.
 
 .. code-block::

@@ -7,10 +7,6 @@ File Systems
 Each user has a home directory, ``$HOME``, located at ``/u/$USER``.
 
 For example, a user (with username: **auser**) who has an allocated project with a local project serial code **abcd** will see the following entries in their ``$HOME`` and entries in the projects and scratch file systems.
-To determine the mapping of ACCESS project to local project, use the ``accounts`` command.
-
-Directory access changes can be made using the `facl <https://linux.die.net/man/1/setfacl>`_ command. 
-Submit a support request (see :ref:`help`) if you need assistance enabling access to specific users and projects.
 
 .. code-block:: bash
 
@@ -35,13 +31,18 @@ Submit a support request (see :ref:`help`) if you need assistance enabling acces
    drwxrws---+ 2 buser delta_abcd 6 Feb 21 11:54 buser
    ...
 
+Determine the mapping of ACCESS project to local project using the ``accounts`` command.
+
+Directory access changes can be made using the `facl <https://linux.die.net/man/1/setfacl>`_ command. 
+Submit a support request (see :ref:`help`) if you need assistance enabling access for specific users and projects.
+
 To avoid issues when file systems become unstable or non-responsive, do not put symbolic links from ``$HOME`` to the projects and scratch spaces.
 
 /tmp on Compute Nodes (Job Duration)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The high performance ssd storage (740GB CPU, 1.5TB GPU) is available in /tmp (*unique to each node and job – not a shared filesystem*) and may contain less than the expected free space if the node(s) are running multiple jobs. 
-Codes that need to perform i/o to many small files should target /tmp on each node of the job and save results to other filesystems before the job ends.
+The high performance ssd storage (740GB CPU, 1.5TB GPU) is available in /tmp (*unique to each node and job – not a shared file system*) and may contain less than the expected free space if the node(s) are running multiple jobs. 
+Codes that need to perform i/o to many small files should target /tmp on each node of the job and save results to other file systems before the job ends.
 
 Transferring Data
 --------------------
@@ -49,7 +50,7 @@ Transferring Data
 .. note::
 
    | **GUI applications need to support Duo multi-factor authentication (MFA)**
-   | Many GUI apps that support ssh/scp/sftp will work with Duo MFA. A good first step is to use the interactive (not stored/saved) password option with those apps. The interactive login should present you with the first password prompt (your kerberos password) followed by the second password prompt for Duo (push to device or passcode from the Duo app).
+   | Many GUI apps that support ssh/scp/sftp will work with Duo MFA. A good first step is to use the interactive (not stored/saved) password option with those apps. The interactive login should present you with the first password prompt (your Kerberos password) followed by the second password prompt for Duo (push to device or passcode from the Duo app).
 
 To transfer files to and from the Delta system:
 
@@ -61,9 +62,7 @@ To transfer files to and from the Delta system:
 
 -  Globus - Use for large data transfers.
 
-   - | **Upgrade your Globus Connect Personal**
-     
-     | Upgrade to at least version 3.2.0 before Dec 12, 2022. See: https://docs.globus.org/ca-update-2022/#notice .
+   - **Upgrade your Globus Connect Personal** to at least version 3.2.0 before Dec 12, 2022. See: https://docs.globus.org/ca-update-2022/#notice.
 
    -  Use the Delta collection "**NCSA Delta**" (see screen capture below).
       
@@ -79,9 +78,9 @@ Infinite Memory Engine (IME)
 What is DDN IME?
 ~~~~~~~~~~~~~~~~~
 
-Infinite Memory Engine (IME®) is a DDN solution for fast data tiering between the compute nodes and a file system in a high performance computing environment.
+Infinite Memory Engine (IME®) is a DDN solution for fast data tiering between the compute nodes and a file system in a high-performance computing environment.
 
-Conceptually the storage subsystem looks like the following:
+Conceptually, the storage subsystem looks like the following:
 
 ..  image:: ../aux_pages/images/Delt_IME/Delta_IME.png
     :alt: Storage subsystem
@@ -94,31 +93,35 @@ How to Use IME
 
 The preferred way to use the Delta IME is as a **read-cache** for frequently read data and as a **write/read cache** for small file i/o.
 
-It is possible to use exiting utilities and applications with files residing or created on /ime. Performance will be equal to or better than using /scratch directly for i/o to files.
+It is possible to use exiting utilities and applications with files residing or created on /ime. 
+Performance will be equal to or better than using /scratch directly for i/o to files.
 
 .. warning::
 
    | **IME and metadata**
    | IME performance for directory/metadata operations is slower than /scratch (it is not the place to extract or copy millions of files). Do those operations (rsync, tar, etc) in /scratch.
 
-To get additional performance from the IME software features without changing i/o routines, use the posix2ime library (LD_PRELOAD'd), to
-intercept standard POSIX i/o calls with IME API calls. 
-These is an included module, *posix2ime*, that does this for you (see more about posix2ime at :ref:`posix2', below).
+To get additional performance from the IME software features without changing i/o routines, use the posix2ime library (LD_PRELOAD'd), to intercept standard POSIX i/o calls with IME API calls. 
+There is an included module, *posix2ime*, that does this for you (see more about posix2ime at :ref:`posix2`, below).
 
-| **shared namespace: /ime , /scratch**
-| The /scratch and /ime file systems share the same name space. The **rm** command will delete files on both file systems.
+.. note::
 
-You can purge the contents of files from the cache, but not the presence of the file. Please see :ref:`purge`, below.
+   | **shared namespace: /ime , /scratch**
+   | The /scratch and /ime file systems share the same namespace. The **rm** command will delete files on both file systems.
+
+You can purge the contents of files from the cache, but not the presence of the file; see :ref:`purge`, below.
 
 There are some important caveats when using the /ime file system for something other than a **read-cache**. See section 2.2 Data Consistency Model in the `developer guide document <docs/source/aux_pages/images/Delt_IME/IME1.4DeveloperGuide.pdf>`_.
 
-   *Users must maintain close-to-open consistency when multiple clients access the same files. This requirement guarantees that any other client will see the latest changes made by one client as soon as the client opens the file. 
-   A client must synchronize all file data and metadata changes when it closes a file and unconditionally retrieve a file’s attributes when it opens a file, ignoring any information it may have cached about the file. IME implements an enhanced close-to-open consistency model, allowing IME to be lock free.*
+   *Users must maintain close-to-open consistency when multiple clients access the same files. 
+   This requirement guarantees that any other client will see the latest changes made by one client as soon as the client opens the file. 
+   A client must synchronize all file data and metadata changes when it closes a file and unconditionally retrieve a file’s attributes when it opens a file, ignoring any information it may have cached about the file. 
+   IME implements an enhanced close-to-open consistency model, allowing IME to be lock free.*
 
 IME Commands
 ~~~~~~~~~~~~~
 
-Please see the man page for ime-ctl or the attached `developer guide document </aux_pages/images/Delt_IME/IME1.4DeveloperGuide.pdf>`_ for details.
+See the man page for ime-ctl or the attached `developer guide document </aux_pages/images/Delt_IME/IME1.4DeveloperGuide.pdf>`_ for details.
 
 .. _purge:
 
@@ -170,7 +173,6 @@ To check if a file has been staged to the IME cache in ``/ime`` or has its conte
 
 In this example, a file that was created as ``/scratch/abcd/${USER}/file01`` has not been staged to /ime. 
 The file will be visible as ``/ime/abcd/${USER}/file01``.
-
 Not staged to /ime, all entries are showing "0" for the Dirty, Clean and Syncing entries:
 
 .. code-block::
@@ -184,7 +186,7 @@ Not staged to /ime, all entries are showing "0" for the Dirty, Clean and Syncing
    Syncing: 0
    Data on Slices:
 
-After staging the file to /ime, the number of bytes in the "Clean" category show that the data on the cache is current:
+After staging the file to /ime, the number of bytes in the "Clean" category shows that the data on the cache is current:
 
 .. code-block::
 
@@ -233,7 +235,7 @@ The library is described at: `DDNStorage/posix_2_ime: POSIX to IME Native API (g
 .. note::
 
    | **posix2ime requires dedicated nodes**
-   | At this time, use of the posix2ime library requires dedicated ( #SBATCH --exclusive ) nodes for your job script or srun command.
+   | At this time, use of the posix2ime library requires dedicated (#SBATCH --exclusive) nodes for your job script or srun command.
 
 .. code-block::
 

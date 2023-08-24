@@ -65,15 +65,16 @@ Non-python/conda HPC users would see per-job stderr from the *conda deactivate* 
 Jupyter with Open OnDemand
 ----------------------------------
 
-Jupyter and jupyter-lab will find the environments in your $HOME/.conda/envs -- your login shell should reflect what you want to see from Jupyter.
+Jupyter and jupyter-lab will find the environments in your $HOME/.conda/envs, your login shell should reflect what you want to see from Jupyter.
 
 The list of available kernels for Jupyter should be the same as what you see from a login shell and python3 (https://github.com/Anaconda-Platform/nb_conda_kernels).
 
 **Jupyter needs to be installed in every virtual environment where you want to use Jupyter-lab or Jupyter-notebook.**
-$ conda install jupyter
+
+- $ conda install jupyter
 
 
-**nb_python_kernel**
+**nb_python_kernels:**
 
 .. code-block::
 
@@ -94,9 +95,11 @@ $ conda install jupyter
 Debugging
 ~~~~~~~~~~~
 
-For debugging,try jupyter-lab from a terminal:
+For debugging, try jupyter-lab from a terminal.
 
 Of interest are the Searching path at the beginning, and the nb_conda_kernels outputs.
+
+**jupyter-lab --log-level=0:**
 
 .. code-block::
 

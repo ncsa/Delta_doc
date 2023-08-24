@@ -1,4 +1,4 @@
-Debugging And Performance Analysis
+Debugging and Performance Analysis
 =====================================
 
 AMDuProf Guide
@@ -6,6 +6,7 @@ AMDuProf Guide
 
 Run and Collect Data
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Run a batch job and collect data:
 
 .. code-block::
@@ -48,7 +49,7 @@ Visualize and Explore Report Data
 You can view the data in AMDuProf on Delta or locally on a copy you install at your desktop system. 
 If you install locally, you may need to replicate some paths or add paths to the binary in order to get full functionality.
 
-Launch AMDuProf (no CLI suffice for the GUI) and import the profile session from a completed batch job run with AMDuProfCLI collect.
+Launch AMDuProf (no CLI suffix for the GUI) and import the profile session from a completed batch job run with AMDuProfCLI collect.
 
 ..  image:: ../aux_pages/images/amduprof/01_uprof_import_profile_session.png
     :alt: import profile session
@@ -86,8 +87,20 @@ The Session Info is under the Summary tab and displays more detail about the pro
     :alt: session summary info
     :width: 1000px
 
+Rooflines
+-----------
+
+Rooflines are currently disabled: https://www.amd.com/content/dam/amd/en/documents/developer/uprof-v4.0-gaGA-user-guide.pdf (section 3.5.2). Below are the roofline error messages from OS.
+
+.. code-block::
+
+   srun AMDuProfPcm roofline -o stream-roofline.csv -- ./stream.22gb
+   Error: NMI watchdog is enabled. NMI uses one Core HW PMC counter.
+   Please disable NMI watchdog - run with root privilege: echo 0 > /proc/sys/kernel/nmi_watchdog
+   srun: error: cn061: task 0: Exited with exit code 255
+
 References:
-~~~~~~~~~~~~~~~~~
+------------
 https://www.amd.com/content/dam/amd/en/documents/developer/uprof-v4.0-gaGA-user-guide.pdf
 
 NVIDIA Nsight Systems
@@ -95,7 +108,7 @@ NVIDIA Nsight Systems
 
 Installation (Delta System, rgpu02 Preliminary Documentation)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-For admins/sw team: Use Spack to install cuda, and the nsys command for Nsight Systems is included.
+For admins/sw team: Use Spack to install CUDA, and the nsys command for Nsight Systems is included.
 
 .. code-block::
 
@@ -107,15 +120,16 @@ For admins/sw team: Use Spack to install cuda, and the nsys command for Nsight S
 Installation (NVIDIA Nsight Systems Client on Local Desktop/Laptop)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Open https://developer.nvidia.com/tools-overview and navigate to the **Developer Tools Downloads** button, then select **Nsight Systems** and your operating system. 
-If you do not have an account at developer.nvidia.com, set one up when prompted and when you have completed the forms your download will begin. 
-Install the application on your local machine. 
-You will download output files from the server command line application and use the GUI locally on your laptop.
+#. Open https://developer.nvidia.com/tools-overview and navigate to the **Developer Tools Downloads** button.
+#. Select **Nsight Systems** and your operating system. 
+   If you do not have an account at developer.nvidia.com, set one up when prompted and when you have completed the forms your download will begin. 
+#. Install the application on your local machine. 
+   You will download output files from the server command line application and use the GUI locally on your laptop.
 
 Run Application on Delta
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-nsys with serial or python cuda code
+nsys with serial or python CUDA code
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 .. code-block::
@@ -125,7 +139,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
    $ srun nsys profile -o /path/to/mynysys.out --stats=true ./a.out
 
-nsys wrapper for mpi and HPC cuda codes
+nsys wrapper for MPI and HPC CUDA codes
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 .. code-block::
@@ -152,7 +166,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
    # see https://docs.nvidia.com/nsight-systems/UserGuide/index.html#cli-analyze-mpi-codes
 
-MPI Rank Example Result (Viewing with Nsight on Local Desktop )
+MPI Rank Example Result (Viewing with Nsight on Local Desktop)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ..  image:: ../aux_pages/images/nvidia_nsight/01_gms_nsys.png
@@ -220,12 +234,12 @@ Explore the data in the GUI application.
     :alt: analysis
     :width: 1000px
 
-See also: `NVTX source code annotations blog article at NVIDIA <https://developer.nvidia.com/blog/nvidia-tools-extension-api-nvtx-annotation-tool-for-profiling-code-in-python-and-c-c/>`__ (can annotate c/c++/python GPU or CPU code)
+See also: `NVTX source code annotations blog article at NVIDIA <https://developer.nvidia.com/blog/nvidia-tools-extension-api-nvtx-annotation-tool-for-profiling-code-in-python-and-c-c/>`_ (can annotate C/C++/python GPU or CPU code)
 
 Python with NVTX
 ~~~~~~~~~~~~~~~~~~~~
 
-Installing nvtx via pip
+Installing NVTX via pip
 $$$$$$$$$$$$$$$$$$$$$$$$
 
 .. code-block::
@@ -246,7 +260,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$
    Successfully installed nvtx-0.2.3
    [arnoldg@rgpu02 nvtx]$ 
 
-Run with nsys cli:
+Run with NSYS CLI
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block::
@@ -347,7 +361,7 @@ Delta Script and Nsight Systems View of the Resulting Report
 
    dcgmi profile --resume
 
-(Transferred the report1.nsys-rep back to local system using Globus Online , sftp ... )
+(Transferred the report1.nsys-rep back to local system using Globus Online, sftp)
 
 ..  image:: ../aux_pages/images/nvidia_nsight/05_nsight-systems-win.png
     :alt: window
@@ -356,51 +370,50 @@ Delta Script and Nsight Systems View of the Resulting Report
 Nsight Systems Setup on Local Workstation to Use with Delta
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Login to: https://developer.nvidia.com/nsight-systems (make an account if you need to), and download the client for your MacOS, Windows, or Linux local system.
+#. Log in to: https://developer.nvidia.com/nsight-systems (make an account if you need to), and download the client for your MacOS, Windows, or Linux local system.
 
-You can use Globus Online, rsync, sftp, or sshfs (linux) to transfer files (or view files as local filesystem mounts in the case of sshfs) with the local Nsight Systems client.
+   You can use Globus Online, rsync, sftp, or sshfs (Linux) to transfer files (or view files as local filesystem mounts in the case of sshfs) with the local Nsight Systems client.
 
-sshfs Mount Example for Linux Box to Delta
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   **sshfs Mount Example for Linux Box to Delta:**
 
-.. code-block::
+   .. code-block::
 
-   galen@galen-HP-ProBook-455-G6:~$ sshfs arnoldg@dt-login03.delta.ncsa.illinois.edu:/projects/bbka delta_projects/
-   arnoldg@dt-login03.delta.ncsa.illinois.edu's password: 
-   (arnoldg@dt-login03.delta.ncsa.illinois.edu) Duo two-factor login for arnoldg
+      galen@galen-HP-ProBook-455-G6:~$ sshfs arnoldg@dt-login03.delta.ncsa.illinois.edu:/projects/bbka delta_projects/
+      arnoldg@dt-login03.delta.ncsa.illinois.edu's password: 
+      (arnoldg@dt-login03.delta.ncsa.illinois.edu) Duo two-factor login for arnoldg
 
-   Enter a passcode or select one of the following options:
+      Enter a passcode or select one of the following options:
 
-    1. Duo Push to XXX-XXX-1120
-    2. Duo Push to Ipad mini (iOS)
-    3. Duo Push to red ipod (iOS)
-    4. Duo Push to Android
+       1. Duo Push to XXX-XXX-1120
+       2. Duo Push to Ipad mini (iOS)
+       3. Duo Push to red ipod (iOS)
+       4. Duo Push to Android
 
-   Passcode or option (1-4): 115489
-   galen@galen-HP-ProBook-455-G6:~$ df -h delta_projects/
-   Filesystem                                                 Size  Used Avail Use% Mounted on
-   arnoldg@dt-login03.delta.ncsa.illinois.edu:/projects/bbka 1000T   60T  941T   6% /home/galen/delta_projects
+      Passcode or option (1-4): 115489
+      galen@galen-HP-ProBook-455-G6:~$ df -h delta_projects/
+      Filesystem                                                 Size  Used Avail Use% Mounted on
+      arnoldg@dt-login03.delta.ncsa.illinois.edu:/projects/bbka 1000T   60T  941T   6% /home/galen/delta_projects
 
-Launch Nsight Systems and define a target under the default opening view. 
-Even if you cannot get Nsight Systems to SSH to the target, you need to define it so that Nsight Systems will present you with the .nsys-rep file type when you try to open a profile from delta that was transferred to local via GO/sftp/rsync or viewable via the sshfs fuse mount like shown above:
+#. Launch Nsight Systems and define a target under the default opening view. 
+   Even if you cannot get Nsight Systems to SSH to the target, you need to define it so that Nsight Systems will present you with the .nsys-rep file type when you try to open a profile from delta that was transferred to local via GO/sftp/rsync or viewable via the sshfs fuse mount like shown above:
 
-..  image:: ../aux_pages/images/nvidia_nsight/06_nsight-systems-project-target.png
-    :alt: project target
-    :width: 1000px
+   ..  image:: ../aux_pages/images/nvidia_nsight/06_nsight-systems-project-target.png
+       :alt: project target
+       :width: 1000px
 
-Then open the profile report generated from an *srun nsys* ... at Delta (navigate to Download or the live sshfs fuse mount).
+#. Then open the profile report generated from an *srun nsys* ... at Delta (navigate to Download or the live sshfs fuse mount).
 
-..  image:: ../aux_pages/images/nvidia_nsight/07-nsight-systems-file-open-sshfs.png
-    :alt: profile report
-    :width: 1000px
+   ..  image:: ../aux_pages/images/nvidia_nsight/07-nsight-systems-file-open-sshfs.png
+       :alt: profile report
+       :width: 1000px
 
-Proceed to use Nsight Systems. 
-A stats view of the GPU Summary is shown. 
-This is usually a good performance analysis starting point showing utilization of kernels vs times to transfer data between the host computer and the GPU accelerator.
+#. Proceed to use Nsight Systems. 
+   A stats view of the GPU Summary is shown. 
+   This is usually a good performance analysis starting point showing utilization of kernels vs times to transfer data between the host computer and the GPU accelerator.
 
-..  image:: ../aux_pages/images/nvidia_nsight/08-nsight-systems-stats-system-view.png
-    :alt: GPU stats summary
-    :width: 1000px
+   ..  image:: ../aux_pages/images/nvidia_nsight/08-nsight-systems-stats-system-view.png
+       :alt: GPU stats summary
+       :width: 1000px
 
 https://docs.nvidia.com/cuda/cuda-c-programming-guide
 
