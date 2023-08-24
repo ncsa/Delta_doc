@@ -1,7 +1,7 @@
-Monitoring A Node During A Job
+Monitoring a Node During a Job
 -------------------------------
 
-You have SSH access to nodes in your running job(s). Some of the basic monitoring tools are demonstrated in the example transcript here. Screen shots are appended so that you can see the output from the tools. Most common Linux utilities are available from the compute nodes (free, strace, ps, and so on).
+You have SSH access to nodes in your running job(s). Some of the basic monitoring tools are demonstrated in the example transcript below. Screen shots are appended so that you can see the output from the tools. Most common Linux utilities are available from the compute nodes (free, strace, ps, and so on).
 
 .. code-block::
 
@@ -58,13 +58,13 @@ Monitoring Nodes Using Grafana
 
 #. Navigate to: https://metrics.ncsa.illinois.edu
 
-#. Sign in (top-right of page).
+#. Sign in (top-right).
 
    .. image:: ../../aux_pages/images/mon_node/metrics_signin_icon.png
       :alt: sign in icon
       :width: 400
 
-#. Navigate to the part of Delta metrics of interest.
+#. Navigate to the Delta metrics of interest.
 
    ..  image:: ../../aux_pages/images/mon_node/06_grafana_metrics_home.png
        :alt: metrics home
