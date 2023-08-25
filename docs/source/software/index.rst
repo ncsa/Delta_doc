@@ -211,7 +211,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 Python (a recent or latest version)
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-If you do not need all of the extra modules provided by Anaconda, use the basic python installation under the GCC module. 
+If you do not need all of the extra modules provided by Anaconda, use the basic python installation under the gcc module. 
 You can add modules via "*pip3 install --user <modulename>*", `setup virtual environments <https://packaging.python.org/en/latest/tutorials/installing-packages/>`_, and customize, as needed, for your workflow starting from a smaller installed base of python than Anaconda.
 
 .. code-block::
