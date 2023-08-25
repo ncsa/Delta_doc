@@ -34,14 +34,16 @@ Getting Started with High Performance Computing
 
 You can also browse the full list of NCSA's `HPC-Moodle Self-Paced Tutorials <https://www.hpc-training.org/xsede/moodle/course/index.php?categoryid=11>`_ to learn more about other HPC topics.
 
+.. toctree::
+   :maxdepth: 2
 
-Contents
-=========
+   status_updates
+   help
 
 .. toctree::
    :maxdepth: 2
+   :caption: User Guide
    
-   status_updates
    architecture
    accounts/index
    accessing/index
@@ -54,5 +56,5 @@ Contents
    containers
    services/index
    debug_perf/index
-   help
+   acknowledge
    
