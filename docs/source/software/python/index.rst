@@ -74,7 +74,10 @@ If you require an older version of a python lib/module, NCSA staff suggest looki
 List of modules in anaconda3_cpu
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-The current list of modules available in anaconda3_cpu is shown via "conda list", including TensorFlow and PyTorch:
+.. raw:: html
+
+   <details>
+   <summary><a>The current list of modules available in anaconda3_cpu is shown via "conda list", including TensorFlow and PyTorch:</a></summary>
 
 .. code-block::
 
@@ -560,3 +563,7 @@ The current list of modules available in anaconda3_cpu is shown via "conda list"
    zope                      1.0              py39h06a4308_1
    zope.interface            5.4.0            py39h7f8727e_0
    zstd                      1.4.9                haebb681_0    
+
+.. raw:: html
+
+   </details>
