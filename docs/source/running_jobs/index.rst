@@ -75,6 +75,11 @@ Reviewing Job Charges for a Project (jobcharge)
 
 jobcharge in /sw/user/scripts/ will show job charges by user for a project. Example usage:
 
+.. raw:: html
+
+   <details>
+   <summary><a><b>jobcharge_grp.py</b> <i>(click to expand/collapse)</i></b></summary>
+
 .. code-block::
 
    [arnoldg@dt-login03 ]$ jobcharge bbka-delta-gpu -b 10 --detail | tail -15
@@ -126,6 +131,11 @@ jobcharge in /sw/user/scripts/ will show job charges by user for a project. Exam
                            End time time string in format (format: %Y-%m-%d-%H:%M:%S)
                            Example:2023-01-03-01:23:21)
      --detail              detail output, per-job [svchydroswmanage@hydrol1 scripts]$ 
+
+.. raw:: html
+
+   </details>
+|
 
 Refunds
 ~~~~~~~~
@@ -370,6 +380,11 @@ Interactive jobs are already a child process of srun, therefore, one cannot srun
 Within standard batch jobs submitted via sbatch, use ``srun`` to launch MPI codes. 
 For true interactive MPI, use ``salloc`` in place of srun shown above, then "srun my_mpi.exe" after you get a prompt from salloc (exit to end the salloc interactive allocation).
 
+.. raw:: html
+
+   <details>
+   <summary><a><b>interactive MPI, salloc and srun</b> <i>(click to expand/collapse)</i></a></summary>
+
 .. code-block::
 
    [arnoldg@dt-login01 collective]$ cat osu_reduce.salloc
@@ -411,6 +426,11 @@ For true interactive MPI, use ``salloc`` in place of srun shown above, then "sru
    exit
    salloc: Relinquishing job allocation 1180009
    [arnoldg@dt-login01 collective]$ 
+
+.. raw:: html
+
+   </details>
+|
 
 Interactive X11 Support
 ~~~~~~~~~~~~~~~~~~~~~~~
