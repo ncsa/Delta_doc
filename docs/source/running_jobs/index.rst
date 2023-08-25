@@ -78,7 +78,7 @@ jobcharge in /sw/user/scripts/ will show job charges by user for a project. Exam
 .. raw:: html
 
    <details>
-   <summary><a><b>jobcharge_grp.py</b> <i>(click to expand/collapse)</i></b></summary>
+   <summary><a><b>jobcharge_grp.py</b> <i>(click to expand/collapse)</i></a></summary>
 
 .. code-block:: python
 
