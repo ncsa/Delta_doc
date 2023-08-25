@@ -34,7 +34,7 @@ Local Account Charging
 
 Use the ``accounts`` command to list the accounts available for charging. 
 CPU and GPU resources will have individual charge names. 
-For example, in the following, **``abcd-delta-cpu``** and **``abcd-delta-gpu``** are available for user gbauer to use for the CPU and GPU resources.
+For example, in the following, **``abcd-delta-cpu``** and **``abcd-delta-gpu``** are available for user kingda to use for the CPU and GPU resources.
 
 .. code-block::
 
