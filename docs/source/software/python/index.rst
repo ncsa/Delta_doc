@@ -74,10 +74,12 @@ If you require an older version of a python lib/module, NCSA staff suggest looki
 List of modules in anaconda3_cpu
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
+The current list of modules available in anaconda3_cpu is shown via "conda list", including TensorFlow and PyTorch:
+
 .. raw:: html
 
    <details>
-   <summary><a>The current list of modules available in anaconda3_cpu is shown via "conda list", including TensorFlow and PyTorch:</a></summary>
+   <summary><a><b><i>(click to expand)</i> anaconda3_cpu modules: conda list</b></a></summary>
 
 .. code-block::
 
