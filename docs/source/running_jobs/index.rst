@@ -80,7 +80,7 @@ jobcharge in /sw/user/scripts/ will show job charges by user for a project. Exam
    <details>
    <summary><a><b>jobcharge_grp.py</b> <i>(click to expand/collapse)</i></b></summary>
 
-.. code-block::
+.. code-block:: python
 
    [arnoldg@dt-login03 ]$ jobcharge bbka-delta-gpu -b 10 --detail | tail -15
    106  1662443  gpuMI100x8                 0  nan                                                               kingda           bash                                    2023-04-06T09:39:01              0       0
