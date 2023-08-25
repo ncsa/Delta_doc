@@ -179,6 +179,7 @@ Serial Jobs on CPU Nodes
 .. raw:: html
 
    </details>
+|
 
 MPI on CPU Nodes
 ~~~~~~~~~~~~~~~~
@@ -216,6 +217,7 @@ MPI on CPU Nodes
 .. raw:: html
 
    </details>
+|
 
 OpenMP on CPU Nodes
 ~~~~~~~~~~~~~~~~~~~~
@@ -255,6 +257,7 @@ OpenMP on CPU Nodes
 .. raw:: html
 
    </details>
+|
 
 Hybrid (MPI + OpenMP or MPI+X) on CPU Nodes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -294,6 +297,7 @@ Hybrid (MPI + OpenMP or MPI+X) on CPU Nodes
 .. raw:: html
 
    </details>
+|
 
 4 GPUs Together on a Compute Node
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -329,6 +333,7 @@ Hybrid (MPI + OpenMP or MPI+X) on CPU Nodes
 .. raw:: html
 
    </details>
+|
 
 Parametric / Array / HTC Jobs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
