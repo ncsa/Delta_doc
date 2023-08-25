@@ -39,6 +39,9 @@ You can also browse the full list of NCSA's `HPC-Moodle Self-Paced Tutorials <ht
    :hidden:
 
    status_updates
+   quick_start
+   faq
+   support_services
    help
 
 .. toctree::
