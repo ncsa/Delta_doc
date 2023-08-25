@@ -121,7 +121,7 @@ There are some important caveats when using the /ime file system for something o
 IME Commands
 ~~~~~~~~~~~~~
 
-See the man page for ime-ctl or the attached `developer guide document </aux_pages/images/Delt_IME/IME1.4DeveloperGuide.pdf>`_ for details.
+See the man page for ime-ctl or the attached `developer guide document <../aux_pages/images/Delt_IME/IME1.4DeveloperGuide.pdf>`_ for details.
 
 .. _purge:
 
