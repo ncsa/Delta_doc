@@ -43,7 +43,6 @@ Contents
    
    status_updates
    architecture
-   fee_overview
    accounts/index
    accessing/index
    citizenship
@@ -55,6 +54,5 @@ Contents
    containers
    services/index
    debug_perf/index
-   protected_data
    help
    
