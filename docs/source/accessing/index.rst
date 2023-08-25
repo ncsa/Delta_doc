@@ -1,6 +1,6 @@
 .. _access:
 
-Accessing The System
+Accessing the System
 =========================
 
 Direct Access Login Nodes
