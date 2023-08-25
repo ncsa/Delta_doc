@@ -143,6 +143,11 @@ Sample Scripts
 Serial Jobs on CPU Nodes
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. raw:: html
+
+   <details open>
+   <summary><a><b>serial example script</b> <i>(click to expand/collapse)</i></a></summary>
+
 .. code-block::
 
    $ cat job.slurm
@@ -171,8 +176,17 @@ Serial Jobs on CPU Nodes
    echo "job is starting on `hostname`"
    srun python3 myprog.py
 
+.. raw:: html
+
+   </details>
+
 MPI on CPU Nodes
 ~~~~~~~~~~~~~~~~
+
+.. raw:: html
+   
+   <details>
+   <summary><a><b>mpi example script</b> <i>(click to expand/collapse)</i></a></summary>
 
 .. code-block::
 
@@ -199,8 +213,17 @@ MPI on CPU Nodes
    echo "job is starting on `hostname`"
    srun osu_reduce
 
+.. raw:: html
+
+   </details>
+
 OpenMP on CPU Nodes
 ~~~~~~~~~~~~~~~~~~~~
+
+.. raw:: html
+
+   <details>
+   <summary><a><b>openmp example script</b> <i>(click to expand/collapse)</i></a></summary>
 
 .. code-block::
 
@@ -229,8 +252,17 @@ OpenMP on CPU Nodes
    export OMP_NUM_THREADS=32
    srun stream_gcc 
 
+.. raw:: html
+
+   </details>
+
 Hybrid (MPI + OpenMP or MPI+X) on CPU Nodes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. raw:: html
+
+   <details>
+   <summary><a><b>mpi+x example script</b> <i>(click to expand/collapse)</i></a></summary>
 
 .. code-block::
 
@@ -259,8 +291,17 @@ Hybrid (MPI + OpenMP or MPI+X) on CPU Nodes
    export OMP_NUM_THREADS=4
    srun xthi 
 
+.. raw:: html
+
+   </details>
+
 4 GPUs Together on a Compute Node
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. raw:: html
+
+   <details>
+   <summary><a><b>4 gpus example script</b> <i>(click to expand/collapse)</i></a></summary>
 
 .. code-block::
 
@@ -284,6 +325,10 @@ Hybrid (MPI + OpenMP or MPI+X) on CPU Nodes
    srun -N 1 -n 4 ./a.out > myjob.out
    # py-torch example, --ntasks-per-node=1 --cpus-per-task=64
    # srun python3 multiple_gpu.py
+
+.. raw:: html
+
+   </details>
 
 Parametric / Array / HTC Jobs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
