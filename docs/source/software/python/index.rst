@@ -569,3 +569,6 @@ The current list of modules available in anaconda3_cpu is shown via "conda list"
 .. raw:: html
 
    </details>
+
+|
+
