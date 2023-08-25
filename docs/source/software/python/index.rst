@@ -79,7 +79,7 @@ The current list of modules available in anaconda3_cpu is shown via "conda list"
 .. raw:: html
 
    <details>
-   <summary><a><b><i>(click to expand)</i> anaconda3_cpu modules: conda list</b></a></summary>
+   <summary><a><b>anaconda3_cpu modules: conda list</b> <i>(click to expand/collapse)</i></a></summary>
 
 .. code-block::
 
