@@ -1,5 +1,5 @@
 ################################################
-Delta System User Documentation
+Delta User Documentation
 ################################################
 
 ..  image:: delta_front.png
