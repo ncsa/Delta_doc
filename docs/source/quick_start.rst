@@ -9,11 +9,11 @@ This information is for users who are adept at using an HPC system and are only 
 
 #. Accessing the System via Direct Access Login Nodes - :ref:`direct_access`
 
-#. Transferring Data to and from the Delta System - :ref:`transfer`
-
-#. Partitions and Node Policies - :ref:`partitions`
+#. Partitions and Job Policies - :ref:`partitions`
 
 #. Batch Job Management - :ref:`job_mgmt`
 
 #. Sample Scripts - :ref:`examples`
+
+#. Transferring Data to and from the Delta System - :ref:`transfer`
 
