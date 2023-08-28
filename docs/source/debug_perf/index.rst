@@ -99,7 +99,7 @@ Rooflines are currently disabled: https://www.amd.com/content/dam/amd/en/documen
    Please disable NMI watchdog - run with root privilege: echo 0 > /proc/sys/kernel/nmi_watchdog
    srun: error: cn061: task 0: Exited with exit code 255
 
-References:
+References
 ~~~~~~~~~~~~~
 https://www.amd.com/content/dam/amd/en/documents/developer/uprof-v4.0-gaGA-user-guide.pdf
 
