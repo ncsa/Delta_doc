@@ -5,17 +5,13 @@ Quick Start Guide
 
 This information is for users who are adept at using an HPC system and are only interested in the basic Delta workflow.
 
-#. Access and Policy - 
+#. Account Management (ACCESS and non-ACCESS) - :ref:`mgmt_tools`
 
-#. Logging In - 
+#. Accessing the System via Direct Access Login Nodes - :ref:`direct_access`
 
-#. Compiling - 
+#. Transferring Data to and from the Delta System - :ref:`transfer`
 
-#. Running - 
+#. Batch Job Management - :ref:`job_mgmt`
 
-#. Partitions and Job Policies - 
-
-#. Running Batch Jobs (Slurm) - 
-
-#. Here is a sample Batch script: - 
+#. Sample Scripts - :ref:`examples`
 
