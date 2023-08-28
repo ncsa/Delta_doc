@@ -1197,7 +1197,6 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
       .. raw:: html
 
          </details>
-|
 
 3. Start an Open OnDemand :ref:`jupyter` session and access one of your environments (remember to match your partition and account types for gpu, cpu), then select the matching kernel for your Jupyter work.
 
