@@ -3,6 +3,8 @@
 Accessing the System
 =========================
 
+.. _direct_access:
+
 Direct Access Login Nodes
 -----------------------------
 
