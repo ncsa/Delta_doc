@@ -732,8 +732,8 @@ A sample TensorFlow test script:
      tf_gpu.py
    exit
 
-Python Environments with Anaconda3 on Delta
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Python Environments with anaconda3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Recent Changes
 $$$$$$$$$$$$$$$$
@@ -927,7 +927,10 @@ For debugging, try jupyter-lab from a terminal.
 
 Of interest are the Searching path at the beginning, and the nb_conda_kernels outputs.
 
-**jupyter-lab --log-level=0:**
+.. raw:: html
+   
+   <details>
+   <summary><a><b>jupyter-lab --log-level=0</b> <i>(click to expand/collapse)</i></a></summary>
 
 .. code-block::
 
@@ -1033,6 +1036,11 @@ Of interest are the Searching path at the beginning, and the nb_conda_kernels ou
    /usr/bin/xdg-open: line 862: w3m: command not found
    xdg-open: no method available for opening 'file:///u/arnoldg/.local/share/jupyter/runtime/jpserver-1287615-open.html'
 
+.. raw:: html
+
+   </details>
+|
+
 .. _custom_openon:
 
 Customizing Open OnDemand
@@ -1072,6 +1080,11 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
          If you will be making custom environments for more than one partition type (cpu, gpu, mi100), it may be helpful to include that metadata in the name of your environment.
 
       Install jupyter into the environment in order to use it with Open OnDemand. This option adds about 150 python modules to your environment and requires about 1.3 GB in your ``$HOME``. Setup time: about 10 minutes.
+
+.. raw:: html
+
+   <details>
+   <summary><a><b>conda create --name mynewenv</b> <i>(click to expand/collapse</i></a></summary>
 
       .. code-block::
 
@@ -1134,12 +1147,22 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
          (mynewenv) du -sh $HOME/.conda/envs/mynewenv
          1.3G    /u/arnoldg/.conda/envs/mynewenv
 
+.. raw:: html
+
+   </details>
+|
+
    OR 
 
    b. Create a new clone of your chosen anaconda3_<cpu, gpu, mi100> module:
 
       Jupyter (and everything else from your loaded anaconda3\_ module will be copied into this environment). 
       This option adds about 500 python modules to your environment and requires about 6.3 GB in your ``$HOME``. Install time can be up to 30 minutes.
+
+.. raw:: html
+
+   <details>
+   <summary><a><b>conda create --name myclone</b> <i>(click to expand/collapse</i></a></summary>
 
       .. code-block::
 
@@ -1171,6 +1194,11 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
          501
          (myclone) du -sh $HOME/.conda/envs/myclone
          6.3G    /u/arnoldg/.conda/envs/myclone
+
+.. raw:: html
+
+   </details>
+|
 
 3. Start an Open OnDemand :ref:`jupyter` session and access one of your environments (remember to match your partition and account types for gpu, cpu), then select the matching kernel for your Jupyter work.
 
