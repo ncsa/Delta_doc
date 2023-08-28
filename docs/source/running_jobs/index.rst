@@ -606,6 +606,8 @@ For information, see the Slurm quick reference guide: https://slurm.schedmd.com/
     :alt: Slurm quick reference guide
     :width: 500
 
+.. _partitions:
+
 Partitions (Queues)
 -----------------------
 
