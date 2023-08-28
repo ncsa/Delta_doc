@@ -454,6 +454,8 @@ Please see the :ref:`depend_arch` section in System Architecture for information
 
 Jobs that do not specify a dependency on WORK (/projects) and SCRATCH (/scratch) will be assumed to depend only on the HOME (/u) file system.
 
+.. _job_mgmt:
+
 Job Management
 -----------------
 
