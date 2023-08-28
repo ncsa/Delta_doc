@@ -1046,6 +1046,8 @@ Of interest are the Searching path at the beginning, and the nb_conda_kernels ou
 Customizing Open OnDemand
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. _custom_jupyterlab:
+
 Customizing JupyterLab with Anaconda Environments
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
@@ -1219,6 +1221,8 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
       ..  image:: ../aux_pages/images/customize_Delt_OOD/03_mynewenv-kernel.png
           :alt: match kernel
           :width: 1000px
+
+.. _r_env:
 
 R
 $$$$$
