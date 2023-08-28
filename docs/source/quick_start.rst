@@ -11,6 +11,8 @@ This information is for users who are adept at using an HPC system and are only 
 
 #. Transferring Data to and from the Delta System - :ref:`transfer`
 
+#. Partitions and Node Policies - :ref:`partitions`
+
 #. Batch Job Management - :ref:`job_mgmt`
 
 #. Sample Scripts - :ref:`examples`
