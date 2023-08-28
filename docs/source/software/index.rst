@@ -1081,10 +1081,10 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
       Install jupyter into the environment in order to use it with Open OnDemand. This option adds about 150 python modules to your environment and requires about 1.3 GB in your ``$HOME``. Setup time: about 10 minutes.
 
-.. raw:: html
+      .. raw:: html
 
-   <details>
-   <summary><a><b>conda create --name mynewenv</b> <i>(click to expand/collapse</i></a></summary>
+         <details>
+         <summary><a><b>conda create --name mynewenv</b> <i>(click to expand/collapse)</i></a></summary>
 
       .. code-block::
 
@@ -1147,10 +1147,9 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
          (mynewenv) du -sh $HOME/.conda/envs/mynewenv
          1.3G    /u/arnoldg/.conda/envs/mynewenv
 
-.. raw:: html
+      .. raw:: html
 
-   </details>
-|
+         </details>
 
    OR 
 
@@ -1159,10 +1158,10 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
       Jupyter (and everything else from your loaded anaconda3\_ module will be copied into this environment). 
       This option adds about 500 python modules to your environment and requires about 6.3 GB in your ``$HOME``. Install time can be up to 30 minutes.
 
-.. raw:: html
+      .. raw:: html
 
-   <details>
-   <summary><a><b>conda create --name myclone</b> <i>(click to expand/collapse</i></a></summary>
+         <details>
+         <summary><a><b>conda create --name myclone</b> <i>(click to expand/collapse)</i></a></summary>
 
       .. code-block::
 
@@ -1195,9 +1194,9 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
          (myclone) du -sh $HOME/.conda/envs/myclone
          6.3G    /u/arnoldg/.conda/envs/myclone
 
-.. raw:: html
+      .. raw:: html
 
-   </details>
+         </details>
 |
 
 3. Start an Open OnDemand :ref:`jupyter` session and access one of your environments (remember to match your partition and account types for gpu, cpu), then select the matching kernel for your Jupyter work.
