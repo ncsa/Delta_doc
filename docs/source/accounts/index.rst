@@ -1,6 +1,8 @@
 Account Administration
 ========================
 
+.. _mgmt_tools:
+
 Management Tools
 -----------------
 
