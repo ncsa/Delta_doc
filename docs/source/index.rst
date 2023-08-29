@@ -49,7 +49,7 @@ You can also browse the full list of NCSA's `HPC-Moodle Self-Paced Tutorials <ht
    :caption: User Guide
    :hidden:
    
-   architecture
+   user_guide/architecture
    accounts/index
    accessing/index
    user_guide/citizenship
