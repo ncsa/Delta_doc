@@ -68,7 +68,7 @@ To transfer files to and from the Delta system:
 
    -  Use the Delta collection "**NCSA Delta**" (see screen capture below).
       
-      .. image:: globus_on_delta.jpeg
+      .. image:: images/data_mgmt/globus_on_delta.jpeg
           :alt: Globus on Delta
           :width: 700px
 
@@ -84,7 +84,7 @@ Infinite Memory Engine (IME®) is a DDN solution for fast data tiering between t
 
 Conceptually, the storage subsystem looks like the following:
 
-..  image:: ../aux_pages/images/Delt_IME/Delta_IME.png
+..  image:: images/data_mgmt/Delta_IME.png
     :alt: Storage subsystem
     :width: 400px
 
