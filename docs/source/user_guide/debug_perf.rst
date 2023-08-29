@@ -51,39 +51,39 @@ If you install locally, you may need to replicate some paths or add paths to the
 
 Launch AMDuProf (no CLI suffix for the GUI) and import the profile session from a completed batch job run with AMDuProfCLI collect.
 
-..  image:: ../aux_pages/images/amduprof/01_uprof_import_profile_session.png
+..  image:: images/debug_perf/01_uprof_import_profile_session.png
     :alt: import profile session
     :width: 1000px
     
 The summary view gives a high-level overview of how time was spent. This is the time-based-profile (tbp) summary.
 
-..  image:: ../aux_pages/images/amduprof/02_uprof_summary.png
+..  image:: images/debug_perf/02_uprof_summary.png
     :alt: summary view
     :width: 1000px
 
 The Analyze tab shows hot routines or lines in more detail. The tbp, assess, and inst_access Analyze views follow.
 
-..  image:: ../aux_pages/images/amduprof/03_uprof_analyze.png
+..  image:: images/debug_perf/03_uprof_analyze.png
     :alt: analyze tab
     :width: 1000px
 
-..  image:: ../aux_pages/images/amduprof/04_uprof_assess_summary.png
+..  image:: images/debug_perf/04_uprof_assess_summary.png
     :alt: assess summary
     :width: 1000px
 
-..  image:: ../aux_pages/images/amduprof/05_uprof_inst_access.png
+..  image:: images/debug_perf/05_uprof_inst_access.png
     :alt: inst_access
     :width: 1000px
 
 Selecting one of the lines or routines will take you to the Sources view where you can see the assembly used in that portion of code.
 
-..  image:: ../aux_pages/images/amduprof/06_uprof_sources.png
+..  image:: images/debug_perf/06_uprof_sources.png
     :alt: sources view
     :width: 1000px
 
 The Session Info is under the Summary tab and displays more detail about the profiling session.
 
-..  image:: ../aux_pages/images/amduprof/07_uprof_session_info.png
+..  image:: images/debug_perf/07_uprof_session_info.png
     :alt: session summary info
     :width: 1000px
 
@@ -169,11 +169,11 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 MPI Rank Example Result (Viewing with Nsight on Local Desktop)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  image:: ../aux_pages/images/nvidia_nsight/01_gms_nsys.png
+..  image:: images/debug_perf/01_gms_nsys.png
     :alt: MPI rank example
     :width: 1000px
 
-..  image:: ../aux_pages/images/nvidia_nsight/02_gmx_nsys_gpusummary.png
+..  image:: images/debug_perf/02_gmx_nsys_gpusummary.png
     :alt: summary
     :width: 1000px
 
@@ -226,11 +226,11 @@ Open NVIDIA Nsight Systems
 Under the File menu, select **open** then navigate to your Downloads/ folder and select the nsys\* file of interest (nays-report-b26d.nsys-rep in this example). 
 Explore the data in the GUI application.
 
-..  image:: ../aux_pages/images/nvidia_nsight/03_nsight-systems-timeline.jpg
+..  image:: images/debug_perf/03_nsight-systems-timeline.jpg
     :alt: timeline
     :width: 1000px
 
-..  image:: ../aux_pages/images/nvidia_nsight/04_nsight-systems-analysis.jpg
+..  image:: images/debug_perf/04_nsight-systems-analysis.jpg
     :alt: analysis
     :width: 1000px
 
@@ -363,7 +363,7 @@ Delta Script and Nsight Systems View of the Resulting Report
 
 (Transferred the report1.nsys-rep back to local system using Globus Online, sftp)
 
-..  image:: ../aux_pages/images/nvidia_nsight/05_nsight-systems-win.png
+..  image:: images/debug_perf/05_nsight-systems-win.png
     :alt: window
     :width: 1000px
 
@@ -397,13 +397,13 @@ Nsight Systems Setup on Local Workstation to Use with Delta
 #. Launch Nsight Systems and define a target under the default opening view. 
    Even if you cannot get Nsight Systems to SSH to the target, you need to define it so that Nsight Systems will present you with the .nsys-rep file type when you try to open a profile from delta that was transferred to local via GO/sftp/rsync or viewable via the sshfs fuse mount like shown above:
 
-   ..  image:: ../aux_pages/images/nvidia_nsight/06_nsight-systems-project-target.png
+   ..  image:: images/debug_perf/06_nsight-systems-project-target.png
        :alt: project target
        :width: 1000px
 
 #. Then open the profile report generated from an *srun nsys* ... at Delta (navigate to Download or the live sshfs fuse mount).
 
-   ..  image:: ../aux_pages/images/nvidia_nsight/07-nsight-systems-file-open-sshfs.png
+   ..  image:: images/debug_perf/07-nsight-systems-file-open-sshfs.png
        :alt: profile report
        :width: 1000px
 
@@ -411,7 +411,7 @@ Nsight Systems Setup on Local Workstation to Use with Delta
    A stats view of the GPU Summary is shown. 
    This is usually a good performance analysis starting point showing utilization of kernels vs times to transfer data between the host computer and the GPU accelerator.
 
-   ..  image:: ../aux_pages/images/nvidia_nsight/08-nsight-systems-stats-system-view.png
+   ..  image:: images/debug_perf/08-nsight-systems-stats-system-view.png
        :alt: GPU stats summary
        :width: 1000px
 
