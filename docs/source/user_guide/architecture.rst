@@ -31,7 +31,7 @@ The Delta compute ecosystem is composed of five node types:
 
 Each socket contains an AMD 7763 processor. Consistent with AMD's advice for HPC nodes and NCSA's testing, all Delta nodes have Simultaneous Multi Treading (SMT) turned off.  
 
-..  image:: amd-7003-series.png
+..  image:: images/amd-7003-series.png
     :alt: EPYC 7003 Series Architecture Quick Look
 
 CPU Compute Node Specifications
