@@ -58,8 +58,8 @@ You can also browse the full list of NCSA's `HPC-Moodle Self-Paced Tutorials <ht
    running_jobs/index
    software/index
    visualization
-   containers
+   user_guide/containers
    services/index
    debug_perf/index
-   acknowledge
+   user_guide/acknowledge
    
