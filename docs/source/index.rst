@@ -57,7 +57,7 @@ You can also browse the full list of NCSA's `HPC-Moodle Self-Paced Tutorials <ht
    user_guide/prog_env
    user_guide/running_jobs
    user_guide/software
-   visualization
+   user_guide/visualization
    user_guide/containers
    services/index
    debug_perf/index
