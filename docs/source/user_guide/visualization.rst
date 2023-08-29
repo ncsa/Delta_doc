@@ -37,7 +37,7 @@ pvpython and pvbatch work and are available. Suggest https://www.paraview.org/Wi
 
 greenSphereScreenshot.png:
 
-..  image:: aux_pages/images/paraview/greenSphere.png
+..  image:: images/visualization/greenSphere.png
     :alt: green sphere
     :width: 500px
 
@@ -55,11 +55,11 @@ Following: https://www.sdsc.edu/education_and_training/tutorials1/visit.html, be
 
 Adjust Maximum processors to fit your requirements:
 
-..  image:: aux_pages/images/visit_client_server/01_visit_host_settings.png
+..  image:: images/visualization/01_visit_host_settings.png
     :alt: delta host profile settings
     :width: 1000px
 
-..  image:: aux_pages/images/visit_client_server/02_visit-mpi-settings.png
+..  image:: images/visualization/02_visit-mpi-settings.png
     :alt: cpu interactive mpi launch profile
     :width: 1000px
 
@@ -68,11 +68,11 @@ Note, those partitions are for quick tests up to 30 minutes; choose another part
 
 Partitions and accounts should match: GPU partitions go with GPU account endings, CPU partitions with CPU account endings.
 
-..  image:: aux_pages/images/visit_client_server/03_visit-mpi-parallel.png
+..  image:: images/visualization/03_visit-mpi-parallel.png
     :alt: mpi parallel launch settings
     :width: 1000px
 
-..  image:: aux_pages/images/visit_client_server/04_visit-mpi-parallel-adv.png
+..  image:: images/visualization/04_visit-mpi-parallel-adv.png
     :alt: mpi parallel advanced settings
     :width: 1000px
 
@@ -80,6 +80,6 @@ Partitions and accounts should match: GPU partitions go with GPU account endings
 
 Proceeding with the tutorial, this is the view from the client and noise.silo example (found in the VisIt installation data/):
 
-..  image:: aux_pages/images/visit_client_server/05_visit-mpi-noise-final.png
+..  image:: images/visualization/05_visit-mpi-noise-final.png
     :alt: client view of noise example
     :width: 1000px
