@@ -1206,19 +1206,19 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
    a. After filling in the Open OnDemand form and submitting your job, it will start in a few minutes showing the "Connect to Jupyter" button when ready.
 
-      ..  image:: ../aux_pages/images/customize_Delt_OOD/01_connect-to-jupyter.png
+      ..  image:: images/software/01_connect-to-jupyter.png
           :alt: connect to Jupyter button
           :width: 1000px
     
    b. Hover over items in the Launcher view to see which environment will be used, selecting the one you want for this session.
 
-      ..  image:: ../aux_pages/images/customize_Delt_OOD/02_jupyter-mynewenv.png
+      ..  image:: images/software/02_jupyter-mynewenv.png
           :alt: select environment
           :width: 1000px
 
    c. Change your kernel to match if you are opening a notebook from a different environment.
 
-      ..  image:: ../aux_pages/images/customize_Delt_OOD/03_mynewenv-kernel.png
+      ..  image:: images/software/03_mynewenv-kernel.png
           :alt: match kernel
           :width: 1000px
 
@@ -1242,13 +1242,13 @@ R will run on the CPU cores (not GPU enabled).
 
 After modifying your .bashrc and getting a new shell, your login prompt should reflect that you are within the anaconda3_Rcpu environment, R will be in your ``$PATH``, and starting JupyterLab from the Open OnDemand interface will automatically offer you the R options with the Launcher.
 
-..  image:: ../aux_pages/images/customize_Delt_OOD/04_ood_launcher.png
+..  image:: images/software/04_ood_launcher.png
     :alt: R launcher options
     :width: 1000px
 
 Proceed to use R:
 
-..  image:: ../aux_pages/images/customize_Delt_OOD/05_r_example.png
+..  image:: images/software/05_r_example.png
     :alt: example of using R
     :width: 1000px
 
