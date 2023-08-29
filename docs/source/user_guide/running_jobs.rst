@@ -183,7 +183,7 @@ Scheduler
 
 For information, see the Slurm quick reference guide: https://slurm.schedmd.com/quickstart.html
 
-..  image:: slurm_summary.pdf
+..  image:: images/running_jobs/slurm_summary.pdf
     :alt: Slurm quick reference guide
     :width: 500
 
@@ -243,7 +243,7 @@ Delta Production Partitions/Queues
 sview View of Slurm Partitions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  image:: sview_sinfo.png
+..  image:: images/running_jobs/sview_sinfo.png
     :alt: sview view of Slurm partitions
     :width: 500
 
@@ -418,25 +418,25 @@ You have SSH access to nodes in your running job(s). Some of the basic monitorin
 
 nvidia-smi:
 
-..  image:: ../aux_pages/images/mon_node/01_nvidia-smi.png
+..  image:: images/running_jobs/01_nvidia-smi.png
     :alt: nvidia smi
     :width: 1000px
 
 nvtop:
 
-..  image:: ../aux_pages/images/mon_node/02_nvtop.png
+..  image:: images/running_jobs/02_nvtop.png
     :alt: nvtop
     :width: 1000px
 
 nvitop:
 
-..  image:: ../aux_pages/images/mon_node/03_nvitop.png
+..  image:: images/running_jobs/03_nvitop.png
     :alt: nvitop
     :width: 1000px
 
 top -u $USER:
 
-..  image:: ../aux_pages/images/mon_node/04_top.png
+..  image:: images/running_jobs/04_top.png
     :alt: top
     :width: 1000px
 
@@ -447,19 +447,19 @@ Monitoring Nodes Using Grafana
 
 #. Sign in (top-right).
 
-   .. image:: ../aux_pages/images/mon_node/metrics_signin_icon.png
+   .. image:: images/running_jobs/metrics_signin_icon.png
       :alt: sign in icon
       :width: 400
 
 #. Navigate to the Delta metrics of interest.
 
-   ..  image:: ../aux_pages/images/mon_node/06_grafana_metrics_home.png
+   ..  image:: images/running_jobs/06_grafana_metrics_home.png
        :alt: metrics home
        :width: 1000px
 
    You may choose a node from the list of nodes and get detail information in real time.
 
-   ..  image:: ../aux_pages/images/mon_node/07_grafana_metrics_details.png
+   ..  image:: images/running_jobs/07_grafana_metrics_details.png
        :alt: get detailed info
        :width: 1000px
 
