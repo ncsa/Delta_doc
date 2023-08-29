@@ -61,6 +61,6 @@ Open OnDemand
 
 An Open OnDemand shell interface is available at: https://openondemand.delta.ncsa.illinois.edu/pun/sys/shell/ssh/dt-login02.
 
-..  image:: ood-shell-access.png
+..  image:: images/accessing/ood-shell-access.png
     :alt: Delta OpenOnDemand shell access
 
