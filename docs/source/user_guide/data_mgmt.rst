@@ -113,7 +113,7 @@ There is an included module, *posix2ime*, that does this for you (see more about
 
 You can purge the contents of files from the cache, but not the presence of the file; see :ref:`purge`, below.
 
-There are some important caveats when using the /ime file system for something other than a **read-cache**. See section 2.2 Data Consistency Model in the :download:`developer guide document <../aux_pages/images/Delt_IME/IME1_4DeveloperGuide.pdf>`.
+There are some important caveats when using the /ime file system for something other than a **read-cache**. See section 2.2 Data Consistency Model in the :download:`developer guide document <images/data_mgmt/IME1-4DeveloperGuide.pdf>`.
 
    *Users must maintain close-to-open consistency when multiple clients access the same files. 
    This requirement guarantees that any other client will see the latest changes made by one client as soon as the client opens the file. 
@@ -123,7 +123,7 @@ There are some important caveats when using the /ime file system for something o
 IME Commands
 ~~~~~~~~~~~~~
 
-See the man page for ime-ctl or the attached :download:`developer guide document <../aux_pages/images/Delt_IME/IME1_4DeveloperGuide.pdf>` for details.
+See the man page for ime-ctl or the attached :download:`developer guide document <images/data_mgmt/IME1-4DeveloperGuide.pdf>` for details.
 
 .. _purge:
 
