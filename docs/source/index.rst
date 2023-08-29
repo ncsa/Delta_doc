@@ -50,7 +50,7 @@ You can also browse the full list of NCSA's `HPC-Moodle Self-Paced Tutorials <ht
    :hidden:
    
    user_guide/architecture
-   accounts/index
+   user_guide/accounts
    user_guide/accessing
    user_guide/citizenship
    user_guide/data_mgmt
