@@ -10,7 +10,7 @@ The default environment includes the GCC 11.2.0 compiler + OpenMPI with support 
 
 AMD recommended compiler flags for GNU, AOCC, and Intel compilers for Milan processors can be found in the `AMD Compiler Options Quick Reference Guide for Epyc 7xx3 processors <https://www.amd.com/system/files/TechDocs/compiler-options-quick-ref-guide-epyc-7xx3-series-processors.pdf>`_.
 
-..  image:: Compiler_Options_Quick_Ref_Guide_for_AMD_EPYC_7xx3_Series_Processors.pdf
+..  image:: images/prog_env/Compiler_Options_Quick_Ref_Guide_for_AMD_EPYC_7xx3_Series_Processors.pdf
     :alt: Compiler Options Quick Ref Guide for AMD EPYC 7xx3 Series Processors
     :width: 200px
 
@@ -287,7 +287,7 @@ The code-server for VS Code can be run on Delta in manual mode (without Open OnD
 
 #. Open a local browser on your desktop system with URL = http://127.0.0.1:8899. Log in with the password copied from above and begin using VS Code in your browser.
 
-   ..  image:: ../aux_pages/images/vscode_code_server/vscode_in_browser.png
+   ..  image:: images/prog_env/vscode_in_browser.png
        :alt: vscode in a web browser
        :width: 1000px
 
@@ -298,7 +298,7 @@ Follow: https://code.visualstudio.com/docs/remote/ssh
 
 #. As stated in the guide, install "Remote - SSH" into Visual Studio:
 
-   ..  image:: ../aux_pages/images/visual_studio/01_remote_ssh.png
+   ..  image:: images/prog_env/01_remote_ssh.png
        :alt: remote ssh extension in visual studio
        :width: 500px
 
@@ -328,7 +328,7 @@ Follow: https://code.visualstudio.com/docs/remote/ssh
 #. Proceed to F1 → Remote SSH and connect to Delta. Then, following the guide, use Visual Studio as normal. 
    This is an example of working with a C file remote on Delta:
 
-   ..  image:: ../aux_pages/images/visual_studio/02_remote_c_file.png
+   ..  image:: images/prog_env/02_remote_c_file.png
        :alt: using visual studio to work with a C file on delta
        :width: 1000px
 
@@ -345,10 +345,10 @@ See: https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-t
 
    You may also need to select the remote jupyter kernel under the kernels in VScode.
 
-..  image:: ../aux_pages/images/visual_studio/03_jupyter_url.png
+..  image:: images/prog_env/03_jupyter_url.png
     :alt: terminal with Jupyter workbook URL to use
     :width: 600px
 
-..  image:: ../aux_pages/images/visual_studio/04_jupyter_in_vscode.png
+..  image:: images/prog_env/04_jupyter_in_vscode.png
     :alt: accessing Jupyter notebook using visual studio
     :width: 1000px
