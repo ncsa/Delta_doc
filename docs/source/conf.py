@@ -37,11 +37,3 @@ epub_show_urls = 'footnote'
 html_css_files = [
     'css/custom.css',
 ]
-
-# adding in the logo
-html_static_path = ['_static']
-html_logo = 'images/SUPER_FullColor_RGB.png
-html_theme_options = {
-    'logo_only': True,
-    'display_version': False,
-}
