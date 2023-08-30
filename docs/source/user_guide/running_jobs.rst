@@ -317,12 +317,12 @@ srun
 
 The **srun** command initiates an interactive job on compute nodes.
 
-For example, the following command will run an interactive job in the gpuA100x4 partition with a wall-clock time limit of 30 minutes, using one node and 16 cores per node and 1 GPU:
+For example, the following command will run an interactive job in the gpuA100x4 or gpuA40x4 partition with a wall-clock time limit of 30 minutes, using one node and 16 cores per node and 1 GPU:
 
 .. code-block::
 
    srun -A account_name --time=00:30:00 --nodes=1 --ntasks-per-node=16 \
-   --partition=gpuA100x4 --gpus=1 --mem=16g --pty /bin/bash
+   --partition=gpuA100x4,gpuA40x4 --gpus=1 --mem=16g --pty /bin/bash
 
 After you enter the command, you will have to wait for Slurm to start the job. 
 As with any job, your interactive job will wait in the queue until the specified number of nodes is available. 
