@@ -2,7 +2,7 @@
 Delta User Documentation
 ################################################
 
-..  image:: delta_front.png
+..  image:: images/delta_front.png
     :alt: 12 racks in a machine room, with overhead power, with red to orange "DELTA" wrap on the rack doors.  
     :width: 700px
 
@@ -49,17 +49,17 @@ You can also browse the full list of NCSA's `HPC-Moodle Self-Paced Tutorials <ht
    :caption: User Guide
    :hidden:
    
-   architecture
-   accounts/index
-   accessing/index
-   citizenship
-   file_mgmt/index
-   prog_env/index
-   running_jobs/index
-   software/index
-   visualization
-   containers
-   services/index
-   debug_perf/index
-   acknowledge
+   user_guide/architecture
+   user_guide/accounts
+   user_guide/accessing
+   user_guide/citizenship
+   user_guide/data_mgmt
+   user_guide/prog_env
+   user_guide/running_jobs
+   user_guide/software
+   user_guide/visualization
+   user_guide/containers
+   user_guide/services
+   user_guide/debug_perf
+   user_guide/acknowledge
    
