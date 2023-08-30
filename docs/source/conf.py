@@ -39,6 +39,7 @@ html_css_files = [
 ]
 
 # adding in the logo
+html_static_path = ['_static']
 html_logo = 'images/SUPER_FullColor_RGB.png
 html_theme_options = {
     'logo_only': True,
