@@ -55,6 +55,7 @@ You can also browse the full list of NCSA's `HPC-Moodle Self-Paced Tutorials <ht
    user_guide/citizenship
    user_guide/data_mgmt
    user_guide/prog_env
+   user_guide/job_accounting
    user_guide/running_jobs
    user_guide/software
    user_guide/visualization
