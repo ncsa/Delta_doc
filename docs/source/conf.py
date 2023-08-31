@@ -37,3 +37,11 @@ epub_show_urls = 'footnote'
 html_css_files = [
     'css/custom.css',
 ]
+
+# -- Logo 
+html_static_path = ['_static']
+html_logo = "images/BlockI-NCSA-Full-Color-RGB.png"
+html_theme_options = {
+     'logo_only': False,
+     'display_version': False,
+ }
