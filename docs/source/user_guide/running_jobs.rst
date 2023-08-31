@@ -342,7 +342,42 @@ Once the job starts, you will see:
 You will also be presented with an interactive shell prompt on the launch node. 
 At this point, you can use the appropriate command to start your program.
 
-When you are done with your work, you can use the ``exit`` command to end the job.
+When you are done with your work, you can use the ``exit`` command to end the bash shell on the compute resource and hence the slurm job.
+
+salloc
+~~~~~
+
+While being interactive like srun, salloc allocates compute resources for you, while leaving your shell on the login node.  Run commands on the login node as usual, use "exit" to end an salloc session early, and use srun with no extra flags to launch processes on the compute resources.
+
+.. code-block::
+
+   salloc --mem=16g --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 \
+     --partition=gpuA40x4-interactive,gpuA100x4-interactive \
+     --account=your_account_name --time=00:30:00 --gpus-per-node=1
+   salloc: Pending job allocation 2323230
+   salloc: job 2323230 queued and waiting for resources
+   salloc: job 2323230 has been allocated resources
+   salloc: Granted job allocation 2323230
+   salloc: Waiting for resource configuration
+   salloc: Nodes gpub073 are ready for job
+   dt-login03 bin$ hostname #<-- on the login node
+   dt-login03.delta.ncsa.illinois.edu
+   dt-login03 release$ srun bandwidthTest --htod #<-- on the compute resource
+   CUDA Bandwidth Test - Starting...
+   Running on...
+
+   Device 0: NVIDIA A40
+   Quick Mode
+
+   Host to Device Bandwidth, 1 Device(s)
+   PINNED Memory Transfers
+   Transfer Size (Bytes)        Bandwidth(GB/s)
+   32000000                     24.5
+
+   Result = PASS
+   dt-login03 ~$ exit
+   salloc: Relinquishing job allocation 2323230
+
 
 scancel
 ~~~~~~~~
