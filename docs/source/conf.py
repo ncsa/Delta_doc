@@ -40,7 +40,7 @@ html_css_files = [
 
 # -- Logo 
 html_static_path = ['_static']
-html_logo = "images/BlockI-NCSA-Full-Color-RGB.png"
+html_logo = "images/BlockI-NCSA-Full-Color-RGB_border4.png"
 html_theme_options = {
      'logo_only': False,
      'display_version': False,
