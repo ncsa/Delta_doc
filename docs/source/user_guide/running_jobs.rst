@@ -175,6 +175,8 @@ Commands that display batch job and partition information.
 
 See the man pages for other available options.
 
+.. _srun:
+
 srun
 ~~~~~
 
@@ -206,6 +208,8 @@ You will also be presented with an interactive shell prompt on the launch node.
 At this point, you can use the appropriate command to start your program.
 
 When you are done with your work, you can use the ``exit`` command to end the bash shell on the compute resource and hence the slurm job.
+
+.. _salloc:
 
 salloc
 ~~~~~
