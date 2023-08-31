@@ -280,6 +280,14 @@ Job scripts need to be written to handle automatically restarting from checkpoin
 Job Management
 -----------------
 
+batch scripts (sbatch) or interactive (srun , salloc) , which is right for me?
+
+- sbatch: Use batch scripts for jobs that are debugged, ready to run, and don't require interaction.
+
+- srun: For interactive use of a compute node, srun will run a single command through slurm on a compute   node. srun blocks, it will wait until slurm has scheduled compute resources and when it returns,   the job is complete.
+
+- salloc: Also interactive, use salloc when you want to reserve compute resources for a period of time and      interact with them using multiple commands.  Each command you type after your salloc session begins   will run : on the login node if it is just a normal command, or on your reserved compute resources   if prefixed with srun.  Type "exit" when finished with an salloc allocation if you want to end it   before the time expires.
+
 Batch jobs are submitted through a *job script* (as in the :ref:`examples`) using the sbatch command. 
 Job scripts generally start with a series of Slurm *directives* that describe requirements of the job, such as number of nodes and wall time required, to the batch system/scheduler (Slurm directives can also be specified as options on the sbatch command line; command line options take precedence over those in the script). 
 The rest of the batch script consists of user commands.
