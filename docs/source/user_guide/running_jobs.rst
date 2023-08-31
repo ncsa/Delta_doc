@@ -7,15 +7,21 @@ Accessing the Compute Nodes
 Delta implements the Slurm batch environment to manage access to the compute nodes. 
 Use the Slurm commands to run batch jobs or for interactive access to compute nodes. 
 See: https://slurm.schedmd.com/quickstart.html for an introduction to Slurm. 
-There are two ways to access compute nodes on Delta.
+There are multiple ways to access compute nodes on Delta.
 
-Batch jobs can be used to access compute nodes. 
-Slurm provides a convenient direct way to submit batch jobs, see: https://slurm.schedmd.com/heterogeneous_jobs.html#submitting. 
-Slurm also supports job arrays for easy management of a set of similar jobs, see: https://slurm.schedmd.com/job_array.html.
+Batch scripts (sbatch) or Interactive (srun , salloc) , which is right for me?
 
-Sample Slurm batch job scripts are provided in the :ref:`examples` section.
+- sbatch: Use batch scripts for jobs that are debugged, ready to run, and don't require interaction.
+  Sample Slurm batch job scripts are provided in the :ref:`examples` section.
+  For mixed resource heterogeneous jobs see: https://slurm.schedmd.com/heterogeneous_jobs.html#submitting. 
+  Slurm also supports job arrays for easy management of a set of similar jobs, see:   https://slurm.schedmd.com/job_array.html.
 
-Direct SSH access to a compute node in a running batch job from a dt-loginNN node is enabled once the job has started:
+- :ref:`srun` : For interactive use of a compute node, srun will run a single command through slurm on a compute node. srun blocks, it will wait until slurm has scheduled compute resources and when it returns, the job is complete.
+
+- :ref:`salloc` : Also interactive, use salloc when you want to reserve compute resources for a period of time and interact with them using multiple commands.  Each command you type after your salloc session begins will run : on the login node if it is just a normal command, or on your reserved compute resources if prefixed with srun.  Type "exit" when finished with an salloc allocation if you want to end it before the time expires.
+
+
+Direct SSH access to a compute node in a running job from a dt-loginNN node is enabled once the job has started:
 
 .. code-block::
 
@@ -136,14 +142,6 @@ Job scripts need to be written to handle automatically restarting from checkpoin
 
 Job Management
 -----------------
-
-batch scripts (sbatch) or interactive (srun , salloc) , which is right for me?
-
-- sbatch: Use batch scripts for jobs that are debugged, ready to run, and don't require interaction.
-
-- srun: For interactive use of a compute node, srun will run a single command through slurm on a compute   node. srun blocks, it will wait until slurm has scheduled compute resources and when it returns,   the job is complete.
-
-- salloc: Also interactive, use salloc when you want to reserve compute resources for a period of time and      interact with them using multiple commands.  Each command you type after your salloc session begins   will run : on the login node if it is just a normal command, or on your reserved compute resources   if prefixed with srun.  Type "exit" when finished with an salloc allocation if you want to end it   before the time expires.
 
 Batch jobs are submitted through a *job script* (as in the :ref:`examples`) using the sbatch command. 
 Job scripts generally start with a series of Slurm *directives* that describe requirements of the job, such as number of nodes and wall time required, to the batch system/scheduler (Slurm directives can also be specified as options on the sbatch command line; command line options take precedence over those in the script). 
