@@ -64,3 +64,7 @@ An Open OnDemand shell interface is available at: https://openondemand.delta.ncs
 ..  image:: images/accessing/ood-shell-access.png
     :alt: Delta OpenOnDemand shell access
 
+VS Code
+-------
+See: 
+`Visual Studio Code, Remote ssh <https://ncsa-delta-doc.readthedocs-hosted.com/en/latest/user_guide/prog_env.html#remote-ssh>`_
