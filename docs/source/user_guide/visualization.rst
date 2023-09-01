@@ -11,7 +11,7 @@ Client Server Mode - unsupported
 
 https://engaging-web.mit.edu/eofe-wiki/software/paraview_client_server_mode/
 
-Client server mode appears is **broken**. When setting up SSH tunnel, as shown, you get this on the client side:
+Client server mode appears **broken**. When setting up SSH tunnel, as shown, you get this on the client side:
 
 .. code-block::
 
