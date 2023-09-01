@@ -1,6 +1,6 @@
 .. _acknowledge:
 
-Acknowledging Delta
+Acknowledging XXXXX
 =====================
 
 For information on how to properly acknowledge the NCSA Delta system or Delta Project/NCSA Staff see: https://delta.ncsa.illinois.edu/delta-citations/
