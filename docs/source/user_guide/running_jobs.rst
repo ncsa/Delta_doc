@@ -11,7 +11,7 @@ There are multiple ways to access compute nodes on Delta.
 
 Batch scripts (sbatch) or Interactive (srun , salloc) , which is right for me?
 
-- sbatch . Use batch scripts for jobs that are debugged, ready to run, and don't require interaction.
+- :ref:`sbatch` . Use batch scripts for jobs that are debugged, ready to run, and don't require interaction.
   Sample Slurm batch job scripts are provided in the :ref:`examples` section.
   For mixed resource heterogeneous jobs see: https://slurm.schedmd.com/heterogeneous_jobs.html#submitting. 
   Slurm also supports job arrays for easy management of a set of similar jobs, see:   https://slurm.schedmd.com/job_array.html.
@@ -142,6 +142,8 @@ Job scripts need to be written to handle automatically restarting from checkpoin
 
 Job Management
 -----------------
+
+.. _sbatch:
 
 Batch jobs are submitted through a *job script* (as in the :ref:`examples`) using the sbatch command. 
 Job scripts generally start with a series of Slurm *directives* that describe requirements of the job, such as number of nodes and wall time required, to the batch system/scheduler (Slurm directives can also be specified as options on the sbatch command line; command line options take precedence over those in the script). 
