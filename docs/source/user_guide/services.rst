@@ -6,7 +6,7 @@ Services
 Open OnDemand
 -------------------------
 
-The Delta Open OnDemand portal is now available for use. Current supported Interactive apps: Jupyter notebooks.
+The Delta Open OnDemand portal is available for use. Current supported Interactive apps: Jupyter Lab, VS Code (Code Server).
 
 To connect to the Open OnDemand portal, point a browser to https://openondemand.delta.ncsa.illinois.edu/, and use your NCSA username and password with NCSA Duo on the CILogin page.
 
