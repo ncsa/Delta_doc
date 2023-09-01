@@ -149,6 +149,14 @@ The rest of the batch script consists of user commands.
 
 The syntax for sbatch is: **sbatch** [list of sbatch options] script_name. Refer to the sbatch man page for detailed information on the options.
 
+.. code-block::
+
+   $ sbatch tensorflow_cpu.slurm
+   Submitted batch job 2337924
+   $ squeue -u $USER
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           2337924 cpu-inter    tfcpu  mylogin  R       0:46      1 cn006
+
 squeue/scontrol/sinfo
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -180,7 +188,7 @@ See the man pages for other available options.
 srun
 ~~~~~
 
-The **srun** command initiates an interactive job on compute nodes.
+The **srun** command initiates an interactive job or process on compute nodes.
 
 For example, the following command will run an interactive job in the gpuA100x4 or gpuA40x4 partition with a wall-clock time limit of 30 minutes, using one node and 16 cores per node and 1 GPU:
 
@@ -189,25 +197,27 @@ For example, the following command will run an interactive job in the gpuA100x4 
    srun -A account_name --time=00:30:00 --nodes=1 --ntasks-per-node=16 \
    --partition=gpuA100x4,gpuA40x4 --gpus=1 --mem=16g --pty /bin/bash
 
-After you enter the command, you will have to wait for Slurm to start the job. 
-As with any job, your interactive job will wait in the queue until the specified number of nodes is available. 
+After you enter the command, wait for Slurm to start the job. 
+As with any job, your interactive job is queued until the specified number of nodes is available. 
 If you specify a small number of nodes for smaller amounts of time, the wait should be shorter because your job will backfill among larger jobs. 
 You will see something like this:
 
 .. code-block::
 
-   srun: job 123456 queued and waiting for resources
+   $ srun --mem=16g --nodes=1 --ntasks-per-node=1 --cpus-per-task=4 \
+   --partition=gpuA100x4-interactive,gpuA40x4-interactive --account=bbka-delta-gpu \
+   --gpus-per-node=1 --time=00:30:00 --x11 --pty /bin/bash
+   [login_name@gpua022 bin]$  #<-- note the compute node name in the shell prompt
+   [login_name@gpua022 bin]$ echo $SLURM_JOB_ID
+   2337913
+   [login_name@gpua022 ~]$ c/a.out 500
+   count=500
+   sum= 0.516221
+   [login_name@gpua022 ~]$ exit
+   exit
+   $ 
 
-Once the job starts, you will see:
-
-.. code-block::
-
-   srun: job 123456 has been allocated resources
-
-You will also be presented with an interactive shell prompt on the launch node. 
-At this point, you can use the appropriate command to start your program.
-
-When you are done with your work, you can use the ``exit`` command to end the bash shell on the compute resource and hence the slurm job.
+When finished, use the ``exit`` command to end the bash shell on the compute resource and hence the slurm srun job.
 
 .. _salloc:
 
@@ -218,7 +228,7 @@ While being interactive like srun, salloc allocates compute resources for you, w
 
 .. code-block::
 
-   salloc --mem=16g --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 \
+   $ salloc --mem=16g --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 \
      --partition=gpuA40x4-interactive,gpuA100x4-interactive \
      --account=your_account_name --time=00:30:00 --gpus-per-node=1
    salloc: Pending job allocation 2323230
@@ -227,9 +237,9 @@ While being interactive like srun, salloc allocates compute resources for you, w
    salloc: Granted job allocation 2323230
    salloc: Waiting for resource configuration
    salloc: Nodes gpub073 are ready for job
-   dt-login03 bin$ hostname #<-- on the login node
+   $ hostname #<-- on the login node
    dt-login03.delta.ncsa.illinois.edu
-   dt-login03 release$ srun bandwidthTest --htod #<-- on the compute resource
+   $ srun bandwidthTest --htod #<-- on the compute resource, honoring your salloc settings
    CUDA Bandwidth Test - Starting...
    Running on...
 
@@ -242,7 +252,7 @@ While being interactive like srun, salloc allocates compute resources for you, w
    32000000                     24.5
 
    Result = PASS
-   dt-login03 ~$ exit
+   $ exit
    salloc: Relinquishing job allocation 2323230
 
 
