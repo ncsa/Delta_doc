@@ -145,6 +145,9 @@ Job Management
 
 .. _sbatch:
 
+sbatch
+~~~~~~
+
 Batch jobs are submitted through a *job script* (as in the :ref:`examples`) using the sbatch command. 
 Job scripts generally start with a series of Slurm *directives* that describe requirements of the job, such as number of nodes and wall time required, to the batch system/scheduler (Slurm directives can also be specified as options on the sbatch command line; command line options take precedence over those in the script). 
 The rest of the batch script consists of user commands.
