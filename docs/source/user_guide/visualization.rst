@@ -6,12 +6,12 @@ Delta A40 nodes support NVIDIA ray tracing hardware.
 Paraview 
 ----------
 
-Client Server Mode
-~~~~~~~~~~~~~~~~~~~~
+Client Server Mode - unsupported
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 https://engaging-web.mit.edu/eofe-wiki/software/paraview_client_server_mode/
 
-Client server mode appears to be **broken currently**. When setting up SSH tunnel, as shown, you get this on the client side:
+Client server mode appears is **broken**. When setting up SSH tunnel, as shown, you get this on the client side:
 
 .. code-block::
 
