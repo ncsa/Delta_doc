@@ -11,7 +11,7 @@ Introduction
 
 Delta is a dedicated, `ACCESS <https://access-ci.org>`_-allocated resource designed by HPE and NCSA, delivering a highly capable GPU-focused compute environment for GPU and CPU workloads.  
 In addition to offering a mix of standard and reduced precision GPU resources, Delta also offers GPU-dense nodes with both NVIDIA and AMD GPUs.  
-Delta provides high performance node-local SSD scratch filesystems, as well as both standard Lustre and relaxed-POSIX parallel filesystems spanning the entire resource.
+Delta provides high performance node-local SSD scratch filesystems, as well as both standard Lustre and relaxed-POSIX (not yet implemented) parallel filesystems spanning the entire resource.
 
 Envisioned to lead change across the dimensions of computing, storage, and usability, Delta employs standards-based, fully customized science gateways with per-domain interfaces provided alongside the traditional command-line batch system interface. 
 Enabled science gateways seamlessly integrate Delta into the cyberinfrastructure ecosystem alongside other resources to enable complex, multi-system workflows. 
