@@ -3,7 +3,7 @@
 Getting Help
 ================
 
-- For ACCESS allocations issues, create a ticket via the `ACCESS Help page <https://support.access-ci.org/open-a-ticket>`_.
+- For ACCESS allocations issues, create a ticket via the `ACCESS Help page <https://support.access-ci.org/open-a-ticket>`_ (ACCESS log in required). You can browse other ACCESS support resources on the `ACCESS Support page <https://support.access-ci.org>`_ (ACCESS log in *not* required).
 
 - For all other issues, regardless of allocation type, please submit a support request by emailing help@ncsa.illinois.edu.   
   
