@@ -326,8 +326,10 @@ Follow: https://code.visualstudio.com/docs/remote/ssh
       [arnoldg@dt-login03 ~]$ 
 
 #. Proceed to F1 → Remote SSH and connect to Delta. Then, following the guide, use Visual Studio as normal. 
- > Windows users: The login box of vscode will display your login as 2fa<delta_username>, and you may not see a 2nd login box for 2fa duo until you press the "details" link at lower right after you enter your password. Use the Duo passcode after pressing "details" link when the next password prompt appears at the top.
-   This is an example of working with a C file remote on Delta:
+   
+   Windows users: The login box of vscode will display your login as 2fa<delta_username>, and you may not see a 2nd login box for 2fa duo until you press the "details" link at lower right after you enter your password. Use the Duo passcode after pressing "details" link when the next password prompt appears at the top.
+
+   Example of working with a C file remote on Delta:
 
    ..  image:: images/prog_env/02_remote_c_file.png
        :alt: using visual studio to work with a C file on delta
