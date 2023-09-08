@@ -24,7 +24,9 @@ The minimum charge for any job is 1 SU.
 |          | 8-way MI100 | 16    | 1 MI100      | 250 GB     |
 +----------+-------------+-------+--------------+------------+
 
-Note, a weighting factor will discount the charge for the reduced-precision A40 nodes, as well as the novel AMD MI100 based node - this will be documented through the ACCESS SU converter.
+Note that a weighting factor will discount the charge for the reduced-precision A40 nodes, as well as the novel AMD MI100 based node - this will be documented through the ACCESS SU converter.
+
+Also note that 1 GB of memory here means 1e9 bytes (1,000,000,000), not 2^30 bytes (1,073,741,824).
 
 Local Account Charging
 -------------------------
