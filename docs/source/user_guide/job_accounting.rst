@@ -33,7 +33,7 @@ Local Account Charging
 
 Use the ``accounts`` command to list the accounts available for charging. 
 CPU and GPU resources will have individual charge names. 
-For example, in the following, **``abcd-delta-cpu``** and **``abcd-delta-gpu``** are available for user kingda to use for the CPU and GPU resources.
+For example, in the following, **``bbka-delta-cpu``** and **``bbka-delta-gpu``** are available for user kingda to use for the CPU and GPU resources.
 
 .. code-block::
 
@@ -51,22 +51,22 @@ Job Accounting Considerations
 -  A node-exclusive job that runs on a compute node for one hour will be
    charged 128 SUs (128 cores x 1 hour)
 -  A node-exclusive job that runs on a 4-way GPU node for one hour will
-   be charge 4 SUs (4 GPU x 1 hour)
+   be charged 4 SUs (4 GPU x 1 hour)
 -  A node-exclusive job that runs on a 8-way GPU node for one hour will
-   be charge 8 SUs (8 GPU x 1 hour)
+   be charged 8 SUs (8 GPU x 1 hour)
 
 QOSGrpBillingMinutes
 ---------------------
 
-If you see QOSGrpBillingMinutes under the Reason column for the squeue command, as in:
+If you see QOSGrpBillingMinutes under the Reason column for the ``squeue`` command, as in:
 
 .. code-block::
 
                 JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
               1204221       cpu    myjob     .... PD       0:00      5 (QOSGrpBillingMinutes)
 
-Then the resource allocation specified for the job (i.e. xyzt-delta-cpu) does not have sufficient balance to run the job based on the number of resources requested and the wall-clock time. 
-Sometimes it may be other jobs from the same project, also in the QOSGrpBillingMinutes state, using the same resource allocation that are preventing a job that would normally "fit" from running.
+Then the resource allocation specified for the job (i.e., xyzt-delta-cpu) does not have sufficient balance to run the job based on the number of resources requested and the wall-clock time. 
+Sometimes it may be other jobs from the same project, also in the QOSGrpBillingMinutes state, using the same resource allocation, that are preventing a job that would normally "fit" from running.
 To resolve this, the PI of the project needs to put in a supplement request using the same XRAS proposal system that was used for the current award, see :ref:`all_sup`.
 
 Reviewing Job Charges for a Project (jobcharge)
