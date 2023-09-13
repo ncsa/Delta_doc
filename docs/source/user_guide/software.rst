@@ -108,6 +108,10 @@ You may *use any of these methods* with any of the python versions or instances 
 
   Useful when you only need one python environment per python version or instance.
 
+- `conda-env-mod <https://github.com/amaji/conda-env-mod>`_: conda-env-mod lmod module generator from Purdue
+
+  The conda-env-mod script will generate a python module you can load or share with your team--making it simpler to manage multiple python scenarios that you can activate and deactivate with module commands.
+
 Examples using all of the above are shown at this site covering scikit-learn-intelex (an Intel accelerated scikit learn subset library for x86_64 architecture): https://github.com/intel/scikit-learn-intelex/blob/master/INSTALL.md
 
 .. note::
