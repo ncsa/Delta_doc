@@ -56,13 +56,13 @@ Transferring Data
 
 To transfer files to and from the Delta system:
 
--  scp - Use for small to modest transfers to avoid impacting the usability of the Delta login node (*login.delta.ncsa.illinois.edu*).
+-  scp - Use it for small to modest transfers to avoid impacting the usability of the Delta login node (*login.delta.ncsa.illinois.edu*).
 
--  rsync - Use for small to modest transfers to avoid impacting the usability of the Delta login node.
+-  rsync - Use it for small to modest transfers to avoid impacting the usability of the Delta login node.
 
    -  https://campuscluster.illinois.edu/resources/docs/storage-and-data-guide/ (scp, sftp, rsync)
 
--  Globus - Use for large data transfers.
+-  Globus - Use it for large data transfers.
 
    - **Upgrade your Globus Connect Personal** to at least version 3.2.0 before Dec 12, 2022. See: https://docs.globus.org/ca-update-2022/#notice.
 
