@@ -307,7 +307,7 @@ Login nodes provide interactive support for code compilation. See :ref:`access` 
 Specialized Nodes
 ---------------------
 
-Delta will support data transfer nodes (serving the "NCSA Delta" Globus collection) and nodes in support of other services.
+Delta supports data transfer nodes (serving the "NCSA Delta" Globus collection) and nodes in support of other services.
 
 Network
 ------------
@@ -386,7 +386,9 @@ DDN SFA18XE (Quantity: 1), each unit contains:
 -  10 x SS9012 enclosures
 -  NVME for metadata and small files
 
-A "module reset" in a job script will populate $WORK and $SCRATCH environment variables automatically, or you may set them as WORK=/projects/<account>/$USER , SCRATCH=/scratch/<account>/$USER .
+.. note::
+
+   A “module reset” in a job script populates $WORK and $SCRATCH environment variables automatically, or you may set them as WORK=/projects/<account>/$USER, SCRATCH=/scratch/<account>/$USER.
 
 +-------------+-------------+--------------+-------------+--------------+
 | **File      | **Quota**   | **Snapshots**| **Purged**  | **Key        |
