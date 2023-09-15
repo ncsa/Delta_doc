@@ -10,10 +10,6 @@ The default environment includes the GCC 11.2.0 compiler + OpenMPI with support 
 
 AMD recommended compiler flags for GNU, AOCC, and Intel compilers for Milan processors can be found in the `AMD Compiler Options Quick Reference Guide for Epyc 7xx3 processors <https://www.amd.com/system/files/TechDocs/compiler-options-quick-ref-guide-epyc-7xx3-series-processors.pdf>`_.
 
-..  image:: images/prog_env/Compiler_Options_Quick_Ref_Guide_for_AMD_EPYC_7xx3_Series_Processors.pdf
-    :alt: Compiler Options Quick Ref Guide for AMD EPYC 7xx3 Series Processors
-    :width: 200px
-
 Serial
 ----------
 
