@@ -455,16 +455,16 @@ The home directory quota does not depend on which project group the file is writ
 
 .. code-block::
 
-   @dt-login01 ~]$ quota
-   Quota usage for user :
+   <user>@dt-login01 ~]$ quota
+   Quota usage for user <user>:
    -------------------------------------------------------------------------------------------
    | Directory Path | User | User | User  | User | User   | User |
    |                | Block| Soft | Hard  | File | Soft   | Hard |
    |                | Used | Quota| Limit | Used | Quota  | Limit|
    --------------------------------------------------------------------------------------
-   | /u/      | 20k  | 50G  | 5 5G | 5    | 600000 | 660000 |
+   | /u/<user>      | 20k  | 50G  | 27.5G | 5    | 600000 | 660000 |
    --------------------------------------------------------------------------------------
-   Quota usage for groups user  is a member of:
+   Quota usage for groups user <user> is a member of:
    -------------------------------------------------------------------------------------
    | Directory Path | Group | Group | Group | Group | Group  | Group |
    |                | Block | Soft  | Hard  | File  | Soft   | Hard  |
