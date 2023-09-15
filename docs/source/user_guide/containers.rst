@@ -148,7 +148,7 @@ Container list (as of March, 2022)
    theano:18.08
    torch:18.08-py2
 
-See also: `https://catalog.ngc.nvidia.com/?filters=resourceType|container|Container <https://catalog.ngc.nvidia.com/?filters=resourceType|container|Container>`_
+See also: `https://catalog.ngc.nvidia.com/containers <https://catalog.ngc.nvidia.com/containers>`_
 
 AMD Infinity Hub containers for MI100
 -------------------------------------
