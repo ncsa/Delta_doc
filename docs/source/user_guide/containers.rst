@@ -11,12 +11,12 @@ Container support on Delta is provided by Apptainer.
 Docker images can be converted to Singularity sif format via the `singularity pull <https://docs.sylabs.io/guides/3.2/user-guide/cli/singularity_pull.html#singularity-pull>`_ command. 
 Commands can be run from within a container using the `singularity run <https://docs.sylabs.io/guides/3.2/user-guide/cli/singularity_run.html#singularity-run>`_ command (or ``apptainer run``).
 
-If you encounter quota issues with Apptainer caching in ``~/.singularity``, the environment variable ``SINGULARITY_CACHEDIR`` can be used to use a different location such as a scratch space.
+If you encounter quota issues with Apptainer caching in **~/.singularity**, the environment variable ``SINGULARITY_CACHEDIR`` can be used to use a different location such as a scratch space.
 
-Your ``$HOME`` is automatically available from containers run via Apptainer. 
-You can "pip3 install --user" against a container's python, setup virtual environments, or similar while using a containerized application. 
-Just run the container's /bin/bash to get an Apptainer> prompt (or use *apptainer shell <container>* for a quick look from a login node). 
-Below is an srun example of that with TensorFlow:
+Your **$HOME** is automatically available from containers run via Apptainer. 
+You can ``pip3 install --user`` against a container's python, setup virtual environments, or similar while using a containerized application. 
+Just run the container's /bin/bash to get an Apptainer> prompt (or use ``apptainer shell <container>`` for a quick look from a login node). 
+Below is an ``srun`` example of that with TensorFlow:
 
 .. code-block::
 
