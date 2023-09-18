@@ -46,7 +46,7 @@ After collecting data from a batch job, generate reports with the AMDuProfCLI re
 Visualize and Explore Report Data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can view the data in AMDuProf on Delta or locally on a copy you install at your desktop system. 
+You can view the data in AMDuProf on Delta or locally with a copy you install on your desktop system. 
 If you install locally, you may need to replicate some paths or add paths to the binary in order to get full functionality.
 
 Launch AMDuProf (no CLI suffix for the GUI) and import the profile session from a completed batch job run with AMDuProfCLI collect.
@@ -75,7 +75,7 @@ The Analyze tab shows hot routines or lines in more detail. The tbp, assess, and
     :alt: inst_access
     :width: 1000px
 
-Selecting one of the lines or routines will take you to the Sources view where you can see the assembly used in that portion of code.
+Selecting one of the lines or routines will take you to the Sources view where you can see the assembly used in that portion of the code.
 
 ..  image:: images/debug_perf/06_uprof_sources.png
     :alt: sources view
