@@ -786,7 +786,7 @@ Non-python/conda HPC users would see per-job stderr from the *conda deactivate* 
    CommandNotFoundError: Your shell has not been properly configured to use 'conda deactivate'.
    To initialize your shell, run
 
-       $ conda init 
+       $ conda init <SHELL_NAME>
 
    Currently supported shells are:
      - bash
@@ -997,7 +997,7 @@ Of interest are the Searching path at the beginning, and the nb_conda_kernels ou
    [I 2023-02-20 12:48:51.971 ServerApp] notebook_shim | extension was successfully linked.
    [I 2023-02-20 12:48:51.972 ServerApp] panel.io.jupyter_server_extension | extension was successfully linked.
    [D 2023-02-20 12:48:51.972 ServerApp] Config changed: {'JupyterApp': {'kernel_spec_manager_class': 'nb_conda_kernels.CondaKernelSpecManager'}, 'NotebookApp': 
-   {}, 'ServerApp': {'log_level': 0, 'jpserver_extensions': }}
+   {}, 'ServerApp': {'log_level': 0, 'jpserver_extensions': <LazyConfigValue value={'jupyterlab': True, 'ipyparallel': True, 'nbclassic': True, 'notebook_shim': True, 'panel.io.jupyter_server_extension': True}>}}
    [D 2023-02-20 12:48:51.972 ServerApp] Raising open file limit: soft 1024->4096; hard 262144->262144
    [D 2023-02-20 12:48:51.972 ServerApp] [nb_conda_kernels] refreshing conda info
    [I 2023-02-20 12:48:54.607 ServerApp] [nb_conda_kernels] enabled, 8 kernels found
