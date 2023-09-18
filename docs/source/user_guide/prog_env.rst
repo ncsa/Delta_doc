@@ -92,12 +92,12 @@ This code can be compiled using the methods show above. The code appears in some
 
    #define _GNU_SOURCE
 
-   #include 
-   #include 
-   #include 
-   #include 
-   #include 
-   #include 
+   #include <stdio.h>
+   #include <unistd.h>
+   #include <string.h>
+   #include <sched.h>
+   #include <mpi.h>
+   #include <omp.h>
 
    /* Borrowed from util-linux-2.13-pre7/schedutils/taskset.c */
    static char *cpuset_to_cstr(cpu_set_t *mask, char *str)
