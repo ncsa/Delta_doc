@@ -90,7 +90,7 @@ The Session Info is under the Summary tab and displays more detail about the pro
 Rooflines
 ~~~~~~~~~~
 
-Rooflines are currently disabled: https://www.amd.com/content/dam/amd/en/documents/developer/uprof-v4.0-gaGA-user-guide.pdf (section 3.5.2). Below are the roofline error messages from OS.
+Rooflines are currently disabled: https://www.amd.com/content/dam/amd/en/documents/developer/uprof-v4.0-gaGA-user-guide.pdf (section 3.5.2). Below are the roofline error messages from the OS.
 
 .. code-block::
 
@@ -122,7 +122,7 @@ Installation (NVIDIA Nsight Systems Client on Local Desktop/Laptop)
 
 #. Open https://developer.nvidia.com/tools-overview and navigate to the **Developer Tools Downloads** button.
 #. Select **Nsight Systems** and your operating system. 
-   If you do not have an account at developer.nvidia.com, set one up when prompted and when you have completed the forms your download will begin. 
+   If you do not have an account at developer.nvidia.com, set one up when prompted. When you have completed the forms, your download will begin. 
 #. Install the application on your local machine. 
    You will download output files from the server command line application and use the GUI locally on your laptop.
 
@@ -133,9 +133,6 @@ nsys with serial or python CUDA code
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 .. code-block::
-
-   $ srun nsys profile -o /path/to/mynysys.out --stats=true ./a.out]]>
-   Run application on Delta
 
    $ srun nsys profile -o /path/to/mynysys.out --stats=true ./a.out
 
@@ -180,7 +177,7 @@ MPI Rank Example Result (Viewing with Nsight on Local Desktop)
 Copy Resultant Files to Your Local Laptop (Downloads/ or Documents/)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-scp is shown below, you could also use Globus Online, sftp, or an sshfs mount from your laptop.
+scp is shown below. You could also use Globus Online, sftp, or an sshfs mount from your laptop.
 
 .. code-block::
 
@@ -223,7 +220,7 @@ scp is shown below, you could also use Globus Online, sftp, or an sshfs mount fr
 Open NVIDIA Nsight Systems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Under the File menu, select **open** then navigate to your Downloads/ folder and select the nsys\* file of interest (nays-report-b26d.nsys-rep in this example). 
+Under the File menu, select **open**, and then navigate to your Downloads/ folder and select the nsys\* file of interest (nays-report-b26d.nsys-rep in this example). 
 Explore the data in the GUI application.
 
 ..  image:: images/debug_perf/03_nsight-systems-timeline.jpg
@@ -361,7 +358,7 @@ Delta Script and Nsight Systems View of the Resulting Report
 
    dcgmi profile --resume
 
-(Transferred the report1.nsys-rep back to local system using Globus Online, sftp)
+(Transferred the report1.nsys-rep back to local system using Globus Online, sftp, etc.)
 
 ..  image:: images/debug_perf/05_nsight-systems-win.png
     :alt: window
