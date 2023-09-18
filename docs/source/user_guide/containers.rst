@@ -74,7 +74,7 @@ PyTorch Example Script
 
    echo "job is starting on `hostname`"
 
-   # run the container binary with arguments: python3 
+   # run the container binary with arguments: python3 <program.py>
    # --bind /projects/bbXX  # add to apptainer arguments to mount directory inside container
    apptainer run --nv \
     /sw/external/NGC/pytorch:22.02-py3 python3 tensor_gpu.py
@@ -104,7 +104,7 @@ TensorFlow Example Script
 
    echo "job is starting on `hostname`"
 
-   # run the container binary with arguments: python3 
+   # run the container binary with arguments: python3 <program.py>
    # --bind /projects/bbXX  # add to apptainer arguments to mount directory inside container
    apptainer run --nv \
     /sw/external/NGC/tensorflow:22.06-tf2-py3 python3 \
