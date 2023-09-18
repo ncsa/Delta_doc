@@ -65,14 +65,14 @@ If you see QOSGrpBillingMinutes under the Reason column for the ``squeue`` comma
                 JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
               1204221       cpu    myjob     .... PD       0:00      5 (QOSGrpBillingMinutes)
 
-Then the resource allocation specified for the job (i.e., xyzt-delta-cpu) does not have sufficient balance to run the job based on the number of resources requested and the wall-clock time. 
+Then the resource allocation specified for the job (e.g., xyzt-delta-cpu) does not have sufficient balance to run the job based on the number of resources requested and the wall-clock time. 
 Sometimes it may be other jobs from the same project, also in the QOSGrpBillingMinutes state, using the same resource allocation, that are preventing a job that would normally "fit" from running.
 To resolve this, the PI of the project needs to put in a supplement request using the same XRAS proposal system that was used for the current award, see :ref:`all_sup`.
 
 Reviewing Job Charges for a Project (jobcharge)
 -------------------------------------------------
 
-jobcharge in /sw/user/scripts/ will show job charges by user for a project. Example usage:
+``jobcharge`` in /sw/user/scripts/ will show job charges by user for a project. Example usage:
 
 .. raw:: html
 
@@ -141,4 +141,4 @@ Refunds
 
 Refunds are considered, when appropriate, for jobs that failed due to circumstances beyond user control.
 
-To request a refund, submit a support request (:ref:`help`). Please include the batch job ids and the standard error and output files produced by the job(s).
+To request a refund, submit a support request (:ref:`help`). Please include the batch job IDs and the standard error and output files produced by the job(s).
