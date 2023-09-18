@@ -320,9 +320,9 @@ Run with NSYS CLI
 .. code-block::
 
    nsys profile --gpu-metrics-device=all \
-       --gpu-metrics-frequency=20000    # get metrics from the cuda libs/api
+       --gpu-metrics-frequency=20000 <application>   # get metrics from the cuda libs/api
 
-   ncu --metrics "regex:.*"    # get all gpu metrics from the hardware
+   ncu --metrics "regex:.*" <application>   # get all gpu metrics from the hardware
 
 Delta Script and Nsight Systems View of the Resulting Report
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
