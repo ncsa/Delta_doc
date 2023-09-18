@@ -9,16 +9,16 @@ Use the Slurm commands to run batch jobs or for interactive access to compute no
 See: https://slurm.schedmd.com/quickstart.html for an introduction to Slurm. 
 There are multiple ways to access compute nodes on Delta.
 
-Batch scripts (sbatch) or Interactive (srun , salloc) , which is right for me?
+Batch scripts (sbatch) or Interactive (srun , salloc), which is right for me?
 
 - :ref:`sbatch` . Use batch scripts for jobs that are debugged, ready to run, and don't require interaction.
   Sample Slurm batch job scripts are provided in the :ref:`examples` section.
   For mixed resource heterogeneous jobs see: https://slurm.schedmd.com/heterogeneous_jobs.html#submitting. 
   Slurm also supports job arrays for easy management of a set of similar jobs, see:   https://slurm.schedmd.com/job_array.html.
 
-- :ref:`srun` . For interactive use of a compute node, srun will run a single command through slurm on a compute node. srun blocks, it will wait until slurm has scheduled compute resources and when it returns, the job is complete.
+- :ref:`srun` . For interactive use of a compute node, srun will run a single command through slurm on a compute node. srun blocks, it will wait until slurm has scheduled compute resources, and when it returns, the job is complete.
 
-- :ref:`salloc` . Also interactive, use salloc when you want to reserve compute resources for a period of time and interact with them using multiple commands.  Each command you type after your salloc session begins will run : on the login node if it is just a normal command, or on your reserved compute resources if prefixed with srun.  Type "exit" when finished with an salloc allocation if you want to end it before the time expires.
+- :ref:`salloc` . Also interactive, use salloc when you want to reserve compute resources for a period of time and interact with them using multiple commands.  Each command you type after your salloc session begins will run on the login node if it is just a normal command, or on your reserved compute resources if prefixed with srun.  Type ``exit`` when finished with an salloc allocation if you want to end it before the time expires.
 
 
 Direct SSH access to a compute node in a running job from a dt-loginNN node is enabled once the job has started:
@@ -148,11 +148,11 @@ Job Management
 sbatch
 ~~~~~~
 
-Batch jobs are submitted through a *job script* (as in the :ref:`examples`) using the sbatch command. 
+Batch jobs are submitted through a *job script* (as in the :ref:`examples`) using the ``sbatch`` command. 
 Job scripts generally start with a series of Slurm *directives* that describe requirements of the job, such as number of nodes and wall time required, to the batch system/scheduler (Slurm directives can also be specified as options on the sbatch command line; command line options take precedence over those in the script). 
 The rest of the batch script consists of user commands.
 
-The syntax for sbatch is: **sbatch** [list of sbatch options] script_name. Refer to the sbatch man page for detailed information on the options.
+The syntax for sbatch is: ``sbatch [list of sbatch options] script_name``. Refer to the sbatch man page for detailed information on the options.
 
 .. code-block::
 
@@ -202,9 +202,9 @@ For example, the following command will run an interactive job in the gpuA100x4 
    srun -A account_name --time=00:30:00 --nodes=1 --ntasks-per-node=16 \
    --partition=gpuA100x4,gpuA40x4 --gpus=1 --mem=16g --pty /bin/bash
 
-After you enter the command, wait for Slurm to start the job. 
-As with any job, your interactive job is queued until the specified number of nodes is available. 
-If you specify a small number of nodes for smaller amounts of time, the wait should be shorter because your job will backfill among larger jobs. 
+After entering the command, wait for Slurm to start the job. 
+As with any job, an interactive job is queued until the specified number of nodes is available. 
+Specifying a small number of nodes for smaller amounts of time should shorten the wait time because such jobs will backfill among larger jobs. 
 You will see something like this:
 
 .. code-block::
@@ -229,7 +229,7 @@ When finished, use the ``exit`` command to end the bash shell on the compute res
 salloc
 ~~~~~
 
-While being interactive like srun, salloc allocates compute resources for you, while leaving your shell on the login node.  Run commands on the login node as usual, use "exit" to end an salloc session early, and use srun with no extra flags to launch processes on the compute resources.
+While being interactive like ``srun``, ``salloc`` allocates compute resources for you, while leaving your shell on the login node.  Run commands on the login node as usual, use``exit`` to end an salloc session early, and use srun with no extra flags to launch processes on the compute resources.
 
 .. code-block::
 
@@ -374,7 +374,7 @@ Monitoring Nodes Using Grafana
        :alt: metrics home
        :width: 1000px
 
-   You may choose a node from the list of nodes and get detail information in real time.
+   You may choose a node from the list of nodes and get detailed information in real time.
 
    ..  image:: images/running_jobs/07_grafana_metrics_details.png
        :alt: get detailed info
