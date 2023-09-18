@@ -4,9 +4,9 @@ Data Management
 File Systems
 ----------------
 
-Each user has a home directory, ``$HOME``, located at ``/u/$USER``.
+Each user has a home directory, **$HOME**, located at **/u/$USER**.
 
-For example, a user (with username: **auser**) who has an allocated project with a local project serial code **abcd** will see the following entries in their ``$HOME`` and entries in the projects and scratch file systems.
+For example, a user (with username: **auser**) who has an allocated project with a local project serial code **abcd** will see the following entries in their $HOME and entries in the projects and scratch file systems.
 
 .. code-block:: bash
 
@@ -36,7 +36,7 @@ Determine the mapping of ACCESS project to local project using the ``accounts`` 
 Directory access changes can be made using the `facl <https://linux.die.net/man/1/setfacl>`_ command. 
 Submit a support request (see :ref:`help`) if you need assistance enabling access for specific users and projects.
 
-To avoid issues when file systems become unstable or non-responsive, do not put symbolic links from ``$HOME`` to the projects and scratch spaces.
+To avoid issues when file systems become unstable or non-responsive, do not put symbolic links from **$HOME** to the projects and scratch spaces.
 
 /tmp on Compute Nodes (Job Duration)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -56,11 +56,11 @@ Transferring Data
 
 To transfer files to and from the Delta system:
 
--  scp - Use it for small to modest transfers to avoid impacting the usability of the Delta login node (*login.delta.ncsa.illinois.edu*).
+-  ``scp`` - Use it for small to modest transfers to avoid impacting the usability of the Delta login node (*login.delta.ncsa.illinois.edu*).
 
--  rsync - Use it for small to modest transfers to avoid impacting the usability of the Delta login node.
+-  ``rsync`` - Use it for small to modest transfers to avoid impacting the usability of the Delta login node.
 
-   -  https://campuscluster.illinois.edu/resources/docs/storage-and-data-guide/ (scp, sftp, rsync)
+   -  https://campuscluster.illinois.edu/resources/docs/storage-and-data-guide/ (``scp``, ``sftp``, ``rsync``)
 
 -  Globus - Use it for large data transfers.
 
@@ -101,7 +101,7 @@ Performance will be equal to or better than using /scratch directly for i/o to f
 .. warning::
 
    | **IME and metadata**
-   | IME performance for directory/metadata operations is slower than /scratch (it is not the place to extract or copy millions of files). Do those operations (rsync, tar, etc) in /scratch.
+   | IME performance for directory/metadata operations is slower than /scratch (it is not the place to extract or copy millions of files). Do those operations (``rsync``, ``tar``, etc) in /scratch.
 
 To get additional performance from the IME software features without changing i/o routines, use the posix2ime library (LD_PRELOAD'd), to intercept standard POSIX i/o calls with IME API calls. 
 There is an included module, *posix2ime*, that does this for you (see more about posix2ime at :ref:`posix2`, below).
@@ -109,7 +109,7 @@ There is an included module, *posix2ime*, that does this for you (see more about
 .. note::
 
    | **shared namespace: /ime , /scratch**
-   | The /scratch and /ime file systems share the same namespace. The **rm** command will delete files on both file systems.
+   | The /scratch and /ime file systems share the same namespace. The ``rm`` command will delete files on both file systems.
 
 You can purge the contents of files from the cache, but not the presence of the file; see :ref:`purge`, below.
 
@@ -123,14 +123,14 @@ There are some important caveats when using the /ime file system for something o
 IME Commands
 ~~~~~~~~~~~~~
 
-See the man page for ime-ctl or the attached :download:`developer guide document <images/data_mgmt/IME1-4DeveloperGuide.pdf>` for details.
+See the man page for ``ime-ctl`` or the attached :download:`developer guide document <images/data_mgmt/IME1-4DeveloperGuide.pdf>` for details.
 
 .. _purge:
 
 Stage In and Out Single Files
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-The ime-ctl command is used to stage and purge files from the caching /ime file system:
+The ``ime-ctl`` command is used to stage and purge files from the caching /ime file system:
 
 .. code-block::
 
@@ -171,10 +171,10 @@ The ``--block`` option ensures the stage or sync is complete before returning.
 Checking File Stage/Cache Status
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-To check if a file has been staged to the IME cache in ``/ime`` or has its contents synced back to the back-end file system use the ``ime-ctl  --frag-stat`` command.
+To check if a file has been staged to the IME cache in /ime or has its contents synced back to the back-end file system use the ``ime-ctl  --frag-stat`` command.
 
-In this example, a file that was created as ``/scratch/abcd/${USER}/file01`` has not been staged to /ime. 
-The file will be visible as ``/ime/abcd/${USER}/file01``.
+In this example, a file that was created as **/scratch/abcd/${USER}/file01** has not been staged to /ime. 
+The file will be visible as **/ime/abcd/${USER}/file01**.
 Not staged to /ime, all entries are showing "0" for the Dirty, Clean and Syncing entries:
 
 .. code-block::
@@ -201,7 +201,7 @@ After staging the file to /ime, the number of bytes in the "Clean" category show
    Syncing: 0
    Data on Slices:  0
 
-If the file ``/ime/abcd/${USER}/file01`` was modified (appended, replaced, and so on) one would see entries in the Dirty category:
+If the file **/ime/abcd/${USER}/file01** was modified (appended, replaced, and so on) one would see entries in the Dirty category:
 
 .. code-block::
 
