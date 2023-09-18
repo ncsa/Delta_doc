@@ -449,7 +449,7 @@ DDN SFA18XE (Quantity: 1), each unit contains:
 Quota Usage
 ~~~~~~~~~~~~
 
-The **quota** command allows you to view your use of the file systems and use by your projects. 
+The ``quota`` command allows you to view your use of the file systems and use by your projects. 
 Below is a sample output for a person, "user", who is in two projects: aaaa and bbbb. 
 The home directory quota does not depend on which project group the file is written with.
 
@@ -522,7 +522,7 @@ To verify the setting:
 Slurm Constraint Specification
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-To add Slurm job constraint attributes when submitting a job with sbatch (or with srun as a command line argument) use:
+To add Slurm job constraint attributes when submitting a job with sbatch (or with ``srun`` as a command line argument) use:
 
 .. code-block::
 
