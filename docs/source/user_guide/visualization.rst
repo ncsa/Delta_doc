@@ -51,7 +51,7 @@ Following: https://www.sdsc.edu/education_and_training/tutorials1/visit.html, be
 
    Add to your $HOME/.bashrc (for the remote VisIt GUI):
 
-   module load visit
+   ``module load visit``
 
 Adjust Maximum processors to fit your requirements:
 
