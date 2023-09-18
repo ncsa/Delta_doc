@@ -124,7 +124,7 @@ Python (a recent or latest version)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you do not need all of the extra modules provided by Anaconda, use the basic python installation under the gcc module. 
-You can add modules via "*pip3 install --user <modulename>*", `setup virtual environments <https://packaging.python.org/en/latest/tutorials/installing-packages/>`_, and customize, as needed, for your workflow starting from a smaller installed base of python than Anaconda.
+You can add modules via ``pip3 install --user <modulename>``, `setup virtual environments <https://packaging.python.org/en/latest/tutorials/installing-packages/>`_, and customize, as needed, for your workflow starting from a smaller installed base of python than Anaconda.
 
 .. code-block::
 
@@ -137,7 +137,7 @@ You can add modules via "*pip3 install --user <modulename>*", `setup virtual env
      1) modtree/gpu   3) gcc/11.2.0    5) ucx/1.11.2      7) python/3.10.4
      2) default       4) cuda/11.6.1   6) openmpi/4.1.2
 
-List of modules available in python from "pip3 list":
+List of modules available in python from ``pip3 list``:
 
 .. code-block::
 
@@ -173,8 +173,8 @@ The Delta team frequently updates anaconda3_* to track the latest packages.
 
 .. note::
    If you use anaconda with NGC containers, take care to use python from the container and not python from Anaconda or one of its environments. 
-   The container's python should be first in ``$PATH``. 
-   You may --bind the Anaconda directory or other paths into the container so that you can start your conda environments with the container's python (/usr/bin/python).
+   The container's python should be first in **$PATH**. 
+   You may ``--bind`` the Anaconda directory or other paths into the container so that you can start your conda environments with the container's python (/usr/bin/python).
 
 https://repo.anaconda.com/archive/ contains previous Anaconda versions.
 The bundles are not small, but using one from Anaconda will ensure that you get software that was built to work together. 
@@ -196,7 +196,7 @@ If you require an older version of a python lib/module, NCSA staff suggest looki
 List of modules in anaconda3_cpu
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-The current list of modules available in anaconda3_cpu is shown via "conda list", including TensorFlow and PyTorch:
+The current list of modules available in anaconda3_cpu is shown via ``conda list``, including TensorFlow and PyTorch:
 
 .. raw:: html
 
@@ -701,7 +701,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 Similar to the setup for anaconda_cpu, Delta has GPU versions of anaconda3 (module load anaconda3_gpu) and installed PyTorch and TensorFlow CUDA aware python modules into these versions. 
 You may use these modules when working with the GPU nodes. 
-See *conda list* after loading the module to review what is already installed. 
+See ``conda list`` after loading the module to review what is already installed. 
 As with anaconda3_cpu, submit a support request (:ref:`help`) if there are generally useful modules you would like installed for the broader community. 
 A sample TensorFlow test script:
 
@@ -742,7 +742,7 @@ Python Environments with anaconda3
 Recent Changes
 $$$$$$$$$$$$$$$$
 
-To address a problem with ``PATH`` ordering when using anaconda3 modules, a warning in the module was put in place to caution loading an anaconda3 module while in a virtual environment, or if ``conda init`` has been used to modify one's environment.
+To address a problem with **PATH** ordering when using anaconda3 modules, a warning in the module was put in place to caution loading an anaconda3 module while in a virtual environment, or if ``conda init`` has been used to modify one's environment.
 
 .. code-block::
 
@@ -771,7 +771,7 @@ A clean slate job might resemble (user has a conda init clause in bashrc):
    conda activate base
    # commands to load modules and activate environs
 
-Non-python/conda HPC users would see per-job stderr from the *conda deactivate* above (user has never run "conda init bash"):
+Non-python/conda HPC users would see per-job stderr from the ``conda deactivate`` above (user has never run ``conda init bash``):
 
 .. code-block::
 
@@ -806,7 +806,7 @@ Intel AI Analytics Toolkit
 The Intel AI Analytics Toolkit (AI Kit) module contains a subset of what you will find in anaconda_cpu. 
 It contains conda environments optimized for CPU execution: PyTorch & TensorFlow. 
 We have seen up to 2x speedup when using the AI Kit compared to the stock anaconda_cpu. 
-For best results, set OMP_NUM_THREADS to the number of cores you'd like to use ( --cpus-per-task in Slurm). 
+For best results, set ``OMP_NUM_THREADS`` to the number of cores you'd like to use (``--cpus-per-task`` in Slurm). 
 See also: https://www.intel.com/content/www/us/en/developer/tools/oneapi/ai-analytics-toolkit.html.
 
 Containers
@@ -821,11 +821,11 @@ Jupyter Notebooks
 
 The Detla Open OnDemand portal provides an easier way to start a Jupyter notebook. Please see :ref:`openon` to access the portal.
 
-The Jupyter notebook executables are in your ``$PATH`` after loading the anaconda3 module. 
+The Jupyter notebook executables are in your **$PATH** after loading the anaconda3 module. 
 **Do not run Jupyter on the shared login nodes.**
 Instead, follow these steps to attach a Jupyter notebook running on a compute node to your local web browser:
 
-#. Start a Jupyter job via srun and note the hostname (*you pick the port number for --port*).
+#. Start a Jupyter job via ``srun`` and note the hostname (*you pick the port number for --port*).
 
    **srun Jupyter ( anaconda3_cpu on a CPU node ):**
    
@@ -859,9 +859,9 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
       ...
       http://hostname:8888/?token=73d96b99f2cfc4c3932a3433d1b8003c052081c5411795d5
 
-   In step 3, to start the notebook in your browser, replace http://hostname:8888/ with http://127.0.0.1:8991/ (the port number you selected with --port=)
+   In step 3, to start the notebook in your browser, replace http://hostname:8888/ with http://127.0.0.1:8991/ (the port number you selected with ``--port=``)
 
-   You may not see the job hostname when running with a container, find it with squeue:
+   You may not see the job hostname when running with a container, find it with ``squeue``:
 
    **squeue -u $USER:**
 
@@ -903,7 +903,7 @@ The list of available kernels for Jupyter should be the same as what you see fro
 
 **Jupyter needs to be installed in every virtual environment where you want to use Jupyter-lab or Jupyter-notebook.**
 
-- $ conda install jupyter
+**$ conda install jupyter**
 
 
 **nb_python_kernels:**
@@ -927,7 +927,7 @@ The list of available kernels for Jupyter should be the same as what you see fro
 Debugging
 $$$$$$$$$$$
 
-For debugging, try jupyter-lab from a terminal.
+For debugging, try ``jupyter-lab`` from a terminal.
 
 Of interest are the Searching path at the beginning, and the nb_conda_kernels outputs.
 
@@ -1067,7 +1067,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
       [arnoldg@dt-login03 scripts]$ bash
       (base) 
 
-   After you have run "conda init bash" you will not need to load anaconda3_cpu (or gpu) modules again. Just use your new custom environment.
+   After you have run ``conda init bash`` you will not need to load anaconda3_cpu (or gpu) modules again. Just use your new custom environment.
 
    .. note::
       You may see error messages from conda init bash above. 
@@ -1085,7 +1085,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
       .. note::
          If you will be making custom environments for more than one partition type (cpu, gpu, mi100), it may be helpful to include that metadata in the name of your environment.
 
-      Install jupyter into the environment in order to use it with Open OnDemand. This option adds about 150 python modules to your environment and requires about 1.3 GB in your ``$HOME``. Setup time: about 10 minutes.
+      Install jupyter into the environment in order to use it with Open OnDemand. This option adds about 150 python modules to your environment and requires about 1.3 GB in your **$HOME**. Setup time: about 10 minutes.
 
       .. raw:: html
 
@@ -1162,7 +1162,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
    b. Create a new clone of your chosen anaconda3_<cpu, gpu, mi100> module:
 
       Jupyter (and everything else from your loaded anaconda3\_ module will be copied into this environment). 
-      This option adds about 500 python modules to your environment and requires about 6.3 GB in your ``$HOME``. Install time can be up to 30 minutes.
+      This option adds about 500 python modules to your environment and requires about 6.3 GB in your **$HOME**. Install time can be up to 30 minutes.
 
       .. raw:: html
 
@@ -1244,7 +1244,7 @@ R will run on the CPU cores (not GPU enabled).
    module load anaconda3_Rcpu
    $
 
-After modifying your .bashrc and getting a new shell, your login prompt should reflect that you are within the anaconda3_Rcpu environment, R will be in your ``$PATH``, and starting JupyterLab from the Open OnDemand interface will automatically offer you the R options with the Launcher.
+After modifying your .bashrc and getting a new shell, your login prompt should reflect that you are within the anaconda3_Rcpu environment, R will be in your **$PATH**, and starting JupyterLab from the Open OnDemand interface will automatically offer you the R options with the Launcher.
 
 ..  image:: images/software/04_ood_launcher.png
     :alt: R launcher options
@@ -1256,13 +1256,7 @@ Proceed to use R:
     :alt: example of using R
     :width: 1000px
 
-List of Installed Software
-----------------------------
+List of Installed Software (CPU & GPU)
+---------------------------------------
 
-Coming soon!
-
-CPU
-~~~~~
-
-GPU
-~~~~~
+*Coming soon!*
