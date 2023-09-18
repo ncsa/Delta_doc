@@ -57,7 +57,7 @@ To build (compile and link) a MPI program in Fortran, C, and C++:
 OpenMP
 -------------------------
 
-To build an OpenMP program, use the -fopenmp /-mp option:
+To build an OpenMP program, use the ``-fopenmp`` / ``-mp`` option:
 
 ================================ ============================ =======================
 GCC                              AOCC                         NVHPC
@@ -70,7 +70,7 @@ g++ -fopenmp *myprog*.cc         clang -fopenmp *myprog*.cc   nvc++ -mp *myprog*
 Hybrid MPI/OpenMP
 -------------------
 
-To build an MPI/OpenMP hybrid program, use the -fopenmp / -mp option with the MPI compiling commands:
+To build an MPI/OpenMP hybrid program, use the ``-fopenmp`` / ``-mp`` option with the MPI compiling commands:
 
 ============================ =======================
 GCC                            PGI/NVHPC
@@ -162,7 +162,7 @@ A version of xthi is also available from ORNL:
 OpenACC
 -------------------------
 
-To build an OpenACC program, use the -acc option and the -mp option for multi-threaded:
+To build an OpenACC program, use the ``-acc`` option and the ``-mp`` option for multi-threaded:
 
 ========================= ================================
 Non-Multi-threaded          Multi-threaded
@@ -201,7 +201,7 @@ See also: https://developer.nvidia.com/hpc-sdk
 HIP/ROCm (AMD MI100)
 -------------------------
 
-To access the development environment for the gpuMI100x8 partition, start a job on the node with srun or sbatch. 
+To access the development environment for the gpuMI100x8 partition, start a job on the node with ``srun`` or sbatch. 
 
 Next, set your PATH to prefix /opt/rocm/bin where the HIP and ROCm tools are installed. 
 
@@ -323,7 +323,7 @@ Follow: https://code.visualstudio.com/docs/remote/ssh
 
 #. Proceed to F1 → Remote SSH and connect to Delta. Then, following the guide, use Visual Studio as normal. 
    
-   Windows users: The login box of vscode will display your login as 2fa<delta_username>, and you may not see a 2nd login box for 2fa duo until you press the "details" link at lower right after you enter your password. Use the Duo passcode after pressing "details" link when the next password prompt appears at the top.
+   Windows users: The login box of vscode will display your login as 2fa<delta_username>, and you may not see a 2nd login box for 2fa Duo until you press the "details" link at lower right after you enter your password. Use the Duo passcode after pressing "details" link when the next password prompt appears at the top.
 
    Example of working with a C file remote on Delta:
 
