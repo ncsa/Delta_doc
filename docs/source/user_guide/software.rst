@@ -1264,24 +1264,37 @@ List of Installed Software (CPU & GPU)
    <details>
    <summary><a><b>4 gpus example script</b> <i>(click to expand/collapse)</i></a></summary>
 
-.. code-block::
+armadillo
 
-   armadillo
-   *charmpp*
-   *darshan-runtime*
-   fftw
-   gromacs
-   hdf5
-   **kokkos**
-   *lammps*
-   *namd*
-   netcdf-c
-   netcdf-fortran
-   **osu-micro-benchmarks**
-   *netlib-scalapack*
-   parallel-netcdf
-   **parmetis**
-   petsc
+*charmpp*
+
+*darshan-runtime*
+   
+fftw
+   
+gromacs
+   
+hdf5
+   
+**kokkos**
+   
+*lammps*
+  
+*namd*
+   
+netcdf-c
+   
+netcdf-fortran
+   
+**osu-micro-benchmarks**
+   
+*netlib-scalapack*
+   
+parallel-netcdf
+   
+**parmetis**
+   
+petsc
 plumed
 anaconda3
 *automake*
