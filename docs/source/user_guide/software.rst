@@ -1580,720 +1580,163 @@ settarg
    <details>
    <summary><a><b>Delta software module list</b> <i>(click to expand/collapse)</i></a></summary>
 
-Modules with a * are CPU-only, modules with a ** are GPU-only, all others are both.  
-
-armadillo
-
-*charmpp
-
-*darshan-runtime
-   
-fftw
-   
-gromacs
-   
-hdf5
-   
-**kokkos
-   
-*lammps
-  
-*namd
-   
-netcdf-c
-   
-netcdf-fortran
-   
-**osu-micro-benchmarks
-   
-*netlib-scalapack
-   
-parallel-netcdf
-   
-**parmetis
-   
-petsc
-
-plumed
-
-anaconda3
-
-*automake
-
-*binutils
-
-boost
-
-**cuda
-
-*cmake
-
-*compositeproto
-
-**cutensor
-
-*darshan-util
-
-*dyninst
-
-*elfutils
-
-*flex
-
-**freeglut
-
-*gdal
-
-*gettext
-
-**glew
-
-*gmake
-
-gnuplot
-
-gsl
-
-hdf5
-
-hpctoolkit
-
-*hpcviewer
-
-*intel-tbb
-
-*intel-xed
-
-*knem
-
-libaio
-
-*libdwarf
-
-*libevent
-
-*libfabric
-
-*libiberty
-
-**libjpeg
-
-*libmonitor
-
-**libnsl
-
-libsndfile
-
-*libunwind
-
-**libxcb
-
-*libxcomposite
-
-*libxcrypt
-
-**libxkbcommon
-
-*libxml2
-
-**libxshmfence
-
-**libxxf86vm
-
-*linux-headers
-
-*llvm
-
-*lustre
-
-*lzma
-
-**magma
-
-*memkind
-
-**mesa
-
-metis
-
-*mpich
-
-*muparser
-
-**nccl
-
-ncurses
-
-openblas
-
-**openexr
-
-openjdk
-
-openmpi
-
-openssh
-
-**p7zip
-
-*papi
-
-perl
-
-*pmix
-
-*qt
-
-*r
-
-*rdma-core
-
-readline
-
-subversion
-
-*tcl
-
-time
-
-*tk
-
-ucx
-
-**wayland-protocols
-
-**wayland
-
-*xbitmaps
-
-**xcb-util-image
-
-**xcb-util-keysyms
-
-**xcb-util-renderutil
-
-**xcb-util-wm
-
-**xcb-util
-
-*xerces-c
-
-*xz
-
-*yaml-cpp
-
-AMDuProf
-
-ImageMagick
-
-Intel_AI_toolkit
-
-anaconda3_Rcpu
-
-anaconda3_cpu
-
-anaconda3_gpu
-
-anaconda3_mi100
-
-aws-cli
-
-cudnn
-
-cue-login-env
-
-gurobi
-
-julia
-
-lammps
-
-llvm
-
-matlab_unlicensed
-
-namd3
-
-nvhpc_latest
-
-openmpi-5.0_beta
-
-openmpi-v5.0.x-202305240344_s11
-
-paraview
-
-posix2ime
-
-slurm-env
-
-visit
-
-westpa
-
-accessusage
-
-aocc
-
-**banner
-
-cmake
-
-**cuda
-
-dos2unix
-
-gcc
-
-**git
-
-htop
-
-intel-oneapi-advisor
-
-intel-oneapi-compilers
-
-intel-oneapi-mkl
-
-**libfabric
-
-**libffi
-
-**libtirpc
-
-modtree
-
-modtree/cpu
-
-modtree/gpu
-
-**mpich
-
-ndiff
-
-**nvhpc
-
-**nvtop
-
-**parallel
-
-**subversion
-
-xclock
-
-**zip
-
-lmod
-
-settarg
-
-
-.. raw:: html
-
-   </details>
-
-.. raw:: html
-
-   <details>
-   <summary><a><b>Delta CPU software module list</b> <i>(click to expand/collapse)</i></a></summary>
-
-The modules with a * are installed on Delta CPUs and GPUs.
-
-*armadillo
-
-charmpp
-
-darshan-runtime
-   
-*fftw
-   
-*gromacs
-   
-*hdf5
-   
-lammps
-  
-namd
-   
-*netcdf-c
-   
-*netcdf-fortran
-   
-netlib-scalapack
-   
-*parallel-netcdf
-   
-*petsc
-
-*plumed
-
-*anaconda3
-
-automake
-
-binutils
-
-*boost
-
-cmake
-
-compositeproto
-
-darshan-util
-
-dyninst
-
-elfutils
-
-flex
-
-gdal
-
-gettext
-
-gmake
-
-*gnuplot
-
-*gsl
-
-*hdf5
-
-*hpctoolkit
-
-hpcviewer
-
-intel-tbb
-
-intel-xed
-
-knem
-
-*libaio
-
-libdwarf
-
-libevent
-
-libfabric
-
-libiberty
-
-libmonitor
-
-*libsndfile
-
-libunwind
-
-libxcomposite
-
-libxcrypt
-
-libxml2
-
-linux-headers
-
-llvm
-
-lustre
-
-lzma
-
-memkind
-
-*metis
-
-mpich
-
-muparser
-
-*ncurses
-
-*openblas
-
-*openjdk
-
-*openmpi
-
-*openssh
-
-papi
-
-*perl
-
-pmix
-
-qt
-
-r
-
-rdma-core
-
-*readline
-
-*subversion
-
-tcl
-
-*time
-
-tk
-
-*ucx
-
-xbitmaps
-
-xerces-c
-
-xz
-
-yaml-cpp
-
-*AMDuProf
-
-*ImageMagick
-
-*Intel_AI_toolkit
-
-*anaconda3_Rcpu
-
-*anaconda3_cpu
-
-*anaconda3_gpu
-
-*anaconda3_mi100
-
-*aws-cli
-
-*cudnn
-
-*cue-login-env
-
-*gurobi
-
-*julia
-
-*lammps
-
-*llvm
-
-*matlab_unlicensed
-
-*namd3
-
-*nvhpc_latest
-
-*openmpi-5.0_beta
-
-*openmpi-v5.0.x-202305240344_s11
-
-*paraview
-
-*posix2ime
-
-*slurm-env
-
-*visit
-
-*westpa
-
-*accessusage
-
-*aocc
-
-*cmake
-
-*dos2unix
-
-*gcc
-
-*htop
-
-*intel-oneapi-advisor
-
-*intel-oneapi-compilers
-
-*intel-oneapi-mkl
-
-*modtree
-
-*modtree/cpu
-
-*modtree/gpu
-
-*ndiff
-
-*xclock
-
-*lmod
-
-*settarg
-
-.. raw:: html
-
-   </details>
-
-.. raw:: html
-
-   <details>
-   <summary><a><b>Delta software module list</b> <i>(click to expand/collapse)</i></a></summary>
-
 The modules listed below are installed on Delta CPUs, GPUs, or both, as indicated.
 
 ===============================  ==================
-Module                           CPU, GPU, or Both  
+Module                           CPU, GPU, or both  
 ===============================  ==================
-armadillo                        Both
-*charmpp*                        CPU
-*darshan-runtime*                CPU
-fftw                             Both
-gromacs                          Both
-hdf5                             Both
-**kokkos**                       GPU
-*lammps*                         CPU
-*namd*                           CPU
-netcdf-c                         Both   
-netcdf-fortran                   Both
-**osu-micro-benchmarks**         GPU
-*netlib-scalapack*               CPU
-parallel-netcdf                  Both
-**parmetis**                     GPU
-petsc                            Both
-plumed                           Both
-anaconda3                        Both
-*automake*                       CPU
-*binutils*                       CPU
-boost                            Both
-**cuda**                         GPU
-*cmake*                          CPU
-*compositeproto*                 CPU
-**cutensor**                     GPU
-*darshan-util*                   CPU
-*dyninst*                        CPU
-*elfutils*                       CPU
-*flex*                           CPU
-**freeglut**                     GPU
-*gdal*                           CPU
-*gettext*                        CPU
-**glew**                         GPU
-*gmake*                          CPU
-gnuplot                          Both
-gsl                              Both
-hdf5                             Both
-hpctoolkit                       Both
-*hpcviewer*                      CPU
-*intel-tbb*                      CPU
-*intel-xed*                      CPU
-*knem*                           CPU
-libaio                           Both
-*libdwarf*                       CPU
-*libevent*                       CPU
-*libfabric*                      CPU
-*libiberty*                      CPU
-**libjpeg**                      GPU
-*libmonitor*                     CPU
-**libnsl**                       GPU
-libsndfile                       Both
-*libunwind*                      CPU
-**libxcb**                       GPU
-*libxcomposite*                  CPU
-*libxcrypt*                      CPU
-**libxkbcommon**                 GPU
-*libxml2*                        CPU
-**libxshmfence**                 GPU
-**libxxf86vm**                   GPU
-*linux-headers*                  CPU
-*llvm*                           CPU
-*lustre*                         CPU
-*lzma*                           CPU
-**magma**                        GPU
-*memkind*                        CPU
-**mesa**                         GPU
-metis                            Both
-*mpich*                          CPU
-*muparser*                       CPU
-**nccl**                         GPU
-ncurses                          Both
-openblas                         Both
-**openexr**                      GPU
-openjdk                          Both
-openmpi                          Both
-openssh                          Both
-**p7zip**                        GPU
-*papi*                           CPU
-perl                             Both
-*pmix*                           CPU
-*qt*                             CPU
-*r*                              CPU
-*rdma-core*                      CPU
-readline                         Both
-subversion                       Both
-*tcl*                            CPU
-time                             Both
-*tk*                             CPU
-ucx                              Both
-**wayland-protocols**            GPU
-**wayland**                      GPU
-*xbitmaps*                       CPU
-**xcb-util-image**               GPU
-**xcb-util-keysyms**             GPU
-**xcb-util-renderutil**          GPU
-**xcb-util-wm**                  GPU
-**xcb-util**                     GPU
-*xerces-c*                       CPU
-*xz*                             CPU
-*yaml-cpp*                       CPU
-AMDuProf                         Both
-ImageMagick                      Both
-Intel_AI_toolkit                 Both
-anaconda3_Rcpu                   Both
-anaconda3_cpu                    Both
-anaconda3_gpu                    Both
-anaconda3_mi100                  Both
-aws-cli                          Both
-cudnn                            Both
-cue-login-env                    Both
-gurobi                           Both
-julia                            Both
-lammps                           Both
-llvm                             Both
-matlab_unlicensed                Both
-namd3                            Both
-nvhpc_latest                     Both
-openmpi-5.0_beta                 Both
-openmpi-v5.0.x-202305240344_s11  Both
-paraview                         Both
-posix2ime                        Both
-slurm-env                        Both
-visit                            Both
-westpa                           Both
-accessusage                      Both
-aocc                             Both
-**banner**                       GPU
-cmake                            Both
-**cuda**                         GPU
-dos2unix                         Both
-gcc                              Both
-**git**                          GPU
-htop                             Both
-intel-oneapi-advisor             Both
-intel-oneapi-compilers           Both
-intel-oneapi-mkl                 Both
-**libfabric**                    GPU
-**libffi**                       GPU
-**libtirpc**                     GPU
-modtree                          Both
-modtree/cpu                      Both
-modtree/gpu                      Both
-**mpich**                        GPU
-ndiff                            Both
-**nvhpc**                        GPU
-**nvtop**                        GPU
-**parallel**                     GPU
-**subversion**                   GPU
-xclock                           Both
-**zip**                          GPU
-lmod                             Both
-settarg                          Both
+armadillo                        both
+charmpp                          CPU
+darshan-runtime                  CPU
+fftw                             both
+gromacs                          both
+hdf5                             both
+kokkos                           GPU
+lammps                           CPU
+namd                             CPU
+netcdf-c                         both   
+netcdf-fortran                   both
+osu-micro-benchmarks             GPU
+netlib-scalapack                 CPU
+parallel-netcdf                  both
+parmetis                         GPU
+petsc                            both
+plumed                           both
+anaconda3                        both
+automake                         CPU
+binutils                         CPU
+boost                            both
+cuda                             GPU
+cmake                            CPU
+compositeproto                   CPU
+cutensor                         GPU
+darshan-util                     CPU
+dyninst                          CPU
+elfutils                         CPU
+flex                             CPU
+freeglut                         GPU
+gdal                             CPU
+gettext                          CPU
+glew                             GPU
+gmake                            CPU
+gnuplot                          both
+gsl                              both
+hdf5                             both
+hpctoolkit                       both
+hpcviewer                        CPU
+intel-tbb                        CPU
+intel-xed                        CPU
+knem                             CPU
+libaio                           both
+libdwarf                         CPU
+libevent                         CPU
+libfabric                        CPU
+libiberty                        CPU
+libjpeg                          GPU
+libmonitor                       CPU
+libnsl                           GPU
+libsndfile                       both
+libunwind                        CPU
+libxcb                           GPU
+libxcomposite                    CPU
+libxcrypt                        CPU
+libxkbcommon                     GPU
+libxml2                          CPU
+libxshmfence                     GPU
+libxxf86vm                       GPU
+linux-headers                    CPU
+llvm                             CPU
+lustre                           CPU
+lzma                             CPU
+magma                            GPU
+memkind                          CPU
+mesa                             GPU
+metis                            both
+mpich                            CPU
+muparser                         CPU
+nccl                             GPU
+ncurses                          both
+openblas                         both
+openexr                          GPU
+openjdk                          both
+openmpi                          both
+openssh                          both
+p7zip                            GPU
+papi                             CPU
+perl                             both
+pmix                             CPU
+qt                               CPU
+r                                CPU
+rdma-core                        CPU
+readline                         both
+subversion                       both
+tcl                              CPU
+time                             both
+tk                               CPU
+ucx                              both
+wayland-protocols                GPU
+wayland                          GPU
+xbitmaps                         CPU
+xcb-util-image                   GPU
+xcb-util-keysyms                 GPU
+xcb-util-renderutil              GPU
+xcb-util-wm                      GPU
+xcb-util                         GPU
+xerces-c                         CPU
+xz                               CPU
+yaml-cpp                         CPU
+AMDuProf                         both
+ImageMagick                      both
+Intel_AI_toolkit                 both
+anaconda3_Rcpu                   both
+anaconda3_cpu                    both
+anaconda3_gpu                    both
+anaconda3_mi100                  both
+aws-cli                          both
+cudnn                            both
+cue-login-env                    both
+gurobi                           both
+julia                            both
+lammps                           both
+llvm                             both
+matlab_unlicensed                both
+namd3                            both
+nvhpc_latest                     both
+openmpi-5.0_beta                 both
+openmpi-v5.0.x-202305240344_s11  both
+paraview                         both
+posix2ime                        both
+slurm-env                        both
+visit                            both
+westpa                           both
+accessusage                      both
+aocc                             both
+banner                           GPU
+cmake                            both
+cuda                             GPU
+dos2unix                         both
+gcc                              both
+git                              GPU
+htop                             both
+intel-oneapi-advisor             both
+intel-oneapi-compilers           both
+intel-oneapi-mkl                 both
+libfabric                        GPU
+libffi                           GPU
+libtirpc                         GPU
+modtree                          both
+modtree/cpu                      both
+modtree/gpu                      both
+mpich                            GPU
+ndiff                            both
+nvhpc                            GPU
+nvtop                            GPU
+parallel                         GPU
+subversion                       GPU
+xclock                           both
+zip                              GPU
+lmod                             both
+settarg                          both
 ===============================  ==================
 
 .. raw:: html
