@@ -1266,22 +1266,22 @@ List of Installed Software (CPU & GPU)
 
 .. code-block::
 
-armadillo
-*charmpp*
-*darshan-runtime*
-fftw
-gromacs
-hdf5
-**kokkos**
-*lammps*
-*namd*
-netcdf-c
-netcdf-fortran
-**osu-micro-benchmarks**
-*netlib-scalapack*
-parallel-netcdf
-**parmetis**
-petsc
+   armadillo
+   *charmpp*
+   *darshan-runtime*
+   fftw
+   gromacs
+   hdf5
+   **kokkos**
+   *lammps*
+   *namd*
+   netcdf-c
+   netcdf-fortran
+   **osu-micro-benchmarks**
+   *netlib-scalapack*
+   parallel-netcdf
+   **parmetis**
+   petsc
 plumed
 anaconda3
 *automake*
