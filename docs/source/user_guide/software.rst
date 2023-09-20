@@ -99,10 +99,6 @@ You may *use any of these methods* with any of the python versions or instances 
 - `conda environments <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>`_
 
   Similar to venv but with more flexibility, see this `comparison table <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html#virtual-environments>`_.
-      
-- `micromamba <https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html>`_ (micromamba is a clone of conda but faster to use)
-   
-  Use micromamba install guide and then use conda commands the usual way.
 
 - `pip3 <https://docs.python.org/3/installing/index.html>`_: pip3 install --user <python_package>
 
