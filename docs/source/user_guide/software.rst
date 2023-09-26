@@ -33,9 +33,9 @@ Use module spider package_name to search for software in Lmod and see the steps 
 | module load <package_name>       |                                                                                      |
 |                                  |   .. code-block::                                                                    |
 | (loads a package or metamodule   |                                                                                      |
-| such as modtree/gpu or netcdf-c) |      $ module load modtree/cpu                                                       |
+| such as                          |      $ module load modtree/cpu                                                       |
 |                                  |                                                                                      |
-|                                  |      Due to MODULEPATH changes, the following have been reloaded:                    |
+| modtree/gpu or netcdf-c)         |      Due to MODULEPATH changes, the following have been reloaded:                    |
 |                                  |      1) gcc/11.2.0     2) openmpi/4.1.2     3) ucx/1.11.2                            |
 |                                  |                                                                                      |
 |                                  |      The following have been reloaded with a version change:                         |
