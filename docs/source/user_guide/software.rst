@@ -45,9 +45,9 @@ Use module spider package_name to search for software in Lmod and see the steps 
 | module spider <package_name>     |                                                                                      |
 |                                  |   .. code-block::                                                                    |
 | (finds modules and displays the  |                                                                                      |
-| ways to load them)               |      $ module spider openblas                                                        |
+| ways to                          |      $ module spider openblas                                                        |
 |                                  |                                                                                      |
-|                                  |      ---------------------------------------------------------------------------     |
+| load them)                       |      ---------------------------------------------------------------------------     |
 |                                  |      openblas: openblas/0.3.20                                                       |
 |                                  |      ----------------------------------------------------------------------------    |
 |                                  |      You will need to load all module(s) on any one of the lines below before the    |
