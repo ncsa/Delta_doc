@@ -390,39 +390,34 @@ DDN SFA18XE (Quantity: 1), each unit contains:
 
    A “module reset” in a job script populates $WORK and $SCRATCH environment variables automatically, or you may set them as WORK=/projects/<account>/$USER, SCRATCH=/scratch/<account>/$USER.
 
-+---------------+--------------------------------+---------------+---------------+----------------------------------+
-| File System   | Quota                          | Snapshots     | Purged        | Key Features                     |
-+===============+================================+===============+===============+==================================+
-| HOME (/u)     | **50 GB.** 600,000 files per   | No/TBA        | No            | Area for software, scripts,      |
-|               |                                |               |               |                                  |
-|               | user.                          |               |               | job files, and so on. **Not**    |
-|               |                                |               |               |                                  |
-|               |                                |               |               | intended as a source/destination |
-|               |                                |               |               |                                  |
-|               |                                |               |               | for I/O during jobs.             |
-+---------------+--------------------------------+---------------+---------------+----------------------------------+
-| WORK          | **500 GB.** Up to 1-25 TB by   | No/TBA        | No            | Area for shared data for a       |
-|               |                                |               |               |                                  |
-| (/projects)   | allocation request. Large      |               |               | project, common data sets,       |
-|               |                                |               |               |                                  |
-|               | requests may have a monetary   |               |               | software, results, and so on.    |
-|               |                                |               |               |                                  |
-|               | fee.                           |               |               |                                  |
-+---------------+--------------------------------+---------------+---------------+----------------------------------+
-| SCRATCH       | **1000 GB.** Up to 1-100 TB by | No            | No            | Area for computation, largest    |
-|               |                                |               |               |                                  |
-| (/scratch)    | allocation reqeust.            |               |               | allocations, where I/O from jobs |
-|               |                                |               |               |                                  |
-|               |                                |               |               | should occur.                    |
-+---------------+--------------------------------+---------------+---------------+----------------------------------+
-| /tmp          | **0.74 (CPU) or 1.50 TB (GPU)**| No            | After each job| Locally attached disk for fast   |
-|               |                                |               |               |                                  |
-|               | shared or dedicated depending  |               |               | small file I/O.                  |
-|               |                                |               |               |                                  |
-|               | on node usage by job(s), no    |               |               |                                  |
-|               |                                |               |               |                                  |
-|               | quotas in place.               |               |               |                                  |
-+---------------+--------------------------------+---------------+---------------+----------------------------------+
++---------------+-------------------------------------+---------------+---------------+--------------------------------------------+
+| File System   | Quota                               | Snapshots     | Purged        | Key Features                               |
++===============+=====================================+===============+===============+============================================+
+| HOME (/u)     | **50 GB.** 600,000 files per user.  | No/TBA        | No            | Area for software, scripts, job files, and |
+|               |                                     |               |               |                                            |
+|               |                                     |               |               | so on. **Not** intended as a               |
+|               |                                     |               |               |                                            |
+|               |                                     |               |               | source/destination for I/O during jobs.    |
+|               |                                     |               |               |                                            |
++---------------+-------------------------------------+---------------+---------------+--------------------------------------------+
+| WORK          | **500 GB.** Up to 1-25 TB by        | No/TBA        | No            | Area for shared data for a project, common |
+|               |                                     |               |               |                                            |
+| (/projects)   | allocation request. Large requests  |               |               | data sets, software, results, and so on.   |
+|               |                                     |               |               |                                            |
+|               | may have a monetary fee.            |               |               |                                            |
++---------------+-------------------------------------+---------------+---------------+--------------------------------------------+
+| SCRATCH       | **1000 GB.** Up to 1-100 TB by      | No            | No            | Area for computation, largest allocations, |
+|               |                                     |               |               |                                            |
+| (/scratch)    | allocation reqeust.                 |               |               | where I/O from jobs should occur.          |
++---------------+-------------------------------------+---------------+---------------+--------------------------------------------+
+| /tmp          | **0.74 (CPU) or 1.50 TB (GPU)**     | No            | After each job| Locally attached disk for fast small file  |
+|               |                                     |               |               |                                            |
+|               | shared or dedicated depending on    |               |               | I/O.                                       |
+|               |                                     |               |               |                                            |
+|               | node usage by job(s), no quotas in  |               |               |                                            |
+|               |                                     |               |               |                                            |
+|               | place.                              |               |               |                                            |
++---------------+-------------------------------------+---------------+---------------+--------------------------------------------+
 
 Quota Usage
 ~~~~~~~~~~~~
