@@ -102,7 +102,7 @@ You may *use any of these methods* with any of the python versions or instances 
 
 - `pip3 <https://docs.python.org/3/installing/index.html>`_: pip3 install --user <python_package>
 
-  Useful when you only need one python environment per python version or instance.
+  Useful when you only need one python environment per python version.  CAUTION: Python modules installed this way into your $HOME/.local/ will match on python versions and this can create incompatibilities between containers or python venv or conda environments when they have a common python version number.
 
 - `conda-env-mod <https://github.com/amaji/conda-env-mod>`_: conda-env-mod lmod module generator from Purdue
 
