@@ -37,7 +37,9 @@ For ACCESS awarded projects, to find your local NCSA username go to your `ACCESS
 | of login nodes)                    |                                                        |    
 +------------------------------------+--------------------------------------------------------+
 
-Use of SSH key pairs is disabled for general use. Please submit a support request (:ref:`help`) for key pair use by Gateway allocations.
+Use of SSH key pairs is disabled for general use.  This means that most individual users, even PIs, are **not allowed** to use ssh key pairs to log in instead of 2-factor authentication.  
+
+The one exception is: if you are the PI of a Gateway allocation (this is not most projects), then please submit a support request (:ref:`help`) to get the gateway account's key pairs set up.  
 
 Maintaining Persistent Sessions: tmux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
