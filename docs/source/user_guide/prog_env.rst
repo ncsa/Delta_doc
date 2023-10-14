@@ -239,6 +239,8 @@ Visual Studio Code
 VS Code code-server
 ~~~~~~~~~~~~~~~~~~~~
 
+Microsoft VS Code documentation: https://code.visualstudio.com/docs
+
 The code-server for VS Code can be run on Delta in manual mode (without Open OnDemand) by following these steps:
 
 #. Start the server.

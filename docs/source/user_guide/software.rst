@@ -33,9 +33,9 @@ Use module spider package_name to search for software in Lmod and see the steps 
 | module load <package_name>       |                                                                                      |
 |                                  |   .. code-block::                                                                    |
 | (loads a package or metamodule   |                                                                                      |
-| such as modtree/gpu or netcdf-c) |      $ module load modtree/cpu                                                       |
+| such as                          |      $ module load modtree/cpu                                                       |
 |                                  |                                                                                      |
-|                                  |      Due to MODULEPATH changes, the following have been reloaded:                    |
+| modtree/gpu or netcdf-c)         |      Due to MODULEPATH changes, the following have been reloaded:                    |
 |                                  |      1) gcc/11.2.0     2) openmpi/4.1.2     3) ucx/1.11.2                            |
 |                                  |                                                                                      |
 |                                  |      The following have been reloaded with a version change:                         |
@@ -45,9 +45,9 @@ Use module spider package_name to search for software in Lmod and see the steps 
 | module spider <package_name>     |                                                                                      |
 |                                  |   .. code-block::                                                                    |
 | (finds modules and displays the  |                                                                                      |
-| ways to load them)               |      $ module spider openblas                                                        |
+| ways to                          |      $ module spider openblas                                                        |
 |                                  |                                                                                      |
-|                                  |      ---------------------------------------------------------------------------     |
+| load them)                       |      ---------------------------------------------------------------------------     |
 |                                  |      openblas: openblas/0.3.20                                                       |
 |                                  |      ----------------------------------------------------------------------------    |
 |                                  |      You will need to load all module(s) on any one of the lines below before the    |
@@ -102,7 +102,7 @@ You may *use any of these methods* with any of the python versions or instances 
 
 - `pip3 <https://docs.python.org/3/installing/index.html>`_: pip3 install --user <python_package>
 
-  Useful when you only need one python environment per python version or instance.
+  Useful when you only need one python environment per python version.  CAUTION: Python modules installed this way into your $HOME/.local/ will match on python versions and this can create incompatibilities between containers or python venv or conda environments when they have a common python version number.
 
 - `conda-env-mod <https://github.com/amaji/conda-env-mod>`_: conda-env-mod lmod module generator from Purdue
 

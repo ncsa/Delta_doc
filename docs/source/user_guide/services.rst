@@ -17,8 +17,8 @@ The account names end in -cpu and -gpu; the matching partition would start with 
     :alt: Jupyter Lab partition configuration
     :width: 500
 
-:ref:`custom_openon`
------------------------------
+Customizing Open OnDemand
+----------------------------
 
 - :ref:`custom_jupyterlab`
 - :ref:`r_env`

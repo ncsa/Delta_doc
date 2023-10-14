@@ -278,25 +278,21 @@ If the NODELIST(REASON) is MaxGRESPerAccount, that means that a user has exceede
 Useful Batch Job Environment Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-+-------------------------+-------------------------------------------+----------------------------------------------+
-| Description             | Slurm Environment Variable                | Detail Description                           |
-+=========================+===========================================+==============================================+
-| Array JobID             | $SLURM_ARRAY_JOB_ID                       | Each member of a job array is assigned       |
-|                         |                                           |                                              |
-|                         | $SLURM_ARRAY_TASK_ID                      | a unique identifier                          |
-+-------------------------+-------------------------------------------+----------------------------------------------+
-| Job Submission Directory| $SLURM_SUBMIT_DIR                         | By default, jobs start in the directory      |
-|                         |                                           |                                              |
-|                         |                                           | that the job was submitted from. So the      |
-|                         |                                           |                                              |
-|                         |                                           | "cd $SLURM_SUBMIT_DIR" command is not needed.|
-+-------------------------+-------------------------------------------+----------------------------------------------+
-| JobID                   | $SLURM_JOB_ID                             | Job identifier assigned to the job           |
-+-------------------------+-------------------------------------------+----------------------------------------------+
-| Machine(node) list      | $SLURM_NODELIST                           | Variable name that contains the list of      |
-|                         |                                           |                                              |
-|                         |                                           | nodes assigned to the batch job              |
-+-------------------------+-------------------------------------------+----------------------------------------------+
++-------------------------+----------------------------+-------------------------------------------------------------------------+
+| Description             | Slurm Environment Variable | Detail Description                                                      |
++=========================+============================+=========================================================================+
+| Array JobID             | $SLURM_ARRAY_JOB_ID        | Each member of a job array is assigned a unique identifier.             |
+|                         |                            |                                                                         |
+|                         | $SLURM_ARRAY_TASK_ID       |                                                                         |
++-------------------------+----------------------------+-------------------------------------------------------------------------+
+| Job Submission Directory| $SLURM_SUBMIT_DIR          | By default, jobs start in the directory that the job was submitted      |
+|                         |                            |                                                                         |
+|                         |                            | from. So the "cd $SLURM_SUBMIT_DIR" command is not needed.              |
++-------------------------+----------------------------+-------------------------------------------------------------------------+
+| JobID                   | $SLURM_JOB_ID              | Job identifier assigned to the job.                                     |
++-------------------------+----------------------------+-------------------------------------------------------------------------+
+| Machine(node) list      | $SLURM_NODELIST            | Variable name that contains the list of nodes assigned to the batch job.|
++-------------------------+----------------------------+-------------------------------------------------------------------------+
 
 See the sbatch man page for additional environment variables available.
 
