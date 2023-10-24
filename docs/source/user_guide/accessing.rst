@@ -59,7 +59,7 @@ For command line SSH clients, use the following settings if you have trouble log
 Open OnDemand
 -------------
 
-An Open OnDemand shell interface is available at: https://openondemand.delta.ncsa.illinois.edu/pun/sys/shell/ssh/dt-login02.
+An Open OnDemand shell interface is available at: https://openondemand.delta.ncsa.illinois.edu .
 
 ..  image:: images/accessing/ood-shell-access.png
     :alt: Delta OpenOnDemand shell access
