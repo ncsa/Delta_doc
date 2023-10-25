@@ -17,6 +17,9 @@ The account names end in -cpu and -gpu; the matching partition would start with 
     :alt: Jupyter Lab partition configuration
     :width: 500
 
+Open OnDemand Desktop
+-------------------------
+
 Open On Demand provides a VNC (noVNC.com) service through the "Desktop" Interactive App.  The desktop runs in a job on a compute node and will give you access to a virtual linux desktop that can provide a better graphics experience than X11.  It runs within a container that can see the Delta filesystems ( $HOME, scratch, projects, /sw ) but the Delta modules are not available from the container.  You may navigate to a directory and manually launch applications that require a GUI.  You may need to set PATH and LD_LIBRARY_PATH from some applications.  Some applications may fail if the libraries required are not available in the container.  Due to space and time constraints, it is not possible to build a container that represents all of the software installed in /sw, so "some assembly required" will be the correct approach if you run into issues trying to launch a program.  See "module show <foo>" when logged into Delta the normal way (ssh or vscode) to discover the PATHs and environment setting you may need to include in the noVNC Desktop.
 
 ..  image:: images/services/ood-desktop-request.png
