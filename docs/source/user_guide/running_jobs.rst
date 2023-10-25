@@ -20,6 +20,8 @@ Batch scripts (sbatch) or Interactive (srun , salloc), which is right for me?
 
 - :ref:`salloc` . Also interactive, use salloc when you want to reserve compute resources for a period of time and interact with them using multiple commands.  Each command you type after your salloc session begins will run on the login node if it is just a normal command, or on your reserved compute resources if prefixed with srun.  Type ``exit`` when finished with an salloc allocation if you want to end it before the time expires.
 
+- https://openondemand.delta.ncsa.illinois.edu provides compute node access via Jupyter Lab, VSCode Code Server, and the noVNC Desktop virtual desktop. 
+
 
 Direct SSH access to a compute node in a running job from a dt-loginNN node is enabled once the job has started:
 
