@@ -2,7 +2,7 @@
 
 # -- Project information
 
-project = 'Delta User Documentation'
+project = 'NCSA Delta User Documentation'
 copyright = '2023, University of Illinois'
 author = 'NCSA'
 
