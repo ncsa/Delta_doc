@@ -2,7 +2,7 @@
    :google-site-verification: e4nzdhTdNG9IaZP-vYECt1MDEosdI5u8j71h9PnpZdA
 
 ################################################
-Delta User Documentation
+Delta User Guide
 ################################################
 
 ..  image:: images/delta_front.png
