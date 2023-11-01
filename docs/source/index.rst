@@ -1,6 +1,10 @@
 .. meta::
    :google-site-verification: e4nzdhTdNG9IaZP-vYECt1MDEosdI5u8j71h9PnpZdA
 
+.. meta::
+   :title: UIUC NCSA Delta User Documentation
+   :description: User documentation for the UIUC NCSA Delta supercomputer. Topics covered include a quick start guide, how to get help, and a comprehensive user guide including how to log into Delta and run jobs.
+
 ################################################
 Delta User Documentation
 ################################################
