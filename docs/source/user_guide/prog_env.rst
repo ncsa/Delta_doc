@@ -201,6 +201,8 @@ See also: https://developer.nvidia.com/hpc-sdk
 HIP/ROCm (AMD MI100)
 -------------------------
 
+Note: If using hipcc on the login nodes, add "--offload-arch=gfx908" to the flags to match the gpu on the MI100 node.
+
 To access the development environment for the gpuMI100x8 partition, start a job on the node with ``srun`` or sbatch. 
 
 Next, set your PATH to prefix /opt/rocm/bin where the HIP and ROCm tools are installed. 
