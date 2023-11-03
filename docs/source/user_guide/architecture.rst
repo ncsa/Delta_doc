@@ -320,6 +320,10 @@ File Systems
 
 Users of Delta have access to three file systems at the time of system launch, a fourth relaxed-POSIX file system will be made available at a later date.
 
+.. warning::
+ 
+   No Delta file systems (internal or external) have snapshots or backups **of any kind**.  You are on your own for backing up your files.  There is no mechanism to retreive a file if you have removed it, or to recover an older version of any file or data.  
+
 Delta (Internal)
 ~~~~~~~~~~~~~~~~~~~~~~
 
