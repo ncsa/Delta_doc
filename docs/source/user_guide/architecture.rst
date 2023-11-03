@@ -1,3 +1,6 @@
+.. contents::
+   :depth: 1
+
 System Architecture
 =======================
 
@@ -514,7 +517,3 @@ To verify the setting:
    $ scontrol show job 713267 | grep Feature
       Features=scratch&ime DelayBoot=00:00:00
 
-.. toctree::
-   :maxdepth: 1
-
-   architecture
