@@ -516,6 +516,5 @@ To verify the setting:
 
 .. toctree::
    :maxdepth: 1
-   :hidden:
 
    architecture
