@@ -57,7 +57,7 @@ To build (compile and link) a MPI program in Fortran, C, and C++:
 OpenMP
 -------------------------
 
-To build an OpenMP program, use the ``-fopenmp`` / ``-mp`` option:
+To build an OpenMP program, use the **-fopenmp** / **-mp** option:
 
 ================================ ============================ =======================
 GCC                              AOCC                         NVHPC
@@ -70,7 +70,7 @@ g++ -fopenmp *myprog*.cc         clang -fopenmp *myprog*.cc   nvc++ -mp *myprog*
 Hybrid MPI/OpenMP
 -------------------
 
-To build an MPI/OpenMP hybrid program, use the ``-fopenmp`` / ``-mp`` option with the MPI compiling commands:
+To build an MPI/OpenMP hybrid program, use the **-fopenmp** / **-mp** option with the MPI compiling commands:
 
 ============================ =======================
 GCC                            PGI/NVHPC
@@ -162,7 +162,7 @@ A version of xthi is also available from ORNL:
 OpenACC
 -------------------------
 
-To build an OpenACC program, use the ``-acc`` option and the ``-mp`` option for multi-threaded:
+To build an OpenACC program, use the **-acc** option and the **-mp** option for multi-threaded:
 
 ========================= ================================
 Non-Multi-threaded          Multi-threaded
@@ -175,7 +175,7 @@ nvc++ -acc *myprog*.cc      nvc++ -acc -mp *myprog*.cc
 CUDA
 -------------------------
 
-CUDA compilers (nvcc) are included in the CUDA module which is loaded by default under modtree/gpu. For the CUDA Fortran compiler and other NVIDIA development tools, load the "nvhpc" module.
+CUDA compilers (nvcc) are included in the CUDA module which is loaded by default under modtree/gpu. For the CUDA Fortran compiler and other NVIDIA development tools, load the **nvhpc** module.
 
 nv* commands when nvhpc is loaded
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -201,7 +201,8 @@ See also: https://developer.nvidia.com/hpc-sdk
 HIP/ROCm (AMD MI100)
 -------------------------
 
-Note: If using hipcc on the login nodes, add "--offload-arch=gfx908" to the flags to match the gpu on the MI100 node.
+.. note::
+   If using hipcc on the login nodes, add **--offload-arch=gfx908** to the flags to match the gpu on the MI100 node.
 
 To access the development environment for the gpuMI100x8 partition, start a job on the node with ``srun`` or sbatch. 
 
