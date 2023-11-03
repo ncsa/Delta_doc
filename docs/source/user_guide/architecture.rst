@@ -300,12 +300,12 @@ Table Legend:
 +---------------------------+-----------------------------------------+
 
 Login Nodes
---------------
+~~~~~~~~~~~~~
 
 Login nodes provide interactive support for code compilation. See :ref:`access` for more information.
 
 Specialized Nodes
----------------------
+~~~~~~~~~~~~~~~~~~~~
 
 Delta supports data transfer nodes (serving the "NCSA Delta" Globus collection) and nodes in support of other services.
 
@@ -320,8 +320,8 @@ File Systems
 
 Users of Delta have access to three file systems at the time of system launch, a fourth relaxed-POSIX file system will be made available at a later date.
 
-Delta
-~~~~~~
+Delta (Internal)
+~~~~~~~~~~~~~~~~~~~~~~
 
 The Delta storage infrastructure provides users with their HOME and SCRATCH areas. 
 These file systems are mounted across all Delta nodes and are accessible on the Delta DTN Endpoints. 
@@ -363,8 +363,8 @@ This flash is initially deployed as a tier for "hot" data in SCRATCH.
 This subsystem will have an aggregate performance of 500GB/s and will have 3PB of raw capacity. 
 This subsystem will transition to an independent relaxed-POSIX namespace file system, communications on that timeline will be announced as updates are available.
 
-Taiga
-~~~~~~
+Taiga (External To Delta)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Taiga is NCSA’s global file system which provides users with their $WORK area. 
 This file system is mounted across all Delta systems at /taiga (note that Taiga is used to provision the Delta /projects file system from /taiga/nsf/delta) and is accessible on both the Delta and Taiga DTN endpoints. 
