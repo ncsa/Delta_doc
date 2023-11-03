@@ -1,8 +1,3 @@
-.. contents::
-   :depth: 2
-   :local:
-   :hidden:
-
 System Architecture
 =======================
 
