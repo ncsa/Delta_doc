@@ -817,7 +817,8 @@ Jupyter Notebooks
 
 The Detla Open OnDemand portal provides an easier way to start a Jupyter notebook. Please see :ref:`openon` to access the portal.
 
-The Jupyter notebook executables are in your **$PATH** after loading the anaconda3 module. 
+The Jupyter notebook executables are in your **$PATH** after loading the anaconda3 module. If you run into problems from a previously saved Jupyter session (example, you see paths where you do not have write permission), you may remove this file to get a fresh start: $HOME/.jupyter/lab/workspaces/default-* .  
+
 **Do not run Jupyter on the shared login nodes.**
 Instead, follow these steps to attach a Jupyter notebook running on a compute node to your local web browser:
 
