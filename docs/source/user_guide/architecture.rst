@@ -367,7 +367,7 @@ This flash is initially deployed as a tier for "hot" data in SCRATCH.
 This subsystem will have an aggregate performance of 500GB/s and will have 3PB of raw capacity. 
 This subsystem will transition to an independent relaxed-POSIX namespace file system, communications on that timeline will be announced as updates are available.
 
-Taiga (External To Delta)
+Taiga (External to Delta)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Taiga is NCSA’s global file system which provides users with their $WORK area. 
