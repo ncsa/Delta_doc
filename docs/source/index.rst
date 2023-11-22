@@ -1,3 +1,9 @@
+.. meta::
+   :google-site-verification: e4nzdhTdNG9IaZP-vYECt1MDEosdI5u8j71h9PnpZdA
+
+.. meta::
+   :description: User documentation for the UIUC NCSA Delta HPC cluster. Topics include the Delta system architecture, how to log into Delta, how to run jobs, and much more.
+
 ################################################
 Delta User Documentation
 ################################################
@@ -30,9 +36,9 @@ Status Updates and Notices
 Getting Started with High-Performance Computing
 ================================================
 
-**There are no specific prerequisite courses or high-performance computing (HPC) experience required before using Delta.** However, if you are unfamiliar with using an HPC cluster, it is highly recommended that you take NCSA’s short tutorial `Using an HPC Cluster for Scientific Applications <https://www.hpc-training.org/xsede/moodle/enrol/index.php?id=71>`_ before continuing.
+**There are no specific prerequisite courses or high-performance computing (HPC) experience required before using Delta.** However, if you are unfamiliar with using an HPC cluster, it is highly recommended that you take NCSA’s short tutorial `Using an HPC Cluster for Scientific Applications <https://www.hpc-training.org/moodle/course/view.php?id=71>`_ before continuing.
 
-You can also browse the full list of NCSA's `HPC-Moodle Self-Paced Tutorials <https://www.hpc-training.org/xsede/moodle/course/index.php?categoryid=11>`_ to learn more about other HPC topics.
+You can also browse the full list of NCSA's `HPC-Moodle Self-Paced Tutorials <https://www.hpc-training.org/moodle/course/index.php?categoryid=10>`_ to learn more about other HPC topics.
 
 .. toctree::
    :maxdepth: 2
