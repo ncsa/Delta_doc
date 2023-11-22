@@ -2,7 +2,7 @@
 
 # -- Project information
 
-project = 'Delta User Documentation'
+project = 'NCSA Delta User Documentation'
 copyright = '2023, University of Illinois'
 author = 'NCSA'
 
@@ -45,3 +45,6 @@ html_theme_options = {
      'logo_only': False,
      'display_version': False,
  }
+
+# -- Page Title
+html_title = 'UIUC NCSA Delta User Guide'
