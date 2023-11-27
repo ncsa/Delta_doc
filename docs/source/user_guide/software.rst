@@ -1234,14 +1234,27 @@ R will run on the CPU cores (not GPU enabled).
 
 **Delta Provided R Environment**
 
-.. code-block::
+There are a few steps needed to set up the R environment for JupyterLab in OpenOnDemand.
 
-   $ tail .bashrc
+#. Start a new JupyterLab session in OpenOnDemand
+#. Start a new Terminal session in the JupyterLab Launcher
+#. If you are automatically launching a Conda environment in your default shell setup, deactivate it now
 
-   module load anaconda3_Rcpu
-   $
+        $ conda deactivate
 
-After modifying your .bashrc and getting a new shell, your login prompt should reflect that you are within the anaconda3_Rcpu environment, R will be in your **$PATH**, and starting JupyterLab from the Open OnDemand interface will automatically offer you the R options with the Launcher.
+#. Load the R environment and launch R
+
+        $ module load anaconda3_Rcpu
+
+        $ R
+
+#. That should start a new R session. Inside the R session, run
+
+        > IRkernel::installspec()
+
+#. Quit R and close the Terminal window in Jupyterlab. 
+
+That should return you to the JupyterLab Launcher. Reload the web page containing the Launcher, and options for an R Notebook and an R Console should be available. JupyterLab from the Open OnDemand interface will automatically offer you the R options with the Launcher.
 
 ..  image:: images/software/04_ood_launcher.png
     :alt: R launcher options
