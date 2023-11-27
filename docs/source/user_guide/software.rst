@@ -1240,20 +1240,17 @@ There are a few steps needed to set up the R environment for JupyterLab in OpenO
 #. Start a new Terminal session in the JupyterLab Launcher
 #. If you are automatically launching a Conda environment in your default shell setup, deactivate it now
 
-    .. code-block::
-    $ conda deactivate
+        $ conda deactivate
 
 #. Load the R environment and launch R
 
-    .. code-block::
-    $ module load anaconda3_Rcpu
+        $ module load anaconda3_Rcpu
 
-    $ R
+        $ R
 
 #. That should start a new R session. Inside the R session, run
 
-    .. code-block::
-    > IRkernel::installspec()
+        > IRkernel::installspec()
 
 #. Quit R and close the Terminal window in Jupyterlab. 
 
