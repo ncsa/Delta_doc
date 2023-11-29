@@ -364,7 +364,7 @@ The HOME file system has 4 OSTs and is set with a default stripe size of 1.
 The SCRATCH file system has 8 OSTs and has Lustre Progressive File Layout (PFL) enabled which automatically restripes a file as the file grows. 
 The thresholds for PFL striping for SCRATCH are:
 
-.. table:: PFL Striping Thresholds for SCRATCH
+.. table:: PFL Striping for SCRATCH
 
    ========= ============
    File Size Stripe Count
