@@ -90,7 +90,7 @@ The Session Info is under the Summary tab and displays more detail about the pro
 Rooflines
 ~~~~~~~~~~
 
-Rooflines are currently disabled: https://www.amd.com/content/dam/amd/en/documents/developer/uprof-v4.0-gaGA-user-guide.pdf (section 3.5.2). Below are the roofline error messages from the OS.
+Rooflines are currently disabled. Information on rooflines is in the `AMD uProf user guide <https://www.amd.com/content/dam/amd/en/documents/developer/uprof-v4.0-gaGA-user-guide.pdf>`_ (section 3.5.2). Below are the roofline error messages from the OS.
 
 .. code-block::
 
@@ -101,7 +101,7 @@ Rooflines are currently disabled: https://www.amd.com/content/dam/amd/en/documen
 
 References
 ~~~~~~~~~~~~~
-https://www.amd.com/content/dam/amd/en/documents/developer/uprof-v4.0-gaGA-user-guide.pdf
+`AMD uProf user guide <https://www.amd.com/content/dam/amd/en/documents/developer/uprof-v4.0-gaGA-user-guide.pdf>`_
 
 NVIDIA Nsight Systems
 -------------------------
@@ -120,7 +120,7 @@ For admins/sw team: Use Spack to install CUDA, and the nsys command for Nsight S
 Installation (NVIDIA Nsight Systems Client on Local Desktop/Laptop)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. Open https://developer.nvidia.com/tools-overview and navigate to the **Developer Tools Downloads** button.
+#. Open the `NVIDIA developer tools <https://developer.nvidia.com/tools-overview>`_ and navigate to the **Developer Tools Downloads** button.
 #. Select **Nsight Systems** and your operating system. 
    If you do not have an account at developer.nvidia.com, set one up when prompted. When you have completed the forms, your download will begin. 
 #. Install the application on your local machine. 
@@ -367,7 +367,7 @@ Delta Script and Nsight Systems View of the Resulting Report
 Nsight Systems Setup on Local Workstation to Use with Delta
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. Log in to: https://developer.nvidia.com/nsight-systems (make an account if you need to), and download the client for your MacOS, Windows, or Linux local system.
+#. Log into `NVIDIA Nsight systems developer page <https://developer.nvidia.com/nsight-systems>`_ (make an account if you need to), and download the client for your MacOS, Windows, or Linux local system.
 
    You can use Globus Online, rsync, sftp, or sshfs (Linux) to transfer files (or view files as local filesystem mounts in the case of sshfs) with the local Nsight Systems client.
 
@@ -412,11 +412,11 @@ Nsight Systems Setup on Local Workstation to Use with Delta
        :alt: GPU stats summary
        :width: 1000px
 
-https://docs.nvidia.com/cuda/cuda-c-programming-guide
+`NVIDIA CUDA C++ programming guide <https://docs.nvidia.com/cuda/cuda-c-programming-guide>`_
 
-`User Guide :: Nsight Systems Documentation (nvidia.com) <https://docs.nvidia.com/nsight-systems/UserGuide/index.html>`_ (nsys higher level and cuda api )
+`NVIDIA Nsight Systems user guide <https://docs.nvidia.com/nsight-systems/UserGuide/index.html>`_ (nsys higher level and cuda api )
 
-`Nsight Compute CLI :: Nsight Compute Documentation (nvidia.com) <https://docs.nvidia.com/nsight-compute/NsightComputeCli/index.html>`_ (ncu lower level and counters )
+`NVIDIA Nsight Compute CLI documentation <https://docs.nvidia.com/nsight-compute/NsightComputeCli/index.html>`_ (ncu lower level and counters )
 
 `GitHub - quasiben/nvtx-examples <https://github.com/quasiben/nvtx-examples>`_ (sample python test codes )
 
