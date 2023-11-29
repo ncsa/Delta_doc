@@ -7,22 +7,23 @@ This corresponds to the equivalent use of one compute core utilizing less than o
 Charges are based on either the number of cores or the fraction of the memory requested, whichever is larger. 
 The minimum charge for any job is 1 SU.
 
+.. table:: Service Unit Equivalents by Node Type
 
-+------------------------+-----------------------------------+
-| Node Type              | Service Unit Equivalence          |
-+                        +-------+--------------+------------+
-|                        | Cores | GPU Fraction | Host Memory|
-+========================+=======+==============+============+
-| CPU Node               | 1     | N/A          | 2 GB       |
-+----------+-------------+-------+--------------+------------+
-| GPU Node | Quad A100   | 16    | 1 A100       | 62.5 GB    |
-|          +-------------+-------+--------------+------------+
-|          | Quad A40    | 16    | 1 A40        | 62.5 GB    |
-|          +-------------+-------+--------------+------------+
-|          | 8-way A100  | 16    | 1 A100       | 250 GB     |
-|          +-------------+-------+--------------+------------+
-|          | 8-way MI100 | 16    | 1 MI100      | 250 GB     |
-+----------+-------------+-------+--------------+------------+
+   +------------------------+-----------------------------------+
+   | Node Type              | Service Unit Equivalence          |
+   +                        +-------+--------------+------------+
+   |                        | Cores | GPU Fraction | Host Memory|
+   +========================+=======+==============+============+
+   | CPU Node               | 1     | N/A          | 2 GB       |
+   +----------+-------------+-------+--------------+------------+
+   | GPU Node | Quad A100   | 16    | 1 A100       | 62.5 GB    |
+   |          +-------------+-------+--------------+------------+
+   |          | Quad A40    | 16    | 1 A40        | 62.5 GB    |
+   |          +-------------+-------+--------------+------------+
+   |          | 8-way A100  | 16    | 1 A100       | 250 GB     |
+   |          +-------------+-------+--------------+------------+
+   |          | 8-way MI100 | 16    | 1 MI100      | 250 GB     |
+   +----------+-------------+-------+--------------+------------+
 
 Note that a weighting factor will discount the charge for the reduced-precision A40 nodes, as well as the novel AMD MI100 based node - this will be documented through the ACCESS SU converter.
 
@@ -33,7 +34,7 @@ Local Account Charging
 
 Use the ``accounts`` command to list the accounts available for charging. 
 CPU and GPU resources will have individual charge names. 
-For example, in the following, **``bbka-delta-cpu``** and **``bbka-delta-gpu``** are available for user kingda to use for the CPU and GPU resources.
+For example, in the following, **bbka-delta-cpu** and **bbka-delta-gpu** are available for user kingda to use for the CPU and GPU resources.
 
 .. code-block::
 
