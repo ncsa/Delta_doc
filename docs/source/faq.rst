@@ -23,6 +23,6 @@ If you can’t find the answer in the documentation (or via the search bar in th
 How do I acknowledge Delta, NCSA, and/or ACCESS in my research?
 ------------------------------------------------------------------
 
-For information on how to acknwoledge Delta, NCSA, and/or ACCESS in research and publications please see :ref:`acknowledge`.
+See `Delta Citations <https://delta.ncsa.illinois.edu/delta-citations/>`_ for information on how to acknwoledge Delta or NCSA, and `Acknowledging ACCESS <https://access-ci.org/about/acknowledging-access/>`_ for information on how to acknowledge ACCESS.
 
 |
