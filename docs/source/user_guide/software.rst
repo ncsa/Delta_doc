@@ -16,58 +16,60 @@ The environment with GPU support will build binaries that run on both the GPU no
 For situations where the same version of software is to be deployed on GPU and CPU nodes but with separate builds, the **modtree/cpu** environment provides the same default compiler and MPI but without CUDA. 
 Use module spider package_name to search for software in Lmod and see the steps to load it for your environment.
 
-+----------------------------------+--------------------------------------------------------------------------------------+
-| Module (Lmod) Command            | Example                                                                              |
-+==================================+======================================================================================+
-|                                  |                                                                                      |
-|                                  |   .. code-block::                                                                    |
-| module list                      |                                                                                      |
-|                                  |      $ module list                                                                   |
-| (display the currently loaded    |                                                                                      |
-| modules)                         |      Currently Loaded Modules:                                                       |
-|                                  |      1) gcc/11.2.0   3) openmpi/4.1.2   5) modtree/gpu                               |
-|                                  |      2) ucx/1.11.2   4) cuda/11.6.1                                                  |
-|                                  |                                                                                      |
-|                                  |                                                                                      |
-+----------------------------------+--------------------------------------------------------------------------------------+
-| module load <package_name>       |                                                                                      |
-|                                  |   .. code-block::                                                                    |
-| (loads a package or metamodule   |                                                                                      |
-| such as                          |      $ module load modtree/cpu                                                       |
-|                                  |                                                                                      |
-| modtree/gpu or netcdf-c)         |      Due to MODULEPATH changes, the following have been reloaded:                    |
-|                                  |      1) gcc/11.2.0     2) openmpi/4.1.2     3) ucx/1.11.2                            |
-|                                  |                                                                                      |
-|                                  |      The following have been reloaded with a version change:                         |
-|                                  |      1) modtree/gpu => modtree/cpu                                                   |
-|                                  |                                                                                      |
-+----------------------------------+--------------------------------------------------------------------------------------+
-| module spider <package_name>     |                                                                                      |
-|                                  |   .. code-block::                                                                    |
-| (finds modules and displays the  |                                                                                      |
-| ways to                          |      $ module spider openblas                                                        |
-|                                  |                                                                                      |
-| load them)                       |      ---------------------------------------------------------------------------     |
-|                                  |      openblas: openblas/0.3.20                                                       |
-|                                  |      ----------------------------------------------------------------------------    |
-|                                  |      You will need to load all module(s) on any one of the lines below before the    |
-|                                  |      "openblas/0.3.20" module is available to load.                                  |
-| module -r spider "regular        |                                                                                      |
-| expression"                      |            aocc/3.2.0                                                                |
-|                                  |            gcc/11.2.0                                                                |
-|                                  |                                                                                      |
-|                                  |         Help:                                                                        |
-|                                  |           OpenBLAS: An optimized BLAS library                                        |
-|                                  |      $ module -r spider "^r$"                                                        |
-|                                  |                                                                                      |
-|                                  |      ----------------------------------------------------------------------------    |
-|                                  |        r:                                                                            |
-|                                  |      ----------------------------------------------------------------------------    |
-|                                  |          Versions:                                                                   |
-|                                  |             r/4.1.                                                                   |
-|                                  |      ...                                                                             |
-|                                  |                                                                                      |
-+----------------------------------+--------------------------------------------------------------------------------------+
+.. table:: Module (Lmod) Commands
+
+   +----------------------------------+--------------------------------------------------------------------------------------+
+   | Module (Lmod) Command            | Example                                                                              |
+   +==================================+======================================================================================+
+   |                                  |                                                                                      |
+   |                                  |   .. code-block::                                                                    |
+   | module list                      |                                                                                      |
+   |                                  |      $ module list                                                                   |
+   | (display the currently loaded    |                                                                                      |
+   | modules)                         |      Currently Loaded Modules:                                                       |
+   |                                  |      1) gcc/11.2.0   3) openmpi/4.1.2   5) modtree/gpu                               |
+   |                                  |      2) ucx/1.11.2   4) cuda/11.6.1                                                  |
+   |                                  |                                                                                      |
+   |                                  |                                                                                      |
+   +----------------------------------+--------------------------------------------------------------------------------------+
+   | module load <package_name>       |                                                                                      |
+   |                                  |   .. code-block::                                                                    |
+   | (loads a package or metamodule   |                                                                                      |
+   | such as                          |      $ module load modtree/cpu                                                       |
+   |                                  |                                                                                      |
+   | modtree/gpu or netcdf-c)         |      Due to MODULEPATH changes, the following have been reloaded:                    |
+   |                                  |      1) gcc/11.2.0     2) openmpi/4.1.2     3) ucx/1.11.2                            |
+   |                                  |                                                                                      |
+   |                                  |      The following have been reloaded with a version change:                         |
+   |                                  |      1) modtree/gpu => modtree/cpu                                                   |
+   |                                  |                                                                                      |
+   +----------------------------------+--------------------------------------------------------------------------------------+
+   | module spider <package_name>     |                                                                                      |
+   |                                  |   .. code-block::                                                                    |
+   | (finds modules and displays the  |                                                                                      |
+   | ways to                          |      $ module spider openblas                                                        |
+   |                                  |                                                                                      |
+   | load them)                       |      ---------------------------------------------------------------------------     |
+   |                                  |      openblas: openblas/0.3.20                                                       |
+   |                                  |      ----------------------------------------------------------------------------    |
+   |                                  |      You will need to load all module(s) on any one of the lines below before the    |
+   |                                  |      "openblas/0.3.20" module is available to load.                                  |
+   | module -r spider "regular        |                                                                                      |
+   | expression"                      |            aocc/3.2.0                                                                |
+   |                                  |            gcc/11.2.0                                                                |
+   |                                  |                                                                                      |
+   |                                  |         Help:                                                                        |
+   |                                  |           OpenBLAS: An optimized BLAS library                                        |
+   |                                  |      $ module -r spider "^r$"                                                        |
+   |                                  |                                                                                      |
+   |                                  |      ----------------------------------------------------------------------------    |
+   |                                  |        r:                                                                            |
+   |                                  |      ----------------------------------------------------------------------------    |
+   |                                  |          Versions:                                                                   |
+   |                                  |             r/4.1.                                                                   |
+   |                                  |      ...                                                                             |
+   |                                  |                                                                                      |
+   +----------------------------------+--------------------------------------------------------------------------------------+
 
 See also: `User Guide for Lmod <https://lmod.readthedocs.io/en/latest/010_user.html>`_.
 
@@ -108,7 +110,7 @@ You may *use any of these methods* with any of the python versions or instances 
 
   The conda-env-mod script will generate a python module you can load or share with your team--making it simpler to manage multiple python scenarios that you can activate and deactivate with module commands.
 
-Examples using all of the above are shown at this site covering scikit-learn-intelex (an Intel accelerated scikit learn subset library for x86_64 architecture): https://github.com/intel/scikit-learn-intelex/blob/master/INSTALL.md
+Examples using all of the above are shown in the `Intel scikit-learn-intelex repository <https://github.com/intel/scikit-learn-intelex/blob/master/INSTALL.md>`_ (an Intel accelerated scikit learn subset library for x86_64 architecture). 
 
 .. note::
    The :ref:`nvidia-contain` on Delta provide optimized python frameworks built for Delta's A100 and A40 GPUs. 
@@ -172,7 +174,7 @@ The Delta team frequently updates anaconda3_* to track the latest packages.
    The container's python should be first in **$PATH**. 
    You may ``--bind`` the Anaconda directory or other paths into the container so that you can start your conda environments with the container's python (/usr/bin/python).
 
-https://repo.anaconda.com/archive/ contains previous Anaconda versions.
+The `Anaconda archive <https://repo.anaconda.com/archive/>`_ contains previous Anaconda versions.
 The bundles are not small, but using one from Anaconda will ensure that you get software that was built to work together. 
 If you require an older version of a python lib/module, NCSA staff suggest looking back in time at the Anaconda site.
 
@@ -747,7 +749,7 @@ To address a problem with **PATH** ordering when using anaconda3 modules, a warn
    /sw/external/python/anaconda3 
    anaconda3_gpu is loaded. Consider running conda deactivate and reloading it.
 
-See also: https://docs.conda.io/projects/conda/en/latest/configuration.html, if you want to disable automatic conda environment activation.
+See the `Conda configuration documentation <https://docs.conda.io/projects/conda/en/latest/configuration.html>`_, if you want to disable automatic conda environment activation.
 
 Batch Jobs
 $$$$$$$$$$$
@@ -799,11 +801,10 @@ Non-python/conda HPC users would see per-job stderr from the ``conda deactivate`
 Intel AI Analytics Toolkit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Intel AI Analytics Toolkit (AI Kit) module contains a subset of what you will find in anaconda_cpu. 
+The `Intel AI Analytics Toolkit (AI Kit) <https://www.intel.com/content/www/us/en/developer/tools/oneapi/ai-analytics-toolkit.html>`_ module contains a subset of what you will find in anaconda_cpu. 
 It contains conda environments optimized for CPU execution: PyTorch & TensorFlow. 
 We have seen up to 2x speedup when using the AI Kit compared to the stock anaconda_cpu. 
-For best results, set ``OMP_NUM_THREADS`` to the number of cores you'd like to use (``--cpus-per-task`` in Slurm). 
-See also: https://www.intel.com/content/www/us/en/developer/tools/oneapi/ai-analytics-toolkit.html.
+For best results, set ``OMP_NUM_THREADS`` to the number of cores you'd like to use (``--cpus-per-task`` in Slurm).
 
 Containers
 ~~~~~~~~~~~~
@@ -896,7 +897,7 @@ Jupyter with Open OnDemand
 
 Jupyter and jupyter-lab will find the environments in your $HOME/.conda/envs, your login shell should reflect what you want to see from Jupyter.
 
-The list of available kernels for Jupyter should be the same as what you see from a login shell and python3 (https://github.com/Anaconda-Platform/nb_conda_kernels).
+The available `conda-based environment kernels for Jupyter <https://github.com/Anaconda-Platform/nb_conda_kernels>`_ should be the same as what you see from a login shell and python3.
 
 **Jupyter needs to be installed in every virtual environment where you want to use Jupyter-lab or Jupyter-notebook.**
 
@@ -1280,162 +1281,164 @@ List of Installed Software (CPU & GPU)
 
 The modules listed below are installed on Delta CPUs, GPUs, or both, as indicated.
 
-===============================  ==================
-Module                           CPU, GPU, or both  
-===============================  ==================
-armadillo                        both
-charmpp                          CPU
-darshan-runtime                  CPU
-fftw                             both
-gromacs                          both
-hdf5                             both
-kokkos                           GPU
-lammps                           CPU
-namd                             CPU
-netcdf-c                         both   
-netcdf-fortran                   both
-osu-micro-benchmarks             GPU
-netlib-scalapack                 CPU
-parallel-netcdf                  both
-parmetis                         GPU
-petsc                            both
-plumed                           both
-anaconda3                        both
-automake                         CPU
-binutils                         CPU
-boost                            both
-cuda                             GPU
-cmake                            CPU
-compositeproto                   CPU
-cutensor                         GPU
-darshan-util                     CPU
-dyninst                          CPU
-elfutils                         CPU
-flex                             CPU
-freeglut                         GPU
-gdal                             CPU
-gettext                          CPU
-glew                             GPU
-gmake                            CPU
-gnuplot                          both
-gsl                              both
-hdf5                             both
-hpctoolkit                       both
-hpcviewer                        CPU
-intel-tbb                        CPU
-intel-xed                        CPU
-knem                             CPU
-libaio                           both
-libdwarf                         CPU
-libevent                         CPU
-libfabric                        CPU
-libiberty                        CPU
-libjpeg                          GPU
-libmonitor                       CPU
-libnsl                           GPU
-libsndfile                       both
-libunwind                        CPU
-libxcb                           GPU
-libxcomposite                    CPU
-libxcrypt                        CPU
-libxkbcommon                     GPU
-libxml2                          CPU
-libxshmfence                     GPU
-libxxf86vm                       GPU
-linux-headers                    CPU
-llvm                             CPU
-lustre                           CPU
-lzma                             CPU
-magma                            GPU
-memkind                          CPU
-mesa                             GPU
-metis                            both
-mpich                            CPU
-muparser                         CPU
-nccl                             GPU
-ncurses                          both
-openblas                         both
-openexr                          GPU
-openjdk                          both
-openmpi                          both
-openssh                          both
-p7zip                            GPU
-papi                             CPU
-perl                             both
-pmix                             CPU
-qt                               CPU
-r                                CPU
-rdma-core                        CPU
-readline                         both
-subversion                       both
-tcl                              CPU
-time                             both
-tk                               CPU
-ucx                              both
-wayland-protocols                GPU
-wayland                          GPU
-xbitmaps                         CPU
-xcb-util-image                   GPU
-xcb-util-keysyms                 GPU
-xcb-util-renderutil              GPU
-xcb-util-wm                      GPU
-xcb-util                         GPU
-xerces-c                         CPU
-xz                               CPU
-yaml-cpp                         CPU
-AMDuProf                         both
-ImageMagick                      both
-Intel_AI_toolkit                 both
-anaconda3_Rcpu                   both
-anaconda3_cpu                    both
-anaconda3_gpu                    both
-anaconda3_mi100                  both
-aws-cli                          both
-cudnn                            both
-cue-login-env                    both
-gurobi                           both
-julia                            both
-lammps                           both
-llvm                             both
-matlab_unlicensed                both
-namd3                            both
-nvhpc_latest                     both
-openmpi-5.0_beta                 both
-openmpi-v5.0.x-202305240344_s11  both
-paraview                         both
-posix2ime                        both
-slurm-env                        both
-visit                            both
-westpa                           both
-accessusage                      both
-aocc                             both
-banner                           GPU
-cmake                            both
-cuda                             GPU
-dos2unix                         both
-gcc                              both
-git                              GPU
-htop                             both
-intel-oneapi-advisor             both
-intel-oneapi-compilers           both
-intel-oneapi-mkl                 both
-libfabric                        GPU
-libffi                           GPU
-libtirpc                         GPU
-modtree                          both
-modtree/cpu                      both
-modtree/gpu                      both
-mpich                            GPU
-ndiff                            both
-nvhpc                            GPU
-nvtop                            GPU
-parallel                         GPU
-subversion                       GPU
-xclock                           both
-zip                              GPU
-lmod                             both
-settarg                          both
-===============================  ==================
+.. table:: Delta Installed Modules
+
+   ===============================  ==================
+   Module                           CPU, GPU, or both  
+   ===============================  ==================
+   armadillo                        both
+   charmpp                          CPU
+   darshan-runtime                  CPU
+   fftw                             both
+   gromacs                          both
+   hdf5                             both
+   kokkos                           GPU
+   lammps                           CPU
+   namd                             CPU
+   netcdf-c                         both   
+   netcdf-fortran                   both
+   osu-micro-benchmarks             GPU
+   netlib-scalapack                 CPU
+   parallel-netcdf                  both
+   parmetis                         GPU
+   petsc                            both
+   plumed                           both
+   anaconda3                        both
+   automake                         CPU
+   binutils                         CPU
+   boost                            both
+   cuda                             GPU
+   cmake                            CPU
+   compositeproto                   CPU
+   cutensor                         GPU
+   darshan-util                     CPU
+   dyninst                          CPU
+   elfutils                         CPU
+   flex                             CPU
+   freeglut                         GPU
+   gdal                             CPU
+   gettext                          CPU
+   glew                             GPU
+   gmake                            CPU
+   gnuplot                          both
+   gsl                              both
+   hdf5                             both
+   hpctoolkit                       both
+   hpcviewer                        CPU
+   intel-tbb                        CPU
+   intel-xed                        CPU
+   knem                             CPU
+   libaio                           both
+   libdwarf                         CPU
+   libevent                         CPU
+   libfabric                        CPU
+   libiberty                        CPU
+   libjpeg                          GPU
+   libmonitor                       CPU
+   libnsl                           GPU
+   libsndfile                       both
+   libunwind                        CPU
+   libxcb                           GPU
+   libxcomposite                    CPU
+   libxcrypt                        CPU
+   libxkbcommon                     GPU
+   libxml2                          CPU
+   libxshmfence                     GPU
+   libxxf86vm                       GPU
+   linux-headers                    CPU
+   llvm                             CPU
+   lustre                           CPU
+   lzma                             CPU
+   magma                            GPU
+   memkind                          CPU
+   mesa                             GPU
+   metis                            both
+   mpich                            CPU
+   muparser                         CPU
+   nccl                             GPU
+   ncurses                          both
+   openblas                         both
+   openexr                          GPU
+   openjdk                          both
+   openmpi                          both
+   openssh                          both
+   p7zip                            GPU
+   papi                             CPU
+   perl                             both
+   pmix                             CPU
+   qt                               CPU
+   r                                CPU
+   rdma-core                        CPU
+   readline                         both
+   subversion                       both
+   tcl                              CPU
+   time                             both
+   tk                               CPU
+   ucx                              both
+   wayland-protocols                GPU
+   wayland                          GPU
+   xbitmaps                         CPU
+   xcb-util-image                   GPU
+   xcb-util-keysyms                 GPU
+   xcb-util-renderutil              GPU
+   xcb-util-wm                      GPU
+   xcb-util                         GPU
+   xerces-c                         CPU
+   xz                               CPU
+   yaml-cpp                         CPU
+   AMDuProf                         both
+   ImageMagick                      both
+   Intel_AI_toolkit                 both
+   anaconda3_Rcpu                   both
+   anaconda3_cpu                    both
+   anaconda3_gpu                    both
+   anaconda3_mi100                  both
+   aws-cli                          both
+   cudnn                            both
+   cue-login-env                    both
+   gurobi                           both
+   julia                            both
+   lammps                           both
+   llvm                             both
+   matlab_unlicensed                both
+   namd3                            both
+   nvhpc_latest                     both
+   openmpi-5.0_beta                 both
+   openmpi-v5.0.x-202305240344_s11  both
+   paraview                         both
+   posix2ime                        both
+   slurm-env                        both
+   visit                            both
+   westpa                           both
+   accessusage                      both
+   aocc                             both
+   banner                           GPU
+   cmake                            both
+   cuda                             GPU
+   dos2unix                         both
+   gcc                              both
+   git                              GPU
+   htop                             both
+   intel-oneapi-advisor             both
+   intel-oneapi-compilers           both
+   intel-oneapi-mkl                 both
+   libfabric                        GPU
+   libffi                           GPU
+   libtirpc                         GPU
+   modtree                          both
+   modtree/cpu                      both
+   modtree/gpu                      both
+   mpich                            GPU
+   ndiff                            both
+   nvhpc                            GPU
+   nvtop                            GPU
+   parallel                         GPU
+   subversion                       GPU
+   xclock                           both
+   zip                              GPU
+   lmod                             both
+   settarg                          both
+   ===============================  ==================
 
 .. raw:: html
 
