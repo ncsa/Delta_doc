@@ -838,7 +838,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
               http://cn093.delta.internal.ncsa.edu:8891/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
            or http://127.0.0.1:8991/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
 
-   Note the internal hostname in the cluster for step 2. You will use the second URL in step 3.
+   Note the internal hostname in the **cluster** for **step 2**. You will use the **second URL** in **step 3**.
 
    When using a container with a GPU node, run the container's jupyter-notebook:
 
@@ -883,7 +883,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
    Authenticate with your login and MFA, as usual.
 
-#. Paste the second URL (containing 127.0.0.1:port_number and the token string) from step 1 into your browser and you will be connected to the Jupyter instance running on your compute node of Delta.
+#. Paste the **second URL** (containing 127.0.0.1:port_number and the token string) from **step 1** into your browser and you will be connected to the Jupyter instance running on your compute node of Delta.
 
    .. image:: images/software/jupyter_screenshot.jpg
       :alt: Jupyter screenshot
@@ -1053,7 +1053,7 @@ Customizing Open OnDemand
 Customizing JupyterLab with Anaconda Environments
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-#. Load an anaconda_<cpu, gpu, mi100> that you want to use as your base installation and initialize your default login shell to use conda environments.
+#. Load an **anaconda_<cpu, gpu, mi100>** that you want to use as your base installation and initialize your default login shell to use conda environments.
 
    **conda init bash:**
 
@@ -1065,16 +1065,16 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
       [arnoldg@dt-login03 scripts]$ bash
       (base) 
 
-   After you have run ``conda init bash`` you will not need to load anaconda3_cpu (or gpu) modules again. Just use your new custom environment.
+   After you have run ``conda init bash`` you will not need to load **anaconda3_cpu** (or **gpu**) modules again. Just use your new custom environment.
 
    .. note::
       You may see error messages from conda init bash above. 
-      Just control-c through them and continue. 
-      As long as conda added code to the end of your .bashrc (or similar for other shells), things will work properly.
+      Just **control-c** through them and continue. 
+      As long as conda added code to the end of your **.bashrc** (or similar for other shells), things will work properly.
 
 #. Start a new shell with bash or a new terminal or login session with Delta. 
    You'll now see this prompt showing that you are within the conda environment you initially chose. 
-   If you want to change environments later (say to anaconda3_mi100) you can edit your .bashrc and do another "conda init bash" with that new module loaded.
+   If you want to change environments later (say to **anaconda3_mi100**) you can edit your **.bashrc** and do another ``conda init bash`` with that new module loaded.
 
    To create a new custom environment, you have 2 options:
 
@@ -1157,9 +1157,9 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
    OR 
 
-   b. Create a new clone of your chosen anaconda3_<cpu, gpu, mi100> module:
+   b. Create a new clone of your chosen **anaconda3_<cpu, gpu, mi100>** module:
 
-      Jupyter (and everything else from your loaded anaconda3\_ module will be copied into this environment). 
+      Jupyter (and everything else from your loaded **anaconda3\_** module will be copied into this environment). 
       This option adds about 500 python modules to your environment and requires about 6.3 GB in your **$HOME**. Install time can be up to 30 minutes.
 
       .. raw:: html
@@ -1206,7 +1206,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 4. Launch JupyterLab
 
-   a. After filling in the Open OnDemand form and submitting your job, it will start in a few minutes showing the "Connect to Jupyter" button when ready.
+   a. After filling in the Open OnDemand form and submitting your job, it will start in a few minutes showing the **Connect to Jupyter** button when ready.
 
       ..  image:: images/software/01_connect-to-jupyter.png
           :alt: connect to Jupyter button
