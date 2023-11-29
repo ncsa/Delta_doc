@@ -9,7 +9,7 @@ ParaView
 Client Server Mode - unsupported
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`MIT Engaging cluster ParaView client server mode documentation <https://engaging-web.mit.edu/eofe-wiki/software/paraview_client_server_mode/>`_
+`MIT Engaging cluster ParaView client server mode documentation <https://engaging-web.mit.edu/eofe-wiki/software/paraview_client_server_mode/>`_.
 
 Client server mode appears **broken**. When setting up SSH tunnel, as shown, you get this on the client side:
 
@@ -20,12 +20,12 @@ Client server mode appears **broken**. When setting up SSH tunnel, as shown, you
     returns different values on the two connecting processes
     (Current value: 100).
 
-At least one site does not support client-server anymore (due to issues like this `RWTH HPC IT Center help page <https://help.itc.rwth-aachen.de/en/service/rhr4fjjutttf/article/b98c687822874a30b740ef09f4330e7b/>`_).
+At least one site does not support client-server anymore (due to issues like this one from the `RWTH HPC IT Center help page <https://help.itc.rwth-aachen.de/en/service/rhr4fjjutttf/article/b98c687822874a30b740ef09f4330e7b/>`_).
 
 PvPython and PvBatch
 ~~~~~~~~~~~~~~~~~~~~~
 
-PvPython and PvBatch work and are available. Suggest `ParaView PvPython and PvBatch wiki <https://www.paraview.org/Wiki/PvPython_and_PvBatch>`_ and using only the PvBatch part of ParaView:
+PvPython and PvBatch work and are available. Suggest reviewing the `ParaView PvPython and PvBatch wiki <https://www.paraview.org/Wiki/PvPython_and_PvBatch>`_ and using only the PvBatch part of ParaView:
 
 .. code-block::
 
