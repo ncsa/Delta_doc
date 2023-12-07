@@ -151,7 +151,7 @@ Job scripts need to be written to handle automatically restarting from checkpoin
 Preemptible Queues
 -------------------
 
-Preemptible queues are available on Delta (see :ref:`partitions`). See the`Slurm preemption documentation <https://slurm.schedmd.com/preempt.html>`_ to learn more about preemption. 
+Preemptible queues are available on Delta (see :ref:`partitions`). See the `Slurm preemption documentation <https://slurm.schedmd.com/preempt.html>`_ to learn more about preemption. 
 
 .. warning::
    Preemmptible queues are recommended for jobs that include `checkpointing <https://hpc.nmsu.edu/discovery/slurm/backfill-and-checkpoints/#_introduction_to_checkpoint>`_. If your job code doesn't include checkpointing, then submitting the job to a preempt queue could result in your job being preempted without any saved progress/results.
