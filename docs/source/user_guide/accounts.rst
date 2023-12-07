@@ -19,6 +19,11 @@ Environment variables: ACCESS CUE, SLURM batch
 
 Using :ref:`module`
 
+Allocations
+-------------
+
+The majority of Delta is allocated through ACCESS and is the preferred path to getting compute time on Delta. A portion of the Delta system is also available to Illinois researchers, primarily to fill needs not met by the ACCESS program. See the `Delta Allocations <https://delta.ncsa.illinois.edu/delta-allocations/>`_ page to learn more, including how to submit allocation requests.
+
 Allocation Policies
 -----------------------
 
