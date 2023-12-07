@@ -169,7 +169,7 @@ Slurm Configuration for Preempt Queues
 What Happens When a Job Gets Preempted
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When your a script/code/program gets preempted:
+When a script/code/program gets preempted:
 
 #. A preempting job is allocated resources currently used by the soon-to-be preempted job
 
@@ -249,6 +249,16 @@ In the below example, job 608 is preempted.
 
    </details>
 |
+
+Preemption References
+~~~~~~~~~~~~~~~~~~~~~~
+
+- `Slurm preemption documentation <https://slurm.schedmd.com/preempt.html>`_
+- `PyTorch checkpoint documentation <https://pytorch.org/tutorials/recipes/recipes/saving_and_loading_a_general_checkpoint.html>`_
+- `Tensorflow checkpoint documentation <https://www.tensorflow.org/guide/checkpoint>`_
+- `Ubuntu signal manpage <https://manpages.ubuntu.com/manpages/focal/en/man7/signal.7.html>`_
+- `Bash Guide for Beginners - 12.2. Traps <https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_12_02.html>`_
+- `Python signal documentation <https://docs.python.org/3/library/signal.html>`_
 
 .. _job_mgmt:
 
