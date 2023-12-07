@@ -81,7 +81,7 @@ Delta Production Partitions/Queues
    +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
    | cpu-interactive       | CPU       | TBD               | 30 min       | TBD                       | 2.0           |
    +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-   | cpu-preempt           |           | TBD               | 48 hr        |                           | 0.5           | 
+   | cpu-preempt           | CPU       | TBD               | 48 hr        | TBD                       | 0.5           | 
    +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
    | gpuA100x4             | quad-A100 | TBD               | 48 hr        | TBD                       | 1.0           |
    |                       |           |                   |              |                           |               |
@@ -151,10 +151,12 @@ Job scripts need to be written to handle automatically restarting from checkpoin
 Preemptible Queues
 -------------------
 
-Preemptible queues are available on Delta. When a job that can preempt others is allocated resources that are already allocated to one or more jobs that could be preempted by the first job, the preemptable job(s) are preempted (see `Slurm preemption <https://slurm.schedmd.com/preempt.html>`_ for more information about preemption). Jobs are allotted a **minimum of 10 preempt-free minutes**; any job asking for at least 10 minutes in a preempt partition will ge thte full ten minutes (plus bonus GraceTime minutes if it has installed a SIGTERM handler).
+Preemptible queues are available on Delta (see :ref:`partitions`). See the`Slurm preemption documentation <https://slurm.schedmd.com/preempt.html>`_ to learn more about preemption. 
 
 .. warning::
    Preemmptible queues are recommended for jobs that include `checkpointing <https://hpc.nmsu.edu/discovery/slurm/backfill-and-checkpoints/#_introduction_to_checkpoint>`_. If your job code doesn't include checkpointing, then submitting the job to a preempt queue could result in your job being preempted without any saved progress/results.
+
+On Delta, jobs are allotted a **minimum of 10 preempt-free minutes**; any job asking for at least 10 minutes in a preempt partition will get the full ten minutes (plus 5 GraceTime minutes if it has installed a SIGTERM handler).
 
 Slurm Configuration for Preempt Queues
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -167,7 +169,7 @@ Slurm Configuration for Preempt Queues
    PreemptType             = preempt/partition_prio
    PreemptExemptTime       = 00:10:00
  
-   # GraceTime (configurable per partition) is 5 minutes (300s), a job can potentially run that
+   # GraceTime is 5 minutes (300s), a job can potentially run that
    # much longer if it handles SIGTERM on it's own. SIGKILL arrives at least 5 minutes later.
    [arnoldg@dt-login04 bin]$ scontrol show partition gpu-slingshot11-preempt | grep -i grace
    DefaultTime=00:30:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=300 Hidden=NO
