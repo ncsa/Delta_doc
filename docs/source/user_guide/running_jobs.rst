@@ -148,7 +148,7 @@ Preemptible Queues
 Preemptible queues are available on Delta. When a job that can preempt others is allocated resources that are already allocated to one or more jobs that could be preempted by the first job, the preemptable job(s) are preempted (see `Slurm preemption <https://slurm.schedmd.com/preempt.html>`_ for more information about preemption). Jobs are allotted a **minimum of 10 preempt-free minutes**; any job asking for at least 10 minutes in a preempt partition will ge thte full ten minutes (plus bonus GraceTime minutes if it has installed a SIGTERM handler).
 
 .. warning::
-   If your script/code/program doesn't include `checkpointing <https://hpc.nmsu.edu/discovery/slurm/backfill-and-checkpoints/#_introduction_to_checkpoint>`_, submitting a job to a preempt queue could result in your job being preempted without any saved progress/results.
+   Preemmptible queues are recommended for jobs that include `checkpointing <https://hpc.nmsu.edu/discovery/slurm/backfill-and-checkpoints/#_introduction_to_checkpoint>`_. If your job code doesn't include checkpointing, then submitting the job to a preempt queue could result in your job being preempted without any saved progress/results.
 
 Slurm Configuration for Preempt Queues
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -166,14 +166,21 @@ Slurm Configuration for Preempt Queues
    [arnoldg@dt-login04 bin]$ scontrol show partition gpu-slingshot11-preempt | grep -i grace
    DefaultTime=00:30:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=300 Hidden=NO
 
-What Happens When Your Job Gets Preempted
+What Happens When a Job Gets Preempted
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When your job script/code/program gets preempted:
+When your a script/code/program gets preempted:
 
-#. Job receives SIGTERM and SIGCONT.
+#. A preempting job is allocated resources currently used by the soon-to-be preempted job
 
-#. 5 minutes later (Delta's GraceTime setting on the partition), the job receives SIGTERM, SIGCONT, and SIGKILL (SIGKILL cannot be handled or caught). SIGKILL is sent after this set of SIGTERM and SIGCONT but you cannot rely on any particular time window after these signals.
+#. Has the soon-to-be preempted job run for at least 10 minutes (PreemptExemptTime)? 
+
+   - If yes, continue to step 3. 
+   - If no, continue to step 3 after the 10 minutes has elapsed.
+
+#. The job receives **SIGTERM** and **SIGCONT**.
+
+#. 5 minutes later (Delta's **GraceTime** setting on the partition), the job receives **SIGTERM**, **SIGCONT**, and **SIGKILL** (SIGKILL cannot be handled or caught). SIGKILL is sent after the set of SIGTERM and SIGCONT, but you cannot rely on any particular time window after these signals.
 
 In the below example, job 608 is preempted.
 
