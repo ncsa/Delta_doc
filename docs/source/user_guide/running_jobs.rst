@@ -140,6 +140,108 @@ To enable automatic requeue and restart of a job by Slurm, please add the follow
 When a job is requeued due to an event like a node failure, the batch script is initiated from its beginning. 
 Job scripts need to be written to handle automatically restarting from checkpoints.
 
+.. _preempt:
+
+Preemptible Queues
+-------------------
+
+Preemptible queues are available on Delta. When a job that can preempt others is allocated resources that are already allocated to one or more jobs that could be preempted by the first job, the preemptable job(s) are preempted (see `Slurm preemption <https://slurm.schedmd.com/preempt.html>`_ for more information about preemption). Jobs are allotted a **minimum of 10 preempt-free minutes**; any job asking for at least 10 minutes in a preempt partition will ge thte full ten minutes (plus bonus GraceTime minutes if it has installed a SIGTERM handler).
+
+.. warning::
+   If your script/code/program doesn't include `checkpointing <https://hpc.nmsu.edu/discovery/slurm/backfill-and-checkpoints/#_introduction_to_checkpoint>`_, submitting a job to a preempt queue could result in your job being preempted without any saved progress/results.
+
+Slurm Configuration for Preempt Queues
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+   # PreemptExemptTime is 10 minutes, so preempt jobs will always get to run at least 10 minutes
+   [arnoldg@dt-login04 bin]$ scontrol show config | grep -i preempt
+   PreemptMode             = REQUEUE
+   PreemptType             = preempt/partition_prio
+   PreemptExemptTime       = 00:10:00
+ 
+   # GraceTime (configurable per partition) is 5 minutes (300s), a job can potentially run that
+   # much longer if it handles SIGTERM on it's own. SIGKILL arrives at least 5 minutes later.
+   [arnoldg@dt-login04 bin]$ scontrol show partition gpu-slingshot11-preempt | grep -i grace
+   DefaultTime=00:30:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=300 Hidden=NO
+
+What Happens When Your Job Gets Preempted
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When your job script/code/program gets preempted:
+
+#. Job receives SIGTERM and SIGCONT.
+
+#. 5 minutes later (Delta's GraceTime setting on the partition), the job receives SIGTERM, SIGCONT, and SIGKILL (SIGKILL cannot be handled or caught). SIGKILL is sent after this set of SIGTERM and SIGCONT but you cannot rely on any particular time window after these signals.
+
+In the below example, job 608 is preempted.
+
+.. raw:: html
+
+   <details>
+   <summary><a><b>Preempted Job Example</b> <i>(click to expand/collapse)</i></a></summary>
+
+.. code-block::
+
+   [arnoldg@dt-login04 bin]$ cat trap.sh
+   #!/bin/bash
+    
+   trap "echo The script received SIGINT" SIGINT
+   trap "echo The script received SIGTERM" SIGTERM
+   trap "echo The script received SIGCONT" SIGCONT
+   trap "echo The script received SIGQUIT" SIGQUIT
+   trap "echo The script received SIGUSR1" SIGUSR1
+   trap "echo The script received SIGUSR2" SIGUSR2
+   
+   while true
+   do
+       let "i=i+1"
+       echo "waiting for signals, $i minutes ..."
+       sleep 1m
+   done
+   
+    ### I'm in an salloc preempt partition job shell here:
+    + salloc --mem=16g --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 --partition=gpu-slingshot11-preempt --account=bbka-delta-gpu --time=00:30:00 --gpus-per-node=1
+   salloc: Granted job allocation 608
+   salloc: Waiting for resource configuration
+   salloc: Nodes gpub003 are ready for job
+   
+   [arnoldg@dt-login04 bin]$ time srun ./trap.sh
+   waiting for signals, 1 minutes ...
+   waiting for signals, 2 minutes ...
+   ### I queued a normal priority job at this time stamp, but the preempt job is guaranteed 10 minutes by PreemptExemptTime
+   waiting for signals, 3 minutes ...
+   waiting for signals, 4 minutes ...
+   waiting for signals, 5 minutes ...
+   waiting for signals, 6 minutes ...
+   waiting for signals, 7 minutes ...
+   waiting for signals, 8 minutes ...
+   waiting for signals, 9 minutes ...
+   waiting for signals, 10 minutes ...
+   slurmstepd: error: *** STEP 608.0 ON gpub003 CANCELLED AT 2023-09-15T12:22:07 ***
+   The script received SIGTERM
+   The script received SIGCONT
+   waiting for signals, 11 minutes ...
+   waiting for signals, 12 minutes ...
+   waiting for signals, 13 minutes ...
+   waiting for signals, 14 minutes ...
+   waiting for signals, 15 minutes ...
+   salloc: Job allocation 608 has been revoked.
+   srun: forcing job termination
+   srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+   srun: forcing job termination
+   [arnoldg@dt-login04 bin]$ The script received SIGTERM
+   The script received SIGCONT
+   waiting for signals, 16 minutes ...
+   srun: error: gpub003: task 0: Killed
+   
+   [arnoldg@dt-login04 bin]$
+
+.. raw:: html
+
+   </details>
+|
 
 .. _job_mgmt:
 
