@@ -81,6 +81,8 @@ Delta Production Partitions/Queues
    +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
    | cpu-interactive       | CPU       | TBD               | 30 min       | TBD                       | 2.0           |
    +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | cpu-preempt           |           | TBD               | 48 hr        |                           | 0.5           | 
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
    | gpuA100x4             | quad-A100 | TBD               | 48 hr        | TBD                       | 1.0           |
    |                       |           |                   |              |                           |               |
    | gpuA100x4*            |           |                   |              |                           |               |
@@ -93,6 +95,8 @@ Delta Production Partitions/Queues
    +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
    | gpuA100x4-interactive | quad-A100 | TBD               | 1 hr         | TBD                       | 2.0           |
    +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuA100x4-preempt     | quad-A100 | TBD               | 48 hr        | TBD                       | 0.5           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
    | gpuA100x8             | octa-A100 | TBD               | 48 hr        | TBD                       | 1.5           |
    +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
    | gpuA100x8-interactive | octa-A100 | TBD               | 1 hr         | TBD                       | 3.0           |
@@ -100,6 +104,8 @@ Delta Production Partitions/Queues
    | gpuA40x4              | quad-A40  | TBD               | 48 hr        | TBD                       | 0.5           |
    +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
    | gpuA40x4-interactive  | quad-A40  | TBD               | 1 hr         | TBD                       | 1.0           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuA40x4-preempt      | quad-A40  | TBD               | 48 hr        | TBD                       | 0.25          |
    +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
    | gpuMI100x8            | octa-MI100| TBD               | 48 hr        | TBD                       | 0.25          |
    +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
@@ -169,20 +175,16 @@ Slurm Configuration for Preempt Queues
 What Happens When a Job Gets Preempted
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When a script/code/program gets preempted:
+#. A preempting job (**job-B**) is allocated resources currently in use by the soon-to-be preempted job (**job-A**)
 
-#. A preempting job is allocated resources currently used by the soon-to-be preempted job
-
-#. Has the soon-to-be preempted job run for at least 10 minutes (PreemptExemptTime)? 
+#. Has **job-A** run for at least 10 minutes (PreemptExemptTime)? 
 
    - If yes, continue to step 3. 
    - If no, continue to step 3 after the 10 minutes has elapsed.
 
-#. The job receives **SIGTERM** and **SIGCONT**.
+#. **job-A** receives **SIGTERM** and **SIGCONT**.
 
-#. 5 minutes later (Delta's **GraceTime** setting on the partition), the job receives **SIGTERM**, **SIGCONT**, and **SIGKILL** (SIGKILL cannot be handled or caught). SIGKILL is sent after the set of SIGTERM and SIGCONT, but you cannot rely on any particular time window after these signals.
-
-In the below example, job 608 is preempted.
+#. 5 minutes later (Delta's **GraceTime** setting on the partition), **job-A** receives **SIGTERM**, **SIGCONT**, and **SIGKILL** (SIGKILL cannot be handled or caught). SIGKILL is sent after the set of SIGTERM and SIGCONT, but you cannot rely on any particular time window after these signals.
 
 .. raw:: html
 
