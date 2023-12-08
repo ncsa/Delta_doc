@@ -151,14 +151,14 @@ Job scripts need to be written to handle automatically restarting from checkpoin
 Preemptible Queues
 -------------------
 
-Preemptible queues are available on Delta (see :ref:`partitions`). See the `Slurm preemption documentation <https://slurm.schedmd.com/preempt.html>`_ to learn more about preemption. 
+Preemptible queues are available on Delta (see :ref:`partitions`).
 
-On Delta, jobs are allotted a **minimum of 10 preempt-free minutes** (PreemptExemptTime); any job asking for at least 10 minutes in a preempt partition will get the full ten minutes (plus 5 minutes of GraceTime if the job has a SIGTERM handler).
+On Delta, jobs are allotted a **minimum of 10 minutes** (**PreemptExemptTime**); any job asking for at least 10 minutes in a preempt partition will get the full ten minutes (plus 5 minutes of GraceTime if the job has a **SIGTERM** handler).
 
 .. warning::
    Preemptible queues are only recommended for jobs that include `checkpointing <https://hpc.nmsu.edu/discovery/slurm/backfill-and-checkpoints/#_introduction_to_checkpoint>`_. 
 
-   If your job code doesn't include checkpointing, then submitting the job to a preempt queue could result in your job being preempted without any saved progress/results.
+   If your job code doesn't include checkpointing, then submitting the job to a preempt queue could result in your job being preempted without saved progress/results.
 
 Slurm Configuration for Preempt Queues
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -188,7 +188,7 @@ What Happens When a Job Gets Preempted
 
 #. **job-A** receives **SIGTERM** and **SIGCONT**.
 
-#. 5 minutes later (Delta's **GraceTime** setting on the partition), **job-A** receives **SIGTERM**, **SIGCONT**, and **SIGKILL** (SIGKILL cannot be handled or caught). SIGKILL is sent after SIGTERM and SIGCONT, but you can't rely a specific time delay after these signals.
+#. 5 minutes later (Delta's **GraceTime** setting on the partition), **job-A** receives another **SIGTERM** and **SIGCONT** plus **SIGKILL** (SIGKILL cannot be handled or caught). SIGKILL is sent after SIGTERM and SIGCONT, but you can't rely a specific time delay after these signals.
 
 .. raw:: html
 
@@ -258,6 +258,8 @@ What Happens When a Job Gets Preempted
 
 Preemption References
 ~~~~~~~~~~~~~~~~~~~~~~
+
+There are many online resources to learn more about preemption, checkpointing, signals, and traps; here are a few to get you started.
 
 - `Slurm preemption documentation <https://slurm.schedmd.com/preempt.html>`_
 - `PyTorch checkpoint documentation <https://pytorch.org/tutorials/recipes/recipes/saving_and_loading_a_general_checkpoint.html>`_
