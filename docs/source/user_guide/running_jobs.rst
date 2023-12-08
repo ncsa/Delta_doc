@@ -153,15 +153,17 @@ Preemptible Queues
 
 Preemptible queues are available on Delta (see :ref:`partitions`). See the `Slurm preemption documentation <https://slurm.schedmd.com/preempt.html>`_ to learn more about preemption. 
 
-.. warning::
-   Preemmptible queues are recommended for jobs that include `checkpointing <https://hpc.nmsu.edu/discovery/slurm/backfill-and-checkpoints/#_introduction_to_checkpoint>`_. If your job code doesn't include checkpointing, then submitting the job to a preempt queue could result in your job being preempted without any saved progress/results.
+On Delta, jobs are allotted a **minimum of 10 preempt-free minutes** (PreemptExemptTime); any job asking for at least 10 minutes in a preempt partition will get the full ten minutes (plus 5 minutes of GraceTime if the job has a SIGTERM handler).
 
-On Delta, jobs are allotted a **minimum of 10 preempt-free minutes**; any job asking for at least 10 minutes in a preempt partition will get the full ten minutes (plus 5 GraceTime minutes if it has installed a SIGTERM handler).
+.. warning::
+   Preemptible queues are only recommended for jobs that include `checkpointing <https://hpc.nmsu.edu/discovery/slurm/backfill-and-checkpoints/#_introduction_to_checkpoint>`_. 
+
+   If your job code doesn't include checkpointing, then submitting the job to a preempt queue could result in your job being preempted without any saved progress/results.
 
 Slurm Configuration for Preempt Queues
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block::
+.. code-block:: terminal
 
    # PreemptExemptTime is 10 minutes, so preempt jobs will always get to run at least 10 minutes
    [arnoldg@dt-login04 bin]$ scontrol show config | grep -i preempt
@@ -170,7 +172,7 @@ Slurm Configuration for Preempt Queues
    PreemptExemptTime       = 00:10:00
  
    # GraceTime is 5 minutes (300s), a job can potentially run that
-   # much longer if it handles SIGTERM on it's own. SIGKILL arrives at least 5 minutes later.
+   # much longer if it handles SIGTERM on its own. SIGKILL arrives at least 5 minutes later.
    [arnoldg@dt-login04 bin]$ scontrol show partition gpu-slingshot11-preempt | grep -i grace
    DefaultTime=00:30:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=300 Hidden=NO
 
@@ -186,14 +188,14 @@ What Happens When a Job Gets Preempted
 
 #. **job-A** receives **SIGTERM** and **SIGCONT**.
 
-#. 5 minutes later (Delta's **GraceTime** setting on the partition), **job-A** receives **SIGTERM**, **SIGCONT**, and **SIGKILL** (SIGKILL cannot be handled or caught). SIGKILL is sent after the set of SIGTERM and SIGCONT, but you cannot rely on any particular time window after these signals.
+#. 5 minutes later (Delta's **GraceTime** setting on the partition), **job-A** receives **SIGTERM**, **SIGCONT**, and **SIGKILL** (SIGKILL cannot be handled or caught). SIGKILL is sent after SIGTERM and SIGCONT, but you can't rely a specific time delay after these signals.
 
 .. raw:: html
 
    <details>
    <summary><a><b>Preempted Job Example</b> <i>(click to expand/collapse)</i></a></summary>
 
-.. code-block::
+.. code-block:: terminal
 
    [arnoldg@dt-login04 bin]$ cat trap.sh
    #!/bin/bash
@@ -212,7 +214,7 @@ What Happens When a Job Gets Preempted
        sleep 1m
    done
    
-    ### I'm in an salloc preempt partition job shell here:
+    ### I'm in a salloc preempt partition job shell here:
     + salloc --mem=16g --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 --partition=gpu-slingshot11-preempt --account=bbka-delta-gpu --time=00:30:00 --gpus-per-node=1
    salloc: Granted job allocation 608
    salloc: Waiting for resource configuration
@@ -259,8 +261,8 @@ Preemption References
 
 - `Slurm preemption documentation <https://slurm.schedmd.com/preempt.html>`_
 - `PyTorch checkpoint documentation <https://pytorch.org/tutorials/recipes/recipes/saving_and_loading_a_general_checkpoint.html>`_
-- `Tensorflow checkpoint documentation <https://www.tensorflow.org/guide/checkpoint>`_
-- `Ubuntu signal manpage <https://manpages.ubuntu.com/manpages/focal/en/man7/signal.7.html>`_
+- `TensorFlow checkpoint documentation <https://www.tensorflow.org/guide/checkpoint>`_
+- `Ubuntu signal man page <https://manpages.ubuntu.com/manpages/focal/en/man7/signal.7.html>`_
 - `Bash Guide for Beginners - 12.2. Traps <https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_12_02.html>`_
 - `Python signal documentation <https://docs.python.org/3/library/signal.html>`_
 
