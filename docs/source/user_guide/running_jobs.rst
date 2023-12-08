@@ -151,14 +151,14 @@ Job scripts need to be written to handle automatically restarting from checkpoin
 Preemptible Queues
 -------------------
 
-Preemptible queues are available on Delta (see :ref:`partitions`).
-
-On Delta, jobs are allotted a **minimum of 10 minutes** (**PreemptExemptTime**); any job asking for at least 10 minutes in a preempt partition will get the full ten minutes (plus 5 minutes of GraceTime if the job has a **SIGTERM** handler).
-
 .. warning::
    Preemptible queues are only recommended for jobs that include `checkpointing <https://hpc.nmsu.edu/discovery/slurm/backfill-and-checkpoints/#_introduction_to_checkpoint>`_. 
 
    If your job code doesn't include checkpointing, then submitting the job to a preempt queue could result in your job being preempted without saved progress/results.
+
+Preemptible queues are available on Delta. See :ref:`partitions` for the partition names, max durations, and charge factors.
+
+On Delta, jobs are allotted a **minimum of 10 minutes** (**PreemptExemptTime**), plus 5 minutes of **GraceTime** if the job has a **SIGTERM** handler.
 
 Slurm Configuration for Preempt Queues
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
