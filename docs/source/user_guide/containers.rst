@@ -148,7 +148,7 @@ Container list (as of March, 2022)
    theano:18.08
    torch:18.08-py2
 
-See also: `https://catalog.ngc.nvidia.com/containers <https://catalog.ngc.nvidia.com/containers>`_
+See the `NVIDIA containers catalog <https://catalog.ngc.nvidia.com/containers>`_ for more information.
 
 AMD Infinity Hub containers for MI100
 -------------------------------------
@@ -213,7 +213,7 @@ Other Containers
 Extreme-scale Scientific Software Stack (E4S)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The E4S container with GPU (CUDA and ROCm) support is provided for users of specific Exascale Computing Project (ECP) packages made available by the E4S project (https://e4s-project.github.io/). The Singularity image is available as:
+The E4S container with GPU (CUDA and ROCm) support is provided for users of specific Exascale Computing Project (ECP) packages made available by the `E4S project <https://e4s-project.github.io/>`_. The Singularity image is available as:
 
 .. code-block::
 
@@ -233,4 +233,4 @@ To use E4S with NVIDIA GPUs:
 The Spack package inside of the image will interact with a local Spack installation. 
 If ~/.spack directory exists, it might need to be renamed.
 
-More information can be found at: https://e4s-project.github.io/download.html
+More information can be found on the `E4S containers page <https://e4s-project.github.io/download.html>`_.

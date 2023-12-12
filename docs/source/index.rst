@@ -8,7 +8,7 @@
 Delta User Documentation
 ################################################
 
-..  image:: images/delta_front.png
+..  image:: images/delta_front_1.png
     :alt: 12 racks in a machine room, with overhead power, with red to orange "DELTA" wrap on the rack doors.  
     :width: 700px
 
