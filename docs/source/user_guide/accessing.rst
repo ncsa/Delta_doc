@@ -1,6 +1,6 @@
 .. _access:
 
-Accessing the System
+Delta Login Methods
 =========================
 
 .. _direct_access:
