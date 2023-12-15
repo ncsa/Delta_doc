@@ -13,7 +13,7 @@ For **ACCESS allocation issues**, create a ticket via the `ACCESS Help page <htt
 
 **To help NCSA staff efficiently address your request, in your initial email, please include:**
 
-- A descriptive subject line starting with **Delta** (for example, "Nightingale: SPSS application isn't working.")
+- A descriptive subject line starting with **Delta** (for example, "Delta: srun isn't working.")
 - In the email body, include:
   
   - The UserID you use to log into the system.
