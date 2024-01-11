@@ -19,6 +19,11 @@ Environment variables: ACCESS CUE, SLURM batch
 
 Using :ref:`module`
 
+Allocations
+-------------
+
+The majority of Delta is allocated through ACCESS and is the preferred path to getting compute time on Delta. A portion of the Delta system is also available to Illinois researchers, primarily to fill needs not met by the ACCESS program. See the `Delta Allocations <https://delta.ncsa.illinois.edu/delta-allocations/>`_ page to learn more, including how to submit allocation requests.
+
 Allocation Policies
 -----------------------
 
@@ -26,6 +31,7 @@ ACCESS awarded projects and allocations should receive periodic messages regardi
 
 - An ACCESS project is marked for inactivation once it has no valid resource allocation on the system.
 - Current ACCESS policy is for user access to be removed if a user is not a member of any *active* project on Delta.
+- Delta does NOT allow storage only allocations, all user accounts must be on an active compute resource allocation. All Delta storage resources are intended for data in active use. Delta does not provide storage resources for archiving data or other long-term storage.
 
 Illinois awarded projects and allocations currently *do not* receive periodic messages regarding approaching project expiration.
 

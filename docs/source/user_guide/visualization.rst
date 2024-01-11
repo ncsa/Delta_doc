@@ -3,13 +3,13 @@ Visualization
 
 Delta A40 nodes support NVIDIA ray tracing hardware.
 
-Paraview 
+ParaView 
 ----------
 
 Client Server Mode - unsupported
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-https://engaging-web.mit.edu/eofe-wiki/software/paraview_client_server_mode/
+`MIT Engaging cluster ParaView client server mode documentation <https://engaging-web.mit.edu/eofe-wiki/software/paraview_client_server_mode/>`_.
 
 Client server mode appears **broken**. When setting up SSH tunnel, as shown, you get this on the client side:
 
@@ -20,12 +20,12 @@ Client server mode appears **broken**. When setting up SSH tunnel, as shown, you
     returns different values on the two connecting processes
     (Current value: 100).
 
-At least one site does not support client-server anymore (due to issues like this): https://help.itc.rwth-aachen.de/en/service/rhr4fjjutttf/article/b98c687822874a30b740ef09f4330e7b/
+At least one site does not support client-server anymore (due to issues like this one from the `RWTH HPC IT Center help page <https://help.itc.rwth-aachen.de/en/service/rhr4fjjutttf/article/b98c687822874a30b740ef09f4330e7b/>`_).
 
-pvpython and pvbatch
+PvPython and PvBatch
 ~~~~~~~~~~~~~~~~~~~~~
 
-pvpython and pvbatch work and are available. Suggest https://www.paraview.org/Wiki/PvPython_and_PvBatch and using only the pvbatch part of paraview:
+PvPython and PvBatch work and are available. Suggest reviewing the `ParaView PvPython and PvBatch wiki <https://www.paraview.org/Wiki/PvPython_and_PvBatch>`_ and using only the PvBatch part of ParaView:
 
 .. code-block::
 
@@ -44,7 +44,7 @@ greenSphereScreenshot.png:
 VisIt Client-Server Mode
 -------------------------
 
-Following: https://www.sdsc.edu/education_and_training/tutorials1/visit.html, below are the screenshots for using Delta in a similar way.
+Following the `SDSC VisIt getting started guide <https://www.sdsc.edu/education_and_training/tutorials1/visit.html>`_, below are the screenshots for using Delta in a similar way.
 
 .. note::
    **Pick a unique login node, .bashrc on Delta.** Choose either dt-login01 or dt-login02 (not dt-login) to keep SSH tunnel connections working smoothly. Be sure to SSH to that login node **before** you proceed (if you have not logged into it before). VisIt cannot deal with the initial login confirmation of a new host key.

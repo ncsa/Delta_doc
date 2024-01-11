@@ -60,7 +60,7 @@ To transfer files to and from the Delta system:
 
 -  ``rsync`` - Use it for small to modest transfers to avoid impacting the usability of the Delta login node.
 
-   -  https://campuscluster.illinois.edu/resources/docs/storage-and-data-guide/ (``scp``, ``sftp``, ``rsync``)
+   -  `Campus Cluster storage and data guide <https://docs.ncsa.illinois.edu/systems/icc/en/latest/user_guide/storage_data.html>`_ (``scp``, ``sftp``, ``rsync``)
 
 -  Globus - Use it for large data transfers.
 

@@ -15,71 +15,79 @@ Serial
 
 To build (compile and link) a serial program in Fortran, C, and C++:
 
-=================== ================= ====================
-GCC                 AOCC              NVHPC
-=================== ================= ====================
-gfortran *myprog*.f flang *myprog*.f  nvfortran *myprog*.f
-gcc *myprog*.c      clang *myprog*.c  nvc *myprog*.c
-g++ *myprog*.cc     clang *myprog*.cc nvc++ *myprog*.cc
-=================== ================= ====================
+.. table:: Serial Program Commands
+
+   =================== ================= ====================
+   GCC                 AOCC              NVHPC
+   =================== ================= ====================
+   gfortran *myprog*.f flang *myprog*.f  nvfortran *myprog*.f
+   gcc *myprog*.c      clang *myprog*.c  nvc *myprog*.c
+   g++ *myprog*.cc     clang *myprog*.cc nvc++ *myprog*.cc
+   =================== ================= ====================
 
 MPI
 -------------------------
 To build (compile and link) a MPI program in Fortran, C, and C++:
 
-+----------------------------------+--------------------------------------------+--------------------------------------+
-| MPI Implementation               | Module Files for                           | Build Commands                       |
-|                                  | MPI/Compiler                               |                                      |
-+==================================+============================================+======================================+
-|                                  | .. code-block::                            |                                      |
-|                                  |                                            |                                      |
-| OpenMPI                          |    aocc/3.20 openmpi                       | +-------------+-------------------+  |
-|                                  |                                            | | Fortran 77: | mpif77 myprog.f   |  |
-| (`Home Page`_ / `Documentation`_)| .. code-block::                            | |             |                   |  |
-|                                  |                                            | +-------------+-------------------+  |
-|                                  |    gcc/11.2.0 openmpi                      | | Fortran 90: | mpif90 myprog.f90 |  |
-|                                  |                                            | |             |                   |  |
-|                                  | .. code-block::                            | |             |                   |  |
-|                                  |                                            | +-------------+-------------------+  |
-|                                  |    nvhpc/22.2 openmpi                      | | C:          | mpicc myprog.c    |  |
-|                                  |                                            | |             |                   |  |
-|                                  | .. code-block::                            | +-------------+-------------------+  |
-|                                  |                                            | | C++:        | mpic++ myprog.cc  |  |
-|                                  |    intel-openapi-compilers/2022.02 openmpi | |             |                   |  |
-|                                  |                                            | +-------------+-------------------+  |
-|                                  |                                            |                                      |
-+----------------------------------+--------------------------------------------+--------------------------------------+
+.. table:: MPI Program Commands
 
-.. _Home Page: http://www.open-mpi.org
+   +------------------------------+--------------------------------------------+--------------------------------------+
+   | MPI Implementation           | Module Files for                           | Build Commands                       |
+   |                              | MPI/Compiler                               |                                      |
+   +==============================+============================================+======================================+
+   |                              | .. code-block::                            |                                      |
+   |                              |                                            |                                      |
+   | OpenMPI                      |    aocc/3.20 openmpi                       | +-------------+-------------------+  |
+   |                              |                                            | | Fortran 77: | mpif77 myprog.f   |  |
+   | - `Open MPI Home Page`_      | .. code-block::                            | |             |                   |  |
+   | - `Open MPI Documentation`_  |                                            | +-------------+-------------------+  |
+   |                              |    gcc/11.2.0 openmpi                      | | Fortran 90: | mpif90 myprog.f90 |  |
+   |                              |                                            | |             |                   |  |
+   |                              | .. code-block::                            | |             |                   |  |
+   |                              |                                            | +-------------+-------------------+  |
+   |                              |    nvhpc/22.2 openmpi                      | | C:          | mpicc myprog.c    |  |
+   |                              |                                            | |             |                   |  |
+   |                              | .. code-block::                            | +-------------+-------------------+  |
+   |                              |                                            | | C++:        | mpic++ myprog.cc  |  |
+   |                              |    intel-openapi-compilers/2022.02 openmpi | |             |                   |  |
+   |                              |                                            | +-------------+-------------------+  |
+   |                              |                                            |                                      |
+   +------------------------------+--------------------------------------------+--------------------------------------+
 
-.. _Documentation: http://www.open-mpi.org/doc
+.. _Open MPI Home Page: http://www.open-mpi.org
+
+.. _Open MPI Documentation: http://www.open-mpi.org/doc
 
 OpenMP
 -------------------------
 
-To build an OpenMP program, use the **-fopenmp** / **-mp** option:
+To build an OpenMP program, use the **-fopenmp** / **-mp** option.
 
-================================ ============================ =======================
-GCC                              AOCC                         NVHPC
-================================ ============================ =======================
-gfortran -fopenmp *myprog*.f     flang -fopenmp *myprog*.f    nvfortran -mp *myprog*.f
-gcc -fopenmp *myprog*.c          clang -fopenmp *myprog*.c    nvc -mp *myprog*.c 
-g++ -fopenmp *myprog*.cc         clang -fopenmp *myprog*.cc   nvc++ -mp *myprog*.cc
-================================ ============================ =======================
+.. table:: OpenMP Program Commands
+
+   ================================ ============================ =======================
+   GCC                              AOCC                         NVHPC
+   ================================ ============================ =======================
+   gfortran -fopenmp *myprog*.f     flang -fopenmp *myprog*.f    nvfortran -mp *myprog*.f
+   gcc -fopenmp *myprog*.c          clang -fopenmp *myprog*.c    nvc -mp *myprog*.c 
+   g++ -fopenmp *myprog*.cc         clang -fopenmp *myprog*.cc   nvc++ -mp *myprog*.cc
+   ================================ ============================ =======================
 
 Hybrid MPI/OpenMP
 -------------------
 
-To build an MPI/OpenMP hybrid program, use the **-fopenmp** / **-mp** option with the MPI compiling commands:
+To build an MPI/OpenMP hybrid program, use the **-fopenmp** / **-mp** option with the MPI compiling commands.
 
-============================ =======================
-GCC                            PGI/NVHPC
-============================ =======================
-mpif77 -fopenmp *myprog*.f     mpif77 -mp *myprog*.f
-mpif90 -fopenmp *myprog*.f90   mpif90 -mp *myprog*.f90
-mpicc -fopenmp *myprog*.c      mpicc -mp *myprog*.c
-mpic++ -fopenmp *myprog*.cc    mpic++ -mp *myprog*.cc
-============================ =======================
+.. table:: Hybrid MPI/OpenMP Program Commands
+
+   ============================ =======================
+   GCC                            PGI/NVHPC
+   ============================ =======================
+   mpif77 -fopenmp *myprog*.f     mpif77 -mp *myprog*.f
+   mpif90 -fopenmp *myprog*.f90   mpif90 -mp *myprog*.f90
+   mpicc -fopenmp *myprog*.c      mpicc -mp *myprog*.c
+   mpic++ -fopenmp *myprog*.cc    mpic++ -mp *myprog*.cc
+   ============================ =======================
 
 Cray xthi.c Sample Code
 ---------------------------
@@ -164,13 +172,15 @@ OpenACC
 
 To build an OpenACC program, use the **-acc** option and the **-mp** option for multi-threaded:
 
-========================= ================================
-Non-Multi-threaded          Multi-threaded
-========================= ================================
-nvfortran -acc *myprog*.f   nvfortran -acc -mp *myprog*.f
-nvc -acc *myprog*.c         nvc -acc -mp *myprog*.c
-nvc++ -acc *myprog*.cc      nvc++ -acc -mp *myprog*.cc
-========================= ================================
+.. table:: OpenACC Program Commands
+
+   ========================= ================================
+   Non-Multi-threaded          Multi-threaded
+   ========================= ================================
+   nvfortran -acc *myprog*.f   nvfortran -acc -mp *myprog*.f
+   nvc -acc *myprog*.c         nvc -acc -mp *myprog*.c
+   nvc++ -acc *myprog*.cc      nvc++ -acc -mp *myprog*.cc
+   ========================= ================================
 
 CUDA
 -------------------------
@@ -195,7 +205,7 @@ nv* commands when nvhpc is loaded
    nvextract                nvidia-smi               nvzip
    nvfortran                nvidia-xconfig
 
-See also: https://developer.nvidia.com/hpc-sdk
+See the `NVIDIA HPC SDK <https://developer.nvidia.com/hpc-sdk>`_ page for more information.
 
 Note: The Multi-Process Service (MPS) is not currently enabled on Delta GPU nodes. Submit a support request (:ref:`help`) for assistance if you have questions about MPS status.
 
@@ -236,7 +246,7 @@ AMD HIP development environment on gpud01 (setting the path on the compute node)
    No Arguments passed, exiting ...
    [arnoldg@gpud01 bin]$ 
 
-See also: https://docs.amd.com/projects/HIP/en/docs-5.0.0/index.html and https://rocmdocs.amd.com/en/latest/
+See the `AMD HIP documentation <https://docs.amd.com/projects/HIP/en/docs-5.0.0/index.html>`_ and `AMD ROCm documentation <https://rocmdocs.amd.com/en/latest/>`_ for more information.
    
 Visual Studio Code
 ---------------------
@@ -244,7 +254,7 @@ Visual Studio Code
 VS Code code-server
 ~~~~~~~~~~~~~~~~~~~~
 
-Microsoft VS Code documentation: https://code.visualstudio.com/docs
+`Microsoft VS Code documentation <https://code.visualstudio.com/docs>`_
 
 The code-server for VS Code can be run on Delta in manual mode (without Open OnDemand) by following these steps:
 
@@ -297,7 +307,7 @@ The code-server for VS Code can be run on Delta in manual mode (without Open OnD
 Remote - SSH
 ~~~~~~~~~~~~~~~~~
 
-Follow: https://code.visualstudio.com/docs/remote/ssh
+Follow the `Visual Studio Code remote development using SSH <https://code.visualstudio.com/docs/remote/ssh>`_ guide.
 
 #. As stated in the guide, install "Remote - SSH" into Visual Studio:
 
@@ -330,7 +340,7 @@ Follow: https://code.visualstudio.com/docs/remote/ssh
 
 #. Proceed to F1 → Remote SSH and connect to Delta. Then, following the guide, use Visual Studio as normal. 
    
-   Windows users: The login box of vscode will display your login as 2fa<delta_username>, and you may not see a 2nd login box for 2fa Duo until you press the "details" link at lower right after you enter your password. Use the Duo passcode after pressing "details" link when the next password prompt appears at the top.  See also: https://code.visualstudio.com/docs/remote/troubleshooting and search for "two-factor".
+   Windows users: The login box of vscode will display your login as 2fa<delta_username>, and you may not see a 2nd login box for 2fa Duo until you press the "details" link at lower right after you enter your password. Use the Duo passcode after pressing "details" link when the next password prompt appears at the top.  Also see the `Visual Studio Code remote development troubleshooting <https://code.visualstudio.com/docs/remote/troubleshooting>`_ guide and search for "two-factor".
 
    Example of working with a C file remote on Delta:
 
@@ -341,7 +351,7 @@ Follow: https://code.visualstudio.com/docs/remote/ssh
 Remote Jupyter
 ~~~~~~~~~~~~~~~~~
 
-See: https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server and :ref:`jupyter` (open two new browser tabs).
+See the `Visual Studio Code working with Juypter Notebooks <https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server>`_ guide and :ref:`jupyter` (open two new browser tabs).
 
 #. Install the Jupyter extension for Visual Studio, if you have not already done so.
 

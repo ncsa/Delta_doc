@@ -6,15 +6,15 @@ Accessing the Compute Nodes
 
 Delta implements the Slurm batch environment to manage access to the compute nodes. 
 Use the Slurm commands to run batch jobs or for interactive access to compute nodes. 
-See: https://slurm.schedmd.com/quickstart.html for an introduction to Slurm. 
+See the `Slurm quick start guide <https://slurm.schedmd.com/quickstart.html>`_ for an introduction to Slurm. 
 There are multiple ways to access compute nodes on Delta.
 
 Batch scripts (sbatch) or Interactive (srun , salloc), which is right for me?
 
 - :ref:`sbatch` . Use batch scripts for jobs that are debugged, ready to run, and don't require interaction.
   Sample Slurm batch job scripts are provided in the :ref:`examples` section.
-  For mixed resource heterogeneous jobs see: https://slurm.schedmd.com/heterogeneous_jobs.html#submitting. 
-  Slurm also supports job arrays for easy management of a set of similar jobs, see:   https://slurm.schedmd.com/job_array.html.
+  For mixed resource heterogeneous jobs see the `Slurm job support documentation <https://slurm.schedmd.com/heterogeneous_jobs.html#submitting>`_. 
+  Slurm also supports job arrays for easy management of a set of similar jobs, see the `Slurm job array documentation <https://slurm.schedmd.com/job_array.html>`_ for more information.
 
 - :ref:`srun` . For interactive use of a compute node, srun will run a single command through slurm on a compute node. srun blocks, it will wait until slurm has scheduled compute resources, and when it returns, the job is complete.
 
@@ -46,7 +46,7 @@ See also, :ref:`mon_node`.
 Scheduler
 -------------
 
-For information, see the Slurm quick reference guide: https://slurm.schedmd.com/quickstart.html
+For information, see the `Slurm quick reference guide <https://slurm.schedmd.com/quickstart.html>`_.
 
 ..  image:: images/running_jobs/slurm_summary.pdf
     :alt: Slurm quick reference guide
@@ -60,50 +60,59 @@ Partitions (Queues)
 Delta Production Default Partition Values
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-======================= ==================
-Property                Value
-======================= ==================
-Default Memory per core 1000 MB
-Default Wall-clock time 30 minutes
-======================= ==================
+.. table:: Delta Default Partition Values
+
+   ======================= ==================
+   Property                Value
+   ======================= ==================
+   Default Memory per core 1000 MB
+   Default Wall-clock time 30 minutes
+   ======================= ==================
 
 Delta Production Partitions/Queues
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-+-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-| Partition/Queue       | Node Type | Max Nodes         | Max Duration | Max Running in            | Charge Factor |
-|                       |           |                   |              |                           |               |
-|                       |           | per Job           |              | Queue/user*               |               |
-+=======================+===========+===================+==============+===========================+===============+
-| cpu                   | CPU       | TBD               | 48 hr        | TBD                       | 1.0           |
-+-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-| cpu-interactive       | CPU       | TBD               | 30 min       | TBD                       | 2.0           |
-+-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-| gpuA100x4             | quad-A100 | TBD               | 48 hr        | TBD                       | 1.0           |
-|                       |           |                   |              |                           |               |
-| gpuA100x4*            |           |                   |              |                           |               |
-|                       |           |                   |              |                           |               |
-| (* indicates this     |           |                   |              |                           |               |
-| is the default        |           |                   |              |                           |               |
-|                       |           |                   |              |                           |               |
-| queue, but submit jobs|           |                   |              |                           |               |
-|                       |           |                   |              |                           |               |
-| to gpuA100x4)         |           |                   |              |                           |               |
-+-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-| gpuA100x4-interactive | quad-A100 | TBD               | 1 hr         | TBD                       | 2.0           |
-+-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-| gpuA100x8             | octa-A100 | TBD               | 48 hr        | TBD                       | 1.5           |
-+-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-| gpuA100x8-interactive | octa-A100 | TBD               | 1 hr         | TBD                       | 3.0           |
-+-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-| gpuA40x4              | quad-A40  | TBD               | 48 hr        | TBD                       | 0.5           |
-+-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-| gpuA40x4-interactive  | quad-A40  | TBD               | 1 hr         | TBD                       | 1.0           |
-+-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-| gpuMI100x8            | octa-MI100| TBD               | 48 hr        | TBD                       | 0.25          |
-+-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-| gpuMI100x8-interactive| octa-MI100| TBD               | 1 hr         | TBD                       | 0.5           |
-+-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+.. table:: Delta Partitions/Queues
+
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | Partition/Queue       | Node Type | Max Nodes         | Max Duration | Max Running in            | Charge Factor |
+   |                       |           |                   |              |                           |               |
+   |                       |           | per Job           |              | Queue/user*               |               |
+   +=======================+===========+===================+==============+===========================+===============+
+   | cpu                   | CPU       | TBD               | 48 hr        | TBD                       | 1.0           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | cpu-interactive       | CPU       | TBD               | 30 min       | TBD                       | 2.0           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | cpu-preempt           | CPU       | TBD               | 48 hr        | TBD                       | 0.5           | 
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuA100x4             | quad-A100 | TBD               | 48 hr        | TBD                       | 1.0           |
+   |                       |           |                   |              |                           |               |
+   | gpuA100x4*            |           |                   |              |                           |               |
+   |                       |           |                   |              |                           |               |
+   | (* this is the default|           |                   |              |                           |               |
+   |                       |           |                   |              |                           |               |
+   | queue, but submit jobs|           |                   |              |                           |               |
+   |                       |           |                   |              |                           |               |
+   | to gpuA100x4)         |           |                   |              |                           |               |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuA100x4-interactive | quad-A100 | TBD               | 1 hr         | TBD                       | 2.0           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuA100x4-preempt     | quad-A100 | TBD               | 48 hr        | TBD                       | 0.5           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuA100x8             | octa-A100 | TBD               | 48 hr        | TBD                       | 1.5           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuA100x8-interactive | octa-A100 | TBD               | 1 hr         | TBD                       | 3.0           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuA40x4              | quad-A40  | TBD               | 48 hr        | TBD                       | 0.5           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuA40x4-interactive  | quad-A40  | TBD               | 1 hr         | TBD                       | 1.0           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuA40x4-preempt      | quad-A40  | TBD               | 48 hr        | TBD                       | 0.25          |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuMI100x8            | octa-MI100| TBD               | 48 hr        | TBD                       | 0.25          |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuMI100x8-interactive| octa-MI100| TBD               | 1 hr         | TBD                       | 0.5           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
 
 sview View of Slurm Partitions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -139,6 +148,125 @@ To enable automatic requeue and restart of a job by Slurm, please add the follow
 When a job is requeued due to an event like a node failure, the batch script is initiated from its beginning. 
 Job scripts need to be written to handle automatically restarting from checkpoints.
 
+.. _preempt:
+
+Preemptible Queues
+-------------------
+
+.. warning::
+   Preemptible queues are only recommended for jobs that include `checkpointing <https://hpc.nmsu.edu/discovery/slurm/backfill-and-checkpoints/#_introduction_to_checkpoint>`_. 
+
+   If your job code doesn't include checkpointing, then submitting the job to a preempt queue could result in your job being preempted without saved progress/results.
+
+Preemptible queues are available on Delta. See :ref:`partitions` for the partition names, max durations, and charge factors.
+
+On Delta, jobs are allotted a **minimum of 10 minutes** (**PreemptExemptTime**), plus 5 minutes of **GraceTime** if the job has a **SIGTERM** handler.
+
+Slurm Configuration for Preempt Queues
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: terminal
+   
+   # PreemptExemptTime is 10 minutes, so preempt jobs will always get to run at least 10 minutes
+   $ scontrol show config | grep PreemptExemptTime
+   PreemptExemptTime       = 10:00:00
+   
+   # GraceTime is 5 minutes (300s), a job can potentially run that
+   # much longer if it handles SIGTERM on its own. SIGKILL arrives at least 5 minutes later.
+   $ scontrol show partition cpu-preempt | grep -i grace
+    DefaultTime=00:30:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=300 Hidden=NO
+
+What Happens When a Job Gets Preempted
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. A preempting job (**job-B**) is allocated resources currently in use by the soon-to-be preempted job (**job-A**)
+
+#. Has **job-A** run for at least 10 minutes (PreemptExemptTime)? 
+
+   - If yes, continue to step 3. 
+   - If no, continue to step 3 after the 10 minutes has elapsed.
+
+#. **job-A** receives **SIGTERM** and **SIGCONT**.
+
+#. 5 minutes later (Delta's **GraceTime** setting on the partition), **job-A** receives another **SIGTERM** and **SIGCONT** plus **SIGKILL** (SIGKILL cannot be handled or caught). SIGKILL is sent after SIGTERM and SIGCONT, but you can't rely on a specific time delay after these signals.
+
+.. raw:: html
+
+   <details>
+   <summary><a><b>Preempted Job Example</b> <i>(click to expand/collapse)</i></a></summary>
+
+.. code-block:: terminal
+
+   [arnoldg@dt-login04 bin]$ cat trap.sh
+   #!/bin/bash
+    
+   trap "echo The script received SIGINT" SIGINT
+   trap "echo The script received SIGTERM" SIGTERM
+   trap "echo The script received SIGCONT" SIGCONT
+   trap "echo The script received SIGQUIT" SIGQUIT
+   trap "echo The script received SIGUSR1" SIGUSR1
+   trap "echo The script received SIGUSR2" SIGUSR2
+   
+   while true
+   do
+       let "i=i+1"
+       echo "waiting for signals, $i minutes ..."
+       sleep 1m
+   done
+   
+    ### I'm in a salloc preempt partition job shell here:
+    + salloc --mem=16g --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 --partition=gpu-slingshot11-preempt --account=bbka-delta-gpu --time=00:30:00 --gpus-per-node=1
+   salloc: Granted job allocation 608
+   salloc: Waiting for resource configuration
+   salloc: Nodes gpub003 are ready for job
+   
+   [arnoldg@dt-login04 bin]$ time srun ./trap.sh
+   waiting for signals, 1 minutes ...
+   waiting for signals, 2 minutes ...
+   ### I queued a normal priority job at this time stamp, but the preempt job is guaranteed 10 minutes by PreemptExemptTime
+   waiting for signals, 3 minutes ...
+   waiting for signals, 4 minutes ...
+   waiting for signals, 5 minutes ...
+   waiting for signals, 6 minutes ...
+   waiting for signals, 7 minutes ...
+   waiting for signals, 8 minutes ...
+   waiting for signals, 9 minutes ...
+   waiting for signals, 10 minutes ...
+   slurmstepd: error: *** STEP 608.0 ON gpub003 CANCELLED AT 2023-09-15T12:22:07 ***
+   The script received SIGTERM
+   The script received SIGCONT
+   waiting for signals, 11 minutes ...
+   waiting for signals, 12 minutes ...
+   waiting for signals, 13 minutes ...
+   waiting for signals, 14 minutes ...
+   waiting for signals, 15 minutes ...
+   salloc: Job allocation 608 has been revoked.
+   srun: forcing job termination
+   srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+   srun: forcing job termination
+   [arnoldg@dt-login04 bin]$ The script received SIGTERM
+   The script received SIGCONT
+   waiting for signals, 16 minutes ...
+   srun: error: gpub003: task 0: Killed
+   
+   [arnoldg@dt-login04 bin]$
+
+.. raw:: html
+
+   </details>
+|
+
+Preemption References
+~~~~~~~~~~~~~~~~~~~~~~
+
+There are many online resources to learn more about preemption, checkpointing, signals, and traps; here are a few to get you started.
+
+- `Slurm preemption documentation <https://slurm.schedmd.com/preempt.html>`_
+- `PyTorch checkpoint documentation <https://pytorch.org/tutorials/recipes/recipes/saving_and_loading_a_general_checkpoint.html>`_
+- `TensorFlow checkpoint documentation <https://www.tensorflow.org/guide/checkpoint>`_
+- `Ubuntu signal man page <https://manpages.ubuntu.com/manpages/focal/en/man7/signal.7.html>`_
+- `Bash Guide for Beginners - 12.2. Traps <https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_12_02.html>`_
+- `Python signal documentation <https://docs.python.org/3/library/signal.html>`_
 
 .. _job_mgmt:
 
@@ -169,24 +297,26 @@ squeue/scontrol/sinfo
 
 Commands that display batch job and partition information.
 
-+-------------------------+-------------------------------------------+
-| Slurm Example Command   | Description                               |
-+=========================+===========================================+
-| squeue -a               | Lists the status of all jobs on the       |
-|                         | system.                                   |
-+-------------------------+-------------------------------------------+
-| squeue -u $USER         | Lists the status of all your jobs in the  |
-|                         | batch system.                             |
-+-------------------------+-------------------------------------------+
-| squeue -j JobID         | Lists nodes allocated to a running job in |
-|                         | addition to basic information..           |
-+-------------------------+-------------------------------------------+
-| scontrol show job JobID | Lists detailed information on a particular|
-|                         | job.                                      |
-+-------------------------+-------------------------------------------+
-| sinfo -a                | Lists summary information on all the      |
-|                         | partition.                                |
-+-------------------------+-------------------------------------------+
+.. Table:: squeue, scontrol, and sinfo Commands
+
+   +-------------------------+-------------------------------------------+
+   | Slurm Example Command   | Description                               |
+   +=========================+===========================================+
+   | squeue -a               | Lists the status of all jobs on the       |
+   |                         | system.                                   |
+   +-------------------------+-------------------------------------------+
+   | squeue -u $USER         | Lists the status of all your jobs in the  |
+   |                         | batch system.                             |
+   +-------------------------+-------------------------------------------+
+   | squeue -j JobID         | Lists nodes allocated to a running job in |
+   |                         | addition to basic information..           |
+   +-------------------------+-------------------------------------------+
+   | scontrol show job JobID | Lists detailed information on a particular|
+   |                         | job.                                      |
+   +-------------------------+-------------------------------------------+
+   | sinfo -a                | Lists summary information on all the      |
+   |                         | partition.                                |
+   +-------------------------+-------------------------------------------+
 
 See the man pages for other available options.
 
@@ -280,21 +410,23 @@ If the NODELIST(REASON) is MaxGRESPerAccount, that means that a user has exceede
 Useful Batch Job Environment Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-+-------------------------+----------------------------+-------------------------------------------------------------------------+
-| Description             | Slurm Environment Variable | Detail Description                                                      |
-+=========================+============================+=========================================================================+
-| Array JobID             | $SLURM_ARRAY_JOB_ID        | Each member of a job array is assigned a unique identifier.             |
-|                         |                            |                                                                         |
-|                         | $SLURM_ARRAY_TASK_ID       |                                                                         |
-+-------------------------+----------------------------+-------------------------------------------------------------------------+
-| Job Submission Directory| $SLURM_SUBMIT_DIR          | By default, jobs start in the directory that the job was submitted      |
-|                         |                            |                                                                         |
-|                         |                            | from. So the "cd $SLURM_SUBMIT_DIR" command is not needed.              |
-+-------------------------+----------------------------+-------------------------------------------------------------------------+
-| JobID                   | $SLURM_JOB_ID              | Job identifier assigned to the job.                                     |
-+-------------------------+----------------------------+-------------------------------------------------------------------------+
-| Machine(node) list      | $SLURM_NODELIST            | Variable name that contains the list of nodes assigned to the batch job.|
-+-------------------------+----------------------------+-------------------------------------------------------------------------+
+.. table:: Useful Batch Job Environment Variables
+
+   +-------------------------+----------------------------+-------------------------------------------------------------------------+
+   | Description             | Slurm Environment Variable | Detail Description                                                      |
+   +=========================+============================+=========================================================================+
+   | Array JobID             | $SLURM_ARRAY_JOB_ID        | Each member of a job array is assigned a unique identifier.             |
+   |                         |                            |                                                                         |
+   |                         | $SLURM_ARRAY_TASK_ID       |                                                                         |
+   +-------------------------+----------------------------+-------------------------------------------------------------------------+
+   | Job Submission Directory| $SLURM_SUBMIT_DIR          | By default, jobs start in the directory that the job was submitted      |
+   |                         |                            |                                                                         |
+   |                         |                            | from. So the "cd $SLURM_SUBMIT_DIR" command is not needed.              |
+   +-------------------------+----------------------------+-------------------------------------------------------------------------+
+   | JobID                   | $SLURM_JOB_ID              | Job identifier assigned to the job.                                     |
+   +-------------------------+----------------------------+-------------------------------------------------------------------------+
+   | Machine(node) list      | $SLURM_NODELIST            | Variable name that contains the list of nodes assigned to the batch job.|
+   +-------------------------+----------------------------+-------------------------------------------------------------------------+
 
 See the sbatch man page for additional environment variables available.
 

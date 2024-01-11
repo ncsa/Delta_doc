@@ -3,7 +3,7 @@
 Acknowledging Delta
 =====================
 
-For information on how to properly acknowledge the NCSA Delta system or Delta Project/NCSA Staff see: https://delta.ncsa.illinois.edu/delta-citations/
+See `Delta Citations <https://delta.ncsa.illinois.edu/delta-citations/>`_ for information on how to properly acknowledge the NCSA Delta system or Delta Project/NCSA Staff. 
 
 
-For information on how to properly acknowledge ACCESS, see: https://access-ci.org/about/
+See `Acknowledging ACCESS <https://access-ci.org/about/acknowledging-access/>`_ for information on how to properly acknowledge ACCESS.

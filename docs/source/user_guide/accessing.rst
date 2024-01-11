@@ -1,6 +1,6 @@
 .. _access:
 
-Accessing the System
+Delta Login Methods
 =========================
 
 .. _direct_access:
@@ -14,28 +14,30 @@ See `NCSA Allocation and Account Management <https://wiki.ncsa.illinois.edu/disp
 
 For ACCESS awarded projects, to find your local NCSA username go to your `ACCESS Profile page <https://allocations.access-ci.org/profile>`_ and scroll to the bottom for the **Resource Provider Site Usernames** table. If you do not know your NCSA username, submit a support request (:ref:`help`) for assistance.
 
-+------------------------------------+--------------------------------------------------------+
-|   Login Node Hostname              |   Example Usage with SSH                               |
-+====================================+========================================================+
-|                                    | .. code-block:: terminal                               |
-| dt-login01.delta.ncsa.illinois.edu |                                                        |
-|                                    |    ssh -Y username@dt-login01.delta.ncsa.illinois.edu  |
-|                                    |                                                        |
-|                                    | ( -Y allows X11 forwarding from Linux hosts )          |
-|                                    |                                                        |    
-+------------------------------------+--------------------------------------------------------+
-| dt-login02.delta.ncsa.illinois.edu | .. code-block:: terminal                               |
-|                                    |                                                        |
-|                                    |    ssh -l username dt-login02.delta.ncsa.illinois.edu  |
-|                                    |                                                        |
-|                                    | ( -l username alt. syntax for ``user@host`` )          |
-|                                    |                                                        |
-+------------------------------------+--------------------------------------------------------+
-| **login.delta.ncsa.illinois.edu**  | .. code-block:: terminal                               |
-|                                    |                                                        |    
-| (round robin DNS name for the set  |    ssh username@login.delta.ncsa.illinois.edu          |   
-| of login nodes)                    |                                                        |    
-+------------------------------------+--------------------------------------------------------+
+.. table:: Login Node Hostnames
+
+   +------------------------------------+--------------------------------------------------------+
+   |   Login Node Hostname              |   Example Usage with SSH                               |
+   +====================================+========================================================+
+   |                                    | .. code-block:: terminal                               |
+   | dt-login01.delta.ncsa.illinois.edu |                                                        |
+   |                                    |    ssh -Y username@dt-login01.delta.ncsa.illinois.edu  |
+   |                                    |                                                        |
+   |                                    | ( -Y allows X11 forwarding from Linux hosts )          |
+   |                                    |                                                        |    
+   +------------------------------------+--------------------------------------------------------+
+   | dt-login02.delta.ncsa.illinois.edu | .. code-block:: terminal                               |
+   |                                    |                                                        |
+   |                                    |    ssh -l username dt-login02.delta.ncsa.illinois.edu  |
+   |                                    |                                                        |
+   |                                    | ( -l username alt. syntax for ``user@host`` )          |
+   |                                    |                                                        |
+   +------------------------------------+--------------------------------------------------------+
+   | **login.delta.ncsa.illinois.edu**  | .. code-block:: terminal                               |
+   |                                    |                                                        |    
+   | (round robin DNS name for the set  |    ssh username@login.delta.ncsa.illinois.edu          |   
+   | of login nodes)                    |                                                        |    
+   +------------------------------------+--------------------------------------------------------+
 
 Use of SSH key pairs is disabled for general use.  This means that most individual users, even PIs, are **not allowed** to use ssh key pairs to log in instead of 2-factor authentication.  
 
