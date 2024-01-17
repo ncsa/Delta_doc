@@ -85,10 +85,12 @@ To build (compile and link) a MPI program in Fortran, C, and C++:
        |                              |                                            |                                      |
        +------------------------------+--------------------------------------------+                                      |
        | IntelMPI                     | .. code-block::                            |                                      |
+       |                              |                                            |                                      |
        |                              |     intel intel-oneapi-mpi                 |                                      |
        +------------------------------+--------------------------------------------+--------------------------------------+
-       |                              | .. code-block::                            |                                      |
-       | Cray MPICH                   |    PrgEnv-gnu cuda craype-x86-milan \      |  cc, CC, ftn                         |
+       | Cray MPICH                   | .. code-block::                            |                                      |
+       |                              |                                            |                                      |
+       | Select one of:               |    PrgEnv-gnu cuda craype-x86-milan \      |  cc, CC, ftn                         |
        | PrgEnv-gnu or PrgEnv-cray    |    craype-accel-ncsa                       |  (c, c++ and fortran respectively)   |
        | (unsupported)                |    (GPU-direct)                            |                                      |
        +------------------------------+--------------------------------------------+--------------------------------------+
