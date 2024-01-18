@@ -93,14 +93,17 @@ To build (compile and link) a MPI program in Fortran, C, and C++:
        |                              |                                            | |             |                      |  |
        |                              |                                            | |             |   fortran myprog.f   |  |
        |                              |                                            | |             |   fortran myprog.f90 |  |
+       |                              |                                            | |             |                      |  |
        |                              |                                            | +-------------+----------------------+  |
        |                              |                                            | | C           | .. code-block::      |  |
        |                              |                                            | |             |                      |  |
        |                              |                                            | |             |   cc myprog.c        |  |
+       |                              |                                            | |             |                      |  |
        |                              |                                            | +-------------+----------------------+  |
        |                              |                                            | | C++         | .. code-block::      |  |
        |                              |                                            | |             |                      |  |
        |                              |                                            | |             |   CC myprog.cc       |  |
+       |                              |                                            | |             |                      |  |
        |                              |                                            | +-------------+----------------------+  |
        | Select one of:               |    PrgEnv-gnu cuda craype-x86-milan \      |                                         |
        | PrgEnv-gnu or PrgEnv-cray    |    craype-accel-ncsa                       |                                         |
