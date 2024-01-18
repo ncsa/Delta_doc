@@ -14,6 +14,10 @@ See `NCSA Allocation and Account Management <https://wiki.ncsa.illinois.edu/disp
 
 For ACCESS awarded projects, to find your local NCSA username go to your `ACCESS Profile page <https://allocations.access-ci.org/profile>`_ and scroll to the bottom for the **Resource Provider Site Usernames** table. If you do not know your NCSA username, submit a support request (:ref:`help`) for assistance.
 
+.. warning::
+
+  In January 2024, Delta is being reconfigured with Slingshot 11 network.  Please use the round-robin login for ssh-ing to the system (login.delta.ncsa.illinois.edu) or for single host ssh, dt-login03.delta.ncsa.illinois.edu or dt-login04.delta.ncsa.illinois.edu.  Please see `this event news page <https://operations.access-ci.org/node/671>`_ for details and dates.  
+
 .. table:: Login Node Hostnames
 
    +------------------------------------+--------------------------------------------------------+
