@@ -28,8 +28,8 @@ For **ACCESS allocation issues**, create a ticket via the `ACCESS Help page <htt
   - Any other approaches you’ve tried.
   - Any other information you think might be relevant.
 
+System users can often fix problems or help diagnose them on their own.  Please search the documentation for relevant keywords you're looking for in the search box in the upper left, or, if you're seeing an error, google the error message, or if you're looking for a package, google "how do I install (and the package name)" and try the solutions you find if they seem applicable and reasonable.  Please let us know what you tried, and if it didn't seem to work, what happened.  
+
 **If you have multiple, unrelated issues, please create a separate ticket for each by sending separate emails.**
 
 You will receive email correspondence as your ticket is worked on, please respond to any questions that are asked.
-
-|
