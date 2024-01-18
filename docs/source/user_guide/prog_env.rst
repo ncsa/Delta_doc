@@ -90,10 +90,20 @@ To build (compile and link) a MPI program in Fortran, C, and C++:
        +------------------------------+--------------------------------------------+-----------------------------------------+
        | Cray MPICH                   | .. code-block::                            | +-------------+----------------------+  |
        |                              |                                            | |Fortran 77,90| .. code-block::      |  |
+       |                              |                                            | |             |                      |  |
        |                              |                                            | |             |   fortran myprog.f   |  |
+       |                              |                                            | |             |   fortran myprog.f90 |  |
        |                              |                                            | +-------------+----------------------+  |
-       | Select one of:               |    PrgEnv-gnu cuda craype-x86-milan \      |  cc, CC, ftn                            |
-       | PrgEnv-gnu or PrgEnv-cray    |    craype-accel-ncsa                       |  (c, c++ and fortran respectively)      |
+       |                              |                                            | | C           | .. code-block::      |  |
+       |                              |                                            | |             |                      |  |
+       |                              |                                            | |             |   cc myprog.c        |  |
+       |                              |                                            | +-------------+----------------------+  |
+       |                              |                                            | | C++         | .. code-block::      |  |
+       |                              |                                            | |             |                      |  |
+       |                              |                                            | |             |   CC myprog.cc       |  |
+       |                              |                                            | +-------------+----------------------+  |
+       | Select one of:               |    PrgEnv-gnu cuda craype-x86-milan \      |                                         |
+       | PrgEnv-gnu or PrgEnv-cray    |    craype-accel-ncsa                       |                                         |
        | (unsupported)                |    (GPU-direct)                            |                                         |
        +------------------------------+--------------------------------------------+-----------------------------------------+
 .. _Open MPI Home Page: http://www.open-mpi.org
