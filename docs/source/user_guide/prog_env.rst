@@ -91,7 +91,7 @@ To build (compile and link) a MPI program in Fortran, C, and C++:
        | Cray MPICH                   | .. code-block::                            | +-------------+----------------------+  |
        |                              |                                            | |Fortran 77,90| .. code-block::      |  |
        |                              |                                            | |             |   fortran myprog.f   |  |
-       |                              |                                            | +-------------+----------------------|  |
+       |                              |                                            | +-------------+----------------------+  |
        | Select one of:               |    PrgEnv-gnu cuda craype-x86-milan \      |  cc, CC, ftn                            |
        | PrgEnv-gnu or PrgEnv-cray    |    craype-accel-ncsa                       |  (c, c++ and fortran respectively)      |
        | (unsupported)                |    (GPU-direct)                            |                                         |
