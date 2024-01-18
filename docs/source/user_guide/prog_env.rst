@@ -89,6 +89,7 @@ To build (compile and link) a MPI program in Fortran, C, and C++:
        |                              |     intel intel-oneapi-mpi                 |                                           |
        +------------------------------+--------------------------------------------+-------------------------------------------+
        | Cray MPICH                   | .. code-block::                            |                                           |
+       |                              |                                            |                                           |
        |                              |                                            | +---------------+----------------------+  |
        |                              |                                            | | Fortran 77,90 | fortran myprog.f     |  |
        |                              |                                            | |               | fortran myprog.f90   |  |
