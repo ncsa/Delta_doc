@@ -164,17 +164,15 @@ Slurm Configuration for Preempt Queues
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: terminal
-
+   
    # PreemptExemptTime is 10 minutes, so preempt jobs will always get to run at least 10 minutes
-   [arnoldg@dt-login04 bin]$ scontrol show config | grep -i preempt
-   PreemptMode             = REQUEUE
-   PreemptType             = preempt/partition_prio
-   PreemptExemptTime       = 00:10:00
- 
+   $ scontrol show config | grep PreemptExemptTime
+   PreemptExemptTime       = 10:00:00
+   
    # GraceTime is 5 minutes (300s), a job can potentially run that
    # much longer if it handles SIGTERM on its own. SIGKILL arrives at least 5 minutes later.
-   [arnoldg@dt-login04 bin]$ scontrol show partition gpu-slingshot11-preempt | grep -i grace
-   DefaultTime=00:30:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=300 Hidden=NO
+   $ scontrol show partition cpu-preempt | grep -i grace
+    DefaultTime=00:30:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=300 Hidden=NO
 
 What Happens When a Job Gets Preempted
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -188,7 +186,7 @@ What Happens When a Job Gets Preempted
 
 #. **job-A** receives **SIGTERM** and **SIGCONT**.
 
-#. 5 minutes later (Delta's **GraceTime** setting on the partition), **job-A** receives another **SIGTERM** and **SIGCONT** plus **SIGKILL** (SIGKILL cannot be handled or caught). SIGKILL is sent after SIGTERM and SIGCONT, but you can't rely a specific time delay after these signals.
+#. 5 minutes later (Delta's **GraceTime** setting on the partition), **job-A** receives another **SIGTERM** and **SIGCONT** plus **SIGKILL** (SIGKILL cannot be handled or caught). SIGKILL is sent after SIGTERM and SIGCONT, but you can't rely on a specific time delay after these signals.
 
 .. raw:: html
 

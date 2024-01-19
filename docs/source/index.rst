@@ -29,9 +29,9 @@ Delta supports the ACCESS core software stack, including remote login, remote co
 Status Updates and Notices
 ============================
 
-- Current outage information: https://support.access-ci.org/outages
-- ACCESS infrastructure news (outage and reconfiguration news): https://operations.access-ci.org/infrastructure_news
-- ACCESS Delta Affinity Group site with links to news and the Slack channel for users: https://support.access-ci.org/affinity-groups/delta
+- `ACCESS support outages page <https://support.access-ci.org/outages>`_ (current outage information) 
+- `ACCESS infrastructure news <https://operations.access-ci.org/infrastructure_news>`_ (outage and reconfiguration news) 
+- `ACCESS Delta affinity group site <https://support.access-ci.org/affinity-groups/delta>`_ (links to news and the Slack channel for users)
 
 Getting Started with High-Performance Computing
 ================================================
