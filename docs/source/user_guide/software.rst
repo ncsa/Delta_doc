@@ -10,11 +10,18 @@ An automated list of available software can be found on the ACCESS website.
 Modules/Lmod
 -----------------
 
+  .. tab:: Slingshot10
+
 Delta provides two sets of modules and a variety of compilers in each set. 
 The default environment is **modtree/gpu** which loads a recent version of GNU compilers, the Open MPI implementation of MPI, and CUDA.
 The environment with GPU support will build binaries that run on both the GPU nodes (with CUDA) and CPU nodes (potentially with warning messages because those nodes lack CUDA drivers). 
 For situations where the same version of software is to be deployed on GPU and CPU nodes but with separate builds, the **modtree/cpu** environment provides the same default compiler and MPI but without CUDA. 
 Use module spider package_name to search for software in Lmod and see the steps to load it for your environment.
+
+  .. tab:: Slingshot11
+
+Delta provides a set of modules and a variety of compilers.  The default environment loads gcc and openmpi for cpu programs (no GPU-direct).
+Modules supporting Nvidia GPUs will contain "cuda" in the name of the module, Ex: openmpi/4.1.5+cuda .  Unload cuda when building cpu-only packages to avoid accidentally linking cuda libraries.  Use module spider package_name to search for software in Lmod and see the steps to load it in your environment.
 
 .. table:: Module (Lmod) Commands
 
