@@ -70,6 +70,7 @@ To build (compile and link) a MPI program in Fortran, C, and C++:
        |                              |                                            |                                           |
        | OpenMPI                      |    gcc openmpi                             | +-------------+----------------------+    |
        |                              |        openmpi+cuda                        | | Fortran 77: | mpif77 myprog.f      |    |
+       |                              |        (GPU-direct)                        | |             |                      |    |
        | - `Open MPI Home Page`_      | .. code-block::                            | |             |                      |    |
        | - `Open MPI Documentation`_  |                                            | +-------------+----------------------+    |
        |                              |    aocc openmpi                            | | Fortran 90: | mpif90 myprog.f90    |    |
