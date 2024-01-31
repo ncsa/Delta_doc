@@ -488,7 +488,7 @@ Create a directory to share from in your /projects directory.  If your four-char
 
 Then move or copy whatever data you want to share to that directory. 
 
-Follow the instructions on this `Globus sharing page <https://docs.globus.org/guides/tutorials/manage-files/share-files/>`_ to share that directory.  You will need to authenticate and connect to the "ACCESS Delta" endpoint to make this work.  Share the collection from the directory you created; in the above example: "mkdir /projects/XXXX/globus_shared/my_data/".  
+Follow the instructions on this `Globus sharing page <https://docs.globus.org/guides/tutorials/manage-files/share-files/>`_ to share that directory.  You will need to authenticate and connect to the "ACCESS Delta" endpoint to make this work.  Share the collection from the directory you created; in the above example: "/projects/XXXX/globus_shared/my_data/".  
 
 .. _depend_arch:
 
