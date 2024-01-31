@@ -481,7 +481,7 @@ Users may share files from the /projects file system on Delta to external users 
 
 Create a directory to share from in your /projects directory.  If your four-character allocation code is "XXXX" then do something like: 
 
-.. code_block::
+.. code-block::
 
     mkdir /projects/XXXX/globus_shared/
     mkdir /projects/XXXX/globus_shared/my_data/
