@@ -475,6 +475,21 @@ The home directory quota does not depend on which project group the file is writ
    | /scratch/bbbb  | 24k   | 9.766T| 10.74T| 6     | 500000 | 550000 |
    ------------------------------------------------------------------------------------------
 
+File Sharing
+~~~~~~~~~~~~~~~~~
+Users may share files from the /projects file system on Delta to external users via Globus. 
+
+Create a directory to share from in your /projects directory.  If your four-character allocation code is "XXXX" then do something like: 
+
+.. code_block::
+
+    mkdir /projects/XXXX/globus_shared/
+    mkdir /projects/XXXX/globus_shared/my_data/
+
+Then move or copy whatever data you want to share to that directory. 
+
+Follow the instructions on this `Globus sharing page <https://docs.globus.org/guides/tutorials/manage-files/share-files/>`_ to share that directory.  You will need to authenticate and connect to the "ACCESS Delta" endpoint to make this work.  Share the collection from the directory you created; in the above example: "mkdir /projects/XXXX/globus_shared/my_data/".  
+
 .. _depend_arch:
 
 File System Dependency Specification for Jobs
