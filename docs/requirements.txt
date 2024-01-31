@@ -2,4 +2,9 @@
 # sphinx<6
 
 sphinx-rtd-theme>1.2
+
+# Adding sphinx-tabs extension
 sphinx-tabs
+
+# Adding copy to clipboard button extension
+sphinx-copybutton
