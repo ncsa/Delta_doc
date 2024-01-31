@@ -53,7 +53,7 @@ To build (compile and link) a MPI program in Fortran, C, and C++:
          |                              |    nvhpc openmpi+cuda                      | | C:          | mpicc myprog.c       |    |
          |                              |    (GPU-direct)                            | |             |                      |    |
          |                              |                                            | +-------------+----------------------+    |
-         |                              | .. code-bock::                             | | C++:        | mpic++ myprog.cc     |    |
+         |                              | .. code-block::                            | | C++:        | mpic++ myprog.cc     |    |
          |                              |                                            | |             |                      |    |
          |                              |    intel openmpi                           | +-------------+----------------------+    |
          |                              |                                            |                                           |
