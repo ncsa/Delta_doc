@@ -3,11 +3,13 @@
 Basic Troubleshooting
 =======================
 
-You can often fix problems or help diagnose them with a few basic troubleshooting steps. Below are a few things you're encouraged to try *before* submitting a support request.
+You can often fix issues or help diagnose them with a few basic troubleshooting steps. Below are a few things you're encouraged to try *before* submitting a support request.
 
 - Use the search bar in the upper-left corner of this documentation to search for keywords related to your issue.
 
-- If your issue invovles an error message, perform a web search of that error message. It is recommended to perform the search two ways, once surrounding the error message in quotations marks (" "), and once without using surrounding quotation marks.
+- Perform a web search for keywords related to your issue.
+
+- If your issue invovles an error message, perform a web search of that error message.
 
 - If your issue invovles installing a package, perform a web search for "how to install <package name>".
 
