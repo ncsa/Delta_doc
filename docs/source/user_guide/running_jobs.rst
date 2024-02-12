@@ -131,8 +131,6 @@ Node-exclusive mode can be obtained by specifying all the consumable resources f
 
 GPU NVIDIA MIG (GPU slicing) for the A100 will be supported at a future date.
 
-Pre-emptive jobs will be supported at a future date.
-
 Job Policies
 ----------------
 
