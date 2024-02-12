@@ -47,5 +47,5 @@ Allocation Supplements and Extensions
 
 Request resource allocation supplements (compute, GPU, or storage) and extensions via the appropriate XRAS website.
 
-- ACCESS allocation PIs can find instructions on the `ACCESS Managing allocations <https://allocations.access-ci.org/manage-allocations-overview#h.ii1cvqx8falk>`_ page.
+- ACCESS allocation PIs can find instructions on the `ACCESS Allocations: How To <https://allocations.access-ci.org/how-to>`_ page.
 - NCSA allocation PIs can find instructions on the `Delta Allocations <https://wiki.ncsa.illinois.edu/display/USSPPRT/Delta+Allocations#DeltaAllocations-Requestingan%22Extension%22or%22Supplement%22foranexistingDeltaallocation>`_ page.

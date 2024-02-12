@@ -44,9 +44,9 @@ See also, :ref:`mon_node`.
 Scheduler
 -------------
 
-For information, see the `Slurm quick reference guide <https://slurm.schedmd.com/quickstart.html>`_.
+For information, see the `Slurm quick start user guide <https://slurm.schedmd.com/quickstart.html>`_.
 
-..  image:: images/running_jobs/slurm_summary.pdf
+..  figure:: images/running_jobs/slurm_summary.pdf
     :alt: Slurm quick reference guide
     :width: 500
 
@@ -130,8 +130,6 @@ Node-exclusive mode can be obtained by specifying all the consumable resources f
    --exclusive --mem=0
 
 GPU NVIDIA MIG (GPU slicing) for the A100 will be supported at a future date.
-
-Pre-emptive jobs will be supported at a future date.
 
 Job Policies
 ----------------

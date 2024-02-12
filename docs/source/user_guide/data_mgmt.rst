@@ -64,7 +64,7 @@ To transfer files to and from the Delta system:
 
 -  Globus - Use it for large data transfers.
 
-   - **Upgrade your Globus Connect Personal** to at least version 3.2.0 before Dec 12, 2022. See: https://docs.globus.org/ca-update-2022/#notice.
+   - `Upgrade your Globus Connect Personal to at least version 3.2.0 <https://docs.globus.org/ca-update-2022/#notice>`_
 
    -  Use the Delta collection "**NCSA Delta**" (see screen capture below).
       
@@ -72,7 +72,7 @@ To transfer files to and from the Delta system:
           :alt: Globus on Delta
           :width: 700px
 
-   -  See the following documentation on using Globus: https://docs.globus.org/how-to/get-started/ .
+   -  If you're new to Globus, review the `How To Log In and Transfer Files with Globus <https://docs.globus.org/guides/tutorials/manage-files/transfer-files/>`_ page for instructions on getting started.
 
 Infinite Memory Engine (IME)
 -----------------------------------
