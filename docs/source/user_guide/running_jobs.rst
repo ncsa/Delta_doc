@@ -431,7 +431,7 @@ See the sbatch man page for additional environment variables available.
 Using Job Dependency to Stagger Job Starts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When submitting multiple jobs, consider using ``--dependency`` to prevent all of the jobs from starting at the same time. Staggering the job startup resource load, prevents system slowdowns. This is especially recommended for Python users because **multiple jobs that load Python on startup can slow down the system if they are all started at the same time**.
+When submitting multiple jobs, consider using ``--dependency`` to prevent all of the jobs from starting at the same time. Staggering the job startup resource load prevents system slowdowns. This is especially recommended for Python users because **multiple jobs that load Python on startup can slow down the system if they are all started at the same time**.
 
 From the ``--dependency`` man page:
 
