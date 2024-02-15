@@ -16,7 +16,7 @@ Batch scripts (sbatch) or Interactive (srun , salloc), which is right for me?
   For mixed resource heterogeneous jobs see the `Slurm job support documentation <https://slurm.schedmd.com/heterogeneous_jobs.html#submitting>`_. 
   Slurm also supports job arrays for easy management of a set of similar jobs, see the `Slurm job array documentation <https://slurm.schedmd.com/job_array.html>`_ for more information.
 
-- :ref:`srun` . For interactive use of a compute node, srun will run a single command through slurm on a compute node. srun blocks, it will wait until slurm has scheduled compute resources, and when it returns, the job is complete.
+- :ref:`srun` . For interactive use of a compute node, srun will run a single command through Slurm on a compute node. srun blocks, it will wait until Slurm has scheduled compute resources, and when it returns, the job is complete.
 
 - :ref:`salloc` . Also interactive, use salloc when you want to reserve compute resources for a period of time and interact with them using multiple commands.  Each command you type after your salloc session begins will run on the login node if it is just a normal command, or on your reserved compute resources if prefixed with srun.  Type ``exit`` when finished with an salloc allocation if you want to end it before the time expires.
 
@@ -350,7 +350,7 @@ You will see something like this:
    exit
    $ 
 
-When finished, use the ``exit`` command to end the bash shell on the compute resource and hence the slurm srun job.
+When finished, use the ``exit`` command to end the bash shell on the compute resource and hence the Slurm srun job.
 
 .. _salloc:
 
@@ -425,6 +425,83 @@ Useful Batch Job Environment Variables
    +-------------------------+----------------------------+-------------------------------------------------------------------------+
 
 See the sbatch man page for additional environment variables available.
+
+.. _sbatch-delay:
+
+Using Job Dependency to Stagger Job Starts
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When submitting multiple jobs, consider using ``--dependency`` to prevent all of the jobs from starting at the same time. Staggering the job startup resource load, prevents system slowdowns. For example, multiple jobs that load Python on startup can slow down the system if they are all started at the same time.
+
+From the ``--dependency`` man page:
+
+.. code-block::
+
+   -d, --dependency=<dependency_list> 
+              
+                    after:job_id[[+time][:jobid[+time]...]]
+
+   After the specified jobs start or are cancelled and 'time' in minutes from job start or cancellation happens, this job can begin  execution. If  no 'time' is given then there is no delay after start or cancellation.
+
+Sample Script that Automates the Delay Dependency
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+The sample script below staggers the start of five jobs (four with delays) by 5 minutes. You can use this script as a template and modify it to the number of jobs you have. The minimum recommended offset time is 3 minutes; 5 minutes is a more conservative choice. 
+
+.. code-block:: terminal
+
+   [gbauer@dt-login01 depend]$ cat start
+   #!/bin/bash
+
+   # this is the time in minutes to have Slurm wait before starting the next job after the previous one started.
+
+   export DELAY=5   # in minutes
+
+   # submit first job and grab jobid
+   JOBID=`sbatch testjob.slurm | cut -d" " -f4`
+   echo "submitted $JOBID"
+
+   # loop 4 times submitting a job depending on the previous job to start
+   for count in `seq 1 4`; do
+
+   OJOBID=$JOBID
+
+   JOBID=`sbatch --dependency=after:${OJOBID}+${DELAY} testjob.slurm | cut -d" " -f4`
+
+   echo "submitted $JOBID with $DELAY minute delayed start from $OJOBID "
+
+   done  
+
+Here is what the jobs look like when submitting using the above example script:
+
+.. code-block:: terminal
+
+    [gbauer@dt-login01 depend]$ ./start 
+    submitted 2267583
+    submitted 2267584 with 5 minute delayed start from 2267583 
+    submitted 2267585 with 5 minute delayed start from 2267584 
+    submitted 2267586 with 5 minute delayed start from 2267585 
+    submitted 2267587 with 5 minute delayed start from 2267586 
+
+After 5 minutes from the start of the first job, the next job starts, and so on.
+
+.. code-block:: terminal
+
+    [gbauer@dt-login01 depend]$ squeue -u gbauer
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           2267587 cpu-inter testjob.   gbauer PD       0:00      1 (Dependency)
+           2267586 cpu-inter testjob.   gbauer PD       0:00      1 (Dependency)
+           2267585 cpu-inter testjob.   gbauer PD       0:00      1 (Dependency)
+           2267584 cpu-inter testjob.   gbauer  R       2:14      1 cn093
+           2267583 cpu-inter testjob.   gbauer  R       7:21      1 cn093
+
+You can use ``sacct`` on a specific job number to see how the job was submitted and show the dependency.
+
+.. code-block:: terminal
+
+    [gbauer@dt-login01 depend]$ sacct --job=2267584 --format=submitline -P
+    SubmitLine
+    sbatch --dependency=after:2267583+5 testjob.slurm 
 
 .. _mon_node:
 
