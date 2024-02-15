@@ -431,7 +431,7 @@ See the sbatch man page for additional environment variables available.
 Using Job Dependency to Stagger Job Starts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When submitting multiple jobs, consider using ``--dependency`` to prevent all of the jobs from starting at the same time. Staggering the job startup resource load, prevents system slowdowns. For example, multiple jobs that load Python on startup can slow down the system if they are all started at the same time.
+When submitting multiple jobs, consider using ``--dependency`` to prevent all of the jobs from starting at the same time. Staggering the job startup resource load, prevents system slowdowns. This is especially recommended for Python users because **multiple jobs that load Python on startup can slow down the system if they are all started at the same time**.
 
 From the ``--dependency`` man page:
 
@@ -446,7 +446,7 @@ From the ``--dependency`` man page:
 Sample Script that Automates the Delay Dependency
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-The sample script below staggers the start of five jobs (four with delays) by 5 minutes. You can use this script as a template and modify it to the number of jobs you have. The minimum recommended offset time is 3 minutes; 5 minutes is a more conservative choice. 
+The sample script below staggers the start of five jobs by 5 minutes each. You can use this script as a template and modify it to the number of jobs you have. The minimum recommended delay time is 3 minutes; 5 minutes is a more conservative choice. 
 
 .. code-block:: terminal
 
@@ -495,7 +495,7 @@ After 5 minutes from the start of the first job, the next job starts, and so on.
            2267584 cpu-inter testjob.   gbauer  R       2:14      1 cn093
            2267583 cpu-inter testjob.   gbauer  R       7:21      1 cn093
 
-You can use ``sacct`` on a specific job number to see how the job was submitted and show the dependency.
+You can use the ``sacct`` command with a specific job number to see how the job was submitted and show the dependency.
 
 .. code-block:: terminal
 
