@@ -35,21 +35,21 @@ Login Node Hostnames
 SSH Examples
 ~~~~~~~~~~~~~~
 
-- Round robin log in to the login nodes
+- Round robin log into a login node
 
-  .. code-block::
+  .. code-block:: terminal
 
      ssh username@login.delta.ncsa.illinois.edu
 
 - ``-l username`` is an alternative syntax for ``user@host``
 
-  .. code-block::
+  .. code-block:: terminal
 
-     ssh -1 username login.delta.ncsa.illinois.edu
+     ssh -l username login.delta.ncsa.illinois.edu
 
 - ``-Y`` allows X11 forwarding from Linux hosts
 
-  .. code-block::
+  .. code-block:: terminal
 
      ssh -Y username@login.delta.ncsa.illinois.edu
 
