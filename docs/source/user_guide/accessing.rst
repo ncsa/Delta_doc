@@ -21,7 +21,16 @@ For ACCESS awarded projects, to find your local NCSA username go to your `ACCESS
 Login Node Hostnames
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-``login.delta.ncsa.illinois.edu`` or ``dt-login.ncsa.illinois.edu`` are the round robin node hostnames to SSH into the system.
+.. table:: Login Node Hostnames
+
+   =======================================   ==============================
+   Login Node Hostname                       Description
+   =======================================   ==============================
+   ``login.delta.ncsa.illinois.edu``         *This is the preferred hostname*. Alias that round robin logs into one of the two Delta login nodes. 
+   ``dt-login.delta.ncsa.illinois.edu``      Alias that round robin logs into one of the two Delta login nodes.
+   ``dt-login03.delta.ncsa.illinois.edu``    One of the two Delta login nodes.
+   ``dt-login04.delta.ncsa.illinois.edu``    One of the two Delta login nodes.
+   =======================================   ==============================
 
 SSH Examples
 ~~~~~~~~~~~~~~
