@@ -35,13 +35,15 @@ Login Node Hostnames
 SSH Examples
 ~~~~~~~~~~~~~~
 
+In the examples below, replace ``username`` with your Delta login username.
+
 - Round robin log into a login node
 
   .. code-block:: terminal
 
      ssh username@login.delta.ncsa.illinois.edu
 
-- ``-l username`` is an alternative syntax for ``user@host``
+- ``-l username`` is an alternative syntax for ``<user>@<host>``
 
   .. code-block:: terminal
 
