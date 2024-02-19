@@ -61,10 +61,10 @@ To build (compile and link) a MPI program in Fortran, C, and C++:
    |                                 |     craype-accel-ncsa                      | - **Fortran 77:** fortran myprog.f        |
    |                                 |     (GPU-direct)                           |                                           |
    | - PrgEnv-gnu                    |                                            | - **Fortran 90:** fortran myprog.f90      |
+   |   *or*                          |                                            |                                           |
+   | - PrgEnv-cray (unsupported)     |                                            | - **C:** cc myprog.c                      |
    |                                 |                                            |                                           |
-   | or                              |                                            | - **C:** cc myprog.c                      |
    |                                 |                                            |                                           |
-   | - PrgEnv-cray (unsupported)     |                                            |                                           |
    |                                 |                                            | - **C++:** CC myprog.cc                   |
    +---------------------------------+--------------------------------------------+-------------------------------------------+
 
