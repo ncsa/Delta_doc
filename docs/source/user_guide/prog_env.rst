@@ -62,7 +62,7 @@ To build (compile and link) a MPI program in Fortran, C, and C++:
    |                                 |     (GPU-direct)                           |                                           |
    | - PrgEnv-gnu                    |                                            | - **Fortran 90:** fortran myprog.f90      |
    |                                 |                                            |                                           |
-   |   or                            |                                            | - **C:** cc myprog.c                      |
+   | or                              |                                            | - **C:** cc myprog.c                      |
    |                                 |                                            |                                           |
    | - PrgEnv-cray (unsupported)     |                                            |                                           |
    |                                 |                                            | - **C++:** CC myprog.cc                   |
