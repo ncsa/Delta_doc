@@ -331,7 +331,7 @@ Network
 ------------
 Delta is connected to the NPCF core router and exit infrastructure via two 100Gbps connections, NCSA's 400Gbps+ of WAN connectivity carry traffic to/from users on an optimal peering.
 
-Delta resources are inter-connected with HPE/Cray's 100Gbps(original TCP network, Slingshot 10) and as as of January 2024, 200Gbps Slingshot 11 interconnect.  
+Delta resources are inter-connected with HPE/Cray's 200Gbps Slingshot 11 interconnect.  
 
 File Systems
 ---------------

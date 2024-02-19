@@ -16,36 +16,48 @@ For ACCESS awarded projects, to find your local NCSA username go to your `ACCESS
 
 .. warning::
 
-  In January 2024, Delta is being reconfigured with Slingshot 11 network.  Please use the round-robin login for ssh-ing to the system (login.delta.ncsa.illinois.edu) or for single host ssh, dt-login03.delta.ncsa.illinois.edu or dt-login04.delta.ncsa.illinois.edu.  Please see `this event news page <https://operations.access-ci.org/node/671>`_ for details and dates.  
+  In January 2024, Delta was upgraded to Slingshot11. Please use the round robin login, login.delta.ncsa.illinois.edu, to SSH into the system. For single host SSH, use dt-login03.delta.ncsa.illinois.edu or dt-login04.delta.ncsa.illinois.edu. See the `ACCESS Delta Notice: Delta maintenance 01-23-2024 - 01-25-2024 <https://operations.access-ci.org/node/671>`_ for more details. 
+
+Login Node Hostnames
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. table:: Login Node Hostnames
 
-   +------------------------------------+--------------------------------------------------------+
-   |   Login Node Hostname              |   Example Usage with SSH                               |
-   +====================================+========================================================+
-   |                                    | .. code-block:: terminal                               |
-   | login.delta.ncsa.illinois.edu      |                                                        |
-   |                                    |    ssh -Y username@login.delta.ncsa.illinois.edu       |
-   |                                    |                                                        |
-   |                                    | ( -Y allows X11 forwarding from Linux hosts )          |
-   |                                    |                                                        |    
-   +------------------------------------+--------------------------------------------------------+
-   | login.delta.ncsa.illinois.edu      | .. code-block:: terminal                               |
-   |                                    |                                                        |
-   |                                    |    ssh -l username login.delta.ncsa.illinois.edu       |
-   |                                    |                                                        |
-   |                                    | ( -l username alt. syntax for ``user@host`` )          |
-   |                                    |                                                        |
-   +------------------------------------+--------------------------------------------------------+
-   | **login.delta.ncsa.illinois.edu**  | .. code-block:: terminal                               |
-   |                                    |                                                        |    
-   | (round robin DNS name for the set  |    ssh username@login.delta.ncsa.illinois.edu          |   
-   | of login nodes)                    |                                                        |    
-   +------------------------------------+--------------------------------------------------------+
+   =======================================   ==============================
+   Login Node Hostname                       Description
+   =======================================   ==============================
+   ``login.delta.ncsa.illinois.edu``         *This is the preferred hostname*. Alias that round robin logs into one of the two Delta login nodes. 
+   ``dt-login.delta.ncsa.illinois.edu``      Alias that round robin logs into one of the two Delta login nodes.
+   ``dt-login03.delta.ncsa.illinois.edu``    One of the two Delta login nodes.
+   ``dt-login04.delta.ncsa.illinois.edu``    One of the two Delta login nodes.
+   =======================================   ==============================
 
-Use of SSH key pairs is disabled for general use.  This means that most individual users, even PIs, are **not allowed** to use ssh key pairs to log in instead of 2-factor authentication.  
+SSH Examples
+~~~~~~~~~~~~~~
 
-The one exception is: if you are the PI of a Gateway allocation (this is not most projects), then please submit a support request (:ref:`help`) to get the gateway account's key pairs set up.  
+In the examples below, replace ``username`` with your Delta login username.
+
+- Round robin log into a login node
+
+  .. code-block:: terminal
+
+     ssh username@login.delta.ncsa.illinois.edu
+
+- ``-l username`` is an alternative syntax for ``<user>@<host>``
+
+  .. code-block:: terminal
+
+     ssh -l username login.delta.ncsa.illinois.edu
+
+- ``-Y`` allows X11 forwarding from Linux hosts
+
+  .. code-block:: terminal
+
+     ssh -Y username@login.delta.ncsa.illinois.edu
+
+Use of SSH key pairs is disabled for general use.  This means that most individual users, even PIs, are **not allowed** to use SSH key pairs to log in instead of 2-factor authentication.  
+
+The one exception is: if you are the PI of a Gateway allocation (this is not most projects), then please submit a support request (:ref:`help`) to get the Gateway account's key pairs set up.  
 
 Maintaining Persistent Sessions: tmux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
