@@ -56,23 +56,22 @@ Transferring Data
 
 To transfer files to and from the Delta system:
 
--  ``scp`` - Use it for small to modest transfers to avoid impacting the usability of the Delta login node (*login.delta.ncsa.illinois.edu*).
+``scp``
+~~~~~~~~
 
--  ``rsync`` - Use it for small to modest transfers to avoid impacting the usability of the Delta login node.
+Use ``scp`` for small to modest transfers to avoid impacting the usability of the :ref:`Delta login node <direct_access>`. The Campus Cluster user guide has general `instrutions on using scp <https://docs.ncsa.illinois.edu/systems/icc/en/latest/user_guide/storage_data.html#cli-transfer-method-scp>`_ (you will need to modify the example command for Delta).
 
-   -  `Campus Cluster storage and data guide <https://docs.ncsa.illinois.edu/systems/icc/en/latest/user_guide/storage_data.html>`_ (``scp``, ``sftp``, ``rsync``)
+``rsync``
+~~~~~~~~~~
 
--  Globus - Use it for large data transfers.
+Use ``rsync`` for small to modest transfers to avoid impacting the usability of the :ref:`Delta login node <direct_access>`. The Campus Cluster user guide has general `instructions on using rsync <https://docs.ncsa.illinois.edu/systems/icc/en/latest/user_guide/storage_data.html#cli-transfer-method-rsync>`_ (you will need to modify the example command for Delta).
 
-   - `Upgrade your Globus Connect Personal to at least version 3.2.0 <https://docs.globus.org/ca-update-2022/#notice>`_
+Globus
+~~~~~~~~~
 
-   -  Use the Delta collection "**NCSA Delta**" (see screen capture below).
-      
-      .. image:: images/data_mgmt/globus_on_delta.jpeg
-          :alt: Globus on Delta
-          :width: 700px
+Use Globus for large data transfers. See `Transferring Files - Globus <https://docs.ncsa.illinois.edu/en/latest/common/transfer.html#globus>`_ for complete instructions on using Globus.
 
-   -  If you're new to Globus, review the `How To Log In and Transfer Files with Globus <https://docs.globus.org/guides/tutorials/manage-files/transfer-files/>`_ page for instructions on getting started.
+The Delta endpoint collection name is: **NCSA Delta**.
 
 Infinite Memory Engine (IME)
 -----------------------------------
