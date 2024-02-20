@@ -6,7 +6,7 @@ Support for the HPE/Cray Programming environment is forthcoming.
 
 Modules provide access to the compiler + MPI environment.
 
-The default environment includes the GCC 11.2.0 compiler + OpenMPI with support for CUDA and gdrcopy; nvcc is in the CUDA module and is loaded by default.
+The default environment includes the GCC 11.4.0 compiler + OpenMPI; nvcc is in the CUDA module and is loaded by default.
 
 AMD recommended compiler flags for GNU, AOCC, and Intel compilers for Milan processors can be found in the `AMD Compiler Options Quick Reference Guide for Epyc 7xx3 processors <https://www.amd.com/system/files/TechDocs/compiler-options-quick-ref-guide-epyc-7xx3-series-processors.pdf>`_.
 
