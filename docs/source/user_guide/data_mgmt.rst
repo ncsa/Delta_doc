@@ -54,8 +54,6 @@ Transferring Data
    | **GUI applications need to support Duo multi-factor authentication (MFA)**
    | Many GUI apps that support ssh/scp/sftp will work with Duo MFA. A good first step is to use the interactive (not stored/saved) password option with those apps. The interactive login should present you with the first password prompt (your Kerberos password) followed by the second password prompt for Duo (push to device or passcode from the Duo app).
 
-To transfer files to and from the Delta system:
-
 ``scp``
 ~~~~~~~~
 
