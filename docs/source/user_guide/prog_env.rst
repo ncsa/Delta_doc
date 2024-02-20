@@ -27,81 +27,46 @@ To build (compile and link) a serial program in Fortran, C, and C++:
 
 MPI
 -------------------------
+
 To build (compile and link) a MPI program in Fortran, C, and C++:
 
-.. tabs::
+.. table:: MPI Program Commands
 
-   .. tab:: Slingshot 11
-
-      .. table:: MPI Program Commands
-
-         +------------------------------+--------------------------------------------+-------------------------------------------+
-         | MPI Implementation           | Module Files for                           | Build Commands                            |
-         |                              | MPI/Compiler                               |                                           |
-         +==============================+============================================+===========================================+
-         |                              | .. code-block::                            |                                           |
-         |                              |                                            |                                           |
-         | OpenMPI                      |    gcc openmpi                             | +-------------+----------------------+    |
-         |                              |        openmpi+cuda                        | | Fortran 77: | mpif77 myprog.f      |    |
-         |                              |        (GPU-direct)                        | |             |                      |    |
-         | - `Open MPI Home Page`_      | .. code-block::                            | |             |                      |    |
-         | - `Open MPI Documentation`_  |                                            | +-------------+----------------------+    |
-         |                              |    aocc openmpi                            | | Fortran 90: | mpif90 myprog.f90    |    |
-         |                              |                                            | |             |                      |    |
-         |                              | .. code-block::                            | |             |                      |    |
-         |                              |                                            | +-------------+----------------------+    |
-         |                              |    nvhpc openmpi+cuda                      | | C:          | mpicc myprog.c       |    |
-         |                              |    (GPU-direct)                            | |             |                      |    |
-         |                              |                                            | +-------------+----------------------+    |
-         |                              | .. code-block::                            | | C++:        | mpic++ myprog.cc     |    |
-         |                              |                                            | |             |                      |    |
-         |                              |    intel openmpi                           | +-------------+----------------------+    |
-         |                              |                                            |                                           |
-         +------------------------------+--------------------------------------------+-------------------------------------------+
-         | Cray MPICH                   | .. code-block::                            |                                           |
-         |                              |                                            |                                           |
-         |                              |                                            | +---------------+----------------------+  |
-         |                              |                                            | | Fortran 77,90 | fortran myprog.f     |  |
-         |                              |                                            | |               | fortran myprog.f90   |  |
-         |                              |                                            | |               |                      |  |
-         |                              |                                            | +---------------+----------------------+  |
-         |                              |                                            | | C             | cc myprog.c          |  |
-         |                              |                                            | |               |                      |  |
-         |                              |                                            | +---------------+----------------------+  |
-         |                              |                                            | | C++           | CC myprog.cc         |  |
-         |                              |                                            | |               |                      |  |
-         |                              |                                            | +---------------+----------------------+  |
-         | Select one of:               |    PrgEnv-gnu cuda craype-x86-milan \      |                                           |
-         | PrgEnv-gnu or PrgEnv-cray    |    craype-accel-ncsa                       |                                           |
-         | (unsupported)                |    (GPU-direct)                            |                                           |
-         +------------------------------+--------------------------------------------+-------------------------------------------+
-
-   .. tab:: Slingshot 10
-
-      .. table:: MPI Program Commands
-
-         +------------------------------+--------------------------------------------+--------------------------------------+
-         | MPI Implementation           | Module Files for                           | Build Commands                       |
-         |                              | MPI/Compiler                               |                                      |
-         +==============================+============================================+======================================+
-         |                              | .. code-block::                            |                                      |
-         |                              |                                            |                                      |
-         | OpenMPI                      |    gcc/11.2.0 openmpi                      | +-------------+-------------------+  |
-         |                              |                                            | | Fortran 77: | mpif77 myprog.f   |  |
-         | - `Open MPI Home Page`_      | .. code-block::                            | |             |                   |  |
-         | - `Open MPI Documentation`_  |                                            | +-------------+-------------------+  |
-         |                              |    aocc/3.20 openmpi                       | | Fortran 90: | mpif90 myprog.f90 |  |
-         |                              |                                            | |             |                   |  |
-         |                              | .. code-block::                            | |             |                   |  |
-         |                              |                                            | +-------------+-------------------+  |
-         |                              |    nvhpc/22.2 openmpi                      | | C:          | mpicc myprog.c    |  |
-         |                              |                                            | |             |                   |  |
-         |                              | .. code-block::                            | +-------------+-------------------+  |
-         |                              |                                            | | C++:        | mpic++ myprog.cc  |  |
-         |                              |    intel-openapi-compilers/2022.02 openmpi | |             |                   |  |
-         |                              |                                            | +-------------+-------------------+  |
-         |                              |                                            |                                      |
-         +------------------------------+--------------------------------------------+--------------------------------------+
+   +---------------------------------+--------------------------------------------+-------------------------------------------+
+   | MPI Implementation              | Module Files for                           | Build Commands                            |
+   |                                 | MPI/Compiler                               |                                           |
+   +=================================+============================================+===========================================+
+   |                                 | .. code-block::                            |                                           |
+   |                                 |                                            |                                           |
+   | OpenMPI                         |    gcc openmpi                             |                                           |
+   |                                 |        openmpi+cuda                        | - **Fortran 77:** mpif77 myprog.f         |
+   |                                 |        (GPU-direct)                        |                                           |
+   |                                 |                                            |                                           |
+   | - `Open MPI Home Page`_         | .. code-block::                            |                                           |
+   | - `Open MPI Documentation`_     |                                            |                                           |
+   |                                 |    aocc openmpi                            | - **Fortran 90:** mpif90 myprog.f90       |
+   |                                 |                                            |                                           |
+   |                                 | .. code-block::                            |                                           |
+   |                                 |                                            |                                           |
+   |                                 |    nvhpc openmpi+cuda                      | - **C:** mpicc myprog.c                   |
+   |                                 |    (GPU-direct)                            |                                           |
+   |                                 |                                            |                                           |
+   |                                 | .. code-block::                            | - **C++:** mpic++ myprog.cc               |
+   |                                 |                                            |                                           |
+   |                                 |    intel openmpi                           |                                           |
+   +---------------------------------+--------------------------------------------+-------------------------------------------+
+   | Cray MPICH                      | .. code-block::                            |                                           |
+   |                                 |                                            |                                           |
+   |                                 |     PrgEnv-gnu cuda craype-x86-milan \     |                                           |
+   |                                 |     craype-accel-ncsa                      | - **Fortran 77:** fortran myprog.f        |
+   |                                 |     (GPU-direct)                           |                                           |
+   | - PrgEnv-gnu                    |                                            | - **Fortran 90:** fortran myprog.f90      |
+   |   *or*                          |                                            |                                           |
+   | - PrgEnv-cray (unsupported)     |                                            | - **C:** cc myprog.c                      |
+   |                                 |                                            |                                           |
+   |                                 |                                            |                                           |
+   |                                 |                                            | - **C++:** CC myprog.cc                   |
+   +---------------------------------+--------------------------------------------+-------------------------------------------+
 
 .. _Open MPI Home Page: http://www.open-mpi.org
 

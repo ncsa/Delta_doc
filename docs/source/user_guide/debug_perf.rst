@@ -420,6 +420,11 @@ Nsight Systems Setup on Local Workstation to Use with Delta
 
 `GitHub - quasiben/nvtx-examples <https://github.com/quasiben/nvtx-examples>`_ (sample python test codes )
 
+Debugging MPI (OpenMPI) codes
+-----------------------------
+
+See: `Debugging applications in parallel - <https://www.open-mpi.org/faq/?category=debugging>`_ (OpenMPI faq on debugging MPI code )
+
 Debugging Open OnDemand Problems
 ---------------------------------
 
