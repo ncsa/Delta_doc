@@ -67,7 +67,7 @@ Use ``rsync`` for small to modest transfers to avoid impacting the usability of 
 Globus
 ~~~~~~~~~
 
-Use Globus for large data transfers. See `Transferring Files - Globus <https://docs.ncsa.illinois.edu/en/latest/common/transfer.html#globus>`_ for complete instructions on using Globus.
+Use Globus for large data transfers. See `Transferring Files - Globus <https://docs.ncsa.illinois.edu/en/latest/common/transfer.html#globus>`_ for complete instructions on using Globus with NCSA computing resources.
 
 The Delta endpoint collection name is: **NCSA Delta**.
 
