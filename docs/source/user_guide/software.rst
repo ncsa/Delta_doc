@@ -97,9 +97,9 @@ You may *use any of these methods* with any of the python versions or instances 
 
   Can name environments (metadata) and have multiple environments per python version or instance.
 
-- `conda environments <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>`_
+- `conda (or miniconda) environments <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>`_
 
-  Similar to venv but with more flexibility, see this `comparison table <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html#virtual-environments>`_.
+  Similar to venv but with more flexibility, see this `comparison table <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html#virtual-environments>`_.  See also the miniconda environment option: `anconda or miniconda <https://docs.anaconda.com/free/distro-or-miniconda/>`_.
 
 - `pip3 <https://docs.python.org/3/installing/index.html>`_: pip3 install --user <python_package>
 
