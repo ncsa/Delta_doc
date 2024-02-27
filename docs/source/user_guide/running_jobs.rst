@@ -323,7 +323,7 @@ srun
 
 The **srun** command initiates an interactive job or process on compute nodes.
 
-For example, the following command will run an interactive job in the gpuA100x4 or gpuA40x4 partition with a wall-clock time limit of 30 minutes, using one node and 16 cores per node and 1 GPU:
+For example, the following command will run an interactive job in the gpuA100x4 or gpuA40x4 partition with a wall-clock time limit of 30 minutes, using one node and 16 cores per node and 1 GPU. ``account_name`` must match a 'Project' returned by the ``accounts`` command.
 
 .. code-block::
 
@@ -357,7 +357,7 @@ When finished, use the ``exit`` command to end the bash shell on the compute res
 salloc
 ~~~~~
 
-While being interactive like ``srun``, ``salloc`` allocates compute resources for you, while leaving your shell on the login node.  Run commands on the login node as usual, use``exit`` to end an salloc session early, and use srun with no extra flags to launch processes on the compute resources.
+While being interactive like ``srun``, ``salloc`` allocates compute resources for you, while leaving your shell on the login node.  Run commands on the login node as usual, use``exit`` to end an salloc session early, and use srun with no extra flags to launch processes on the compute resources. ``your_account_name`` must match a 'Project' returned by the ``accounts`` command.
 
 .. code-block::
 
@@ -586,7 +586,7 @@ Monitoring Nodes Using Grafana
 Interactive Sessions
 -------------------------
 
-Interactive sessions can be implemented in several ways, depending on what is needed. To start up a bash shell terminal on a CPU or GPU node:
+Interactive sessions can be implemented in several ways, depending on what is needed. The examples below start up a bash shell terminal on a CPU or GPU node. ``account_name`` must match a 'Project' returned by the ``accounts`` command.
 
 - Single core with 16GB of memory, with one task on a CPU node
 
@@ -710,7 +710,7 @@ Serial Jobs on CPU Nodes
    #SBATCH --ntasks-per-node=1
    #SBATCH --cpus-per-task=4    # <- match to OMP_NUM_THREADS
    #SBATCH --partition=cpu      # <- or one of: gpuA100x4 gpuA40x4 gpuA100x8 gpuMI100x8
-   #SBATCH --account=account_name
+   #SBATCH --account=account_name    # <- account_name must match a 'Project' returned by the 'accounts' command
    #SBATCH --job-name=myjobtest
    #SBATCH --time=00:10:00      # hh:mm:ss for the job
    #SBATCH --constraint="scratch"
@@ -750,7 +750,7 @@ MPI on CPU Nodes
    #SBATCH --ntasks-per-node=32
    #SBATCH --cpus-per-task=2    # <- match to OMP_NUM_THREADS
    #SBATCH --partition=cpu      # <- or one of: gpuA100x4 gpuA40x4 gpuA100x8 gpuMI100x8
-   #SBATCH --account=account_name
+   #SBATCH --account=account_name    # <- account_name must match a 'Project' returned by the 'accounts' command
    #SBATCH --job-name=mympi
    #SBATCH --time=00:10:00      # hh:mm:ss for the job
    #SBATCH --constraint="scratch"
@@ -788,7 +788,7 @@ OpenMP on CPU Nodes
    #SBATCH --ntasks-per-node=1
    #SBATCH --cpus-per-task=32   # <- match to OMP_NUM_THREADS
    #SBATCH --partition=cpu      # <- or one of: gpuA100x4 gpuA40x4 gpuA100x8 gpuMI100x8
-   #SBATCH --account=account_name
+   #SBATCH --account=account_name    # <- account_name must match a 'Project' returned by the 'accounts' command
    #SBATCH --job-name=myopenmp
    #SBATCH --time=00:10:00      # hh:mm:ss for the job
    #SBATCH --constraint="scratch"
@@ -828,7 +828,7 @@ Hybrid (MPI + OpenMP or MPI+X) on CPU Nodes
    #SBATCH --ntasks-per-node=4
    #SBATCH --cpus-per-task=4    # <- match to OMP_NUM_THREADS
    #SBATCH --partition=cpu      # <- or one of: gpuA100x4 gpuA40x4 gpuA100x8 gpuMI100x8
-   #SBATCH --account=account_name
+   #SBATCH --account=account_name    # <- account_name must match a 'Project' returned by the 'accounts' command
    #SBATCH --job-name=mympi+x
    #SBATCH --time=00:10:00      # hh:mm:ss for the job
    #SBATCH --constraint="scratch"
