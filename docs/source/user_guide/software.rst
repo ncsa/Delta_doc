@@ -830,7 +830,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
    **srun Jupyter ( anaconda3_cpu on a CPU node ):**
 
-   Replace ``account_name`` with one of your available CPU accounts; these will be listed under 'Project' when you run the ``accounts`` command.
+   Replace ``account_name`` with one of your available CPU accounts; these are listed under 'Project' when you run the ``accounts`` command.
    
    .. code-block::
 
@@ -851,7 +851,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
    **NGC container for GPUs, jupyter-notebook, bind a directory:**
 
-   Replace ``account_name`` with one of your available GPU accounts; these will be listed under 'Project' when you run the ``accounts`` command.
+   Replace ``account_name`` with one of your available GPU accounts; these are listed under 'Project' when you run the ``accounts`` command.
 
    .. code-block::
 
