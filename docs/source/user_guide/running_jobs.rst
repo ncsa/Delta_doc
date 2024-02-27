@@ -338,7 +338,7 @@ You will see something like this:
 .. code-block::
 
    $ srun --mem=16g --nodes=1 --ntasks-per-node=1 --cpus-per-task=4 \
-   --partition=gpuA100x4-interactive,gpuA40x4-interactive --account=bbka-delta-gpu \
+   --partition=gpuA100x4-interactive,gpuA40x4-interactive --account=account_name \
    --gpus-per-node=1 --time=00:30:00 --x11 --pty /bin/bash
    [login_name@gpua022 bin]$  #<-- note the compute node name in the shell prompt
    [login_name@gpua022 bin]$ echo $SLURM_JOB_ID
@@ -358,13 +358,13 @@ salloc
 ~~~~~
 
 While being interactive like ``srun``, ``salloc`` allocates compute resources for you, while leaving your shell on the login node.
-Run commands on the login node as usual, use``exit`` to end an salloc session early, and use srun with no extra flags to launch processes on the compute resources. (Replace ``your_account_name`` with one of your available accounts; these will be listed under 'Project' when you run the ``accounts`` command.)
+Run commands on the login node as usual, use``exit`` to end an salloc session early, and use srun with no extra flags to launch processes on the compute resources. (Replace ``account_name`` with one of your available accounts; these will be listed under 'Project' when you run the ``accounts`` command.)
 
 .. code-block::
 
    $ salloc --mem=16g --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 \
      --partition=gpuA40x4-interactive,gpuA100x4-interactive \
-     --account=your_account_name --time=00:30:00 --gpus-per-node=1
+     --account=account_name --time=00:30:00 --gpus-per-node=1
    salloc: Pending job allocation 2323230
    salloc: job 2323230 queued and waiting for resources
    salloc: job 2323230 has been allocated resources
