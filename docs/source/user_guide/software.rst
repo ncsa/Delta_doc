@@ -715,7 +715,7 @@ A sample TensorFlow test script:
    #SBATCH --cpus-per-task=16     # <- match to OMP_NUM_THREADS
    #SBATCH --partition=gpuA100x4-interactive
    #SBATCH --time=00:10:00
-   #SBATCH --account=YOUR_ACCOUNT-delta-gpu
+   #SBATCH --account=account_name    # <- match to a 'Project' returned by the 'accounts' command
    #SBATCH --job-name=tf_anaconda
    ### GPU options ###
    #SBATCH --gpus-per-node=1
@@ -829,11 +829,13 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 #. Start a Jupyter job via ``srun`` and note the hostname (*you pick the port number for --port*).
 
    **srun Jupyter ( anaconda3_cpu on a CPU node ):**
+
+   Replace ``account_name`` with one of your available CPU accounts; these will be listed under 'Project' when you run the ``accounts`` command.
    
    .. code-block::
 
       $ echo $UID # make a note of your user id number, you will need it later
-      $ srun --account=wxyz-delta-cpu --partition=cpu-interactive \
+      $ srun --account=account_name --partition=cpu-interactive \
         --time=00:30:00 --mem=32g \
         jupyter-notebook --no-browser \
         --port=$UID --ip=0.0.0.0
@@ -849,11 +851,13 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
    **NGC container for GPUs, jupyter-notebook, bind a directory:**
 
+   Replace ``account_name`` with one of your available GPU accounts; these will be listed under 'Project' when you run the ``accounts`` command.
+
    .. code-block::
 
       # container notebook example showing how to access a directory outside
       # of $HOME ( /projects/bbka in the example )
-      $ srun --account=wxyz-delta-gpu --partition=gpuA100x4-interactive \
+      $ srun --account=account_name --partition=gpuA100x4-interactive \
         --time=00:30:00 --mem=64g --gpus-per-node=1 \
         singularity run --nv --bind /projects/bbka \
         /sw/external/NGC/pytorch:22.02-py3 jupyter-notebook \
