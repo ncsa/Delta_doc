@@ -12,6 +12,7 @@ To connect to the Open OnDemand portal, point a browser to https://openondemand.
 
 Make sure to match the account to charge with the resource partition as shown below. 
 The account names end in -cpu and -gpu; the matching partition would start with cpu or gpu (as in gpuA100x4 interactive).
+Your input in the **Name of account** field must match one of your available accounts (CPU or GPU, as appropriate); these will be listed under ‘Project’ when you run the accounts command.
 
 ..  image:: images/services/jlab_config_partition.png
     :alt: Jupyter Lab partition configuration
