@@ -449,12 +449,12 @@ Quota Usage
 ~~~~~~~~~~~~
 
 The ``quota`` command allows you to view your use of the file systems and use by your projects. 
-Below is a sample output for a person, "user", who is in two projects: aaaa and bbbb. 
+Below is a sample output for a person, "<user>", who is in two projects: "aaaa" and "bbbb". 
 The home directory quota does not depend on which project group the file is written with.
 
 .. code-block::
 
-   <user>@dt-login01 ~]$ quota
+   [<user>@dt-login01 ~]$ quota
    Quota usage for user <user>:
    -------------------------------------------------------------------------------------------
    | Directory Path | User | User | User  | User | User   | User |
