@@ -191,6 +191,8 @@ What Happens When a Job Gets Preempted
    <details>
    <summary><a><b>Preempted Job Example</b> <i>(click to expand/collapse)</i></a></summary>
 
+The example uses the ``bbka-delta-gpu`` account. Accounts available to you are listed under ‘Project’ when you run the accounts command.
+
 .. code-block:: terminal
 
    [arnoldg@dt-login04 bin]$ cat trap.sh
@@ -323,7 +325,7 @@ srun
 
 The **srun** command initiates an interactive job or process on compute nodes.
 
-For example, the following command will run an interactive job in the gpuA100x4 or gpuA40x4 partition with a wall-clock time limit of 30 minutes, using one node and 16 cores per node and 1 GPU. (Replace ``account_name`` with one of your available accounts; these will be listed under 'Project' when you run the ``accounts`` command.)
+For example, the following command will run an interactive job in the gpuA100x4 or gpuA40x4 partition with a wall-clock time limit of 30 minutes, using one node and 16 cores per node and 1 GPU. (Replace ``account_name`` with one of your available accounts; these are listed under 'Project' when you run the ``accounts`` command.)
 
 .. code-block::
 
@@ -358,7 +360,7 @@ salloc
 ~~~~~
 
 While being interactive like ``srun``, ``salloc`` allocates compute resources for you, while leaving your shell on the login node.
-Run commands on the login node as usual, use``exit`` to end an salloc session early, and use srun with no extra flags to launch processes on the compute resources. (Replace ``account_name`` with one of your available accounts; these will be listed under 'Project' when you run the ``accounts`` command.)
+Run commands on the login node as usual, use``exit`` to end an salloc session early, and use srun with no extra flags to launch processes on the compute resources. (Replace ``account_name`` with one of your available accounts; these are listed under 'Project' when you run the ``accounts`` command.)
 
 .. code-block::
 
@@ -587,7 +589,7 @@ Monitoring Nodes Using Grafana
 Interactive Sessions
 -------------------------
 
-Interactive sessions can be implemented in several ways, depending on what is needed. The examples below start up a bash shell terminal on a CPU or GPU node. (Replace ``account_name`` with one of your available accounts; these will be listed under 'Project' when you run the ``accounts`` command.)
+Interactive sessions can be implemented in several ways, depending on what is needed. The examples below start up a bash shell terminal on a CPU or GPU node. (Replace ``account_name`` with one of your available accounts; these are listed under 'Project' when you run the ``accounts`` command.)
 
 - Single core with 16GB of memory, with one task on a CPU node
 
@@ -619,7 +621,7 @@ For true interactive MPI, use ``salloc`` in place of srun shown above, then "sru
    <details>
    <summary><a><b>interactive MPI, salloc and srun</b> <i>(click to expand/collapse)</i></a></summary>
 
-(Replace ``account_name`` with one of your available accounts; these will be listed under 'Project' when you run the ``accounts`` command.)
+(Replace ``account_name`` with one of your available accounts; these are listed under 'Project' when you run the ``accounts`` command.)
 
 .. code-block::
 
@@ -672,7 +674,7 @@ Interactive X11 Support
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 To run an X11 based application on a compute node in an interactive session, the use of the ``--x11`` switch with ``srun`` is needed. 
-For example, to run a single core job that uses 1G of memory with X11 (in this case an xterm) do the following. (Replace ``account_name`` with one of your available accounts; these will be listed under 'Project' when you run the ``accounts`` command.)
+For example, to run a single core job that uses 1G of memory with X11 (in this case an xterm) do the following. (Replace ``account_name`` with one of your available accounts; these are listed under 'Project' when you run the ``accounts`` command.)
 
 .. code-block::
 
