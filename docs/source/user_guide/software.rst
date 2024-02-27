@@ -111,6 +111,10 @@ You may *use any of these methods* with any of the python versions or instances 
 
 Examples using all of the above are shown in the `Intel scikit-learn-intelex repository <https://github.com/intel/scikit-learn-intelex/blob/master/INSTALL.md>`_ (an Intel accelerated scikit learn subset library for x86_64 architecture). 
 
+- `pyenv <https://github.com/pyenv/pyenv/blob/master/README.md>`_: pyenv python version management
+
+  Pyenv helps you manage multiple python versions.  You can also use more than one python version at once in a project using pyenv.
+
 .. note::
    The :ref:`nvidia-contain` on Delta provide optimized python frameworks built for Delta's A100 and A40 GPUs. 
    Delta staff recommend using an NGC container when possible with the GPU nodes (or use the anaconda3_gpu module).
