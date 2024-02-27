@@ -247,7 +247,7 @@ A sample batch script to obtain an xterm (interactive xterm batch script for Slu
      --mem=16g \
      --partition=$PARTITION \
      --time=00:30:00 \
-     --account=$MYACCOUNT \
+     --account=account_name \    # <- match to a 'Project' returned by the 'accounts' command
      $GPUS --x11 \
      xterm
 
