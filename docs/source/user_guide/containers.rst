@@ -219,7 +219,7 @@ The E4S container with GPU (CUDA and ROCm) support is provided for users of spec
 
    /sw/external/E4S/e4s-gpu-x86_64.sif
 
-To use E4S with NVIDIA GPUs (replace ``account_name`` with one of your available accounts; these will be listed under ‘Project’ when you run the ``accounts`` command):
+To use E4S with NVIDIA GPUs (replace ``account_name`` with one of your available accounts; these are listed under ‘Project’ when you run the ``accounts`` command):
 
 .. code-block::
 
