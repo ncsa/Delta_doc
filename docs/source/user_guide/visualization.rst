@@ -66,7 +66,7 @@ Adjust Maximum processors to fit your requirements:
 The "-interactive" version of a partition is shown. 
 Note, those partitions are for quick tests up to 30 minutes; choose another partition for longer sessions.
 
-Partitions and accounts should match: GPU partitions go with GPU account endings, CPU partitions with CPU account endings. Your input in the **Bank/Account** field must match one of your available accounts (CPU or GPU, as appropriate); these will be listed under 'Project' when you run the ``accounts`` command.
+Partitions and accounts should match: GPU partitions go with GPU account endings, CPU partitions with CPU account endings. Your input in the **Bank/Account** field must match one of your available accounts (CPU or GPU, as appropriate); these are listed under 'Project' when you run the ``accounts`` command.
 
 ..  image:: images/visualization/03_visit-mpi-parallel.png
     :alt: mpi parallel launch settings
