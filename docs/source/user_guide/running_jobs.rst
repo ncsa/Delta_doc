@@ -619,10 +619,12 @@ For true interactive MPI, use ``salloc`` in place of srun shown above, then "sru
    <details>
    <summary><a><b>interactive MPI, salloc and srun</b> <i>(click to expand/collapse)</i></a></summary>
 
+(Replace ``account_name`` with one of your available accounts; these will be listed under 'Project' when you run the ``accounts`` command.)
+
 .. code-block::
 
    [arnoldg@dt-login01 collective]$ cat osu_reduce.salloc
-   salloc --account=bbka-delta-cpu --partition=cpu-interactive \
+   salloc --account=account_name --partition=cpu-interactive \
      --nodes=2 --tasks-per-node=4 \
      --cpus-per-task=2 --mem=0
 
@@ -670,11 +672,11 @@ Interactive X11 Support
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 To run an X11 based application on a compute node in an interactive session, the use of the ``--x11`` switch with ``srun`` is needed. 
-For example, to run a single core job that uses 1G of memory with X11 (in this case an xterm) do the following:
+For example, to run a single core job that uses 1G of memory with X11 (in this case an xterm) do the following. (Replace ``account_name`` with one of your available accounts; these will be listed under 'Project' when you run the ``accounts`` command.)
 
 .. code-block::
 
-   srun -A abcd-delta-cpu  --partition=cpu-interactive \
+   srun -A account_name  --partition=cpu-interactive \
      --nodes=1 --tasks=1 --tasks-per-node=1 \
      --cpus-per-task=2 --mem=16g \
      --x11  xterm
