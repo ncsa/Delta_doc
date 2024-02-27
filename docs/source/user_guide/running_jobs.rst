@@ -874,7 +874,7 @@ Hybrid (MPI + OpenMP or MPI+X) on CPU Nodes
    #SBATCH --constraint="scratch"
    #SBATCH --gpus-per-node=4
    #SBATCH --gpu-bind=closest   # select a cpu close to gpu on pci bus topology
-   #SBATCH --account=bbjw-delta-gpu
+   #SBATCH --account=account_name    # <- match to a 'Project' returned by the 'accounts' command
    #SBATCH --exclusive  # dedicated node for this job
    #SBATCH --no-requeue
    #SBATCH -t 04:00:00
