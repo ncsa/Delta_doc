@@ -72,11 +72,11 @@ Get a batch allocation on a compute node and run visit in that allocation with s
 
 Fill in Host Settings and under Launch Profiles, adjust number of threads per task to fit your requirements and the --cpus-per-task from salloc above:
 
-..  image:: images/visualization/01_visit_host_settings.png
+..  image:: images/visualization/01_visit-host-settings.png
     :alt: delta host profile settings
     :width: 1000px
 
-..  image:: images/visualization/02_visit-mpi-settings.png
+..  image:: images/visualization/02_visit-thread-settings.png
     :alt: delta host profile settings
     :width: 1000px
 
