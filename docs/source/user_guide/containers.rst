@@ -26,7 +26,7 @@ Below is an ``srun`` example of that with TensorFlow:
     --ntasks-per-node=1 \
     --cpus-per-task=16 \
     --partition=gpuA100x4-interactive \
-    --account=account_name \    # <- match to a 'Project' returned by the 'accounts' command
+    --account=account_name \    # <- match to a "Project" returned by the "accounts" command
     --gpus-per-node=1 \
     --gpus-per-task=1 \
     --gpu-bind=verbose,per_task:1 \
@@ -60,7 +60,7 @@ PyTorch Example Script
    #SBATCH --ntasks-per-node=1
    #SBATCH --cpus-per-task=16    # <- match to OMP_NUM_THREADS, 64 requests whole node
    #SBATCH --partition=gpuA100x4    # <- one of: gpuA100x4 gpuA40x4 gpuA100x8 gpuMI100x8
-   #SBATCH --account=account_name    # <- match to a 'Project' returned by the 'accounts' command
+   #SBATCH --account=account_name    # <- match to a "Project" returned by the "accounts" command
    #SBATCH --job-name=pytorchNGC
    ### GPU options ###
    #SBATCH --gpus-per-node=1
@@ -90,7 +90,7 @@ TensorFlow Example Script
    #SBATCH --ntasks-per-node=1
    #SBATCH --cpus-per-task=16    # <- match to OMP_NUM_THREADS
    #SBATCH --partition=gpuA100x4    # <- one of: gpuA100x4 gpuA40x4 gpuA100x8 gpuMI100x8
-   #SBATCH --account=account_name    # <- match to a 'Project' returned by the 'accounts' command
+   #SBATCH --account=account_name    # <- match to a "Project" returned by the "accounts" command
    #SBATCH --job-name=tfNGC
    ### GPU options ###
    #SBATCH --gpus-per-node=1
@@ -182,7 +182,7 @@ Sample Batch Script for PyTorch
    #SBATCH --ntasks-per-node=1
    #SBATCH --cpus-per-task=16
    #SBATCH --partition=gpuMI100x8
-   #SBATCH --account=account_name    # <- match to a 'Project' returned by the 'accounts' command
+   #SBATCH --account=account_name    # <- match to a "Project" returned by the "accounts" command
    #SBATCH --job-name=tfAMD
    #SBATCH --reservation=amd
    #SBATCH --time=00:15:00
@@ -219,7 +219,7 @@ The E4S container with GPU (CUDA and ROCm) support is provided for users of spec
 
    /sw/external/E4S/e4s-gpu-x86_64.sif
 
-To use E4S with NVIDIA GPUs (replace ``account_name`` with one of your available accounts; these are listed under ‘Project’ when you run the ``accounts`` command):
+To use E4S with NVIDIA GPUs (replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command):
 
 .. code-block::
 
