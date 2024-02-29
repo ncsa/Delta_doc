@@ -70,9 +70,13 @@ Get a batch allocation on a compute node and run visit in that allocation with s
    Running: mdserver3.3.3 -host 127.0.0.1 -port 5601
 
 
-Adjust Number of threads per task to fit your requirements and the --cpus-per-task from salloc above:
+Fill in Host Settings and under Launch Profiles, adjust number of threads per task to fit your requirements and the --cpus-per-task from salloc above:
 
 ..  image:: images/visualization/01_visit_host_settings.png
+    :alt: delta host profile settings
+    :width: 1000px
+
+..  image:: images/visualization/02_visit-mpi-settings.png
     :alt: delta host profile settings
     :width: 1000px
 
