@@ -248,7 +248,7 @@ The library is described at: `DDNStorage/posix_2_ime: POSIX to IME Native API (g
    #SBATCH --exclusive
    #SBATCH --cpus-per-task=16
    #SBATCH --partition=cpu
-   #SBATCH --account=account_name    # <- match to a 'Project' returned by the 'accounts' command
+   #SBATCH --account=account_name    # <- match to a "Project" returned by the "accounts" command
    #SBATCH --time=00:15:00
    #SBATCH --job-name=posix2ime-ior-dedicated
     
