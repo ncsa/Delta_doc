@@ -76,7 +76,7 @@ Fill in Host Settings and under Launch Profiles, adjust number of threads per ta
     :alt: delta host profile settings
     :width: 1000px
 
-..  image:: images/visualization/02_visit-thread-settings.png
+..  image:: images/visualization/02_visit-thread-settings16.png
     :alt: delta host profile settings
     :width: 1000px
 
