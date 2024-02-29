@@ -53,7 +53,7 @@ Following the `SDSC VisIt getting started guide <https://www.sdsc.edu/education_
 
    ``module load visit``
 
-Get a batch allocation on a compute node and run visit in that allocation with srun.  Enable x11 forwarding.
+Get a batch allocation on a compute node and run ``visit`` in that allocation with ``srun``.  Enable ``x11`` forwarding.
 
 .. code-block::
 
@@ -70,7 +70,7 @@ Get a batch allocation on a compute node and run visit in that allocation with s
    Running: mdserver3.3.3 -host 127.0.0.1 -port 5601
 
 
-Fill in Host Settings and under Launch Profiles, adjust number of threads per task to fit your requirements and the --cpus-per-task from salloc above:
+Fill in **Host Settings** and under **Launch Profiles**, adjust **Number of threads per task** to fit your requirements and the ``--cpus-per-task`` from ``salloc`` above:
 
 ..  image:: images/visualization/01_visit-host-settings.png
     :alt: delta host profile settings
@@ -80,7 +80,7 @@ Fill in Host Settings and under Launch Profiles, adjust number of threads per ta
     :alt: delta host profile settings
     :width: 1000px
 
-Leave the Parallel tab options unchecked.  Since this example is not using MPI, that tab isn't applicable.
+Leave the **Parallel** tab options unchecked; since this example is not using MPI, that tab isn't applicable.
 
 
 **Options** → **Save Settings** after filling in the above.
