@@ -339,7 +339,7 @@ Delta Script and Nsight Systems View of the Resulting Report
    #SBATCH --constraint="projects"
    #SBATCH --gpus-per-node=1
    #SBATCH --gpu-bind=closest   # select a cpu close to gpu on pci bus topology
-   #SBATCH --account=account_name    # <- match to a 'Project' returned by the 'accounts' command
+   #SBATCH --account=account_name    # <- match to a "Project" returned by the "accounts" command
    #SBATCH -t 00:10:00
 
    cd $SLURM_SUBMIT_DIR
