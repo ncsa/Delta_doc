@@ -80,7 +80,7 @@ Reviewing Job Charges for a Project (jobcharge)
    <details>
    <summary><a><b>jobcharge_grp.py</b> <i>(click to expand/collapse)</i></a></summary>
 
-The example ``jobcharge`` commands are showing results for the ``bbka-delta-gpu`` account. Accounts available to you are listed under 'Project' when you run the ``accounts`` command.
+The example ``jobcharge`` commands are showing results for the ``bbka-delta-gpu`` account. Accounts available to you are listed under "Project" when you run the ``accounts`` command.
 
 .. code-block::
 
