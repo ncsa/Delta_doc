@@ -748,7 +748,11 @@ To address a problem with **PATH** ordering when using anaconda3 modules, a warn
    /sw/external/python/anaconda3 
    anaconda3_gpu is loaded. Consider running conda deactivate and reloading it.
 
-See the `Conda configuration documentation <https://docs.conda.io/projects/conda/en/latest/configuration.html>`_, if you want to disable automatic conda environment activation.
+See the `Conda configuration documentasu
+
+.. note::
+
+   If you have run "conda init bash" and are using your own custom conda environment, be in that environment when you submit batch jobs.  You will not need to use conda commands like "conda activate" in the job script because the job inherits your current environment.
 
 Batch Jobs
 $$$$$$$$$$$
