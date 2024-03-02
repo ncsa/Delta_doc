@@ -754,6 +754,9 @@ To address a problem with **PATH** ordering when using anaconda3 modules, a warn
 
 See the `Conda configuration documentation <https://docs.conda.io/projects/conda/en/latest/configuration.html>`_, if you want to disable automatic conda environment activation.
 
+.. note::
+   When using your own custom conda environment with a batch job, just submit the batch job from within the environment and do not add "conda activate" commands to the job script--the job inherits your environment.
+
 Batch Jobs
 $$$$$$$$$$$
 
