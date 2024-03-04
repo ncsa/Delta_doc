@@ -761,9 +761,9 @@ Batch Jobs
 $$$$$$$$$$$
 
 Batch jobs will honor the commands you execute within them.
-Purge/unload/load modules, or deactivate/activate environments as needed for that job.
+Purge/unload/load modules as needed for that job.
 
-A clean slate job might resemble (user has a conda init clause in bashrc):
+A clean slate might resemble (user has a conda init clause in bashrc for a custom environment):
 
 .. code-block::
 
@@ -773,7 +773,9 @@ A clean slate job might resemble (user has a conda init clause in bashrc):
    module reset  # load the default Delta modules
 
    conda activate base
-   # commands to load modules and activate environs
+   # commands to load modules and activate environs such that your environment is active before
+   # you use slurm ( no conda activate commands in the slurm script )
+   sbatch myjob.slurm  # or srun or salloc 
 
 Non-python/conda HPC users would see per-job stderr from the ``conda deactivate`` above (user has never run ``conda init bash``):
 
