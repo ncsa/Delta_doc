@@ -891,6 +891,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
    **SSH tunnel for Jupyter:**
 
    .. code-block::
+
       # replace $UID below with your delta user id number as recorded above
       $ ssh -l my_delta_username \
         -L 127.0.0.1:$UID:cn093.delta.internal.ncsa.edu:$UID \
