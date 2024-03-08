@@ -282,8 +282,7 @@ Table Legend:
    | Number of nodes           | 1                                       |
    +---------------------------+-----------------------------------------+
    | GPU                       | `AMD MI100 <https://www.amd.com/en/prod |
-   |                           | ucts/server-accelerators/instinct-mi10  |
-   |                           | 0>`_                                    |
+   |                           | ucts/accelerators/instinct/mi100.html>`_|
    +---------------------------+-----------------------------------------+
    | GPUs per node             | 8                                       |
    +---------------------------+-----------------------------------------+
