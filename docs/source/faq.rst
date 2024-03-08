@@ -18,7 +18,7 @@ See the `Delta Allocations <https://delta.ncsa.illinois.edu/delta-allocations/>`
 How do I get help if I can’t find the answer in the documentation?
 ---------------------------------------------------------------------
 
-If you can’t find the answer in the documentation (or via the search bar in the upper left corner) please submit a support request (:ref:`help`). The ticket that is initiated becomes a discussion of your problem and the path to a solution.
+If you can’t find the answer in the documentation (or via the search bar in the upper left corner) please :ref:`submit a support request <help>`. The ticket that is initiated becomes a discussion of your problem and the path to a solution.
 
 How do I acknowledge Delta, NCSA, and/or ACCESS in my research?
 ------------------------------------------------------------------
