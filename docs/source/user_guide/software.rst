@@ -72,7 +72,7 @@ Use ``module spider package_name`` to search for software in Lmod and see the st
 
 See also: `User Guide for Lmod <https://lmod.readthedocs.io/en/latest/010_user.html>`_.
 
-Please submit a support request (:ref:`help`) for help with software not currently installed on the Delta system. 
+Please :ref:`submit a support request <help>` for help with software not currently installed on the Delta system. 
 
 - For single user or single project use cases the preference is for the user to use the Spack software package manager to install software locally against the system Spack installation. 
   Delta support staff are available to provide limited assistance. 
@@ -82,7 +82,7 @@ Python
 ----------
 
 .. note::
-   When submitting support requests (:ref:`help`) for python, please provide the following and understand that Delta support staff time is a finite resource while python developments (new software and modules) are growing at nearly infinite velocity:
+   When submitting :ref:`support requests <help>` for python, please provide the following and understand that Delta support staff time is a finite resource while python developments (new software and modules) are growing at nearly infinite velocity:
 
    - Python version or environment used (describe fully, with the commands needed to reproduce)
    - Error output or log from what went wrong (screenshots are more difficult to work with than text data, we donot run trained inference on screenshots attached to Jira)
