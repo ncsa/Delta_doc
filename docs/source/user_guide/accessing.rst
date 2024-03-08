@@ -15,7 +15,7 @@ Direct access to the Delta login nodes is via SSH using your NCSA username, pass
 
 See `NCSA Allocation and Account Management <https://wiki.ncsa.illinois.edu/display/USSPPRT/NCSA+Allocation+and+Account+Management>`_ for the steps to change your NCSA password for direct access and set up NCSA Duo. 
 
-For ACCESS awarded projects, to find your local NCSA username go to your `ACCESS Profile page <https://allocations.access-ci.org/profile>`_ and scroll to the bottom for the **Resource Provider Site Usernames** table. If you do not know your NCSA username, submit a support request (:ref:`help`) for assistance.
+For ACCESS awarded projects, to find your local NCSA username go to your `ACCESS Profile page <https://allocations.access-ci.org/profile>`_ and scroll to the bottom for the **Resource Provider Site Usernames** table. If you do not know your NCSA username, :ref:`submit a support request <help>` for assistance.
 
 .. warning::
 
@@ -60,7 +60,7 @@ In the examples below, replace ``username`` with your Delta login username.
 
 Use of SSH key pairs is disabled for general use.  This means that most individual users, even PIs, are **not allowed** to use SSH key pairs to log in instead of 2-factor authentication.  
 
-The one exception is: if you are the PI of a Gateway allocation (this is not most projects), then please submit a support request (:ref:`help`) to get the Gateway account's key pairs set up.  
+The one exception is: if you are the PI of a Gateway allocation (this is not most projects), then please :ref:`submit a support request <help>` to get the Gateway account's key pairs set up.  
 
 Maintaining Persistent Sessions: tmux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
