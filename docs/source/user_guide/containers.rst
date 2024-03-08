@@ -153,7 +153,7 @@ See the `NVIDIA containers catalog <https://catalog.ngc.nvidia.com/containers>`_
 AMD Infinity Hub containers for MI100
 -------------------------------------
 
-The AMD node in partition gpuMI100x8 (-interactive) will run containers from the `AMD Infinity Hub <https://www.amd.com/en/technologies/infinity-hub>`_.
+The AMD node in partition gpuMI100x8 (-interactive) will run containers from the `AMD Infinity Hub <https://www.amd.com/en/developer/resources/infinity-hub.html>`_.
 The Delta team has pre-loaded the following containers in **/sw/external/MI100** and will retrieve others upon request.
 
 AMD MI100 Containers in /sw/external/MI100
