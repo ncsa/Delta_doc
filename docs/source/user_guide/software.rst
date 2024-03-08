@@ -703,7 +703,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 Similar to the setup for anaconda_cpu, Delta has GPU versions of anaconda3 (module load anaconda3_gpu) and installed PyTorch and TensorFlow CUDA aware python modules into these versions. 
 You may use these modules when working with the GPU nodes. 
 See ``conda list`` after loading the module to review what is already installed. 
-As with anaconda3_cpu, submit a support request (:ref:`help`) if there are generally useful modules you would like installed for the broader community. 
+As with anaconda3_cpu, :ref:`submit a support request <help>` if there are generally useful modules you would like installed for the broader community. 
 A sample TensorFlow test script:
 
 .. code-block::
