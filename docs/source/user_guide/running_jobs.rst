@@ -191,6 +191,8 @@ What Happens When a Job Gets Preempted
    <details>
    <summary><a><b>Preempted Job Example</b> <i>(click to expand/collapse)</i></a></summary>
 
+The example uses the ``bbka-delta-gpu`` account. Accounts available to you are listed under "Project" when you run the ``accounts`` command.
+
 .. code-block:: terminal
 
    [arnoldg@dt-login04 bin]$ cat trap.sh
@@ -323,7 +325,7 @@ srun
 
 The **srun** command initiates an interactive job or process on compute nodes.
 
-For example, the following command will run an interactive job in the gpuA100x4 or gpuA40x4 partition with a wall-clock time limit of 30 minutes, using one node and 16 cores per node and 1 GPU:
+For example, the following command will run an interactive job in the gpuA100x4 or gpuA40x4 partition with a wall-clock time limit of 30 minutes, using one node and 16 cores per node and 1 GPU. (Replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command.)
 
 .. code-block::
 
@@ -338,7 +340,7 @@ You will see something like this:
 .. code-block::
 
    $ srun --mem=16g --nodes=1 --ntasks-per-node=1 --cpus-per-task=4 \
-   --partition=gpuA100x4-interactive,gpuA40x4-interactive --account=bbka-delta-gpu \
+   --partition=gpuA100x4-interactive,gpuA40x4-interactive --account=account_name \
    --gpus-per-node=1 --time=00:30:00 --x11 --pty /bin/bash
    [login_name@gpua022 bin]$  #<-- note the compute node name in the shell prompt
    [login_name@gpua022 bin]$ echo $SLURM_JOB_ID
@@ -357,13 +359,14 @@ When finished, use the ``exit`` command to end the bash shell on the compute res
 salloc
 ~~~~~
 
-While being interactive like ``srun``, ``salloc`` allocates compute resources for you, while leaving your shell on the login node.  Run commands on the login node as usual, use``exit`` to end an salloc session early, and use srun with no extra flags to launch processes on the compute resources.
+While being interactive like ``srun``, ``salloc`` allocates compute resources for you, while leaving your shell on the login node.
+Run commands on the login node as usual, use``exit`` to end an salloc session early, and use srun with no extra flags to launch processes on the compute resources. (Replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command.)
 
 .. code-block::
 
    $ salloc --mem=16g --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 \
      --partition=gpuA40x4-interactive,gpuA100x4-interactive \
-     --account=your_account_name --time=00:30:00 --gpus-per-node=1
+     --account=account_name --time=00:30:00 --gpus-per-node=1
    salloc: Pending job allocation 2323230
    salloc: job 2323230 queued and waiting for resources
    salloc: job 2323230 has been allocated resources
@@ -586,7 +589,7 @@ Monitoring Nodes Using Grafana
 Interactive Sessions
 -------------------------
 
-Interactive sessions can be implemented in several ways, depending on what is needed. To start up a bash shell terminal on a CPU or GPU node:
+Interactive sessions can be implemented in several ways, depending on what is needed. The examples below start up a bash shell terminal on a CPU or GPU node. (Replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command.)
 
 - Single core with 16GB of memory, with one task on a CPU node
 
@@ -618,10 +621,12 @@ For true interactive MPI, use ``salloc`` in place of srun shown above, then "sru
    <details>
    <summary><a><b>interactive MPI, salloc and srun</b> <i>(click to expand/collapse)</i></a></summary>
 
+(Replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command.)
+
 .. code-block::
 
    [arnoldg@dt-login01 collective]$ cat osu_reduce.salloc
-   salloc --account=bbka-delta-cpu --partition=cpu-interactive \
+   salloc --account=account_name --partition=cpu-interactive \
      --nodes=2 --tasks-per-node=4 \
      --cpus-per-task=2 --mem=0
 
@@ -669,11 +674,11 @@ Interactive X11 Support
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 To run an X11 based application on a compute node in an interactive session, the use of the ``--x11`` switch with ``srun`` is needed. 
-For example, to run a single core job that uses 1G of memory with X11 (in this case an xterm) do the following:
+For example, to run a single core job that uses 1G of memory with X11 (in this case an xterm) do the following. (Replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command.)
 
 .. code-block::
 
-   srun -A abcd-delta-cpu  --partition=cpu-interactive \
+   srun -A account_name  --partition=cpu-interactive \
      --nodes=1 --tasks=1 --tasks-per-node=1 \
      --cpus-per-task=2 --mem=16g \
      --x11  xterm
@@ -710,7 +715,7 @@ Serial Jobs on CPU Nodes
    #SBATCH --ntasks-per-node=1
    #SBATCH --cpus-per-task=4    # <- match to OMP_NUM_THREADS
    #SBATCH --partition=cpu      # <- or one of: gpuA100x4 gpuA40x4 gpuA100x8 gpuMI100x8
-   #SBATCH --account=account_name
+   #SBATCH --account=account_name    # <- match to a "Project" returned by the "accounts" command
    #SBATCH --job-name=myjobtest
    #SBATCH --time=00:10:00      # hh:mm:ss for the job
    #SBATCH --constraint="scratch"
@@ -750,7 +755,7 @@ MPI on CPU Nodes
    #SBATCH --ntasks-per-node=32
    #SBATCH --cpus-per-task=2    # <- match to OMP_NUM_THREADS
    #SBATCH --partition=cpu      # <- or one of: gpuA100x4 gpuA40x4 gpuA100x8 gpuMI100x8
-   #SBATCH --account=account_name
+   #SBATCH --account=account_name    # <- match to a "Project" returned by the "accounts" command
    #SBATCH --job-name=mympi
    #SBATCH --time=00:10:00      # hh:mm:ss for the job
    #SBATCH --constraint="scratch"
@@ -788,7 +793,7 @@ OpenMP on CPU Nodes
    #SBATCH --ntasks-per-node=1
    #SBATCH --cpus-per-task=32   # <- match to OMP_NUM_THREADS
    #SBATCH --partition=cpu      # <- or one of: gpuA100x4 gpuA40x4 gpuA100x8 gpuMI100x8
-   #SBATCH --account=account_name
+   #SBATCH --account=account_name    # <- match to a '"Project" returned by the "accounts" command
    #SBATCH --job-name=myopenmp
    #SBATCH --time=00:10:00      # hh:mm:ss for the job
    #SBATCH --constraint="scratch"
@@ -828,7 +833,7 @@ Hybrid (MPI + OpenMP or MPI+X) on CPU Nodes
    #SBATCH --ntasks-per-node=4
    #SBATCH --cpus-per-task=4    # <- match to OMP_NUM_THREADS
    #SBATCH --partition=cpu      # <- or one of: gpuA100x4 gpuA40x4 gpuA100x8 gpuMI100x8
-   #SBATCH --account=account_name
+   #SBATCH --account=account_name    # <- match to a "Project" returned by the "accounts" command
    #SBATCH --job-name=mympi+x
    #SBATCH --time=00:10:00      # hh:mm:ss for the job
    #SBATCH --constraint="scratch"
@@ -873,7 +878,7 @@ Hybrid (MPI + OpenMP or MPI+X) on CPU Nodes
    #SBATCH --constraint="scratch"
    #SBATCH --gpus-per-node=4
    #SBATCH --gpu-bind=closest   # select a cpu close to gpu on pci bus topology
-   #SBATCH --account=bbjw-delta-gpu
+   #SBATCH --account=account_name    # <- match to a "Project" returned by the "accounts" command
    #SBATCH --exclusive  # dedicated node for this job
    #SBATCH --no-requeue
    #SBATCH -t 04:00:00

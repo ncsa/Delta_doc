@@ -97,9 +97,9 @@ You may *use any of these methods* with any of the python versions or instances 
 
   Can name environments (metadata) and have multiple environments per python version or instance.
 
-- `conda environments <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>`_
+- `conda (or miniconda) environments <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>`_
 
-  Similar to venv but with more flexibility, see this `comparison table <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html#virtual-environments>`_.
+  Similar to venv but with more flexibility, see this `comparison table <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html#virtual-environments>`_.  See also the miniconda environment option: `anconda or miniconda <https://docs.anaconda.com/free/distro-or-miniconda/>`_.
 
 - `pip3 <https://docs.python.org/3/installing/index.html>`_: pip3 install --user <python_package>
 
@@ -110,6 +110,10 @@ You may *use any of these methods* with any of the python versions or instances 
   The conda-env-mod script will generate a python module you can load or share with your team--making it simpler to manage multiple python scenarios that you can activate and deactivate with module commands.
 
 Examples using all of the above are shown in the `Intel scikit-learn-intelex repository <https://github.com/intel/scikit-learn-intelex/blob/master/INSTALL.md>`_ (an Intel accelerated scikit learn subset library for x86_64 architecture). 
+
+- `pyenv <https://github.com/pyenv/pyenv/blob/master/README.md>`_: pyenv python version management
+
+  Pyenv helps you manage multiple python versions.  You can also use more than one python version at once in a project using pyenv.
 
 .. note::
    The :ref:`nvidia-contain` on Delta provide optimized python frameworks built for Delta's A100 and A40 GPUs. 
@@ -711,7 +715,7 @@ A sample TensorFlow test script:
    #SBATCH --cpus-per-task=16     # <- match to OMP_NUM_THREADS
    #SBATCH --partition=gpuA100x4-interactive
    #SBATCH --time=00:10:00
-   #SBATCH --account=YOUR_ACCOUNT-delta-gpu
+   #SBATCH --account=account_name    # <- match to a "Project" returned by the "accounts" command
    #SBATCH --job-name=tf_anaconda
    ### GPU options ###
    #SBATCH --gpus-per-node=1
@@ -750,13 +754,16 @@ To address a problem with **PATH** ordering when using anaconda3 modules, a warn
 
 See the `Conda configuration documentation <https://docs.conda.io/projects/conda/en/latest/configuration.html>`_, if you want to disable automatic conda environment activation.
 
+.. note::
+   When using your own custom conda environment with a batch job, submit the batch job from within the environment and *do not* add ``conda activate`` commands to the job script; the job inherits your environment.
+
 Batch Jobs
 $$$$$$$$$$$
 
 Batch jobs will honor the commands you execute within them.
-Purge/unload/load modules, or deactivate/activate environments as needed for that job.
+Purge/unload/load modules as needed for that job.
 
-A clean slate job might resemble (user has a conda init clause in bashrc):
+A clean slate might resemble (user has a conda init clause in bashrc for a custom environment):
 
 .. code-block::
 
@@ -766,7 +773,9 @@ A clean slate job might resemble (user has a conda init clause in bashrc):
    module reset  # load the default Delta modules
 
    conda activate base
-   # commands to load modules and activate environs
+   # commands to load modules and activate environs such that your environment is active before
+   # you use slurm ( no conda activate commands in the slurm script )
+   sbatch myjob.slurm  # or srun or salloc 
 
 Non-python/conda HPC users would see per-job stderr from the ``conda deactivate`` above (user has never run ``conda init bash``):
 
@@ -825,17 +834,21 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 #. Start a Jupyter job via ``srun`` and note the hostname (*you pick the port number for --port*).
 
    **srun Jupyter ( anaconda3_cpu on a CPU node ):**
+
+   Replace ``account_name`` with one of your available CPU accounts; these are listed under "Project" when you run the ``accounts`` command.
    
    .. code-block::
-      
-      $ srun --account=wxyz-delta-cpu --partition=cpu-interactive \
+
+      $ echo $UID # make a note of your user id number, you will need it later
+      $ srun --account=account_name --partition=cpu-interactive \
         --time=00:30:00 --mem=32g \
         jupyter-notebook --no-browser \
-        --port=8991 --ip=0.0.0.0
+        --port=$UID --ip=0.0.0.0
       ...
+      # $UID here will be filled in with your user id number (unique to you )
           Or copy and paste one of these URLs:
-              http://cn093.delta.internal.ncsa.edu:8891/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
-           or http://127.0.0.1:8991/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
+              http://cn093.delta.internal.ncsa.edu:$UID/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
+           or http://127.0.0.1:$UID/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
 
    Note the internal hostname in the **cluster** for **step 2**. You will use the **second URL** in **step 3**.
 
@@ -843,18 +856,21 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
    **NGC container for GPUs, jupyter-notebook, bind a directory:**
 
+   Replace ``account_name`` with one of your available GPU accounts; these are listed under "Project" when you run the ``accounts`` command.
+
    .. code-block::
 
       # container notebook example showing how to access a directory outside
       # of $HOME ( /projects/bbka in the example )
-      $ srun --account=wxyz-delta-gpu --partition=gpuA100x4-interactive \
+      $ srun --account=account_name --partition=gpuA100x4-interactive \
         --time=00:30:00 --mem=64g --gpus-per-node=1 \
         singularity run --nv --bind /projects/bbka \
         /sw/external/NGC/pytorch:22.02-py3 jupyter-notebook \
         --notebook-dir /projects/wxyz \
-        --no-browser --port=8991 --ip=0.0.0.0
+        --no-browser --port=$UID --ip=0.0.0.0
       ...
-      http://hostname:8888/?token=73d96b99f2cfc4c3932a3433d1b8003c052081c5411795d5
+      # again, $UID will be filled in with your user id number
+      http://hostname:$UID/?token=73d96b99f2cfc4c3932a3433d1b8003c052081c5411795d5
 
    In step 3, to start the notebook in your browser, replace http://hostname:8888/ with http://127.0.0.1:8991/ (the port number you selected with ``--port=``)
 
@@ -876,8 +892,9 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
    .. code-block::
 
+      # replace $UID below with your delta user id number as recorded above
       $ ssh -l my_delta_username \
-        -L 127.0.0.1:8991:cn093.delta.internal.ncsa.edu:8991 \
+        -L 127.0.0.1:$UID:cn093.delta.internal.ncsa.edu:$UID \
         dt-login.delta.ncsa.illinois.edu
 
    Authenticate with your login and MFA, as usual.
