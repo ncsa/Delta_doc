@@ -5,6 +5,5 @@ Traditional service requests for assistance on access and allocation issues, por
 
 Requests requiring deeper engagement will need additional review and potentially funded work. For additional support opportunities, please see:
 
-- `ACCESS MATCHPlus <https://support.access-ci.org/matchplus>`_ for short-term support.
-- `ACCESS MATCHPremier <https://support.access-ci.org/matchpremier>`_ for long-term support.
+- `ACCESS MATCH Services <https://support.access-ci.org/match/overview>`_ for short-term (MATCH Plus) and long-term (MATCH Premier) support.
 - `Illinois Computes <https://www.ncsa.illinois.edu/about/illinois-computes>`_ for partnerships between University of Illinois researchers and NCSA. 
