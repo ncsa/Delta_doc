@@ -52,7 +52,7 @@ Transferring Data
 .. note::
 
    | **GUI applications need to support Duo multi-factor authentication (MFA)**
-   | Many GUI apps that support ``ssh``/``scp``/``sftp`` will work with Duo MFA. A good first step is to use the interactive (not stored/saved) password option with those apps. The interactive login should present you with the first password prompt (your Kerberos password) followed by the second password prompt for Duo (push to device or passcode from the Duo app).
+   | Many GUI apps that support ``ssh``/``scp``/``sftp`` will work with Duo MFA. A good first step is to use the interactive (not stored/saved) password option with these apps. The interactive login should present you with the first password prompt (your Kerberos password) followed by the second password prompt for Duo (push to device or passcode from the Duo app).
 
 Secure Copy (scp)
 ~~~~~~~~~~~~~~~~~~
@@ -73,7 +73,7 @@ Use Globus for large data transfers. Globus is a web-based file transfer system 
 
 Go to `Transferring Files - Globus <https://docs.ncsa.illinois.edu/en/proposed_changes/common/transfer.html#globus>`_ for complete instructions on using Globus with NCSA computing resources. 
 
-The Delta endpoint collection names are: 
+The **Delta endpoint collection** names are: 
 
 - "NCSA Delta" (authenticates with your NCSA identity)
 - "ACCESS Delta" (authenticates with your ACCESS identity)
