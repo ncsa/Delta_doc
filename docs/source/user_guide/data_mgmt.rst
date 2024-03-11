@@ -69,12 +69,14 @@ Use ``rsync`` for small to modest transfers to avoid impacting the usability of 
 Globus
 ~~~~~~~~~
 
-Go to `Transferring Files - Globus <https://docs.ncsa.illinois.edu/en/proposed_changes/common/transfer.html#globus>`_ for complete instructions on using Globus with NCSA computing resources. The Delta endpoint collection names are: 
+Use Globus for large data transfers. Globus is a web-based file transfer system that works in the background to move files between systems with Globus `endpoints <https://docs.globus.org/faq/globus-connect-endpoints/#what_is_an_endpoint>`_. 
+
+Go to `Transferring Files - Globus <https://docs.ncsa.illinois.edu/en/proposed_changes/common/transfer.html#globus>`_ for complete instructions on using Globus with NCSA computing resources. 
+
+The Delta endpoint collection names are: 
 
 - "NCSA Delta" (authenticates with your NCSA identity)
-- **ACCESS Delta** (authenticates with your ACCESS identity)
-
-Use Globus for large data transfers. Globus is a web-based file transfer system that works in the background to move files between systems with Globus `endpoints <https://docs.globus.org/faq/globus-connect-endpoints/#what_is_an_endpoint>`_. 
+- "ACCESS Delta" (authenticates with your ACCESS identity)
 
 Infinite Memory Engine (IME)
 -----------------------------------
