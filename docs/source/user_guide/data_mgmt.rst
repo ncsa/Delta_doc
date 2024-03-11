@@ -72,7 +72,6 @@ Globus
 See `Transferring Files - Globus <https://docs.ncsa.illinois.edu/en/proposed_changes/common/transfer.html#globus>`_ for complete instructions on using Globus with NCSA computing resources.
 
 Use Globus for large data transfers. Globus is a web-based file transfer system that works in the background to move files between systems with Globus `endpoints <https://docs.globus.org/faq/globus-connect-endpoints/#what_is_an_endpoint>`_. 
-
 The Delta endpoint collection names are: 
 
 - **NCSA Delta** (authenticates with your NCSA identity)
