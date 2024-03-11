@@ -5,7 +5,7 @@ Getting Help
 
 For **ACCESS allocation issues**, create a ticket via the `ACCESS Help page <https://support.access-ci.org/open-a-ticket>`_ (ACCESS log in required). You can browse other ACCESS support resources on the `ACCESS Support page <https://support.access-ci.org>`_ (ACCESS log in *not* required).
 
-|
+================
 
 .. raw:: html
    

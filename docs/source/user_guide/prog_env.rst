@@ -221,7 +221,7 @@ nv* commands when nvhpc is loaded
 
 See the `NVIDIA HPC SDK <https://developer.nvidia.com/hpc-sdk>`_ page for more information.
 
-Note: The Multi-Process Service (MPS) is not currently enabled on Delta GPU nodes. Submit a support request (:ref:`help`) for assistance if you have questions about MPS status.
+Note: The Multi-Process Service (MPS) is not currently enabled on Delta GPU nodes. :ref:`Submit a support request <help>` for assistance if you have questions about MPS status.
 
 
 HIP/ROCm (AMD MI100)

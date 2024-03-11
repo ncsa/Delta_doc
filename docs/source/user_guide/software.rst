@@ -72,7 +72,7 @@ Use ``module spider package_name`` to search for software in Lmod and see the st
 
 See also: `User Guide for Lmod <https://lmod.readthedocs.io/en/latest/010_user.html>`_.
 
-Please submit a support request (:ref:`help`) for help with software not currently installed on the Delta system. 
+Please :ref:`submit a support request <help>` for help with software not currently installed on the Delta system. 
 
 - For single user or single project use cases the preference is for the user to use the Spack software package manager to install software locally against the system Spack installation. 
   Delta support staff are available to provide limited assistance. 
@@ -82,7 +82,7 @@ Python
 ----------
 
 .. note::
-   When submitting support requests (:ref:`help`) for python, please provide the following and understand that Delta support staff time is a finite resource while python developments (new software and modules) are growing at nearly infinite velocity:
+   When submitting :ref:`support requests <help>` for python, please provide the following and understand that Delta support staff time is a finite resource while python developments (new software and modules) are growing at nearly infinite velocity:
 
    - Python version or environment used (describe fully, with the commands needed to reproduce)
    - Error output or log from what went wrong (screenshots are more difficult to work with than text data, we donot run trained inference on screenshots attached to Jira)
@@ -703,7 +703,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 Similar to the setup for anaconda_cpu, Delta has GPU versions of anaconda3 (module load anaconda3_gpu) and installed PyTorch and TensorFlow CUDA aware python modules into these versions. 
 You may use these modules when working with the GPU nodes. 
 See ``conda list`` after loading the module to review what is already installed. 
-As with anaconda3_cpu, submit a support request (:ref:`help`) if there are generally useful modules you would like installed for the broader community. 
+As with anaconda3_cpu, :ref:`submit a support request <help>` if there are generally useful modules you would like installed for the broader community. 
 A sample TensorFlow test script:
 
 .. code-block::

@@ -144,4 +144,4 @@ Refunds
 
 Refunds are considered, when appropriate, for jobs that failed due to circumstances beyond user control.
 
-To request a refund, submit a support request (:ref:`help`). Please include the batch job IDs and the standard error and output files produced by the job(s).
+To request a refund, :ref:`submit a support request <help>`. Please include the batch job IDs and the standard error and output files produced by the job(s).
