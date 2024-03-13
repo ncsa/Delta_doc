@@ -57,7 +57,7 @@ Transferring Data
 Secure Copy (scp)
 ~~~~~~~~~~~~~~~~~~
 
-Use ``scp`` for small to modest transfers to avoid impacting the usability of the :ref:`Delta login node <direct_access>`. The Campus Cluster user guide has `instrutions on using scp <https://docs.ncsa.illinois.edu/systems/icc/en/latest/user_guide/storage_data.html#cli-transfer-method-scp>`_ (you will need to modify the example command for Delta).
+Use ``scp`` for small to modest transfers to avoid impacting the usability of the :ref:`Delta login node <direct_access>`. The Campus Cluster user guide has `instructions on using scp <https://docs.ncsa.illinois.edu/systems/icc/en/latest/user_guide/storage_data.html#cli-transfer-method-scp>`_ (you will need to modify the example command for Delta).
 
 rsync
 ~~~~~~~~~~
