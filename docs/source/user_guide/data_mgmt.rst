@@ -52,27 +52,31 @@ Transferring Data
 .. note::
 
    | **GUI applications need to support Duo multi-factor authentication (MFA)**
-   | Many GUI apps that support ssh/scp/sftp will work with Duo MFA. A good first step is to use the interactive (not stored/saved) password option with those apps. The interactive login should present you with the first password prompt (your Kerberos password) followed by the second password prompt for Duo (push to device or passcode from the Duo app).
+   | Many GUI apps that support ``ssh``/``scp``/``sftp`` will work with Duo MFA. A good first step is to use the interactive (not stored/saved) password option with these apps. The interactive login should present you with the first password prompt (your Kerberos password) followed by the second password prompt for Duo (push to device or passcode from the Duo app).
 
-To transfer files to and from the Delta system:
+Secure Copy (scp)
+~~~~~~~~~~~~~~~~~~
 
--  ``scp`` - Use it for small to modest transfers to avoid impacting the usability of the Delta login node (*login.delta.ncsa.illinois.edu*).
+Use ``scp`` for small to modest transfers to avoid impacting the usability of the :ref:`Delta login node <direct_access>`. The Campus Cluster user guide has `instructions on using scp <https://docs.ncsa.illinois.edu/systems/icc/en/latest/user_guide/storage_data.html#cli-transfer-method-scp>`_ (you will need to modify the example command for Delta).
 
--  ``rsync`` - Use it for small to modest transfers to avoid impacting the usability of the Delta login node.
+rsync
+~~~~~~~~~~
 
-   -  `Campus Cluster storage and data guide <https://docs.ncsa.illinois.edu/systems/icc/en/latest/user_guide/storage_data.html>`_ (``scp``, ``sftp``, ``rsync``)
+Use ``rsync`` for small to modest transfers to avoid impacting the usability of the :ref:`Delta login node <direct_access>`. The Campus Cluster user guide has `instructions on using rsync <https://docs.ncsa.illinois.edu/systems/icc/en/latest/user_guide/storage_data.html#cli-transfer-method-rsync>`_ (you will need to modify the example command for Delta).
 
--  Globus - Use it for large data transfers.
+.. _transfer-globus:
 
-   - `Upgrade your Globus Connect Personal to at least version 3.2.0 <https://docs.globus.org/ca-update-2022/#notice>`_
+Globus
+~~~~~~~~~
 
-   -  Use the Delta collection "**NCSA Delta**" (see screen capture below).
-      
-      .. image:: images/data_mgmt/globus_on_delta.jpeg
-          :alt: Globus on Delta
-          :width: 700px
+Use Globus for large data transfers. Globus is a web-based file transfer system that works in the background to move files between systems with Globus `endpoints <https://docs.globus.org/faq/globus-connect-endpoints/#what_is_an_endpoint>`_. 
 
-   -  If you're new to Globus, review the `How To Log In and Transfer Files with Globus <https://docs.globus.org/guides/tutorials/manage-files/transfer-files/>`_ page for instructions on getting started.
+Go to `Transferring Files - Globus <https://docs.ncsa.illinois.edu/en/proposed_changes/common/transfer.html#globus>`_ for complete instructions on using Globus with NCSA computing resources. 
+
+The **Delta endpoint collection** names are: 
+
+- "NCSA Delta" (authenticates with your NCSA identity)
+- "ACCESS Delta" (authenticates with your ACCESS identity)
 
 Infinite Memory Engine (IME)
 -----------------------------------
