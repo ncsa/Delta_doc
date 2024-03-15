@@ -33,33 +33,28 @@ Things to keep in mind:
 
 See ``module show <foo>`` when logged into Delta via SSH or VS Code to discover the PATHs and environment setting you may need to include in the noVNC Desktop.
 
-..  image:: images/services/ood-desktop-request.png
+..  figure:: images/services/ood-desktop-interactive-apps.png
     :alt: Open On Demand request a Desktop session on compute node
-    :width: 1024
 
 The Delta team recommends disabling compression for the best performance.  
 Also note that graphics performance will mostly depend on the graphics capabilities of your desktop computer. 
 We have seen the best performance when using a gaming-style laptop with a discrete GPU.
 
-..  image:: images/services/ood-desktop-compression-off.png
-    :alt: Disable compression for noVNC
-    :width: 1024
+..  figure:: images/services/ood-desktop-settings-compression.png
+    :alt: noVNC Desktop settings window showing "Compression level" slider set all the way to the left (off).
 
 Use the Linux Desktop display settings to adjust the display resolution to best fit your browser tab and local display.
 
-..  image:: images/services/OOD-desktop-display-settings.png
-    :alt: Right click the background and choose the Display settings to make adjustments in resolution.
-    :width: 1024
+..  figure:: images/services/ood-desktop-settings-display.png
+    :alt: In noVNC Desktop, right click the background and choose "Applications", then "Settings", then "Display".
 
-..  image:: images/services/OOD-display-resolution.png
-    :alt: View the resolution choices under the Display settings.
-    :width: 1024
+..  figure:: images/services/ood-desktop-display-resolution.png
+    :alt: Display settings window showing resolution options.
 
 Here is an example showing the ImageMagick running from /sw/external/ImageMagick/bin .  
 
-..  image:: images/services/ood-desktop-magick.png
+..  figure:: images/services/ood-desktop-magick.png
     :alt: Example showing ImageMagick in use via noVNC Desktop.
-    :width: 1024
 
 Customizing Open OnDemand
 ----------------------------
