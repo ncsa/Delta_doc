@@ -41,7 +41,7 @@ Recommended noVNC Settings
   ..  figure:: images/services/ood-desktop-settings-compression.png
       :alt: noVNC Desktop settings window showing "Compression level" slider set all the way to the left (off).
 
-- Use the Linux Desktop display settings to adjust the display resolution to best fit your browser tab and local display.
+- Use the Linux Desktop display settings to adjust the display resolution to best fit your browser tab and local display. Right-click on the desktop background and select **Applications**, then **Settings**, then **Display**.
 
   ..  figure:: images/services/ood-desktop-settings-display.png
       :alt: In noVNC Desktop, right click the background and choose "Applications", then "Settings", then "Display".
