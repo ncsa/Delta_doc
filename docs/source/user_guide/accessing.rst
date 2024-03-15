@@ -5,9 +5,9 @@ Delta Login Methods
 
 The primary methods for logging into Delta are:
 
-#. :ref:`direct_access` - Most common login method for users.
-#. :ref:`openondemand` - Simplest login method, requiring only a web browser. Good for verifying that your account is working.
-#. :ref:`vs_code`
+- :ref:`direct_access` - Most common login method for users.
+- :ref:`openondemand` - Simplest login method, requiring only a web browser. Good for verifying that your account is working.
+- :ref:`VS Code <vs-remote-ssh>`
 
 .. _direct_access:
 
@@ -16,8 +16,7 @@ Direct Access Login Nodes
 
 Direct access to the Delta login nodes is via SSH using your NCSA username, password, and NCSA Duo MFA. The login nodes provide access to the CPU and GPU resources on Delta. See the `NCSA Allocation and Account Management <https://wiki.ncsa.illinois.edu/display/USSPPRT/NCSA+Allocation+and+Account+Management>`_ page for links to NCSA Identity and NCSA Duo services. 
 
-.. note::
-   **ACCESS awarded projects** - Your NCSA username is in your `ACCESS Profile <https://allocations.access-ci.org/profile>`_; once logged in, scroll to the bottom of the page to the **Resource Provider Site Usernames** table. If you do not know your NCSA username, :ref:`submit a support request <help>` for assistance.
+**ACCESS awarded projects** - Your NCSA username is in your `ACCESS Profile <https://allocations.access-ci.org/profile>`_; once logged in, scroll to the bottom of the page to the **Resource Provider Site Usernames** table. If you don't know your NCSA username, :ref:`submit a support request <help>` for assistance.
 
 Login Node Hostnames
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -138,4 +137,4 @@ An `Open OnDemand shell interface <https://openondemand.delta.ncsa.illinois.edu/
 
 VS Code
 -------
-Refer to: `Visual Studio Code, Remote ssh <https://docs.ncsa.illinois.edu/systems/delta/en/latest/user_guide/prog_env.html#remote-ssh>`_
+Refer to: :ref:`Visual Studio Code, Remote - SSH <vs-remote-ssh>`
