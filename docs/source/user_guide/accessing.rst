@@ -16,7 +16,7 @@ Direct Access Login Nodes
 
 Direct access to the Delta login nodes is via SSH using your NCSA username, password, and NCSA Duo MFA. The login nodes provide access to the CPU and GPU resources on Delta. See the `NCSA Allocation and Account Management <https://wiki.ncsa.illinois.edu/display/USSPPRT/NCSA+Allocation+and+Account+Management>`_ page for links to NCSA Identity and NCSA Duo services. 
 
-**ACCESS awarded projects** - Your NCSA username is in your `ACCESS Profile <https://allocations.access-ci.org/profile>`_; once logged in, scroll to the bottom of the page to the **Resource Provider Site Usernames** table. If you don't know your NCSA username, :ref:`submit a support request <help>` for assistance.
+**ACCESS awarded projects** - Your NCSA username is in your `ACCESS Profile <https://allocations.access-ci.org/profile>`_; once logged in, scroll to the bottom of the page to the "Resource Provider Site Usernames" table. If you don't know your NCSA username, :ref:`submit a support request <help>` for assistance.
 
 Login Node Hostnames
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -91,11 +91,11 @@ General Interface
 Log into Delta in a web browser through the `general Open OnDemand interface <https://openondemand.delta.ncsa.illinois.edu/>`_.
 
 #. In a web browser, navigate to the `general Open OnDemand interface <https://openondemand.delta.ncsa.illinois.edu/>`_.
-#. Log in through CILogin with your **NCSA** username, password, and Duo MFA.
-#. Once logged in, your Open OnDemand homescreen may look similar to the below. Navigate the system using the menu bar at the top of the window.
+#. Log in through CILogon with your **NCSA** username, password, and Duo MFA.
+#. Once logged in, navigate the system using the menu bar at the top of the window.
 
    .. figure:: images/accessing/open-ondemand-homescreen.png
-      :alt: Open OnDemand homescreen showing the "files", "jobs", "culster", and "interactive apps" options in the menu bar at the top of the window.
+      :alt: Open OnDemand homes creen showing the "files", "jobs", "clusters", and "interactive apps" options in the menu bar at the top of the window.
 
 Shell Interface
 ~~~~~~~~~~~~~~~~~
@@ -105,38 +105,38 @@ An `Open OnDemand shell interface <https://openondemand.delta.ncsa.illinois.edu/
 A. Delta Login Shell Interface - Option 1:
 
    #. In a web browser, navigate to the `Open OnDemand shell interface <https://openondemand.delta.ncsa.illinois.edu/pun/sys/shell/ssh/dt-login>`_.
-   #. If prompted, Log in through CILogin with your **NCSA** username, password, and Duo MFA.
-   #. Enter your **NCSA password** in the terminal inteface prompt and hit **enter/return**. 
+   #. If prompted, Log in through CILogon with your **NCSA** username, password, and Duo MFA.
+   #. Enter your **NCSA password** in the terminal interface prompt and hit **enter/return**. 
 
       .. note::
-         The terminal will *not* show your password (or placholder symbols such as asterisks [*]) as you enter your password, you just have to enter it blindly.
+         The terminal will *not* show your password (or placeholder symbols such as asterisks [*]) as you type it.
 
       ..  figure:: images/accessing/Delta_OOD_terminal.png
           :alt: Black terminal with a command prompt that ends in "csteffen@dt-login's password:"
-   #. Complete the Duo tow-factor authentication by either:
+   #. Complete the Duo two-factor authentication by either:
 
-      i. Entering **1** and accepting the Duo push notfication on your phone OR 
+      i. Entering **1** and accepting the Duo push notification on your phone OR 
       ii. Opening the Duo app on your phone and entering the NCSA passcode into the terminal prompt.
 
 B. Delta Login Shell Interface - Option 2:
 
    #. In a web browser, navigate to the `general Open OnDemand interface <https://openondemand.delta.ncsa.illinois.edu/>`_.
-   #. Log in through CILogin with your **NCSA** username, password, and Duo MFA.
+   #. Log in through CILogon with your **NCSA** username, password, and Duo MFA.
    #. In the **Clusters** menu, select **>_Delta Shell Access**.
 
       .. figure:: images/accessing/open-ondemand-clusters-menu.png
          :alt: Open OnDemand interface showing the ">_Delta Shell Access" option in the "Clusters" menu.
 
-   #. Enter your **NCSA password** in the terminal inteface prompt and hit **enter/return**. 
+   #. Enter your **NCSA password** in the terminal interface prompt and hit **enter/return**. 
       
       .. note::
-         The terminal will *not* show your password (or placholder symbols such as asterisks [*]) as you enter your password, you just have to enter it blindly.
+         The terminal will *not* show your password (or placeholder symbols such as asterisks [*]) as you type it.
 
       ..  figure:: images/accessing/Delta_OOD_terminal.png
           :alt: Black terminal with a command prompt that ends in "csteffen@dt-login's password:"
-   #. Complete the Duo tow-factor authentication by either:
+   #. Complete the Duo two-factor authentication by either:
 
-      i. Entering **1** and accepting the Duo push notfication on your phone OR 
+      i. Entering **1** and accepting the Duo push notification on your phone OR 
       ii. Opening the Duo app on your phone and entering the NCSA passcode into the terminal prompt.
 
 .. _vs_code:
