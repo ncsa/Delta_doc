@@ -3,9 +3,10 @@
 Delta Login Methods
 =========================
 
-If you don't have an allocation on Delta, go to `Delta Allocations <https://delta.ncsa.illinois.edu/delta-allocations/>`_ to learn how to submit an allocation request.
+.. note::
+   If you don't have an allocation on Delta, go to `Delta Allocations <https://delta.ncsa.illinois.edu/delta-allocations/>`_ to learn how to submit an allocation request.
 
-If you have a Delta allocation, the primary methods for logging into Delta are:
+Once you have a Delta allocation, the primary methods for logging into Delta are:
 
 - :ref:`direct_access` - Most common login method for users.
 - :ref:`openondemand` - Simplest login method, requiring only a web browser. Good for verifying that your account is working.
