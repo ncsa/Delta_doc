@@ -3,7 +3,7 @@
 Delta Login Methods
 =========================
 
-There are three primary methods for loggin into Delta:
+The primary methods for logging into Delta are:
 
 #. :ref:`direct_access` - Most common login method for users.
 #. :ref:`openondemand` - Simplest login method, requiring only a web browser. Good for verifying that your account is working.
@@ -14,21 +14,17 @@ There are three primary methods for loggin into Delta:
 Direct Access Login Nodes
 -----------------------------
 
-Direct access to the Delta login nodes is via SSH using your NCSA username, password, and NCSA Duo MFA. See the `NCSA Allocation and Account Management <https://wiki.ncsa.illinois.edu/display/USSPPRT/NCSA+Allocation+and+Account+Management>`_ page for links to NCSA Identity and NCSA Duo services. The login nodes provide access to the CPU and GPU resources on Delta.
+Direct access to the Delta login nodes is via SSH using your NCSA username, password, and NCSA Duo MFA. The login nodes provide access to the CPU and GPU resources on Delta. See the `NCSA Allocation and Account Management <https://wiki.ncsa.illinois.edu/display/USSPPRT/NCSA+Allocation+and+Account+Management>`_ page for links to NCSA Identity and NCSA Duo services. 
 
 .. note::
-   To verify your account is working, the simplest login method requires only a web browser (no additional software needed).  See the :ref:`openondemand` section.
+   **ACCESS awarded projects** - Your NCSA username is in your `ACCESS Profile <https://allocations.access-ci.org/profile>`_; once logged in, scroll to the bottom of the page to the **Resource Provider Site Usernames** table. If you do not know your NCSA username, :ref:`submit a support request <help>` for assistance.
 
-See `NCSA Allocation and Account Management <https://wiki.ncsa.illinois.edu/display/USSPPRT/NCSA+Allocation+and+Account+Management>`_ for the steps to change your NCSA password for direct access and set up NCSA Duo. 
-
-For ACCESS awarded projects, to find your local NCSA username go to your `ACCESS Profile page <https://allocations.access-ci.org/profile>`_ and scroll to the bottom for the **Resource Provider Site Usernames** table. If you do not know your NCSA username, :ref:`submit a support request <help>` for assistance.
+Login Node Hostnames
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. warning::
 
   In January 2024, Delta was upgraded to Slingshot11. Please use the round robin login, login.delta.ncsa.illinois.edu, to SSH into the system. For single host SSH, use dt-login03.delta.ncsa.illinois.edu or dt-login04.delta.ncsa.illinois.edu. See the `ACCESS Delta Notice: Delta maintenance 01-23-2024 - 01-25-2024 <https://operations.access-ci.org/node/671>`_ for more details. 
-
-Login Node Hostnames
-~~~~~~~~~~~~~~~~~~~~~~~
 
 .. table:: Login Node Hostnames
 
@@ -64,7 +60,7 @@ In the examples below, replace ``username`` with your Delta login username.
 
      ssh -Y username@login.delta.ncsa.illinois.edu
 
-Use of SSH key pairs is disabled for general use.  This means that most individual users, even PIs, are **not allowed** to use SSH key pairs to log in instead of 2-factor authentication.  
+Use of SSH key pairs is disabled for general use.  This means that most individual users, even principal investigators (PIs), are **not allowed** to use SSH key pairs to log in instead of 2-factor authentication.  
 
 The one exception is: if you are the PI of a Gateway allocation (this is not most projects), then please :ref:`submit a support request <help>` to get the Gateway account's key pairs set up.  
 
