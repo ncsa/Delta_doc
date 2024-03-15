@@ -90,18 +90,18 @@ Python
 
 
 On Delta, you may install your own python software stacks, as needed. 
-There are choices when customizing your python setup. 
+There are choices when customizing your python setup. If you anticipate maintaining multiple python environments or installing many packages, you may want to target a filesystem with more quota space (not $HOME) for your environments.  /scratch or /projects may be more appropriate in that case.
 You may *use any of these methods* with any of the python versions or instances described below (or you may install your own python versions):
 
 - `venv (python virtual environment) <https://docs.python.org/3/library/venv.html>`_
 
-  Can name environments (metadata) and have multiple environments per python version or instance.
+  Can name environments (metadata) and have multiple environments per python version or instance.  pip installs are local to the environment.
 
 - `conda (or miniconda) environments <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>`_
 
-  Similar to venv but with more flexibility, see this `comparison table <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html#virtual-environments>`_.  See also the miniconda environment option: `anconda or miniconda <https://docs.anaconda.com/free/distro-or-miniconda/>`_.
+  Similar to venv but with more flexibility, see this `comparison table <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html#virtual-environments>`_.  See also the miniconda environment option: `anconda or miniconda <https://docs.anaconda.com/free/distro-or-miniconda/>`_.  pip and conda installs are local to the environment.
 
-- `pip3 <https://docs.python.org/3/installing/index.html>`_: pip3 install --user <python_package>
+- `pip3 <https://docs.python.org/3/installing/index.html>`_: pip3 install --user <python_package>   ( installs to $HOME/.local/ )
 
   Useful when you only need one python environment per python version.  CAUTION: Python modules installed this way into your $HOME/.local/ will match on python versions and this can create incompatibilities between containers or python venv or conda environments when they have a common python version number.
 
