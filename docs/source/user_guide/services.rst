@@ -36,12 +36,12 @@ Desktop runs in a job on a compute node and gives you access to a virtual Linux 
 Recommended noVNC Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- The Delta team recommends disabling compression for the best performance. Note that graphics performance will mostly depend on the graphics capabilities of your desktop computer. We have seen the best performance when using a gaming-style laptop with a discrete GPU.
+- The Delta team recommends disabling compression for the best performance. Graphics performance will mostly depend on the graphics capabilities of your desktop computer. We have seen the best performance when using a gaming-style laptop with a discrete GPU.
 
   ..  figure:: images/services/ood-desktop-settings-compression.png
       :alt: noVNC Desktop settings window showing "Compression level" slider set all the way to the left (off).
 
-- Adjust the display resolution to best fit your browser tab and local display with the Linux desktop display settings. Right-click on the desktop background and select **Applications**, then **Settings**, then **Display**.
+- Adjust the display resolution to best fit your browser tab and local display in the Linux desktop display settings. Right-click on the desktop background and select **Applications**, then **Settings**, then **Display**.
 
   ..  figure:: images/services/ood-desktop-settings-display.png
       :alt: In noVNC Desktop, right click the background and choose "Applications", then "Settings", then "Display".
@@ -49,7 +49,10 @@ Recommended noVNC Settings
   ..  figure:: images/services/ood-desktop-display-resolution.png
       :alt: Display settings window showing resolution options.
 
-Here is an example showing the ImageMagick running from ``/sw/external/ImageMagick/bin``.  
+ImageMagick Example
+~~~~~~~~~~~~~~~~~~~~
+
+Here is an example showing ImageMagick running from ``/sw/external/ImageMagick/bin``.  
 
 ..  figure:: images/services/ood-desktop-magick.png
     :alt: Example showing ImageMagick in use via noVNC Desktop.
