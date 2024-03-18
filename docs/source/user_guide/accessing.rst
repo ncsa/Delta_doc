@@ -3,26 +3,30 @@
 Delta Login Methods
 =========================
 
+.. note::
+   If you don't have an allocation on Delta, go to `Delta Allocations <https://delta.ncsa.illinois.edu/delta-allocations/>`_ to learn how to submit an allocation request.
+
+Once you have a Delta allocation, the primary methods for logging into Delta are:
+
+- :ref:`direct_access` - Most common login method for users.
+- :ref:`openondemand` - Simplest login method, using a web browser. Good for verifying that your account is working.
+- :ref:`VS Code <vs-remote-ssh>`
+
 .. _direct_access:
 
 Direct Access Login Nodes
 -----------------------------
 
-Direct access to the Delta login nodes is via SSH using your NCSA username, password, and NCSA Duo MFA. See the `NCSA Allocation and Account Management <https://wiki.ncsa.illinois.edu/display/USSPPRT/NCSA+Allocation+and+Account+Management>`_ page for links to NCSA Identity and NCSA Duo services. The login nodes provide access to the CPU and GPU resources on Delta.
+Direct access to the Delta login nodes is via SSH using your NCSA username, password, and NCSA Duo MFA. The login nodes provide access to the CPU and GPU resources on Delta. See the `NCSA Allocation and Account Management <https://wiki.ncsa.illinois.edu/display/USSPPRT/NCSA+Allocation+and+Account+Management>`_ page for links to NCSA Identity and NCSA Duo services. 
 
-.. note::
-   To verify your account is working, the simplest login method requires only a web browser (no additional software needed).  See the Open OnDemand :ref:`openondemand` section.
+**ACCESS awarded projects** - Your NCSA username is in your `ACCESS Profile <https://allocations.access-ci.org/profile>`_; once logged in, scroll to the bottom of the page to the "Resource Provider Site Usernames" table. If you don't know your NCSA username, :ref:`submit a support request <help>` for assistance.
 
-See `NCSA Allocation and Account Management <https://wiki.ncsa.illinois.edu/display/USSPPRT/NCSA+Allocation+and+Account+Management>`_ for the steps to change your NCSA password for direct access and set up NCSA Duo. 
-
-For ACCESS awarded projects, to find your local NCSA username go to your `ACCESS Profile page <https://allocations.access-ci.org/profile>`_ and scroll to the bottom for the **Resource Provider Site Usernames** table. If you do not know your NCSA username, :ref:`submit a support request <help>` for assistance.
+Login Node Hostnames
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. warning::
 
   In January 2024, Delta was upgraded to Slingshot11. Please use the round robin login, login.delta.ncsa.illinois.edu, to SSH into the system. For single host SSH, use dt-login03.delta.ncsa.illinois.edu or dt-login04.delta.ncsa.illinois.edu. See the `ACCESS Delta Notice: Delta maintenance 01-23-2024 - 01-25-2024 <https://operations.access-ci.org/node/671>`_ for more details. 
-
-Login Node Hostnames
-~~~~~~~~~~~~~~~~~~~~~~~
 
 .. table:: Login Node Hostnames
 
@@ -58,7 +62,7 @@ In the examples below, replace ``username`` with your Delta login username.
 
      ssh -Y username@login.delta.ncsa.illinois.edu
 
-Use of SSH key pairs is disabled for general use.  This means that most individual users, even PIs, are **not allowed** to use SSH key pairs to log in instead of 2-factor authentication.  
+Use of SSH key pairs is disabled for general use.  This means that most individual users, even principal investigators (PIs), are **not allowed** to use SSH key pairs to log in instead of 2-factor authentication.  
 
 The one exception is: if you are the PI of a Gateway allocation (this is not most projects), then please :ref:`submit a support request <help>` to get the Gateway account's key pairs set up.  
 
@@ -82,16 +86,63 @@ For command line SSH clients, use the following settings if you have trouble log
 .. _openondemand:
 
 Open OnDemand
--------------
+---------------
 
-The general Open OnDemand interface to Delta is here: https://openondemand.delta.ncsa.illinois.edu/.
+General Interface
+~~~~~~~~~~~~~~~~~~~~
 
-An Open OnDemand shell interface is available at: https://openondemand.delta.ncsa.illinois.edu/pun/sys/shell/ssh/dt-login.
+Log into Delta in a web browser through the `general Open OnDemand interface <https://openondemand.delta.ncsa.illinois.edu/>`_.
 
-..  image:: images/accessing/Delta_OOD_terminal.png
-    :alt: Black terminal with a command prompt that ends in "csteffen@dt-login's password:"
+#. In a web browser, navigate to the `general Open OnDemand interface <https://openondemand.delta.ncsa.illinois.edu/>`_.
+#. Log in through CILogon with your **NCSA** username, password, and Duo MFA.
+#. Once logged in, navigate the system using the menu bar at the top of the window.
+
+   .. figure:: images/accessing/open-ondemand-homescreen.png
+      :alt: Open OnDemand home screen showing the "files", "jobs", "clusters", and "interactive apps" options in the menu bar at the top of the window.
+
+Shell Interface
+~~~~~~~~~~~~~~~~~
+
+An `Open OnDemand shell interface <https://openondemand.delta.ncsa.illinois.edu/pun/sys/shell/ssh/dt-login>`_ is also available. There are two options for how to access this interface.
+
+A. Delta Login Shell Interface - Option 1:
+
+   #. In a web browser, navigate to the `Open OnDemand shell interface <https://openondemand.delta.ncsa.illinois.edu/pun/sys/shell/ssh/dt-login>`_.
+   #. If prompted, Log in through CILogon with your **NCSA** username, password, and Duo MFA.
+   #. Enter your **NCSA password** in the terminal interface prompt and hit **enter/return**. 
+
+      .. note::
+         The terminal will *not* show your password (or placeholder symbols such as asterisks [*]) as you type it.
+
+      ..  figure:: images/accessing/Delta_OOD_terminal.png
+          :alt: Black terminal with a command prompt that ends in "csteffen@dt-login's password:"
+   #. Complete the Duo two-factor authentication by either:
+
+      a. Entering **1** and accepting the Duo push notification on your phone OR 
+      b. Opening the Duo app on your phone and entering the NCSA passcode into the terminal prompt.
+
+B. Delta Login Shell Interface - Option 2:
+
+   #. Log into the `general Open OnDemand interface <https://openondemand.delta.ncsa.illinois.edu/>`_.
+   #. In the **Clusters** menu, select **>_Delta Shell Access**.
+
+      .. figure:: images/accessing/open-ondemand-clusters-menu.png
+         :alt: Open OnDemand interface showing the ">_Delta Shell Access" option in the "Clusters" menu.
+
+   #. Enter your **NCSA password** in the terminal interface prompt and hit **enter/return**. 
+      
+      .. note::
+         The terminal will *not* show your password (or placeholder symbols such as asterisks [*]) as you type it.
+
+      ..  figure:: images/accessing/Delta_OOD_terminal.png
+          :alt: Black terminal with a command prompt that ends in "csteffen@dt-login's password:"
+   #. Complete the Duo two-factor authentication by either:
+
+      a. Entering **1** and accepting the Duo push notification on your phone OR 
+      b. Opening the Duo app on your phone and entering the NCSA passcode into the terminal prompt.
+
+.. _vs_code:
 
 VS Code
 -------
-See: 
-`Visual Studio Code, Remote ssh <https://ncsa-delta-doc.readthedocs-hosted.com/en/latest/user_guide/prog_env.html#remote-ssh>`_
+Refer to :ref:`Visual Studio Code, Remote - SSH <vs-remote-ssh>`

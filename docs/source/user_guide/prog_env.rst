@@ -318,6 +318,8 @@ The code-server for VS Code can be run on Delta in manual mode (without Open OnD
        :alt: vscode in a web browser
        :width: 1000px
 
+.. _vs-remote-ssh:
+
 Remote - SSH
 ~~~~~~~~~~~~~~~~~
 
