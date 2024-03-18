@@ -175,7 +175,7 @@ The Delta team frequently updates anaconda3_* to track the latest packages.
 .. note::
    If you use anaconda with NGC containers, take care to use python from the container and not python from Anaconda or one of its environments. 
    The container's python should be first in ``$PATH``. 
-   You may ``--bind`` the Anaconda directory or other paths into the container so that you can start your conda environments with the container's python (/usr/bin/python).
+   You may ``--bind`` the Anaconda directory or other paths into the container so that you can start your conda environments with the container's python (``/usr/bin/python``).
 
 The `Anaconda archive <https://repo.anaconda.com/archive/>`_ contains previous Anaconda versions.
 The bundles are not small, but using one from Anaconda will ensure that you get software that was built to work together. 
