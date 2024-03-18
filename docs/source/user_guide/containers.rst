@@ -8,14 +8,14 @@ Apptainer (formerly Singularity)
 
 Container support on Delta is provided by Apptainer.
 
-Docker images can be converted to Singularity sif format via the `singularity pull <https://docs.sylabs.io/guides/3.2/user-guide/cli/singularity_pull.html#singularity-pull>`_ command. 
-Commands can be run from within a container using the `singularity run <https://docs.sylabs.io/guides/3.2/user-guide/cli/singularity_run.html#singularity-run>`_ command (or ``apptainer run``).
+Docker images can be converted to Apptainer sif format via the `apptainer pull <https://apptainer.org/docs/user/main/cli/apptainer_pull.html>`_ command. 
+Commands can be run from within a container using the `apptainer run <https://apptainer.org/docs/user/main/cli/apptainer_run.html>`_ command.
 
-If you encounter quota issues with Apptainer caching in **~/.singularity**, the environment variable ``SINGULARITY_CACHEDIR`` can be used to use a different location such as a scratch space.
+If you encounter ``$HOME`` quota issues with Apptainer caching in ``~/.apptainer``, the environment variable ``APPTAINER_CACHEDIR`` can be used to select a different location such as a directory under ``/scratch``. See also, `apptainer build environment <https://apptainer.org/docs/user/main/build_env.html>`_
 
-Your **$HOME** is automatically available from containers run via Apptainer. 
+Your ``$HOME`` is automatically available from containers run via Apptainer. 
 You can ``pip3 install --user`` against a container's python, setup virtual environments, or similar while using a containerized application. 
-Just run the container's /bin/bash to get an Apptainer> prompt (or use ``apptainer shell <container>`` for a quick look from a login node). 
+Just run the container's ``/bin/bash`` to get an Apptainer> prompt (or use ``apptainer shell <container>`` for a quick look from a login node). 
 Below is an ``srun`` example of that with TensorFlow:
 
 .. code-block::
@@ -46,7 +46,7 @@ Below is an ``srun`` example of that with TensorFlow:
 NVIDIA NGC Containers
 ---------------------
 
-Delta provides NVIDIA NGC Docker containers that are pre-built with Apptainer. Look for the latest binary containers in **/sw/external/NGC/** . 
+Delta provides NVIDIA NGC Docker containers that are pre-built with Apptainer. Look for the latest binary containers in ``/sw/external/NGC/``. 
 The containers are used as shown in the sample scripts below:
 
 PyTorch Example Script
@@ -213,7 +213,7 @@ Other Containers
 Extreme-scale Scientific Software Stack (E4S)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The E4S container with GPU (CUDA and ROCm) support is provided for users of specific Exascale Computing Project (ECP) packages made available by the `E4S project <https://e4s-project.github.io/>`_. The Singularity image is available as:
+The E4S container with GPU (CUDA and ROCm) support is provided for users of specific Exascale Computing Project (ECP) packages made available by the `E4S project <https://e4s-project.github.io/>`_. The Apptainer image is available as:
 
 .. code-block::
 
@@ -227,10 +227,10 @@ To use E4S with NVIDIA GPUs (replace ``account_name`` with one of your available
      --nodes=1 --gpus-per-node=1 --tasks=1 --tasks-per-node=1 \
      --cpus-per-task=16 --mem=28g \
      --pty bash
-   $ singularity exec --cleanenv /sw/external/E4S/e4s-gpu-x86_64.sif \
+   $ apptainer exec --cleanenv /sw/external/E4S/e4s-gpu-x86_64.sif \
      /bin/bash --rcfile /etc/bash.bashrc
 
 The Spack package inside of the image will interact with a local Spack installation. 
-If ~/.spack directory exists, it might need to be renamed.
+If ``~/.spack directory`` exists, it might need to be renamed.
 
 More information can be found on the `E4S containers page <https://e4s-project.github.io/download.html>`_.
