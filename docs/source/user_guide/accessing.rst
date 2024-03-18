@@ -98,7 +98,7 @@ Log into Delta in a web browser through the `general Open OnDemand interface <ht
 #. Once logged in, navigate the system using the menu bar at the top of the window.
 
    .. figure:: images/accessing/open-ondemand-homescreen.png
-      :alt: Open OnDemand homes creen showing the "files", "jobs", "clusters", and "interactive apps" options in the menu bar at the top of the window.
+      :alt: Open OnDemand home screen showing the "files", "jobs", "clusters", and "interactive apps" options in the menu bar at the top of the window.
 
 Shell Interface
 ~~~~~~~~~~~~~~~~~
