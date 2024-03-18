@@ -103,7 +103,7 @@ You may *use any of these methods* with any of the python versions or instances 
 
 - `pip3 <https://docs.python.org/3/installing/index.html>`_: ``pip3 install --user <python_package>``  (installs to ``$HOME/.local/``)
 
-  Useful when you only need one python environment per python version.  CAUTION: Python modules installed this way into your $HOME/.local/ will match on python versions and this can create incompatibilities between containers or python venv or conda environments when they have a common python version number.
+  Useful when you only need one python environment per python version.  CAUTION: Python modules installed this way into your ``$HOME/.local/`` will match on python versions and this can create incompatibilities between containers or python venv or conda environments when they have a common python version number.
 
 - `conda-env-mod <https://github.com/amaji/conda-env-mod>`_: conda-env-mod lmod module generator from Purdue
 
@@ -1086,7 +1086,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
    .. note::
       You may see error messages from conda init bash above. 
       Just **control-c** through them and continue. 
-      As long as conda added code to the end of your **.bashrc** (or similar for other shells), things will work properly.
+      As long as conda added code to the end of your ``.bashrc`` (or similar for other shells), things will work properly.
 
 #. Start a new shell with bash or a new terminal or login session with Delta. 
    You'll now see this prompt showing that you are within the conda environment you initially chose. 
