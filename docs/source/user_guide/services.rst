@@ -8,7 +8,7 @@ Open OnDemand
 
 The Delta Open OnDemand portal is available for use. Current supported Interactive apps: Jupyter Lab, VS Code (Code Server).  A terminal is available under **Clusters** -> **Delta Shell Access**.
 
-To connect to the Open OnDemand portal, point your browser to https://openondemand.delta.ncsa.illinois.edu/, and use your NCSA username and password with NCSA Duo on the CILogin page.
+Connect to the `Open OnDemand portal <https://openondemand.delta.ncsa.illinois.edu/>`_ in a browser. Log in through CILogon with your **NCSA** username and password, and **NCSA** Duo MFA.
 
 Make sure to match the account to charge with the resource partition as shown below. 
 The account names end in -cpu and -gpu; the matching partition would start with cpu or gpu (as in gpuA100x4 interactive).
