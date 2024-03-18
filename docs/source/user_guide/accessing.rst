@@ -145,4 +145,4 @@ B. Delta Login Shell Interface - Option 2:
 
 VS Code
 -------
-Refer to: :ref:`Visual Studio Code, Remote - SSH <vs-remote-ssh>`
+Refer to :ref:`Visual Studio Code, Remote - SSH <vs-remote-ssh>`
