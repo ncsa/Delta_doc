@@ -22,7 +22,7 @@ Use ``module spider package_name`` to search for software in Lmod and see the st
    +==================================+======================================================================================+
    |                                  |                                                                                      |
    |                                  |   .. code-block::                                                                    |
-   | module list                      |                                                                                      |
+   | ``module list``                  |                                                                                      |
    |                                  |      $ module list                                                                   |
    | (display the currently loaded    |                                                                                      |
    | modules)                         |      Currently Loaded Modules:                                                       |
@@ -31,7 +31,7 @@ Use ``module spider package_name`` to search for software in Lmod and see the st
    |                                  |                                                                                      |
    |                                  |                                                                                      |
    +----------------------------------+--------------------------------------------------------------------------------------+
-   | module load <package_name>       |                                                                                      |
+   | ``module load <package_name>``   |                                                                                      |
    |                                  |   .. code-block::                                                                    |
    | (loads a package or metamodule   |                                                                                      |
    | such as                          |      $ module load modtree/cpu                                                       |
@@ -43,7 +43,7 @@ Use ``module spider package_name`` to search for software in Lmod and see the st
    |                                  |      1) modtree/gpu => modtree/cpu                                                   |
    |                                  |                                                                                      |
    +----------------------------------+--------------------------------------------------------------------------------------+
-   | module spider <package_name>     |                                                                                      |
+   | ``module spider <package_name>`` |                                                                                      |
    |                                  |   .. code-block::                                                                    |
    | (finds modules and displays the  |                                                                                      |
    | ways to                          |      $ module spider openblas                                                        |
@@ -53,8 +53,8 @@ Use ``module spider package_name`` to search for software in Lmod and see the st
    |                                  |      ----------------------------------------------------------------------------    |
    |                                  |      You will need to load all module(s) on any one of the lines below before the    |
    |                                  |      "openblas/0.3.20" module is available to load.                                  |
-   | module -r spider "regular        |                                                                                      |
-   | expression"                      |            aocc/3.2.0                                                                |
+   | ``module -r spider "regular      |                                                                                      |
+   | expression"``                    |            aocc/3.2.0                                                                |
    |                                  |            gcc/11.2.0                                                                |
    |                                  |                                                                                      |
    |                                  |         Help:                                                                        |
@@ -90,7 +90,7 @@ Python
 
 
 On Delta, you may install your own python software stacks, as needed. 
-There are choices when customizing your python setup. If you anticipate maintaining multiple python environments or installing many packages, you may want to target a filesystem with more quota space (not $HOME) for your environments.  /scratch or /projects may be more appropriate in that case.
+There are choices when customizing your python setup. If you anticipate maintaining multiple python environments or installing many packages, you may want to target a filesystem with more quota space (not ``$HOME``) for your environments.  ``/scratch`` or ``/projects`` may be more appropriate in that case.
 You may *use any of these methods* with any of the python versions or instances described below (or you may install your own python versions):
 
 - `venv (python virtual environment) <https://docs.python.org/3/library/venv.html>`_
@@ -101,7 +101,7 @@ You may *use any of these methods* with any of the python versions or instances 
 
   Similar to venv but with more flexibility, see this `comparison table <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html#virtual-environments>`_.  See also the miniconda environment option: `anconda or miniconda <https://docs.anaconda.com/free/distro-or-miniconda/>`_.  pip and conda installs are local to the environment.
 
-- `pip3 <https://docs.python.org/3/installing/index.html>`_: pip3 install --user <python_package>   ( installs to $HOME/.local/ )
+- `pip3 <https://docs.python.org/3/installing/index.html>`_: ``pip3 install --user <python_package>``  (installs to ``$HOME/.local/``)
 
   Useful when you only need one python environment per python version.  CAUTION: Python modules installed this way into your $HOME/.local/ will match on python versions and this can create incompatibilities between containers or python venv or conda environments when they have a common python version number.
 
@@ -174,7 +174,7 @@ The Delta team frequently updates anaconda3_* to track the latest packages.
 
 .. note::
    If you use anaconda with NGC containers, take care to use python from the container and not python from Anaconda or one of its environments. 
-   The container's python should be first in **$PATH**. 
+   The container's python should be first in ``$PATH``. 
    You may ``--bind`` the Anaconda directory or other paths into the container so that you can start your conda environments with the container's python (/usr/bin/python).
 
 The `Anaconda archive <https://repo.anaconda.com/archive/>`_ contains previous Anaconda versions.
@@ -700,7 +700,7 @@ The current list of modules available in anaconda3_cpu is shown via ``conda list
 anaconda3_gpu (for CUDA) , anaconda3_mi100 (for ROCm)
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-Similar to the setup for anaconda_cpu, Delta has GPU versions of anaconda3 (module load anaconda3_gpu) and installed PyTorch and TensorFlow CUDA aware python modules into these versions. 
+Similar to the setup for anaconda_cpu, Delta has GPU versions of anaconda3 (``module load anaconda3_gpu``) and installed PyTorch and TensorFlow CUDA aware python modules into these versions. 
 You may use these modules when working with the GPU nodes. 
 See ``conda list`` after loading the module to review what is already installed. 
 As with anaconda3_cpu, :ref:`submit a support request <help>` if there are generally useful modules you would like installed for the broader community. 
@@ -743,7 +743,7 @@ Python Environments with anaconda3
 Recent Changes
 $$$$$$$$$$$$$$$$
 
-To address a problem with **PATH** ordering when using anaconda3 modules, a warning in the module was put in place to caution loading an anaconda3 module while in a virtual environment, or if ``conda init`` has been used to modify one's environment.
+To address a problem with ``PATH`` ordering when using anaconda3 modules, a warning in the module was put in place to caution loading an anaconda3 module while in a virtual environment, or if ``conda init`` has been used to modify one's environment.
 
 .. code-block::
 
@@ -826,7 +826,7 @@ Jupyter Notebooks
 
 The Detla Open OnDemand portal provides an easier way to start a Jupyter notebook. Please see :ref:`openon` to access the portal.
 
-The Jupyter notebook executables are in your **$PATH** after loading the anaconda3 module. If you run into problems from a previously saved Jupyter session (for example, you see paths where you do not have write permission), you may remove this file to get a fresh start: **$HOME/.jupyter/lab/workspaces/default-***.  
+The Jupyter notebook executables are in your ``$PATH`` after loading the anaconda3 module. If you run into problems from a previously saved Jupyter session (for example, you see paths where you do not have write permission), you may remove this file to get a fresh start: ``$HOME/.jupyter/lab/workspaces/default-*``.  
 
 **Do not run Jupyter on the shared login nodes.**
 Instead, follow these steps to attach a Jupyter notebook running on a compute node to your local web browser:
@@ -911,7 +911,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 Jupyter with Open OnDemand
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Jupyter and jupyter-lab will find the environments in your $HOME/.conda/envs, your login shell should reflect what you want to see from Jupyter.
+Jupyter and jupyter-lab will find the environments in your ``$HOME/.conda/envs``, your login shell should reflect what you want to see from Jupyter.
 
 The available `conda-based environment kernels for Jupyter <https://github.com/Anaconda-Platform/nb_conda_kernels>`_ should be the same as what you see from a login shell and python3.
 
@@ -1090,7 +1090,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 #. Start a new shell with bash or a new terminal or login session with Delta. 
    You'll now see this prompt showing that you are within the conda environment you initially chose. 
-   If you want to change environments later (say to **anaconda3_mi100**) you can edit your **.bashrc** and do another ``conda init bash`` with that new module loaded.
+   If you want to change environments later (say to **anaconda3_mi100**) you can edit your ``.bashrc`` and do another ``conda init bash`` with that new module loaded.
 
    To create a new custom environment, you have 2 options:
 
@@ -1099,7 +1099,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
       .. note::
          If you will be making custom environments for more than one partition type (cpu, gpu, mi100), it may be helpful to include that metadata in the name of your environment.
 
-      Install jupyter into the environment in order to use it with Open OnDemand. This option adds about 150 python modules to your environment and requires about 1.3 GB in your **$HOME**. Setup time: about 10 minutes.
+      Install jupyter into the environment in order to use it with Open OnDemand. This option adds about 150 python modules to your environment and requires about 1.3 GB in your ``$HOME``. Setup time: about 10 minutes.
 
       .. raw:: html
 
@@ -1176,7 +1176,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
    b. Create a new clone of your chosen **anaconda3_<cpu, gpu, mi100>** module:
 
       Jupyter (and everything else from your loaded **anaconda3\_** module will be copied into this environment). 
-      This option adds about 500 python modules to your environment and requires about 6.3 GB in your **$HOME**. Install time can be up to 30 minutes.
+      This option adds about 500 python modules to your environment and requires about 6.3 GB in your ``$HOME``. Install time can be up to 30 minutes.
 
       .. raw:: html
 
@@ -1246,7 +1246,7 @@ Delta Provided R Environment
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 R is available in JupyterLab by activating the environment via the module **anaconda_Rcpu**. 
-Append the module load line to your **.bashrc**. 
+Append the module load line to your ``.bashrc``. 
 R will run on the CPU cores (not GPU enabled).
 
 There are a few steps needed to set up the R environment for JupyterLab in Open OnDemand.
