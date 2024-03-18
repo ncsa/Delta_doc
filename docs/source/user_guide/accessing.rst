@@ -9,7 +9,7 @@ Delta Login Methods
 Once you have a Delta allocation, the primary methods for logging into Delta are:
 
 - :ref:`direct_access` - Most common login method for users.
-- :ref:`openondemand` - Simplest login method, requiring only a web browser. Good for verifying that your account is working.
+- :ref:`openondemand` - Simplest login method, using a web browser. Good for verifying that your account is working.
 - :ref:`VS Code <vs-remote-ssh>`
 
 .. _direct_access:
