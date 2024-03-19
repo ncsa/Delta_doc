@@ -894,6 +894,42 @@ Hybrid (MPI + OpenMP or MPI+X) on CPU Nodes
    </details>
 |
 
+1 GPU on a Compute Node
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. raw:: html
+
+   <details>
+   <summary><a><b>4 gpus example script</b> <i>(click to expand/collapse)</i></a></summary>
+
+.. code-block::
+
+   #!/bin/bash
+   #SBATCH --job-name="a.out_symmetric"
+   #SBATCH --output="a.out.%j.%N.out"
+   #SBATCH --partition=gpuA40x4
+   #SBATCH --mem=50G
+   #SBATCH --nodes=1
+   #SBATCH --ntasks-per-node=1  # could be 1 for py-torch
+   #SBATCH --cpus-per-task=16   # spread out to use 1 core per numa, set to 64 if tasks is 1
+   #SBATCH --constraint="scratch"
+   #SBATCH --gpus-per-node=1
+   #SBATCH --gpu-bind=closest   # select a cpu close to gpu on pci bus topology
+   #SBATCH --account=account_name    # <- match to a "Project" returned by the "accounts" command
+   #SBATCH --exclusive  # dedicated node for this job
+   #SBATCH --no-requeue
+   #SBATCH -t 04:00:00
+
+   export OMP_NUM_THREADS=1  # if code is not multithreaded, otherwise set to 8 or 16
+   srun -N 1 -n 4 ./a.out > myjob.out
+   # py-torch example, --ntasks-per-node=1 --cpus-per-task=16
+   # srun python3 multiple_gpu.py
+
+.. raw:: html
+
+   </details>
+|
+
 Parametric / Array / HTC Jobs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
