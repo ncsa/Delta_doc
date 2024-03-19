@@ -900,7 +900,7 @@ Hybrid (MPI + OpenMP or MPI+X) on CPU Nodes
 .. raw:: html
 
    <details>
-   <summary><a><b>4 gpus example script</b> <i>(click to expand/collapse)</i></a></summary>
+   <summary><a><b>1 gpu example script</b> <i>(click to expand/collapse)</i></a></summary>
 
 .. code-block::
 
