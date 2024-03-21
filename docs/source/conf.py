@@ -48,7 +48,7 @@ html_js_files = [
 html_static_path = ['_static']
 html_logo = "images/BlockI-NCSA-Full-Color-RGB_border4.png"
 html_theme_options = {
-     'logo_only': False,
+     'logo_only': True,
      'display_version': False,
  }
 
