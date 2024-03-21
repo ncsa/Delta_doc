@@ -18,7 +18,7 @@ body > div > section > div > div > div:nth-child(1) > ul > li.wy-breadcrumbs-asi
     color: #2980b9 !important;
 }
 
-body > div > nav > div > div.wy-side-nav-search > a:visited{
+body > div > nav > div > div.wy-side-nav-search > a > a:visited{
     color: white !important;
 }
 
