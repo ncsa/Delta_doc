@@ -19,12 +19,12 @@ $( document ).ready(function() {
 
 
   // Insert "NCSA Documentation Hub" below html_logo in sidebar navigation
-  var docshub_link = document.createElement("a");
-  var docshub_link_text = document.createTextNode("NCSA Documentation Hub");
-  docshub_link.appendChild(docshub_link_text);
-  docshub_link.setAttribute("href","https://docs.ncsa.illinois.edu");
+  // var docshub_link = document.createElement("a");
+  // var docshub_link_text = document.createTextNode("NCSA Documentation Hub");
+  // docshub_link.appendChild(docshub_link_text);
+  // docshub_link.setAttribute("href","https://docs.ncsa.illinois.edu");
   
-  wysidenavsearch = document.querySelector("body > div > nav > div > div.wy-side-nav-search > a");
-  wysidenavsearch.appendChild(docshub_link);
+  // wysidenavsearch = document.querySelector("body > div > nav > div > div.wy-side-nav-search > a");
+  // wysidenavsearch.appendChild(docshub_link);
   
 });
