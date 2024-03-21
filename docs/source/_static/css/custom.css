@@ -12,6 +12,10 @@ body > div > nav > div > div.wy-side-nav-search > a > a:visited{
     color: white !important;
 }
 
+body > div > section > div > div > div:nth-child(1) > ul > li.wy-breadcrumbs-aside{
+    text-align: right;
+}
+
 /* custom styling for 'about cookies' button in footer */
 #cookie-button {
     cursor: pointer;
