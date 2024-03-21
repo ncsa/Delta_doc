@@ -7,6 +7,10 @@ body > div > nav > div > div.wy-side-nav-search > a:hover{
     background: #2980b9 !important;
 }
 
+/* making "Documentation Hub" link hover color the same as background */
+body > div > nav > div > div.wy-side-nav-search > a > a:visited{
+    color: white !important;
+}
 
 /* custom styling for 'about cookies' button in footer */
 #cookie-button {
