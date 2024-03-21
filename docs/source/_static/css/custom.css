@@ -7,9 +7,9 @@ body > div > nav > div > div.wy-side-nav-search > a:hover{
     background: #2980b9 !important;
 }
 
-/* making "NCSA Documentation Hub" link hover color the same as background */
+/* making "NCSA Documentation Hub" link visited color the same as unvisited */
 body > div > section > div > div > div:nth-child(1) > ul > li.wy-breadcrumbs-aside > a:visited{
-    color: white !important;
+    color: #2980b9 !important;
 }
 
 body > div > section > div > div > div:nth-child(1) > ul > li.wy-breadcrumbs-aside{
