@@ -12,8 +12,7 @@ $( document ).ready(function() {
   aside = document.querySelector("body > div > section > div > div > div:nth-child(1) > ul > li.wy-breadcrumbs-aside");
 
   // Next to the default "Edit on GitHub", add a separator, then the hub link.
-  aside.prepend(separator);
-  aside.prepend(hub_link);
+  aside.replaceWith(hub_link);
 
 
   // Insert "Documentation Hub" below html_logo in sidebar navigation
