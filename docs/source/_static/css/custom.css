@@ -7,8 +7,8 @@ body > div > nav > div > div.wy-side-nav-search > a:hover{
     background: #2980b9 !important;
 }
 
-/* making "Documentation Hub" link hover color the same as background */
-body > div > nav > div > div.wy-side-nav-search > a > a:visited{
+/* making "NCSA Documentation Hub" link hover color the same as background */
+body > div > section > div > div > div:nth-child(1) > ul > li.wy-breadcrumbs-aside > a:visited{
     color: white !important;
 }
 
