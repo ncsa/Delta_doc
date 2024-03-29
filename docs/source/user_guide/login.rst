@@ -66,10 +66,10 @@ Use of SSH key pairs is disabled for general use.  This means that most individu
 
 The one exception is: if you are the PI of a Gateway allocation (this is not most projects), then please :ref:`submit a support request <help>` to get the Gateway account's key pairs set up.  
 
-Maintaining Persistent Sessions: tmux
+Maintaining Persistent Login Sessions: tmux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-tmux is available on the login nodes to maintain persistent sessions.
+The tmux utility is available on login nodes to maintain persistent login shells.  This is a great technique to keep your shell alive between days and over network disconnects.  
 See the tmux man page for more information. 
 After making note of the hostname, use the targeted login hostnames (dt-login01 or dt-login02) to attach to the login node where you started tmux. 
 Avoid the round-robin hostname when using tmux.
