@@ -593,10 +593,10 @@ Monitoring Nodes Using Grafana
        :alt: get detailed info
        :width: 1000px
 
-Interactive Sessions
+Interactive Jobs
 -------------------------
 
-Interactive sessions can be implemented in several ways, depending on what is needed. The examples below start up a bash shell terminal on a CPU or GPU node. (Replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command.)
+Interactive jobs can be implemented in several ways, depending on what is needed. The examples below start up a bash shell terminal on a CPU or GPU node. (Replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command.)
 
 - Single core with 16GB of memory, with one task on a CPU node
 
