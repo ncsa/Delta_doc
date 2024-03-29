@@ -95,19 +95,19 @@ You may *use any of these methods* with any of the python versions or instances 
 
 - `venv (python virtual environment) <https://docs.python.org/3/library/venv.html>`_
 
-  Can name environments (metadata) and have multiple environments per python version or instance.  pip installs are local to the environment.
+  Can name environments (metadata) and have multiple environments per python version or instance.  pip installs are local to the environment. You specify the path when using venv: ``python -m venv /path/to/env``.
 
 - `conda (or miniconda) environments <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>`_
 
-  Similar to venv but with more flexibility, see this `comparison table <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html#virtual-environments>`_.  See also the miniconda environment option: `anconda or miniconda <https://docs.anaconda.com/free/distro-or-miniconda/>`_.  pip and conda installs are local to the environment.
+  Similar to venv but with more flexibility, see this `comparison table <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html#virtual-environments>`_.  See also the miniconda environment option: `anconda or miniconda <https://docs.anaconda.com/free/distro-or-miniconda/>`_.  pip and conda installs are local to the environment and the location defaults to ``$HOME/.conda``. You can override the default location in ``$HOME`` by using the ``--prefix`` syntax: ``conda create --prefix /path/to/env``.
 
-- `pip3 <https://docs.python.org/3/installing/index.html>`_: ``pip3 install --user <python_package>``  (installs to ``$HOME/.local/``)
+- `pip3 <https://docs.python.org/3/installing/index.html>`_: ``pip3 install --user <python_package>`` (installs to ``$HOME/.local/`` unless you are using a venv or conda environment).
 
-  Useful when you only need one python environment per python version.  CAUTION: Python modules installed this way into your ``$HOME/.local/`` will match on python versions and this can create incompatibilities between containers or python venv or conda environments when they have a common python version number.
+  Useful when you only need one python environment per python version.  CAUTION: Python modules installed this way into your ``$HOME/.local/`` will match on python versions. This can create incompatibilities between containers or python venv or conda environments when they have a common python version number.
 
 - `conda-env-mod <https://github.com/amaji/conda-env-mod>`_: conda-env-mod lmod module generator from Purdue
 
-  The conda-env-mod script will generate a python module you can load or share with your team--making it simpler to manage multiple python scenarios that you can activate and deactivate with module commands.
+  The conda-env-mod script will generate a python module you can load or share with your team. This makes it simpler to manage multiple python scenarios that you can activate and deactivate with module commands.
 
 Examples using all of the above are shown in the `Intel scikit-learn-intelex repository <https://github.com/intel/scikit-learn-intelex/blob/master/INSTALL.md>`_ (an Intel accelerated scikit learn subset library for x86_64 architecture). 
 

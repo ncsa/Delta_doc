@@ -57,7 +57,7 @@ Browse NCSA’s `HPC-Moodle <https://www.hpc-training.org>`_ for a full list of 
    
    user_guide/architecture
    user_guide/accounts
-   user_guide/accessing
+   user_guide/login
    user_guide/citizenship
    user_guide/data_mgmt
    user_guide/prog_env
