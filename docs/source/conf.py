@@ -40,11 +40,16 @@ html_css_files = [
     'css/custom.css',
 ]
 
+# -- custom JS
+html_js_files = [
+    'js/custom.js',
+]
+
 # -- Logo 
 html_static_path = ['_static']
 html_logo = "images/BlockI-NCSA-Full-Color-RGB_border4.png"
 html_theme_options = {
-     'logo_only': False,
+     'logo_only': True,
      'display_version': False,
  }
 
