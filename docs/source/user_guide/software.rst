@@ -920,7 +920,9 @@ The available `conda-based environment kernels for Jupyter <https://github.com/A
 **$ conda install jupyter**
 
 
-**nb_python_kernels:**
+**nb_python_kernels**
+or the equivalent-
+**jupyter-kernelspec list**
 
 .. code-block::
 
