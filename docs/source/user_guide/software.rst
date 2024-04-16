@@ -835,6 +835,45 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
    **srun Jupyter ( anaconda3_cpu on a CPU node ):**
 
+   #. Load the appropriate anaconda module. For this example we will use ``anaconda3_cpu``. You can see all of the available anaconda modules by running ``module avail anaconda``.
+
+      .. code-block::
+
+         module load anaconda3_cpu
+
+   #. Verify the module is loaded with ``module list``.
+
+      .. code-block::
+
+         module list
+
+   #. Verify a jupyter-notebook is in your ``$PATH`` with ``which jupyter-notebook``.
+
+      .. code-block::
+
+         which jupyter-notebook
+
+   #. Find your ``$UID`` and **copy** it to a notepad or somewhere like that. If your $UID is >65535, select a random, 5-digit number between 22400 and 65535.
+
+      .. code-block::
+
+         echo $UID
+
+   #. Find the the account_name that you are going to use and **copy it to a notepad or somewhere like that; your accounts are listed under "Project" when you run the ``accounts`` command.
+
+      .. code-block::
+
+         accounts
+
+   #. Run an ``srun`` command similar to the below. 
+
+      - Replace ``<$UID_or_other>`` with your $UID (or other number if your $UID >65535), which you found and copied in step #1.
+      - Replace ``account_name`` with the account you are going to use, which you found and copied in step #2.
+
+      .. code-block::
+
+         srun --account=account_name --partition=cpu-interactive --time=00:30:00 --mem=32g jupyter-notebook --no-browser --port=<$UID_or_other> --ip=0.0.0.0
+
    Replace ``account_name`` with one of your available CPU accounts; these are listed under "Project" when you run the ``accounts`` command.
    
    .. code-block::
@@ -849,6 +888,8 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
           Or copy and paste one of these URLs:
               http://cn093.delta.internal.ncsa.edu:$UID/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
            or http://127.0.0.1:$UID/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
+
+   #. **Copy** the last 5 lines returned beginning with: "To access the notebook, open this file in a browser..." to a notepad or somewhere like that.
 
    Note the internal hostname in the **cluster** for **step 2**. You will use the **second URL** in **step 3**.
 
@@ -886,7 +927,19 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
    Specify the host your job is using in the next step (gpua045, for example).
 
-#. From your local desktop or laptop create an SSH tunnel to the compute node via a login node of Delta.
+#. From your **local desktop or laptop** create an SSH tunnel to the compute node via a login node of Delta.
+
+   - Replace ``<my_delta_username>`` with your Delta login username.
+   
+   - Replace ``<$UID_or_other>`` with your $UID (or other number if your $UID >65535), which you found and copied in step #1.
+
+   .. code-block::
+
+      ssh -l <my_delta_username> -L 127.0.0.1:<$UID_or_other>:cn035.delta.ncsa.illinois.edu:<$UID_or_other> dt-login.delta.ncsa.illinois.edu
+
+#. You *may* get "Are you sure you want to continue connecting (yes/no/[fingerprint])?". Type "yes".
+
+#. Enter your NCSA password (you won't see it reflected back, type blindly) and Duo MFA.
 
    **SSH tunnel for Jupyter:**
 
