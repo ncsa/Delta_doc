@@ -28,11 +28,11 @@ body > div > nav > div > div.wy-side-nav-search > a{
 } */
 
 /* making "System Documentation Hub" link visited color the same as unvisited */
-body > div > section > div > div > div:nth-child(1) > ul > li.wy-breadcrumbs-aside > a:visited{
+a.hub-link:visited{
     color: #2980b9 !important;
 }
 
 
-body > div > section > div > div > div:nth-child(1) > ul > li.wy-breadcrumbs-aside{
+.hub-link{
     text-align: right;
 }
