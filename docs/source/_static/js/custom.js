@@ -9,9 +9,9 @@ $( document ).ready(function() {
   var separator = document.createTextNode(" | ");
 
   // This replaces the GitHub link in the upper-right with the "Documentation Hub" link
-  aside = document.querySelector("body > div > section > div > div > div:nth-child(1) > ul > li.wy-breadcrumbs-aside > a");
+  aside = document.querySelector(".fa-github");
 
-  // Next to the default "Edit on GitHub", add a separator, then the hub link.
+  // Replace "Edit on GitHub" with the hub link.
   aside.replaceWith(hub_link);
 
 
