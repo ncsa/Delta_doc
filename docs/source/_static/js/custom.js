@@ -5,7 +5,7 @@ $( document ).ready(function() {
   var hub_text = document.createTextNode("NCSA Documentation Hub");
   hub_link.appendChild(hub_text);
   hub_link.setAttribute("href", "https://docs.ncsa.illinois.edu");
-  hub_link.setAttribute("className", "hub-link");
+  hub_link.setAttribute("class", "hub-link");
 
   var separator = document.createTextNode(" | ");
 
