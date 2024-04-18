@@ -107,14 +107,21 @@ Desktop
 ----------------
 
 Open OnDemand provides a VNC service (`noVNC <https://novnc.com>`_) through the "Desktop" Interactive App.  
-Desktop runs in a job on a compute node and gives you access to a virtual Linux desktop that can provide a better graphics experience than X11. Elements to keep in mind:
+Desktop runs in a job on a compute node and gives you access to a virtual Linux desktop that can provide a better graphics experience than X11. 
 
-- noVNC runs within a container that can see the Delta filesystems (``$HOME``, ``/scratch``, ``/projects``, ``/sw``). Delta modules are available from the container. 
-- You can navigate to a directory and manually launch applications that require a GUI.  
-- You may need to set ``PATH`` and ``LD_LIBRARY_PATH`` from some applications.  
-- Some applications may fail if the libraries required are not available in the container.  
-- Due to space and time constraints, it's not possible to build a container that represents all of the software installed in ``/sw``. Consider a *"some assembly required"* approach if you run into issues trying to launch a program.  
-- Use ``module show <foo>`` when logged into Delta via SSH or VS Code to discover the PATHs and environment settings you may need to include in the noVNC desktop.
+Why use Desktop in OOD?
+
+  - You need a GUI for a graphics package or third party app that is GUI-only. For example, VisIt and ImageMagick.
+  - You need a web browser on Delta to direct download to Delta or manage/setup a license for some software.
+
+Elements to keep in mind:
+
+  - noVNC runs within a container that can see the Delta filesystems (``$HOME``, ``/scratch``, ``/projects``, ``/sw``). Delta modules are available from the container. 
+  - You can navigate to a directory and manually launch applications that require a GUI.  
+  - You may need to set ``PATH`` and ``LD_LIBRARY_PATH`` from some applications.  
+  - Some applications may fail if the libraries required are not available in the container.  
+  - Due to space and time constraints, it's not possible to build a container that represents all of the software installed in ``/sw``. Consider a *"some assembly required"* approach if you run into issues trying to launch a program.  
+  - Use ``module show <foo>`` when logged into Delta via SSH or VS Code to discover the PATHs and environment settings you may need to include in the noVNC desktop.
 
 To start an OOD Desktop session:
 
