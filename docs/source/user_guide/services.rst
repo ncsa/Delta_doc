@@ -17,7 +17,7 @@ Currently supported Interactive Apps are:
 
 .. _ood-jupyter:
 
-OOD - Jupyter Lab
+Jupyter Lab
 -------------------
 
 The Open OnDemand dashboard provides an easy way to launch a Delta Jupyter Lab environment in a web browser.
@@ -56,7 +56,7 @@ The Open OnDemand dashboard provides an easy way to launch a Delta Jupyter Lab e
 
 .. _ood-codeserver:
 
-OOD - Code Server (VS Code)
+Code Server (VS Code)
 -----------------------------
 
 The Open OnDemand dashboard provides an easy way to launch a VS Code environment in a web browser.
@@ -95,7 +95,7 @@ The Open OnDemand dashboard provides an easy way to launch a VS Code environment
 
 .. _ood-desktop:
 
-OOD - Desktop
+Desktop
 ----------------
 
 Open OnDemand provides a VNC service (`noVNC <https://novnc.com>`_) through the "Desktop" Interactive App.  
