@@ -2,7 +2,6 @@ Using R in Jupyter Lab
 ========================
 
 R is available in JupyterLab by activating the environment via the module **anaconda_Rcpu**. 
-Append the module load line to your ``.bashrc``. 
 R will run on the CPU cores (not GPU enabled).
 
 How to Set Up the R Environment for Jupyter Lab in Open OnDemand
