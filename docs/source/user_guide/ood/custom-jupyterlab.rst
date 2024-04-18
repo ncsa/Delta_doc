@@ -157,7 +157,7 @@ Customizing Jupyter Lab with Anaconda Environments
 
                (base) [arnoldg@dt-login03 ~]$ conda activate myclone
 
-         #. Verify your cline    
+         #. Verify your clone    
 
             .. code-block::
 
