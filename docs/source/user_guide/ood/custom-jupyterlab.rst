@@ -3,8 +3,6 @@ Customizing Jupyter Lab with Anaconda Environments
 
 #. Load an **anaconda_<cpu, gpu, mi100>** that you want to use as your base installation and initialize your default login shell to use conda environments.
 
-   **conda init bash:**
-
    .. code-block::
 
       [arnoldg@dt-login03 ~]$ module load anaconda3_cpu
@@ -13,16 +11,19 @@ Customizing Jupyter Lab with Anaconda Environments
       [arnoldg@dt-login03 ~]$ bash
       (base) [arnoldg@dt-login03 ~]$
 
-   After you have run ``conda init bash`` you will not need to load **anaconda3_cpu** (or **gpu**) modules again. Just use your new custom environment.
+   - After you have run ``conda init bash`` you will not need to load **anaconda3_cpu** (or **gpu**) modules again. Just use your new custom environment.
 
-   .. note::
-      You may see error messages from conda init bash above. 
-      Just **control-c** through them and continue. 
-      As long as conda added code to the end of your ``.bashrc`` (or similar for other shells), things will work properly.
+   \
+
+   - If you see error messages when you run ``conda init bash``, just **control-c** through them and continue. As long as conda added code to the end of your ``.bashrc`` (or similar for other shells), things will work properly.
 
 #. Start a new shell with bash or a new terminal or login session with Delta. 
-   You'll now see this prompt showing that you are within the conda environment you initially chose. 
+   The prompt should show that you are within the conda environment you chose. 
    If you want to change environments later (say to **anaconda3_mi100**) you can edit your ``.bashrc`` and do another ``conda init bash`` with that new module loaded.
+
+   .. code-block::
+
+      (base) [arnoldg@dt-login03 ~]$
 
 #. Create your new custom environment by making a new empty environment or cloning your chosen module:
 
@@ -30,12 +31,12 @@ Customizing Jupyter Lab with Anaconda Environments
 
       .. tab:: Create a new empty environment (setup time ~10 minutes)
 
-         .. note::
-            If you will be making custom environments for more than one partition type (cpu, gpu, mi100), it may be helpful to include that metadata in the name of your environment.
-
-         Install jupyter into the environment in order to use it with Open OnDemand. This option adds about 150 python modules to your environment and requires about 1.3 GB in your ``$HOME``.
+         Install jupyter into the environment to use it with Open OnDemand. This option adds about 150 python modules to your environment and requires about 1.3 GB in your ``$HOME``.
 
          #. Create new conda environment (mynewenv)
+
+            .. note::
+            If you will be making custom environments for more than one partition type (cpu, gpu, mi100), it may be helpful to include that metadata in the name of your environment.
 
             .. code-block::
 
@@ -122,8 +123,7 @@ Customizing Jupyter Lab with Anaconda Environments
 
       .. tab:: Create a new clone of your chosen **anaconda3_<cpu, gpu, mi100>** module (setup time ~30 minutes)
 
-         Jupyter (and everything else from your loaded **anaconda3\_** module will be copied into this environment). 
-         This option adds about 500 python modules to your environment and requires about 6.3 GB in your ``$HOME``.
+         Jupyter (and everything else from your loaded **anaconda3\_** module will be copied into this environment). This option adds about 500 python modules to your environment and requires about 6.3 GB in your ``$HOME``.
 
          #. Create clone (myclone).
 
