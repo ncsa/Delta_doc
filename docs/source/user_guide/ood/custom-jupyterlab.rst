@@ -27,7 +27,7 @@ Customizing Jupyter Lab with Anaconda Environments
 
    .. tabs::
 
-      .. tab:: Create a new empty environment (setup time ~10 minutes)
+      .. tab:: New empty environment (setup time ~10 minutes)
 
          Install jupyter into the environment to use it with Open OnDemand. This option adds about 150 python modules to your environment and requires about 1.3 GB in your ``$HOME``.
 
@@ -119,7 +119,7 @@ Customizing Jupyter Lab with Anaconda Environments
                (mynewenv) [arnoldg@dt-login03 ~]$ du -sh $HOME/.conda/envs/mynewenv
                1.3G    /u/arnoldg/.conda/envs/mynewenv
 
-      .. tab:: Create a new clone of your chosen **anaconda3_<cpu, gpu, mi100>** module (setup time ~30 minutes)
+      .. tab:: New clone of chosen module (setup time ~30 minutes)
 
          Jupyter (and everything else from your loaded **anaconda3\_** module will be copied into this environment). This option adds about 500 python modules to your environment and requires about 6.3 GB in your ``$HOME``.
 
