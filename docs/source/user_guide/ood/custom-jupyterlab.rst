@@ -11,11 +11,9 @@ Customizing Jupyter Lab with Anaconda Environments
       [arnoldg@dt-login03 ~]$ bash
       (base) [arnoldg@dt-login03 ~]$
 
-   - After you have run ``conda init bash`` you will not need to load **anaconda3_cpu** (or **gpu**) modules again. Just use your new custom environment.
-
-   \
-
    - If you see error messages when you run ``conda init bash``, just **control-c** through them and continue. As long as conda added code to the end of your ``.bashrc`` (or similar for other shells), things will work properly.
+
+   - After you have run ``conda init bash`` you will not need to load **anaconda3_cpu** (or **gpu**) modules again. Just use your new custom environment.
 
 #. Start a new shell with bash or a new terminal or login session with Delta. 
    The prompt should show that you are within the conda environment you chose. 
@@ -36,7 +34,7 @@ Customizing Jupyter Lab with Anaconda Environments
          #. Create new conda environment (mynewenv)
 
             .. note::
-            If you will be making custom environments for more than one partition type (cpu, gpu, mi100), it may be helpful to include that metadata in the name of your environment.
+               If you will be making custom environments for more than one partition type (cpu, gpu, mi100), it may be helpful to include that metadata in the name of your environment.
 
             .. code-block::
 
