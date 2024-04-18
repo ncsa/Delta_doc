@@ -24,7 +24,7 @@ Customizing Jupyter Lab with Anaconda Environments
    You'll now see this prompt showing that you are within the conda environment you initially chose. 
    If you want to change environments later (say to **anaconda3_mi100**) you can edit your ``.bashrc`` and do another ``conda init bash`` with that new module loaded.
 
-   To create a new custom environment, you have 2 options:
+#. Create your new custom environment by making a new empty environment or cloning your chosen module:
 
    .. tabs::
 
