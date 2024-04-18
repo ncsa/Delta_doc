@@ -100,7 +100,7 @@ Log into Delta, in a web browser, with Open OnDemand (OOD).
      .. figure:: images/accessing/open-ondemand-homescreen.png
         :alt: Open OnDemand home screen showing the "files", "jobs", "clusters", and "interactive apps" options in the menu bar at the top of the window.
 
-Learn more about using Open OnDemand on Delta at the :ref:`open-ondemand` page. Topics include:
+Learn more about using Open OnDemand on Delta on the :ref:`open-ondemand` page. Topics include:
 
  - Shell interface
  - Interactive apps
