@@ -91,26 +91,23 @@ For command line SSH clients, use the following settings if you have trouble log
 Open OnDemand
 ---------------
 
-General Interface
-~~~~~~~~~~~~~~~~~~~~
+Log into Delta in a web browser through the `Open OnDemand dashboard <https://openondemand.delta.ncsa.illinois.edu/>`_.
 
-Log into Delta in a web browser through the `general Open OnDemand interface <https://openondemand.delta.ncsa.illinois.edu/>`_.
+  #. Navigate to the `Open OnDemand dashboard <https://openondemand.delta.ncsa.illinois.edu/>`_.
+  #. Log in through CILogon with your **NCSA** username, password, and Duo MFA.
+  #. Once logged in, navigate the dashboard using the menu bar at the top of the window.
 
-#. In a web browser, navigate to the `general Open OnDemand interface <https://openondemand.delta.ncsa.illinois.edu/>`_.
-#. Log in through CILogon with your **NCSA** username, password, and Duo MFA.
-#. Once logged in, navigate the system using the menu bar at the top of the window.
-
-   .. figure:: images/accessing/open-ondemand-homescreen.png
-      :alt: Open OnDemand home screen showing the "files", "jobs", "clusters", and "interactive apps" options in the menu bar at the top of the window.
+     .. figure:: images/accessing/open-ondemand-homescreen.png
+        :alt: Open OnDemand home screen showing the "files", "jobs", "clusters", and "interactive apps" options in the menu bar at the top of the window.
 
 Shell Interface
 ~~~~~~~~~~~~~~~~~
 
 An `Open OnDemand shell interface <https://openondemand.delta.ncsa.illinois.edu/pun/sys/shell/ssh/dt-login>`_ is also available. There are two options for how to access this interface.
 
-A. Delta Login Shell Interface - Option 1:
+Option 1:
 
-   #. In a web browser, navigate to the `Open OnDemand shell interface <https://openondemand.delta.ncsa.illinois.edu/pun/sys/shell/ssh/dt-login>`_.
+   #. Navigate to the `Open OnDemand shell interface <https://openondemand.delta.ncsa.illinois.edu/pun/sys/shell/ssh/dt-login>`_.
    #. If prompted, Log in through CILogon with your **NCSA** username, password, and Duo MFA.
    #. Enter your **NCSA password** in the terminal interface prompt and hit **enter/return**. 
 
@@ -119,14 +116,15 @@ A. Delta Login Shell Interface - Option 1:
 
       ..  figure:: images/accessing/Delta_OOD_terminal.png
           :alt: Black terminal with a command prompt that ends in "csteffen@dt-login's password:"
+
    #. Complete the Duo two-factor authentication by either:
 
       a. Entering **1** and accepting the Duo push notification on your phone OR 
       b. Opening the Duo app on your phone and entering the NCSA passcode into the terminal prompt.
 
-B. Delta Login Shell Interface - Option 2:
+Option 2:
 
-   #. Log into the `general Open OnDemand interface <https://openondemand.delta.ncsa.illinois.edu/>`_.
+   #. Log into the `Open OnDemand dasboard <https://openondemand.delta.ncsa.illinois.edu/>`_.
    #. In the **Clusters** menu, select **>_Delta Shell Access**.
 
       .. figure:: images/accessing/open-ondemand-clusters-menu.png
@@ -143,6 +141,16 @@ B. Delta Login Shell Interface - Option 2:
 
       a. Entering **1** and accepting the Duo push notification on your phone OR 
       b. Opening the Duo app on your phone and entering the NCSA passcode into the terminal prompt.
+
+Desktop
+~~~~~~~~~
+
+You can access a virtual Linux desktop through the Open OnDemand "Desktop" interactive app. Refer to the :ref:`OOD Desktop <ood-desktop>` sections for instructions on how to log into and use this app.
+
+Why use Desktop in OOD?
+
+  - You need a GUI for a graphics package or third party app that is GUI-only. For example, VisIt and ImageMagick.
+  - You need a web browser on Delta to direct download to Delta or manage/setup a license for some software.
 
 .. _vs_code:
 
