@@ -91,7 +91,7 @@ For command line SSH clients, use the following settings if you have trouble log
 Open OnDemand
 ---------------
 
-Log into Delta in a web browser through Open OnDemand (OOD).
+Log into Delta, in a web browser, with Open OnDemand (OOD).
 
   #. Navigate to the `Open OnDemand dashboard <https://openondemand.delta.ncsa.illinois.edu/>`_.
   #. Log in through CILogon with your **NCSA** username, password, and Duo MFA.
@@ -142,10 +142,12 @@ Option 2:
       a. Entering **1** and accepting the Duo push notification on your phone OR 
       b. Opening the Duo app on your phone and entering the NCSA passcode into the terminal prompt.
 
-OOD Desktop App
-~~~~~~~~~~~~~~~~
+:ref:`OOD Desktop App <ood-desktop>`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can access a virtual Linux desktop through the Open OnDemand "Desktop" interactive app. Refer to the :ref:`OOD Desktop <ood-desktop>` sections for instructions on how to log into and use this app.
+You can access a virtual Linux desktop through the Open OnDemand "Desktop" interactive app. 
+
+Refer to the :ref:`Open OnDemand Desktop <ood-desktop>` section for instructions on how to log into and use this app.
 
 Why use Desktop in OOD?
 
