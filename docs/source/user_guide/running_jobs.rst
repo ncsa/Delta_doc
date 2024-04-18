@@ -5,7 +5,7 @@ Accessing the Compute Nodes
 -------------------------------
 
 Delta implements the Slurm batch environment to manage access to the compute nodes. 
-Use the Slurm commands to run batch jobs or for interactive access to compute nodes. 
+Use the Slurm commands to run batch jobs or for interactive access (an "interactive job") to compute nodes. 
 See the `Slurm quick start guide <https://slurm.schedmd.com/quickstart.html>`_ for an introduction to Slurm. 
 There are multiple ways to access compute nodes on Delta.
 
@@ -16,7 +16,13 @@ Batch scripts (sbatch) or Interactive (srun , salloc), which is right for me?
   For mixed resource heterogeneous jobs see the `Slurm job support documentation <https://slurm.schedmd.com/heterogeneous_jobs.html#submitting>`_. 
   Slurm also supports job arrays for easy management of a set of similar jobs, see the `Slurm job array documentation <https://slurm.schedmd.com/job_array.html>`_ for more information.
 
-- :ref:`srun` . For interactive use of a compute node, srun will run a single command through Slurm on a compute node. srun blocks, it will wait until Slurm has scheduled compute resources, and when it returns, the job is complete.
+- :ref:`srun` .  srun will run a single command through Slurm on a compute node. srun blocks, it will wait until Slurm has scheduled compute resources, and when it returns, the job is complete.  srun can be used to launch a shell to get interactive access to compute node(s); this is an "interactive job", like so:
+
+.. code-block::
+
+   srun -a my_account -p some_partition --pty bash 
+
+The one thing you can't do in an interactive job created by srun is to run srun commands; if you want to do that, use salloc below.  
 
 - :ref:`salloc` . Also interactive, use salloc when you want to reserve compute resources for a period of time and interact with them using multiple commands.  Each command you type after your salloc session begins will run on the login node if it is just a normal command, or on your reserved compute resources if prefixed with srun.  Type ``exit`` when finished with an salloc allocation if you want to end it before the time expires.
 
@@ -587,10 +593,10 @@ Monitoring Nodes Using Grafana
        :alt: get detailed info
        :width: 1000px
 
-Interactive Sessions
+Interactive Jobs
 -------------------------
 
-Interactive sessions can be implemented in several ways, depending on what is needed. The examples below start up a bash shell terminal on a CPU or GPU node. (Replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command.)
+Interactive jobs can be implemented in several ways, depending on what is needed. The examples below start up a bash shell terminal on a CPU or GPU node. (Replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command.)
 
 - Single core with 16GB of memory, with one task on a CPU node
 

@@ -5,7 +5,6 @@ The charge unit for Delta is the service unit (SU).
 This corresponds to the equivalent use of one compute core utilizing less than or equal to 2G of memory for one hour, or 1 GPU or fractional GPU using less than the corresponding amount of memory or cores for 1 hour (see table below). 
 **Charges are based on the resources that are reserved for your job and do not necessarily reflect how the resources are used.**
 Charges are based on either the number of cores or the fraction of the memory requested, whichever is larger. 
-The minimum charge for any job is 1 SU.
 
 .. table:: Service Unit Equivalents by Node Type
 
@@ -84,55 +83,58 @@ The example ``jobcharge`` commands are showing results for the ``bbka-delta-gpu`
 
 .. code-block::
 
-   [arnoldg@dt-login03 ]$ jobcharge bbka-delta-gpu -b 10 --detail | tail -15
-   106  1662443  gpuMI100x8                 0  nan                                                               kingda           bash                                    2023-04-06T09:39:01              0       0
-   107  1662444  gpuMI100x8               291  billing=1000,cpu=2,gres/gpu:mi100=1,gres/gpu=1,mem=3G,node=1      kingda           bash                                    2023-04-06T09:44:11           1000       0.08
-   108  1662449  gpuMI100x8               614  billing=1000,cpu=2,gres/gpu:mi100=1,gres/gpu=1,mem=3G,node=1      kingda           bash                                    2023-04-06T10:07:23           1000       0.17
-   109  1662477  gpuMI100x8               446  billing=1000,cpu=2,gres/gpu:mi100=1,gres/gpu=1,mem=3G,node=1      kingda           bash                                    2023-04-06T10:15:08           1000       0.12
-   110  1662492  gpuMI100x8               760  billing=8000,cpu=2,gres/gpu:mi100=8,gres/gpu=8,mem=3G,node=1      kingda           bash                                    2023-04-06T10:28:00           8000       1.69
-   111  1662511  gpuMI100x8-interactive  1521  billing=16000,cpu=128,gres/gpu:mi100=8,gres/gpu=8,mem=64G,node=1  arnoldg          bash                                    Unknown                      16000       6.76
-   _____SUMMARY___________________
+   [arnoldg@dt-login03 ~]$ jobcharge bbka-delta-gpu -d 10 --detail | tail -15
+   141  3374332  gpuA40x4-interactive           1372  billing=1000,cpu=2,gres/gpu:a40=1,gres/gpu=1,mem=16G,node=1       arnoldg          ondemand/sys/dashbo
+   ard/sys/jupyter-lab  2024-04-10T09:08:27       1000      0.38
+   142  3375013  gpuA100x4                        11  billing=1000,cpu=1,gres/gpu:a100=1,gres/gpu=1,mem=1000M,node=1    svcdeltajenkins  bandwidthTest      
+                        2024-04-10T17:20:07       1000      0
+   143  3376558  gpuA100x4-interactive           443  billing=2000,cpu=1,gres/gpu:a100=1,gres/gpu=1,mem=16G,node=1      svcdeltajenkins  python             
+                        2024-04-11T03:48:25       2000      0.25
+   144  3376599  gpuA40x4                          5  billing=2000,cpu=4,gres/gpu:a40=4,gres/gpu=4,mem=128G,node=4      svcdeltajenkins  mpi_small          
+                        2024-04-11T05:18:35       2000      0
+   145  3376600  gpuA100x4                         5  billing=4000,cpu=4,gres/gpu:a100=4,gres/gpu=4,mem=128G,node=4     svcdeltajenkins  mpi_small          
+                        2024-04-11T05:18:41       4000      0.01
+   146  3376623  gpuA100x4-interactive           141  billing=2000,cpu=1,gres/gpu:a100=1,gres/gpu=1,mem=16G,node=1      svcdeltajenkins  python3            
+                        2024-04-11T07:45:22       2000      0.08
+   ____________SUMMARY____________
    User               Charge (SU)
    ---------------  -------------
-   arnoldg                  25.76
-   babreu                    6.66
-   kingda                    2.06
-   rmokos                    0.96
-   svcdeltajenkins           0.23
-   Total                    35.67
+   arnoldg                   1.7
+   gbauer                    0.37
+   jlong                     0.01
+   rbrunner                  0.89
+   svcdeltajenkins           3.52
+   Total                     6.49
 
-   [arnoldg@dt-login03 scripts]$ jobcharge bbka-delta-gpu -b 10
-   Output for 2023-03-27-11:25:24 through 2023-04-06-11:25:24:
+   [arnoldg@dt-login03 ~]$ jobcharge bbka-delta-gpu -d 10
+   Charges for account bbka-delta-gpu from 2024-04-01-08:21:18 through 2024-04-11-08:21:18.
    User               Charge (SU)
    ---------------  -------------
-   arnoldg                  26.04
-   babreu                    6.66
-   kingda                    2.06
-   rmokos                    0.96
-   svcdeltajenkins           0.23
-   Total                    35.95
+   arnoldg                   1.7
+   gbauer                    0.37
+   jlong                     0.01
+   rbrunner                  0.89
+   svcdeltajenkins           3.52
+   Total                     6.49
 
-   [arnoldg@dt-login03 ]$ jobcharge bbka-delta-gpu -h
-   usage: jobcharge [-h] [-m MONTH] [-y YEAR] [-b DAYSBACK] [-s STARTTIME] [-e ENDTIME] [--detail]
-                    accountstring
-
+   [arnoldg@dt-login03 ~]$ jobcharge -h
+   usage: jobcharge [-h] [-s STARTTIME] [-e ENDTIME] [--detail] [-m MONTH] [-y YEAR] [-d DAYSBACK] account
+ 
    positional arguments:
-     accountstring         account name
-
+     account               Name of the account to get jobcharges for. "accounts" command can be used to list your valid accounts.
+   
    optional arguments:
      -h, --help            show this help message and exit
-     -m MONTH, --month MONTH
-                           Month (1-12) Default is current month
-     -y YEAR, --year YEAR  Year (20XX) default is current year
-     -b DAYSBACK, --daysback DAYSBACK
-                           Number of days back
      -s STARTTIME, --starttime STARTTIME
-                           Start time string in format (format: %Y-%m-%d-%H:%M:%S)
-                           Example:2023-01-03-01:23:21)
+                           Get jobcharges after this time. Default is one month before the current time.
      -e ENDTIME, --endtime ENDTIME
-                           End time time string in format (format: %Y-%m-%d-%H:%M:%S)
-                           Example:2023-01-03-01:23:21)
-     --detail              detail output, per-job [svchydroswmanage@hydrol1 scripts]$ 
+                           Get jobcharges before this time. Default is the current time.
+     --detail              detail output, per-job
+     -m MONTH, --month MONTH
+                           Get jobcharges for a specific month (1-12). Will override start end time arguments
+     -y YEAR, --year YEAR  Get jobcharges for a specific year. Will override start end time arguments
+     -d DAYSBACK, --daysback DAYSBACK
+                           Get jobcharges from the previous N days. Will take precedence over all other time search arguments
 
 .. raw:: html
 
