@@ -3,27 +3,23 @@ Open OnDemand
 
 .. toctree::
    :caption: Shell Access
+   :maxdepth: 2
 
    shell
 
-Interactive Apps
-------------------
-
-The currenlty supported OOD interactive apps on Delta.
-
 .. toctree::
+   :caption: Interactive Apps
+   :maxdepth: 2
 
    jupyter
    code-server
    tensorboard
    desktop
 
-Customizing Open OnDemand
----------------------------
-
-Customize parts of Open OnDemand.
 
 .. toctree::
+   :caption: Customizing Open OnDemand
+   :maxdepth: 2
 
    custom-jupyterlab
    custom-r
