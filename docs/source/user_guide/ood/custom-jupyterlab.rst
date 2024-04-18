@@ -24,6 +24,8 @@ Customizing Jupyter Lab with Anaconda Environments
    You'll now see this prompt showing that you are within the conda environment you initially chose. 
    If you want to change environments later (say to **anaconda3_mi100**) you can edit your ``.bashrc`` and do another ``conda init bash`` with that new module loaded.
 
+\
+
 #. Create your new custom environment by making a new empty environment or cloning your chosen module:
 
    .. tabs::
@@ -173,15 +175,17 @@ Customizing Jupyter Lab with Anaconda Environments
 
 #. Initiate and launch an :ref:`Open OnDemand Jupyter session <ood-jupyter>`.
 
+\
+
 #. In Jupyter Lab, hover over items in the Launcher view to see which environment will be used, selecting the one you want for this session.
 
-   ..  image:: ../images/software/02_jupyter-mynewenv.png
+   ..  figure:: ../images/software/02_jupyter-mynewenv.png
        :alt: select environment
        :width: 750
 
 #. Change your kernel to match if you are opening a notebook from a different environment.
 
-   ..  image:: ../images/software/03_mynewenv-kernel.png
+   ..  figure:: ../images/software/03_mynewenv-kernel.png
        :alt: match kernel
        :width: 750
 
