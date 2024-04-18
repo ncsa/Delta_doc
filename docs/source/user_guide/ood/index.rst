@@ -1,7 +1,7 @@
 Open OnDemand
 ================
 
-Shell Interface
+Shell Access
 ------------------
 
 Access Delta through a shell interface in Open OnDemand.
@@ -22,11 +22,6 @@ The currenlty supported OOD interactive apps on Delta.
    tensorboard
    desktop
 
-- Jupyter
-- Code Server
-- TensorBoard
-- Desktop
-
 Customizing Open OnDemand
 ---------------------------
 
@@ -37,5 +32,4 @@ Customize parts of Open OnDemand.
    ood/custom-jl
    ood/custom-r
 
-- Customizing JL with Anaconda Environments
-- Using R in JL
+|
