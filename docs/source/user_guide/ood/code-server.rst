@@ -3,7 +3,8 @@ Code Server (VS Code)
 
 The Open OnDemand dashboard provides an easy way to launch a VS Code environment in a web browser.
 
-To start an OOD VS Code session:
+How to Start an OOD VS Code Session
+--------------------------------------
 
   #. Navigate to the `Open OnDemand dashboard <https://openondemand.delta.ncsa.illinois.edu/>`_.
   #. Log in through CILogon with your **NCSA** username, password, and Duo MFA.
