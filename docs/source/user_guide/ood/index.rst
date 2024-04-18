@@ -1,12 +1,8 @@
 Open OnDemand
 ================
 
-Shell Access
-------------------
-
-Access Delta through a shell interface in Open OnDemand.
-
 .. toctree::
+   :caption: Shell Access
 
    shell
 
