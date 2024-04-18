@@ -4,7 +4,7 @@ Desktop
 Open OnDemand provides a VNC service (`noVNC <https://novnc.com>`_) through the "Desktop" Interactive App.  
 Desktop runs in a job on a compute node and gives you access to a virtual Linux desktop that can provide a better graphics experience than X11. 
 
-Why use Desktop in OOD?
+Why use Desktop?
 ------------------------
 
 - You need a GUI for a graphics package or third party app that is GUI-only. For example, VisIt and ImageMagick.
