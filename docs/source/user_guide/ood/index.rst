@@ -29,7 +29,7 @@ Customize parts of Open OnDemand.
 
 .. toctree::
 
-   ood/custom-jl
-   ood/custom-r
+   custom-jupyterlab
+   custom-r
 
 |
