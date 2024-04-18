@@ -20,3 +20,19 @@ body > div > nav > div > div.wy-side-nav-search > a:hover{
 #cookie-button:hover {
     color: #13294B;
 }
+
+/* Clicking on the NCSA logo does nothing (disable RTD theme's default <a> behavior)
+body > div > nav > div > div.wy-side-nav-search > a{
+    pointer-events: none;
+    cursor: default;
+} */
+
+/* making "System Documentation Hub" link visited color the same as unvisited */
+a.hub-link:visited{
+    color: #2980b9 !important;
+}
+
+
+.hub-link{
+    text-align: right;
+}
