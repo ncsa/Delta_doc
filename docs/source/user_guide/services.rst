@@ -38,6 +38,8 @@ To start an OOD Jupyter Lab session:
      - **Number of GPUs** - Select the number of CPUs you want for the session. Note, you must select a GPU account and partition in order to use GPUs.
      - **Working Directory** - Note the default directory if this is left blank.
 
+     \
+
   #. After you click Launch, you will be taken to the "My Interactive Sessions" screen where you can view the status of your session.
 
      .. figure:: images/ood/jupyter-starting.png
@@ -78,6 +80,8 @@ To start an OOD VS Code session:
      - **Amount of RAM** - Select your RAM following the format example in the form. Note the default RAM assigned if left blank.
      - **Number of GPUs** - Select the number of CPUs you want for the session. Note, you must select a GPU account and partition in order to use GPUs.
      - **Working Directory** - Note the default if this is left blank.
+
+     \
 
   #. After you click Launch, you will be taken to the "My Interactive Sessions" screen where you can view the status of your session.
 
@@ -127,6 +131,8 @@ To start an OOD Desktop session:
      - **Number of CPUs** - Select the number of CPUs you want for the session.
      - **Amount of RAM** - Select your RAM following the format example in the form. Note the default RAM assigned if left blank.
      - **Number of GPUs** - Select the number of CPUs you want for the session. Note, you must select a GPU account and partition in order to use GPUs.
+
+     \
 
   #. After you click Launch, you will be taken to the "My Interactive Sessions" screen where you can view the status of your session.
 
