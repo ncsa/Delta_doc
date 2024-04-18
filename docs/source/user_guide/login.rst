@@ -100,60 +100,17 @@ Log into Delta, in a web browser, with Open OnDemand (OOD).
      .. figure:: images/accessing/open-ondemand-homescreen.png
         :alt: Open OnDemand home screen showing the "files", "jobs", "clusters", and "interactive apps" options in the menu bar at the top of the window.
 
-OOD Shell Interface
-~~~~~~~~~~~~~~~~~~~~~
+Learn more about using Open OnDemand on Delta at the :ref:`open-ondemand` page. Topics include:
 
-An `Open OnDemand shell interface <https://openondemand.delta.ncsa.illinois.edu/pun/sys/shell/ssh/dt-login>`_ is also available. There are two options for how to access this interface.
+ - Shell interface
+ - Interactive apps
 
-Option 1:
+   - Jupyter Lab
+   - Code Server (VS Code)
+   - TensorBoard
+   - Desktop (virtual Linux desktop)
 
-   #. Navigate to the `Open OnDemand shell interface <https://openondemand.delta.ncsa.illinois.edu/pun/sys/shell/ssh/dt-login>`_.
-   #. If prompted, Log in through CILogon with your **NCSA** username, password, and Duo MFA.
-   #. Enter your **NCSA password** in the terminal interface prompt and hit **enter/return**. 
-
-      .. note::
-         The terminal will *not* show your password (or placeholder symbols such as asterisks [*]) as you type it.
-
-      ..  figure:: images/accessing/Delta_OOD_terminal.png
-          :alt: Black terminal with a command prompt that ends in "csteffen@dt-login's password:"
-
-   #. Complete the Duo two-factor authentication by either:
-
-      a. Entering **1** and accepting the Duo push notification on your phone OR 
-      b. Opening the Duo app on your phone and entering the NCSA passcode into the terminal prompt.
-
-Option 2:
-
-   #. Log into the `Open OnDemand dasboard <https://openondemand.delta.ncsa.illinois.edu/>`_.
-   #. In the **Clusters** menu, select **>_Delta Shell Access**.
-
-      .. figure:: images/accessing/open-ondemand-clusters-menu.png
-         :alt: Open OnDemand interface showing the ">_Delta Shell Access" option in the "Clusters" menu.
-
-   #. Enter your **NCSA password** in the terminal interface prompt and hit **enter/return**. 
-      
-      .. note::
-         The terminal will *not* show your password (or placeholder symbols such as asterisks [*]) as you type it.
-
-      ..  figure:: images/accessing/Delta_OOD_terminal.png
-          :alt: Black terminal with a command prompt that ends in "csteffen@dt-login's password:"
-   #. Complete the Duo two-factor authentication by either:
-
-      a. Entering **1** and accepting the Duo push notification on your phone OR 
-      b. Opening the Duo app on your phone and entering the NCSA passcode into the terminal prompt.
-
-OOD Interactive Apps
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-Delta supports the following interactive apps in Open OnDemand; use the links to find information on how to setup and launch the apps.
-
-  - :ref:`Jupyter Lab <ood-jupyter>`
-
-  - :ref:`Code Server (VS Code) <ood-codeserver>`
-
-  - Tensor Board
-
-  - :ref:`Desktop <ood-desktop>` (virtual Linux desktop)
+ - Jupyter Lab customization for Anaconda Environments and R
 
 .. _vs_code:
 
