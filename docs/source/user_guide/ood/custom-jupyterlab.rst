@@ -7,11 +7,11 @@ Customizing Jupyter Lab with Anaconda Environments
 
    .. code-block::
 
-      [arnoldg@dt-login03 scripts]$ module load anaconda3_cpu
-      [arnoldg@dt-login03 scripts]$ conda init bash
+      [arnoldg@dt-login03 ~]$ module load anaconda3_cpu
+      [arnoldg@dt-login03 ~]$ conda init bash
       ...
-      [arnoldg@dt-login03 scripts]$ bash
-      (base) 
+      [arnoldg@dt-login03 ~]$ bash
+      (base) [arnoldg@dt-login03 ~]$
 
    After you have run ``conda init bash`` you will not need to load **anaconda3_cpu** (or **gpu**) modules again. Just use your new custom environment.
 
@@ -26,153 +26,150 @@ Customizing Jupyter Lab with Anaconda Environments
 
    To create a new custom environment, you have 2 options:
 
-   a. Create a new empty environment:
+   .. tabs::
 
-      .. note::
-         If you will be making custom environments for more than one partition type (cpu, gpu, mi100), it may be helpful to include that metadata in the name of your environment.
+      .. tab:: Create a new empty environment (setup time ~10 minutes)
 
-      Install jupyter into the environment in order to use it with Open OnDemand. This option adds about 150 python modules to your environment and requires about 1.3 GB in your ``$HOME``. Setup time: about 10 minutes.
+         .. note::
+            If you will be making custom environments for more than one partition type (cpu, gpu, mi100), it may be helpful to include that metadata in the name of your environment.
 
-      .. raw:: html
+         Install jupyter into the environment in order to use it with Open OnDemand. This option adds about 150 python modules to your environment and requires about 1.3 GB in your ``$HOME``.
 
-         <details>
-         <summary><a><b>conda create --name mynewenv</b> <i>(click to expand/collapse)</i></a></summary>
+         #. Create new conda environment (mynewenv)
 
-      #. Create new conda environment
+            .. code-block::
 
-         .. code-block::
+               (base) [arnoldg@dt-login03 ~]$ conda create --name mynewenv
 
-            (base) conda create --name mynewenv
+               Collecting package metadata (current_repodata.json): done
+               Solving environment: done
 
-            Collecting package metadata (current_repodata.json): done
-            Solving environment: done
+               ## Package Plan ##
 
-            ## Package Plan ##
+                 environment location: /u/arnoldg/.conda/envs/mynewenv
 
-              environment location: /u/arnoldg/.conda/envs/mynewenv
+               Proceed ([y]/n)? y
 
-            Proceed ([y]/n)? y
+               Preparing transaction: done
+               Verifying transaction: done
+               Executing transaction: done
+               #
+               # To activate this environment, use
+               #
+               #     $ conda activate mynewenv
+               #
+               # To deactivate an active environment, use
+               #
+               #     $ conda deactivate
 
-            Preparing transaction: done
-            Verifying transaction: done
-            Executing transaction: done
-            #
-            # To activate this environment, use
-            #
-            #     $ conda activate mynewenv
-            #
-            # To deactivate an active environment, use
-            #
-            #     $ conda deactivate
+         #. Activate the new environment.
 
-      #. Activate the new environment.
+            .. code-block::   
 
-         .. code-block::   
+               (base) [arnoldg@dt-login03 ~]$ conda activate mynewenv
 
-            (base) conda activate mynewenv
+         #. Install Jupyter into the new environment.
 
-      #. Install Jupyter into the new environment.
+            .. code-block::
 
-         .. code-block::
+               (mynewenv) [arnoldg@dt-login03 ~]$ conda install jupyter
 
-            (mynewenv) conda install jupyter
-
-            Collecting package metadata (current_repodata.json): done
-            Solving environment: done
+               Collecting package metadata (current_repodata.json): done
+               Solving environment: done
   
-            ## Package Plan ##
+               ## Package Plan ##
 
-              environment location: /u/arnoldg/.conda/envs/mynewenv
+                 environment location: /u/arnoldg/.conda/envs/mynewenv
 
-              added / updated specs:
-                - jupyter
+                 added / updated specs:
+                   - jupyter
 
 
-            The following NEW packages will be INSTALLED:
+               The following NEW packages will be INSTALLED:
 
-              _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main None
-              _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-1_gnu None
-              anyio              pkgs/main/linux-64::anyio-3.5.0-py310h06a4308_0 None
-              argon2-cffi        pkgs/main/noarch::argon2-cffi-21.3.0-pyhd3eb1b0_0 None
-            ...
+                 _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main None
+                 _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-1_gnu None
+                 anyio              pkgs/main/linux-64::anyio-3.5.0-py310h06a4308_0 None
+                 argon2-cffi        pkgs/main/noarch::argon2-cffi-21.3.0-pyhd3eb1b0_0 None
+               ...
 
-            Proceed ([y]/n)? y
+               Proceed ([y]/n)? y
 
-       #. Verify Jupyter installs.
+         #. Verify Jupyter installs.
 
-          .. code-block::
+            .. code-block::
 
-             (mynewenv) conda list | grep jupyter
-             jupyter                   1.0.0           py310h06a4308_8  
-             jupyter_client            7.3.5           py310h06a4308_0  
-             jupyter_console           6.4.3              pyhd3eb1b0_0  
-             jupyter_core              4.11.1          py310h06a4308_0  
-             jupyter_server            1.18.1          py310h06a4308_0  
-             jupyterlab                3.4.4           py310h06a4308_0  
-             jupyterlab_pygments       0.1.2                      py_0  
-             jupyterlab_server         2.15.2          py310h06a4308_0  
-             jupyterlab_widgets        1.0.0              pyhd3eb1b0_1  
+               (mynewenv) [arnoldg@dt-login03 ~]$ conda list | grep jupyter
+               jupyter                   1.0.0           py310h06a4308_8  
+               jupyter_client            7.3.5           py310h06a4308_0  
+               jupyter_console           6.4.3              pyhd3eb1b0_0  
+               jupyter_core              4.11.1          py310h06a4308_0  
+               jupyter_server            1.18.1          py310h06a4308_0  
+               jupyterlab                3.4.4           py310h06a4308_0  
+               jupyterlab_pygments       0.1.2                      py_0  
+               jupyterlab_server         2.15.2          py310h06a4308_0  
+               jupyterlab_widgets        1.0.0              pyhd3eb1b0_1  
         
-          .. code-block::
+            .. code-block::
 
-             (mynewenv) conda list | wc -l
-             152
+               (mynewenv) [arnoldg@dt-login03 ~]$ conda list | wc -l
+               152
 
-          .. code-block::
+            .. code-block::
 
-             (mynewenv) du -sh $HOME/.conda/envs/mynewenv
-             1.3G    /u/arnoldg/.conda/envs/mynewenv
+               (mynewenv) [arnoldg@dt-login03 ~]$ du -sh $HOME/.conda/envs/mynewenv
+               1.3G    /u/arnoldg/.conda/envs/mynewenv
 
-      .. raw:: html
+      .. tab:: Create a new clone of your chosen **anaconda3_<cpu, gpu, mi100>** module (setup time ~30 minutes)
 
-         </details>
+         Jupyter (and everything else from your loaded **anaconda3\_** module will be copied into this environment). 
+         This option adds about 500 python modules to your environment and requires about 6.3 GB in your ``$HOME``.
 
-   OR 
+         #. Create clone (myclone).
 
-   b. Create a new clone of your chosen **anaconda3_<cpu, gpu, mi100>** module:
+            .. code-block::
 
-      Jupyter (and everything else from your loaded **anaconda3\_** module will be copied into this environment). 
-      This option adds about 500 python modules to your environment and requires about 6.3 GB in your ``$HOME``. Install time can be up to 30 minutes.
+               (base) [arnoldg@dt-login03 ~]$ time conda create --name myclone --clone base 
+               Source:      /sw/external/python/anaconda3_cpu
+               Destination: /u/arnoldg/.conda/envs/myclone
+               The following packages cannot be cloned out of the root environment:
+                - defaults/linux-64::conda-env-2.6.0-1
+                - defaults/linux-64::conda-22.9.0-py39h06a4308_0
+                - defaults/linux-64::conda-build-3.21.8-py39h06a4308_2
+                - defaults/noarch::conda-token-0.4.0-pyhd3eb1b0_0
+                - defaults/linux-64::_anaconda_depends-2022.05-py39_0
+                - defaults/linux-64::anaconda-navigator-2.1.4-py39h06a4308_0
+                - defaults/linux-64::anaconda-custom-py39_1
+               Packages: 447
+               Files: 24174
+               Preparing transaction: done
+               Verifying transaction: done
+               Executing transaction: \ 
+               ...
 
-      .. raw:: html
+               Retrieving notices: ...working... done
 
-         <details>
-         <summary><a><b>conda create --name myclone</b> <i>(click to expand/collapse)</i></a></summary>
+               real    24m10.605s
+               user    0m54.353s
+               sys     1m56.843s 
 
-      .. code-block::
+         #. Activate the clone.
 
-         (base) time conda create --name myclone --clone base 
-         Source:      /sw/external/python/anaconda3_cpu
-         Destination: /u/arnoldg/.conda/envs/myclone
-         The following packages cannot be cloned out of the root environment:
-          - defaults/linux-64::conda-env-2.6.0-1
-          - defaults/linux-64::conda-22.9.0-py39h06a4308_0
-          - defaults/linux-64::conda-build-3.21.8-py39h06a4308_2
-          - defaults/noarch::conda-token-0.4.0-pyhd3eb1b0_0
-          - defaults/linux-64::_anaconda_depends-2022.05-py39_0
-          - defaults/linux-64::anaconda-navigator-2.1.4-py39h06a4308_0
-          - defaults/linux-64::anaconda-custom-py39_1
-         Packages: 447
-         Files: 24174
-         Preparing transaction: done
-         Verifying transaction: done
-         Executing transaction: \ 
-         ...
+            .. code-block::
 
-         Retrieving notices: ...working... done
+               (base) [arnoldg@dt-login03 ~]$ conda activate myclone
 
-         real    24m10.605s
-         user    0m54.353s
-         sys     1m56.843s 
-         (base) conda activate myclone
-         (myclone) conda list | wc -l
-         501
-         (myclone) du -sh $HOME/.conda/envs/myclone
-         6.3G    /u/arnoldg/.conda/envs/myclone
+         #. Verify your cline    
 
-      .. raw:: html
+            .. code-block::
 
-         </details>
+               (myclone) [arnoldg@dt-login03 ~]$ conda list | wc -l
+               501
+
+            .. code-block::
+
+               (myclone) [arnoldg@dt-login03 ~]$ du -sh $HOME/.conda/envs/myclone
+               6.3G    /u/arnoldg/.conda/envs/myclone
 
 #. Initiate and launch an :ref:`Open OnDemand Jupyter session <ood-jupyter>`.
 
