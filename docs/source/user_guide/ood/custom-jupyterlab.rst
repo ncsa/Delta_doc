@@ -38,66 +38,90 @@ Customizing Jupyter Lab with Anaconda Environments
          <details>
          <summary><a><b>conda create --name mynewenv</b> <i>(click to expand/collapse)</i></a></summary>
 
-      .. code-block::
+      #. Create new conda environment
 
-         (base) conda create --name mynewenv
+         .. code-block::
 
-         Collecting package metadata (current_repodata.json): done
-         Solving environment: done
+            (base) conda create --name mynewenv
 
-         ## Package Plan ##
+            Collecting package metadata (current_repodata.json): done
+            Solving environment: done
 
-           environment location: /u/arnoldg/.conda/envs/mynewenv
+            ## Package Plan ##
 
-         Proceed ([y]/n)? y
+              environment location: /u/arnoldg/.conda/envs/mynewenv
 
-         Preparing transaction: done
-         Verifying transaction: done
-         Executing transaction: done
-         #
-         # To activate this environment, use
-         #
-         #     $ conda activate mynewenv
-         #
-         # To deactivate an active environment, use
-         #
-         #     $ conda deactivate
+            Proceed ([y]/n)? y
 
-         Retrieving notices: ...working... done
-         (base) conda activate mynewenv
-         (mynewenv) conda install jupyter
-         Collecting package metadata (current_repodata.json): done
-         Solving environment: done
+            Preparing transaction: done
+            Verifying transaction: done
+            Executing transaction: done
+            #
+            # To activate this environment, use
+            #
+            #     $ conda activate mynewenv
+            #
+            # To deactivate an active environment, use
+            #
+            #     $ conda deactivate
 
-         ## Package Plan ##
+      #. Activate the new environment.
 
-           environment location: /u/arnoldg/.conda/envs/mynewenv
+         .. code-block::   
 
-           added / updated specs:
-             - jupyter
+            (base) conda activate mynewenv
+
+      #. Install Jupyter into the new environment.
+
+         .. code-block::
+
+            (mynewenv) conda install jupyter
+
+            Collecting package metadata (current_repodata.json): done
+            Solving environment: done
+  
+            ## Package Plan ##
+
+              environment location: /u/arnoldg/.conda/envs/mynewenv
+
+              added / updated specs:
+                - jupyter
 
 
-         The following NEW packages will be INSTALLED:
+            The following NEW packages will be INSTALLED:
 
-           _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main None
-           _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-1_gnu None
-           anyio              pkgs/main/linux-64::anyio-3.5.0-py310h06a4308_0 None
-           argon2-cffi        pkgs/main/noarch::argon2-cffi-21.3.0-pyhd3eb1b0_0 None
-         ...
-         (mynewenv) conda list | grep jupyter
-         jupyter                   1.0.0           py310h06a4308_8  
-         jupyter_client            7.3.5           py310h06a4308_0  
-         jupyter_console           6.4.3              pyhd3eb1b0_0  
-         jupyter_core              4.11.1          py310h06a4308_0  
-         jupyter_server            1.18.1          py310h06a4308_0  
-         jupyterlab                3.4.4           py310h06a4308_0  
-         jupyterlab_pygments       0.1.2                      py_0  
-         jupyterlab_server         2.15.2          py310h06a4308_0  
-         jupyterlab_widgets        1.0.0              pyhd3eb1b0_1  
-         (mynewenv) conda list | wc -l
-         152
-         (mynewenv) du -sh $HOME/.conda/envs/mynewenv
-         1.3G    /u/arnoldg/.conda/envs/mynewenv
+              _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main None
+              _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-1_gnu None
+              anyio              pkgs/main/linux-64::anyio-3.5.0-py310h06a4308_0 None
+              argon2-cffi        pkgs/main/noarch::argon2-cffi-21.3.0-pyhd3eb1b0_0 None
+            ...
+
+            Proceed ([y]/n)? y
+
+       #. Verify Jupyter installs.
+
+          .. code-block::
+
+             (mynewenv) conda list | grep jupyter
+             jupyter                   1.0.0           py310h06a4308_8  
+             jupyter_client            7.3.5           py310h06a4308_0  
+             jupyter_console           6.4.3              pyhd3eb1b0_0  
+             jupyter_core              4.11.1          py310h06a4308_0  
+             jupyter_server            1.18.1          py310h06a4308_0  
+             jupyterlab                3.4.4           py310h06a4308_0  
+             jupyterlab_pygments       0.1.2                      py_0  
+             jupyterlab_server         2.15.2          py310h06a4308_0  
+             jupyterlab_widgets        1.0.0              pyhd3eb1b0_1  
+        
+          .. code-block::
+
+             (mynewenv) conda list | wc -l
+             152
+
+          .. code-block::
+
+             (mynewenv) du -sh $HOME/.conda/envs/mynewenv
+             1.3G    /u/arnoldg/.conda/envs/mynewenv
 
       .. raw:: html
 
@@ -150,24 +174,18 @@ Customizing Jupyter Lab with Anaconda Environments
 
          </details>
 
-3. Start an Open OnDemand :ref:`jupyter` session and access one of your environments (remember to match your partition and account types for gpu, cpu), then select the matching kernel for your Jupyter work.
+#. Initiate and launch an :ref:`Open OnDemand Jupyter session <ood-jupyter>`.
 
-4. Launch JupyterLab
+#. In Jupyter Lab, hover over items in the Launcher view to see which environment will be used, selecting the one you want for this session.
 
-   a. After filling in the Open OnDemand form and submitting your job, it will start in a few minutes showing the **Connect to Jupyter** button when ready.
+   ..  image:: ../images/software/02_jupyter-mynewenv.png
+       :alt: select environment
+       :width: 750
 
-      ..  image:: ../images/software/01_connect-to-jupyter.png
-          :alt: connect to Jupyter button
-          :width: 1000px
-    
-   b. Hover over items in the Launcher view to see which environment will be used, selecting the one you want for this session.
+#. Change your kernel to match if you are opening a notebook from a different environment.
 
-      ..  image:: ../images/software/02_jupyter-mynewenv.png
-          :alt: select environment
-          :width: 1000px
+   ..  image:: ../images/software/03_mynewenv-kernel.png
+       :alt: match kernel
+       :width: 750
 
-   c. Change your kernel to match if you are opening a notebook from a different environment.
-
-      ..  image:: ../images/software/03_mynewenv-kernel.png
-          :alt: match kernel
-          :width: 1000px
+|
