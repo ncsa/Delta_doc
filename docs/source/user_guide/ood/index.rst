@@ -8,7 +8,7 @@ Access Delta through a shell interface in Open OnDemand.
 
 .. toctree::
 
-   ood/shell
+   shell
 
 Interactive Apps
 ------------------
@@ -17,10 +17,10 @@ The currenlty supported OOD interactive apps on Delta.
 
 .. toctree::
 
-   ood/jupyter
-   ood/code-server
-   ood/tensorboard
-   ood/desktop
+   jupyter
+   code-server
+   tensorboard
+   desktop
 
 - Jupyter
 - Code Server
