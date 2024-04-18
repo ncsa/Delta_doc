@@ -52,7 +52,7 @@ The Open OnDemand dashboard provides an easy way to launch a Delta Jupyter Lab e
 
    .. figure:: images/ood/ood-interactive-sessions-button.png
       :alt: Open OnDemand options at top of window with the Interactive Sessions button highlighted.
-      :width: 500
+      :width: 750
 
 .. _ood-codeserver:
 
@@ -91,7 +91,7 @@ The Open OnDemand dashboard provides an easy way to launch a VS Code environment
 
    .. figure:: images/ood/ood-interactive-sessions-button.png
       :alt: Open OnDemand options at top of window with the Interactive Sessions button highlighted.
-      :width: 500
+      :width: 750
 
 .. _ood-desktop:
 
@@ -140,7 +140,7 @@ To start an OOD Desktop session:
 
    .. figure:: images/ood/ood-interactive-sessions-button.png
       :alt: Open OnDemand options at top of window with the Interactive Sessions button highlighted.
-      :width: 500
+      :width: 750
 
 Recommended noVNC Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -149,17 +149,17 @@ Recommended noVNC Settings
 
   ..  figure:: images/services/ood-desktop-settings-compression.png
       :alt: noVNC Desktop settings window showing "Compression level" slider set all the way to the left (off).
-      :width: 500
+      :width: 750
 
 - Adjust the display resolution to best fit your browser tab and local display in the Linux desktop display settings. Right-click on the desktop background and select **Applications**, then **Settings**, then **Display**.
 
   ..  figure:: images/services/ood-desktop-settings-display.png
       :alt: In noVNC Desktop, right click the background and choose "Applications", then "Settings", then "Display".
-      :width: 500
+      :width: 750
 
   ..  figure:: images/services/ood-desktop-display-resolution.png
       :alt: Display settings window showing resolution options.
-      :width: 500
+      :width: 750
 
 ImageMagick Example
 ~~~~~~~~~~~~~~~~~~~~
@@ -168,6 +168,7 @@ Here is an example showing ImageMagick running in OOD Desktop from ``/sw/externa
 
   ..  figure:: images/services/ood-desktop-magick.png
       :alt: Example showing ImageMagick in use via noVNC Desktop.
+      :width: 750
 
 Customizing Open OnDemand
 ----------------------------
