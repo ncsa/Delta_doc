@@ -1,2 +1,2 @@
-Jupter Lab
+Jupyter Lab
 ============
