@@ -142,17 +142,18 @@ Option 2:
       a. Entering **1** and accepting the Duo push notification on your phone OR 
       b. Opening the Duo app on your phone and entering the NCSA passcode into the terminal prompt.
 
-:ref:`OOD Desktop App <ood-desktop>`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+OOD Interactive Apps
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can access a virtual Linux desktop through the Open OnDemand "Desktop" interactive app. 
+Delta supports the following interactive apps in Open OnDemand; use the links to find information on how to setup and launch the apps.
 
-Refer to the :ref:`Open OnDemand Desktop <ood-desktop>` section for instructions on how to log into and use this app.
+  - :ref:`Jupyter Lab <ood-jupyter>`
 
-Why use Desktop in OOD?
+  - :ref:`Code Server (VS Code) <ood-codeserver>`
 
-  - You need a GUI for a graphics package or third party app that is GUI-only. For example, VisIt and ImageMagick.
-  - You need a web browser on Delta to direct download to Delta or manage/setup a license for some software.
+  - Tensor Board
+
+  - :ref:`Desktop <ood-desktop>` (virtual Linux desktop)
 
 .. _vs_code:
 
