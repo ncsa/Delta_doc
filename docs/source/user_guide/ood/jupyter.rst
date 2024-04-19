@@ -5,21 +5,21 @@ JupyterLab
 
 The Open OnDemand dashboard provides an easy way to launch a JupyterLab environment on Delta.
 
-How to Start an OOD Jupyter Lab Session
+How to Start an OOD JupyterLab Session
 -----------------------------------------
 
 #. Navigate to the `Open OnDemand dashboard <https://openondemand.delta.ncsa.illinois.edu/>`_.
 #. Log in through CILogon with your **NCSA** username, password, and Duo MFA.
 #. Open on the **Interactive Apps** menu at the top of the window and click on **Jupyter Lab**.
-#. Fill out the form form and then click the **Launch** button.
+#. Fill out the form and then click the **Launch** button.
 
    - **Name of account** - This must match one of your available Delta accounts (CPU or GPU, as appropriate); these are listed under "Project" when you run the ``accounts`` command on Delta.
    - **Partition** - Match your partition type to the type of account you entered. (If your account ends in "cpu", then your partition should start with "cpu". If your account ends in "gpu", then your partition should start with "gpu".)
-   - **Duration of job** - Select your duration following the format exmaple in the form. Note the duration limit for interactive partitions.
+   - **Duration of job** - Select your duration following the format example in the form. Note the duration limit for interactive partitions.
    - **Name of reservation** - Leave empty if none.
    - **Number of CPUs** - Select the number of CPUs you want for the session.
    - **Amount of RAM** - Select your RAM following the format example in the form. Note the default RAM assigned if left blank.
-   - **Number of GPUs** - Select the number of CPUs you want for the session. Note, you must select a GPU account and partition in order to use GPUs.
+   - **Number of GPUs** - Select the number of GPUs you want for the session. Note, you must select a GPU account and partition to use GPUs.
    - **Working Directory** - Note the default directory if this is left blank.
 
    \
@@ -27,7 +27,7 @@ How to Start an OOD Jupyter Lab Session
 #. After you click Launch, you will be taken to the "My Interactive Sessions" screen where you can view the status of your session.
 
    .. figure:: ../images/ood/jupyter-starting.png
-      :alt: Open OnDemand "My Interactive Sessions" screen showing the Jupyter Lab session status: "Your session is currenlty starting...Please be patient as this process can take a few minutes."
+      :alt: Open OnDemand "My Interactive Sessions" screen showing the Jupyter Lab session status: "Your session is currently starting...Please be patient as this process can take a few minutes."
       :width: 500
 
 #. Once your session has started, click the **Connect to Jupyter** button to launch your Jupyter Lab environment. Note, this may take a few minutes.
