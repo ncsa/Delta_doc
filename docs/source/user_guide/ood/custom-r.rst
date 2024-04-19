@@ -1,11 +1,8 @@
-Using R in Jupyter Lab
-========================
+How to Set Up an R Environment in JupyterLab in Open OnDemand
+================================================================
 
 R is available in JupyterLab by activating the environment via the module **anaconda_Rcpu**. 
 R will run on the CPU cores (not GPU enabled).
-
-How to Set Up the R Environment for Jupyter Lab in Open OnDemand
--------------------------------------------------------------------
 
 #. Start a new :ref:`Jupyter Lab session in Open OnDemand <ood-jupyter>`.
 
