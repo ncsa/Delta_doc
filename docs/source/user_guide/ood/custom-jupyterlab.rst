@@ -173,7 +173,7 @@ How to Customize JupyterLab with Anaconda Environments
                (myclone) [arnoldg@dt-login03 ~]$ du -sh $HOME/.conda/envs/myclone
                6.3G    /u/arnoldg/.conda/envs/myclone
 
-#. Initiate and launch an :ref:`Open OnDemand Jupyter session <ood-jupyterlab>`.
+#. Start an :ref:`Open OnDemand Jupyter session <ood-jupyterlab>`.
 
 #. In Jupyter Lab, hover over items in the Launcher view to see which environment will be used, selecting the one you want for this session.
 
