@@ -44,7 +44,10 @@ greenSphereScreenshot.png:
 VisIt
 --------
 
-Use VisIt with the Open OnDemand (OOD) "Desktop" interactive app.
+`VisIt <https://visit-dav.github.io/visit-website/>`_ is an open source visualization and data analysis tool. 
+
+How to Use VisIt in Open OnDemand (OOD)
+-----------------------------------------
 
 #. :ref:`Start an OOD Desktop session <ood-start-desktop>`.
 
