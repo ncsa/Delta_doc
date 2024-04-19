@@ -3,7 +3,7 @@
 Open OnDemand
 ================
 
-Access Delta, in a web browser, through Open OnDemand!
+Access Delta, in a web browser, with Open OnDemand!
 
 Shell Access
 --------------
