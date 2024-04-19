@@ -1,3 +1,5 @@
+.. _ood-code-server:
+
 Code Server (VS Code)
 ========================
 
