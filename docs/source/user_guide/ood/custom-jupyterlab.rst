@@ -1,3 +1,5 @@
+.. _ood-custom-anaconda:
+
 How to Customize JupyterLab with Anaconda Environments
 =======================================================
 
