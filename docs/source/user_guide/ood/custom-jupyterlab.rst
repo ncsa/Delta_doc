@@ -175,7 +175,7 @@ How to Customize JupyterLab with Anaconda Environments
 
 #. Start an :ref:`Open OnDemand Jupyter session <ood-jupyterlab>`.
 
-#. In Jupyter Lab, hover over items in the Launcher view to see which environment will be used, selecting the one you want for this session.
+#. In Jupyter Lab, hover over items in the Launcher view to see which environment will be used; select the one you want for this session.
 
    ..  figure:: ../images/software/02_jupyter-mynewenv.png
        :alt: select environment
