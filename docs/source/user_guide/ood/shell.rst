@@ -40,12 +40,12 @@ Option 2 - Through OOD Dashboard
       ..  figure:: ../images/accessing/Delta_OOD_terminal.png
           :alt: Terminal with a command prompt that ends in "csteffen@dt-login's password:"
 
-   #. Complete the Duo two-factor authentication by either:
+   #. Complete the Duo two-factor authentication by one of these methods:
 
-      - Entering **1** and accepting the Duo push notification on your phone
+      - Enter **1** and accept the Duo push notification on your phone
 
         OR
 
-      - Opening the Duo app on your phone and entering the NCSA passcode into the terminal prompt.
+      - Open the Duo app on your phone and enter the NCSA passcode into the terminal prompt.
 
 |
