@@ -824,7 +824,12 @@ See :ref:`contain`.
 Jupyter Notebooks
 -------------------
 
-The Detla Open OnDemand portal provides an easier way to start a Jupyter notebook. Please see :ref:`openon` to access the portal.
+.. note::
+   The Delta Open OnDemand (OOD) portal provides an easy method to start a Jupyter notebook. 
+
+   Jupyter through OOD is the **recommended method** for users. 
+
+   Refer to the :ref:`OOD Jupyter interactive app <ood-jupyterlab>` page for instructions on how to start an OOD JupyterLab session.
 
 The Jupyter notebook executables are in your ``$PATH`` after loading the anaconda3 module. If you run into problems from a previously saved Jupyter session (for example, you see paths where you do not have write permission), you may remove this file to get a fresh start: ``$HOME/.jupyter/lab/workspaces/default-*``.  
 
