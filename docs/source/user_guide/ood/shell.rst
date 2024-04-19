@@ -1,3 +1,5 @@
+.. _ood-shell-interface:
+
 How to Log into the OOD Shell Interface
 ========================================
 
