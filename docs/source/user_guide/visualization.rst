@@ -88,11 +88,11 @@ You can load the VisIt example noise.silo data by:
 
 #. Click the **Draw** button. The data should render in the adjacent window and look similar to the below.
 
-   .. figure:: images/visualization/ood-desktop-visit-draw.png
+   .. image:: images/visualization/ood-desktop-visit-draw.png
       :alt: VisIt Draw button.
       :width: 500
 
-   .. figure:: images/visualization/ood-desktop-visit-rendered.png
+   .. image:: images/visualization/ood-desktop-visit-rendered.png
       :alt: VisIt noise.silo data rendered.
       :width: 500
 
