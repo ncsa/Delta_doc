@@ -17,7 +17,7 @@ Open a shell interface for Delta through Open OnDemand (OOD).
 Interactive Apps
 ------------------
 
-Instructions on how to start the supported OOD interactive apps on Delta.
+Instructions on how to start the supported OOD interactive apps.
 
 .. toctree::
    :maxdepth: 1
