@@ -16,7 +16,7 @@ Option 1 - Direct Navigate
          The terminal will *not* show your password (or placeholder symbols such as asterisks [*]) as you type it.
 
       ..  figure:: ../images/accessing/Delta_OOD_terminal.png
-          :alt: Black terminal with a command prompt that ends in "csteffen@dt-login's password:"
+          :alt: Terminal with a command prompt that ends in "csteffen@dt-login's password:"
 
    #. Complete the Duo two-factor authentication by either:
 
@@ -38,9 +38,11 @@ Option 2 - Through OOD Dashboard
          The terminal will *not* show your password (or placeholder symbols such as asterisks [*]) as you type it.
 
       ..  figure:: ../images/accessing/Delta_OOD_terminal.png
-          :alt: Black terminal with a command prompt that ends in "csteffen@dt-login's password:"
+          :alt: Terminal with a command prompt that ends in "csteffen@dt-login's password:"
 
    #. Complete the Duo two-factor authentication by either:
 
       a. Entering **1** and accepting the Duo push notification on your phone OR 
       b. Opening the Duo app on your phone and entering the NCSA passcode into the terminal prompt.
+
+|
