@@ -825,16 +825,14 @@ Jupyter Notebooks
 -------------------
 
 .. note::
-   The Delta Open OnDemand (OOD) portal provides an easy method to start a Jupyter notebook. 
-
-   Jupyter through OOD is the **recommended method** for users. 
+   The Delta Open OnDemand (OOD) portal provides an easy method to start a Jupyter notebook; this is the **recommended method** for users. 
 
    Go to the :ref:`OOD Jupyter interactive app <ood-jupyterlab>` page for instructions on how to start an OOD JupyterLab session.
 
    You can also customize your OOD JupyterLab environment:
 
-   - :ref:`ood-custom-anaconda`
-   - :ref:`ood-custom-r`
+     - :ref:`ood-custom-anaconda`
+     - :ref:`ood-custom-r`
 
 The Jupyter notebook executables are in your ``$PATH`` after loading the anaconda3 module. If you run into problems from a previously saved Jupyter session (for example, you see paths where you do not have write permission), you may remove this file to get a fresh start: ``$HOME/.jupyter/lab/workspaces/default-*``.  
 
