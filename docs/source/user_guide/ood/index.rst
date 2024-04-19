@@ -6,7 +6,7 @@ Open OnDemand
 Shell Access
 --------------
 
-Open a shell interface of Delta through Open OnDemand (OOD).
+Open a shell interface for Delta through Open OnDemand (OOD).
 
 .. toctree::
    :maxdepth: 1
