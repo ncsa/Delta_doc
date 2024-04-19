@@ -39,3 +39,5 @@ How to Start an OOD TensorBoard Session
    .. figure:: ../images/ood/ood-interactive-sessions-button.png
       :alt: Open OnDemand options at top of window with the Interactive Sessions button highlighted.
       :width: 750
+
+|
