@@ -86,16 +86,13 @@ You can load the VisIt example noise.silo data by:
       :alt: VisIt Add menu showing the "Volume", and then "hardyglobal" selected.
       :width: 500
 
-#. Click the **Draw** button. The data should render in the adjacent window and look similar to the below.
+#. Click the **Draw** button. The data will render in the adjacent window.
 
    .. image:: images/visualization/ood-desktop-visit-draw.png
       :alt: VisIt Draw button.
       :width: 500
 
-   .. image:: images/visualization/ood-desktop-visit-rendered.png
-      :alt: VisIt noise.silo data rendered.
-      :width: 450
-
+|
 
 .. The below VisIt client-server mode info is commented out because we have trouble getting it to work properly. 
 
