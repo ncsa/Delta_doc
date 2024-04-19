@@ -51,19 +51,19 @@ The available `conda-based environment kernels for Jupyter <https://github.com/A
 
 **Jupyter needs to be installed in every virtual environment where you want to use JupyterLab or Jupyter Notebook.**
 
-  .. code-block::
+  .. code-block:: terminal
 
      $ conda install jupyter
 
 You can also :ref:`customize OOD JupyterLab with Anaconda environments <ood-custom-anaconda>`.
 
-To see the possible Jupyter kernels for your current environment or module setup, run one of the following:
+To see the possible Jupyter kernels for your current environment or module setup, run one of the following in a Delta terminal (:ref:`Open OnDemand shell <ood-shell-interface>` or :ref:`direct SSH <direct_access>`):
 
-  - .. code-block::
+  - .. code-block:: terminal
 
        python3 -m nb_python_kernels list
 
-  - .. code-block::
+  - .. code-block:: terminal
 
        jupyter-kernelspec list
 
