@@ -82,3 +82,5 @@ Here is an example showing ImageMagick running in OOD Desktop from ``/sw/externa
   ..  figure:: ../images/services/ood-desktop-magick.png
       :alt: Example showing ImageMagick in use via noVNC Desktop.
       :width: 750
+
+|
