@@ -13,7 +13,7 @@ Option 1 - Direct Navigate
    #. Enter your **NCSA password** in the terminal interface prompt and hit **enter/return**. 
 
       .. note::
-         The terminal will *not* show your password (or placeholder symbols such as asterisks [*]) as you type it.
+         The terminal will *not* show your password (or placeholder symbols such as asterisks [*]) as you type.
 
       ..  figure:: ../images/accessing/Delta_OOD_terminal.png
           :alt: Terminal with a command prompt that ends in "csteffen@dt-login's password:"
@@ -35,14 +35,17 @@ Option 2 - Through OOD Dashboard
    #. Enter your **NCSA password** in the terminal interface prompt and hit **enter/return**. 
       
       .. note::
-         The terminal will *not* show your password (or placeholder symbols such as asterisks [*]) as you type it.
+         The terminal will *not* show your password (or placeholder symbols such as asterisks [*]) as you type.
 
       ..  figure:: ../images/accessing/Delta_OOD_terminal.png
           :alt: Terminal with a command prompt that ends in "csteffen@dt-login's password:"
 
    #. Complete the Duo two-factor authentication by either:
 
-      a. Entering **1** and accepting the Duo push notification on your phone OR 
-      b. Opening the Duo app on your phone and entering the NCSA passcode into the terminal prompt.
+      - Entering **1** and accepting the Duo push notification on your phone
+
+        OR
+
+      - Opening the Duo app on your phone and entering the NCSA passcode into the terminal prompt.
 
 |
