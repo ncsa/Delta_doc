@@ -17,7 +17,7 @@ Open a shell interface of Delta through Open OnDemand (OOD).
 Interactive Apps
 ------------------
 
-Instructions on how to start the currenlty supported OOD interactive apps on Delta.
+Instructions on how to start the supported OOD interactive apps on Delta.
 
 .. toctree::
    :maxdepth: 1
@@ -30,7 +30,7 @@ Instructions on how to start the currenlty supported OOD interactive apps on Del
 Customizing Open OnDemand
 ---------------------------
 
-Customize Jupyter Lab in OOD by creating a custom Anaconda environment or setting up an R environment.
+Customize JupyterLab in OOD by creating a custom Anaconda environment or setting up an R environment.
 
 .. toctree::
    :maxdepth: 1
