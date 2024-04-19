@@ -161,7 +161,7 @@ How to Customize JupyterLab with Anaconda Environments
 
                (base) [arnoldg@dt-login03 ~]$ conda activate myclone
 
-         #. Verify your clone    
+         #. Verify your clone.    
 
             .. code-block::
 
