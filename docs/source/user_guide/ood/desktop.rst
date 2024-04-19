@@ -20,6 +20,8 @@ Elements to Keep In Mind
 - Due to space and time constraints, it's not possible to build a container that represents all of the software installed in ``/sw``. Consider a *"some assembly required"* approach if you run into issues trying to launch a program.  
 - Use ``module show <foo>`` when logged into Delta via SSH or VS Code to discover the PATHs and environment settings you may need to include in the noVNC desktop.
 
+.. _ood-start-desktop:
+
 How to Start an OOD Desktop Session
 ------------------------------------
 
