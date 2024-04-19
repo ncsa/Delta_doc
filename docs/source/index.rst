@@ -66,7 +66,6 @@ Browse NCSA’s `HPC-Moodle <https://www.hpc-training.org>`_ for a full list of 
    user_guide/software
    user_guide/visualization
    user_guide/containers
-   user_guide/services
    user_guide/ood/index
    user_guide/debug_perf
    user_guide/acknowledge
