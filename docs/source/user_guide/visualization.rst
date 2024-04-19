@@ -50,6 +50,10 @@ Use VisIt with the Open OnDemand (OOD) "Desktop" interactive app.
 
 #. In the Desktop app, start a terminal.
 
+   .. figure:: images/visualization/ood-desktop-terminal-icon.png
+      :alt: OOD Desktop app with the terminal emulator icon at the bottom of the screen highlighted.
+      :width: 500
+
 #. Load VisIt.
 
    .. code-block::
