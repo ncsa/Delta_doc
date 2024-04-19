@@ -266,7 +266,7 @@ Visual Studio Code
 ---------------------
 
 .. note::
-   The Delta Open OnDemand (OOD) portal provides an easy method to use VS Code.
+   The Delta Open OnDemand (OOD) portal provides an easy method to use VS Code in a web browser.
 
    Go to the :ref:`OOD Code Server (VS Code) interactive app <ood-code-server>` page for instructions on how to start an OOD VS Code session.
 
