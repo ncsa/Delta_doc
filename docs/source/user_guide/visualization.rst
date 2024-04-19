@@ -94,7 +94,7 @@ You can load the VisIt example noise.silo data by:
 
    .. image:: images/visualization/ood-desktop-visit-rendered.png
       :alt: VisIt noise.silo data rendered.
-      :width: 500
+      :width: 400
 
 
 .. The below VisIt client-server mode info is commented out because we have trouble getting it to work properly. 
