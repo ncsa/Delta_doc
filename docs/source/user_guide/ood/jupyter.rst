@@ -1,7 +1,9 @@
-Jupyter Lab
+.. _ood-jupyterlab:
+
+JupyterLab
 ============
 
-The Open OnDemand dashboard provides an easy way to launch a Jupyter Lab environment on Delta.
+The Open OnDemand dashboard provides an easy way to launch a JupyterLab environment on Delta.
 
 How to Start an OOD Jupyter Lab Session
 -----------------------------------------
@@ -34,7 +36,7 @@ How to Start an OOD Jupyter Lab Session
       :alt: Open OnDemand "My Interactive Sessions" screen showing the Jupyter Lab session with the "Connect to Jupyter" button.
       :width: 500
 
-#. You're now in your Jupyter Lab environment on Delta. You can view the time remaining on your interactive sessions by clicking the Interactive Sessions button from the Open OnDemand dashboard.
+#. You're now in your JupyterLab environment on Delta. You can view the time remaining on your interactive sessions by clicking the Interactive Sessions button from the Open OnDemand dashboard.
 
    .. figure:: ../images/ood/ood-interactive-sessions-button.png
       :alt: Open OnDemand options at top of window with the Interactive Sessions button highlighted.
