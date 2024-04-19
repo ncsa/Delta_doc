@@ -1,5 +1,5 @@
-Customizing Jupyter Lab with Anaconda Environments
-====================================================
+How to Customize JupyterLab with Anaconda Environments
+=======================================================
 
 #. Load an **anaconda_<cpu, gpu, mi100>** that you want to use as your base installation and initialize your default login shell to use conda environments.
 
