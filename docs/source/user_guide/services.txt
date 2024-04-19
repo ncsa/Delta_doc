@@ -1,3 +1,5 @@
+.. Replaced this 'Services' page with set of 'OOD' pages.
+
 .. _openon:
 
 Open OnDemand
@@ -14,8 +16,6 @@ Currently supported Interactive Apps are:
   - :ref:`Code Server (VS Code) <ood-codeserver>`
   - Tensor Board
   - :ref:`Desktop <ood-desktop>`
-
-.. _ood-jupyter:
 
 Jupyter Lab
 -------------------
@@ -58,8 +58,6 @@ To start an OOD Jupyter Lab session:
         :alt: Open OnDemand options at top of window with the Interactive Sessions button highlighted.
         :width: 750
 
-.. _ood-codeserver:
-
 Code Server (VS Code)
 -----------------------------
 
@@ -101,7 +99,6 @@ To start an OOD VS Code session:
         :alt: Open OnDemand options at top of window with the Interactive Sessions button highlighted.
         :width: 750
 
-.. _ood-desktop:
 
 Desktop
 ----------------
