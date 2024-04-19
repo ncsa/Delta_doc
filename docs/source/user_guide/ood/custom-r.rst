@@ -49,11 +49,13 @@ R will run on the CPU cores (not GPU enabled).
 #. **Reload** the web page containing the Launcher, and options for an R Notebook and an R Console should be available. 
 
    ..  figure:: ../images/software/04_ood_launcher.png
-       :alt: R launcher options
+       :alt: JupyterLab launcher window with R options.
        :width: 750
 
 #. Proceed to use R:
 
    ..  figure:: ../images/software/05_r_example.png
-       :alt: example of using R
+       :alt: Example of using R in a Jupyter notebook.
        :width: 750
+
+|
