@@ -100,11 +100,12 @@ Log into Delta, in a web browser, with Open OnDemand (OOD).
      .. figure:: images/accessing/open-ondemand-homescreen.png
         :alt: Open OnDemand home screen showing the "files", "jobs", "clusters", and "interactive apps" options in the menu bar at the top of the window.
 
-:ref:`Learn more about using Open OnDemand on Delta <open-ondemand>`. Topics include:
+.. note::
+   :ref:`Learn more about using Open OnDemand on Delta <open-ondemand>`. Topics include:
 
-  - Shell interface
-  - Interactive apps: Jupyter Lab, Code Server (VS Code), TensorBoard, and Desktop (virtual Linux desktop)
-  - Jupyter Lab customization for Anaconda Environments and R
+     - Shell interface
+     - Interactive apps: Jupyter Lab, Code Server (VS Code), TensorBoard, and Desktop (virtual Linux desktop)
+     - Jupyter Lab customization for Anaconda Environments and R
 
 .. _vs_code:
 
