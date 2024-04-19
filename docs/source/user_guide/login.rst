@@ -9,7 +9,7 @@ Delta Login Methods
 Once you have a Delta allocation, the primary methods for logging into Delta are:
 
 - :ref:`direct_access` - Most common login method for users.
-- :ref:`openondemand` - Simplest login method, using a web browser. Good for verifying that your account is working.
+- :ref:`openondemand` - Simplest login method; uses a web browser. Good for verifying that your account is working.
 - :ref:`VS Code <vs-remote-ssh>`
 
 .. _direct_access:
@@ -103,9 +103,9 @@ Log into Delta, in a web browser, with Open OnDemand (OOD).
 .. note::
    :ref:`Learn more about using Open OnDemand on Delta <open-ondemand>`. Topics include:
 
-     - Shell interface
-     - Interactive apps: Jupyter Lab, Code Server (VS Code), TensorBoard, and Desktop (virtual Linux desktop)
-     - Jupyter Lab customization for Anaconda Environments and R
+     - Shell interface.
+     - Interactive apps: Jupyter Lab, Code Server (VS Code), TensorBoard, and Desktop (virtual Linux desktop).
+     - Jupyter Lab customization for Anaconda Environments and R.
 
 .. _vs_code:
 
