@@ -78,7 +78,7 @@ You can load the VisIt example noise.silo data by:
 
    .. figure:: images/visualization/ood-desktop-visit-data-path.png
       :alt: VisIt File open window showing the "/sw/external/visit/visit3_3_3.linux-x86_64/data" path with the "noise.silo" file selected.
-      :width: 50
+      :width: 500
 
 #. Click the **Add** button and select "Volume", then "hardyglobal".
 
