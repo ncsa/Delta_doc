@@ -3,7 +3,7 @@
 How to Log into the OOD Shell Interface
 ========================================
 
-An `Open OnDemand shell interface <https://openondemand.delta.ncsa.illinois.edu/pun/sys/shell/ssh/dt-login>`_ is also available. There are two options for how to access this interface.
+A shell interface is available in OOD; there are two options to access this interface.
 
 Option 1 - Direct Navigate
 ---------------------------
@@ -26,7 +26,7 @@ Option 1 - Direct Navigate
 Option 2 - Through OOD Dashboard
 -----------------------------------
 
-   #. Log into the `Open OnDemand dasboard <https://openondemand.delta.ncsa.illinois.edu/>`_.
+   #. Log into the `Open OnDemand dashboard <https://openondemand.delta.ncsa.illinois.edu/>`_.
    #. In the **Clusters** menu, select **>_Delta Shell Access**.
 
       .. figure:: ../images/accessing/open-ondemand-clusters-menu.png
