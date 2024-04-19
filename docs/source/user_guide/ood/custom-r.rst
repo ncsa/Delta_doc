@@ -1,3 +1,5 @@
+.. _ood-custom-r:
+
 How to Set Up an R Environment in JupyterLab in Open OnDemand
 ================================================================
 
