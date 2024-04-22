@@ -44,7 +44,7 @@ greenSphereScreenshot.png:
 VisIt
 --------
 
-`VisIt <https://visit-dav.github.io/visit-website/>`_ is an open source visualization and data analysis tool. 
+`VisIt <https://visit-dav.github.io/visit-website/>`_ is an open-source visualization and data analysis tool. 
 
 How to Use VisIt in Open OnDemand (OOD)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -148,3 +148,5 @@ You can load the VisIt example noise.silo data by:
    ..  image:: images/visualization/05_visit-mpi-noise-final.png
        :alt: client view of noise example
        :width: 1000px
+
+|
