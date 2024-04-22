@@ -389,3 +389,5 @@ See the `Visual Studio Code working with Juypter Notebooks <https://code.visuals
 ..  image:: images/prog_env/04_jupyter_in_vscode.png
     :alt: accessing Jupyter notebook using visual studio
     :width: 1000px
+
+|
