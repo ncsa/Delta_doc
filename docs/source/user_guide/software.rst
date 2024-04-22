@@ -85,7 +85,7 @@ Python
    When submitting :ref:`support requests <help>` for python, please provide the following and understand that Delta support staff time is a finite resource while python developments (new software and modules) are growing at nearly infinite velocity:
 
    - Python version or environment used (describe fully, with the commands needed to reproduce)
-   - Error output or log from what went wrong (screenshots are more difficult to work with than text data, we donot run trained inference on screenshots attached to Jira)
+   - Error output or log from what went wrong (screenshots are more difficult to work with than text data)
    - Pertinent URLs describing what you were following/attempting (if applicable), note that URL recipes specific to vendors may be difficult to reproduce when not using their cloud resources (Google Colab, for example)
 
 
@@ -99,7 +99,7 @@ You may *use any of these methods* with any of the python versions or instances 
 
 - `conda (or miniconda) environments <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>`_
 
-  Similar to venv but with more flexibility, see this `comparison table <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html#virtual-environments>`_.  See also the miniconda environment option: `anconda or miniconda <https://docs.anaconda.com/free/distro-or-miniconda/>`_.  pip and conda installs are local to the environment and the location defaults to ``$HOME/.conda``. You can override the default location in ``$HOME`` by using the ``--prefix`` syntax: ``conda create --prefix /path/to/env``.
+  Similar to venv but with more flexibility, see this `comparison table <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html#virtual-environments>`_.  See also the miniconda environment option: `anaconda or miniconda <https://docs.anaconda.com/free/distro-or-miniconda/>`_.  pip and conda installs are local to the environment and the location defaults to ``$HOME/.conda``. You can override the default location in ``$HOME`` by using the ``--prefix`` syntax: ``conda create --prefix /path/to/env``.
 
 - `pip3 <https://docs.python.org/3/installing/index.html>`_: ``pip3 install --user <python_package>`` (installs to ``$HOME/.local/`` unless you are using a venv or conda environment).
 
@@ -109,7 +109,7 @@ You may *use any of these methods* with any of the python versions or instances 
 
   The conda-env-mod script will generate a python module you can load or share with your team. This makes it simpler to manage multiple python scenarios that you can activate and deactivate with module commands.
 
-Examples using all of the above are shown in the `Intel scikit-learn-intelex repository <https://github.com/intel/scikit-learn-intelex/blob/master/INSTALL.md>`_ (an Intel accelerated scikit learn subset library for x86_64 architecture). 
+Examples using all the above are shown in the `Intel scikit-learn-intelex repository <https://github.com/intel/scikit-learn-intelex/blob/master/INSTALL.md>`_ (an Intel accelerated scikit learn subset library for x86_64 architecture). 
 
 - `pyenv <https://github.com/pyenv/pyenv/blob/master/README.md>`_: pyenv python version management
 
@@ -124,7 +124,7 @@ The default GCC (latest version) programming environment for either modtree/cpu 
 Python (a recent or latest version)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you do not need all of the extra modules provided by Anaconda, use the basic python installation under the gcc module. 
+If you don't need all the extra modules provided by Anaconda, use the basic python installation under the gcc module. 
 You can add modules via ``pip3 install --user <modulename>``, `setup virtual environments <https://packaging.python.org/en/latest/tutorials/installing-packages/>`_, and customize, as needed, for your workflow starting from a smaller installed base of python than Anaconda.
 
 .. code-block::
@@ -752,7 +752,7 @@ To address a problem with ``PATH`` ordering when using anaconda3 modules, a warn
    /sw/external/python/anaconda3 
    anaconda3_gpu is loaded. Consider running conda deactivate and reloading it.
 
-See the `Conda configuration documentation <https://docs.conda.io/projects/conda/en/latest/configuration.html>`_, if you want to disable automatic conda environment activation.
+See the `Conda configuration documentation <https://docs.conda.io/projects/conda/en/latest/configuration.html>`_ if you want to disable automatic conda environment activation.
 
 .. note::
    When using your own custom conda environment with a batch job, submit the batch job from within the environment and *do not* add ``conda activate`` commands to the job script; the job inherits your environment.
