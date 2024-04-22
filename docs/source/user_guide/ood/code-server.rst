@@ -13,7 +13,7 @@ How to Start an OOD VS Code Session
 #. Open the **Interactive Apps** menu at the top of the window and click **Code Server**.
 #. Fill out the form and then click **Launch**.
 
-   - **Name of account** - This must match one of your available Delta accounts (CPU or GPU, as appropriate); these are listed under **Project** when you run the ``accounts`` command on Delta.
+   - **Name of account** - This must match one of your available Delta accounts (CPU or GPU, as appropriate); these are listed under ``Project`` when you run the ``accounts`` command on Delta.
    - **Partition** - Match your partition type to the type of account you entered. (If your account ends in "cpu", then your partition should start with "cpu". If your account ends in "gpu", then your partition should start with "gpu".)
    - **Duration of job** - Select your duration following the format example in the form. Note the duration limit for interactive partitions.
    - **Name of reservation** - Leave empty if none.
