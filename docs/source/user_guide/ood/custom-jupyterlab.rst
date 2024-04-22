@@ -3,23 +3,28 @@
 How to Customize JupyterLab with Anaconda Environments
 =======================================================
 
-#. In a Delta terminal (:ref:`Open OnDemand shell <ood-shell-interface>` or :ref:`direct SSH <direct_access>`):
+#. Open a Delta terminal (:ref:`Open OnDemand shell <ood-shell-interface>` or :ref:`direct SSH <direct_access>`).
 
-   Load an **anaconda_<cpu, gpu, mi100>** that you want to use as your base installation and initialize your default login shell to use conda environments.
+#. Load **anaconda_<cpu, gpu, mi100>**. (Pick which one you want to use as your base installation.)
+
+   .. code-block:: terminal
+
+      [arnoldg@dt-login03 ~]$ module load anaconda3_cpu
+
+#. Initialize your default login shell to use conda environments.
 
    .. code-block::
 
-      [arnoldg@dt-login03 ~]$ module load anaconda3_cpu
       [arnoldg@dt-login03 ~]$ conda init bash
       ...
       [arnoldg@dt-login03 ~]$ bash
       (base) [arnoldg@dt-login03 ~]$
 
-   - If you see error messages when you run ``conda init bash``, just **control-c** through them and continue. As long as conda added code to the end of your ``.bashrc`` (or similar for other shells), things will work properly.
+   - If you see error messages when you run ``conda init bash``, **ctrl+c** through them and continue. As long as conda added code to the end of your ``.bashrc`` (or similar for other shells), things will work properly.
 
-   - After you have run ``conda init bash`` you will not need to load **anaconda3_cpu** (or **gpu**) modules again. Just use your new custom environment.
+   - After you run ``conda init bash``, you will not need to load **anaconda3_cpu** (or **gpu**) modules again. Just use your new custom environment.
 
-#. Start a new shell with bash or a new terminal or login session with Delta. 
+#. Start a new shell with bash or a new terminal or login session on Delta. 
    The prompt should show that you are within the conda environment you chose. 
    If you want to change environments later (say to **anaconda3_mi100**) you can edit your ``.bashrc`` and do another ``conda init bash`` with that new module loaded.
 
@@ -33,9 +38,9 @@ How to Customize JupyterLab with Anaconda Environments
 
       .. tab:: New empty environment (setup time ~10 minutes)
 
-         Install jupyter into the environment to use it with Open OnDemand. This option adds about 150 python modules to your environment and requires about 1.3 GB in your ``$HOME``.
+         Install Jupyter into the environment to use it with Open OnDemand. This option adds about 150 Python modules to your environment and requires about 1.3 GB of space in your ``$HOME``.
 
-         #. Create new conda environment (mynewenv)
+         #. Create a new conda environment. (The example environment name is ``mynewenv``.)
 
             .. note::
                If you will be making custom environments for more than one partition type (cpu, gpu, mi100), it may be helpful to include that metadata in the name of your environment.
@@ -125,9 +130,9 @@ How to Customize JupyterLab with Anaconda Environments
 
       .. tab:: New clone of chosen module (setup time ~30 minutes)
 
-         Jupyter (and everything else from your loaded **anaconda3\_** module will be copied into this environment). This option adds about 500 python modules to your environment and requires about 6.3 GB in your ``$HOME``.
+         Jupyter (and everything else from your loaded **anaconda3\_** module will be copied into this environment). This option adds about 500 Python modules to your environment and requires about 6.3 GB of space in your ``$HOME``.
 
-         #. Create clone (myclone).
+         #. Create a clone. (The example clone name is ``myclone``.)
 
             .. code-block::
 
@@ -161,7 +166,7 @@ How to Customize JupyterLab with Anaconda Environments
 
                (base) [arnoldg@dt-login03 ~]$ conda activate myclone
 
-         #. Verify your clone.    
+         #. Verify the clone.    
 
             .. code-block::
 
@@ -175,16 +180,16 @@ How to Customize JupyterLab with Anaconda Environments
 
 #. Start an :ref:`Open OnDemand Jupyter session <ood-jupyterlab>`.
 
-#. In Jupyter Lab, hover over items in the Launcher view to see which environment will be used; select the one you want for this session.
+#. In JupyterLab, you can hover over items in the **Launcher** to see which environment will be used; select the one you want for this session.
 
-   ..  figure:: ../images/software/02_jupyter-mynewenv.png
-       :alt: select environment
-       :width: 750
+   .. figure:: ../images/software/02_jupyter-mynewenv.png
+      :alt: JupyterLab Launcher window with multiple environments to choose from.
+      :width: 750
 
 #. Change your kernel to match if you are opening a notebook from a different environment.
 
-   ..  figure:: ../images/software/03_mynewenv-kernel.png
-       :alt: match kernel
-       :width: 750
+   .. figure:: ../images/software/03_mynewenv-kernel.png
+      :alt: Jupyter notebook with the Select Kernel menu open showing multiple kernels to choose from.
+      :width: 750
 
 |
