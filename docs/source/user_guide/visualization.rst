@@ -51,7 +51,7 @@ How to Use VisIt in Open OnDemand (OOD)
 
 #. :ref:`Start an OOD Desktop session <ood-start-desktop>`.
 
-#. In the Desktop app, start a terminal.
+#. In the Desktop app, open a **Terminal**.
 
    .. figure:: images/visualization/ood-desktop-terminal-icon.png
       :alt: OOD Desktop app with the terminal emulator icon at the bottom of the screen highlighted.
@@ -69,30 +69,30 @@ How to Use VisIt in Open OnDemand (OOD)
 
       $ visit
 
-You can load the VisIt example noise.silo data by:
+To load the VisIt example ``noise.silo`` data, follow these steps:
 
-#. Under "Sources", click on the **Open** button.
+#. Under **Sources**, click **Open**.
 
    .. figure:: images/visualization/ood-desktop-visit-open.png
       :alt: VisIt opened in the OOD Desktop app with the Open button highlighted.
       :width: 500
 
-#. Navigate to the path "/sw/external/visit/visit3_3_3.linux-x86_64/data" and open the "noise.silo" file.
+#. In **Path**, navigate to ``/sw/external/visit/visit3_3_3.linux-x86_64/data`` and select the ``noise.silo`` file.
 
    .. figure:: images/visualization/ood-desktop-visit-data-path.png
-      :alt: VisIt File open window showing the "/sw/external/visit/visit3_3_3.linux-x86_64/data" path with the "noise.silo" file selected.
+      :alt: VisIt File open window showing the "/sw/external/visit/visit3_3_3.linux-x86_64/data" path with the noise.silo file selected.
       :width: 500
 
-#. Click the **Add** button and select "Volume", then "hardyglobal".
+#. Click **Add** and select **Volume**, then **hardyglobal**.
 
    .. figure:: images/visualization/ood-desktop-visit-add-volume.png
-      :alt: VisIt Add menu showing the "Volume", and then "hardyglobal" selected.
+      :alt: VisIt Add menu showing Volume, and then hardyglobal selected.
       :width: 500
 
-#. Click the **Draw** button. The data will render in the adjacent window.
+#. Click **Draw**. The data will render in the adjacent window.
 
    .. image:: images/visualization/ood-desktop-visit-draw.png
-      :alt: VisIt Draw button.
+      :alt: The VisIt Draw button.
       :width: 500
 
 |
