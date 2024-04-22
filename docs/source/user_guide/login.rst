@@ -91,21 +91,21 @@ For command line SSH clients, use the following settings if you have trouble log
 Open OnDemand
 ---------------
 
-Log into Delta, in a web browser, with Open OnDemand (OOD).
+With Open OnDemand (OOD), you can access Delta, in a web browser! Go to `Open OnDemand on Delta <open-ondemand>`, for more OOD topics including:
 
-  #. Navigate to the `Open OnDemand dashboard <https://openondemand.delta.ncsa.illinois.edu/>`_.
-  #. Log in through CILogon with your **NCSA** username, password, and Duo MFA.
-  #. Once logged in, navigate the dashboard using the menu bar at the top of the window.
+  - Shell interface.
+  - Interactive apps: Jupyter Lab, Code Server (VS Code), TensorBoard, and Desktop (virtual Linux desktop).
+  - Jupyter Lab customization for Anaconda Environments and R.
 
-     .. figure:: images/accessing/open-ondemand-homescreen.png
-        :alt: Open OnDemand home screen showing the "files", "jobs", "clusters", and "interactive apps" options in the menu bar at the top of the window.
+How to Log Into the Delta OOD Dashboard
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. note::
-   :ref:`Learn more about using Open OnDemand on Delta <open-ondemand>`. Topics include:
+#. Navigate to the `Open OnDemand dashboard <https://openondemand.delta.ncsa.illinois.edu/>`_.
+#. Log in through CILogon with your **NCSA** username, password, and Duo MFA.
+#. Once logged in, navigate the dashboard using the menu bar at the top of the window.
 
-     - Shell interface.
-     - Interactive apps: Jupyter Lab, Code Server (VS Code), TensorBoard, and Desktop (virtual Linux desktop).
-     - Jupyter Lab customization for Anaconda Environments and R.
+   .. figure:: images/accessing/open-ondemand-homescreen.png
+      :alt: Open OnDemand home screen showing the "files", "jobs", "clusters", "interactive apps", and "my interactive sessions" options in the menu bar at the top of the window.
 
 .. _vs_code:
 
