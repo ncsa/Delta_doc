@@ -41,7 +41,7 @@ How to Start an OOD Desktop Session
 
    \
 
-#. After you click Launch, you will be taken to the **My Interactive Sessions** screen where you can view the status of your session.
+#. After you click **Launch**, you will be taken to the **My Interactive Sessions** screen where you can view the status of your session.
 
    .. figure:: ../images/ood/desktop-starting.png
       :alt: Open OnDemand My Interactive Sessions screen showing the Desktop session status: "Your session is currently starting...Please be patient as this process can take a few minutes."
@@ -53,7 +53,7 @@ How to Start an OOD Desktop Session
       :alt: Open OnDemand My Interactive Sessions screen showing the Desktop session with the Connect to VS Code button.
       :width: 500
 
-#. You are now in your VS Code environment on Delta. You can view the time remaining on your interactive sessions by clicking **Interactive Sessions** in the Open OnDemand dashboard.
+#. You are now in your VS Code environment on Delta. You can view the time remaining on your interactive sessions by clicking **My Interactive Sessions** in the Open OnDemand dashboard.
 
    .. figure:: ../images/ood/ood-interactive-sessions-button.png
       :alt: Open OnDemand options at top of window with the Interactive Sessions button highlighted.
