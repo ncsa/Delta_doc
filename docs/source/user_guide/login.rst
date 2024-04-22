@@ -91,7 +91,7 @@ For command line SSH clients, use the following settings if you have trouble log
 Open OnDemand
 ---------------
 
-With Open OnDemand (OOD), you can access Delta, in a web browser! Go to `Open OnDemand on Delta <open-ondemand>`, for more OOD topics including:
+With Open OnDemand (OOD), you can access Delta, in a web browser! Go to :ref:`Open OnDemand on Delta <open-ondemand>`, for more OOD topics including:
 
   - Shell interface.
   - Interactive apps: Jupyter Lab, Code Server (VS Code), TensorBoard, and Desktop (virtual Linux desktop).
