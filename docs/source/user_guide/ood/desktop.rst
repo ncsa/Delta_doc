@@ -41,7 +41,7 @@ How to Start an OOD Desktop Session
 
    \
 
-#. After you click **Launch**, you will be taken to the **My Interactive Sessions** screen where you can view the status of your session.
+#. After you click **Launch**, you will be taken to **My Interactive Sessions** where you can view the status of your session.
 
    .. figure:: ../images/ood/desktop-starting.png
       :alt: Open OnDemand My Interactive Sessions screen showing the Desktop session status: "Your session is currently starting...Please be patient as this process can take a few minutes."
