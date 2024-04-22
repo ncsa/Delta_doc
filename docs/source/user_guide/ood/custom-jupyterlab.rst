@@ -5,7 +5,7 @@ How to Customize JupyterLab with Anaconda Environments
 
 #. Open a Delta terminal (:ref:`Open OnDemand shell <ood-shell-interface>` or :ref:`direct SSH <direct_access>`).
 
-#. Load **anaconda_<cpu, gpu, mi100>**. (Pick which one you want to use as your base installation.)
+#. Load ``anaconda_<cpu, gpu, mi100>``. (Pick which one you want to use as your base installation, the example uses ``cpu``.)
 
    .. code-block:: terminal
 
@@ -22,11 +22,11 @@ How to Customize JupyterLab with Anaconda Environments
 
    - If you see error messages when you run ``conda init bash``, **ctrl+c** through them and continue. As long as conda added code to the end of your ``.bashrc`` (or similar for other shells), things will work properly.
 
-   - After you run ``conda init bash``, you will not need to load **anaconda3_cpu** (or **gpu**) modules again. Just use your new custom environment.
+   - After you run ``conda init bash``, you will not need to load ``anaconda3_cpu`` (or ``gpu``) modules again. Just use your new custom environment.
 
 #. Start a new shell with bash or a new terminal or login session on Delta. 
    The prompt should show that you are within the conda environment you chose. 
-   If you want to change environments later (say to **anaconda3_mi100**) you can edit your ``.bashrc`` and do another ``conda init bash`` with that new module loaded.
+   If you want to change environments later (say to ``anaconda3_mi100``) you can edit your ``.bashrc`` and do another ``conda init bash`` with that new module loaded.
 
    .. code-block::
 
@@ -130,7 +130,7 @@ How to Customize JupyterLab with Anaconda Environments
 
       .. tab:: New clone of chosen module (setup time ~30 minutes)
 
-         Jupyter (and everything else from your loaded **anaconda3\_** module will be copied into this environment). This option adds about 500 Python modules to your environment and requires about 6.3 GB of space in your ``$HOME``.
+         Jupyter (and everything else from your loaded ``anaconda3\_`` module will be copied into this environment). This option adds about 500 Python modules to your environment and requires about 6.3 GB of space in your ``$HOME``.
 
          #. Create a clone. (The example clone name is ``myclone``.)
 
