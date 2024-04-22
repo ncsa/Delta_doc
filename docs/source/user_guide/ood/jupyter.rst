@@ -39,7 +39,7 @@ How to Start an OOD JupyterLab Session
 #. You are now in your JupyterLab environment on Delta. You can view the time remaining on your interactive sessions by clicking **My Interactive Sessions** from the Open OnDemand dashboard.
 
    .. figure:: ../images/ood/ood-interactive-sessions-button.png
-      :alt: Open OnDemand options at top of window with the Interactive Sessions button highlighted.
+      :alt: Open OnDemand options at top of window with the My Interactive Sessions button highlighted.
       :width: 750
 
 Jupyter Environments
