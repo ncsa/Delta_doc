@@ -265,6 +265,11 @@ See the `AMD HIP documentation <https://docs.amd.com/projects/HIP/en/docs-5.0.0/
 Visual Studio Code
 ---------------------
 
+.. note::
+   The Delta Open OnDemand (OOD) portal provides an easy method to use VS Code in a web browser.
+
+   Go to the :ref:`OOD Code Server (VS Code) interactive app <ood-code-server>` page for instructions on how to start an OOD VS Code session.
+
 VS Code code-server
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -384,3 +389,5 @@ See the `Visual Studio Code working with Juypter Notebooks <https://code.visuals
 ..  image:: images/prog_env/04_jupyter_in_vscode.png
     :alt: accessing Jupyter notebook using visual studio
     :width: 1000px
+
+|

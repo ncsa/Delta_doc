@@ -9,7 +9,7 @@ Delta Login Methods
 Once you have a Delta allocation, the primary methods for logging into Delta are:
 
 - :ref:`direct_access` - Most common login method for users.
-- :ref:`openondemand` - Simplest login method, using a web browser. Good for verifying that your account is working.
+- :ref:`openondemand` - Simplest login method; uses a web browser. Good for verifying that your account is working.
 - :ref:`VS Code <vs-remote-ssh>`
 
 .. _direct_access:
@@ -91,61 +91,26 @@ For command line SSH clients, use the following settings if you have trouble log
 Open OnDemand
 ---------------
 
-General Interface
-~~~~~~~~~~~~~~~~~~~~
+With Open OnDemand (OOD), you can access Delta, in a web browser! Go to :ref:`Open OnDemand on Delta <open-ondemand>` for more topics including:
 
-Log into Delta in a web browser through the `general Open OnDemand interface <https://openondemand.delta.ncsa.illinois.edu/>`_.
+  - Shell interface.
+  - Interactive apps: Jupyter Lab, Code Server (VS Code), TensorBoard, and Desktop (virtual Linux desktop).
+  - Jupyter Lab customization for Anaconda Environments and R.
 
-#. In a web browser, navigate to the `general Open OnDemand interface <https://openondemand.delta.ncsa.illinois.edu/>`_.
+How to Log Into the Delta OOD Dashboard
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. Navigate to the `Open OnDemand dashboard <https://openondemand.delta.ncsa.illinois.edu/>`_.
 #. Log in through CILogon with your **NCSA** username, password, and Duo MFA.
-#. Once logged in, navigate the system using the menu bar at the top of the window.
+#. Once logged in, navigate the dashboard using the menu bar at the top of the window.
 
    .. figure:: images/accessing/open-ondemand-homescreen.png
-      :alt: Open OnDemand home screen showing the "files", "jobs", "clusters", and "interactive apps" options in the menu bar at the top of the window.
-
-Shell Interface
-~~~~~~~~~~~~~~~~~
-
-An `Open OnDemand shell interface <https://openondemand.delta.ncsa.illinois.edu/pun/sys/shell/ssh/dt-login>`_ is also available. There are two options for how to access this interface.
-
-A. Delta Login Shell Interface - Option 1:
-
-   #. In a web browser, navigate to the `Open OnDemand shell interface <https://openondemand.delta.ncsa.illinois.edu/pun/sys/shell/ssh/dt-login>`_.
-   #. If prompted, Log in through CILogon with your **NCSA** username, password, and Duo MFA.
-   #. Enter your **NCSA password** in the terminal interface prompt and hit **enter/return**. 
-
-      .. note::
-         The terminal will *not* show your password (or placeholder symbols such as asterisks [*]) as you type it.
-
-      ..  figure:: images/accessing/Delta_OOD_terminal.png
-          :alt: Black terminal with a command prompt that ends in "csteffen@dt-login's password:"
-   #. Complete the Duo two-factor authentication by either:
-
-      a. Entering **1** and accepting the Duo push notification on your phone OR 
-      b. Opening the Duo app on your phone and entering the NCSA passcode into the terminal prompt.
-
-B. Delta Login Shell Interface - Option 2:
-
-   #. Log into the `general Open OnDemand interface <https://openondemand.delta.ncsa.illinois.edu/>`_.
-   #. In the **Clusters** menu, select **>_Delta Shell Access**.
-
-      .. figure:: images/accessing/open-ondemand-clusters-menu.png
-         :alt: Open OnDemand interface showing the ">_Delta Shell Access" option in the "Clusters" menu.
-
-   #. Enter your **NCSA password** in the terminal interface prompt and hit **enter/return**. 
-      
-      .. note::
-         The terminal will *not* show your password (or placeholder symbols such as asterisks [*]) as you type it.
-
-      ..  figure:: images/accessing/Delta_OOD_terminal.png
-          :alt: Black terminal with a command prompt that ends in "csteffen@dt-login's password:"
-   #. Complete the Duo two-factor authentication by either:
-
-      a. Entering **1** and accepting the Duo push notification on your phone OR 
-      b. Opening the Duo app on your phone and entering the NCSA passcode into the terminal prompt.
+      :alt: Open OnDemand home screen showing the "files", "jobs", "clusters", "interactive apps", and "my interactive sessions" options in the menu bar at the top of the window.
 
 .. _vs_code:
 
 VS Code
 -------
 Refer to :ref:`Visual Studio Code, Remote - SSH <vs-remote-ssh>`
+
+|
