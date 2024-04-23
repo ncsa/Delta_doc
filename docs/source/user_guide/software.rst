@@ -889,16 +889,15 @@ The Jupyter notebook executables are in your ``$PATH`` after loading the ``anaco
 
 #. Run an ``srun`` command similar to the below, with the following replacements:. 
 
-   - Replace ``<$UID_or_other>`` with your ``$UID`` (or other number if your ``$UID`` >65535), which you found and copied in **step 7**.
    - Replace ``<account_name>`` with the account you are going to use, which you found and copied in **step 8**.
-
+   - Replace ``<$UID_or_other>`` with your ``$UID`` (or other number if your ``$UID`` >65535), which you found and copied in **step 7**.
    - You can modify the ``--partition``, ``--time``, and ``--mem`` options to meet your needs.
 
    \
 
-     .. code-block::
+   .. code-block::
 
-        srun --account=<account_name> --partition=cpu-interactive --time=00:30:00 --mem=32g jupyter-notebook --no-browser --port=<$UID_or_other> --ip=0.0.0.0
+      srun --account=<account_name> --partition=cpu-interactive --time=00:30:00 --mem=32g jupyter-notebook --no-browser --port=<$UID_or_other> --ip=0.0.0.0
 
 #. Copy the last 5 lines returned beginning with: **"To access the notebook, open this file in a browser..."** to a notepad (you will use this information **steps 12 and 14**). (It may take a few minutes for these lines to be returned.)
 
@@ -914,9 +913,7 @@ The Jupyter notebook executables are in your ``$PATH`` after loading the ``anaco
 #. Run an ``ssh`` command, similar to the below, with the following replacements: 
 
    - Replace ``<my_delta_username>`` with your Delta login username.
-   
    - Replace ``<$UID_or_other>`` with your ``$UID`` (or other number if your ``$UID`` >65535), which you found and copied in **step 7**.
-
    - Replace ``<cn0XX>`` with internal hostname you copied in **step 10**.
 
    \
@@ -943,7 +940,7 @@ How to Run Jupyter on a GPU Node (Bind a Directory to an NGC Container)
 
 #. SSH into Delta. (Replace ``<my_delta_username>`` with your Delta login username.)
 
-   .. code-block::
+   .. code-block:: terminal
 
       ssh <my_delta_username>@login.delta.ncsa.illinois.edu
 
@@ -952,13 +949,18 @@ How to Run Jupyter on a GPU Node (Bind a Directory to an NGC Container)
    .. note::
       The terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
-#. Find your ``$UID`` and **copy** it to a notepad (you will use it in later steps). If your $UID is >65535, select a random, 5-digit number between 22400 and 65535.
+#. Find your ``$UID`` and **copy** it to a notepad (you will use it in **steps 6, 8, and 14**). 
+
+   If your $UID is >65535, select a random, 5-digit number between 22400 and 65535.
 
    .. code-block::
 
       echo $UID
 
-#. Find the the ``account_name`` that you are going to use and **copy** it to a notepad (you will use it in later steps); your accounts are listed under ``Project`` when you run the ``accounts`` command.
+#. Find the the ``account_name`` that you are going to use and **copy** it to a notepad (you will use it in **step 6**); your accounts are listed under ``Project`` when you run the ``accounts`` command. 
+
+   .. note::
+      To use a GPU node, you must pick a GPU account (the account name will end in "...-gpu").
 
    .. code-block::
 
@@ -966,28 +968,30 @@ How to Run Jupyter on a GPU Node (Bind a Directory to an NGC Container)
 
 #. Run an ``srun`` command similar to the below, with the following replacements: 
 
+   - Replace ``<account_name>`` with the account you are going to use, which you found and copied in step #5. 
+   - Replace ``<project_path>`` with the name of your projects folder (in two places).
    - Replace ``<$UID_or_other>`` with your $UID (or other number if your $UID >65535), which you found and copied in step #4.
-   - Replace ``<account_name>`` with the account you are going to use, which you found and copied in step #5.
-
-   - Replace ``<project_path>`` with the name of your projects folder (in two places)
-
    - You can modify the ``--partition``, ``--time``, ``--mem``, and ``--gpus-per-node`` options to meet your needs.
 
-     .. code-block::
+   \
 
-        srun --account=<account_name> --partition=gpuA100x4-interactive --time=00:30:00 --mem=64g --gpus-per-node=1 singularity run --nv --bind /projects/<project_path> /sw/external/NGC/pytorch:22.02-py3 jupyter-notebook --notebook-dir /projects/<project_path> --no-browser --port=<$UID_or_other> --ip=0.0.0.0
+   .. code-block::
+
+      srun --account=<account_name> --partition=gpuA100x4-interactive --time=00:30:00 --mem=64g --gpus-per-node=1 singularity run --nv --bind /projects/<project_path> /sw/external/NGC/pytorch:22.02-py3 jupyter-notebook --notebook-dir /projects/<project_path> --no-browser --port=<$UID_or_other> --ip=0.0.0.0
 
 #. Copy the last 2 lines returned (beginning with **"Or copy and paste this URL..."**) to a notepad. (It may take a few minutes for these lines to be returned.)
 
-#. Modify the URL you copied in step 7 by changing ``hostname:8888`` to ``127.0.0.1:<$UID_or_other>``. You will use the modified URL in step 16.
+#. Modify the URL you copied in **step 7** by changing ``hostname:8888`` to ``127.0.0.1:<$UID_or_other>``. You will use the modified URL in **step 16**.
 
    - Replace ``<$UID_or_other>`` with your $UID (or other number if your $UID >65535), which you found and copied in step #4.
+
+   \
 
 #. Open a second terminal.
 
 #. SSH into Delta. (Replace ``<my_delta_username>`` with your Delta login username.)
 
-   .. code-block::
+   .. code-block:: terminal
 
       ssh <my_delta_username>@login.delta.ncsa.illinois.edu
 
@@ -996,13 +1000,13 @@ How to Run Jupyter on a GPU Node (Bind a Directory to an NGC Container)
    .. note::
       The terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
-#. Find the **internal hostname** for your job.
+#. Find the **internal hostname** for your job and copy it to a notepad (you will use it in **step 14**).
 
    .. code-block::
 
       squeue -u $USER
 
-   The value returned under ``NODELIST`` is the internal hostname for your GPU job (``gpuaXXX``). Copy it to a notepad (you will use this in a later step). You can now close this terminal.
+   The value returned under ``NODELIST`` is the internal hostname for your GPU job (``gpuaXXX``). You can now close this terminal.
 
 #. Open a third terminal.
 
@@ -1010,9 +1014,11 @@ How to Run Jupyter on a GPU Node (Bind a Directory to an NGC Container)
 
    - Replace ``<my_delta_username>`` with your Delta login username.
    
-   - Replace ``<$UID_or_other>`` with your $UID (or other number if your $UID >65535), which you found and copied in step #4.
+   - Replace ``<$UID_or_other>`` with your $UID (or other number if your $UID >65535), which you found and copied in **step 4**.
 
-   - Replace ``<gpuaXXX>`` with internal hostname you copied in step 13.
+   - Replace ``<gpuaXXX>`` with internal hostname you copied in **step 12**.
+
+   \
 
    .. code-block::
 
