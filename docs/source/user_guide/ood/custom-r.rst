@@ -1,7 +1,7 @@
 .. _ood-custom-r:
 
-How to Set Up an R Environment in JupyterLab in Open OnDemand
-================================================================
+How to Set Up an R Environment in JupyterLab
+===============================================
 
 R is available in JupyterLab by activating the environment via the ``anaconda_Rcpu`` module. 
 R will run on the CPU cores (not GPU enabled).
@@ -44,7 +44,7 @@ R will run on the CPU cores (not GPU enabled).
 
       > q()
 
-#. Close the **Terminal** window in Jupyterlab. That should return you to the JupyterLab **Launcher** (if it doesn't, open a new **Launcher** window). 
+#. Close the **Terminal** window in JupyterLab. That should return you to the JupyterLab **Launcher** (if it doesn't, open a new **Launcher** window). 
 
 #. Reload the web page containing the **Launcher**. Options for an R notebook and console should be available. 
 
@@ -52,7 +52,7 @@ R will run on the CPU cores (not GPU enabled).
        :alt: JupyterLab launcher window with R options.
        :width: 750
 
-#. Proceed to use R.
+#. Open an **R notebook** (or console) and proceed to use R.
 
    ..  figure:: ../images/software/05_r_example.png
        :alt: Example of using R in a Jupyter notebook.
