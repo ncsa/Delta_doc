@@ -10,7 +10,7 @@ Option 1 - Direct Navigate
 
    #. Navigate to the `Open OnDemand shell interface <https://openondemand.delta.ncsa.illinois.edu/pun/sys/shell/ssh/dt-login>`_.
    #. If prompted, Log in through CILogon with your **NCSA** username, password, and Duo MFA.
-   #. Enter your **NCSA** password in the terminal interface prompt and hit **enter (return)**. 
+   #. Enter your **NCSA** password in the terminal interface prompt and **enter (return)**. 
 
       .. note::
          The terminal will *not* show your password (or placeholder symbols such as asterisks [*]) as you type.
@@ -20,7 +20,7 @@ Option 1 - Direct Navigate
 
    #. Complete the Duo two-factor authentication by one of these methods:
 
-      - Enter **1** in the terminal and accept the Duo push notification on your phone 
+      - Enter **1** in the terminal and accept the Duo push notification on your phone.
 
       OR
 
@@ -35,7 +35,7 @@ Option 2 - Through the OOD Dashboard
       .. figure:: ../images/accessing/open-ondemand-clusters-menu.png
          :alt: Open OnDemand interface showing the ">_Delta Shell Access" option in the Clusters menu.
 
-   #. Enter your **NCSA** password in the terminal interface prompt and hit **enter/return**. 
+   #. Enter your **NCSA** password in the terminal interface prompt and **enter (return)**. 
       
       .. note::
          The terminal will *not* show your password (or placeholder symbols such as asterisks [*]) as you type.
@@ -45,7 +45,7 @@ Option 2 - Through the OOD Dashboard
 
    #. Complete the Duo two-factor authentication by one of these methods:
 
-      - Enter **1** in the terminal and accept the Duo push notification on your phone
+      - Enter **1** in the terminal and accept the Duo push notification on your phone.
 
         OR
 
