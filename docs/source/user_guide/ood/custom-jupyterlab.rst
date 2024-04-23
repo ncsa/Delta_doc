@@ -186,7 +186,7 @@ How to Customize JupyterLab with Anaconda Environments
       :alt: JupyterLab Launcher window with multiple environments to choose from.
       :width: 750
 
-#. Change your kernel to match if you are opening a notebook from a different environment.
+   You can also change your kernel to match if you are opening a notebook from a different environment.
 
    .. figure:: ../images/software/03_mynewenv-kernel.png
       :alt: Jupyter notebook with the Select Kernel menu open showing multiple kernels to choose from.
