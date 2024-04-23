@@ -69,7 +69,7 @@ How to Use VisIt in Open OnDemand (OOD)
 
       $ visit
 
-To load the VisIt example ``noise.silo`` data, follow these steps:
+To load the VisIt example data, ``noise.silo``, follow these steps:
 
 #. Under **Sources**, click **Open**.
 
