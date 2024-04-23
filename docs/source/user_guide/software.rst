@@ -837,7 +837,7 @@ Jupyter Notebooks
 **Do not run Jupyter on the shared login nodes.**
 Instead, follow these steps to attach a Jupyter notebook running on a compute node to your local web browser:
 
-How to Run a Jupyter on a CPU Node
+How to Run Jupyter on a CPU Node
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Jupyter notebook executables are in your ``$PATH`` after loading the ``anaconda3`` module. If you run into problems from a previously saved Jupyter session (for example, you see paths where you do not have write permission), you may remove this file to get a fresh start: ``$HOME/.jupyter/lab/workspaces/default-*``. 
@@ -846,7 +846,7 @@ The Jupyter notebook executables are in your ``$PATH`` after loading the ``anaco
 
 #. SSH into Delta. (Replace ``<my_delta_username>`` with your Delta login username).
 
-   .. code-block::
+   .. code-block:: terminal
 
       ssh <my_delta_username>@login.delta.ncsa.illinois.edu
 
@@ -873,13 +873,15 @@ The Jupyter notebook executables are in your ``$PATH`` after loading the ``anaco
 
       $ which jupyter-notebook
 
-#. Find your ``$UID`` and **copy** it to a notepad (you will use it in later steps). If your ``$UID`` is >65535, select a random, 5-digit number between 22400 and 65535.
+#. Find your ``$UID`` and copy it to a notepad (you will use it in **steps 9 and 12**). 
+
+   If your ``$UID`` is >65535, select a random, 5-digit number between 22400 and 65535.
 
    .. code-block::
 
       $ echo $UID
 
-#. Find the the ``account_name`` that you are going to use and **copy** it to a notepad (you will use it in later steps); your accounts are listed under ``Project`` when you run the ``accounts`` command.
+#. Find the the ``account_name`` that you are going to use and **copy** it to a notepad (you will use it in **step 9**); your accounts are listed under ``Project`` when you run the ``accounts`` command.
 
    .. code-block::
 
@@ -887,21 +889,25 @@ The Jupyter notebook executables are in your ``$PATH`` after loading the ``anaco
 
 #. Run an ``srun`` command similar to the below, with the following replacements:. 
 
-   - Replace ``<$UID_or_other>`` with your ``$UID`` (or other number if your $UID >65535), which you found and copied in step #7.
-   - Replace ``<account_name>`` with the account you are going to use, which you found and copied in step #8.
+   - Replace ``<$UID_or_other>`` with your ``$UID`` (or other number if your ``$UID`` >65535), which you found and copied in **step 7**.
+   - Replace ``<account_name>`` with the account you are going to use, which you found and copied in **step 8**.
 
    - You can modify the ``--partition``, ``--time``, and ``--mem`` options to meet your needs.
+
+   \
 
      .. code-block::
 
         srun --account=<account_name> --partition=cpu-interactive --time=00:30:00 --mem=32g jupyter-notebook --no-browser --port=<$UID_or_other> --ip=0.0.0.0
 
-#. Copy the last 5 lines returned beginning with: **"To access the notebook, open this file in a browser..."** to a notepad (you will use this information in later steps). (It may take a few minutes for these lines to be returned.)
+#. Copy the last 5 lines returned beginning with: **"To access the notebook, open this file in a browser..."** to a notepad (you will use this information **steps 12 and 14**). (It may take a few minutes for these lines to be returned.)
 
    Note two things about the URLs you copied as part of these 5 lines:
 
-   - The first URL begins with ``http://<cnXXX>.delta...``, ``<cnXXX>`` is the **internal hostname** and will be used in step 12.
-   - The second URL begins with ``http://127.0...``, you will use this entire URL in step 14.
+   - The first URL begins with ``http://<cnXXX>.delta...``, ``<cnXXX>`` is the **internal hostname** and will be used in **step 12**.
+   - The second URL begins with ``http://127.0...``, you will use this entire URL in **step 14**.
+
+   \
 
 #. Open a second terminal on your local machine/laptop.
 
@@ -909,9 +915,11 @@ The Jupyter notebook executables are in your ``$PATH`` after loading the ``anaco
 
    - Replace ``<my_delta_username>`` with your Delta login username.
    
-   - Replace ``<$UID_or_other>`` with your $UID (or other number if your $UID >65535), which you found and copied in step #7.
+   - Replace ``<$UID_or_other>`` with your ``$UID`` (or other number if your ``$UID`` >65535), which you found and copied in **step 7**.
 
-   - Replace ``<cn0XX>`` with internal hostname you copied in step 10.
+   - Replace ``<cn0XX>`` with internal hostname you copied in **step 10**.
+
+   \
 
    .. code-block::
 
