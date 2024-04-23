@@ -85,7 +85,7 @@ Python
    When submitting :ref:`support requests <help>` for python, please provide the following and understand that Delta support staff time is a finite resource while python developments (new software and modules) are growing at nearly infinite velocity:
 
    - Python version or environment used (describe fully, with the commands needed to reproduce)
-   - Error output or log from what went wrong (screenshots are more difficult to work with than text data, we donot run trained inference on screenshots attached to Jira)
+   - Error output or log from what went wrong (screenshots are more difficult to work with than text data)
    - Pertinent URLs describing what you were following/attempting (if applicable), note that URL recipes specific to vendors may be difficult to reproduce when not using their cloud resources (Google Colab, for example)
 
 
@@ -99,7 +99,7 @@ You may *use any of these methods* with any of the python versions or instances 
 
 - `conda (or miniconda) environments <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>`_
 
-  Similar to venv but with more flexibility, see this `comparison table <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html#virtual-environments>`_.  See also the miniconda environment option: `anconda or miniconda <https://docs.anaconda.com/free/distro-or-miniconda/>`_.  pip and conda installs are local to the environment and the location defaults to ``$HOME/.conda``. You can override the default location in ``$HOME`` by using the ``--prefix`` syntax: ``conda create --prefix /path/to/env``.
+  Similar to venv but with more flexibility, see this `comparison table <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html#virtual-environments>`_.  See also the miniconda environment option: `anaconda or miniconda <https://docs.anaconda.com/free/distro-or-miniconda/>`_.  pip and conda installs are local to the environment and the location defaults to ``$HOME/.conda``. You can override the default location in ``$HOME`` by using the ``--prefix`` syntax: ``conda create --prefix /path/to/env``.
 
 - `pip3 <https://docs.python.org/3/installing/index.html>`_: ``pip3 install --user <python_package>`` (installs to ``$HOME/.local/`` unless you are using a venv or conda environment).
 
@@ -109,7 +109,7 @@ You may *use any of these methods* with any of the python versions or instances 
 
   The conda-env-mod script will generate a python module you can load or share with your team. This makes it simpler to manage multiple python scenarios that you can activate and deactivate with module commands.
 
-Examples using all of the above are shown in the `Intel scikit-learn-intelex repository <https://github.com/intel/scikit-learn-intelex/blob/master/INSTALL.md>`_ (an Intel accelerated scikit learn subset library for x86_64 architecture). 
+Examples using all the above are shown in the `Intel scikit-learn-intelex repository <https://github.com/intel/scikit-learn-intelex/blob/master/INSTALL.md>`_ (an Intel accelerated scikit learn subset library for x86_64 architecture). 
 
 - `pyenv <https://github.com/pyenv/pyenv/blob/master/README.md>`_: pyenv python version management
 
@@ -124,7 +124,7 @@ The default GCC (latest version) programming environment for either modtree/cpu 
 Python (a recent or latest version)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you do not need all of the extra modules provided by Anaconda, use the basic python installation under the gcc module. 
+If you don't need all the extra modules provided by Anaconda, use the basic python installation under the gcc module. 
 You can add modules via ``pip3 install --user <modulename>``, `setup virtual environments <https://packaging.python.org/en/latest/tutorials/installing-packages/>`_, and customize, as needed, for your workflow starting from a smaller installed base of python than Anaconda.
 
 .. code-block::
@@ -752,7 +752,7 @@ To address a problem with ``PATH`` ordering when using anaconda3 modules, a warn
    /sw/external/python/anaconda3 
    anaconda3_gpu is loaded. Consider running conda deactivate and reloading it.
 
-See the `Conda configuration documentation <https://docs.conda.io/projects/conda/en/latest/configuration.html>`_, if you want to disable automatic conda environment activation.
+See the `Conda configuration documentation <https://docs.conda.io/projects/conda/en/latest/configuration.html>`_ if you want to disable automatic conda environment activation.
 
 .. note::
    When using your own custom conda environment with a batch job, submit the batch job from within the environment and *do not* add ``conda activate`` commands to the job script; the job inherits your environment.
@@ -824,7 +824,15 @@ See :ref:`contain`.
 Jupyter Notebooks
 -------------------
 
-The Detla Open OnDemand portal provides an easier way to start a Jupyter notebook. Please see :ref:`openon` to access the portal.
+.. note::
+   The Delta Open OnDemand (OOD) portal provides an easy method to start a Jupyter notebook; this is the **recommended method** for users. 
+
+   Go to :ref:`OOD Jupyter interactive app <ood-jupyterlab>` for instructions on how to start an OOD JupyterLab session.
+
+   You can also customize your OOD JupyterLab environment:
+
+     - :ref:`ood-custom-anaconda`
+     - :ref:`ood-custom-r`
 
 The Jupyter notebook executables are in your ``$PATH`` after loading the anaconda3 module. If you run into problems from a previously saved Jupyter session (for example, you see paths where you do not have write permission), you may remove this file to get a fresh start: ``$HOME/.jupyter/lab/workspaces/default-*``.  
 
@@ -961,387 +969,6 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
    .. image:: images/software/jupyter_logo.png
       :alt: Jupyter logo
 
-Jupyter with Open OnDemand
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Jupyter and jupyter-lab will find the environments in your ``$HOME/.conda/envs``, your login shell should reflect what you want to see from Jupyter.
-
-The available `conda-based environment kernels for Jupyter <https://github.com/Anaconda-Platform/nb_conda_kernels>`_ should be the same as what you see from a login shell and python3.
-
-**Jupyter needs to be installed in every virtual environment where you want to use Jupyter-lab or Jupyter-notebook.**
-
-**$ conda install jupyter**
-
-To see the possible jupyter kernels for your current environment or module setup, run 1 of the following.
-
-**python3 -m nb_python_kernels list**
-
-**jupyter-kernelspec list**
-
-.. code-block::
-
-   [arnoldg@dt-login03 jupyter_notebook_config.d]$ python3 -m nb_conda_kernels list
-   [ListKernelSpecs] WARNING | Config option `kernel_spec_manager_class` not recognized by `ListKernelSpecs`.
-   [ListKernelSpecs] [nb_conda_kernels] enabled, 8 kernels found
-   Available kernels:
-     conda-env-westpa20-py           /projects/bbka/arnoldg/westpa20/share/jupyter/kernels/python3
-     conda-root-py                   /sw/external/python/anaconda3/share/jupyter/kernels/python3
-     conda-env-anaconda3_Rcpu-r      /sw/external/python/anaconda3_rcpu/share/jupyter/kernels/ir
-     conda-env-anaconda3_Rcpu-py     /sw/external/python/anaconda3_rcpu/share/jupyter/kernels/python3
-     conda-env-westpa-2022.03-py     /sw/external/python/westpa-2022.03/share/jupyter/kernels/python3
-     conda-env-.conda-myclone-py     /u/arnoldg/.conda/envs/myclone/share/jupyter/kernels/python3
-     conda-env-.conda-mynewenv-r     /u/arnoldg/.conda/envs/mynewenv/share/jupyter/kernels/ir
-     conda-env-.conda-mynewenv-py    /u/arnoldg/.conda/envs/mynewenv/share/jupyter/kernels/python3
-     python3                         /sw/external/python/anaconda3_gpu/share/jupyter/kernels/python3
-
-Debugging
-$$$$$$$$$$$
-
-For debugging, try ``jupyter-lab`` from a terminal.
-
-Of interest are the Searching path at the beginning, and the nb_conda_kernels outputs.
-
-.. raw:: html
-   
-   <details>
-   <summary><a><b>jupyter-lab --log-level=0</b> <i>(click to expand/collapse)</i></a></summary>
-
-.. code-block::
-
-   [arnoldg@dt-login03 jupyter_notebook_config.d]$ jupyter-lab --log-level=0
-   [D 2023-02-20 12:48:50.533 ServerApp] Searching ['/u/arnoldg/.jupyter', '/u/arnoldg/.local/etc/jupyter', '/sw/external/python/anaconda3/etc/jupyter', 
-   '/usr/local/etc/jupyter', '/etc/jupyter'] for config files
-   [D 2023-02-20 12:48:50.533 ServerApp] Looking for jupyter_config in /etc/jupyter
-   [D 2023-02-20 12:48:50.533 ServerApp] Looking for jupyter_config in /usr/local/etc/jupyter
-   [D 2023-02-20 12:48:50.533 ServerApp] Looking for jupyter_config in /sw/external/python/anaconda3/etc/jupyter
-   [D 2023-02-20 12:48:50.534 ServerApp] Loaded config file: /sw/external/python/anaconda3/etc/jupyter/jupyter_config.json
-   [D 2023-02-20 12:48:50.534 ServerApp] Looking for jupyter_config in /u/arnoldg/.local/etc/jupyter
-   [D 2023-02-20 12:48:50.534 ServerApp] Looking for jupyter_config in /u/arnoldg/.jupyter
-   [D 2023-02-20 12:48:50.537 ServerApp] Looking for jupyter_server_config in /etc/jupyter
-   [D 2023-02-20 12:48:50.537 ServerApp] Looking for jupyter_server_config in /usr/local/etc/jupyter
-   [D 2023-02-20 12:48:50.537 ServerApp] Looking for jupyter_server_config in /sw/external/python/anaconda3/etc/jupyter
-   [D 2023-02-20 12:48:50.537 ServerApp] Looking for jupyter_server_config in /u/arnoldg/.local/etc/jupyter
-   [D 2023-02-20 12:48:50.537 ServerApp] Looking for jupyter_server_config in /u/arnoldg/.jupyter
-   [D 2023-02-20 12:48:50.538 ServerApp] Paths used for configuration of jupyter_server_config: 
-           /etc/jupyter/jupyter_server_config.json
-   [D 2023-02-20 12:48:50.538 ServerApp] Paths used for configuration of jupyter_server_config: 
-           /usr/local/etc/jupyter/jupyter_server_config.json
-   [D 2023-02-20 12:48:50.539 ServerApp] Paths used for configuration of jupyter_server_config: 
-           /sw/external/python/anaconda3/etc/jupyter/jupyter_server_config.d/jupyterlab.json
-           /sw/external/python/anaconda3/etc/jupyter/jupyter_server_config.d/nbclassic.json
-           /sw/external/python/anaconda3/etc/jupyter/jupyter_server_config.d/notebook_shim.json
-           /sw/external/python/anaconda3/etc/jupyter/jupyter_server_config.d/panel-client-jupyter.json
-           /sw/external/python/anaconda3/etc/jupyter/jupyter_server_config.json
-   [D 2023-02-20 12:48:50.541 ServerApp] Paths used for configuration of jupyter_server_config: 
-           /u/arnoldg/.local/etc/jupyter/jupyter_server_config.d/ipyparallel.json
-           /u/arnoldg/.local/etc/jupyter/jupyter_server_config.json
-   [D 2023-02-20 12:48:50.541 ServerApp] Paths used for configuration of jupyter_server_config: 
-           /u/arnoldg/.jupyter/jupyter_server_config.json
-   Note: detected 128 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
-   Note: NumExpr detected 128 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
-   NumExpr defaulting to 8 threads.
-   [I 2023-02-20 12:48:51.954 ServerApp] ipyparallel | extension was successfully linked.
-   [W 2023-02-20 12:48:51.957 LabApp] Config option `kernel_spec_manager_class` not recognized by `LabApp`.
-   [W 2023-02-20 12:48:51.958 LabApp] Config option `kernel_spec_manager_class` not recognized by `LabApp`.
-   [W 2023-02-20 12:48:51.960 LabApp] Config option `kernel_spec_manager_class` not recognized by `LabApp`.
-   [I 2023-02-20 12:48:51.961 ServerApp] jupyterlab | extension was successfully linked.
-   [W 2023-02-20 12:48:51.962 NotebookApp] Config option `kernel_spec_manager_class` not recognized by `NotebookApp`.
-   [W 2023-02-20 12:48:51.963 NotebookApp] Config option `kernel_spec_manager_class` not recognized by `NotebookApp`.
-   [W 2023-02-20 12:48:51.965 NotebookApp] Config option `kernel_spec_manager_class` not recognized by `NotebookApp`.
-   [I 2023-02-20 12:48:51.965 ServerApp] nbclassic | extension was successfully linked.
-   [D 2023-02-20 12:48:51.968 ServerApp] Paths used for configuration of jupyter_notebook_config: 
-           /u/arnoldg/.jupyter/jupyter_notebook_config.json
-   [D 2023-02-20 12:48:51.968 ServerApp] Paths used for configuration of jupyter_notebook_config: 
-           /etc/jupyter/jupyter_notebook_config.json
-   [D 2023-02-20 12:48:51.969 ServerApp] Paths used for configuration of jupyter_notebook_config: 
-           /usr/local/etc/jupyter/jupyter_notebook_config.json
-   [D 2023-02-20 12:48:51.969 ServerApp] Paths used for configuration of jupyter_notebook_config: 
-           /sw/external/python/anaconda3/etc/jupyter/jupyter_notebook_config.d/jupyterlab.json
-           /sw/external/python/anaconda3/etc/jupyter/jupyter_notebook_config.d/panel-client-jupyter.json
-           /sw/external/python/anaconda3/etc/jupyter/jupyter_notebook_config.json
-   [D 2023-02-20 12:48:51.971 ServerApp] Paths used for configuration of jupyter_notebook_config: 
-           /u/arnoldg/.local/etc/jupyter/jupyter_notebook_config.d/ipyparallel.json
-           /u/arnoldg/.local/etc/jupyter/jupyter_notebook_config.json
-   [D 2023-02-20 12:48:51.971 ServerApp] Paths used for configuration of jupyter_notebook_config: 
-           /u/arnoldg/.jupyter/jupyter_notebook_config.json
-   [I 2023-02-20 12:48:51.971 ServerApp] notebook_shim | extension was successfully linked.
-   [I 2023-02-20 12:48:51.972 ServerApp] panel.io.jupyter_server_extension | extension was successfully linked.
-   [D 2023-02-20 12:48:51.972 ServerApp] Config changed: {'JupyterApp': {'kernel_spec_manager_class': 'nb_conda_kernels.CondaKernelSpecManager'}, 'NotebookApp': 
-   {}, 'ServerApp': {'log_level': 0, 'jpserver_extensions': <LazyConfigValue value={'jupyterlab': True, 'ipyparallel': True, 'nbclassic': True, 'notebook_shim': True, 'panel.io.jupyter_server_extension': True}>}}
-   [D 2023-02-20 12:48:51.972 ServerApp] Raising open file limit: soft 1024->4096; hard 262144->262144
-   [D 2023-02-20 12:48:51.972 ServerApp] [nb_conda_kernels] refreshing conda info
-   [I 2023-02-20 12:48:54.607 ServerApp] [nb_conda_kernels] enabled, 8 kernels found
-   [I 2023-02-20 12:48:54.645 ServerApp] notebook_shim | extension was successfully loaded.
-   [I 2023-02-20 12:48:54.648 ServerApp] Loading IPython parallel extension
-   [I 2023-02-20 12:48:54.648 ServerApp] ipyparallel | extension was successfully loaded.
-   [I 2023-02-20 12:48:54.649 LabApp] JupyterLab extension loaded from /sw/external/python/anaconda3/lib/python3.9/site-packages/jupyterlab
-   [I 2023-02-20 12:48:54.649 LabApp] JupyterLab application directory is /sw/external/python/anaconda3/share/jupyter/lab
-   [I 2023-02-20 12:48:54.652 ServerApp] jupyterlab | extension was successfully loaded.
-   [I 2023-02-20 12:48:54.660 ServerApp] nbclassic | extension was successfully loaded.
-   [I 2023-02-20 12:48:54.660 ServerApp] panel.io.jupyter_server_extension | extension was successfully loaded.
-   [I 2023-02-20 12:48:54.661 ServerApp] The port 8888 is already in use, trying another port.
-   [I 2023-02-20 12:48:54.661 ServerApp] Serving notebooks from local directory: /u/arnoldg/.local/etc/jupyter/jupyter_notebook_config.d
-   [I 2023-02-20 12:48:54.661 ServerApp] Jupyter Server 1.23.4 is running at:
-   [I 2023-02-20 12:48:54.661 ServerApp] http://localhost:8889/lab?token=a728f76b935d157d2eecc6a32810cf4e88ae1bc53701f4f6
-   [I 2023-02-20 12:48:54.661 ServerApp]  or http://127.0.0.1:8889/lab?token=a728f76b935d157d2eecc6a32810cf4e88ae1bc53701f4f6
-   [I 2023-02-20 12:48:54.661 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
-   [C 2023-02-20 12:48:54.880 ServerApp] 
-       
-       To access the server, open this file in a browser:
-           file:///u/arnoldg/.local/share/jupyter/runtime/jpserver-1287615-open.html
-       Or copy and paste one of these URLs:
-           http://localhost:8889/lab?token=a728f76b935d157d2eecc6a32810cf4e88ae1bc53701f4f6
-        or http://127.0.0.1:8889/lab?token=a728f76b935d157d2eecc6a32810cf4e88ae1bc53701f4f6
-   /usr/bin/xdg-open: line 862: x-www-browser: command not found
-   /usr/bin/xdg-open: line 862: firefox: command not found
-   /usr/bin/xdg-open: line 862: iceweasel: command not found
-   /usr/bin/xdg-open: line 862: seamonkey: command not found
-   /usr/bin/xdg-open: line 862: mozilla: command not found
-   /usr/bin/xdg-open: line 862: epiphany: command not found
-   /usr/bin/xdg-open: line 862: konqueror: command not found
-   /usr/bin/xdg-open: line 862: chromium: command not found
-   /usr/bin/xdg-open: line 862: chromium-browser: command not found
-   /usr/bin/xdg-open: line 862: google-chrome: command not found
-   /usr/bin/xdg-open: line 862: www-browser: command not found
-   /usr/bin/xdg-open: line 862: links2: command not found
-   /usr/bin/xdg-open: line 862: elinks: command not found
-   /usr/bin/xdg-open: line 862: links: command not found
-   /usr/bin/xdg-open: line 862: lynx: command not found
-   /usr/bin/xdg-open: line 862: w3m: command not found
-   xdg-open: no method available for opening 'file:///u/arnoldg/.local/share/jupyter/runtime/jpserver-1287615-open.html'
-
-.. raw:: html
-
-   </details>
-|
-
-.. _custom_openon:
-
-Customizing Open OnDemand
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. _custom_jupyterlab:
-
-Customizing JupyterLab with Anaconda Environments
-$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
-#. Load an **anaconda_<cpu, gpu, mi100>** that you want to use as your base installation and initialize your default login shell to use conda environments.
-
-   **conda init bash:**
-
-   .. code-block::
-
-      [arnoldg@dt-login03 scripts]$ module load anaconda3_cpu
-      [arnoldg@dt-login03 scripts]$ conda init bash
-      ...
-      [arnoldg@dt-login03 scripts]$ bash
-      (base) 
-
-   After you have run ``conda init bash`` you will not need to load **anaconda3_cpu** (or **gpu**) modules again. Just use your new custom environment.
-
-   .. note::
-      You may see error messages from conda init bash above. 
-      Just **control-c** through them and continue. 
-      As long as conda added code to the end of your ``.bashrc`` (or similar for other shells), things will work properly.
-
-#. Start a new shell with bash or a new terminal or login session with Delta. 
-   You'll now see this prompt showing that you are within the conda environment you initially chose. 
-   If you want to change environments later (say to **anaconda3_mi100**) you can edit your ``.bashrc`` and do another ``conda init bash`` with that new module loaded.
-
-   To create a new custom environment, you have 2 options:
-
-   a. Create a new empty environment:
-
-      .. note::
-         If you will be making custom environments for more than one partition type (cpu, gpu, mi100), it may be helpful to include that metadata in the name of your environment.
-
-      Install jupyter into the environment in order to use it with Open OnDemand. This option adds about 150 python modules to your environment and requires about 1.3 GB in your ``$HOME``. Setup time: about 10 minutes.
-
-      .. raw:: html
-
-         <details>
-         <summary><a><b>conda create --name mynewenv</b> <i>(click to expand/collapse)</i></a></summary>
-
-      .. code-block::
-
-         (base) conda create --name mynewenv
-
-         Collecting package metadata (current_repodata.json): done
-         Solving environment: done
-
-         ## Package Plan ##
-
-           environment location: /u/arnoldg/.conda/envs/mynewenv
-
-         Proceed ([y]/n)? y
-
-         Preparing transaction: done
-         Verifying transaction: done
-         Executing transaction: done
-         #
-         # To activate this environment, use
-         #
-         #     $ conda activate mynewenv
-         #
-         # To deactivate an active environment, use
-         #
-         #     $ conda deactivate
-
-         Retrieving notices: ...working... done
-         (base) conda activate mynewenv
-         (mynewenv) conda install jupyter
-         Collecting package metadata (current_repodata.json): done
-         Solving environment: done
-
-         ## Package Plan ##
-
-           environment location: /u/arnoldg/.conda/envs/mynewenv
-
-           added / updated specs:
-             - jupyter
-
-
-         The following NEW packages will be INSTALLED:
-
-           _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main None
-           _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-1_gnu None
-           anyio              pkgs/main/linux-64::anyio-3.5.0-py310h06a4308_0 None
-           argon2-cffi        pkgs/main/noarch::argon2-cffi-21.3.0-pyhd3eb1b0_0 None
-         ...
-         (mynewenv) conda list | grep jupyter
-         jupyter                   1.0.0           py310h06a4308_8  
-         jupyter_client            7.3.5           py310h06a4308_0  
-         jupyter_console           6.4.3              pyhd3eb1b0_0  
-         jupyter_core              4.11.1          py310h06a4308_0  
-         jupyter_server            1.18.1          py310h06a4308_0  
-         jupyterlab                3.4.4           py310h06a4308_0  
-         jupyterlab_pygments       0.1.2                      py_0  
-         jupyterlab_server         2.15.2          py310h06a4308_0  
-         jupyterlab_widgets        1.0.0              pyhd3eb1b0_1  
-         (mynewenv) conda list | wc -l
-         152
-         (mynewenv) du -sh $HOME/.conda/envs/mynewenv
-         1.3G    /u/arnoldg/.conda/envs/mynewenv
-
-      .. raw:: html
-
-         </details>
-
-   OR 
-
-   b. Create a new clone of your chosen **anaconda3_<cpu, gpu, mi100>** module:
-
-      Jupyter (and everything else from your loaded **anaconda3\_** module will be copied into this environment). 
-      This option adds about 500 python modules to your environment and requires about 6.3 GB in your ``$HOME``. Install time can be up to 30 minutes.
-
-      .. raw:: html
-
-         <details>
-         <summary><a><b>conda create --name myclone</b> <i>(click to expand/collapse)</i></a></summary>
-
-      .. code-block::
-
-         (base) time conda create --name myclone --clone base 
-         Source:      /sw/external/python/anaconda3_cpu
-         Destination: /u/arnoldg/.conda/envs/myclone
-         The following packages cannot be cloned out of the root environment:
-          - defaults/linux-64::conda-env-2.6.0-1
-          - defaults/linux-64::conda-22.9.0-py39h06a4308_0
-          - defaults/linux-64::conda-build-3.21.8-py39h06a4308_2
-          - defaults/noarch::conda-token-0.4.0-pyhd3eb1b0_0
-          - defaults/linux-64::_anaconda_depends-2022.05-py39_0
-          - defaults/linux-64::anaconda-navigator-2.1.4-py39h06a4308_0
-          - defaults/linux-64::anaconda-custom-py39_1
-         Packages: 447
-         Files: 24174
-         Preparing transaction: done
-         Verifying transaction: done
-         Executing transaction: \ 
-         ...
-
-         Retrieving notices: ...working... done
-
-         real    24m10.605s
-         user    0m54.353s
-         sys     1m56.843s 
-         (base) conda activate myclone
-         (myclone) conda list | wc -l
-         501
-         (myclone) du -sh $HOME/.conda/envs/myclone
-         6.3G    /u/arnoldg/.conda/envs/myclone
-
-      .. raw:: html
-
-         </details>
-
-3. Start an Open OnDemand :ref:`jupyter` session and access one of your environments (remember to match your partition and account types for gpu, cpu), then select the matching kernel for your Jupyter work.
-
-4. Launch JupyterLab
-
-   a. After filling in the Open OnDemand form and submitting your job, it will start in a few minutes showing the **Connect to Jupyter** button when ready.
-
-      ..  image:: images/software/01_connect-to-jupyter.png
-          :alt: connect to Jupyter button
-          :width: 1000px
-    
-   b. Hover over items in the Launcher view to see which environment will be used, selecting the one you want for this session.
-
-      ..  image:: images/software/02_jupyter-mynewenv.png
-          :alt: select environment
-          :width: 1000px
-
-   c. Change your kernel to match if you are opening a notebook from a different environment.
-
-      ..  image:: images/software/03_mynewenv-kernel.png
-          :alt: match kernel
-          :width: 1000px
-
-.. _r_env:
-
-Delta Provided R Environment
-$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
-R is available in JupyterLab by activating the environment via the module **anaconda_Rcpu**. 
-Append the module load line to your ``.bashrc``. 
-R will run on the CPU cores (not GPU enabled).
-
-There are a few steps needed to set up the R environment for JupyterLab in Open OnDemand.
-
-#. Start a new **JupyterLab** session in Open OnDemand.
-#. Start a new **Terminal** session in the JupyterLab Launcher.
-#. If you are automatically launching a Conda environment in your default shell setup, **deactivate** it now:
-
-   .. code-block::
-
-      $ conda deactivate
-
-#. **Load** the R environment and **launch** R:
-
-   .. code-block::        
-
-      $ module load anaconda3_Rcpu
-
-      $ R
-
-#. That should start a new R session. Inside the R session, **run**:
-
-   .. code-block::
-
-      > IRkernel::installspec()
-
-#. **Quit** R and close the **Terminal** window in Jupyterlab. 
-
-#. That should return you to the JupyterLab Launcher. **Reload** the web page containing the Launcher, and options for an R Notebook and an R Console should be available. JupyterLab from the Open OnDemand interface will automatically offer you the R options with the Launcher.
-
-   ..  image:: images/software/04_ood_launcher.png
-       :alt: R launcher options
-       :width: 1000px
-
-#. Proceed to use R:
-
-   ..  image:: images/software/05_r_example.png
-       :alt: example of using R
-       :width: 1000px
 
 List of Installed Software (CPU & GPU)
 ---------------------------------------
