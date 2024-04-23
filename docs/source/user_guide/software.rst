@@ -887,7 +887,7 @@ The Jupyter notebook executables are in your ``$PATH`` after loading the ``anaco
 
       accounts
 
-#. Run an ``srun`` command similar to the below, with the following replacements:. 
+#. Run the following ``srun`` command, with these replacements:. 
 
    - Replace ``<account_name>`` with the account you are going to use, which you found and copied in **step 8**.
    - Replace ``<$UID_or_other>`` with your ``$UID`` (or other number if your ``$UID`` >65535), which you found and copied in **step 7**.
@@ -910,7 +910,7 @@ The Jupyter notebook executables are in your ``$PATH`` after loading the ``anaco
 
 #. Open a second terminal on your local machine/laptop.
 
-#. Run an ``ssh`` command, similar to the below, with the following replacements: 
+#. Run the following ``ssh`` command, with these replacements: 
 
    - Replace ``<my_delta_username>`` with your Delta login username.
    - Replace ``<$UID_or_other>`` with your ``$UID`` (or other number if your ``$UID`` >65535), which you found and copied in **step 7**.
@@ -966,7 +966,7 @@ How to Run Jupyter on a GPU Node (Bind a Directory to an NGC Container)
 
       accounts
 
-#. Run an ``srun`` command similar to the below, with the following replacements: 
+#. Run the following ``srun`` command, with these replacements: 
 
    - Replace ``<account_name>`` with the account you are going to use, which you found and copied in step #5. 
    - Replace ``<project_path>`` with the name of your projects folder (in two places).
@@ -1010,7 +1010,7 @@ How to Run Jupyter on a GPU Node (Bind a Directory to an NGC Container)
 
 #. Open a third terminal.
 
-#. Run an ``ssh`` command, similar to the below, with the following replacements: 
+#. Run the following ``ssh`` command, with these replacements: 
 
    - Replace ``<my_delta_username>`` with your Delta login username.
    
@@ -1043,7 +1043,7 @@ List of Installed Software (CPU & GPU)
    <details>
    <summary><a><b>Delta software module list</b> <i>(click to expand/collapse)</i></a></summary>
 
-The modules listed below are installed on Delta CPUs, GPUs, or both, as indicated.
+The following modules are installed on Delta CPUs, GPUs, or both, as indicated.
 
 .. table:: Delta Installed Modules
 
