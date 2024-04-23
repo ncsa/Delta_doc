@@ -30,10 +30,10 @@ How to Start an OOD VS Code Session
       :alt: Open OnDemand My Interactive Sessions screen showing the Code Server session status: "Your session is currently starting...Please be patient as this process can take a few minutes."
       :width: 500
 
-#. Once your session has started, click **Connect to VS Code** to launch your Jupyter Lab environment. Note, this may take a few minutes.
+#. Once your session has started, click **Connect to VS Code** to launch your VS Code environment. Note, this may take a few minutes.
 
    .. figure:: ../images/ood/vs-code-connect.png
-      :alt: Open OnDemand My Interactive Sessions screen showing the Jupyter Lab session with the Connect to VS Code button.
+      :alt: Open OnDemand My Interactive Sessions screen showing the Code Server session with the Connect to VS Code button.
       :width: 500
 
 #. You are now in your VS Code environment on Delta. You can view the time remaining on your interactive sessions by clicking **My Interactive Sessions** in the Open OnDemand dashboard.
