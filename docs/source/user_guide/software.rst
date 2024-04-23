@@ -827,7 +827,7 @@ Jupyter Notebooks
 .. note::
    The Delta Open OnDemand (OOD) portal provides an easy method to start a Jupyter notebook; this is the **recommended method** for users. 
 
-   Go to the :ref:`OOD Jupyter interactive app <ood-jupyterlab>` page for instructions on how to start an OOD JupyterLab session.
+   Go to :ref:`OOD Jupyter interactive app <ood-jupyterlab>` for instructions on how to start an OOD JupyterLab session.
 
    You can also customize your OOD JupyterLab environment:
 
