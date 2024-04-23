@@ -837,10 +837,10 @@ Jupyter Notebooks
 **Do not run Jupyter on the shared login nodes.**
 Instead, follow these steps to attach a Jupyter notebook running on a compute node to your local web browser:
 
-Jupyter Notebook on a CPU Node
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+How to Run a Jupyter on a CPU Node
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Jupyter notebook executables are in your ``$PATH`` after loading the anaconda3 module. If you run into problems from a previously saved Jupyter session (for example, you see paths where you do not have write permission), you may remove this file to get a fresh start: ``$HOME/.jupyter/lab/workspaces/default-*``. 
+The Jupyter notebook executables are in your ``$PATH`` after loading the ``anaconda3`` module. If you run into problems from a previously saved Jupyter session (for example, you see paths where you do not have write permission), you may remove this file to get a fresh start: ``$HOME/.jupyter/lab/workspaces/default-*``. 
 
 #. On your local machine/laptop, open a terminal.
 
@@ -879,7 +879,7 @@ The Jupyter notebook executables are in your ``$PATH`` after loading the anacond
 
       $ echo $UID
 
-#. Find the the ``account_name`` that you are going to use and **copy it to a notepad (you will use it in later steps); your accounts are listed under ``Project`` when you run the ``accounts`` command.
+#. Find the the ``account_name`` that you are going to use and **copy** it to a notepad (you will use it in later steps); your accounts are listed under ``Project`` when you run the ``accounts`` command.
 
    .. code-block::
 
@@ -903,7 +903,7 @@ The Jupyter notebook executables are in your ``$PATH`` after loading the anacond
    - The first URL begins with ``http://<cnXXX>.delta...``, ``<cnXXX>`` is the **internal hostname** and will be used in step 12.
    - The second URL begins with ``http://127.0...``, you will use this entire URL in step 14.
 
-#. Open a second terminal window on your local machine/laptop.
+#. Open a second terminal on your local machine/laptop.
 
 #. Run an ``ssh`` command, similar to the below, with the following replacements: 
 
@@ -928,11 +928,8 @@ The Jupyter notebook executables are in your ``$PATH`` after loading the anacond
       :alt: Jupyter screenshot
       :width: 700
 
-   .. image:: images/software/jupyter_logo.png
-      :alt: Jupyter logo
-
-Jupyter on a GPU Node
-~~~~~~~~~~~~~~~~~~~~~~~
+How to Run Jupyter on a GPU Node (Bind a Directory to an NGC Container)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #. On your local machine/laptop, open a terminal.
 
@@ -953,13 +950,13 @@ Jupyter on a GPU Node
 
       echo $UID
 
-#. Find the the account_name that you are going to use and **copy** it to a notepad (you will use it in later steps); your accounts are listed under ``Project`` when you run the ``accounts`` command.
+#. Find the the ``account_name`` that you are going to use and **copy** it to a notepad (you will use it in later steps); your accounts are listed under ``Project`` when you run the ``accounts`` command.
 
    .. code-block::
 
       accounts
 
-#. Run an ``srun`` command similar to the below. 
+#. Run an ``srun`` command similar to the below, with the following replacements: 
 
    - Replace ``<$UID_or_other>`` with your $UID (or other number if your $UID >65535), which you found and copied in step #4.
    - Replace ``<account_name>`` with the account you are going to use, which you found and copied in step #5.
@@ -972,7 +969,7 @@ Jupyter on a GPU Node
 
         srun --account=<account_name> --partition=gpuA100x4-interactive --time=00:30:00 --mem=64g --gpus-per-node=1 singularity run --nv --bind /projects/<project_path> /sw/external/NGC/pytorch:22.02-py3 jupyter-notebook --notebook-dir /projects/<project_path> --no-browser --port=<$UID_or_other> --ip=0.0.0.0
 
-#. Copy the last 2 lines returned (beginning with **"Or copy and paste this URL..."**) to a notepad.
+#. Copy the last 2 lines returned (beginning with **"Or copy and paste this URL..."**) to a notepad. (It may take a few minutes for these lines to be returned.)
 
 #. Modify the URL you copied in step 7 by changing ``hostname:8888`` to ``127.0.0.1:<$UID_or_other>``. You will use the modified URL in step 16.
 
@@ -991,13 +988,13 @@ Jupyter on a GPU Node
    .. note::
       The terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
-#. Find the hostname for your job.
+#. Find the **internal hostname** for your job.
 
    .. code-block::
 
       squeue -u $USER
 
-#. Copy the value returned under ``NODELIST`` for your GPU job (``gpuaXXX``) to a notepad (you will use this in a later step). You can now close this terminal.
+   The value returned under ``NODELIST`` is the internal hostname for your GPU job (``gpuaXXX``). Copy it to a notepad (you will use this in a later step). You can now close this terminal.
 
 #. Open a third terminal.
 
@@ -1023,10 +1020,6 @@ Jupyter on a GPU Node
    .. image:: images/software/jupyter_screenshot.jpg
       :alt: Jupyter screenshot
       :width: 700
-
-   .. image:: images/software/jupyter_logo.png
-      :alt: Jupyter logo
-
 
 List of Installed Software (CPU & GPU)
 ---------------------------------------
