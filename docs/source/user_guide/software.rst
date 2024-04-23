@@ -839,128 +839,187 @@ The Jupyter notebook executables are in your ``$PATH`` after loading the anacond
 **Do not run Jupyter on the shared login nodes.**
 Instead, follow these steps to attach a Jupyter notebook running on a compute node to your local web browser:
 
-#. Start a Jupyter job via ``srun`` and note the hostname (*you pick the port number for --port*).
+Jupyter on a CPU Node
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-   **srun Jupyter ( anaconda3_cpu on a CPU node ):**
+#. On your local machine/laptop, open a terminal.
 
-   #. Load the appropriate anaconda module. For this example we will use ``anaconda3_cpu``. You can see all of the available anaconda modules by running ``module avail anaconda``.
-
-      .. code-block::
-
-         module load anaconda3_cpu
-
-   #. Verify the module is loaded with ``module list``.
-
-      .. code-block::
-
-         module list
-
-   #. Verify a jupyter-notebook is in your ``$PATH`` with ``which jupyter-notebook``.
-
-      .. code-block::
-
-         which jupyter-notebook
-
-   #. Find your ``$UID`` and **copy** it to a notepad or somewhere like that. If your $UID is >65535, select a random, 5-digit number between 22400 and 65535.
-
-      .. code-block::
-
-         echo $UID
-
-   #. Find the the account_name that you are going to use and **copy it to a notepad or somewhere like that; your accounts are listed under "Project" when you run the ``accounts`` command.
-
-      .. code-block::
-
-         accounts
-
-   #. Run an ``srun`` command similar to the below. 
-
-      - Replace ``<$UID_or_other>`` with your $UID (or other number if your $UID >65535), which you found and copied in step #1.
-      - Replace ``account_name`` with the account you are going to use, which you found and copied in step #2.
-
-      .. code-block::
-
-         srun --account=account_name --partition=cpu-interactive --time=00:30:00 --mem=32g jupyter-notebook --no-browser --port=<$UID_or_other> --ip=0.0.0.0
-
-   Replace ``account_name`` with one of your available CPU accounts; these are listed under "Project" when you run the ``accounts`` command.
-   
-   .. code-block::
-
-      $ echo $UID # make a note of your user id number, you will need it later
-      $ srun --account=account_name --partition=cpu-interactive \
-        --time=00:30:00 --mem=32g \
-        jupyter-notebook --no-browser \
-        --port=$UID --ip=0.0.0.0
-      ...
-      # $UID here will be filled in with your user id number (unique to you )
-          Or copy and paste one of these URLs:
-              http://cn093.delta.internal.ncsa.edu:$UID/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
-           or http://127.0.0.1:$UID/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
-
-   #. **Copy** the last 5 lines returned beginning with: "To access the notebook, open this file in a browser..." to a notepad or somewhere like that.
-
-   Note the internal hostname in the **cluster** for **step 2**. You will use the **second URL** in **step 3**.
-
-   When using a container with a GPU node, run the container's jupyter-notebook:
-
-   **NGC container for GPUs, jupyter-notebook, bind a directory:**
-
-   Replace ``account_name`` with one of your available GPU accounts; these are listed under "Project" when you run the ``accounts`` command.
+#. SSH into Delta. (Replace ``<my_delta_username>`` with your Delta login username).
 
    .. code-block::
 
-      # container notebook example showing how to access a directory outside
-      # of $HOME ( /projects/bbka in the example )
-      $ srun --account=account_name --partition=gpuA100x4-interactive \
-        --time=00:30:00 --mem=64g --gpus-per-node=1 \
-        singularity run --nv --bind /projects/bbka \
-        /sw/external/NGC/pytorch:22.02-py3 jupyter-notebook \
-        --notebook-dir /projects/wxyz \
-        --no-browser --port=$UID --ip=0.0.0.0
-      ...
-      # again, $UID will be filled in with your user id number
-      http://hostname:$UID/?token=73d96b99f2cfc4c3932a3433d1b8003c052081c5411795d5
+      ssh <my_delta_username>@login.delta.ncsa.illinois.edu
 
-   In step 3, to start the notebook in your browser, replace http://hostname:8888/ with http://127.0.0.1:8991/ (the port number you selected with ``--port=``)
+#. Enter your **NCSA** password in the terminal interface prompt and **enter (return)**.
 
-   You may not see the job hostname when running with a container, find it with ``squeue``:
+   .. note::
+      The terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
-   **squeue -u $USER:**
+#. Complete the Duo two-factor authentication by one of these methods:
+
+   - Enter 1 in the terminal and accept the Duo push notification on your phone.
+
+   OR
+
+   - Open the Duo app on your phone and enter the NCSA passcode into the terminal prompt.
+
+#. Load the appropriate anaconda module. You can see all of the available anaconda modules by running ``module avail anaconda``. For this example we will use ``anaconda3_cpu``. 
 
    .. code-block::
 
-      $ squeue -u $USER
-                   JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-                  156071 gpuA100x4 singular  arnoldg  R       1:00      1 gpua045
+      $ module load anaconda3_cpu
 
-   Specify the host your job is using in the next step (gpua045, for example).
+#. Verify the module is loaded with ``module list``.
 
-#. From your **local desktop or laptop** create an SSH tunnel to the compute node via a login node of Delta.
+   .. code-block::
+
+      $ module list
+
+#. Verify a jupyter-notebook is in your ``$PATH`` with ``which jupyter-notebook``.
+
+   .. code-block::
+
+      $ which jupyter-notebook
+
+#. Find your ``$UID`` and **copy** it to a notepad or somewhere like that. If your $UID is >65535, select a random, 5-digit number between 22400 and 65535.
+
+   .. code-block::
+
+      echo $UID
+
+#. Find the the account_name that you are going to use and **copy it to a notepad or somewhere like that; your accounts are listed under ``Project`` when you run the ``accounts`` command.
+
+   .. code-block::
+
+      accounts
+
+#. Run an ``srun`` command similar to the below. 
+
+   - Replace ``<$UID_or_other>`` with your $UID (or other number if your $UID >65535), which you found and copied in step #8.
+   - Replace ``<account_name>`` with the account you are going to use, which you found and copied in step #9.
+
+   - You can modify the ``--partition``, ``--time``, and ``--mem`` options to meet your needs.
+
+     .. code-block::
+
+        srun --account=<account_name> --partition=cpu-interactive --time=00:30:00 --mem=32g jupyter-notebook --no-browser --port=<$UID_or_other> --ip=0.0.0.0
+
+#. Copy the last 5 lines returned beginning with: **"To access the notebook, open this file in a browser..."** to a notepad or somewhere like that. (It may take a few minutes for these lines to be returned.)
+
+   Note two things about the URLs you copied as part of these 5 lines:
+
+   - The first URL begins with ``http://<cn0XX>.delta...``, ``<cn0XX>`` is the **internal hostname** will be used in step XX.
+   - The second URL begins with ``http://127.0...``, you will use this entire URL in step XX.
+
+#. Open a second terminal window on your local machine/laptop.
+
+#. Run an ``ssh`` command, similar to the below, with the following replacements: 
 
    - Replace ``<my_delta_username>`` with your Delta login username.
    
-   - Replace ``<$UID_or_other>`` with your $UID (or other number if your $UID >65535), which you found and copied in step #1.
+   - Replace ``<$UID_or_other>`` with your $UID (or other number if your $UID >65535), which you found and copied in step #8.
+
+   - Replace ``<cn0XX>`` with internal hostname you copied in step 11.
 
    .. code-block::
 
-      ssh -l <my_delta_username> -L 127.0.0.1:<$UID_or_other>:cn035.delta.ncsa.illinois.edu:<$UID_or_other> dt-login.delta.ncsa.illinois.edu
+      ssh -l <my_delta_username> -L 127.0.0.1:<$UID_or_other>:<cn0XX>.delta.ncsa.illinois.edu:<$UID_or_other> dt-login.delta.ncsa.illinois.edu
 
-#. You *may* get "Are you sure you want to continue connecting (yes/no/[fingerprint])?". Type "yes".
+#. Copy and paste the entire **second URL** (beginning with ``https://127.0...``) from **step 11** into your browser. You will be connected to the Jupyter instance running on your compute node of Delta.
 
-#. Enter your NCSA password (you won't see it reflected back, type blindly) and Duo MFA.
+   .. image:: images/software/jupyter_screenshot.jpg
+      :alt: Jupyter screenshot
+      :width: 700
 
-   **SSH tunnel for Jupyter:**
+   .. image:: images/software/jupyter_logo.png
+      :alt: Jupyter logo
+
+Jupyter on a GPU Node
+~~~~~~~~~~~~~~~~~~~~~~~
+
+#. On your local machine/laptop, open a terminal.
+
+#. SSH into Delta. (Replace ``<my_delta_username>`` with your Delta login username).
 
    .. code-block::
 
-      # replace $UID below with your delta user id number as recorded above
-      $ ssh -l my_delta_username \
-        -L 127.0.0.1:$UID:cn093.delta.internal.ncsa.edu:$UID \
-        dt-login.delta.ncsa.illinois.edu
+      ssh <my_delta_username>@login.delta.ncsa.illinois.edu
 
-   Authenticate with your login and MFA, as usual.
+#. Enter your **NCSA** password in the terminal interface prompt and **enter (return)**.
 
-#. Paste the **second URL** (containing 127.0.0.1:port_number and the token string) from **step 1** into your browser and you will be connected to the Jupyter instance running on your compute node of Delta.
+   .. note::
+      The terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
+
+#. Complete the Duo two-factor authentication by one of these methods:
+
+   - Enter 1 in the terminal and accept the Duo push notification on your phone.
+
+   OR
+
+   - Open the Duo app on your phone and enter the NCSA passcode into the terminal prompt.
+
+#. Find your ``$UID`` and **copy** it to a notepad or somewhere like that. If your $UID is >65535, select a random, 5-digit number between 22400 and 65535.
+
+   .. code-block::
+
+      echo $UID
+
+#. Find the the account_name that you are going to use and **copy it to a notepad or somewhere like that; your accounts are listed under ``Project`` when you run the ``accounts`` command.
+
+   .. code-block::
+
+      accounts
+
+#. Run an ``srun`` command similar to the below. 
+
+   - Replace ``<$UID_or_other>`` with your $UID (or other number if your $UID >65535), which you found and copied in step #8.
+   - Replace ``<account_name>`` with the account you are going to use, which you found and copied in step #9.
+
+   - Replace ``<project_path>`` with the name of your projects folder (in two places)
+
+   - You can modify the ``--partition``, ``--time``, and ``--mem`` options to meet your needs.
+
+     .. code-block::
+
+        srun --account=<account_name> --partition=gpuA100x4-interactive --time=00:30:00 --mem=64g --gpus-per-node=1 singularity run --nv --bind /projects/<project_path> /sw/external/NGC/pytorch:22.02-py3 jupyter-notebook --notebook-dir /projects/<project_path> --no-browser --port=<$UID_or_other> --ip=0.0.0.0
+
+#. Copy the last 2 lines returned (beginning with "Or copy and paste this URL...) to a notepad.
+
+#. Modify the URL by changing ``hostname:8888`` to ``127.0.0.1:<$UID_or_other>``. You will use the modified URL in step XX.
+
+   - Replace ``<$UID_or_other>`` with your $UID (or other number if your $UID >65535), which you found and copied in step #8.
+
+#. Open a second terminal.
+
+#. SSH into Delta.
+
+   .. code-block::
+
+      ssh <my_delta_username>@login.delta.ncsa.illinois.edu
+
+#. Find the hostname by running.
+
+   .. code-block::
+
+      squeue -u $USER
+
+#. Copy the value returned under the ``NODELIST`` column for your GPU job (``gpuaXXX``). You can now close this terminal.
+
+#. Open a third terminal.
+
+#. Run an ``ssh`` command, similar to the below, with the following replacements: 
+
+   - Replace ``<my_delta_username>`` with your Delta login username.
+   
+   - Replace ``<$UID_or_other>`` with your $UID (or other number if your $UID >65535), which you found and copied in step #8.
+
+   - Replace ``<gpuaXXX>`` with internal hostname you copied in step 11.
+
+   .. code-block::
+
+      ssh -l <my_delta_username> -L 127.0.0.1:<$UID_or_other>:<gpuaXXX>.delta.internal.ncsa.edu:<$UID_or_other> dt-login.delta.ncsa.illinois.edu
+
+#. Copy and paste the entire **modified URL** (beginning with ``https://127.0...``) from **step 11** into your browser. You will be connected to the Jupyter instance running on your gpu node of Delta.
 
    .. image:: images/software/jupyter_screenshot.jpg
       :alt: Jupyter screenshot
