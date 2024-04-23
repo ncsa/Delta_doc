@@ -10,7 +10,7 @@ How to Start an OOD JupyterLab Session
 
 #. Navigate to the `Open OnDemand dashboard <https://openondemand.delta.ncsa.illinois.edu/>`_.
 #. Log in through CILogon with your **NCSA** username, password, and Duo MFA.
-#. Open on the **Interactive Apps** menu at the top of the window and click **Jupyter Lab**.
+#. Open the **Interactive Apps** menu at the top of the window and click **Jupyter Lab**.
 #. Fill out the form and then click **Launch**.
 
    - **Name of account** - This must match one of your available Delta accounts (CPU or GPU, as appropriate); these are listed under ``Project`` when you run the ``accounts`` command on Delta.
@@ -30,7 +30,7 @@ How to Start an OOD JupyterLab Session
       :alt: Open OnDemand My Interactive Sessions screen showing the Jupyter Lab session status: "Your session is currently starting...Please be patient as this process can take a few minutes."
       :width: 500
 
-#. Once your session has started, click **Connect to Jupyter** to launch your Jupyter Lab environment. Note, this may take a few minutes.
+#. Once your session has started, click **Connect to Jupyter** to launch your JupyterLab environment. Note, this may take a few minutes.
 
    .. figure:: ../images/ood/jupyter-connect.png
       :alt: Open OnDemand My Interactive Sessions screen showing the Jupyter Lab session with the Connect to Jupyter button.
