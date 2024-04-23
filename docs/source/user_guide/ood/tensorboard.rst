@@ -1,14 +1,14 @@
 TensorBoard
 =============
 
-Launch a TensorBoard, TensorFlow's visualization toolkit from the Open OnDemand dashboard, in a web browser.
+Launch TensorBoard, TensorFlow's visualization toolkit, from the Open OnDemand dashboard.
 
 How to Start an OOD TensorBoard Session
 ------------------------------------------
 
 #. Navigate to the `Open OnDemand dashboard <https://openondemand.delta.ncsa.illinois.edu/>`_.
 #. Log in through CILogon with your **NCSA** username, password, and Duo MFA.
-#. Open on the **Interactive Apps** menu at the top of the window and click **TensorBoard**.
+#. Open the **Interactive Apps** menu at the top of the window and click **TensorBoard**.
 #. Fill out the form and then click **Launch**.
 
    - **Tensorboard logdir** - The Delta directory that contains data to visualize.
@@ -28,7 +28,7 @@ How to Start an OOD TensorBoard Session
       :alt: Open OnDemand My Interactive Sessions screen showing the Code Server session status: "Your session is currently starting...Please be patient as this process can take a few minutes."
       :width: 500
 
-#. Once your session has started, click **Connect to TensorBoard** to launch your JupyterLab environment. Note, this may take a few minutes.
+#. Once your session has started, click **Connect to TensorBoard** to launch your TensorBoard environment. Note, this may take a few minutes.
 
    .. figure:: ../images/ood/tensorboard-connect.png
       :alt: Open OnDemand My Interactive Sessions screen showing the TensorBoard session with the Connect to TensorBoard button.
