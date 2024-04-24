@@ -839,11 +839,11 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
 .. tabs::
 
-   .. tab:: How to Run Jupyter on a CPU Node
+   .. tab:: How to Run Jupyter on a Compute Node
 
       The Jupyter notebook executables are in your ``$PATH`` after loading the ``anaconda3`` module. If you run into problems from a previously saved Jupyter session (for example, you see paths where you do not have write permission), you may remove this file to get a fresh start: ``$HOME/.jupyter/lab/workspaces/default-*``. 
 
-      Follow these steps to run Jupyter on a CPU compute node:
+      Follow these steps to run Jupyter on a Compute compute node:
 
       #. On your local machine/laptop, open a terminal.
 
@@ -886,6 +886,9 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
       #. Find the the ``account_name`` that you are going to use and copy it to a notepad (you will use it in **step 9**); your accounts are listed under ``Project`` when you run the ``accounts`` command.
 
+         .. note::
+            To use a GPU node, you must pick a GPU account (the account name will end in "...-gpu").
+
          .. code-block::
 
             accounts
@@ -894,7 +897,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
          - Replace ``<account_name>`` with the account you are going to use, which you found and copied in **step 8**.
          - Replace ``<$UID_or_other>`` with your ``$UID`` (or other number if your ``$UID`` >65535), which you found and copied in **step 7**.
-         - You can modify the ``--partition``, ``--time``, and ``--mem`` options to meet your needs.
+         - Modify the ``--partition``, ``--time``, and ``--mem`` options to meet your needs.
 
          \
 
@@ -936,9 +939,9 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
             :alt: Jupyter screenshot
             :width: 700
 
-   .. tab:: How to Run Jupyter on a GPU Node (in an NGC Container)
+   .. tab:: How to Run Jupyter on a Compute Node, in an NGC Container
 
-      Follow these steps to run Jupyter on a GPU compute node, in an NGC container:
+      Follow these steps to run Jupyter on a compute node, in an NGC container:
 
       #. On your local machine/laptop, open a terminal.
 
@@ -975,7 +978,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
          - Replace ``<account_name>`` with the account you are going to use, which you found and copied in step #5. 
          - Replace ``<project_path>`` with the name of your projects folder (in two places).
          - Replace ``<$UID_or_other>`` with your $UID (or other number if your $UID >65535), which you found and copied in step #4.
-         - You can modify the ``--partition``, ``--time``, ``--mem``, and ``--gpus-per-node`` options to meet your needs.
+         - Modify the ``--partition``, ``--time``, ``--mem``, and ``--gpus-per-node`` options to meet your needs.
 
          \
 
