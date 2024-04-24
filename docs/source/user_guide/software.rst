@@ -843,7 +843,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
       The Jupyter notebook executables are in your ``$PATH`` after loading the ``anaconda3`` module. If you run into problems from a previously saved Jupyter session (for example, you see paths where you do not have write permission), you may remove this file to get a fresh start: ``$HOME/.jupyter/lab/workspaces/default-*``. 
 
-      Follow these steps to run Jupyter on a Compute compute node:
+      Follow these steps to run Jupyter on a compute node (CPU or GPU):
 
       #. On your local machine/laptop, open a terminal.
 
@@ -857,6 +857,25 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
          .. note::
             The terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
+
+      .. warning::
+         If there is a conda environment active when you log into Delta, deactivate it **before you continue** (``conda deactivate``).
+
+         You will know you have an active conda environment if your terminal prompt has an additional parenthetical piece prepended to it, like these examples:
+
+         .. code-block::
+
+            (base) [<delta_username>@dt-login01 ~]$
+
+         .. code-block::
+
+            (mynewenv) [<delta_username>@dt-login01 ~]$
+
+         Run ``conda deactivate`` until there is no longer a paranthetical piece prepended to your terminal prompt, like this:
+
+         .. code-block::
+
+            [<delta_username>@dt-login01 ~]$
 
       #. Load the appropriate anaconda module. To see all of the available anaconda modules, run ``module avail anaconda``. This example uses ``anaconda3_cpu``. 
 
