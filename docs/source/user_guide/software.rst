@@ -858,24 +858,24 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
          .. note::
             The terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
-      .. warning::
-         If there is a conda environment active when you log into Delta, deactivate it **before you continue** (``conda deactivate``).
+         .. warning::
+            If there is a conda environment active when you log into Delta, deactivate it **before you continue** (``conda deactivate``).
 
-         You will know you have an active conda environment if your terminal prompt has an additional parenthetical piece prepended to it, like these examples:
+            You will know you have an active conda environment if your terminal prompt has an additional parenthetical piece prepended to it, like these examples:
 
-         .. code-block::
+            .. code-block::
 
-            (base) [<delta_username>@dt-login01 ~]$
+               (base) [<delta_username>@dt-login01 ~]$
 
-         .. code-block::
+            .. code-block::
 
-            (mynewenv) [<delta_username>@dt-login01 ~]$
+               (mynewenv) [<delta_username>@dt-login01 ~]$
 
-         Run ``conda deactivate`` until there is no longer a paranthetical piece prepended to your terminal prompt, like this:
+            Run ``conda deactivate`` until there is no longer a paranthetical piece prepended to your terminal prompt, like this:
 
-         .. code-block::
+            .. code-block::
 
-            [<delta_username>@dt-login01 ~]$
+               [<delta_username>@dt-login01 ~]$
 
       #. Load the appropriate anaconda module. To see all of the available anaconda modules, run ``module avail anaconda``. This example uses ``anaconda3_cpu``. 
 
