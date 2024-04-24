@@ -847,6 +847,8 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
       #. On your local machine/laptop, open a terminal.
 
+      \
+
       #. SSH into Delta. (Replace ``<my_delta_username>`` with your Delta login username).
 
          .. code-block:: terminal
