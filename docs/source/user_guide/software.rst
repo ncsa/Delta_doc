@@ -843,6 +843,8 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
       The Jupyter notebook executables are in your ``$PATH`` after loading the ``anaconda3`` module. If you run into problems from a previously saved Jupyter session (for example, you see paths where you do not have write permission), you may remove this file to get a fresh start: ``$HOME/.jupyter/lab/workspaces/default-*``. 
 
+      Follow these steps to run Jupyter on a CPU compute node:
+
       #. On your local machine/laptop, open a terminal.
 
       #. SSH into Delta. (Replace ``<my_delta_username>`` with your Delta login username).
@@ -935,6 +937,8 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
             :width: 700
 
    .. tab:: How to Run Jupyter on a GPU Node (in an NGC Container)
+
+      Follow these steps to run Jupyter on a GPU compute node, in an NGC container:
 
       #. On your local machine/laptop, open a terminal.
 
