@@ -825,7 +825,7 @@ Jupyter Notebooks
 -------------------
 
 .. note::
-   The Delta Open OnDemand (OOD) portal provides an easy method to start a Jupyter notebook; this is the **recommended method** for users. 
+   The Delta Open OnDemand (OOD) portal provides an easy method to start a Jupyter notebook; this is the **recommended method**. 
 
    Go to :ref:`OOD Jupyter interactive app <ood-jupyterlab>` for instructions on how to start an OOD JupyterLab session.
 
@@ -856,7 +856,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
          .. note::
             The terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
-      #. Load the appropriate anaconda module. You can see all of the available anaconda modules by running ``module avail anaconda``. This example uses ``anaconda3_cpu``. 
+      #. Load the appropriate anaconda module. To see all of the available anaconda modules, run ``module avail anaconda``. This example uses ``anaconda3_cpu``. 
 
          .. code-block::
 
@@ -882,7 +882,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
             $ echo $UID
 
-      #. Find the the ``account_name`` that you are going to use and **copy** it to a notepad (you will use it in **step 9**); your accounts are listed under ``Project`` when you run the ``accounts`` command.
+      #. Find the the ``account_name`` that you are going to use and copy it to a notepad (you will use it in **step 9**); your accounts are listed under ``Project`` when you run the ``accounts`` command.
 
          .. code-block::
 
@@ -949,7 +949,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
          .. note::
             The terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
-      #. Find your ``$UID`` and **copy** it to a notepad (you will use it in **steps 6, 8, and 14**). 
+      #. Find your ``$UID`` and copy it to a notepad (you will use it in **steps 6, 8, and 14**). 
 
          If your $UID is >65535, select a random, 5-digit number between 22400 and 65535.
 
@@ -957,7 +957,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
             echo $UID
 
-      #. Find the the ``account_name`` that you are going to use and **copy** it to a notepad (you will use it in **step 6**); your accounts are listed under ``Project`` when you run the ``accounts`` command. 
+      #. Find the the ``account_name`` that you are going to use and copy it to a notepad (you will use it in **step 6**); your accounts are listed under ``Project`` when you run the ``accounts`` command. 
 
          .. note::
             To use a GPU node, you must pick a GPU account (the account name will end in "...-gpu").
