@@ -878,7 +878,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
       #. Find your ``$UID`` and copy it to a notepad (you will use it in **steps 9 and 12**). 
 
-         If your ``$UID`` is >65535, select a random, 5-digit number between 22400 and 65535.
+         If your ``$UID`` is >65535, select a random 5-digit number between 22400 and 65535 to use instead.
 
          .. code-block::
 
@@ -955,7 +955,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
       #. Find your ``$UID`` and copy it to a notepad (you will use it in **steps 6, 8, and 14**). 
 
-         If your $UID is >65535, select a random, 5-digit number between 22400 and 65535.
+         If your $UID is >65535, select a random 5-digit number between 22400 and 65535 to use instead.
 
          .. code-block::
 
