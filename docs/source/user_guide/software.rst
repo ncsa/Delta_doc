@@ -853,25 +853,20 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
             ssh <my_delta_username>@login.delta.ncsa.illinois.edu
 
-      #. Enter your **NCSA** password and complete the Duo MFA.
-
-         .. note::
-            The terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
+      #. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
          .. warning::
-            If there is a conda environment active when you log into Delta, deactivate it **before you continue** (``conda deactivate``).
+            If there is a conda environment active when you log into Delta, deactivate it before you continue (``conda deactivate``).
 
-            You will know you have an active conda environment if your terminal prompt has an additional parenthetical piece prepended to it, like these examples:
+            You will know you have an active conda environment if your terminal prompt has a parenthetical piece prepended to it, like these examples:
 
             .. code-block::
 
                (base) [<delta_username>@dt-login01 ~]$
 
-            .. code-block::
-
                (mynewenv) [<delta_username>@dt-login01 ~]$
 
-            Run ``conda deactivate`` until there is no longer a paranthetical piece prepended to your terminal prompt, like this:
+            Run ``conda deactivate`` until there is no longer a parenthetical piece prepended to your terminal prompt, like this:
 
             .. code-block::
 
@@ -947,10 +942,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
             ssh -l <my_delta_username> -L 127.0.0.1:<$UID_or_other>:<cn0XX>.delta.ncsa.illinois.edu:<$UID_or_other> dt-login.delta.ncsa.illinois.edu
 
-      #. Enter your **NCSA** password and complete the Duo MFA.
-
-         .. note::
-            The terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
+      #. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
       #. Copy and paste the entire **second URL** (beginning with ``https://127.0...``) from **step 10** into your browser. You will be connected to the Jupyter instance running on your compute node of Delta.
 
@@ -970,10 +962,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
             ssh <my_delta_username>@login.delta.ncsa.illinois.edu
 
-      #. Enter your **NCSA** password and complete the Duo MFA.
-
-         .. note::
-            The terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
+      #. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
       #. Find your ``$UID`` and copy it to a notepad (you will use it in **steps 6, 8, and 14**). 
 
@@ -1021,10 +1010,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
             ssh <my_delta_username>@login.delta.ncsa.illinois.edu
 
-      #. Enter your **NCSA** password and complete the Duo MFA.
-
-         .. note::
-            The terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
+      #. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
       #. Find the **internal hostname** for your job and copy it to a notepad (you will use it in **step 14**).
 
@@ -1048,10 +1034,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
             ssh -l <my_delta_username> -L 127.0.0.1:<$UID_or_other>:<gpuaXXX>.delta.internal.ncsa.edu:<$UID_or_other> dt-login.delta.ncsa.illinois.edu
 
-      #. Enter your **NCSA** password and complete the Duo MFA.
-
-         .. note::
-            The terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
+      #. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
       #. Copy and paste the entire **modified URL** (beginning with ``https://127.0...``) from **step 8** into your browser. You will be connected to the Jupyter instance running on your gpu node of Delta.
 
