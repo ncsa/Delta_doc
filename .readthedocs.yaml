@@ -19,5 +19,5 @@ python:
 search:
   ranking:
     
-    user_guide/ood/jupyter.html: 10
+    user_guide/ood/*: 10
     
