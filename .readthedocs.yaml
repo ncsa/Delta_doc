@@ -15,11 +15,5 @@ python:
     - requirements: docs/requirements.txt
 
 
-# Search results ranking control
-search:
-  ranking:
-    
-    user_guide/ood/*: 10
-    
-    user_guide/prog_env.html: -1
+
     
