@@ -21,3 +21,5 @@ search:
     
     user_guide/ood/*: 10
     
+    user_guide/prog_env.html: -1
+    
