@@ -856,7 +856,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
       #. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
          .. warning::
-            If there is a conda environment active when you log into Delta, deactivate it before you continue (``conda deactivate``). You will know you have an active conda environment if your terminal prompt has a parenthetical piece prepended to it, like these examples:
+            If there is a conda environment active when you log into Delta, deactivate it before you continue. You will know you have an active conda environment if your terminal prompt has a parenthetical piece prepended to it, like these examples:
 
             .. code-block::
 
@@ -874,19 +874,19 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
          .. code-block::
 
-            $ module load anaconda3_cpu
+            module load anaconda3_cpu
 
       #. Verify the module is loaded.
 
          .. code-block::
 
-            $ module list
+            module list
 
       #. Verify a jupyter-notebook is in your ``$PATH``.
 
          .. code-block::
 
-            $ which jupyter-notebook
+            which jupyter-notebook
 
       #. Find your ``$UID`` and copy it to a notepad (you will use it in **steps 9 and 12**). 
 
@@ -894,7 +894,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
          .. code-block::
 
-            $ echo $UID
+            echo $UID
 
       #. Find the the ``account_name`` that you are going to use and copy it to a notepad (you will use it in **step 9**); your accounts are listed under ``Project`` when you run the ``accounts`` command.
 
@@ -905,11 +905,11 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
             accounts
 
-      #. Run the following ``srun`` command, with these replacements:. 
+      #. Run the following ``srun`` command, with these replacements:
 
          - Replace ``<account_name>`` with the account you are going to use, which you found and copied in **step 8**.
          - Replace ``<$UID_or_other>`` with your ``$UID`` (or other number if your ``$UID`` >65535), which you found and copied in **step 7**.
-         - Modify the ``--partition``, ``--time``, and ``--mem`` options to meet your needs.
+         - Modify the ``--partition``, ``--time``, and ``--mem`` options and/or add other options to meet your needs.
 
          \
 
@@ -919,7 +919,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
       #. Copy the last 5 lines returned beginning with: **"To access the notebook, open this file in a browser..."** to a notepad (you will use this information **steps 12 and 14**). (It may take a few minutes for these lines to be returned.)
 
-         Note two things about the URLs you copied as part of these 5 lines:
+         Note these two things about the URLs you copied:
 
          - The first URL begins with ``http://<cnXXX>.delta...``, ``<cnXXX>`` is the **internal hostname** and will be used in **step 12**.
          - The second URL begins with ``http://127.0...``, you will use this entire URL in **step 14**.
@@ -942,7 +942,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
       #. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
-      #. Copy and paste the entire **second URL** (beginning with ``https://127.0...``) from **step 10** into your browser. You will be connected to the Jupyter instance running on your compute node of Delta.
+      #. Copy and paste the entire **second URL** from **step 10** (begins with ``https://127.0...``) into your browser. You will be connected to the Jupyter instance running on your compute node of Delta.
 
          .. image:: images/software/jupyter_screenshot.jpg
             :alt: Jupyter screenshot
@@ -984,7 +984,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
          - Replace ``<account_name>`` with the account you are going to use, which you found and copied in step #5. 
          - Replace ``<project_path>`` with the name of your projects folder (in two places).
          - Replace ``<$UID_or_other>`` with your $UID (or other number if your $UID >65535), which you found and copied in step #4.
-         - Modify the ``--partition``, ``--time``, ``--mem``, and ``--gpus-per-node`` options to meet your needs.
+         - Modify the ``--partition``, ``--time``, ``--mem``, and ``--gpus-per-node`` options and/or add other options to meet your needs.
 
          \
 
@@ -994,9 +994,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
       #. Copy the last 2 lines returned (beginning with **"Or copy and paste this URL..."**) to a notepad. (It may take a few minutes for these lines to be returned.)
 
-      #. Modify the URL you copied in **step 7** by changing ``hostname:8888`` to ``127.0.0.1:<$UID_or_other>``. You will use the modified URL in **step 16**.
-
-         - Replace ``<$UID_or_other>`` with your $UID (or other number if your $UID >65535), which you found and copied in step #4.
+      #. Modify the URL you copied in **step 7** by changing ``hostname:8888`` to ``127.0.0.1:<$UID_or_other>``. You will use the modified URL in **step 16**. (Replace ``<$UID_or_other>`` with your ``$UID`` (or other number if your ``$UID`` >65535), which you found and copied in **step 4**.)
 
          \
 
@@ -1023,7 +1021,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
       #. Run the following ``ssh`` command, with these replacements: 
 
          - Replace ``<my_delta_username>`` with your Delta login username.
-         - Replace ``<$UID_or_other>`` with your $UID (or other number if your $UID >65535), which you found and copied in **step 4**.
+         - Replace ``<$UID_or_other>`` with your ``$UID`` (or other number if your ``$UID`` >65535), which you found and copied in **step 4**.
          - Replace ``<gpuaXXX>`` with internal hostname you copied in **step 12**.
 
          \
