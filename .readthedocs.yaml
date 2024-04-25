@@ -20,3 +20,4 @@ search:
   ranking:
     
     ood/jupyter.html: 10
+    prog_env.html: -10
