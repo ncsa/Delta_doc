@@ -13,3 +13,9 @@ sphinx:
 python:
   install:
     - requirements: docs/requirements.txt
+
+
+# Search results ranking control
+search:
+  ranking:
+    jupyter.html: 10
