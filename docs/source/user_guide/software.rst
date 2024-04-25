@@ -847,16 +847,16 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
    
    .. code-block::
 
-      $ echo $UID # make a note of your user id number, you will need it later
+      $ MYPORT=$(($(($RANDOM % 10000))+49152)); echo $MYPORT # Make a note of this PORT NUMBER, you will need it later
       $ srun --account=account_name --partition=cpu-interactive \
         --time=00:30:00 --mem=32g \
         jupyter-notebook --no-browser \
-        --port=$UID --ip=0.0.0.0
+        --port=$MYPORT --ip=0.0.0.0
       ...
-      # $UID here will be filled in with your user id number (unique to you )
+      # MYPORT here will be filled in with your user id number (unique to you )
           Or copy and paste one of these URLs:
-              http://cn093.delta.internal.ncsa.edu:$UID/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
-           or http://127.0.0.1:$UID/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
+              http://cn093.delta.internal.ncsa.edu:$MYPORT/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
+           or http://127.0.0.1:$MYPORT/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
 
    Note the internal hostname in the **cluster** for **step 2**. You will use the **second URL** in **step 3**.
 
@@ -870,15 +870,16 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
       # container notebook example showing how to access a directory outside
       # of $HOME ( /projects/bbka in the example )
+      $ MYPORT=99999    # Do not use 99999, use the number generated in the previous step
       $ srun --account=account_name --partition=gpuA100x4-interactive \
         --time=00:30:00 --mem=64g --gpus-per-node=1 \
         singularity run --nv --bind /projects/bbka \
         /sw/external/NGC/pytorch:22.02-py3 jupyter-notebook \
         --notebook-dir /projects/wxyz \
-        --no-browser --port=$UID --ip=0.0.0.0
+        --no-browser --port=$MYPORT --ip=0.0.0.0
       ...
-      # again, $UID will be filled in with your user id number
-      http://hostname:$UID/?token=73d96b99f2cfc4c3932a3433d1b8003c052081c5411795d5
+      # again, $MYPORT will be filled in with your user id number
+      http://hostname:$MYPORT/?token=73d96b99f2cfc4c3932a3433d1b8003c052081c5411795d5
 
    In step 3, to start the notebook in your browser, replace http://hostname:8888/ with http://127.0.0.1:8991/ (the port number you selected with ``--port=``)
 
@@ -900,9 +901,9 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
    .. code-block::
 
-      # replace $UID below with your delta user id number as recorded above
+      # replace $MYPORT below with the port number you created in the first step
       $ ssh -l my_delta_username \
-        -L 127.0.0.1:$UID:cn093.delta.internal.ncsa.edu:$UID \
+        -L 127.0.0.1:$MYPORT:cn093.delta.internal.ncsa.edu:$MYPORT \
         dt-login.delta.ncsa.illinois.edu
 
    Authenticate with your login and MFA, as usual.
