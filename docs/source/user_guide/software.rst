@@ -888,13 +888,11 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
             which jupyter-notebook
 
-      #. Find your ``$UID`` and copy it to a notepad (you will use it in **steps 9 and 12**). 
-
-         If your ``$UID`` is >65535, select a random 5-digit number between 22400 and 65535 to use instead.
+      #. Generate a ``MYPORT`` number and copy it to a notepad (you will use it in **steps 9 and 12**). 
 
          .. code-block::
 
-            echo $UID
+            MYPORT=$(($(($RANDOM % 10000))+49152)); echo $MYPORT
 
       #. Find the the ``account_name`` that you are going to use and copy it to a notepad (you will use it in **step 9**); your accounts are listed under ``Project`` when you run the ``accounts`` command.
 
@@ -908,14 +906,14 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
       #. Run the following ``srun`` command, with these replacements:
 
          - Replace ``<account_name>`` with the account you are going to use, which you found and copied in **step 8**.
-         - Replace ``<$UID_or_other>`` with your ``$UID`` (or other number if your ``$UID`` >65535), which you found and copied in **step 7**.
+         - Replace ``<$MYPORT>`` with the ``$MYPORT`` number you generated in **step 7**.
          - Modify the ``--partition``, ``--time``, and ``--mem`` options and/or add other options to meet your needs.
 
          \
 
          .. code-block::
 
-            srun --account=<account_name> --partition=cpu-interactive --time=00:30:00 --mem=32g jupyter-notebook --no-browser --port=<$UID_or_other> --ip=0.0.0.0
+            srun --account=<account_name> --partition=cpu-interactive --time=00:30:00 --mem=32g jupyter-notebook --no-browser --port=<$MYPORT> --ip=0.0.0.0
 
       #. Copy the last 5 lines returned beginning with: **"To access the notebook, open this file in a browser..."** to a notepad (you will use this information **steps 12 and 14**). (It may take a few minutes for these lines to be returned.)
 
@@ -931,14 +929,14 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
       #. Run the following ``ssh`` command, with these replacements: 
 
          - Replace ``<my_delta_username>`` with your Delta login username.
-         - Replace ``<$UID_or_other>`` with your ``$UID`` (or other number if your ``$UID`` >65535), which you found and copied in **step 7**.
+         - Replace ``<$MYPORT>`` with the ``$MYPORT`` number you generated in **step 7**.
          - Replace ``<cn0XX>`` with internal hostname you copied in **step 10**.
 
          \
 
          .. code-block::
 
-            ssh -l <my_delta_username> -L 127.0.0.1:<$UID_or_other>:<cn0XX>.delta.ncsa.illinois.edu:<$UID_or_other> dt-login.delta.ncsa.illinois.edu
+            ssh -l <my_delta_username> -L 127.0.0.1:<$MYPORT>:<cn0XX>.delta.ncsa.illinois.edu:<$MYPORT> dt-login.delta.ncsa.illinois.edu
 
       #. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
@@ -962,13 +960,11 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
       #. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
-      #. Find your ``$UID`` and copy it to a notepad (you will use it in **steps 6, 8, and 14**). 
-
-         If your $UID is >65535, select a random 5-digit number between 22400 and 65535 to use instead.
+      #. Generate a ``$MYPORT`` number and copy it to a notepad (you will use it in **steps 6, 8, and 14**). 
 
          .. code-block::
 
-            echo $UID
+            MYPORT=$(($(($RANDOM % 10000))+49152)); echo $MYPORT
 
       #. Find the the ``account_name`` that you are going to use and copy it to a notepad (you will use it in **step 6**); your accounts are listed under ``Project`` when you run the ``accounts`` command. 
 
@@ -983,18 +979,18 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
          - Replace ``<account_name>`` with the account you are going to use, which you found and copied in step #5. 
          - Replace ``<project_path>`` with the name of your projects folder (in two places).
-         - Replace ``<$UID_or_other>`` with your $UID (or other number if your $UID >65535), which you found and copied in step #4.
+         - Replace ``<$MYPORT>`` with the ``MYPORT`` number you generated in **step 4**.
          - Modify the ``--partition``, ``--time``, ``--mem``, and ``--gpus-per-node`` options and/or add other options to meet your needs.
 
          \
 
          .. code-block::
 
-            srun --account=<account_name> --partition=gpuA100x4-interactive --time=00:30:00 --mem=64g --gpus-per-node=1 singularity run --nv --bind /projects/<project_path> /sw/external/NGC/pytorch:22.02-py3 jupyter-notebook --notebook-dir /projects/<project_path> --no-browser --port=<$UID_or_other> --ip=0.0.0.0
+            srun --account=<account_name> --partition=gpuA100x4-interactive --time=00:30:00 --mem=64g --gpus-per-node=1 singularity run --nv --bind /projects/<project_path> /sw/external/NGC/pytorch:22.02-py3 jupyter-notebook --notebook-dir /projects/<project_path> --no-browser --port=<$MYPORT> --ip=0.0.0.0
 
       #. Copy the last 2 lines returned (beginning with **"Or copy and paste this URL..."**) to a notepad. (It may take a few minutes for these lines to be returned.)
 
-      #. Modify the URL you copied in **step 7** by changing ``hostname:8888`` to ``127.0.0.1:<$UID_or_other>``. You will use the modified URL in **step 16**. (Replace ``<$UID_or_other>`` with your ``$UID`` (or other number if your ``$UID`` >65535), which you found and copied in **step 4**.)
+      #. Modify the URL you copied in **step 7** by changing ``hostname:8888`` to ``127.0.0.1:<$MYPORT>``. You will use the modified URL in **step 16**. (Replace ``<$MYPORT>`` with the ``$MYPORT`` number you generated in **step 4**.)
 
          \
 
@@ -1021,14 +1017,14 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
       #. Run the following ``ssh`` command, with these replacements: 
 
          - Replace ``<my_delta_username>`` with your Delta login username.
-         - Replace ``<$UID_or_other>`` with your ``$UID`` (or other number if your ``$UID`` >65535), which you found and copied in **step 4**.
+         - Replace ``<$MYPORT>`` with the ``$MYPORT`` number you generated in **step 4**.
          - Replace ``<gpuaXXX>`` with internal hostname you copied in **step 12**.
 
          \
 
          .. code-block::
 
-            ssh -l <my_delta_username> -L 127.0.0.1:<$UID_or_other>:<gpuaXXX>.delta.internal.ncsa.edu:<$UID_or_other> dt-login.delta.ncsa.illinois.edu
+            ssh -l <my_delta_username> -L 127.0.0.1:<$MYPORT>:<gpuaXXX>.delta.internal.ncsa.edu:<$MYPORT> dt-login.delta.ncsa.illinois.edu
 
       #. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
