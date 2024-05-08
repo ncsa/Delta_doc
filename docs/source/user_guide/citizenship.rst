@@ -9,3 +9,14 @@ Here are some rules of thumb:
 -  Do not run production jobs on the login nodes (very short time debug tests are fine).
 -  Do not stress file systems with known-harmful access patterns (many thousands of small files in a single directory).
 -  If you encounter an issue, :ref:`submit an informative support request <help>`; include the loaded modules (module list) and stdout/stderr messages in your email.
+
+Acceptable Use Policies
+-------------------------
+
+As a Delta user, you agree to follow these acceptable/appropriate use policies:
+
+- `NCSA Acceptable Use Policy <https://wiki.ncsa.illinois.edu/display/cybersec/NCSA+Acceptable+Use+Policy>`_
+- `ACCESS Acceptable Use Policy <https://access-ci.org/acceptable-use/>`_
+- `University of Illinois Appropriate Use of Computers and Network Systems Policy <https://cam.illinois.edu/policies/fo-07/>`_
+
+|
