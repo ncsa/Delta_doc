@@ -856,7 +856,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
       #. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
          .. warning::
-            If there is a conda environment active when you log into Delta, deactivate it before you continue. You will know you have an active conda environment if your terminal prompt has a parenthetical piece prepended to it, like these examples:
+            If there is a conda environment active when you log into Delta, deactivate it before you continue. You will know you have an active conda environment if your terminal prompt has a environment name in parentheses prepended to it, like these examples:
 
             .. code-block::
 
@@ -864,7 +864,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
                (mynewenv) [<delta_username>@dt-login01 ~]$
 
-            Run ``conda deactivate`` until there is no longer a parenthetical piece prepended to your terminal prompt, like this:
+            Run ``conda deactivate`` until there is no longer a name in parentheses prepended to your terminal prompt.  When you don't have any conda environment active, your prompt will look like this:
 
             .. code-block::
 
