@@ -19,4 +19,4 @@ As a Delta user, you agree to comply with the following acceptable/appropriate u
 - `ACCESS Acceptable Use Policy <https://access-ci.org/acceptable-use/>`_
 - `University of Illinois Appropriate Use of Computers and Network Systems Policy <https://cam.illinois.edu/policies/fo-07/>`_
 
-If you have any questions, :ref:`submit a support request <help>`.
+If you have any questions, please :ref:`submit a support request <help>`.
