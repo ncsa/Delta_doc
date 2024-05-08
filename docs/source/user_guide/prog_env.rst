@@ -260,7 +260,7 @@ AMD HIP development environment on gpud01 (setting the path on the compute node)
    No Arguments passed, exiting ...
    [arnoldg@gpud01 bin]$ 
 
-See the `AMD HIP documentation <https://docs.amd.com/projects/HIP/en/docs-5.0.0/index.html>`_ and `AMD ROCm documentation <https://rocmdocs.amd.com/en/latest/>`_ for more information.
+See the `AMD HIP documentation <https://rocmdocs.amd.com/projects/HIP/en/docs-5.0.0/index.html>`_ and `AMD ROCm documentation <https://rocmdocs.amd.com/en/latest/>`_ for more information.
    
 Visual Studio Code
 ---------------------

@@ -15,10 +15,6 @@ Configuring Your Account
 
 Bash is the default shell. To change the default shell, :ref:`submit a support request <help>`.
 
-Environment variables: ACCESS CUE, SLURM batch
-
-Using :ref:`module`
-
 Allocations
 -------------
 

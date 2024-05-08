@@ -6,7 +6,7 @@ Frequently Asked Questions
 How do I log into Delta?
 --------------------------
 
-Log into the Delta login nodes via Secure Shell (SSH) using your NCSA username, password, and NCSA Duo MFA. See :ref:`accessing` for more information, including the login node hostnames.
+Log into the Delta login nodes via Secure Shell (SSH) using your NCSA username, password, and NCSA Duo MFA. See :ref:`access` for more information, including the login node hostnames.
 
 How do I request access to Delta?
 ----------------------------------
