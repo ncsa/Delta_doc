@@ -986,16 +986,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
          .. code-block::
 
-            $ MYPORT=$(($(($RANDOM % 10000))+49152)); echo $MYPORT # Make a note of this PORT NUMBER, you will need it later
-            $ srun --account=account_name --partition=cpu-interactive \
-              --time=00:30:00 --mem=32g \
-              jupyter-notebook --no-browser \
-              --port=$MYPORT --ip=0.0.0.0
-            ...
-            # MYPORT here will be filled in with your user id number (unique to you )
-                Or copy and paste one of these URLs:
-                    http://cn093.delta.internal.ncsa.edu:$MYPORT/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
-                 or http://127.0.0.1:$MYPORT/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
+            srun --account=<account_name> --partition=gpuA100x4-interactive --time=00:30:00 --mem=64g --gpus-per-node=1 apptainer run --nv --bind /projects/<project_path> /sw/external/NGC/pytorch:22.02-py3 jupyter-notebook --notebook-dir /projects/<project_path> --no-browser --port=<$MYPORT> --ip=0.0.0.0
 
       #. Copy the last 2 lines returned (beginning with **"Or copy and paste this URL..."**) to a notepad. (It may take a few minutes for these lines to be returned.)
 
@@ -1028,6 +1019,8 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
          - Replace ``<my_delta_username>`` with your Delta login username.
          - Replace ``<$MYPORT>`` with the ``$MYPORT`` number you generated in **step 4**.
          - Replace ``<gpuaXXX>`` with internal hostname you copied in **step 12**.
+
+         \
 
          .. code-block::
 
