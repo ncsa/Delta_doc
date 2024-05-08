@@ -13,7 +13,7 @@ Here are some rules of thumb:
 Acceptable Use Policies
 -------------------------
 
-As a Delta user, you have agreed to follow these policies:
+As a Delta user, you agree to follow these policies:
 
 - `NCSA Acceptable Use Policy <https://wiki.ncsa.illinois.edu/display/cybersec/NCSA+Acceptable+Use+Policy>`_
 - `ACCESS Acceptable Use Policy <https://access-ci.org/acceptable-use/>`_
