@@ -825,98 +825,221 @@ Jupyter Notebooks
 -------------------
 
 .. note::
-   The Delta Open OnDemand (OOD) portal provides an easy method to start a Jupyter notebook; this is the **recommended method** for users. 
+   The Delta Open OnDemand (OOD) portal provides an easy method to start a Jupyter notebook; this is the **recommended method**. 
 
    Go to :ref:`OOD Jupyter interactive app <ood-jupyterlab>` for instructions on how to start an OOD JupyterLab session.
 
    You can also customize your OOD JupyterLab environment:
 
      - :ref:`ood-custom-anaconda`
-     - :ref:`ood-custom-r`
-
-The Jupyter notebook executables are in your ``$PATH`` after loading the anaconda3 module. If you run into problems from a previously saved Jupyter session (for example, you see paths where you do not have write permission), you may remove this file to get a fresh start: ``$HOME/.jupyter/lab/workspaces/default-*``.  
+     - :ref:`ood-custom-r` 
 
 **Do not run Jupyter on the shared login nodes.**
 Instead, follow these steps to attach a Jupyter notebook running on a compute node to your local web browser:
 
-#. Start a Jupyter job via ``srun`` and note the hostname (*you pick the port number for --port*).
+.. tabs::
 
-   **srun Jupyter ( anaconda3_cpu on a CPU node ):**
+   .. tab:: How to Run Jupyter on a Compute Node
 
-   Replace ``account_name`` with one of your available CPU accounts; these are listed under "Project" when you run the ``accounts`` command.
-   
-   .. code-block::
+      The Jupyter notebook executables are in your ``$PATH`` after loading the ``anaconda3`` module. If you run into problems from a previously saved Jupyter session (for example, you see paths where you do not have write permission), you may remove this file to get a fresh start: ``$HOME/.jupyter/lab/workspaces/default-*``. 
 
-      $ MYPORT=$(($(($RANDOM % 10000))+49152)); echo $MYPORT # Make a note of this PORT NUMBER, you will need it later
-      $ srun --account=account_name --partition=cpu-interactive \
-        --time=00:30:00 --mem=32g \
-        jupyter-notebook --no-browser \
-        --port=$MYPORT --ip=0.0.0.0
-      ...
-      # MYPORT here will be filled in with your user id number (unique to you )
-          Or copy and paste one of these URLs:
-              http://cn093.delta.internal.ncsa.edu:$MYPORT/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
-           or http://127.0.0.1:$MYPORT/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
+      Follow these steps to run Jupyter on a compute node (CPU or GPU):
 
-   Note the internal hostname in the **cluster** for **step 2**. You will use the **second URL** in **step 3**.
+      #. On your local machine/laptop, open a terminal.
 
-   When using a container with a GPU node, run the container's jupyter-notebook:
+      #. SSH into Delta. (Replace ``<my_delta_username>`` with your Delta login username).
 
-   **NGC container for GPUs, jupyter-notebook, bind a directory:**
+         .. code-block:: terminal
 
-   Replace ``account_name`` with one of your available GPU accounts; these are listed under "Project" when you run the ``accounts`` command.
+            ssh <my_delta_username>@login.delta.ncsa.illinois.edu
 
-   .. code-block::
+      #. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
-      # container notebook example showing how to access a directory outside
-      # of $HOME ( /projects/bbka in the example )
-      $ MYPORT=99999    # Do not use 99999, use the number generated in the previous step
-      $ srun --account=account_name --partition=gpuA100x4-interactive \
-        --time=00:30:00 --mem=64g --gpus-per-node=1 \
-        singularity run --nv --bind /projects/bbka \
-        /sw/external/NGC/pytorch:22.02-py3 jupyter-notebook \
-        --notebook-dir /projects/wxyz \
-        --no-browser --port=$MYPORT --ip=0.0.0.0
-      ...
-      # again, $MYPORT will be filled in with your user id number
-      http://hostname:$MYPORT/?token=73d96b99f2cfc4c3932a3433d1b8003c052081c5411795d5
+         .. warning::
+            If there is a conda environment active when you log into Delta, deactivate it before you continue. You will know you have an active conda environment if your terminal prompt has an environment name in parentheses prepended to it, like these examples:
 
-   In step 3, to start the notebook in your browser, replace http://hostname:8888/ with http://127.0.0.1:8991/ (the port number you selected with ``--port=``)
+            .. code-block::
 
-   You may not see the job hostname when running with a container, find it with ``squeue``:
+               (base) [<delta_username>@dt-login01 ~]$
 
-   **squeue -u $USER:**
+               (mynewenv) [<delta_username>@dt-login01 ~]$
 
-   .. code-block::
+            Run ``conda deactivate`` until there is no longer a name in parentheses prepended to your terminal prompt.  When you don't have any conda environment active, your prompt will look like this:
 
-      $ squeue -u $USER
-                   JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-                  156071 gpuA100x4 singular  arnoldg  R       1:00      1 gpua045
+            .. code-block::
 
-   Specify the host your job is using in the next step (gpua045, for example).
+               [<delta_username>@dt-login01 ~]$
 
-#. From your local desktop or laptop create an SSH tunnel to the compute node via a login node of Delta.
+      #. Load the appropriate anaconda module. To see all of the available anaconda modules, run ``module avail anaconda``. This example uses ``anaconda3_cpu``. 
 
-   **SSH tunnel for Jupyter:**
+         .. code-block::
 
-   .. code-block::
+            module load anaconda3_cpu
 
-      # replace $MYPORT below with the port number you created in the first step
-      $ ssh -l my_delta_username \
-        -L 127.0.0.1:$MYPORT:cn093.delta.internal.ncsa.edu:$MYPORT \
-        dt-login.delta.ncsa.illinois.edu
+      #. Verify the module is loaded.
 
-   Authenticate with your login and MFA, as usual.
+         .. code-block::
 
-#. Paste the **second URL** (containing 127.0.0.1:port_number and the token string) from **step 1** into your browser and you will be connected to the Jupyter instance running on your compute node of Delta.
+            module list
 
-   .. image:: images/software/jupyter_screenshot.jpg
-      :alt: Jupyter screenshot
-      :width: 700
+      #. Verify a jupyter-notebook is in your ``$PATH``.
 
-   .. image:: images/software/jupyter_logo.png
-      :alt: Jupyter logo
+         .. code-block::
 
+            which jupyter-notebook
+
+      #. Generate a ``MYPORT`` number and copy it to a notepad (you will use it in **steps 9 and 12**). 
+
+         .. code-block::
+
+            MYPORT=$(($(($RANDOM % 10000))+49152)); echo $MYPORT
+
+      #. Find the the ``account_name`` that you are going to use and copy it to a notepad (you will use it in **step 9**); your accounts are listed under ``Project`` when you run the ``accounts`` command.
+
+         .. note::
+            To use a GPU node, you must pick a GPU account (the account name will end in "...-gpu").
+
+         .. code-block::
+
+            accounts
+
+      #. Run the following ``srun`` command, with these replacements:
+
+         - Replace ``<account_name>`` with the account you are going to use, which you found and copied in **step 8**.
+         - Replace ``<$MYPORT>`` with the ``$MYPORT`` number you generated in **step 7**.
+         - Modify the ``--partition``, ``--time``, and ``--mem`` options and/or add other options to meet your needs.
+
+         \
+
+         .. code-block::
+
+            srun --account=<account_name> --partition=cpu-interactive --time=00:30:00 --mem=32g jupyter-notebook --no-browser --port=<$MYPORT> --ip=0.0.0.0
+
+      #. Copy the last 5 lines returned beginning with: **"To access the notebook, open this file in a browser..."** to a notepad (you will use this information **steps 12 and 14**). (It may take a few minutes for these lines to be returned.)
+
+         Note these two things about the URLs you copied:
+
+         - The first URL begins with ``http://<cnXXX>.delta...``, ``<cnXXX>`` is the **internal hostname** and will be used in **step 12**.
+         - The second URL begins with ``http://127.0...``, you will use this entire URL in **step 14**.
+
+         \
+
+      #. Open a second terminal on your local machine/laptop.
+
+      #. Run the following ``ssh`` command, with these replacements: 
+
+         - Replace ``<my_delta_username>`` with your Delta login username.
+         - Replace ``<$MYPORT>`` with the ``$MYPORT`` number you generated in **step 7**.
+         - Replace ``<cn0XX>`` with internal hostname you copied in **step 10**.
+
+         \
+
+         .. code-block::
+
+            ssh -l <my_delta_username> -L 127.0.0.1:<$MYPORT>:<cn0XX>.delta.ncsa.illinois.edu:<$MYPORT> dt-login.delta.ncsa.illinois.edu
+
+      #. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
+
+      #. Copy and paste the entire **second URL** from **step 10** (begins with ``https://127.0...``) into your browser. You will be connected to the Jupyter instance running on your compute node of Delta.
+
+         .. image:: images/software/jupyter_screenshot.jpg
+            :alt: Jupyter screenshot
+            :width: 700
+
+   .. tab:: How to Run Jupyter on a Compute Node, in an NGC Container
+
+      Follow these steps to run Jupyter on a compute node, in an NGC container:
+
+      #. On your local machine/laptop, open a terminal.
+
+      #. SSH into Delta. (Replace ``<my_delta_username>`` with your Delta login username.)
+
+         .. code-block:: terminal
+
+            ssh <my_delta_username>@login.delta.ncsa.illinois.edu
+
+      #. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
+
+      #. Generate a ``$MYPORT`` number and copy it to a notepad (you will use it in **steps 6, 8, and 14**). 
+
+         .. code-block::
+
+            MYPORT=$(($(($RANDOM % 10000))+49152)); echo $MYPORT
+
+      #. Find the the ``account_name`` that you are going to use and copy it to a notepad (you will use it in **step 6**); your accounts are listed under ``Project`` when you run the ``accounts`` command. 
+
+         .. note::
+            To use a GPU node, you must pick a GPU account (the account name will end in "...-gpu").
+
+         .. code-block::
+
+            accounts
+
+      #. Run the following ``srun`` command, with these replacements: 
+
+         - Replace ``<account_name>`` with the account you are going to use, which you found and copied in step #5. 
+         - Replace ``<project_path>`` with the name of your projects folder (in two places).
+         - Replace ``<$MYPORT>`` with the ``MYPORT`` number you generated in **step 4**.
+         - Modify the ``--partition``, ``--time``, ``--mem``, and ``--gpus-per-node`` options and/or add other options to meet your needs.
+
+         \
+
+         .. code-block::
+
+            $ MYPORT=$(($(($RANDOM % 10000))+49152)); echo $MYPORT # Make a note of this PORT NUMBER, you will need it later
+            $ srun --account=account_name --partition=cpu-interactive \
+              --time=00:30:00 --mem=32g \
+              jupyter-notebook --no-browser \
+              --port=$MYPORT --ip=0.0.0.0
+            ...
+            # MYPORT here will be filled in with your user id number (unique to you )
+                Or copy and paste one of these URLs:
+                    http://cn093.delta.internal.ncsa.edu:$MYPORT/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
+                 or http://127.0.0.1:$MYPORT/?token=e5b500e5aef67b1471ed1842b2676e0c0ae4b5652656feea
+
+      #. Copy the last 2 lines returned (beginning with **"Or copy and paste this URL..."**) to a notepad. (It may take a few minutes for these lines to be returned.)
+
+      #. Modify the URL you copied in **step 7** by changing ``hostname:8888`` to ``127.0.0.1:<$MYPORT>``. You will use the modified URL in **step 16**. (Replace ``<$MYPORT>`` with the ``$MYPORT`` number you generated in **step 4**.)
+
+         \
+
+      #. Open a second terminal.
+
+      #. SSH into Delta. (Replace ``<my_delta_username>`` with your Delta login username.)
+
+         .. code-block:: terminal
+
+            ssh <my_delta_username>@login.delta.ncsa.illinois.edu
+
+      #. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
+
+      #. Find the **internal hostname** for your job and copy it to a notepad (you will use it in **step 14**).
+
+         .. code-block::
+
+            squeue -u $USER
+
+         The value returned under ``NODELIST`` is the internal hostname for your GPU job (``gpuaXXX``). You can now close this terminal.
+
+      #. Open a third terminal.
+
+      #. Run the following ``ssh`` command, with these replacements: 
+
+         - Replace ``<my_delta_username>`` with your Delta login username.
+         - Replace ``<$MYPORT>`` with the ``$MYPORT`` number you generated in **step 4**.
+         - Replace ``<gpuaXXX>`` with internal hostname you copied in **step 12**.
+
+         .. code-block::
+
+            ssh -l <my_delta_username> -L 127.0.0.1:<$MYPORT>:<gpuaXXX>.delta.internal.ncsa.edu:<$MYPORT> dt-login.delta.ncsa.illinois.edu
+
+      #. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
+
+      #. Copy and paste the entire **modified URL** (beginning with ``https://127.0...``) from **step 8** into your browser. You will be connected to the Jupyter instance running on your gpu node of Delta.
+
+         .. image:: images/software/jupyter_screenshot.jpg
+            :alt: Jupyter screenshot
+            :width: 700
 
 List of Installed Software (CPU & GPU)
 ---------------------------------------
@@ -926,7 +1049,7 @@ List of Installed Software (CPU & GPU)
    <details>
    <summary><a><b>Delta software module list</b> <i>(click to expand/collapse)</i></a></summary>
 
-The modules listed below are installed on Delta CPUs, GPUs, or both, as indicated.
+The following modules are installed on Delta CPUs, GPUs, or both, as indicated.
 
 .. table:: Delta Installed Modules
 
