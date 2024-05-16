@@ -362,7 +362,8 @@ Follow the `Visual Studio Code remote development using SSH <https://code.visual
 #. Proceed to F1 → Remote SSH and connect to Delta. Then, following the guide, use Visual Studio as normal. 
    
    Windows users: The login box of vscode will display your login as 2fa<delta_username>, and you may not see a 2nd login box for 2fa Duo until you press the "details" link at lower right after you enter your password. Use the Duo passcode after pressing "details" link when the next password prompt appears at the top.  Also see the `Visual Studio Code remote development troubleshooting <https://code.visualstudio.com/docs/remote/troubleshooting>`_ guide and search for "two-factor".
-Should VS Code fail to connect after you have been using it for a while, check your quota ( a full $HOME can prevent it from updating $HOME/.vscode on Delta).  We have also seen cases where it was necessary to remove $HOME/.vscode on Delta similar to what is documented at: <https://code.visualstudio.com/docs/setup/uninstall#_clean-uninstall>`_ .
+
+   If VS Code fails to connect after you have been using it for a while, check your quota (a full $HOME can prevent it from updating $HOME/.vscode on Delta). We have also seen cases where it was necessary to remove $HOME/.vscode on Delta similar the `VS Code documentation - clean uninstall <https://code.visualstudio.com/docs/setup/uninstall#_clean-uninstall>`_.
 
    Example of working with a C file remote on Delta:
 
