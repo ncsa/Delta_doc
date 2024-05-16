@@ -3,9 +3,29 @@
 Getting Help
 ================
 
-For **ACCESS allocation issues**, create a ticket via the `ACCESS Help page <https://support.access-ci.org/open-a-ticket>`_ (ACCESS log in required). You can browse other ACCESS support resources on the `ACCESS Support page <https://support.access-ci.org>`_ (ACCESS log in *not* required).
+ACCESS Allocations
+---------------------
 
-================
+For ACCESS allocation issues, create a ticket via the `ACCESS Help page <https://support.access-ci.org/open-a-ticket>`_ (ACCESS log in required). You can browse other ACCESS support resources on the `ACCESS Support page <https://support.access-ci.org>`_ (ACCESS log in *not* required).
+
+NAIRR Pilot Projects
+----------------------
+
+For issues specific to NAIRR Pilot projects that have been awarded time on Delta, please submit your issues to NAIRR Pilot support by emailing usersupport@support.nairrpilot.org.
+
+Explore Solutions
+-------------------
+
+System users can often fix problems or help diagnose them on their own. The following are some strategies to try before you submit a support request:
+
+- Search the documentation for relevant keywords; use the search box in the upper left.
+- If you're getting an error, perform a web search of the error message (Google, Bing, or others).
+- If you're looking for a package, perform a web search for "how do I install <package name>" and try the solutions you find that seem applicable and reasonable.  
+
+When you submit a support request, please let us know what you tried, and what happened if it didn't seem to work.  
+
+General Resource Support
+---------------------------
 
 .. raw:: html
    
@@ -28,8 +48,8 @@ For **ACCESS allocation issues**, create a ticket via the `ACCESS Help page <htt
   - Any other approaches you’ve tried.
   - Any other information you think might be relevant.
 
-System users can often fix problems or help diagnose them on their own.  Please search the documentation for relevant keywords you're looking for in the search box in the upper left, or, if you're seeing an error, google the error message, or if you're looking for a package, google "how do I install (and the package name)" and try the solutions you find if they seem applicable and reasonable.  Please let us know what you tried, and if it didn't seem to work, what happened.  
-
 **If you have multiple, unrelated issues, please create a separate ticket for each by sending separate emails.**
 
 You will receive email correspondence as your ticket is worked on, please respond to any questions that are asked.
+
+|
