@@ -387,7 +387,7 @@ This file system is mounted across all Delta systems at /taiga (note that Taiga 
 For NCSA and Illinois researchers, Taiga is also mounted across NCSA's HAL, HOLL-I, and Radiant compute environments. 
 This storage subsystem has an aggregate performance of 110GB/s and 1PB of its capacity is allocated to users of the Delta system. 
 /taiga is a Lustre file system running DDN's Exascaler 6 Lustre stack. 
-See the `Taiga and Granite NCSA wiki site <https://wiki.ncsa.illinois.edu/pages/viewpage.action?pageId=148538533>`_ for more information.
+See the `Taiga documentation <https://docs.ncsa.illinois.edu/systems/taiga/>`_ for more information.
 
 Hardware
 $$$$$$$$$$
