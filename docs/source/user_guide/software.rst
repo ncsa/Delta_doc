@@ -950,7 +950,7 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 
    .. tab:: How to Run Jupyter on a Compute Node, in an NGC Container
 
-   .. _ngc-container1:
+      .. _ngc-container1:
 
       Follow these steps to run Jupyter on a compute node, in an NGC container:
 
