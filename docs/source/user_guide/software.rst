@@ -1,7 +1,7 @@
 Installed Software
 ======================
 
-Delta software is provisioned, when possible, using Spack to produce modules for use via the Lmod based module system. 
+:ref:`Delta software <ngc-container>` is provisioned, when possible, using Spack to produce modules for use via the Lmod based module system. 
 Select NVIDIA NGC containers are made available (see :ref:`contain`) and are periodically updated from the NVIDIA NGC site. 
 An automated list of available software can be found on the ACCESS website.
 
@@ -947,6 +947,8 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
             :width: 700
 
    .. tab:: How to Run Jupyter on a Compute Node, in an NGC Container
+
+      .. _ngc-container:
 
       Follow these steps to run Jupyter on a compute node, in an NGC container:
 
