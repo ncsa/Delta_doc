@@ -42,7 +42,8 @@ html_css_files = [
 
 # -- custom JS
 html_js_files = [
-    'js/custom.js', 'js/expand_tabs.js'
+    'js/custom.js', 
+    'js/expand_tabs.js'
 ]
 
 # -- Logo 
