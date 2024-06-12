@@ -25,11 +25,11 @@ How do I acknowledge Delta, NCSA, and/or ACCESS in my research?
 
 See `Delta Citations <https://delta.ncsa.illinois.edu/delta-citations/>`_ for information on how to acknwoledge Delta or NCSA, and `Acknowledging ACCESS <https://access-ci.org/about/acknowledging-access/>`_ for information on how to acknowledge ACCESS.
 
-Programming and jobs related questions:
-========================================
+What causes "ImportError: /lib64/libstdc++.so.6: version GLIBCXX_3.x.x not found"?
+-------------------------------------------------------------------------------------
 
-What causes "ImportError: /lib64/libstdc++.so.6: version GLIBCXX_3.x.x not found" ?
-------------------------------------------------------------------------------------
+This can result from bringing software onto Delta that was not built on the system using the system programming modules.  You can usually work around this by setting: 
 
-This can result from bringing software onto Delta that was not built on the system using the system programming modules.  You can usually work around this by setting:  
+.. code-block:: terminal
+
    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$LIBRARY_PATH
