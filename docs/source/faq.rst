@@ -33,3 +33,7 @@ This can result from bringing software onto Delta that was not built on the syst
 .. code-block:: terminal
 
    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$LIBRARY_PATH
+
+Why does nvidia-smi not find a gpu?
+------------------------------------
+You are running the command on a cpu-only compute node OR on one of the login nodes.  Only the gpu nodes contain Nvidia gpus and they are accessible via the slurm batch system.  See: `Running Jobs <https://docs.ncsa.illinois.edu/systems/delta/en/latest/user_guide/running_jobs.html/>`_
