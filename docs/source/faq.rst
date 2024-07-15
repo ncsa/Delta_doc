@@ -23,7 +23,7 @@ If you can’t find the answer in the documentation (or via the search bar in th
 How do I acknowledge Delta, NCSA, and/or ACCESS in my research?
 ------------------------------------------------------------------
 
-See `Delta Citations <https://delta.ncsa.illinois.edu/delta-citations/>`_ for information on how to acknwoledge Delta or NCSA, and `Acknowledging ACCESS <https://access-ci.org/about/acknowledging-access/>`_ for information on how to acknowledge ACCESS.
+See `Delta Citations <https://delta.ncsa.illinois.edu/delta-citations/>`_ for information on how to acknowledge Delta or NCSA, and `Acknowledging ACCESS <https://access-ci.org/about/acknowledging-access/>`_ for information on how to acknowledge ACCESS.
 
 What causes "ImportError: /lib64/libstdc++.so.6: version GLIBCXX_3.x.x not found"?
 -------------------------------------------------------------------------------------
@@ -37,4 +37,4 @@ This can result from bringing software onto Delta that was not built on the syst
 Why doesn't nvidia-smi find a GPU?
 ------------------------------------
 
-You are running the command on a CPU-only compute node or on one of the login nodes. Only the GPU nodes contain NVIDIA GPUs and they are accessible via the Slurm batch system. See :ref:`running-jobs`.
+You are running the command on a CPU-only compute node or on one of the login nodes. Only the GPU nodes contain NVIDIA GPUs, and they are accessible via the Slurm batch system. See :ref:`running-jobs`.
