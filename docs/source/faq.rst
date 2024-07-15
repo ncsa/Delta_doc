@@ -38,3 +38,5 @@ Why doesn't nvidia-smi find a GPU?
 ------------------------------------
 
 You are running the command on a CPU-only compute node or on one of the login nodes. Only the GPU nodes contain NVIDIA GPUs, and they are accessible via the Slurm batch system. See :ref:`running-jobs`.
+
+|
