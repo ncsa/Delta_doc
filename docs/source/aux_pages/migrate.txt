@@ -2993,8 +2993,7 @@ A sample batch script for pytorch resembles:
    ##SBATCH --gpus-per-task=1
    ##SBATCH --gpu-bind=none     # <- or closest
 
-   module purge # drop modules and explicitly load the ones needed
-                # (good job metadata and reproducibility)
+   module reset 
 
    module list  # job documentation and metadata
 
