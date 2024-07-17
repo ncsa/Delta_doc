@@ -1,3 +1,5 @@
+.. _running-jobs:
+
 Running Jobs
 ===============
 
@@ -726,6 +728,8 @@ Serial Jobs on CPU Nodes
    #SBATCH --job-name=myjobtest
    #SBATCH --time=00:10:00      # hh:mm:ss for the job
    #SBATCH --constraint="scratch"
+   #SBATCH -e slurm-%j.err
+   #SBATCH -o slurm-%j.out
    ### GPU options ###
    ##SBATCH --gpus-per-node=2
    ##SBATCH --gpu-bind=none     # <- or closest
@@ -766,6 +770,8 @@ MPI on CPU Nodes
    #SBATCH --job-name=mympi
    #SBATCH --time=00:10:00      # hh:mm:ss for the job
    #SBATCH --constraint="scratch"
+   #SBATCH -e slurm-%j.err
+   #SBATCH -o slurm-%j.out
    ### GPU options ###
    ##SBATCH --gpus-per-node=2
    ##SBATCH --gpu-bind=none     # <- or closest ##SBATCH --mail-user=you@yourinstitution.edu
@@ -804,6 +810,8 @@ OpenMP on CPU Nodes
    #SBATCH --job-name=myopenmp
    #SBATCH --time=00:10:00      # hh:mm:ss for the job
    #SBATCH --constraint="scratch"
+   #SBATCH -e slurm-%j.err
+   #SBATCH -o slurm-%j.out
    ### GPU options ###
    ##SBATCH --gpus-per-node=2
    ##SBATCH --gpu-bind=none     # <- or closest
@@ -844,6 +852,8 @@ Hybrid (MPI + OpenMP or MPI+X) on CPU Nodes
    #SBATCH --job-name=mympi+x
    #SBATCH --time=00:10:00      # hh:mm:ss for the job
    #SBATCH --constraint="scratch"
+   #SBATCH -e slurm-%j.err
+   #SBATCH -o slurm-%j.out
    ### GPU options ###
    ##SBATCH --gpus-per-node=2
    ##SBATCH --gpu-bind=none     # <- or closest
@@ -889,6 +899,8 @@ Hybrid (MPI + OpenMP or MPI+X) on CPU Nodes
    #SBATCH --exclusive  # dedicated node for this job
    #SBATCH --no-requeue
    #SBATCH -t 04:00:00
+   #SBATCH -e slurm-%j.err
+   #SBATCH -o slurm-%j.out
 
    export OMP_NUM_THREADS=1  # if code is not multithreaded, otherwise set to 8 or 16
    srun -N 1 -n 4 ./a.out > myjob.out
@@ -925,6 +937,8 @@ Hybrid (MPI + OpenMP or MPI+X) on CPU Nodes
    #SBATCH --exclusive  # dedicated node for this job
    #SBATCH --no-requeue
    #SBATCH -t 04:00:00
+   #SBATCH -e slurm-%j.err
+   #SBATCH -o slurm-%j.out
 
    export OMP_NUM_THREADS=1  # if code is not multithreaded, otherwise set to 8 or 16
    srun -N 1 -n 4 ./a.out > myjob.out

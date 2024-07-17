@@ -723,8 +723,9 @@ A sample TensorFlow test script:
    #SBATCH --gpu-bind=verbose,per_task:1
    ###SBATCH --gpu-bind=none     # <- or closest
 
-   module purge # drop modules and explicitly load the ones needed
-                # (good job metadata and reproducibility)
+   # expert mode only, most users will not purge all modules
+   # module purge # drop modules and explicitly load the ones needed, including cuda
+                  # (good job metadata and reproducibility)
 
    module load anaconda3_gpu
    module list  # job documentation and metadata

@@ -191,6 +191,7 @@ Sample Batch Script for PyTorch
    ##SBATCH --gpus-per-task=1
    ##SBATCH --gpu-bind=none    # <- or closest
 
+   # reminder here, containers are not using or consulting any loaded modules
    module purge # drop modules and explicitly load the ones needed
                 # (good job metadata and reproducibility)
 
