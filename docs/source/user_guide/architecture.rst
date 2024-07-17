@@ -15,10 +15,20 @@ Delta has some important architectural features to facilitate new discovery and 
 -  Resources for persistent services in support of Gateways, Open OnDemand, and Data Transport nodes
 -  Unique AMD MI100 resource
 
-Model Compute Nodes
+Types of Nodes in Delta System
 ----------------------
 
-The Delta compute ecosystem is composed of five node types:
+Login Nodes
+~~~~~~~~~~~~~
+
+Login nodes provide interactive support for editing files, managing and launching jobs, and code compilation.  See :ref:`access` for information about how to get *to* the login nodes.  Users typically log into the login nodes as their first step to using the system.  
+
+While the login nodes have similar CPUs to the computational nodes and large memories, these are to enable users to run large code compilations interactively.  The logins are never to be used for production computation.  Please see the :ref:`good_citizenship` page for details.
+
+Computational ("Compute") Nodes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+User jobs that incur cost to the users' allocation always run on compute nodes in the cluster.  The Delta compute node ecosystem is composed of five node types:
 
 - Dual-socket, CPU-only compute nodes
 - Single socket, 4-way NVIDIA A100 GPU compute nodes
@@ -309,10 +319,7 @@ Table Legend:
    | Local storage (TB)        | 1.5 TB                                  |
    +---------------------------+-----------------------------------------+
 
-Login Nodes
-~~~~~~~~~~~~~
 
-Login nodes provide interactive support for code compilation. See :ref:`access` for more information.
 
 Specialized Nodes
 ~~~~~~~~~~~~~~~~~~~~
