@@ -1,30 +1,53 @@
-VS Code code-server
-======================
+.. _code-server:
 
-`Microsoft VS Code documentation <https://code.visualstudio.com/docs>`_
+Run VS Code code-server in a Web Browser
+==========================================
 
 The code-server for VS Code can be run on Delta in manual mode (without Open OnDemand) by following these steps:
 
+#. In a terminal, ``ssh`` log in to Delta (see :ref:`direct_access`).
+
 #. Start the server.
 
-   | **/sw/external/vscode/code-server/bin/code-server:**
-   .. code-block::
+   A. In the terminal, navigate to ``/sw/external/vscode/code-server/bin``.
 
-      [arnoldg@dt-login03 bin]$  ./code-server --bind-addr 
-      dt-login03:8899
-      [2023-04-14T15:57:03.059Z] info  code-server 4.11.0 85e083580dec27ef19827ff42d3c9257d56ea7e3
-      [2023-04-14T15:57:03.060Z] info  Using user-data-dir ~/.local/share/code-server
-      [2023-04-14T15:57:03.132Z] info  Using config file ~/.config/code-server/config.yaml
-      [2023-04-14T15:57:03.133Z] info  HTTP server listening on http://141.142.140.196:8899/
-      [2023-04-14T15:57:03.133Z] info    - Authentication is enabled
-      [2023-04-14T15:57:03.133Z] info      - Using password from ~/.config/code-server/config.yaml
-      [2023-04-14T15:57:03.133Z] info    - Not serving HTTPS
-      [10:57:12] 
+   B. Run the following to start the server. **Replace ``dt-loginNN`` with the login node you are logged in to.** 
 
-#. SSH to the login node where the server is waiting. Read the config.yaml noted above and copy the password to your clipboard.
+      .. code-block:: terminal
 
-   | **SSH tunnel to login node running code-server:**
-   .. code-block::
+         ./code-server --bind-addr dt-loginNN:8899
+
+      In the following example, the user is logged in to ``dt-login03``.
+
+      .. code-block::
+   
+         [arnoldg@dt-login03 bin]$  ./code-server --bind-addr 
+         dt-login03:8899
+         [2023-04-14T15:57:03.059Z] info  code-server 4.11.0 85e083580dec27ef19827ff42d3c9257d56ea7e3
+         [2023-04-14T15:57:03.060Z] info  Using user-data-dir ~/.local/share/code-server
+         [2023-04-14T15:57:03.132Z] info  Using config file ~/.config/code-server/config.yaml
+         [2023-04-14T15:57:03.133Z] info  HTTP server listening on http://141.142.140.196:8899/
+         [2023-04-14T15:57:03.133Z] info    - Authentication is enabled
+         [2023-04-14T15:57:03.133Z] info      - Using password from ~/.config/code-server/config.yaml
+         [2023-04-14T15:57:03.133Z] info    - Not serving HTTPS
+         [10:57:12] 
+
+#. Open a second terminal window.
+
+#. SSH tunnel to login node running code-server with the following ``ssh``` command.
+
+   Replace:
+
+   - ``username`` with your Delta login username (in one place).
+   - ``dt-loginNN`` with the same login node you used in step 2 (in **two** places).
+
+   .. code-block:: terminal
+
+      ssh -l username -L 127.0.0.1:8899:dt-loginNN.delta.ncsa.illinois.edu:8899 dt-loginNN.delta.ncsa.illinois.edu
+
+   In the following example, the user is logged in to ``dt-login03``.
+
+   .. code-block:: terminal 
 
       (base) galen@macbookair-m1-042020 ~ % ssh -l arnoldg -L 
       127.0.0.1:8899:dt-login03.delta.ncsa.illinois.edu:8899 dt-login03.delta.ncsa.illinois.edu
@@ -39,14 +62,24 @@ The code-server for VS Code can be run on Delta in manual mode (without Open OnD
             ΔΔ  ΔΔ   ΔΔ       ΔΔ       ΔΔ   ΔΔΔΔΔΔ
             ΔΔΔΔΔ    ΔΔΔΔΔΔ   ΔΔΔΔΔΔ   ΔΔ   ΔΔ  ΔΔ
 
+#. Read the ``config.yaml`` noted when you started the server in step 2 and copy the password to your clipboard.
+
+   .. code-block:: terminal
+
       [arnoldg@dt-login03 ~]$ more ~/.config/code-server/config.yaml
       bind-addr: 127.0.0.1:8080
       auth: password
       password: 9e8081e80d9999c3c525fe26
       cert: false
 
-#. Open a local browser on your desktop system with URL = http://127.0.0.1:8899. Log in with the password copied from above and begin using VS Code in your browser.
+#. Open a web browser on your local desktop/laptop and go to the following URL.
+
+   .. code-block:: terminal
+
+      http://127.0.0.1:8899
+
+#. Enter the password you copied in step 5 and begin using VS Code in your browser.
 
    ..  image:: ../images/prog_env/vscode_in_browser.png
        :alt: vscode in a web browser
-       :width: 1000px
+       :width: 700
