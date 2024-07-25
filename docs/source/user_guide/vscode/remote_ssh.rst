@@ -46,4 +46,4 @@ Follow the `Visual Studio Code remote development using SSH <https://code.visual
 
    ..  image:: ../images/prog_env/02_remote_c_file.png
        :alt: using visual studio to work with a C file on delta
-       :width: 1000px
+       :width: 700
