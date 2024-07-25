@@ -1,11 +1,11 @@
 .. _vs-remote-ssh:
 
-Remote - SSH
-==============
+Remote SSH to Delta Through VS Code
+======================================
 
-Follow the `Visual Studio Code remote development using SSH <https://code.visualstudio.com/docs/remote/ssh>`_ guide.
+Follow the `Visual Studio Code remote development using SSH <https://code.visualstudio.com/docs/remote/ssh>`_ guide. A high-level overview with Delta-specific examples is provided in the following.
 
-#. As stated in the guide, install "Remote - SSH" into Visual Studio:
+#. As stated in the guide, install **Remote - SSH** into VS Code:
 
    ..  image:: ../images/prog_env/01_remote_ssh.png
        :alt: remote ssh extension in visual studio
@@ -15,8 +15,9 @@ Follow the `Visual Studio Code remote development using SSH <https://code.visual
    It helps if you have a local $HOME/.ssh/config with your commonly used hosts already present on the laptop and SSH client where you will be using Visual Studio. 
    Here is an example entry for Delta, change your username to your login name on Delta. Visual Studio will show hosts in your config in a pick list.
 
-   | **SSH config:**
-   .. code-block::
+   **SSH config:**
+
+   .. code-block:: terminal
    
       Host delta
               HostName login.delta.ncsa.illinois.edu
@@ -27,8 +28,9 @@ Follow the `Visual Studio Code remote development using SSH <https://code.visual
    When Visual Studio needs to install extension items on the remote system, it will go into your $HOME/.vscode-server on Delta. 
    Visual Studio takes care of all the details for you:
 
-   | **remote server VS extensions:**
-   .. code-block::
+   **remote server VS extensions:**
+
+   .. code-block:: terminal
 
       [arnoldg@dt-login03 ~]$ du -sh .vscode-server/
       523M    .vscode-server/
