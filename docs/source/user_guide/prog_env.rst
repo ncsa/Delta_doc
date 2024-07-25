@@ -266,15 +266,14 @@ Visual Studio Code
 ---------------------
 
 .. note::
-   The Delta Open OnDemand (OOD) portal provides an easy method to use VS Code in a web browser.
-   Go to the :ref:`OOD Code Server (VS Code) interactive app <ood-code-server>` page for instructions on how to start an OOD VS Code session.
+   The Code Server (VS Code) app in Open OnDemand provides an easy method to use VS Code in a web browser.
 
 The following pages provide step-by-step instructions on how to use VS Code, in different configurations, on Delta.
 
 .. toctree::
    :maxdepth: 1
 
-   Run Code Server (VS Code) App in Open OnDemand (*Recommended*) <ood/code-server>
+   Run Code Server (VS Code) App in Open OnDemand <ood/code-server>
    vscode/code_server
    vscode/remote_ssh
    vscode/remote_jupyter
