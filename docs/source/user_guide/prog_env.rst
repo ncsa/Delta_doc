@@ -272,7 +272,7 @@ Visual Studio Code
 The following pages provide step-by-step instructions on how to use VS Code, in different configurations, on Delta.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    Open OnDemand Code Server (VS Code) <ood/code-server>
    vscode/code_server
