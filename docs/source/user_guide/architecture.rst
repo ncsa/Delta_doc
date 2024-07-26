@@ -411,7 +411,7 @@ DDN SFA18XE (Quantity: 1), each unit contains:
    +---------------+-------------------------------------+---------------+---------------+--------------------------------------------+
    | File System   | Quota                               | Snapshots     | Purged        | Key Features                               |
    +===============+=====================================+===============+===============+============================================+
-   | HOME (/u)     | **50 GB.** 600,000 files per user.  | No/TBA        | No            | Area for software, scripts, job files, and |
+   | HOME (/u)     | **90 GB.** 600,000 files per user.  | No/TBA        | No            | Area for software, scripts, job files, and |
    |               |                                     |               |               |                                            |
    |               |                                     |               |               | so on. **Not** intended as a               |
    |               |                                     |               |               |                                            |
