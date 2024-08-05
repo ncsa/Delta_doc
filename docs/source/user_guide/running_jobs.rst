@@ -572,28 +572,28 @@ top -u $USER:
     :alt: top
     :width: 1000px
 
-Monitoring Nodes Using Grafana
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. Monitoring Nodes Using Grafana
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. Navigate to: https://metrics.ncsa.illinois.edu
-
-#. Sign in (top-right).
-
-   .. image:: images/running_jobs/metrics_signin_icon.png
-      :alt: sign in icon
-      :width: 400
-
-#. Navigate to the Delta metrics of interest.
-
-   ..  image:: images/running_jobs/06_grafana_metrics_home.png
-       :alt: metrics home
-       :width: 1000px
-
-   You may choose a node from the list of nodes and get detailed information in real time.
-
-   ..  image:: images/running_jobs/07_grafana_metrics_details.png
-       :alt: get detailed info
-       :width: 1000px
+  #. Navigate to: https://metrics.ncsa.illinois.edu
+  
+  #. Sign in (top-right).
+  
+     .. image:: images/running_jobs/metrics_signin_icon.png
+        :alt: sign in icon
+        :width: 400
+  
+  #. Navigate to the Delta metrics of interest.
+  
+     ..  image:: images/running_jobs/06_grafana_metrics_home.png
+         :alt: metrics home
+         :width: 1000px
+  
+     You may choose a node from the list of nodes and get detailed information in real time.
+  
+     ..  image:: images/running_jobs/07_grafana_metrics_details.png
+         :alt: get detailed info
+         :width: 1000px
 
 Interactive Jobs
 -------------------------
