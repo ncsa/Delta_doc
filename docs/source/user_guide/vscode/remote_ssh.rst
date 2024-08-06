@@ -7,12 +7,13 @@ Follow the `Visual Studio Code remote development using SSH <https://code.visual
 
 #. As stated in the guide, install **Remote - SSH** into VS Code:
 
-   ..  image:: ../images/prog_env/01_remote_ssh.png
+   ..  figure:: ../images/prog_env/01_remote_ssh.png
        :alt: Remote ssh extension in VS Code.
+       :figwidth: 550px
        :width: 500px
 
 #. Continue to follow the guide to set up a remote connection to Delta.
-   It helps if you have a local $HOME/.ssh/config with your commonly used hosts already present on the laptop and SSH client where you will be using Visual Studio. 
+   It helps if you have a local ``$HOME/.ssh/config`` with your commonly used hosts already present on the laptop and SSH client where you will be using Visual Studio. 
    Here is an example entry for Delta, change your username to your login name on Delta. Visual Studio will show hosts in your config in a pick list.
 
    **SSH config:**
@@ -47,3 +48,5 @@ Follow the `Visual Studio Code remote development using SSH <https://code.visual
    ..  image:: ../images/prog_env/02_remote_c_file.png
        :alt: Using VS Code to work with a C file on Delta.
        :width: 700
+
+|
