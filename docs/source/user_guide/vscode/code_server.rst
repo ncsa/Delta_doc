@@ -7,17 +7,15 @@ The code-server for VS Code can be run on Delta in manual mode (without Open OnD
 
 #. In a terminal, ``ssh`` log in to Delta (see :ref:`direct_access`).
 
-#. In the terminal, navigate to ``/sw/external/vscode/code-server/bin``.
+#. Navigate to ``/sw/external/vscode/code-server/bin``.
 
-#. Run the following to start the server. 
-
-   Replace ``dt-loginNN`` with the login node you are logged in to.
+#. Run the following command to start the server. Replace ``dt-loginNN`` with the login node you are logged in to.
 
    .. code-block:: terminal
 
       ./code-server --bind-addr dt-loginNN:8899
 
-   In the following example, the user is logged in to ``dt-login03``.
+   In the following example, the user is logged in to ``dt-login03``:
 
    .. code-block::
    
@@ -43,7 +41,7 @@ The code-server for VS Code can be run on Delta in manual mode (without Open OnD
 
       ssh -l username -L 127.0.0.1:8899:dt-loginNN.delta.ncsa.illinois.edu:8899 dt-loginNN.delta.ncsa.illinois.edu
 
-   In the following example, the user is logged in to ``dt-login03``.
+   In the following example, the user is logged in to ``dt-login03``:
 
    .. code-block:: terminal 
 
@@ -60,7 +58,7 @@ The code-server for VS Code can be run on Delta in manual mode (without Open OnD
             ΔΔ  ΔΔ   ΔΔ       ΔΔ       ΔΔ   ΔΔΔΔΔΔ
             ΔΔΔΔΔ    ΔΔΔΔΔΔ   ΔΔΔΔΔΔ   ΔΔ   ΔΔ  ΔΔ
 
-#. Read the ``config.yaml`` file noted when you started the server in **step 3** and copy the **password** to your clipboard.
+#. Read the ``config.yaml`` file noted when you started the server (**step 3**) and copy the **password** to your clipboard.
 
    .. code-block:: terminal
 
