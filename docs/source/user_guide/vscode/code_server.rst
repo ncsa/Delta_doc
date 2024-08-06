@@ -80,7 +80,7 @@ The code-server for VS Code can be run on Delta in manual mode (without Open OnD
 
       http://127.0.0.1:8899
 
-#. In the browser, when prompted, enter the password you copied in **step 6** and begin using VS Code in your browser.
+#. In the password field, enter the password you copied in **step 6** and begin using VS Code in your browser.
 
    ..  image:: ../images/prog_env/vscode_in_browser.png
        :alt: vscode in a web browser
