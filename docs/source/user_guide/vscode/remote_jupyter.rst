@@ -3,7 +3,7 @@
 Run Jupyter on a Remote Compute Node Through VS Code
 =======================================================
 
-See the `Visual Studio Code working with Juypter Notebooks <https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server>`_ guide and :ref:`jupyter` (open two new browser tabs).
+See the `Visual Studio Code working with Juypter Notebooks <https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server>`_ guide and :ref:`Delta - Jupyter Notebooks<jupyter>` (open two new browser tabs).
 
 #. Install the Jupyter extension for VS Code, if you have not already done so.
 
