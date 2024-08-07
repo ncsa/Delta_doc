@@ -10,14 +10,10 @@ Run Jupyter on a Remote Compute Node Through VS Code
 
 #. Install the **Jupyter** extension in VS Code, if you have not already done so.
 
-#. Complete **steps 1 thru 10** from Delta - Jupyter Notebooks (second link above), where you ``srun`` a Jupyter notebook on a compute node. 
+#. Complete **steps 1 thru 13** of How to Run Jupyter on a Compute Node from Delta - Jupyter Notebooks (second link above). 
 
-#. Follow the VS Code connect to a remote Jupyter server instructions (first link above). The **first URL** from your ``srun`` output is the URL you will use for the running Jupyter server.
+#. Follow the VS Code connect to a remote Jupyter server instructions (first link above). The **second URL** from your ``srun`` output in **step 10** of How to Run Jupyter on a Compute Node is the URL you will use for the running Jupyter server.
 
-   ..  image:: ../images/prog_env/03_jupyter_url.png
-       :alt: terminal with Jupyter workbook URL to use
-       :width: 600px
-
-..  image:: ../images/prog_env/04_jupyter_in_vscode.png
-    :alt: accessing Jupyter notebook using visual studio
-    :width: 1000px
+..  image:: ../images/prog_env/jupyter-vscode.png
+    :alt: VS Code Jupyter Notebook with the second URL pasted into the Jupyter server remote URL field.
+    :width: 800px
