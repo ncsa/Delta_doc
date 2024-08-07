@@ -101,7 +101,9 @@ You may *use any of these methods* with any of the python versions or instances 
 
   Similar to venv but with more flexibility, see this `comparison table <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html#virtual-environments>`_.  See also the miniconda environment option: `anaconda or miniconda <https://docs.anaconda.com/free/distro-or-miniconda/>`_.  pip and conda installs are local to the environment and the location defaults to ``$HOME/.conda``. You can override the default location in ``$HOME`` by using the ``--prefix`` syntax: ``conda create --prefix /path/to/env``.
 
-- `pip3 <https://docs.python.org/3/installing/index.html>`_: ``pip3 install --user <python_package>`` (installs to ``$HOME/.local/`` unless you are using a venv or conda environment).
+- `pip3 <https://docs.python.org/3/installing/index.html>`_: ``pip3 install --user <python_package>`` 
+
+   CAUTION: Python modules installed this way into your ``$HOME/.local/`` will match on python versions. This can create incompatibilities between containers or python venv or conda environments when they have a common python version number.  You can work around this by using the `PYTHONUSERBASE <https://docs.python.org/3/using/cmdline.html#envvar-PYTHONUSERBASE>`_ environment variable.  That will also allow for shared pip installs if you choose a group-shared directory.
 
   Useful when you only need one python environment per python version.  CAUTION: Python modules installed this way into your ``$HOME/.local/`` will match on python versions. This can create incompatibilities between containers or python venv or conda environments when they have a common python version number.
 
