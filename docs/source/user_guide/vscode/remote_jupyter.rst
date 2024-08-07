@@ -16,4 +16,4 @@ Run Jupyter on a Remote Compute Node Through VS Code
 
 ..  image:: ../images/prog_env/jupyter-vscode.png
     :alt: VS Code Jupyter Notebook with the second URL pasted into the Jupyter server remote URL field.
-    :width: 800px
+    :width: 1000px
