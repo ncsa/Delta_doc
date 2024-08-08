@@ -103,6 +103,12 @@ After you've completed the above steps to connect to Jupyter on a compute node, 
 
 #. Right-click and select **Run in Interactive Window**.
 
+   The interactive jupyter window should now be linked to your .py file and each time you click “Run Cell”, your code will be run in the window
+   You may need to select or change your desired python kernel by clicking the kernel select button at the top right, then choose the one you want. 
+
+   You can confirm that you're running on the compute node by running ``!hostnaectl``, which prints the host information.
+
+
 |
 
 ..
