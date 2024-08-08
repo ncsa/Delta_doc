@@ -29,67 +29,69 @@ Run Jupyter on a Remote Compute Node Through VS Code
 
       which jupyter-notebook
 
-.. tabs::
+#. Follow one of the following instructions to connect to a compute node using ``srun`` or ``sbatch``.
 
-   .. tab:: srun
-
-      #. Generate a MYPORT number and copy it to a notepad (you will use it in a subsequent step).
-
-         .. code:: terminal
-
-            MYPORT=$(($(($RANDOM % 10000))+49152)); echo $MYPORT
-
-      #. Find the account name that you are going to use and copy it to a notepad. Your available accounts are listed under **Project** when you run the ``accounts`` command. Note, to use a GPU compute node, you must pick a GPU account (the account name will end in "-gpu").
-
-      #. Run the following ``srun`` command, with these replacements:
-
-         - Replace <account_name> with the account you are going to use, which you found and copied in the previous step.
-         - Replace <$MYPORT> with the MYPORT number that you generated in a previous step.
-         - Modify the ``--partition``, ``--time``, and ``--mem`` options and/or add other options to meet your needs.
-
-         .. code-block:: terminal
-
-            srun --account=<account_name> --partition=cpu-interactive --time=00:30:00 --mem=32g jupyter-notebook --no-browser --port=<MYPORT> --ip=0.0.0.0
-
-      #. Copy the last five lines returned, beginning with "To access the notebook, ..."
-
-      #. Complete the `Connect to a remote Jupyter server <https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server>`_ instructions.
-
-         Use the first URL that you copied in the previous setp as teh URL of the running Jupyter Server.
-
-      #. Select the Python 3 kernel (recommended).
-
-   .. tab:: sbatch
-
-      #. Create an ``sbatch`` Slurm script for jupyter-notebook. The following example is CPU-only, at a minimum, replace the account and change the output log file name to a directory that you want to use.
-
-         .. code-block:: terminal
-
-            #!/bin/bash
-            #SBATCH -J Jupyter
-            #SBATCH --output=./log/%j.out
-            #SBATCH --account=bbka-delta-cpu
-            #SBATCH --nodes=1
-            #SBATCH --ntasks-per-node=1
-            #SBATCH --partition=cpu-interactive
-            #SBATCH --time=00:15:00
-            #SBATCH --mem=32g
-            #SBATCH --cpus-per-task=1
-            srun jupyter-notebook --no-browser --ip=0.0.0.0
-
-      #. Run ``sbatch`` to execute your Slurm script. Replace ``file-name`` with the name of your script file.
-
-         .. code-block:: terminal
-
-            sbatch file-name.slurm
-
-      #. Once the job is running, open the log file and copy the last five lines returned, beginning with "To access the notebook, ..."
-
-      #. Complete the `Connect to a remote Jupyter server <https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server>`_ instructions.
-
-         Use the first URL that you copied in the previous step as the URL of the running Jupyter Server.
-
-      #. Select the Python 3 kernel (recommended).
+   .. tabs::
+   
+      .. tab:: srun
+   
+         #. Generate a MYPORT number and copy it to a notepad (you will use it in a subsequent step).
+   
+            .. code:: terminal
+   
+               MYPORT=$(($(($RANDOM % 10000))+49152)); echo $MYPORT
+   
+         #. Find the account name that you are going to use and copy it to a notepad. Your available accounts are listed under **Project** when you run the ``accounts`` command. Note, to use a GPU compute node, you must pick a GPU account (the account name will end in "-gpu").
+   
+         #. Run the following ``srun`` command, with these replacements:
+   
+            - Replace <account_name> with the account you are going to use, which you found and copied in the previous step.
+            - Replace <$MYPORT> with the MYPORT number that you generated in a previous step.
+            - Modify the ``--partition``, ``--time``, and ``--mem`` options and/or add other options to meet your needs.
+   
+            .. code-block:: terminal
+   
+               srun --account=<account_name> --partition=cpu-interactive --time=00:30:00 --mem=32g jupyter-notebook --no-browser --port=<MYPORT> --ip=0.0.0.0
+   
+         #. Copy the last five lines returned, beginning with "To access the notebook, ..."
+   
+         #. Complete the `Connect to a remote Jupyter server <https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server>`_ instructions.
+   
+            Use the first URL that you copied in the previous setp as teh URL of the running Jupyter Server.
+   
+         #. Select the Python 3 kernel (recommended).
+   
+      .. tab:: sbatch
+   
+         #. Create an ``sbatch`` Slurm script for jupyter-notebook. The following example is CPU-only, at a minimum, replace the account and change the output log file name to a directory that you want to use.
+   
+            .. code-block:: terminal
+   
+               #!/bin/bash
+               #SBATCH -J Jupyter
+               #SBATCH --output=./log/%j.out
+               #SBATCH --account=bbka-delta-cpu
+               #SBATCH --nodes=1
+               #SBATCH --ntasks-per-node=1
+               #SBATCH --partition=cpu-interactive
+               #SBATCH --time=00:15:00
+               #SBATCH --mem=32g
+               #SBATCH --cpus-per-task=1
+               srun jupyter-notebook --no-browser --ip=0.0.0.0
+   
+         #. Run ``sbatch`` to execute your Slurm script. Replace ``file-name`` with the name of your script file.
+   
+            .. code-block:: terminal
+   
+               sbatch file-name.slurm
+   
+         #. Once the job is running, open the log file and copy the last five lines returned, beginning with "To access the notebook, ..."
+   
+         #. Complete the `Connect to a remote Jupyter server <https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server>`_ instructions.
+   
+            Use the first URL that you copied in the previous step as the URL of the running Jupyter Server.
+   
+         #. Select the Python 3 kernel (recommended).
 
 
 Run a Python Script File (.py) in a Jupyter Interactive Window
