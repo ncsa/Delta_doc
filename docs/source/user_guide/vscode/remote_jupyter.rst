@@ -11,7 +11,7 @@ Run Jupyter on a Remote Compute Node Through VS Code
 
 #. From the VS Code **Terminal** menu, open a **New Terminal**.
 
-#. Run to see the available anaconda modules.
+#. Run the following to see the available anaconda modules.
 
    .. code:: terminal
 
@@ -29,13 +29,13 @@ Run Jupyter on a Remote Compute Node Through VS Code
 
       which jupyter-notebook
 
-#. Follow one of the following instructions to connect to a compute node using ``srun`` or ``sbatch``.
+#. Use one of the following instructions to connect to a compute node using ``srun`` or ``sbatch``.
 
    .. tabs::
    
-      .. tab:: srun
+      .. tab:: ``srun``
    
-         #. Generate a MYPORT number and copy it to a notepad (you will use it in a subsequent step).
+         #. Generate a ``MYPORT`` number and copy it to a notepad (you will use it in a subsequent step).
    
             .. code:: terminal
    
@@ -45,8 +45,8 @@ Run Jupyter on a Remote Compute Node Through VS Code
    
          #. Run the following ``srun`` command, with these replacements:
    
-            - Replace <account_name> with the account you are going to use, which you found and copied in the previous step.
-            - Replace <$MYPORT> with the MYPORT number that you generated in a previous step.
+            - Replace ``<account_name>`` with the account you are going to use, which you found and copied in the previous step.
+            - Replace ``<MYPORT>`` with the ``MYPORT`` number that you generated in a previous step.
             - Modify the ``--partition``, ``--time``, and ``--mem`` options and/or add other options to meet your needs.
    
             .. code-block:: terminal
@@ -57,13 +57,13 @@ Run Jupyter on a Remote Compute Node Through VS Code
    
          #. Complete the `Connect to a remote Jupyter server <https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server>`_ instructions.
    
-            Use the first URL that you copied in the previous setp as teh URL of the running Jupyter Server.
+            Use the **first URL** that you copied in the previous setp as the URL of the running Jupyter Server.
    
          #. Select the Python 3 kernel (recommended).
    
       .. tab:: sbatch
    
-         #. Create an ``sbatch`` Slurm script for jupyter-notebook. The following example is CPU-only, at a minimum, replace the account and change the output log file name to a directory that you want to use.
+         #. Create an ``sbatch`` Slurm script for jupyter-notebook. Note, the following example is CPU-only. at a minimum, replace the ``account`` and change the ``output`` log file name to a path/filename that you want to use.
    
             .. code-block:: terminal
    
@@ -89,7 +89,7 @@ Run Jupyter on a Remote Compute Node Through VS Code
    
          #. Complete the `Connect to a remote Jupyter server <https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server>`_ instructions.
    
-            Use the first URL that you copied in the previous step as the URL of the running Jupyter Server.
+            Use the **first URL** that you copied in the previous step as the URL of the running Jupyter Server.
    
          #. Select the Python 3 kernel (recommended).
 
@@ -101,30 +101,13 @@ After you've completed the above steps to connect to Jupyter on a compute node, 
 
 #. Open your Python script file in VS Code.
 
-   Adding # %% or # In[] in your python codes will split your code into many Jupyter-like code cells. Because the jupyter extension is installed, buttons of ‘Run cell’,’Run Below’ and ‘Debug Cell’ will show up before # %% or # In[] for each cell. 
+   Adding **# %%** or **# In[]** in your python codes splits your code into many Jupyter-like code cells. Because the Jupyter extension is installed, **Run cell**,**Run Below**, and **Debug Cell** buttons will show up before ``# %%`` or ``# In[]`` for each cell. 
 
-#. Right-click and select **Run in Interactive Window**.
+#. Right-click and select **Run in an Interactive Window**.
 
-   The interactive jupyter window should now be linked to your .py file and each time you click “Run Cell”, your code will be run in the window
-   You may need to select or change your desired python kernel by clicking the kernel select button at the top right, then choose the one you want. 
+   The interactive jupyter window should now be linked to your .py file. Each time you click **Run Cell**, your code will be run in the window.
+   You may need to select or change your desired python kernel by clicking the **kernel select** button at the top right. 
 
-   You can confirm that you're running on the compute node by running ``!hostnaectl``, which prints the host information.
-
+   You can confirm that you're running on the compute node (instead of a login node) by running ``!hostnaectl``, which prints the host information.
 
 |
-
-..
-   #. Open the following documents in new browser tabs:
-   
-      - `VS Code connect to a remote Jupyter server <https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server>`_    
-      - :ref:`Delta - Jupyter Notebooks <jupyter>`
-   
-   #. Install the **Jupyter** extension in VS Code, if you have not already done so.
-   
-   #. Complete **steps 1 thru 13** of How to Run Jupyter on a Compute Node from Delta - Jupyter Notebooks (second link above). 
-   
-   #. Follow the VS Code connect to a remote Jupyter server instructions (first link above). The **second URL** from your ``srun`` output in **step 10** of How to Run Jupyter on a Compute Node is the URL you will use for the running Jupyter server.
-   
-   ..  image:: ../images/prog_env/jupyter-vscode.png
-       :alt: VS Code Jupyter Notebook with the second URL pasted into the Jupyter server remote URL field.
-       :width: 1000px
