@@ -61,7 +61,7 @@ Run Jupyter on a Remote Compute Node Through VS Code
    
          #. Select the Python 3 kernel (recommended).
    
-      .. tab:: sbatch
+      .. tab:: ``sbatch``
    
          #. Create an ``sbatch`` Slurm script for jupyter-notebook. Note, the following example is CPU-only. at a minimum, replace the ``account`` and change the ``output`` log file name to a path/filename that you want to use.
    
@@ -101,13 +101,13 @@ After you've completed the above steps to connect to Jupyter on a compute node, 
 
 #. Open your Python script file in VS Code.
 
-   Adding **# %%** or **# In[]** in your python codes splits your code into many Jupyter-like code cells. Because the Jupyter extension is installed, **Run cell**,**Run Below**, and **Debug Cell** buttons will show up before ``# %%`` or ``# In[]`` for each cell. 
+   Adding ``# %%**`` or ``**# In[]`` in your python codes splits your code into many Jupyter-like code cells. Because the Jupyter extension is installed, **Run cell**, **Run Below**, and **Debug Cell** buttons will show up before ``# %%`` or ``# In[]`` for each cell. 
 
 #. Right-click and select **Run in an Interactive Window**.
 
    The interactive jupyter window should now be linked to your .py file. Each time you click **Run Cell**, your code will be run in the window.
    You may need to select or change your desired python kernel by clicking the **kernel select** button at the top right. 
 
-   You can confirm that you're running on the compute node (instead of a login node) by running ``!hostnaectl``, which prints the host information.
+   You can confirm that you're running on the compute node (instead of a login node) by running ``!hostnamectl``, which prints the host information.
 
 |
