@@ -15,8 +15,8 @@ Remote SSH to Delta Through VS Code
    The following are Delta-specific examples and tips:
 
    - Continue to follow the guide to set up a remote connection to Delta.
-     It helps if you have a local ``$HOME/.ssh/config`` with your commonly used hosts already present on the laptop and SSH client where you will be using Visual Studio. 
-     Here is an example entry for Delta, change your username to your login name on Delta. Visual Studio will show hosts in your config in a pick list.
+     It helps if you have a local ``$HOME/.ssh/config`` with your commonly used hosts already present on the laptop and SSH client where you will be using VS Code. 
+     Here is an example entry for Delta, change your username to your login name on Delta. VS Code will show hosts in your config in a pick list.
 
      **SSH config:**
 
@@ -28,8 +28,8 @@ Remote SSH to Delta Through VS Code
                 ForwardX11 True
 
    - Once connected, you can work with the remote system as if it were local.
-     When Visual Studio needs to install extension items on the remote system, it will go into your ``$HOME/.vscode-server`` on Delta. 
-     Visual Studio takes care of all the details for you:
+     When VS Code needs to install extension items on the remote system, it will go into your ``$HOME/.vscode-server`` on Delta. 
+     VS Code takes care of all the details for you:
 
      **Remote server VS extensions:**
 
