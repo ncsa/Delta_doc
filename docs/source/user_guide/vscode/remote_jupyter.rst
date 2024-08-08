@@ -29,11 +29,11 @@ Run Jupyter on a Remote Compute Node Through VS Code
 
       which jupyter-notebook
 
-#. Use one of the following instructions to connect to a compute node using ``srun`` or ``sbatch``.
+#. Select one of the following tabs to connect to a compute node using ``srun`` or ``sbatch``.
 
    .. tabs::
    
-      .. tab:: ``srun``
+      .. tab:: srun
    
          #. Generate a ``MYPORT`` number and copy it to a notepad (you will use it in a subsequent step).
    
@@ -61,7 +61,7 @@ Run Jupyter on a Remote Compute Node Through VS Code
    
          #. Select the Python 3 kernel (recommended).
    
-      .. tab:: ``sbatch``
+      .. tab:: sbatch
    
          #. Create an ``sbatch`` Slurm script for jupyter-notebook. Note, the following example is CPU-only. at a minimum, replace the ``account`` and change the ``output`` log file name to a path/filename that you want to use.
    
@@ -101,7 +101,7 @@ After you've completed the above steps to connect to Jupyter on a compute node, 
 
 #. Open your Python script file in VS Code.
 
-   Adding ``# %%**`` or ``**# In[]`` in your python codes splits your code into many Jupyter-like code cells. Because the Jupyter extension is installed, **Run cell**, **Run Below**, and **Debug Cell** buttons will show up before ``# %%`` or ``# In[]`` for each cell. 
+   Adding ``# %%`` or ``# In[]`` in your python codes splits your code into many Jupyter-like code cells. Because the Jupyter extension is installed, **Run cell**, **Run Below**, and **Debug Cell** will show up before ``# %%`` or ``# In[]`` for each cell. 
 
 #. Right-click and select **Run in an Interactive Window**.
 
