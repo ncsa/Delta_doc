@@ -273,7 +273,7 @@ The following pages provide step-by-step instructions on how to use VS Code, in 
 .. toctree::
    :maxdepth: 1
 
-   Run Code Server (VS Code) App in Open OnDemand <ood/code-server>
+   Code Server (VS Code) App in Open OnDemand <ood/code-server>
    vscode/code_server
    vscode/remote_ssh
    vscode/remote_jupyter
