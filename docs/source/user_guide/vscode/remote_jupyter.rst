@@ -1,7 +1,7 @@
 .. _remote-jupyter:
 
-Run Jupyter on a Compute Node Through VS Code
-=====================================================
+Run Jupyter on a Compute Node in VS Code
+============================================
 
 #. Follow the :ref:`vs-remote-ssh` instructions.
 
