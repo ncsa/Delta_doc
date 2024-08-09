@@ -5,11 +5,13 @@ Run Jupyter on a Remote Compute Node Through VS Code
 
 #. Follow the :ref:`vs-remote-ssh` instructions.
 
-   You should now be on a Delta login node, which is not recommended for running big programs. The next steps will get you onto a compute node.
+   You should now be on a Delta login node, which is not recommended for running big programs; the remaining steps will get you onto a compute node.
 
-#. Open VS Code and install the **Jupyter** and **Python** extensions, if they aren't already installed.
+#. Install the **Jupyter** and **Python** VS Code extensions, if they aren't already installed.
 
-   screenshots
+   .. image:: ../images/vscode/python-jupyter-extensions.png
+      alt: The python and jupyter extensions in the VS Code extensions marketplace.
+      width: 500
 
 #. From the VS Code **Terminal** menu, open a **New Terminal**.
 
@@ -149,6 +151,8 @@ After you've completed the above steps to connect to Jupyter on a compute node, 
 
    You can confirm that you're running on the compute node (instead of a login node) by running ``!hostnamectl``, which prints the host information.
 
-   Add screenshot
+   .. image:: ../images/vscode/vscode-run-interactive.png
+      :alt: Python file opened with the right-click menu opened showing the run in interactive window option.
+      :width: 700
 
 |
