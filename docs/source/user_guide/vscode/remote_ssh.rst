@@ -1,7 +1,7 @@
 .. _vs-remote-ssh:
 
-Remote SSH to Delta Through VS Code
-======================================
+Remote SSH to Delta in VS Code
+==================================
 
 #. Install the **Remote - SSH** extension into VS Code.
 
