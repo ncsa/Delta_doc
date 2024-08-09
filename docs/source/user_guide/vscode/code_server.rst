@@ -1,9 +1,9 @@
 .. _code-server:
 
-Run VS Code in a Web Browser without Open OnDemand
+VS Code in a Web Browser without Open OnDemand
 ===================================================
 
-VS Code Code-Server can be run on Delta in manual mode (without Open OnDemand) by following these steps:
+Run the VS Code Code-Server on Delta in manual mode (without Open OnDemand) by following these steps:
 
 #. In a terminal, ``ssh`` log in to Delta (see :ref:`direct_access`).
 
