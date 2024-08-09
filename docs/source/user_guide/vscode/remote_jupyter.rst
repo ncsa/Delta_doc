@@ -3,11 +3,13 @@
 Run Jupyter on a Remote Compute Node Through VS Code
 =======================================================
 
-#. Open VS Code and install the **Jupyter** and **Python** extensions, if they aren't already installed.
-
 #. Follow the :ref:`vs-remote-ssh` instructions.
 
    You should now be on a Delta login node, which is not recommended for running big programs. The next steps will get you onto a compute node.
+
+#. Open VS Code and install the **Jupyter** and **Python** extensions, if they aren't already installed.
+
+   screenshots
 
 #. From the VS Code **Terminal** menu, open a **New Terminal**.
 
@@ -64,6 +66,11 @@ Run Jupyter on a Remote Compute Node Through VS Code
       .. tab:: sbatch
    
          #. Create an ``sbatch`` Slurm script for jupyter-notebook. Note, the following example is CPU-only. at a minimum, replace the ``account`` and change the ``output`` log file name to a path/filename that you want to use.
+
+            .. raw:: html
+
+               <details>
+               <summary><a><b>1 gpu example script</b> <i>(click to expand/collapse)</i></a></summary>
    
             .. code-block:: terminal
    
@@ -78,6 +85,35 @@ Run Jupyter on a Remote Compute Node Through VS Code
                #SBATCH --mem=32g
                #SBATCH --cpus-per-task=1
                srun jupyter-notebook --no-browser --ip=0.0.0.0
+
+            .. raw:: html
+
+               </details>
+            |
+
+            .. raw:: html
+
+               <details>
+               <summary><a><b>1 gpu example script</b> <i>(click to expand/collapse)</i></a></summary>
+   
+            .. code-block:: terminal
+   
+               #!/bin/bash
+               #SBATCH -J Jupyter
+               #SBATCH --output=./log/%j.out
+               #SBATCH --account=bbka-delta-cpu
+               #SBATCH --nodes=1
+               #SBATCH --ntasks-per-node=1
+               #SBATCH --partition=cpu-interactive
+               #SBATCH --time=00:15:00
+               #SBATCH --mem=32g
+               #SBATCH --cpus-per-task=1
+               srun jupyter-notebook --no-browser --ip=0.0.0.0
+
+            .. raw:: html
+
+               </details>
+            |
    
          #. Run ``sbatch`` to execute your Slurm script. Replace ``file-name`` with the name of your script file.
    
@@ -109,5 +145,7 @@ After you've completed the above steps to connect to Jupyter on a compute node, 
    You may need to select or change your desired python kernel by clicking the **kernel select** button at the top right. 
 
    You can confirm that you're running on the compute node (instead of a login node) by running ``!hostnamectl``, which prints the host information.
+
+   Add screenshot
 
 |
