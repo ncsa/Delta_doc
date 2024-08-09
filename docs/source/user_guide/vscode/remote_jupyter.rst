@@ -65,12 +65,12 @@ Run Jupyter on a Remote Compute Node Through VS Code
    
       .. tab:: sbatch
    
-         #. Create an ``sbatch`` Slurm script for jupyter-notebook. Note, the following example is CPU-only. at a minimum, replace the ``account`` and change the ``output`` log file name to a path/filename that you want to use.
+         #. Create an ``sbatch`` Slurm script for jupyter-notebook. In the following examples, at a minimum, replace the ``account`` and change the ``output`` log file name to a path/filename that you want to use.
 
             .. raw:: html
 
                <details>
-               <summary><a><b>1 gpu example script</b> <i>(click to expand/collapse)</i></a></summary>
+               <summary><a><b>CPU example script</b> <i>(click to expand/collapse)</i></a></summary>
    
             .. code-block:: terminal
    
@@ -89,31 +89,34 @@ Run Jupyter on a Remote Compute Node Through VS Code
             .. raw:: html
 
                </details>
-            |
 
             .. raw:: html
 
                <details>
-               <summary><a><b>1 gpu example script</b> <i>(click to expand/collapse)</i></a></summary>
+               <summary><a><b>GPU example script</b> <i>(click to expand/collapse)</i></a></summary>
    
             .. code-block:: terminal
    
                #!/bin/bash
                #SBATCH -J Jupyter
                #SBATCH --output=./log/%j.out
-               #SBATCH --account=bbka-delta-cpu
+               #SBATCH --account=bbka-delta-gpu
                #SBATCH --nodes=1
                #SBATCH --ntasks-per-node=1
-               #SBATCH --partition=cpu-interactive
+               #SBATCH --partition=gpuA40x4-interactive   # <-or one of: gpuA100x4 gpuA40x4 gpuA100x8 gpuMI100x8
                #SBATCH --time=00:15:00
-               #SBATCH --mem=32g
+               #SBATCH --mem=199g
                #SBATCH --cpus-per-task=1
+
+               # # ### GPU options ###
+               #SBATCH --gpus-per-node=1
+               #SBATCH --gpus-per-task=1
+
                srun jupyter-notebook --no-browser --ip=0.0.0.0
 
             .. raw:: html
 
                </details>
-            |
    
          #. Run ``sbatch`` to execute your Slurm script. Replace ``file-name`` with the name of your script file.
    
