@@ -103,7 +103,7 @@ You may *use any of these methods* with any of the python versions or instances 
 
 - `pip3 <https://docs.python.org/3/installing/index.html>`_: ``pip3 install --user <python_package>`` 
 
-   CAUTION: Python modules installed this way into your ``$HOME/.local/`` will match on python versions. This can create incompatibilities between containers or python venv or conda environments when they have a common python version number.  You can work around this by using the `PYTHONUSERBASE <https://docs.python.org/3/using/cmdline.html#envvar-PYTHONUSERBASE>`_ environment variable.  That will also allow for shared pip installs if you choose a group-shared directory.
+  CAUTION: Python modules installed this way into your ``$HOME/.local/`` will match on python versions. This can create incompatibilities between containers or python venv or conda environments when they have a common python version number.  You can work around this by using the `PYTHONUSERBASE <https://docs.python.org/3/using/cmdline.html#envvar-PYTHONUSERBASE>`_ environment variable.  That will also allow for shared pip installs if you choose a group-shared directory.
 
   Useful when you only need one python environment per python version.  CAUTION: Python modules installed this way into your ``$HOME/.local/`` will match on python versions. This can create incompatibilities between containers or python venv or conda environments when they have a common python version number.
 
