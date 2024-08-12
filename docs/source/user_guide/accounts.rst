@@ -15,6 +15,10 @@ Configuring Your Account
 
 Bash is the default shell. To change the default shell, :ref:`submit a support request <help>`.
 
+If you use bash a lot directly (if you ssh into the login nodes to edit files and run jobs), there are many useful customizations you can install in the file called ".bashrc" in your home directory.  The bash shell loads this file every time it starts.  You can, for instance, load modules that you always want loaded in this file.  Here useful guide to bash customization: XXXXXX.  
+
+We do *not* generally recommend loading complex environments in your .bashrc (like python, conda, and the like).  In particular, try never to run "conda install"; that sets up conda (via your .bashrc file) to always load.  Loading those kinds of environments takes time, pulls (often many, large) files from the parallel file systems, and generally makes it much more difficult to debug login problems.  
+
 Allocations
 -------------
 
