@@ -105,8 +105,6 @@ You may *use any of these methods* with any of the python versions or instances 
 
   CAUTION: Python modules installed this way into your ``$HOME/.local/`` will match on python versions. This can create incompatibilities between containers or python venv or conda environments when they have a common python version number.  You can work around this by using the `PYTHONUSERBASE <https://docs.python.org/3/using/cmdline.html#envvar-PYTHONUSERBASE>`_ environment variable.  That will also allow for shared pip installs if you choose a group-shared directory.
 
-  Useful when you only need one python environment per python version.  CAUTION: Python modules installed this way into your ``$HOME/.local/`` will match on python versions. This can create incompatibilities between containers or python venv or conda environments when they have a common python version number.
-
 - `conda-env-mod <https://github.com/amaji/conda-env-mod>`_: conda-env-mod lmod module generator from Purdue
 
   The conda-env-mod script will generate a python module you can load or share with your team. This makes it simpler to manage multiple python scenarios that you can activate and deactivate with module commands.
