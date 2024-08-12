@@ -73,3 +73,5 @@ Run the VS Code Code-Server on Delta in manual mode (without Open OnDemand) by f
    ..  image:: ../images/prog_env/vscode_in_browser.png
        :alt: vscode in a web browser
        :width: 700
+
+|
