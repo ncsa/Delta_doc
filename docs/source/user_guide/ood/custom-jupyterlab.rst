@@ -104,16 +104,10 @@ How to Customize JupyterLab with Anaconda Environments
 
 #. Start an :ref:`Open OnDemand Jupyter session <ood-jupyterlab>`.
 
-#. In JupyterLab, you can hover over items in the **Launcher** to see which environment will be used; select the one you want for this session.
+#. In JupyterLab, you can start a new notebook or console with the environment kernel you created. You can also change the kernel in an existing notebook or console from the **Kernel** menu (select **Change Kernel**).
 
-   .. figure:: ../images/software/02_jupyter-mynewenv.png
-      :alt: JupyterLab Launcher window with multiple environments to choose from.
-      :width: 750
-
-   You can also change your kernel to match if you are opening a notebook from a different environment.
-
-   .. figure:: ../images/software/03_mynewenv-kernel.png
-      :alt: Jupyter notebook with the Select Kernel menu open showing multiple kernels to choose from.
+   .. figure:: ../images/ood/jupyter-jax.jpeg
+      :alt: JupyterLab Launcher window with multiple environments to choose from, including 'myjax'.
       :width: 750
 
 |
