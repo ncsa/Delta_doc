@@ -26,20 +26,20 @@ How to Customize JupyterLab with Anaconda Environments
 
 #. Create your custom environment by making an empty environment or cloning your chosen environment or module (10 to 30 minutes). 
   
-   The example environment name is ``myjax``.  If you omit ``--clone``, your new environment will be mostly empty except for conda commands.
-   You can customize the environment using conda and/or pip to install software (be sure to install jupyter into the environment if not cloning).  
+   The example environment name is ``mynewenv``.  If you omit ``--clone``, your new environment will be mostly empty except for conda commands.
+   You can customize the environment using conda and/or pip to install software (**be sure to install Jupyter into the environment if not cloning**).  
    A cloned environment will contain everything from base, so it can take up to 30 minutes to deploy.
 
    .. code-block:: terminal
   
-      (base) [arnoldg@dt-login03 ~]$  conda create --prefix /u/arnoldg/myjax --clone=base
+      (base) [arnoldg@dt-login03 ~]$  conda create --prefix /u/arnoldg/mynewenv --clone=base
 
       Collecting package metadata (current_repodata.json): done
       Solving environment: done
 
       ## Package Plan ##
 
-          environment location: /u/arnoldg/myjax
+          environment location: /u/arnoldg/mynewenv
 
           Proceed ([y]/n)? y
 
@@ -49,7 +49,7 @@ How to Customize JupyterLab with Anaconda Environments
             #
             # To activate this environment, use
             #
-            #     $ conda activate /u/arnoldg/myjax
+            #     $ conda activate /u/arnoldg/mynewenv
             #
             # To deactivate an active environment, use
             #
@@ -59,8 +59,8 @@ How to Customize JupyterLab with Anaconda Environments
 
    .. code-block:: terminal
 
-      (base) [arnoldg@dt-login03 ~]$ conda activate /u/arnoldg/myjax
-      (/u/arnoldg/myjax) [arnoldg@dt-login03 ~]$
+      (base) [arnoldg@dt-login03 ~]$ conda activate /u/arnoldg/mynewenv
+      (/u/arnoldg/mynewenv) [arnoldg@dt-login03 ~]$
 
 #. Add your environment to the list of jupyter kernels available to jupyterlab and Open OnDemand.
 
@@ -68,16 +68,16 @@ How to Customize JupyterLab with Anaconda Environments
   
    .. code-block:: terminal
 
-      (/u/arnoldg/myjax) [arnoldg@dt-login03 ~]$ which jupyter-notebook
-      /u/arnoldg/myjax/bin/jupyter-notebook
+      (/u/arnoldg/mynewenv) [arnoldg@dt-login03 ~]$ which jupyter-notebook
+      /u/arnoldg/mynewenv/bin/jupyter-notebook
 
-      (/u/arnoldg/myjax) [arnoldg@dt-login03 ~]$ python -m ipykernel install --user --name myjax --display-name myjax
-      Installed kernelspec myjax in /u/arnoldg/.local/share/jupyter/kernels/myjax
+      (/u/arnoldg/mynewenv) [arnoldg@dt-login03 ~]$ python -m ipykernel install --user --name mynewenv --display-name mynewenv
+      Installed kernelspec mynewenv in /u/arnoldg/.local/share/jupyter/kernels/mynewenv
 
-      (/u/arnoldg/myjax) [arnoldg@dt-login03 ~]$ jupyter kernelspec list
+      (/u/arnoldg/mynewenv) [arnoldg@dt-login03 ~]$ jupyter kernelspec list
       Available kernels:
-      python3    /u/arnoldg/myjax/share/jupyter/kernels/python3
-      myjax      /u/arnoldg/.local/share/jupyter/kernels/myjax
+      python3    /u/arnoldg/.local/share/jupyter/kernels/python3
+      mynewenv   /u/arnoldg/.local/share/jupyter/kernels/mynewenv
 
 #. *OPTIONAL* 
 
@@ -88,8 +88,8 @@ How to Customize JupyterLab with Anaconda Environments
 
    .. code-block:: terminal
 
-      (/u/arnoldg/myjax) [arnoldg@dt-login03 ~]$ conda init --reverse
-      (/u/arnoldg/myjax) [arnoldg@dt-login03 ~]$ conda deactivate
+      (/u/arnoldg/mynewenv) [arnoldg@dt-login03 ~]$ conda init --reverse
+      (/u/arnoldg/mynewenv) [arnoldg@dt-login03 ~]$ conda deactivate
       (base) [arnoldg@dt-login03 ~]$ conda deactivate
       [arnoldg@dt-login03 ~]$ module reset
       Running "module reset". Resetting modules to system default. The following $MODULEPATH directories have been removed: None
@@ -99,15 +99,15 @@ How to Customize JupyterLab with Anaconda Environments
       [arnoldg@dt-login03 ~]$ module load python/anaconda3_cpu
       [arnoldg@dt-login03 ~]$ jupyter kernelspec list
       Available kernels:
-      myjax      /u/arnoldg/.local/share/jupyter/kernels/myjax
+      mynewenv   /u/arnoldg/.local/share/jupyter/kernels/mynewenv
       python3    /sw/user/python/anaconda3-pytorch-2.5.0/share/jupyter/kernels/python3
 
 #. Start an :ref:`Open OnDemand Jupyter session <ood-jupyterlab>`.
 
 #. In JupyterLab, you can start a new notebook or console with the environment kernel you created. You can also change the kernel in an existing notebook or console from the **Kernel** menu (select **Change Kernel**).
 
-   .. figure:: ../images/ood/jupyter-jax.jpeg
-      :alt: JupyterLab Launcher window with multiple environments to choose from, including 'myjax'.
+   .. figure:: ../images/ood/jupyter-mynewenv.png
+      :alt: JupyterLab Launcher window with multiple environments to choose from, including 'mynewenv'.
       :width: 750
 
 |
