@@ -36,7 +36,7 @@ For all other issues, regardless of allocation type, use the `NCSA Support Help 
 - Monitor the status of your tickets.
 - Respond to NCSA staff as they work to resolve your tickets.
 
-Refer to the `JSM User Job Aid <_static/JSMUsersJobAid.pdf>`_ for information on how to navigate the help center.
+Refer to the `JSM User Job Aid <https://docs.ncsa.illinois.edu/en/latest/_static/JSMUsersJobAid.pdf>`_ for information on how to navigate the help center.
 
 .. raw:: html
    
