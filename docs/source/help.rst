@@ -36,11 +36,11 @@ For all other issues, regardless of allocation type, use the `NCSA Support Help 
 - Monitor the status of your tickets.
 - Respond to NCSA staff as they work to resolve your tickets.
 
-Refer to the `JSM User Job Aid <_static/JSMUsersJobAid.pdf>`_ for information on how to navigate the new help center.
+Refer to the `JSM User Job Aid <_static/JSMUsersJobAid.pdf>`_ for information on how to navigate the help center.
 
 .. raw:: html
    
-   <p>The NCSA Help Center is the preferred method to submit requests, however, if you run into problems using it, you can still email <a href="mailto:help@ncsa.illinois.edu?subject=Delta: ">help@ncsa.illinois.edu</a> for support. Expand the following section for guidelines on sending email requests so that NCSA staff can efficiently address them.</p>
+   <p>The <a href="http://help.ncsa.illinois.edu">NCSA Support Help Center</a> is the preferred method to submit requests. However, if you run into problems using it, you can still email <a href="mailto:help@ncsa.illinois.edu?subject=Delta: ">help@ncsa.illinois.edu</a> for support. Expand the following section for guidelines on sending email requests so that NCSA staff can efficiently address them.</p>
 
 Email Support Request Guidelines
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
