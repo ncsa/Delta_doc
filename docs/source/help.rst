@@ -26,10 +26,10 @@ When you submit a support request, please let us know what you tried, and what h
 
 .. _general_support:
 
-NCSA Support Help Center - General Resource Support
+General Resource Support - NCSA Support Help Center 
 -----------------------------------------------------
 
-For all other issues, regardless of allocation type, use the `NCSA Support Help Center <http://help.ncsa.illinois.edu>`_. Powered by Jira Service Manager (JSM), in this new tool you can:
+Use the `NCSA Support Help Center <http://help.ncsa.illinois.edu>`_ for all other issues, regardless of allocation type. Powered by Jira Service Manager (JSM), in this new tool you can:
 
 - Search knowledge base articles to resolve common issues faster.
 - Submit help request tickets.
