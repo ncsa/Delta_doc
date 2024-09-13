@@ -15,11 +15,6 @@ Most Delta compute resource allocations are awarded through the ACCESS program.
 
 See the `Delta Allocations <https://delta.ncsa.illinois.edu/delta-allocations/>`_ page to learn more about the different allocation methods and how to submit an allocation request to each.
 
-How do I get help if I can’t find the answer in the documentation?
----------------------------------------------------------------------
-
-If you can’t find the answer in the documentation (or via the search bar in the upper left corner), :ref:`submit a support request <help>`. The ticket that is initiated becomes a discussion of your problem and the path to a solution.
-
 How do I acknowledge Delta, NCSA, and/or ACCESS in my research?
 ------------------------------------------------------------------
 

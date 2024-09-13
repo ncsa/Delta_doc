@@ -34,7 +34,7 @@ For example, a user (with username: **auser**) who has an allocated project with
 Determine the mapping of ACCESS project to local project using the ``accounts`` command.
 
 Directory access changes can be made using the `facl <https://linux.die.net/man/1/setfacl>`_ command. 
-:ref:`Submit a support request <help>` if you need assistance enabling access for specific users and projects.
+:ref:`Submit a support request <general_support>` if you need assistance enabling access for specific users and projects.
 
 To avoid issues when file systems become unstable or non-responsive, do not put symbolic links from **$HOME** to the projects and scratch spaces.
 
