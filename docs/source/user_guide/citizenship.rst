@@ -8,7 +8,7 @@ Here are some rules of thumb:
 
 -  Do not run production jobs on the login nodes (very short time debug tests are fine).
 -  Do not stress file systems with known-harmful access patterns (many thousands of small files in a single directory).
--  If you encounter an issue, :ref:`submit an informative support request <help>`; include the loaded modules (module list) and stdout/stderr messages in your email.
+-  If you encounter an issue, :ref:`submit an informative support request <general_support>`; include the loaded modules (module list) and stdout/stderr messages in your email.
 
 Acceptable Use Policies
 -------------------------
