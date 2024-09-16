@@ -1,4 +1,4 @@
-.. _debug-ood:
+.. _debug_ood:
 
 Debugging Open OnDemand
 ===========================
