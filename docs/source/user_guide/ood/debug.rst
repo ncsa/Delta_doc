@@ -13,22 +13,22 @@ Review Session Output Files
 
    .. figure:: ../images/ood/ood-my-interactive-sessions.jpg
       :alt: My interactive sessions button in the upper OOD menu.
-      :width: 700
+      :width: 800
 
-#. Find the interactive session of interest from the list and click the **Session ID**.
+#. Find the interactive session of interest from the list and click the **Session ID** link.
 
    .. figure:: ../images/ood/ood-session-id.jpg
-      :alt: Example interactive session wit the Session ID field highlighted.
-      :width: 500
+      :alt: Example interactive session with the Session ID field highlighted.
+      :width: 700
 
-#. Browse the output files to look for clues of what went wrong, the ``user_defined_context.json`` and ``output.log`` files are highlighted below.
+#. Browse the list of output files for clues about what went wrong, the ``user_defined_context.json`` and ``output.log`` files are highlighted below.
 
 user_defined_context.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ``user_defined_context.json`` file shows the options you input to launch the session. Did you request the correct amount of RAM in the correct format? 
+The ``user_defined_context.json`` file shows the options you input to launch the session. 
 
-Use Slurm format, e.g. 4096M, 10G. If left blank, 1000 MB will be allocated per CPU core requested.
+Did you request the correct amount of RAM in the correct format? Use Slurm format (for example, 4096M or 10G). If this field is left blank, 1000 MB will be allocated per CPU core requested.
 
 The following ``user_defined_context.json`` example is for a 30 minute, 1 CPU job request with default memory.
 
@@ -47,7 +47,7 @@ The following ``user_defined_context.json`` example is for a 30 minute, 1 CPU jo
 output.log
 ~~~~~~~~~~~
 
-The last lines in ``output.log`` should tell you why the job ended. The following example is the last line of an ``output.log`` file for a job that ended because it reached the end of its requested wall-clock time.
+The ``output.log`` file shows what happened when the ``script.sh`` file was run. The last lines of ``output.log`` should tell you why the job ended. The following example is the last line of an ``output.log`` file of a job that ended because it reached the end of its requested duration.
 
 .. code-block:: terminal
 
