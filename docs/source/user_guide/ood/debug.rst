@@ -21,7 +21,7 @@ Review Session Output Files
       :alt: Example interactive session with the Session ID field highlighted.
       :width: 700
 
-#. Browse the list of output files for clues about what went wrong, the ``user_defined_context.json`` and ``output.log`` files are highlighted below.
+#. Browse the list of output files for clues about what went wrong. The ``user_defined_context.json`` and ``output.log`` files are highlighted below.
 
 user_defined_context.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
