@@ -47,7 +47,9 @@ The following ``user_defined_context.json`` example is for a 30 minute, 1 CPU jo
 output.log
 ~~~~~~~~~~~
 
-The ``output.log`` file shows what happened when the ``script.sh`` file was run. The last lines of ``output.log`` should tell you why the job ended. The following example is the last line of an ``output.log`` file of a job that ended because it reached the end of its requested duration.
+The ``output.log`` file shows what happened when the ``script.sh`` file was run. The last lines of ``output.log`` should tell you why the job ended. 
+
+The following example is the last line of the ``output.log`` file of a job that ended because it reached the end of its requested duration.
 
 .. code-block:: terminal
 
