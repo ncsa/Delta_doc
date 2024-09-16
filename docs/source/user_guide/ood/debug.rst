@@ -3,8 +3,7 @@
 Debugging Open OnDemand
 ===========================
 
-Open OnDemand issues can be more difficult to debug than when you're logged in to Delta through ``ssh`` in a terminal.
-However, reviewing the output files from your session can provide important clues on what went wrong. 
+When you run into issues with jobs in Open OnDemand, review the output files from your session for important clues on what went wrong. 
 
 Review Session Output Files
 ------------------------------
@@ -30,7 +29,7 @@ The ``user_defined_context.json`` file shows the options you input to launch the
 
 Did you request the correct amount of RAM in the correct format? Use Slurm format (for example, 4096M or 10G). If this field is left blank, 1000 MB will be allocated per CPU core requested.
 
-The following ``user_defined_context.json`` example is for a 30 minute, 1 CPU job request with default memory.
+The following ``user_defined_context.json`` example is for a 30 minute, 1 CPU, JupyterLab job request with default memory.
 
 .. code-block:: terminal
    
@@ -47,9 +46,9 @@ The following ``user_defined_context.json`` example is for a 30 minute, 1 CPU jo
 output.log
 ~~~~~~~~~~~
 
-The ``output.log`` file shows what happened when the ``script.sh`` file was run. The last lines of ``output.log`` should tell you why the job ended. 
+The ``output.log`` file shows what happened when the ``script.sh`` file was run. The last line of ``output.log`` should tell you why the job ended. 
 
-The following example is the last line of the ``output.log`` file of a job that ended because it reached the end of its requested duration.
+The following example is the last line of the ``output.log`` file of a job that ended because it reached its requested duration.
 
 .. code-block:: terminal
 
