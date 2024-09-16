@@ -428,4 +428,4 @@ See: `Debugging applications in parallel - <https://www.open-mpi.org/faq/?catego
 Debugging Open OnDemand Problems
 ---------------------------------
 
-Go to :ref:`ood_debug`.
+Go to :ref:`debug_ood`.
