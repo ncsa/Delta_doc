@@ -41,18 +41,16 @@ There is a 30-day grace period for expired Delta projects to allow for data mana
 Allocation Supplements and Extensions
 ---------------------------------------
 
-Request resource allocation supplements (CPU or GPU compute) and date extensions via the appropriate XRAS website:
+Request **resource allocation supplements** (CPU or GPU compute) and date extensions via the appropriate XRAS website:
 
-- ACCESS allocation PIs can find instructions on the `ACCESS Allocations: How To <https://allocations.access-ci.org/how-to>`_ page.
-- NCSA allocation PIs can find instructions on the `Delta Allocations <https://wiki.ncsa.illinois.edu/display/USSPPRT/Delta+Allocations#DeltaAllocations-Requestingan%22Extension%22or%22Supplement%22foranexistingDeltaallocation>`_ page.
+   - ACCESS allocation PIs can find instructions on the `ACCESS Allocations: How To <https://allocations.access-ci.org/how-to>`_ page.
+   - NCSA allocation PIs can find instructions on the `Delta Allocations <https://wiki.ncsa.illinois.edu/display/USSPPRT/Delta+Allocations#DeltaAllocations-Requestingan%22Extension%22or%22Supplement%22foranexistingDeltaallocation>`_ page.
 
-.. raw:: html
-   
-   <p>To request a storage quota increase, send an email to <a href="mailto:help@ncsa.illinois.edu?subject=Delta: Quota Increase Request ">help@ncsa.illinois.edu</a> to initiate a ticket. In the email include:</p>
+To request a **storage quota increase**, :ref:`submit a support request <general_support>`. In the request include:</p>
 
-- A detailed justification for the size of the increase.
-- How long you need the increase.
+   - A detailed justification for the size of the increase.
+   - How long you need the increase.
 
-Keep in mind that Delta is storage constrained and can only provide storage for data in active use by computations on the system.
+   Keep in mind that Delta is storage constrained and can only provide storage for data in active use by computations on the system.
 
 |
