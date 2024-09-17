@@ -46,7 +46,7 @@ Request **resource allocation supplements** (CPU or GPU compute) and date extens
    - ACCESS allocation PIs can find instructions on the `ACCESS Allocations: How To <https://allocations.access-ci.org/how-to>`_ page.
    - NCSA allocation PIs can find instructions on the `Delta Allocations <https://wiki.ncsa.illinois.edu/display/USSPPRT/Delta+Allocations#DeltaAllocations-Requestingan%22Extension%22or%22Supplement%22foranexistingDeltaallocation>`_ page.
 
-To request a **storage quota increase**, :ref:`submit a support request <general_support>`. In the request include:</p>
+To request a **storage quota increase**, :ref:`submit a support request <general_support>`. In the request include:
 
    - A detailed justification for the size of the increase.
    - How long you need the increase.
