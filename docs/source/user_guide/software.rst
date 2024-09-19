@@ -99,7 +99,10 @@ You may *use any of these methods* with any of the python versions or instances 
 
 - `conda (or miniconda) environments <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>`_
 
-  Similar to venv but with more flexibility, see this `comparison table <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html#virtual-environments>`_.  See also the miniconda environment option: `anaconda or miniconda <https://docs.anaconda.com/free/distro-or-miniconda/>`_.  pip and conda installs are local to the environment and the location defaults to ``$HOME/.conda``. You can override the default location in ``$HOME`` by using the ``--prefix`` syntax: ``conda create --prefix /path/to/env``.
+  Similar to venv but with more flexibility, see this `comparison table <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html#virtual-environments>`_.  See also the miniconda environment option: `anaconda or miniconda <https://docs.anaconda.com/free/distro-or-miniconda/>`_.  
+
+  pip and conda installs are local to the environment and the location defaults to ``$HOME/.conda``. You can override the default location in ``$HOME`` with the ``--prefix`` syntax: ``conda create --prefix /path/to/env``.
+  You can also `relocate your .conda directory to your project space <https://docs.ncsa.illinois.edu/en/latest/common/relocate-conda-directory.html>`_, which has a larger quota than your home directory.
 
 - `pip3 <https://docs.python.org/3/installing/index.html>`_: ``pip3 install --user <python_package>`` 
 
