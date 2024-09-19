@@ -18,7 +18,7 @@ Explore Solutions
 
 The following are strategies to try before you submit a support request:
 
-- Search the documentation for relevant keywords; use the search box in the upper left.
+- Search the documentation for relevant keywords using the search box in the upper left.
   Also try the search box on the `NCSA Documentation Hub <https://docs.ncsa.illinois.edu/>`_; this will return keyword results from *all* of the NCSA user documentation sets.
 
 - If you're getting an error, perform a web search of the error message (Google, Bing, or others).
