@@ -11,12 +11,12 @@ For ACCESS allocation issues, create a ticket via the `ACCESS Help page <https:/
 NAIRR Pilot Projects
 ----------------------
 
-For issues specific to NAIRR Pilot projects that have been awarded time on Delta, please submit your issues to NAIRR Pilot support by emailing usersupport@support.nairrpilot.org.
+For issues specific to NAIRR Pilot projects awarded time on Delta, please submit your issues to NAIRR Pilot support by emailing usersupport@support.nairrpilot.org.
 
 Explore Solutions
 -------------------
 
-System users can often fix problems or help diagnose them on their own. The following are some strategies to try before you submit a support request:
+The following are strategies to try before you submit a support request:
 
 - Search the documentation for relevant keywords; use the search box in the upper left.
   Also try the search box on the `NCSA Documentation Hub <https://docs.ncsa.illinois.edu/>`_; this will return keyword results from *all* of the NCSA user documentation sets.
