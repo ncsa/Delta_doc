@@ -31,7 +31,7 @@ How to Customize JupyterLab with Anaconda Environments
    - A cloned environment will contain everything from base, so it can take up to 30 minutes to deploy.
    - Large conda installations may exceed your home directory size. This can be avoided by `relocating your .conda directory to your project space <https://docs.ncsa.illinois.edu/en/latest/common/relocate-conda-directory.html>`_, which has a larger quota than your home directory.
   
-   The environment name in the following example is ``mynewenv``.  
+   The example environment name is ``mynewenv``.  
 
    .. code-block:: terminal
   
