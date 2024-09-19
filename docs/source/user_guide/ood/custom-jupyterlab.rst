@@ -24,12 +24,14 @@ How to Customize JupyterLab with Anaconda Environments
 
    - After you run ``conda init bash``, you will not need to load ``anaconda3_cpu`` (or ``gpu``) modules again. Just use your new custom environment.
 
-#. Create your custom environment by making an empty environment or cloning your chosen environment or module (10 to 30 minutes). 
+#. Create your custom environment by making an empty environment or cloning your chosen environment or module (10 to 30 minutes). A few things to consider:
+
+   - If you omit ``--clone``, your new environment will be mostly empty except for conda commands.
+   - You can customize the environment using conda and/or pip to install software (**be sure to install Jupyter into the environment if not cloning**).
+   - A cloned environment will contain everything from base, so it can take up to 30 minutes to deploy.
+   - Large conda installations may exceed your home directory size. This can be avoided by `relocating your .conda directory to your project space <https://docs.ncsa.illinois.edu/en/latest/common/relocate-conda-directory.html>`_, which has a larger quota than your home directory.
   
-   The example environment name is ``mynewenv``.  If you omit ``--clone``, your new environment will be mostly empty except for conda commands.
-   You can customize the environment using conda and/or pip to install software (**be sure to install Jupyter into the environment if not cloning**).  
-   A cloned environment will contain everything from base, so it can take up to 30 minutes to deploy.
-   Large conda installations may exceed your home directory size. This can be avoided by `relocating your .conda directory to your project space <https://docs.ncsa.illinois.edu/en/latest/common/relocate-conda-directory.html>`_, which has a larger quota than your home directory.
+   The environment name in the following example is ``mynewenv``.  
 
    .. code-block:: terminal
   
