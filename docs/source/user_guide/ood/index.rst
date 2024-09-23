@@ -40,4 +40,12 @@ Customize JupyterLab in OOD by creating a custom Anaconda environment or setting
    custom-jupyterlab
    custom-r
 
+Debugging Open OnDemand
+--------------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   debug
+
 |

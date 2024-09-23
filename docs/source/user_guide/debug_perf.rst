@@ -428,4 +428,4 @@ See: `Debugging applications in parallel - <https://www.open-mpi.org/faq/?catego
 Debugging Open OnDemand Problems
 ---------------------------------
 
-For internal staff debugging (also useful for new OOD applications: `debugging jupyterlab, Open OnDemand <https://wiki.ncsa.illinois.edu/display/DELTA/debugging+jupyterlab+%2C+OpenOnDemand>`_).
+Go to :ref:`debug_ood`.
