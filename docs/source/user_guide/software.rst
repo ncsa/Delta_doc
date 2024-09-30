@@ -1035,6 +1035,27 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
             :alt: Jupyter screenshot
             :width: 700
 
+Matlab
+-------
+
+Matlab is installed on Delta. Use ``module avail matlab`` to see your options and install the version that is right for you. There is a Universitywide Matlab license available, you no longer need to get your own license from the Campus Webstore. 
+
+Open OnDemand
+--------------
+
+One easy way to use Matlab on Delta is through the Open OnDemand Desktop app. 
+
+#. :ref:`Start an OOD Desktop session <_ood-start-desktop:>`. 
+#. In the Desktop app, open a terminal.
+#. .. code-block::
+
+      module load matlab
+
+#. .. code-block::
+
+      matlab
+
+
 List of Installed Software (CPU & GPU)
 ---------------------------------------
 
