@@ -1050,7 +1050,7 @@ One easy way to use MATLAB on Delta is through the Open OnDemand Desktop app.
 
    .. figure:: images/software/ood-desktop-terminal.png
       :alt: Open OnDemand Desktop app desktop with the terminal app icon highlighted.
-      :width: 700
+      :width: 500
 
 #. .. code-block::
 
