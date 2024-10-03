@@ -4,7 +4,7 @@ Data Management
 File Systems
 ----------------
 
-Each user has a home directory, **$HOME**, located at **/u/$USER**.
+Each user has a home directory, **$HOME**, located at **/u/$USER**. For each project they are assigned to, they will also have access to shared file space under /projects and /scratch.
 
 For example, a user (with username: **auser**) who has an allocated project with a local project serial code **abcd** will see the following entries in their $HOME and entries in the projects and scratch file systems.
 
