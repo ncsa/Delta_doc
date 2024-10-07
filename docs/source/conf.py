@@ -27,7 +27,7 @@ if os.environ.get("READTHEDOCS", "") == "True":
 html_context = {
     "display_github": True, # Integrate GitHub
     "github_user": "ncsa", # Username
-    "github_repo": "jade-user-docs", # Repo name
+    "github_repo": "Delta_doc", # Repo name
     "github_version": os.environ.get("READTHEDOCS_GIT_IDENTIFIER"),  # Version
     "conf_py_path": "/docs/source/", # Path in the checkout to the docs root
 }
