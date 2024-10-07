@@ -51,6 +51,7 @@ html_logo = "images/BlockI-NCSA-Full-Color-RGB_border4.png"
 html_theme_options = {
      'logo_only': False,
      'display_version': False,
+     'flyout_display': 'attached',
  }
 
 # -- Page Title
