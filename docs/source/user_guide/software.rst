@@ -1038,32 +1038,34 @@ Instead, follow these steps to attach a Jupyter notebook running on a compute no
 MATLAB
 -------
 
-MATLAB is installed on Delta. Use ``module avail matlab`` to see the available options and install the version that is right for you. There is a **Universitywide Matlab license**, you no longer need to get your own license from the Campus Webstore to use MATLAB on Delta. 
+There is a **University-wide MATLAB license** linked on Delta; you no longer need to link your own license to use MATLAB on Delta. Use ``module avail matlab`` to see the available versions and load the version that is right for you.  
 
 Open OnDemand
 ~~~~~~~~~~~~~~~
 
 One easy way to use MATLAB on Delta is through the Open OnDemand Desktop app. 
 
-#. :ref:`Start an OOD Desktop session <_ood-start-desktop:>`. 
+#. :ref:`Start an OOD Desktop session <ood-start-desktop>`. 
 #. In the Desktop app, open a terminal.
 
    .. figure:: images/software/ood-desktop-terminal.png
       :alt: Open OnDemand Desktop app desktop with the terminal app icon highlighted.
       :width: 500
 
-#. .. code-block::
+#. In the terminal, run the following commands to load and run MATLAB. If you want to load a version other than the default, modify your ``module load`` command to load the specific version.
+
+   .. code-block::
 
       module load matlab
 
-#. .. code-block::
+   .. code-block::
 
       matlab
 
 Terminal
 ~~~~~~~~~~~~~~
 
-You can also launch MATLAB on a compute node, in an interactive job in a terminal. See :ref:`Running Jobs srun and salloc <srun>` for more information on interactive jobs.
+You can also launch MATLAB on a compute node from a terminal on your local machine. See :ref:`Running Jobs srun and salloc <srun>` for information on using interactive jobs.
 
 List of Installed Software (CPU & GPU)
 ---------------------------------------
