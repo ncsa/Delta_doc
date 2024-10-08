@@ -70,7 +70,7 @@ The one exception is: if you are the PI of a Gateway allocation (this is not mos
 Login Node Limits
 ~~~~~~~~~~~~~~~~~~
 
-In order to keep the login nodes responsive and usable by all, limits on effective CPU-core use and memory by user on a node are enabled through Linux cgroups.
+To keep the login nodes responsive and usable by all, limits on effective CPU-core use and memory by user on a node are enabled through Linux cgroups.
 
 Currently, the effective CPU-core utilization is limited to 16 cores although the actual CPU-core count is not limited. This means that installers that look at the number of CPUs will see 128 cores, while actual effective use will be limited to 16 cores by an individual user (not per shell or per process).
 
