@@ -67,6 +67,15 @@ Use of SSH key pairs is disabled for general use.  This means that most individu
 
 The one exception is: if you are the PI of a Gateway allocation (this is not most projects), then please :ref:`submit a support request <general_support>` to get the Gateway account's key pairs set up.  
 
+Login Node Limits
+~~~~~~~~~~~~~~~~~~
+
+To keep the login nodes responsive and usable by all, limits on effective CPU-core use and memory by user on a node are enabled through Linux cgroups.
+
+Currently, the effective CPU-core utilization is limited to 16 cores although the actual CPU-core count is not limited. This means that installers that look at the number of CPUs will see 128 cores, while actual effective use will be limited to 16 cores by an individual user (not per shell or per process).
+
+To prevent the login nodes from running out of memory, and please note that login nodes do not have swap enabled, the memory cgroup settings are 37G (15% of total memory) for High and 62G (25% of total memory) for Max memory use by an individual user (not per shell or per process).
+
 Maintaining Persistent Login Sessions: tmux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
