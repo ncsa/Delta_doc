@@ -70,11 +70,11 @@ The one exception is: if you are the PI of a Gateway allocation (this is not mos
 Login Node Limits
 ~~~~~~~~~~~~~~~~~~
 
-In order to keep the login nodes responsive and usable by all, limits on effective cpu-core use and memory by user on a node is enabled by use of Linux cgroups.
+In order to keep the login nodes responsive and usable by all, limits on effective cpu-core use and memory by user on a node are enabled by use of Linux cgroups.
 
-Currently, the effective cpu-core utilization is limited to 16 cores although the actual cpu-core count is not limited. Installers that look at the number of cpus will see 128 cores. while actual effective use will be limited to 16 cores by an individual user.
+Currently, the effective cpu-core utilization is limited to 16 cores although the actual cpu-core count is not limited. Installers that look at the number of cpus will see 128 cores. while actual effective use will be limited to 16 cores by an individual user (not per shell or per process).
 
-To prevent the login nodes from running out of memory, and please note that login nodes do not have swap enabled, the memory cgroup settings are 37G (15% of total memory) for High and 62G (25% of total memory)  for Max memory use by an individual user.
+To prevent the login nodes from running out of memory, and please note that login nodes do not have swap enabled, the memory cgroup settings are 37G (15% of total memory) for High and 62G (25% of total memory)  for Max memory use by an individual user (not per shell or per process).
 
 Maintaining Persistent Login Sessions: tmux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
