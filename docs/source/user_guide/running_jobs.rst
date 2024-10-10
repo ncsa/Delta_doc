@@ -11,21 +11,22 @@ Use the Slurm commands to run batch jobs or for interactive access (an "interact
 See the `Slurm quick start guide <https://slurm.schedmd.com/quickstart.html>`_ for an introduction to Slurm. 
 There are multiple ways to access compute nodes on Delta.
 
-- Batch scripts (sbatch) or Interactive (srun , salloc), which is right for me?
+- Batch scripts (``sbatch``) or Interactive (``srun``, ``salloc``), which is right for me?
 
-  - :ref:`sbatch` . Use batch scripts for jobs that are debugged, ready to run, and don't require interaction.
+  - :ref:`sbatch`: Use batch scripts for jobs that are debugged, ready to run, and don't require interaction.
     Sample Slurm batch job scripts are provided in the :ref:`examples` section.
     For mixed resource heterogeneous jobs see the `Slurm job support documentation <https://slurm.schedmd.com/heterogeneous_jobs.html#submitting>`_. 
     Slurm also supports job arrays for easy management of a set of similar jobs, see the `Slurm job array documentation <https://slurm.schedmd.com/job_array.html>`_ for more information.
 
-  - :ref:`srun` .  srun will run a single command through Slurm on a compute node. srun blocks, it will wait until Slurm has scheduled compute resources, and when it returns, the job is complete.  srun can be used to launch a shell to get interactive access to compute node(s), this is an "interactive job". 
-    The one thing you can't do in an interactive job created by srun is to run srun commands; if you want to do that, use salloc below.  
+  - :ref:`srun`: ``srun`` will run a single command through Slurm on a compute node. ``srun`` blocks, it will wait until Slurm has scheduled compute resources, and when it returns, the job is complete. ``srun`` can be used to launch a shell to get interactive access to compute node(s), this is an "interactive job". 
+    The one thing you can't do in an interactive job created by ``srun`` is to run srun commands; if you want to do that, use ``salloc``.  
 
-  - :ref:`salloc` . Also interactive, use salloc when you want to reserve compute resources for a period of time and interact with them using multiple commands.  Each command you type after your salloc session begins will run on the login node if it is just a normal command, or on your reserved compute resources if prefixed with srun.  Type ``exit`` when finished with an salloc allocation if you want to end it before the time expires.
+  - :ref:`salloc`: Also interactive, use ``salloc`` when you want to reserve compute resources for a period of time and interact with them using multiple commands. Each command you type after your ``salloc`` session begins will run on the login node if it is just a normal command, or on your reserved compute resources if prefixed with ``srun``.  Type ``exit`` when finished with a ``salloc`` allocation if you want to end it before the time expires.
 
-- `Open OnDemand <https://openondemand.delta.ncsa.illinois.edu>`_ provides compute node access via Jupyter Lab, VSCode Code Server, and the noVNC Desktop virtual desktop. 
+- `Open OnDemand <https://openondemand.delta.ncsa.illinois.edu>`_ provides compute node access via JupyterLab, VSCode Code Server, and the noVNC Desktop virtual desktop. 
 
-- Direct SSH access to a compute node in a running job from a dt-loginNN node is enabled once the job has started. See also, :ref:`mon_node`. In the following example, JobID 12345 is running on node cn001
+- Direct ``ssh`` access to a compute node in a **running job** is enabled once the job has **started**. 
+  See also, :ref:`mon_node`. In the following example, JobID 12345 is running on node cn001
 
   .. code-block::
 
@@ -52,11 +53,11 @@ Delta Production Partitions/Queues
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. table:: Delta Partitions/Queues
+   :widths: 30 20 13 12 13 12
 
    +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-   | Partition/Queue       | Node Type | Max Nodes         | Max Duration | Max Running in            | Charge Factor |
+   | Partition/Queue       | Node Type | Max Nodes per job | Max Duration | Max Running in Queue/user | Charge Factor |
    |                       |           |                   |              |                           |               |
-   |                       |           | per Job           |              | Queue/user*               |               |
    +=======================+===========+===================+==============+===========================+===============+
    | cpu                   | CPU       | TBD               | 48 hr        | TBD                       | 1.0           |
    +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
@@ -64,15 +65,12 @@ Delta Production Partitions/Queues
    +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
    | cpu-preempt           | CPU       | TBD               | 48 hr        | TBD                       | 0.5           | 
    +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-   | gpuA100x4             | quad-A100 | TBD               | 48 hr        | TBD                       | 1.0           |
-   |                       |           |                   |              |                           |               |
-   | gpuA100x4*            |           |                   |              |                           |               |
+   | gpuA100x4*            | quad-A100 | TBD               | 48 hr        | TBD                       | 1.0           |
    |                       |           |                   |              |                           |               |
    | (* this is the default|           |                   |              |                           |               |
-   |                       |           |                   |              |                           |               |
    | queue, but submit jobs|           |                   |              |                           |               |
-   |                       |           |                   |              |                           |               |
    | to gpuA100x4)         |           |                   |              |                           |               |
+   |                       |           |                   |              |                           |               |
    +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
    | gpuA100x4-interactive | quad-A100 | TBD               | 1 hr         | TBD                       | 2.0           |
    +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
@@ -287,17 +285,17 @@ Useful Batch Job Environment Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. table:: Useful Batch Job Environment Variables
+   :widths: 25 25 50
 
    +-------------------------+----------------------------+-------------------------------------------------------------------------+
    | Description             | Slurm Environment Variable | Detail Description                                                      |
    +=========================+============================+=========================================================================+
    | Array JobID             | $SLURM_ARRAY_JOB_ID        | Each member of a job array is assigned a unique identifier.             |
-   |                         |                            |                                                                         |
+   |                         | \                          |                                                                         |
    |                         | $SLURM_ARRAY_TASK_ID       |                                                                         |
    +-------------------------+----------------------------+-------------------------------------------------------------------------+
    | Job Submission Directory| $SLURM_SUBMIT_DIR          | By default, jobs start in the directory that the job was submitted      |
-   |                         |                            |                                                                         |
-   |                         |                            | from. So the "cd $SLURM_SUBMIT_DIR" command is not needed.              |
+   |                         |                            | from. So the ``cd $SLURM_SUBMIT_DIR`` command is not needed.            |
    +-------------------------+----------------------------+-------------------------------------------------------------------------+
    | JobID                   | $SLURM_JOB_ID              | Job identifier assigned to the job.                                     |
    +-------------------------+----------------------------+-------------------------------------------------------------------------+
@@ -311,7 +309,9 @@ See the sbatch man page for additional environment variables available.
 Interactive Jobs
 -------------------------
 
-Interactive jobs can be implemented in several ways, depending on what is needed. The following examples start up a bash shell terminal on a CPU or GPU node. (Replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command.)
+Interactive jobs can be implemented in several ways, depending on what is needed. 
+The following examples start up a bash shell terminal on a CPU or GPU node. 
+(Replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command.)
 
 - Single core with 16GB of memory, with one task on a CPU node
 
@@ -336,9 +336,9 @@ Interactive jobs can be implemented in several ways, depending on what is needed
 srun
 ~~~~~
 
-The **srun** command initiates an interactive job or process on compute nodes.
-
-For example, the following command will run an interactive job in the gpuA100x4 or gpuA40x4 partition with a wall-clock time limit of 30 minutes, using one node and 16 cores per node and 1 GPU. (Replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command.)
+The ``srun`` command initiates an interactive job or process on compute nodes.
+For example, the following command will run an interactive job in the gpuA100x4 or gpuA40x4 partition with a wall-clock time limit of 30 minutes, using one node and 16 cores per node and 1 GPU. 
+(Replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command.)
 
 .. code-block::
 
@@ -365,15 +365,15 @@ You will see something like this:
    exit
    $ 
 
-When finished, use the ``exit`` command to end the bash shell on the compute resource and hence the Slurm srun job.
+When finished, use the ``exit`` command to end the bash shell on the compute resource and hence the Slurm ``srun`` job.
 
 .. _salloc:
 
 salloc
-~~~~~
+~~~~~~~~
 
 While being interactive like ``srun``, ``salloc`` allocates compute resources for you, while leaving your shell on the login node.
-Run commands on the login node as usual, use``exit`` to end an salloc session early, and use srun with no extra flags to launch processes on the compute resources. (Replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command.)
+Run commands on the login node as usual, use ``exit`` to end an salloc session early, and use srun with no extra flags to launch processes on the compute resources. (Replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command.)
 
 .. code-block::
 
@@ -407,9 +407,9 @@ Run commands on the login node as usual, use``exit`` to end an salloc session ea
 MPI Interactive Jobs: Use salloc Followed by srun
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Interactive jobs are already a child process of srun, therefore, one cannot srun (or mpirun) applications from within them. 
+Interactive jobs are already a child process of ``srun``, therefore, one cannot srun (or mpirun) applications from within them. 
 Within standard batch jobs submitted via sbatch, use ``srun`` to launch MPI codes. 
-For true interactive MPI, use ``salloc`` in place of srun shown above, then "srun my_mpi.exe" after you get a prompt from salloc (exit to end the salloc interactive allocation).
+For true interactive MPI, use ``salloc`` in place of ``srun`` shown above, then "srun my_mpi.exe" after you get a prompt from salloc (``exit`` to end the salloc interactive allocation).
 
 .. raw:: html
 
@@ -485,7 +485,7 @@ File System Dependency Specification for Jobs
 ---------------------------------------------
 
 NCSA requests that jobs specify the file system or systems being used to enable response to resource availability issues. 
-All jobs are assumed to depend on the HOME file system. Jobs that do not specify a dependency on WORK (/projects) and SCRATCH (/scratch) will be assumed to depend only on the HOME (/u) file system.
+All jobs are assumed to depend on the HOME file system. Jobs that do not specify a dependency on WORK (``/projects``) and SCRATCH (``/scratch``) will be assumed to depend only on the HOME (``/u``) file system.
 
 .. table:: Slurm Feature/Constraint Labels
    
