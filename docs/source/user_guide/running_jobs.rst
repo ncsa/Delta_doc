@@ -693,14 +693,70 @@ For example, to run a single core job that uses 1G of memory with X11 (in this c
      --x11  xterm
 
 .. _file-system-dependency-specification-for-jobs-1:
+.. _depend_arch:
 
 File System Dependency Specification for Jobs
 ---------------------------------------------
 
-Please see the :ref:`depend_arch` section in System Architecture for information on setting job file system dependencies for jobs.
+NCSA requests that jobs specify the file system or systems being used to enable response to resource availability issues. 
+All jobs are assumed to depend on the HOME file system. Jobs that do not specify a dependency on WORK (/projects) and SCRATCH (/scratch) will be assumed to depend only on the HOME (/u) file system.
 
-Jobs that do not specify a dependency on WORK (/projects) and SCRATCH (/scratch) will be assumed to depend only on the HOME (/u) file system.
+.. table:: Slurm Feature/Constraint Labels
+   
+   ================= ======================== ==================
+   File System       Feature/Constraint Label Note
+   ================= ======================== ==================
+   WORK (/projects)  projects                 
+   SCRACH (/scratch) scratch                  
+   IME (/ime)        ime                      depends on scratch
+   TAIGA (/taiga)    taiga                    
+   ================= ======================== ==================
 
+The Slurm constraint specifier and Slurm Feature attribute for jobs are used to add file system dependencies to a job.
+
+Slurm Feature Specification
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For already submitted and pending (PD) jobs, please use the Slurm Feature attribute as follows:
+
+.. code-block::
+
+   $ scontrol update job=JOBID Features="feature1&feature2"
+
+For example, to add scratch and ime Features to an already submitted job:
+
+.. code-block::
+
+   $ scontrol update job=713210 Features="scratch&ime"
+
+To verify the setting:
+
+.. code-block::
+
+   $ scontrol show job 713210 | grep Feature
+      Features=scratch&ime DelayBoot=00:00:00
+
+Slurm Constraint Specification
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To add Slurm job constraint attributes when submitting a job with sbatch (or with ``srun`` as a command line argument) use:
+
+.. code-block::
+
+   #SBATCH --constraint="constraint1&constraint2.."
+
+For example, to add scratch and ime constraints when submitting a job:
+
+.. code-block::
+
+   #SBATCH --constraint="scratch&ime"
+
+To verify the setting:
+
+.. code-block::
+
+   $ scontrol show job 713267 | grep Feature
+      Features=scratch&ime DelayBoot=00:00:00
 
 .. _examples:
 
