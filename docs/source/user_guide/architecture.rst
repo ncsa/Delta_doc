@@ -334,7 +334,7 @@ File Systems
 
 .. note::
 
-   For more information on the Delta file systems, including paths and quotas, go to :ref:`Data Management - File Systems <data-mgmt-filesystem>`_.
+   For more information on the Delta file systems, including paths and quotas, go to :ref:`Data Management - File Systems <data-mgmt-filesystem>`.
 
 Users of Delta have access to three file systems at the time of system launch, a fourth relaxed-POSIX file system will be made available at a later date.
 
