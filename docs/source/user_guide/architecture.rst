@@ -329,8 +329,12 @@ File Systems
 ---------------
 
 .. warning::
- 
-   **No** Delta file systems (internal or external) have backups or snapshots **of any kind**. You are responsible for backing up your files. There is no mechanism to retrieve a file if you have removed it, or to recover an older version of any file or data.  
+
+   There are **no backups or snapshots** of the Delta file systems (internal or external). You are responsible for backing up your files. There is no mechanism to retrieve a file if you have removed it, or to recover an older version of any file or data.  
+
+.. note::
+
+   For more information on the Delta file systems, including paths and quotas, go to `Data Management - File Systems <data-mgmt-filesystem>`_.
 
 Users of Delta have access to three file systems at the time of system launch, a fourth relaxed-POSIX file system will be made available at a later date.
 
@@ -406,144 +410,4 @@ DDN SFA18XE (Quantity: 1), each unit contains:
 
    A “module reset” in a job script populates $WORK and $SCRATCH environment variables automatically, or you may set them as WORK=/projects/<account>/$USER, SCRATCH=/scratch/<account>/$USER.
 
-.. table:: File System Specs
-
-   +---------------+-------------------------------------+---------------+---------------+--------------------------------------------+
-   | File System   | Quota                               | Snapshots     | Purged        | Key Features                               |
-   +===============+=====================================+===============+===============+============================================+
-   | HOME (/u)     | **90 GB.** 600,000 files per user.  | No/TBA        | No            | Area for software, scripts, job files, and |
-   |               |                                     |               |               |                                            |
-   |               |                                     |               |               | so on. **Not** intended as a               |
-   |               |                                     |               |               |                                            |
-   |               |                                     |               |               | source/destination for I/O during jobs.    |
-   |               |                                     |               |               |                                            |
-   +---------------+-------------------------------------+---------------+---------------+--------------------------------------------+
-   | WORK          | **500 GB.** Up to 1-25 TB by        | No/TBA        | No            | Area for shared data for a project, common |
-   |               |                                     |               |               |                                            |
-   | (/projects)   | allocation request. Large requests  |               |               | data sets, software, results, and so on.   |
-   |               |                                     |               |               |                                            |
-   |               | may have a monetary fee.            |               |               |                                            |
-   +---------------+-------------------------------------+---------------+---------------+--------------------------------------------+
-   | SCRATCH       | **1000 GB.** Up to 1-100 TB by      | No            | No            | Area for computation, largest allocations, |
-   |               |                                     |               |               |                                            |
-   | (/scratch)    | allocation reqeust.                 |               |               | where I/O from jobs should occur.          |
-   +---------------+-------------------------------------+---------------+---------------+--------------------------------------------+
-   | /tmp          | **0.74 (CPU) or 1.50 TB (GPU)**     | No            | After each job| Locally attached disk for fast small file  |
-   |               |                                     |               |               |                                            |
-   |               | shared or dedicated depending on    |               |               | I/O.                                       |
-   |               |                                     |               |               |                                            |
-   |               | node usage by job(s), no quotas in  |               |               |                                            |
-   |               |                                     |               |               |                                            |
-   |               | place.                              |               |               |                                            |
-   +---------------+-------------------------------------+---------------+---------------+--------------------------------------------+
-
-Quota Usage
-~~~~~~~~~~~~
-
-The ``quota`` command allows you to view your use of the file systems and use by your projects. 
-Below is a sample output for a person, "<user>", who is in two projects: "aaaa" and "bbbb". 
-The home directory quota does not depend on which project group the file is written with.
-
-.. code-block::
-
-   [<user>@dt-login01 ~]$ quota
-   Quota usage for user <user>:
-   -------------------------------------------------------------------------------------------
-   | Directory Path | User | User | User  | User | User   | User |
-   |                | Block| Soft | Hard  | File | Soft   | Hard |
-   |                | Used | Quota| Limit | Used | Quota  | Limit|
-   --------------------------------------------------------------------------------------
-   | /u/<user>      | 20k  | 50G  | 27.5G | 5    | 600000 | 660000 |
-   --------------------------------------------------------------------------------------
-   Quota usage for groups user <user> is a member of:
-   -------------------------------------------------------------------------------------
-   | Directory Path | Group | Group | Group | Group | Group  | Group |
-   |                | Block | Soft  | Hard  | File  | Soft   | Hard  |
-   |                | Used  | Quota | Limit | Used  | Quota  | Limit |
-   -------------------------------------------------------------------------------------------
-   | /projects/aaaa | 8k    | 500G  | 550G  | 2     | 300000 | 330000 |
-   | /projects/bbbb | 24k   | 500G  | 550G  | 6     | 300000 | 330000 |
-   | /scratch/aaaa  | 8k    | 552G  | 607.2G| 2     | 500000 | 550000 |
-   | /scratch/bbbb  | 24k   | 9.766T| 10.74T| 6     | 500000 | 550000 |
-   ------------------------------------------------------------------------------------------
-
-File Sharing
-~~~~~~~~~~~~~~~~~
-Users may share files from the /projects file system on Delta to external users via Globus. 
-
-Create a directory to share from in your /projects directory.  If your four-character allocation code is "XXXX" then do something like: 
-
-.. code-block::
-
-    mkdir /projects/XXXX/globus_shared/
-    mkdir /projects/XXXX/globus_shared/my_data/
-
-Then move or copy whatever data you want to share to that directory. 
-
-Follow the instructions on this `Globus sharing page <https://docs.globus.org/guides/tutorials/manage-files/share-files/>`_ to share that directory.  You will need to authenticate and connect to the "ACCESS Delta" endpoint to make this work.  Share the collection from the directory you created; in the above example: "/projects/XXXX/globus_shared/my_data/".  
-
-.. _depend_arch:
-
-File System Dependency Specification for Jobs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-NCSA requests that jobs specify the file system or systems being used to enable response to resource availability issues. 
-All jobs are assumed to depend on the HOME file system.
-
-.. table:: Slurm Feature/Constraint Labels
-   
-   ================= ======================== ==================
-   File System       Feature/Constraint Label Note
-   ================= ======================== ==================
-   WORK (/projects)  projects                 
-   SCRACH (/scratch) scratch                  
-   IME (/ime)        ime                      depends on scratch
-   TAIGA (/taiga)    taiga                    
-   ================= ======================== ==================
-
-The Slurm constraint specifier and Slurm Feature attribute for jobs are used to add file system dependencies to a job.
-
-Slurm Feature Specification
-$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
-For already submitted and pending (PD) jobs, please use the Slurm Feature attribute as follows:
-
-.. code-block::
-
-   $ scontrol update job=JOBID Features="feature1&feature2"
-
-For example, to add scratch and ime Features to an already submitted job:
-
-.. code-block::
-
-   $ scontrol update job=713210 Features="scratch&ime"
-
-To verify the setting:
-
-.. code-block::
-
-   $ scontrol show job 713210 | grep Feature
-      Features=scratch&ime DelayBoot=00:00:00
-
-Slurm Constraint Specification
-$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
-To add Slurm job constraint attributes when submitting a job with sbatch (or with ``srun`` as a command line argument) use:
-
-.. code-block::
-
-   #SBATCH --constraint="constraint1&constraint2.."
-
-For example, to add scratch and ime constraints when submitting a job:
-
-.. code-block::
-
-   #SBATCH --constraint="scratch&ime"
-
-To verify the setting:
-
-.. code-block::
-
-   $ scontrol show job 713267 | grep Feature
-      Features=scratch&ime DelayBoot=00:00:00
-
+|
