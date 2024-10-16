@@ -49,7 +49,7 @@ There are multiple ways to access compute nodes on Delta.
 Partitions (Queues)
 -----------------------
 
-Delta Production Partitions/Queues
+Delta Partitions/Queues
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. table:: Delta Partitions/Queues
