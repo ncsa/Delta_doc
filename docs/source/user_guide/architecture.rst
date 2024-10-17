@@ -406,8 +406,4 @@ DDN SFA18XE (Quantity: 1), each unit contains:
 -  10 x SS9012 enclosures
 -  NVME for metadata and small files
 
-.. note::
-
-   A “module reset” in a job script populates $WORK and $SCRATCH environment variables automatically, or you may set them as WORK=/projects/<account>/$USER, SCRATCH=/scratch/<account>/$USER.
-
 |
