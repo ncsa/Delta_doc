@@ -77,7 +77,7 @@ The high performance ssd storage (740GB CPU, 1.5TB GPU) is available in /tmp (*u
 Codes that need to perform i/o to many small files should target /tmp on each node of the job and save results to other file systems before the job ends.
 
 Quota Usage
-~~~~~~~~~~~~
+------------
 
 The ``quota`` command allows you to view your use of the file systems and use by your projects. 
 Below is a sample output for a person, "<user>", who is in two projects: "aaaa" and "bbbb". 
@@ -107,7 +107,7 @@ The home directory quota does not depend on which project group the file is writ
    ------------------------------------------------------------------------------------------
 
 File Sharing
-~~~~~~~~~~~~~~~~~
+--------------
 
 Users may share files from the /projects file system on Delta to external users via Globus. 
 
