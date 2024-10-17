@@ -8,3 +8,5 @@ VS Code Performance Issues
    ..  image:: ../images/vscode/01_code_status.png
        :alt: Using the code --status command with vscode.
        :width: 700
+
+|
