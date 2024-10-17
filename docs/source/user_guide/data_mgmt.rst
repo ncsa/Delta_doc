@@ -36,7 +36,7 @@ File Systems
 File System Notes
 ~~~~~~~~~~~~~~~~~~~
 
-- Each user has a home directory, **$HOME**, located at **/u/$USER**. For each project they are assigned to, they will also have access to shared file space under /projects and /scratch.
+- Each user has a home directory, **$HOME**, located at ``/u/$USER``. For each project they are assigned to, they will also have access to shared file space under ``/projects`` and ``/scratch``.
 
   For example, a user (with username: **auser**) who has an allocated project with a local project serial code **abcd** will see the following entries in their $HOME and entries in the projects and scratch file systems.
 
@@ -67,6 +67,8 @@ File System Notes
 
 - Directory access changes can be made using the `facl <https://linux.die.net/man/1/setfacl>`_ command. 
   :ref:`Submit a support request <general_support>` if you need assistance enabling access for specific users and projects.
+
+- A “module reset” in a job script populates **$WORK** and **$SCRATCH** environment variables automatically, or you may set them as ``WORK=/projects/<account>/$USER``, ``SCRATCH=/scratch/<account>/$USER``.
 
 /tmp on Compute Nodes (Job Duration)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
