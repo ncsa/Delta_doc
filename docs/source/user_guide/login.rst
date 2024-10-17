@@ -29,7 +29,7 @@ Login Node Hostnames
   In January 2024, Delta was upgraded to Slingshot11. Please use the round robin login, login.delta.ncsa.illinois.edu, to SSH into the system. For single host SSH, use dt-login01.delta.ncsa.illinois.edu, dt-login02.delta.ncsa.illinois.edu, or dt-login03.delta.ncsa.illinois.edu. See the `ACCESS Delta Notice: Delta maintenance 01-23-2024 - 01-25-2024 <https://operations.access-ci.org/node/671>`_ for more details. 
 
 .. table:: Login Node Hostnames
-   :widths: 33 67 
+   :widths: 40 60 
 
    +--------------------------------------------+----------------------------------------------------+
    | Login Node Hostname                        | Description                                        |
