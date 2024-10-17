@@ -325,8 +325,8 @@ Delta is connected to the NPCF core router and exit infrastructure via two 100Gb
 
 Delta resources are inter-connected with HPE/Cray's 200Gbps Slingshot 11 interconnect.  
 
-File Systems
----------------
+Storage (File Systems)
+-----------------------
 
 .. warning::
 
