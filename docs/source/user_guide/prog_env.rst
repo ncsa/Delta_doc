@@ -277,5 +277,6 @@ The following pages provide step-by-step instructions on how to use VS Code, in 
    vscode/code_server
    vscode/remote_ssh
    vscode/remote_jupyter
+   vscode/performance_issues
 
 |
