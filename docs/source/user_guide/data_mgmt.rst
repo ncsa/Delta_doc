@@ -1,48 +1,126 @@
 Data Management
 ================
 
+.. _data-mgmt-filesystem:
+
 File Systems
 ----------------
 
-Each user has a home directory, **$HOME**, located at **/u/$USER**.
+.. table:: File System Specs
+   :widths: 15 12 24 10 10 29
 
-For example, a user (with username: **auser**) who has an allocated project with a local project serial code **abcd** will see the following entries in their $HOME and entries in the projects and scratch file systems.
+   +---------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
+   | File System   | Path          | Quota                                             | Snapshots     | Purged        | Key Features                               |
+   +===============+===============+===================================================+===============+===============+============================================+
+   | HOME          | ``/u``        | **90 GB.** 600,000 files per user.                | No/TBA        | No            | Area for software, scripts, job files, and |
+   |               |               |                                                   |               |               | so on. **Not** intended as a               |
+   |               |               |                                                   |               |               | source/destination for I/O during jobs.    |
+   |               |               |                                                   |               |               |                                            |
+   +---------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
+   | WORK          | ``/projects`` | **500 GB.** Up to 1-25 TB by                      | No/TBA        | No            | Area for shared data for a project, common |
+   |               |               | allocation request. Large requests                |               |               | data sets, software, results, and so on.   |
+   |               |               | may have a monetary fee.                          |               |               |                                            |
+   |               |               |                                                   |               |               |                                            |
+   +---------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
+   | SCRATCH       | ``/scratch``  | SCRATCH space available upon request;             | No            | No            | Area for computation, largest allocations, |
+   |               |               | :ref:`submit a support request <general-support>`.|               |               | where I/O from jobs should occur.          |
+   |               |               |                                                   |               |               |                                            |
+   +---------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
+   | /tmp          | ``/tmp``      | **0.74 (CPU) or 1.50 TB (GPU)**                   | No            | After each job| Locally attached disk for fast small file  |
+   |               |               | shared or dedicated depending on                  |               |               | I/O.                                       |
+   |               |               | node usage by job(s), no quotas in                |               |               |                                            |
+   |               |               | place.                                            |               |               |                                            |
+   |               |               |                                                   |               |               |                                            |
+   +---------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
 
-.. code-block:: bash
+File System Notes
+~~~~~~~~~~~~~~~~~~~
 
-   $ ls -ld /u/$USER
-   drwxrwx---+ 12 root root 12345 Feb 21 11:54 /u/$USER
+- Each user has a home directory, **$HOME**, located at ``/u/$USER``. For each project they are assigned to, they will also have access to shared file space under ``/projects`` and ``/scratch``.
 
-   $ ls -ld /projects/abcd
-   drwxrws---+  45 root   delta_abcd      4096 Feb 21 11:54 /projects/abcd
+  For example, a user (with username: **auser**) who has an allocated project with a local project serial code **abcd** will see the following entries in their $HOME and entries in the projects and scratch file systems.
 
-   $ ls -l /projects/abcd
-   total 0
-   drwxrws---+ 2 auser delta_abcd 6 Feb 21 11:54 auser
-   drwxrws---+ 2 buser delta_abcd 6 Feb 21 11:54 buser
-   ...
+  .. code-block:: bash
+   
+     $ ls -ld /u/$USER
+     drwxrwx---+ 12 root root 12345 Feb 21 11:54 /u/$USER
+   
+     $ ls -ld /projects/abcd
+     drwxrws---+  45 root   delta_abcd      4096 Feb 21 11:54 /projects/abcd
+   
+     $ ls -l /projects/abcd
+     total 0
+     drwxrws---+ 2 auser delta_abcd 6 Feb 21 11:54 auser
+     drwxrws---+ 2 buser delta_abcd 6 Feb 21 11:54 buser
+     ...
+   
+     $ ls -ld /scratch/abcd
+     drwxrws---+  45 root   delta_abcd      4096 Feb 21 11:54 /scratch/abcd
+   
+     $ ls -l /scratch/abcd
+     total 0
+     drwxrws---+ 2 auser delta_abcd 6 Feb 21 11:54 auser
+     drwxrws---+ 2 buser delta_abcd 6 Feb 21 11:54 buser
+     ...
 
-   $ ls -ld /scratch/abcd
-   drwxrws---+  45 root   delta_abcd      4096 Feb 21 11:54 /scratch/abcd
+- Determine the mapping of ACCESS project to local project using the ``accounts`` command. View your file system usage with the ``quota`` command.
 
-   $ ls -l /scratch/abcd
-   total 0
-   drwxrws---+ 2 auser delta_abcd 6 Feb 21 11:54 auser
-   drwxrws---+ 2 buser delta_abcd 6 Feb 21 11:54 buser
-   ...
+- Directory access changes can be made using the `facl <https://linux.die.net/man/1/setfacl>`_ command. 
+  :ref:`Submit a support request <general_support>` if you need assistance enabling access for specific users and projects.
 
-Determine the mapping of ACCESS project to local project using the ``accounts`` command.
-
-Directory access changes can be made using the `facl <https://linux.die.net/man/1/setfacl>`_ command. 
-:ref:`Submit a support request <general_support>` if you need assistance enabling access for specific users and projects.
-
-To avoid issues when file systems become unstable or non-responsive, do not put symbolic links from **$HOME** to the projects and scratch spaces.
+- A “module reset” in a job script populates **$WORK** and **$SCRATCH** environment variables automatically, or you may set them as ``WORK=/projects/<account>/$USER``, ``SCRATCH=/scratch/<account>/$USER``.
 
 /tmp on Compute Nodes (Job Duration)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The high performance ssd storage (740GB CPU, 1.5TB GPU) is available in /tmp (*unique to each node and job – not a shared file system*) and may contain less than the expected free space if the node(s) are running multiple jobs. 
 Codes that need to perform i/o to many small files should target /tmp on each node of the job and save results to other file systems before the job ends.
+
+Quota Usage
+~~~~~~~~~~~~
+
+The ``quota`` command allows you to view your use of the file systems and use by your projects. 
+Below is a sample output for a person, "<user>", who is in two projects: "aaaa" and "bbbb". 
+The home directory quota does not depend on which project group the file is written with.
+
+.. code-block::
+
+   [<user>@dt-login01 ~]$ quota
+   Quota usage for user <user>:
+   -------------------------------------------------------------------------------------------
+   | Directory Path | User | User | User  | User | User   | User |
+   |                | Block| Soft | Hard  | File | Soft   | Hard |
+   |                | Used | Quota| Limit | Used | Quota  | Limit|
+   --------------------------------------------------------------------------------------
+   | /u/<user>      | 20k  | 50G  | 27.5G | 5    | 600000 | 660000 |
+   --------------------------------------------------------------------------------------
+   Quota usage for groups user <user> is a member of:
+   -------------------------------------------------------------------------------------
+   | Directory Path | Group | Group | Group | Group | Group  | Group |
+   |                | Block | Soft  | Hard  | File  | Soft   | Hard  |
+   |                | Used  | Quota | Limit | Used  | Quota  | Limit |
+   -------------------------------------------------------------------------------------------
+   | /projects/aaaa | 8k    | 500G  | 550G  | 2     | 300000 | 330000 |
+   | /projects/bbbb | 24k   | 500G  | 550G  | 6     | 300000 | 330000 |
+   | /scratch/aaaa  | 8k    | 552G  | 607.2G| 2     | 500000 | 550000 |
+   | /scratch/bbbb  | 24k   | 9.766T| 10.74T| 6     | 500000 | 550000 |
+   ------------------------------------------------------------------------------------------
+
+File Sharing
+~~~~~~~~~~~~~~~~~
+
+Users may share files from the /projects file system on Delta to external users via Globus. 
+
+Create a directory to share from in your /projects directory.  If your four-character allocation code is "XXXX" then do something like: 
+
+.. code-block::
+
+    mkdir /projects/XXXX/globus_shared/
+    mkdir /projects/XXXX/globus_shared/my_data/
+
+Then move or copy whatever data you want to share to that directory. 
+
+Follow the instructions on this `Globus sharing page <https://docs.globus.org/guides/tutorials/manage-files/share-files/>`_ to share that directory.  You will need to authenticate and connect to the "ACCESS Delta" endpoint to make this work.  Share the collection from the directory you created; in the above example: "/projects/XXXX/globus_shared/my_data/".  
 
 .. _transfer:
 
@@ -281,3 +359,5 @@ The library is described at: `DDNStorage/posix_2_ime: POSIX to IME Native API (g
    ime-ctl --recursive --block --sync $IME_DIR
 
    exit
+
+|
