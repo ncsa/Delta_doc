@@ -29,16 +29,23 @@ Login Node Hostnames
   In January 2024, Delta was upgraded to Slingshot11. Please use the round robin login, login.delta.ncsa.illinois.edu, to SSH into the system. For single host SSH, use dt-login01.delta.ncsa.illinois.edu, dt-login02.delta.ncsa.illinois.edu, or dt-login03.delta.ncsa.illinois.edu. See the `ACCESS Delta Notice: Delta maintenance 01-23-2024 - 01-25-2024 <https://operations.access-ci.org/node/671>`_ for more details. 
 
 .. table:: Login Node Hostnames
+   :widths: 40 60 
 
-   =======================================   ==============================
-   Login Node Hostname                       Description
-   =======================================   ==============================
-   ``login.delta.ncsa.illinois.edu``         *This is the preferred hostname*. Alias that round robin logs into one of the two Delta login nodes. 
-   ``dt-login.delta.ncsa.illinois.edu``      Alias that round robin logs into one of the two Delta login nodes.
-   ``dt-login01.delta.ncsa.illinois.edu``    One of the Delta login nodes.
-   ``dt-login02.delta.ncsa.illinois.edu``    One of the Delta login nodes.
-   ``dt-login03.delta.ncsa.illinois.edu``    One of the Delta login nodes.
-   =======================================   ==============================
+   +--------------------------------------------+----------------------------------------------------+
+   | Login Node Hostname                        | Description                                        |
+   +============================================+====================================================+
+   | .. code-block::                            | **Preferred hostname.** Alias that round-robin     |
+   |                                            | logs in to one of Delta login nodes.               |
+   |    login.delta.ncsa.illinois.edu           |                                                    |
+   +--------------------------------------------+----------------------------------------------------+
+   | .. code-block::                            | Alias that round-robin logs in to one of the       |
+   |                                            | Delta login nodes.                                 |
+   |    dt-login.delta.ncsa.illinois.edu        |                                                    |
+   +--------------------------------------------+----------------------------------------------------+
+   | ``dt-login[01-04].delta.ncsa.illinois.edu``| There are four Delta login nodes, ``dt-login01``,  |
+   |                                            | ``dt-login02``, ``dt-login03``, and ``dt-login04``.|
+   +--------------------------------------------+----------------------------------------------------+
+
 
 SSH Examples
 ~~~~~~~~~~~~~~

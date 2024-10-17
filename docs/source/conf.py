@@ -61,6 +61,7 @@ epub_show_urls = 'footnote'
 
 html_css_files = [
     'css/custom.css',
+    'css/table.css',
 ]
 
 # -- custom JS
