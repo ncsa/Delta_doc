@@ -29,9 +29,9 @@ File Systems
    |                |               | :ref:`submit a support request <general_support>`.|               |               | of **small** I/O from jobs.                |
    +----------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
    | SCRATCH        | ``/scratch``  | N/A                                               | No            | No            | Replaced by ``/work/hdd``. There is a      |
-   |                |               |                                                   |               |               | symbolic link from to ``/work/hdd`` for the|
-   |                |               |                                                   |               |               | near-term to maintain functionality of     |
-   |                |               |                                                   |               |               | existing scripts.                          |
+   |                |               |                                                   |               |               | symbolic link from ``/scratch`` to         |
+   |                |               |                                                   |               |               | ``/work/hdd`` for the near-term to maintain|
+   |                |               |                                                   |               |               | functionality of existing scripts.         |
    +----------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
    | /tmp           | ``/tmp``      | **0.74 (CPU) or 1.50 TB (GPU)**                   | No            | After each job| Locally attached disk for fast small file  |
    |                |               | shared or dedicated depending on                  |               |               | I/O.                                       |
