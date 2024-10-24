@@ -23,7 +23,7 @@ File Systems
    |                |               |                                                   |               |               |                                            |
    +----------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
    | WORK - **HDD** | ``/work/hdd`` | **1000 GB**. Up to 1-100 TB by allocation request.| No            | No            | Area for computation, largest allocations, |
-   |                |               |                                                   |               |               | where I/O from jobs should occur.          |
+   |                |               | :ref:`Submit a support request <general_support>`.|               |               | where I/O from jobs should occur.          |
    +----------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
    | WORK - **NVME**| ``/work/nvme``| NVME space is available upon request;             | No            | No            | Area for computation, NVME is best for lots| 
    |                |               | :ref:`submit a support request <general_support>`.|               |               | of **small** I/O from jobs.                |
