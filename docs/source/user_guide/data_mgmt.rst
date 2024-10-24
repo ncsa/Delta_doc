@@ -7,31 +7,38 @@ File Systems
 ----------------
 
 .. table:: File System Specs
-   :widths: 15 12 24 10 10 29
+   :widths: 15 14 24 10 10 27
 
-   +---------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
-   | File System   | Path          | Quota                                             | Snapshots     | Purged        | Key Features                               |
-   +===============+===============+===================================================+===============+===============+============================================+
-   | HOME          | ``/u``        | **90 GB.** 600,000 files per user.                | No/TBA        | No            | Area for software, scripts, job files, and |
-   |               |               |                                                   |               |               | so on. **Not** intended as a               |
-   |               |               |                                                   |               |               | source/destination for I/O during jobs.    |
-   |               |               |                                                   |               |               |                                            |
-   +---------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
-   | WORK          | ``/projects`` | **500 GB.** Up to 1-25 TB by                      | No/TBA        | No            | Area for shared data for a project, common |
-   |               |               | allocation request. Large requests                |               |               | data sets, software, results, and so on.   |
-   |               |               | may have a monetary fee.                          |               |               |                                            |
-   |               |               |                                                   |               |               |                                            |
-   +---------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
-   | SCRATCH       | ``/scratch``  | SCRATCH space available upon request;             | No            | No            | Area for computation, largest allocations, |
-   |               |               | :ref:`submit a support request <general-support>`.|               |               | where I/O from jobs should occur.          |
-   |               |               |                                                   |               |               |                                            |
-   +---------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
-   | /tmp          | ``/tmp``      | **0.74 (CPU) or 1.50 TB (GPU)**                   | No            | After each job| Locally attached disk for fast small file  |
-   |               |               | shared or dedicated depending on                  |               |               | I/O.                                       |
-   |               |               | node usage by job(s), no quotas in                |               |               |                                            |
-   |               |               | place.                                            |               |               |                                            |
-   |               |               |                                                   |               |               |                                            |
-   +---------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
+   +----------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
+   | File System    | Path          | Quota                                             | Snapshots     | Purged        | Key Features                               |
+   +================+===============+===================================================+===============+===============+============================================+
+   | HOME           | ``/u``        | **90 GB.** 600,000 files per user.                | No/TBA        | No            | Area for software, scripts, job files, and |
+   |                |               |                                                   |               |               | so on. **Not** intended as a               |
+   |                |               |                                                   |               |               | source/destination for I/O during jobs.    |
+   |                |               |                                                   |               |               |                                            |
+   +----------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
+   | PROJECTS       | ``/projects`` | **500 GB.** Up to 1-25 TB by                      | No/TBA        | No            | Area for shared data for a project, common |
+   |                |               | allocation request. Large requests                |               |               | data sets, software, results, and so on.   |
+   |                |               | may have a monetary fee.                          |               |               |                                            |
+   |                |               |                                                   |               |               |                                            |
+   +----------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
+   | WORK - **HDD** | ``/work/hdd`` | **1000 GB**. Up to 1-100 TB by allocation request.| No            | No            | Area for computation, largest allocations, |
+   |                |               | :ref:`Submit a support request <general_support>`.|               |               | where I/O from jobs should occur.          |
+   +----------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
+   | WORK - **NVME**| ``/work/nvme``| NVME space is available upon request;             | No            | No            | Area for computation, NVME is best for lots| 
+   |                |               | :ref:`submit a support request <general_support>`.|               |               | of **small** I/O from jobs.                |
+   +----------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
+   | SCRATCH        | ``/scratch``  | N/A                                               | No            | No            | Replaced by ``/work/hdd``. There is a      |
+   |                |               |                                                   |               |               | symbolic link from ``/scratch`` to         |
+   |                |               |                                                   |               |               | ``/work/hdd`` for the near-term to maintain|
+   |                |               |                                                   |               |               | functionality of existing scripts.         |
+   +----------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
+   | /tmp           | ``/tmp``      | **0.74 (CPU) or 1.50 TB (GPU)**                   | No            | After each job| Locally attached disk for fast small file  |
+   |                |               | shared or dedicated depending on                  |               |               | I/O.                                       |
+   |                |               | node usage by job(s), no quotas in                |               |               |                                            |
+   |                |               | place.                                            |               |               |                                            |
+   |                |               |                                                   |               |               |                                            |
+   +----------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
 
 File System Notes
 ~~~~~~~~~~~~~~~~~~~
