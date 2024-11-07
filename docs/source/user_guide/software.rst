@@ -26,7 +26,7 @@ Use ``module spider package_name`` to search for software in Lmod and see the st
    |                                  |      $ module list                                                                   |
    | (display the currently loaded    |                                                                                      |
    | modules)                         |      Currently Loaded Modules:                                                       |
-   |                                  |      1) gcc/11.2.0   3) openmpi/4.1.2   5) modtree/gpu                               |
+   |                                  |      1) gcc/11.2.0   3) openmpi/4.1.2                                                |
    |                                  |      2) ucx/1.11.2   4) cuda/11.6.1                                                  |
    |                                  |                                                                                      |
    |                                  |                                                                                      |
@@ -34,13 +34,12 @@ Use ``module spider package_name`` to search for software in Lmod and see the st
    | ``module load <package_name>``   |                                                                                      |
    |                                  |   .. code-block::                                                                    |
    | (loads a package or metamodule   |                                                                                      |
-   | such as                          |      $ module load modtree/cpu                                                       |
+   | such as                          |      $ module load                                                                   |
    |                                  |                                                                                      |
-   | modtree/gpu or netcdf-c)         |      Due to MODULEPATH changes, the following have been reloaded:                    |
+   |                netcdf-c          |      Due to MODULEPATH changes, the following have been reloaded:                    |
    |                                  |      1) gcc/11.2.0     2) openmpi/4.1.2     3) ucx/1.11.2                            |
    |                                  |                                                                                      |
-   |                                  |      The following have been reloaded with a version change:                         |
-   |                                  |      1) modtree/gpu => modtree/cpu                                                   |
+   |                                  |                                                                                      |
    |                                  |                                                                                      |
    +----------------------------------+--------------------------------------------------------------------------------------+
    | ``module spider <package_name>`` |                                                                                      |
@@ -119,7 +118,7 @@ Examples using all the above are shown in the `Intel scikit-learn-intelex reposi
    The :ref:`nvidia-contain` on Delta provide optimized python frameworks built for Delta's A100 and A40 GPUs. 
    Delta staff recommend using an NGC container when possible with the GPU nodes (or use the anaconda3_gpu module).
 
-The default GCC (latest version) programming environment for either modtree/cpu or modtree/gpu contains:
+The default GCC (latest version) programming environment contains:
 
 Python (a recent or latest version)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -168,7 +167,7 @@ $$$$$$$$$$$$$$$
 
 Use python from the anaconda3_cpu module if you need some of the modules provided by Anaconda in your python workflow. 
 See the `Managing Environments <https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html#managing-environments>`_ section of the conda getting started guide to learn how to customize conda for your workflow and add extra python modules to your environment. 
-NCSA staff recommend starting with anaconda3_cpu for modtree/cpu and the CPU nodes.
+NCSA staff recommend starting with anaconda3_cpu for the CPU nodes.
 **Do not use this module with GPUs, use anaconda3_gpu instead** (:ref:`anaconda_gpu`).
 The Delta team frequently updates anaconda3_* to track the latest packages.
 
@@ -183,14 +182,14 @@ If you require an older version of a python lib/module, NCSA staff suggest looki
 
 .. code-block::
 
-   $ module load modtree/cpu
+   $ 
    $ module load gcc anaconda3_cpu
    $ which conda
    /sw/external/python/anaconda3_cpu/conda
    $ module list Currently Loaded Modules:
      1) cue-login-env/1.0   6) libfabric/1.14.0     11) ucx/1.11.2
      2) default             7) lustre/2.14.0_ddn23  12) openmpi/4.1.2
-     3) gcc/11.2.0          8) openssh/8.0p1        13) modtree/cpu
+     3) gcc/11.2.0          8) openssh/8.0p1        
      4) knem/1.1.4          9) pmix/3.2.3           14) anaconda3_cpu/4.13.0
      5) libevent/2.1.8     10) rdma-core/32.0
 
