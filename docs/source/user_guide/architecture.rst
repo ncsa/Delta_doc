@@ -283,8 +283,11 @@ Table Legend:
    +---------------------------+-----------------------------------------+
    | GPU                       | `AMD MI100 <https://www.amd.com/en/prod |
    |                           | ucts/accelerators/instinct/mi100.html>`_|
+   |                           | `AMD MI210 <https://www.amd.com/en/prod |
+   |                           | ucts/accelerators/instinct/mi200/mi210  | 
+   |                           | .html>`_                                |
    +---------------------------+-----------------------------------------+
-   | GPUs per node             | 8                                       |
+   | GPUs per node             | 8 + 1 = 9                               |
    +---------------------------+-----------------------------------------+
    | GPU Memory (GB)           | 32                                      |
    +---------------------------+-----------------------------------------+
@@ -308,6 +311,9 @@ Table Legend:
    +---------------------------+-----------------------------------------+
    | Local storage (TB)        | 1.5 TB                                  |
    +---------------------------+-----------------------------------------+
+
+The gpuMI100x8 gpu node is a good resource for large memory (2TB) jobs that do not need a gpu as the charging is
+set to promote use of this resource for its memory. The 9th GPU is a newer MI210.
 
 Login Nodes
 ~~~~~~~~~~~~~
