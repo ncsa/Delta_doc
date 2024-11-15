@@ -25,8 +25,8 @@ Use ``module spider package_name`` to search for software in Lmod and see the st
    |                                  |                                                                                      |
    |    module list                   |      $ module list                                                                   |
    |                                  |                                                                                      |
-   | (display the currently loaded    |      Currently Loaded Modules:                                                       |
-   | modules)                         |      1) gcc/11.2.0   3) openmpi/4.1.2                                                |
+   | Display the currently loaded     |      Currently Loaded Modules:                                                       |
+   | modules.                         |      1) gcc/11.2.0   3) openmpi/4.1.2                                                |
    |                                  |      2) ucx/1.11.2   4) cuda/11.6.1                                                  |
    |                                  |                                                                                      |
    |                                  |                                                                                      |
@@ -35,8 +35,8 @@ Use ``module spider package_name`` to search for software in Lmod and see the st
    |                                  |                                                                                      |
    |    module load <package_name>    |   .. code-block::                                                                    |
    |                                  |                                                                                      |
-   | (loads a package or metamodule   |      $ module load                                                                   |
-   | such as netcdf-c)                |                                                                                      |
+   | Loads a package or metamodule    |      $ module load                                                                   |
+   | such as netcdf-c.                |                                                                                      |
    |                                  |      Due to MODULEPATH changes, the following have been reloaded:                    |
    |                                  |      1) gcc/11.2.0     2) openmpi/4.1.2     3) ucx/1.11.2                            |
    |                                  |                                                                                      |
@@ -47,19 +47,20 @@ Use ``module spider package_name`` to search for software in Lmod and see the st
    |                                  |                                                                                      |
    |    module spider <package_name>  |   .. code-block::                                                                    |
    |                                  |                                                                                      |
-   | (finds modules and displays the  |      $ module spider openblas                                                        |
-   | ways to load them)               |                                                                                      |
+   | Finds modules and displays the   |      $ module spider openblas                                                        |
+   | ways to load them.               |                                                                                      |
    |                                  |      ---------------------------------------------------------------------------     |
-   |                                  |      openblas: openblas/0.3.20                                                       |
-   | .. code-block:: terminal         |      ----------------------------------------------------------------------------    |
-   |                                  |      You will need to load all module(s) on any one of the lines below before the    |
-   |    module -r spider "regular     |      "openblas/0.3.20" module is available to load.                                  |
-   |    expression"                   |                                                                                      |
-   |                                  |            aocc/3.2.0                                                                |
+   | \                                |      openblas: openblas/0.3.20                                                       |
+   |                                  |      ----------------------------------------------------------------------------    |
+   | .. code-block:: terminal         |      You will need to load all module(s) on any one of the lines below before the    |
+   |                                  |      "openblas/0.3.20" module is available to load.                                  |
+   |    module -r spider "regular     |                                                                                      |
+   |    expression"                   |            aocc/3.2.0                                                                |
    |                                  |            gcc/11.2.0                                                                |
    |                                  |                                                                                      |
    |                                  |         Help:                                                                        |
    |                                  |           OpenBLAS: An optimized BLAS library                                        |
+   |                                  |                                                                                      |
    |                                  |      $ module -r spider "^r$"                                                        |
    |                                  |                                                                                      |
    |                                  |      ----------------------------------------------------------------------------    |
