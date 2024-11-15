@@ -1,11 +1,11 @@
 Debugging and Performance Analysis
 =====================================
 
-The tools which access hardware counters on with the AMD CPU or the NVIDIA or AMD GPUs need to add an additional Slurm directive.
+Tools that access hardware counters on the AMD CPU, NVIDIA GPU, or AMD GPU need to add an additional Slurm directive.
 
-For CPU jobs add  `--constraint=perf`
+- For CPU jobs, add  ``--constraint=perf``
 
-For GPU jobs add  `--constraint=perf,nvperf`
+- For GPU jobs, add  ``--constraint=perf,nvperf``
 
 See below for use cases and sample job script excerpts.
 
@@ -116,7 +116,8 @@ NVIDIA Nsight Systems
 -------------------------
 
 Installation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
+
 The Nsight Systems is included in the CUDA toolkit. A cuda module is  loaded by default on Delta.
 
 .. code-block::
