@@ -43,9 +43,9 @@ File Systems
 File System Notes
 ~~~~~~~~~~~~~~~~~~~
 
-- Each user has a home directory, **$HOME**, located at ``/u/$USER``. For each project they are assigned to, they will also have access to shared file space under ``/projects`` and ``/scratch``.
+- Each user has a home directory, **$HOME**, located at ``/u/$USER``. For each project they are assigned to, they will also have access to shared file space under ``/projects`` and ``/work/hdd``.
 
-  For example, a user (with username: **auser**) who has an allocated project with a local project serial code **abcd** will see the following entries in their $HOME and entries in the projects and scratch file systems.
+  For example, a user (with username: **auser**) who has an allocated project with a local project serial code **abcd** will see the following entries in their $HOME and entries in the /projects and /work/hdd file systems.
 
   .. code-block:: bash
    
@@ -61,10 +61,10 @@ File System Notes
      drwxrws---+ 2 buser delta_abcd 6 Feb 21 11:54 buser
      ...
    
-     $ ls -ld /scratch/abcd
-     drwxrws---+  45 root   delta_abcd      4096 Feb 21 11:54 /scratch/abcd
+     $ ls -ld /work/hdd/abcd
+     drwxrws---+  45 root   delta_abcd      4096 Feb 21 11:54 /work/hdd/abcd
    
-     $ ls -l /scratch/abcd
+     $ ls -l /work/hdd/abcd
      total 0
      drwxrws---+ 2 auser delta_abcd 6 Feb 21 11:54 auser
      drwxrws---+ 2 buser delta_abcd 6 Feb 21 11:54 buser
@@ -95,22 +95,22 @@ The home directory quota does not depend on which project group the file is writ
    [<user>@dt-login01 ~]$ quota
    Quota usage for user <user>:
    -------------------------------------------------------------------------------------------
-   | Directory Path | User | User | User  | User | User   | User |
-   |                | Block| Soft | Hard  | File | Soft   | Hard |
-   |                | Used | Quota| Limit | Used | Quota  | Limit|
+   | Directory Path  | User | User | User  | User | User   | User |
+   |                 | Block| Soft | Hard  | File | Soft   | Hard |
+   |                 | Used | Quota| Limit | Used | Quota  | Limit|
    --------------------------------------------------------------------------------------
-   | /u/<user>      | 20k  | 50G  | 27.5G | 5    | 600000 | 660000 |
+   | /u/<user>       | 20k  | 50G  | 27.5G | 5    | 600000 | 660000 |
    --------------------------------------------------------------------------------------
    Quota usage for groups user <user> is a member of:
    -------------------------------------------------------------------------------------
-   | Directory Path | Group | Group | Group | Group | Group  | Group |
-   |                | Block | Soft  | Hard  | File  | Soft   | Hard  |
-   |                | Used  | Quota | Limit | Used  | Quota  | Limit |
+   | Directory Path  | Group | Group | Group | Group | Group  | Group |
+   |                 | Block | Soft  | Hard  | File  | Soft   | Hard  |
+   |                 | Used  | Quota | Limit | Used  | Quota  | Limit |
    -------------------------------------------------------------------------------------------
-   | /projects/aaaa | 8k    | 500G  | 550G  | 2     | 300000 | 330000 |
-   | /projects/bbbb | 24k   | 500G  | 550G  | 6     | 300000 | 330000 |
-   | /scratch/aaaa  | 8k    | 552G  | 607.2G| 2     | 500000 | 550000 |
-   | /scratch/bbbb  | 24k   | 9.766T| 10.74T| 6     | 500000 | 550000 |
+   | /projects/aaaa  | 8k    | 500G  | 550G  | 2     | 300000 | 330000 |
+   | /projects/bbbb  | 24k   | 500G  | 550G  | 6     | 300000 | 330000 |
+   | /work/hdd/aaaa  | 8k    | 552G  | 607.2G| 2     | 500000 | 550000 |
+   | /work/hdd/bbbb  | 24k   | 9.766T| 10.74T| 6     | 500000 | 550000 |
    ------------------------------------------------------------------------------------------
 
 File Sharing
