@@ -21,7 +21,7 @@ Use ``module spider package_name`` to search for software in Lmod and see the st
    | Module (Lmod) Command            | Example                                                                              |
    +==================================+======================================================================================+
    |                                  |                                                                                      |
-   | .. code-block::                  |   .. code-block::                                                                    |
+   | .. code-block:: terminal         |   .. code-block::                                                                    |
    |                                  |                                                                                      |
    |    module list                   |      $ module list                                                                   |
    |                                  |                                                                                      |
@@ -31,7 +31,7 @@ Use ``module spider package_name`` to search for software in Lmod and see the st
    |                                  |                                                                                      |
    |                                  |                                                                                      |
    +----------------------------------+--------------------------------------------------------------------------------------+
-   | .. code-block::                  |                                                                                      |
+   | .. code-block:: terminal         |                                                                                      |
    |                                  |                                                                                      |
    |    module load <package_name>    |   .. code-block::                                                                    |
    |                                  |                                                                                      |
@@ -43,7 +43,7 @@ Use ``module spider package_name`` to search for software in Lmod and see the st
    |                                  |                                                                                      |
    |                                  |                                                                                      |
    +----------------------------------+--------------------------------------------------------------------------------------+
-   | .. code-block::                  |                                                                                      |
+   | .. code-block:: terminal         |                                                                                      |
    |                                  |                                                                                      |
    |    module spider <package_name>  |   .. code-block::                                                                    |
    |                                  |                                                                                      |
@@ -51,7 +51,7 @@ Use ``module spider package_name`` to search for software in Lmod and see the st
    | ways to load them)               |                                                                                      |
    |                                  |      ---------------------------------------------------------------------------     |
    |                                  |      openblas: openblas/0.3.20                                                       |
-   | .. code-block::                  |      ----------------------------------------------------------------------------    |
+   | .. code-block:: terminal         |      ----------------------------------------------------------------------------    |
    |                                  |      You will need to load all module(s) on any one of the lines below before the    |
    |    module -r spider "regular     |      "openblas/0.3.20" module is available to load.                                  |
    |    expression"                   |                                                                                      |
