@@ -1,6 +1,15 @@
 Debugging and Performance Analysis
 =====================================
 
+Tools that access hardware counters on the AMD CPU, NVIDIA GPU, or AMD GPU need to add an additional Slurm directive.
+
+- For CPU jobs, add  ``--constraint=perf``
+
+- For GPU jobs, add  ``--constraint=perf,nvperf``
+
+See below for use cases and sample job script excerpts.
+
+
 AMDuProf Guide
 -----------------
 
@@ -106,16 +115,16 @@ References
 NVIDIA Nsight Systems
 -------------------------
 
-Installation (Delta System, rgpu02 Preliminary Documentation)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-For admins/sw team: Use Spack to install CUDA, and the nsys command for Nsight Systems is included.
+Installation
+~~~~~~~~~~~~~~~~~~
+
+The Nsight Systems is included in the CUDA toolkit. A cuda module is  loaded by default on Delta.
 
 .. code-block::
 
-   [arnoldg@rgpu02 rgpu02]$ module load cuda
-   [arnoldg@rgpu02 rgpu02]$ which nsys
-   ~/rgpu02/spack/opt/spack/linux-rhel8-zen/gcc-8.5.0/cuda-11.6.0-7ortdmqooz7ikzxpl4dvsqhqiflglvsa/bin/nsys
-   [arnoldg@rgpu02 rgpu02]$ 
+   [arnoldg@dt-login01 ~]$ which nsys
+   /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/bin/nsys
+  
 
 Installation (NVIDIA Nsight Systems Client on Local Desktop/Laptop)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

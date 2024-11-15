@@ -21,44 +21,46 @@ Use ``module spider package_name`` to search for software in Lmod and see the st
    | Module (Lmod) Command            | Example                                                                              |
    +==================================+======================================================================================+
    |                                  |                                                                                      |
-   |                                  |   .. code-block::                                                                    |
-   | ``module list``                  |                                                                                      |
-   |                                  |      $ module list                                                                   |
-   | (display the currently loaded    |                                                                                      |
-   | modules)                         |      Currently Loaded Modules:                                                       |
-   |                                  |      1) gcc/11.2.0   3) openmpi/4.1.2   5) modtree/gpu                               |
+   | .. code-block:: terminal         |   .. code-block::                                                                    |
+   |                                  |                                                                                      |
+   |    module list                   |      $ module list                                                                   |
+   |                                  |                                                                                      |
+   | Display the currently loaded     |      Currently Loaded Modules:                                                       |
+   | modules.                         |      1) gcc/11.2.0   3) openmpi/4.1.2                                                |
    |                                  |      2) ucx/1.11.2   4) cuda/11.6.1                                                  |
    |                                  |                                                                                      |
    |                                  |                                                                                      |
    +----------------------------------+--------------------------------------------------------------------------------------+
-   | ``module load <package_name>``   |                                                                                      |
-   |                                  |   .. code-block::                                                                    |
-   | (loads a package or metamodule   |                                                                                      |
-   | such as                          |      $ module load modtree/cpu                                                       |
+   | .. code-block:: terminal         |                                                                                      |
    |                                  |                                                                                      |
-   | modtree/gpu or netcdf-c)         |      Due to MODULEPATH changes, the following have been reloaded:                    |
+   |    module load <package_name>    |   .. code-block::                                                                    |
+   |                                  |                                                                                      |
+   | Loads a package or metamodule    |      $ module load                                                                   |
+   | such as netcdf-c.                |                                                                                      |
+   |                                  |      Due to MODULEPATH changes, the following have been reloaded:                    |
    |                                  |      1) gcc/11.2.0     2) openmpi/4.1.2     3) ucx/1.11.2                            |
    |                                  |                                                                                      |
-   |                                  |      The following have been reloaded with a version change:                         |
-   |                                  |      1) modtree/gpu => modtree/cpu                                                   |
+   |                                  |                                                                                      |
    |                                  |                                                                                      |
    +----------------------------------+--------------------------------------------------------------------------------------+
-   | ``module spider <package_name>`` |                                                                                      |
-   |                                  |   .. code-block::                                                                    |
-   | (finds modules and displays the  |                                                                                      |
-   | ways to                          |      $ module spider openblas                                                        |
+   | .. code-block:: terminal         |                                                                                      |
    |                                  |                                                                                      |
-   | load them)                       |      ---------------------------------------------------------------------------     |
-   |                                  |      openblas: openblas/0.3.20                                                       |
+   |    module spider <package_name>  |   .. code-block::                                                                    |
+   |                                  |                                                                                      |
+   | Finds modules and displays the   |      $ module spider openblas                                                        |
+   | ways to load them.               |                                                                                      |
+   |                                  |      ---------------------------------------------------------------------------     |
+   | |                                |      openblas: openblas/0.3.20                                                       |
    |                                  |      ----------------------------------------------------------------------------    |
-   |                                  |      You will need to load all module(s) on any one of the lines below before the    |
+   | .. code-block:: terminal         |      You will need to load all module(s) on any one of the lines below before the    |
    |                                  |      "openblas/0.3.20" module is available to load.                                  |
-   | ``module -r spider "regular      |                                                                                      |
-   | expression"``                    |            aocc/3.2.0                                                                |
+   |    module -r spider "regular     |                                                                                      |
+   |    expression"                   |            aocc/3.2.0                                                                |
    |                                  |            gcc/11.2.0                                                                |
    |                                  |                                                                                      |
    |                                  |         Help:                                                                        |
    |                                  |           OpenBLAS: An optimized BLAS library                                        |
+   |                                  |                                                                                      |
    |                                  |      $ module -r spider "^r$"                                                        |
    |                                  |                                                                                      |
    |                                  |      ----------------------------------------------------------------------------    |
@@ -119,7 +121,7 @@ Examples using all the above are shown in the `Intel scikit-learn-intelex reposi
    The :ref:`nvidia-contain` on Delta provide optimized python frameworks built for Delta's A100 and A40 GPUs. 
    Delta staff recommend using an NGC container when possible with the GPU nodes (or use the anaconda3_gpu module).
 
-The default GCC (latest version) programming environment for either modtree/cpu or modtree/gpu contains:
+The default GCC (latest version) programming environment contains:
 
 Python (a recent or latest version)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -168,7 +170,7 @@ $$$$$$$$$$$$$$$
 
 Use python from the anaconda3_cpu module if you need some of the modules provided by Anaconda in your python workflow. 
 See the `Managing Environments <https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html#managing-environments>`_ section of the conda getting started guide to learn how to customize conda for your workflow and add extra python modules to your environment. 
-NCSA staff recommend starting with anaconda3_cpu for modtree/cpu and the CPU nodes.
+NCSA staff recommend starting with anaconda3_cpu for the CPU nodes.
 **Do not use this module with GPUs, use anaconda3_gpu instead** (:ref:`anaconda_gpu`).
 The Delta team frequently updates anaconda3_* to track the latest packages.
 
@@ -183,15 +185,15 @@ If you require an older version of a python lib/module, NCSA staff suggest looki
 
 .. code-block::
 
-   $ module load modtree/cpu
+   $ 
    $ module load gcc anaconda3_cpu
    $ which conda
    /sw/external/python/anaconda3_cpu/conda
    $ module list Currently Loaded Modules:
      1) cue-login-env/1.0   6) libfabric/1.14.0     11) ucx/1.11.2
      2) default             7) lustre/2.14.0_ddn23  12) openmpi/4.1.2
-     3) gcc/11.2.0          8) openssh/8.0p1        13) modtree/cpu
-     4) knem/1.1.4          9) pmix/3.2.3           14) anaconda3_cpu/4.13.0
+     3) gcc/11.2.0          8) openssh/8.0p1        13) anaconda3_cpu/4.13.0
+     4) knem/1.1.4          9) pmix/3.2.3           
      5) libevent/2.1.8     10) rdma-core/32.0
 
 List of modules in anaconda3_cpu
@@ -706,7 +708,7 @@ See ``conda list`` after loading the module to review what is already installed.
 As with anaconda3_cpu, :ref:`submit a support request <general_support>` if there are generally useful modules you would like installed for the broader community. 
 A sample TensorFlow test script:
 
-.. code-block::
+.. code-block:: terminal
 
    #!/bin/bash
    #SBATCH --mem=64g
@@ -766,7 +768,7 @@ Purge/unload/load modules as needed for that job.
 
 A clean slate might resemble (user has a conda init clause in bashrc for a custom environment):
 
-.. code-block::
+.. code-block:: terminal
 
    conda deactivate
    conda deactivate  # just making sure
