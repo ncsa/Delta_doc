@@ -50,7 +50,7 @@ Use ``module spider package_name`` to search for software in Lmod and see the st
    | Finds modules and displays the   |      $ module spider openblas                                                        |
    | ways to load them.               |                                                                                      |
    |                                  |      ---------------------------------------------------------------------------     |
-   | \                                |      openblas: openblas/0.3.20                                                       |
+   | |                                |      openblas: openblas/0.3.20                                                       |
    |                                  |      ----------------------------------------------------------------------------    |
    | .. code-block:: terminal         |      You will need to load all module(s) on any one of the lines below before the    |
    |                                  |      "openblas/0.3.20" module is available to load.                                  |
