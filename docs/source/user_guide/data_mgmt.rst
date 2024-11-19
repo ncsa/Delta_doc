@@ -171,7 +171,7 @@ The endpoint landing location (/) in Globus shows both home directories, and fol
 
 - Note that Delta and DeltaAI have different home directories; the CPUs are different, incompatible architectures. 
 
-..  image:: images/data-mgmt/delta-deltaai-home-globus.png
+..  image:: images/data_mgmt/delta-deltaai-home-globus.png
     :alt: Landing for "Home" for Delta and DeltaAI with  different home folders.
 
 Infinite Memory Engine (IME)
