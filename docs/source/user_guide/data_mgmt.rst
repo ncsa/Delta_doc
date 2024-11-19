@@ -158,10 +158,21 @@ Use Globus for large data transfers. Globus is a web-based file transfer system 
 
 Go to `Transferring Files - Globus <https://docs.ncsa.illinois.edu/en/latest/common/transfer.html#globus>`_ for instructions on using Globus with NCSA computing resources. 
 
-The **Delta endpoint collection** names are: 
+The Delta and DeltaAI endpoints are the same. Delta and DeltaAI can see ``/work/hdd`` and ``/work/nvme``, and the Delta and DeltaAI home directories will be visible. The **Delta endpoint collection** names are:
 
 - "NCSA Delta" (authenticates with your NCSA identity)
 - "ACCESS Delta" (authenticates with your ACCESS identity)
+
+The endpoint landing location (/) in Globus shows both home directories, and folders for shared project and work file systems. 
+
+- The **u** and **delta** folders navigate to ``/u/${USER}`` on **Delta**. 
+
+- The **deltaai** folder navigates to ``/u/${USER}`` on **DeltaAI**. 
+
+- Note that Delta and DeltaAI have different home directories; the CPUs are different, incompatible architectures. 
+
+..  image:: images/data_mgmt/delta-deltaai-home-globus.png
+    :alt: Landing for "Home" for Delta and DeltaAI with  different home folders.
 
 Infinite Memory Engine (IME)
 -----------------------------------
