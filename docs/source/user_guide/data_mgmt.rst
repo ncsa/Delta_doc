@@ -163,6 +163,17 @@ The **Delta endpoint collection** names are:
 - "NCSA Delta" (authenticates with your NCSA identity)
 - "ACCESS Delta" (authenticates with your ACCESS identity)
 
+The endpoint landing location (/) in Globus shows both home directories, and folders for shared project and work file systems. 
+
+- The **u** and **delta** folders navigate to ``/u/${USER}`` on **Delta**. 
+
+- The **deltaai** folder navigates to ``/u/${USER}`` on **DeltaAI**. 
+
+- Note that Delta and DeltaAI have different home directories; the CPUs are different, incompatible architectures. 
+
+..  image:: images/data-mgmt/delta-deltaai-home-globus.png
+    :alt: Landing for "Home" for Delta and DeltaAI with  different home folders.
+
 Infinite Memory Engine (IME)
 -----------------------------------
 
