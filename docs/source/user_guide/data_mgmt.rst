@@ -29,8 +29,8 @@ File Systems
    |                |               | :ref:`submit a support request <general_support>`.|               |               | of **small** I/O from jobs.                |
    +----------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
    | SCRATCH        | ``/scratch``  | N/A                                               | No            | No            | Replaced by ``/work/hdd``. There is a      |
-   |                |               |                                                   |               |               | symbolic link from ``/scratch`` to         |
-   |                |               |                                                   |               |               | ``/work/hdd`` for the near-term to maintain|
+   | (deprecated,   |               |                                                   |               |               | symbolic link from ``/scratch`` to         |
+   | see last col)  |               |                                                   |               |               | ``/work/hdd`` for the near-term to maintain|
    |                |               |                                                   |               |               | functionality of existing scripts.         |
    +----------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
    | /tmp           | ``/tmp``      | **0.74 (CPU) or 1.50 TB (GPU)**                   | No            | After each job| Locally attached disk for fast small file  |
@@ -259,7 +259,7 @@ The ``/work/hdd`` and ``/ime`` file systems share the same name space which allo
 Staging Multiple Files and Directories
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-To recursively stage the contents of a directory and the files and directories, see below. In this case, a directory called **/work/hdd/abcd/${USER}/data_di** uses the recursive.
+To recursively stage the contents of a directory and the files and directories, see below. In this case, a directory called **/work/hdd/abcd/${USER}/data_dir** uses the recursive.
 
 .. code-block::
 
