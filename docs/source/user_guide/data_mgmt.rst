@@ -45,7 +45,7 @@ File System Notes
 
 - Each user has a home directory, **$HOME**, located at ``/u/$USER``. For each project they are assigned to, they will also have access to shared file space under ``/projects`` and ``/work/hdd``.
 
-  For example, a user (with username: **auser**) who has an allocated project with a local project serial code **abcd** will see the following entries in their $HOME and entries in the /projects and /work/hdd file systems.
+  For example, a user (with username: **auser**) who has an allocated project with a local project serial code **abcd** will see the following entries in their **$HOME** and entries in the ``/projects`` and ``/work/hdd`` file systems.
 
   .. code-block:: bash
    
@@ -80,8 +80,8 @@ File System Notes
 /tmp on Compute Nodes (Job Duration)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The high performance ssd storage (740GB CPU, 1.5TB GPU) is available in /tmp (*unique to each node and job – not a shared file system*) and may contain less than the expected free space if the node(s) are running multiple jobs. 
-Codes that need to perform i/o to many small files should target /tmp on each node of the job and save results to other file systems before the job ends.
+The high performance ssd storage (740GB CPU, 1.5TB GPU) is available in ``/tmp`` (*unique to each node and job – not a shared file system*) and may contain less than the expected free space if the node(s) are running multiple jobs. 
+Codes that need to perform i/o to many small files should target ``/tmp`` on each node of the job and save results to other file systems before the job ends.
 
 Quota Usage
 ------------
@@ -116,9 +116,9 @@ The home directory quota does not depend on which project group the file is writ
 File Sharing
 --------------
 
-Users may share files from the /projects file system on Delta to external users via Globus. 
+Users may share files from the ``/projects`` file system on Delta to external users via Globus. 
 
-Create a directory to share from in your /projects directory.  If your four-character allocation code is "XXXX" then do something like: 
+Create a directory to share from in your ``/projects`` directory.  If your four-character allocation code is "XXXX" then do something like: 
 
 .. code-block::
 
@@ -195,25 +195,25 @@ How to Use IME
 
 The preferred way to use the Delta IME is as a **read-cache** for frequently read data and as a **write/read cache** for small file i/o.
 
-It is possible to use exiting utilities and applications with files residing or created on /ime. 
-Performance will be equal to or better than using /scratch directly for i/o to files.
+It is possible to use exiting utilities and applications with files residing or created on ``/ime``. 
+Performance will be equal to or better than using ``/work/hdd`` directly for i/o to files.
 
 .. warning::
 
    | **IME and metadata**
-   | IME performance for directory/metadata operations is slower than /scratch (it is not the place to extract or copy millions of files). Do those operations (``rsync``, ``tar``, etc) in /scratch.
+   | IME performance for directory/metadata operations is slower than ``/work/hdd`` (it is not the place to extract or copy millions of files). Do those operations (``rsync``, ``tar``, etc) in ``/work/hdd``.
 
 To get additional performance from the IME software features without changing i/o routines, use the posix2ime library (LD_PRELOAD'd), to intercept standard POSIX i/o calls with IME API calls. 
 There is an included module, *posix2ime*, that does this for you (see more about posix2ime at :ref:`posix2`, below).
 
 .. note::
 
-   | **shared namespace: /ime , /scratch**
-   | The /scratch and /ime file systems share the same namespace. The ``rm`` command will delete files on both file systems.
+   | **shared namespace: /ime , /work/hdd**
+   | The ``/work/hdd`` and ``/ime`` file systems share the same namespace. The ``rm`` command will delete files on both file systems.
 
 You can purge the contents of files from the cache, but not the presence of the file; see :ref:`purge`, below.
 
-There are some important caveats when using the /ime file system for something other than a **read-cache**. See section 2.2 Data Consistency Model in the :download:`developer guide document <images/data_mgmt/IME1-4DeveloperGuide.pdf>`.
+There are some important caveats when using the ``/ime`` file system for something other than a **read-cache**. See section 2.2 Data Consistency Model in the :download:`developer guide document <images/data_mgmt/IME1-4DeveloperGuide.pdf>`.
 
    *Users must maintain close-to-open consistency when multiple clients access the same files. 
    This requirement guarantees that any other client will see the latest changes made by one client as soon as the client opens the file. 
@@ -230,14 +230,14 @@ See the man page for ``ime-ctl`` or the attached :download:`developer guide docu
 Stage In and Out Single Files
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-The ``ime-ctl`` command is used to stage and purge files from the caching /ime file system:
+The ``ime-ctl`` command is used to stage and purge files from the caching ``/ime`` file system:
 
 .. code-block::
 
    ime-ctl --prestage 
    /ime/abcd/${USER}/file01
 
-To sync the contents of a file created or changed that resides on /ime:
+To sync the contents of a file created or changed that resides on ``/ime``:
 
 .. code-block::
 
@@ -246,20 +246,20 @@ To sync the contents of a file created or changed that resides on /ime:
 
    ime-ctl --sync /ime/abcd/${USER}/file01
 
-To purge the cached contents of a file on /ime:
+To purge the cached contents of a file on ``/ime``:
 
 .. code-block::
 
    ime-ctl --purge 
    /ime/abcd/${USER}/file01
 
-Note that purging a file only clears the contents of the file from /ime.
-The /scratch and /ime file systems share the same name space which allows files and directories to be seen from either the caching front-end /ime or back-end /scratch.
+Note that purging a file only clears the contents of the file from ``/ime``.
+The ``/work/hdd`` and ``/ime`` file systems share the same name space which allows files and directories to be seen from either the caching front-end ``/ime`` or back-end ``/work/hdd``.
 
 Staging Multiple Files and Directories
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-To recursively stage the contents of a directory and the files and directories, see below. In this case, a directory called /scratch/abcd/${USER}/data_di uses the recursive.
+To recursively stage the contents of a directory and the files and directories, see below. In this case, a directory called **/work/hdd/abcd/${USER}/data_di** uses the recursive.
 
 .. code-block::
 
@@ -271,11 +271,11 @@ The ``--block`` option ensures the stage or sync is complete before returning.
 Checking File Stage/Cache Status
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-To check if a file has been staged to the IME cache in /ime or has its contents synced back to the back-end file system use the ``ime-ctl  --frag-stat`` command.
+To check if a file has been staged to the IME cache in ``/ime`` or has its contents synced back to the back-end file system use the ``ime-ctl  --frag-stat`` command.
 
-In this example, a file that was created as **/scratch/abcd/${USER}/file01** has not been staged to /ime. 
+In this example, a file that was created as **/work/hdd/abcd/${USER}/file01** has not been staged to ``/ime``. 
 The file will be visible as **/ime/abcd/${USER}/file01**.
-Not staged to /ime, all entries are showing "0" for the Dirty, Clean and Syncing entries:
+Not staged to ``/ime``, all entries are showing "0" for the Dirty, Clean and Syncing entries:
 
 .. code-block::
 
@@ -288,7 +288,7 @@ Not staged to /ime, all entries are showing "0" for the Dirty, Clean and Syncing
    Syncing: 0
    Data on Slices:
 
-After staging the file to /ime, the number of bytes in the "Clean" category shows that the data on the cache is current:
+After staging the file to ``/ime``, the number of bytes in the "Clean" category shows that the data on the cache is current:
 
 .. code-block::
 
@@ -352,14 +352,14 @@ The library is described at: `DDNStorage/posix_2_ime: POSIX to IME Native API (g
    #SBATCH --time=00:15:00
    #SBATCH --job-name=posix2ime-ior-dedicated
     
-   BFS_DIR=/scratch/bbka/arnoldg/ime_example
+   BFS_DIR=/work/hdd/bbka/arnoldg/ime_example
    IME_DIR=/ime/bbka/arnoldg/ime_example
    SAMPLE_INPUT_FILE=myinputfile
     
-   # do many-files operations in /scratch before 
+   # do many-files operations in /work/hdd before 
    # using ime: cd $BFS_DIR; tar xvf inputbundle.tar ...
 
-   # bring the scratch directory into IME
+   # bring the /work/hdd directory into IME
    ime-ctl --recursive --block --prestage $IME_DIR
 
    # run the job/workflow in IME
@@ -373,7 +373,7 @@ The library is described at: `DDNStorage/posix_2_ime: POSIX to IME Native API (g
    # turn off posix2ime
    unset LD_PRELOAD  # turns off posix2ime module
 
-   # synchronize IME back out to the Scratch directory ( $BFS_DIR )
+   # synchronize IME back out to the /work/hdd directory ( $BFS_DIR )
    ime-ctl --recursive --block --sync $IME_DIR
 
    exit
