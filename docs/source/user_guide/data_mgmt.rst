@@ -196,20 +196,20 @@ How to Use IME
 The preferred way to use the Delta IME is as a **read-cache** for frequently read data and as a **write/read cache** for small file i/o.
 
 It is possible to use exiting utilities and applications with files residing or created on /ime. 
-Performance will be equal to or better than using /scratch directly for i/o to files.
+Performance will be equal to or better than using /work/hdd directly for i/o to files.
 
 .. warning::
 
    | **IME and metadata**
-   | IME performance for directory/metadata operations is slower than /scratch (it is not the place to extract or copy millions of files). Do those operations (``rsync``, ``tar``, etc) in /scratch.
+   | IME performance for directory/metadata operations is slower than /work/hdd (it is not the place to extract or copy millions of files). Do those operations (``rsync``, ``tar``, etc) in /work/hdd.
 
 To get additional performance from the IME software features without changing i/o routines, use the posix2ime library (LD_PRELOAD'd), to intercept standard POSIX i/o calls with IME API calls. 
 There is an included module, *posix2ime*, that does this for you (see more about posix2ime at :ref:`posix2`, below).
 
 .. note::
 
-   | **shared namespace: /ime , /scratch**
-   | The /scratch and /ime file systems share the same namespace. The ``rm`` command will delete files on both file systems.
+   | **shared namespace: /ime , /work/hdd**
+   | The /work/hdd and /ime file systems share the same namespace. The ``rm`` command will delete files on both file systems.
 
 You can purge the contents of files from the cache, but not the presence of the file; see :ref:`purge`, below.
 
@@ -254,12 +254,12 @@ To purge the cached contents of a file on /ime:
    /ime/abcd/${USER}/file01
 
 Note that purging a file only clears the contents of the file from /ime.
-The /scratch and /ime file systems share the same name space which allows files and directories to be seen from either the caching front-end /ime or back-end /scratch.
+The /work/hdd and /ime file systems share the same name space which allows files and directories to be seen from either the caching front-end /ime or back-end /work/hdd.
 
 Staging Multiple Files and Directories
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-To recursively stage the contents of a directory and the files and directories, see below. In this case, a directory called /scratch/abcd/${USER}/data_di uses the recursive.
+To recursively stage the contents of a directory and the files and directories, see below. In this case, a directory called /work/hdd/abcd/${USER}/data_di uses the recursive.
 
 .. code-block::
 
@@ -273,7 +273,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 To check if a file has been staged to the IME cache in /ime or has its contents synced back to the back-end file system use the ``ime-ctl  --frag-stat`` command.
 
-In this example, a file that was created as **/scratch/abcd/${USER}/file01** has not been staged to /ime. 
+In this example, a file that was created as **/work/hdd/abcd/${USER}/file01** has not been staged to /ime. 
 The file will be visible as **/ime/abcd/${USER}/file01**.
 Not staged to /ime, all entries are showing "0" for the Dirty, Clean and Syncing entries:
 
@@ -352,14 +352,14 @@ The library is described at: `DDNStorage/posix_2_ime: POSIX to IME Native API (g
    #SBATCH --time=00:15:00
    #SBATCH --job-name=posix2ime-ior-dedicated
     
-   BFS_DIR=/scratch/bbka/arnoldg/ime_example
+   BFS_DIR=/work/hdd/bbka/arnoldg/ime_example
    IME_DIR=/ime/bbka/arnoldg/ime_example
    SAMPLE_INPUT_FILE=myinputfile
     
-   # do many-files operations in /scratch before 
+   # do many-files operations in /work/hdd before 
    # using ime: cd $BFS_DIR; tar xvf inputbundle.tar ...
 
-   # bring the scratch directory into IME
+   # bring the /work/hdd directory into IME
    ime-ctl --recursive --block --prestage $IME_DIR
 
    # run the job/workflow in IME
@@ -373,7 +373,7 @@ The library is described at: `DDNStorage/posix_2_ime: POSIX to IME Native API (g
    # turn off posix2ime
    unset LD_PRELOAD  # turns off posix2ime module
 
-   # synchronize IME back out to the Scratch directory ( $BFS_DIR )
+   # synchronize IME back out to the /work/hdd directory ( $BFS_DIR )
    ime-ctl --recursive --block --sync $IME_DIR
 
    exit
