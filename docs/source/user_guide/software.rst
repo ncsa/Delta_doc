@@ -1065,10 +1065,10 @@ One easy way to use MATLAB on Delta is through the Open OnDemand Desktop app.
 
    .. code-block::
 
+      # load the matlab module
       module load matlab
 
-   .. code-block::
-
+      # run matlab
       matlab
 
 Terminal
