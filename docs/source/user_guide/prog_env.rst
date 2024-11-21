@@ -55,12 +55,12 @@ To build (compile and link) a MPI program in Fortran, C, and C++:
    |                                 |                                            |                                           |
    |                                 |    intel openmpi                           |                                           |
    +---------------------------------+--------------------------------------------+-------------------------------------------+
-   | Cray MPICH                      | .. code-block::                            |                                           |
+   | Cray MPICH (unsupported)        | .. code-block::                            |                                           |
    |                                 |                                            |                                           |
    |                                 |     PrgEnv-gnu cuda craype-x86-milan \     |                                           |
    |                                 |     craype-accel-ncsa                      | - **Fortran 77:** fortran myprog.f        |
    |                                 |     (GPU-direct)                           |                                           |
-   | - PrgEnv-gnu                    |                                            | - **Fortran 90:** fortran myprog.f90      |
+   | - PrgEnv-gnu (unsupported)      |                                            | - **Fortran 90:** fortran myprog.f90      |
    |   *or*                          |                                            |                                           |
    | - PrgEnv-cray (unsupported)     |                                            | - **C:** cc myprog.c                      |
    |                                 |                                            |                                           |
@@ -277,5 +277,6 @@ The following pages provide step-by-step instructions on how to use VS Code, in 
    vscode/code_server
    vscode/remote_ssh
    vscode/remote_jupyter
+   vscode/performance_issues
 
 |
