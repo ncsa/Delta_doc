@@ -840,8 +840,8 @@ Jupyter Notebooks
 **Do not run Jupyter on the shared login nodes.**
 Instead, follow these steps to attach a Jupyter notebook running on a compute node to your local web browser:
 
-- Jump to: :ref:`jupyter-compute-node`
-- Jump to: :ref:`jupyter-compute-node-ngc`
+- :ref:`jupyter-compute-node`
+- :ref:`jupyter-compute-node-ngc`
 
 .. _jupyter-compute-node:
 
