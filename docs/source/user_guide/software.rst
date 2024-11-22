@@ -1075,7 +1075,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
       srun --x11 --time=00:15:00 --nodes=1 --ntasks-per-node=4 --account=account_name --partition=cpu-interactive --pty /bin/bash
 
-   See :ref:`Running Jobs - Interactive Jobs <interactive-jobs>` for information on using interactive jobs.
+   See :ref:`Running Jobs - Interactive Jobs <interactive-jobs>` for more information about interactive jobs on Delta.
 
 #. After your job starts, run ``matlab`` to launch the MATLAB GUI.
 
@@ -1094,7 +1094,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
       srun --time=00:15:00 --nodes=1 --ntasks-per-node=4 --account=account_name --partition=cpu-interactive --pty /bin/bash
 
-   See :ref:`Running Jobs - Interactive Jobs <interactive-jobs>` for information on using interactive jobs.
+   See :ref:`Running Jobs - Interactive Jobs <interactive-jobs>` for more information about interactive jobs on Delta.
 
 #. After your job starts, run ``matlab -nodisplay`` to launch MATLAB in the command line.
 
