@@ -1049,10 +1049,59 @@ MATLAB
 
 There is a **University-wide MATLAB license** linked on Delta; you no longer need to link your own license to use MATLAB on Delta. Use ``module avail matlab`` to see the available versions and load the version that is right for you.  
 
+Terminal
+~~~~~~~~~~~~~~
+
+You can launch MATLAB on a compute node from a terminal on your local machine. You can run it directly in the command line, or launch it with the GUI.
+
+Command Line Interface
+$$$$$$$$$$$$$$$$$$$$$$$$
+
+#. Run ``module avail matlab`` to see the available versions
+
+#. Run ``module load matlab`` to install the default version (or specify a specific version).
+
+#. Run ``module list`` to verify it installed.
+
+#. Run the following ``srun`` command, with modifications. Replace ``account_name`` with the name of an account you have access to on Delta (you can find these by running the ``accounts`` command). Modify the ``time``, ``nodes``, ``partition``, and other variables, as needed.
+
+   .. code-block:: terminal
+
+      srun --time=00:15:00 --nodes=1 --ntasks-per-node=4 --account=account_name --partition=cpu-interactive --pty /bin/bash
+
+   See :ref:`Running Jobs - Interactive Jobs <interactive-jobs>` for information on using interactive jobs.
+
+#. After your job starts, run ``matlab -nodisplay`` to launch MATLAB in the command line.
+
+Graphical User Interface (GUI)
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+#. If you did not enable X11 forwarding when you logged in to the system, re-log in and enable it with the following command. Replace ``username`` with your NCSA username.
+
+   .. code-block:: terminal
+
+      ssh -Y username@login.delta.ncsa.illinois.edu
+
+#. Run ``module avail matlab`` to see the available versions
+
+#. Run ``module load matlab`` to install the default version (or specify a specific version).
+
+#. Run ``module list`` to verify it installed.
+
+#. Run the following ``srun`` command, with modifications. Replace ``account_name`` with the name of an account you have access to on Delta (you can find these by running the ``accounts`` command). Modify the ``time``, ``nodes``, ``partition``, and other variables, as needed.
+
+   .. code-block:: terminal
+
+      srun --x11 --time=00:15:00 --nodes=1 --ntasks-per-node=4 --account=account_name --partition=cpu-interactive --pty /bin/bash
+
+   See :ref:`Running Jobs - Interactive Jobs <interactive-jobs>` for information on using interactive jobs.
+
+#. After your job starts, run ``matlab`` to launch the MATLAB GUI.
+
 Open OnDemand
 ~~~~~~~~~~~~~~~
 
-One easy way to use MATLAB on Delta is through the Open OnDemand Desktop app. 
+You can also use MATLAB on Delta through the Open OnDemand Desktop app. 
 
 #. :ref:`Start an OOD Desktop session <ood-start-desktop>`. 
 #. In the Desktop app, open a terminal.
@@ -1070,11 +1119,6 @@ One easy way to use MATLAB on Delta is through the Open OnDemand Desktop app.
 
       # run matlab
       matlab
-
-Terminal
-~~~~~~~~~~~~~~
-
-You can also launch MATLAB on a compute node from a terminal on your local machine. See :ref:`Running Jobs srun and salloc <srun>` for information on using interactive jobs.
 
 List of Installed Software (CPU & GPU)
 ---------------------------------------
