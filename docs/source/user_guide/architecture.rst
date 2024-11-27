@@ -9,7 +9,7 @@ Delta has some important architectural features to facilitate new discovery and 
 -  Raytracing hardware support from the NVIDIA A40 GPUs
 -  Nine large memory (2 TB) nodes
 -  A low latency and high bandwidth HPE/Cray Slingshot interconnect between compute nodes
--  Lustre for home, projects, and scratch file systems
+-  Lustre for home, projects, and work file systems
 -  Support for relaxed and non-POSIX I/O (feature not yet implemented)
 -  Shared-node jobs and the single core and single MIG GPU slice
 -  Resources for persistent services in support of Gateways, Open OnDemand, and Data Transport nodes
@@ -336,7 +336,7 @@ Storage (File Systems)
 
 .. warning::
 
-   There are **no backups or snapshots** of the Delta file systems (internal or external). You are responsible for backing up your files. There is no mechanism to retrieve a file if you have removed it, or to recover an older version of any file or data.  
+   There are **no backups or snapshots** for /work or /projects file systems. You are responsible for backing up your files. There is no mechanism to retrieve a file if you have removed it, or to recover an older version of any file or data. Daily snapshots, retained for 14 days are kept for /u.   
 
 .. note::
 
@@ -399,8 +399,8 @@ Future Hardware
 $$$$$$$$$$$$$$$$$
 
 An additional pool of NVME flash from DDN was installed in early summer 2022. 
-This flash is initially deployed as a tier for "hot" data in SCRATCH. 
-This subsystem will have an aggregate performance of 500GB/s and will have 3PB of raw capacity. 
+This flash is initially deployed as a tier for "hot" data in /work/hdd. 
+This subsystem has an aggregate performance of 500GB/s and will have 3PB of raw capacity. 
 This subsystem will transition to an independent relaxed-POSIX namespace file system, communications on that timeline will be announced as updates are available.
 
 Taiga (External to Delta)
