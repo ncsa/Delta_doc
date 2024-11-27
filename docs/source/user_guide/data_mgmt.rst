@@ -12,7 +12,7 @@ File Systems
    +----------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
    | File System    | Path          | Quota                                             | Snapshots     | Purged        | Key Features                               |
    +================+===============+===================================================+===============+===============+============================================+
-   | HOME           | ``/u``        | **90 GB.** 600,000 files per user.                | No/TBA        | No            | Area for software, scripts, job files, and |
+   | HOME           | ``/u``        | **90 GB.** 500,000 files per user.                | Yes (14 days) | No            | Area for software, scripts, job files, and |
    |                |               |                                                   |               |               | so on. **Not** intended as a               |
    |                |               |                                                   |               |               | source/destination for I/O during jobs.    |
    |                |               |                                                   |               |               |                                            |

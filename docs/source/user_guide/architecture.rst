@@ -9,7 +9,7 @@ Delta has some important architectural features to facilitate new discovery and 
 -  Raytracing hardware support from the NVIDIA A40 GPUs
 -  Nine large memory (2 TB) nodes
 -  A low latency and high bandwidth HPE/Cray Slingshot interconnect between compute nodes
--  Lustre for home, projects, and scratch file systems
+-  Lustre for home, projects, and work file systems
 -  Support for relaxed and non-POSIX I/O (feature not yet implemented)
 -  Shared-node jobs and the single core and single MIG GPU slice
 -  Resources for persistent services in support of Gateways, Open OnDemand, and Data Transport nodes
@@ -336,7 +336,7 @@ Storage (File Systems)
 
 .. warning::
 
-   There are **no backups or snapshots** of the Delta file systems (internal or external). You are responsible for backing up your files. There is no mechanism to retrieve a file if you have removed it, or to recover an older version of any file or data.  
+   There are **no backups or snapshots** for /work or /projects file systems. You are responsible for backing up your files. There is no mechanism to retrieve a file if you have removed it, or to recover an older version of any file or data. Daily snapshots, retained for 14 days are kept for /u.   
 
 .. note::
 
@@ -347,33 +347,47 @@ Users of Delta have access to three file systems at the time of system launch, a
 Delta (Internal)
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The Delta storage infrastructure provides users with their HOME and SCRATCH areas. 
-These file systems are mounted across all Delta nodes and are accessible on the Delta DTN Endpoints. 
-The aggregate performance of this subsystem is 70GB/s and it has 6PB of usable space. 
-These file systems run Lustre via DDN's ExaScaler 6 stack (Lustre 2.14 based).
+The Delta local storage infrastructure provides users with their /work areas. 
+This file system is mounted across all Delta/DeltaAI nodes and is accessible on the Delta DTN Endpoints. 
+The aggregate performance of this subsystem is ~60GB/s for /work/hdd and ~800GB/s for /work/nvme which have 6.0PB and 3.5PB usable capacity respectively. 
+These file systems run Lustre via DDN's ExaScaler 6.3 stack (Lustre 2.15 based).
 
 Hardware
 $$$$$$$$$
 
-DDN SFA7990XE (Quantity: 3), each unit contains:
+| **Units underpinning /work/nvme:**
+| - DDN 400NVX2E (Quantity: 12), each unit contains:
+|     - 24 x 15.36TB NVME SSDs
 
--  One additional SS9012 enclosure
--  168 x 16TB SAS Drives
--  7 x 1.92TB SAS SSDs
+| **Units underpinning /work/hdd:**
+| - DDN 7990XE (Quantity: 3), each unit contains:
+|    -  One additional SS9012 enclosure
+|    -  168 x 16TB SAS Drives
 
-The HOME file system has 4 OSTs and is set with a default stripe size of 1.
 
-The SCRATCH file system has 8 OSTs and has Lustre Progressive File Layout (PFL) enabled which automatically restripes a file as the file grows. 
-The thresholds for PFL striping for SCRATCH are:
+| The /work/nvme file system has 96 OSTs and has Lustre Progressive File Layout (PFL) enabled which automatically restripes a file as the file grows.
+| The thresholds for PFL striping for /work/nvme are:
 
-.. table:: PFL Striping for SCRATCH
+.. table:: PFL Striping for /work/nvme
 
    ========= ============
    File Size Stripe Count
    ========= ============
-   0-32M     1 OST
-   32M-512M  4 OST
-   512M+     8 OST
+   0-16M     1 OST
+   16M-4G    4 OST
+   4G+       48 OST
+   ========= ============
+| The /work/hdd file system has 12 OSTs and has Lustre Progressive File Layout (PFL) enabled which automatically restripes a file as the file grows. 
+| The thresholds for PFL striping for /work/hdd are:
+
+.. table:: PFL Striping for /work/hdd
+
+   ========= ============
+   File Size Stripe Count
+   ========= ============
+   0-16M     1 OST
+   16M-4G    4 OST
+   4G+       12 OST
    ========= ============
 
 Best Practices
@@ -385,31 +399,25 @@ Future Hardware
 $$$$$$$$$$$$$$$$$
 
 An additional pool of NVME flash from DDN was installed in early summer 2022. 
-This flash is initially deployed as a tier for "hot" data in SCRATCH. 
-This subsystem will have an aggregate performance of 500GB/s and will have 3PB of raw capacity. 
+This flash is initially deployed as a tier for "hot" data in /work/hdd. 
+This subsystem has an aggregate performance of 500GB/s and will have 3PB of raw capacity. 
 This subsystem will transition to an independent relaxed-POSIX namespace file system, communications on that timeline will be announced as updates are available.
 
 Taiga (External to Delta)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Taiga is NCSA’s global file system which provides users with their $WORK area. 
+Taiga is NCSA’s global file system which provides users with their /projects area. 
 This file system is mounted across all Delta systems at /taiga (note that Taiga is used to provision the Delta /projects file system from /taiga/nsf/delta) and is accessible on both the Delta and Taiga DTN endpoints. 
 For NCSA and Illinois researchers, Taiga is also mounted across NCSA's HAL, HOLL-I, and Radiant compute environments. 
 This storage subsystem has an aggregate performance of 110GB/s and 1PB of its capacity is allocated to users of the Delta system. 
-/taiga is a Lustre file system running DDN's Exascaler 6 Lustre stack. 
+/taiga is a Lustre file system running DDN's Exascaler 6.3 Lustre stack. 
 See the `Taiga documentation <https://docs.ncsa.illinois.edu/systems/taiga/>`_ for more information.
 
-Hardware
-$$$$$$$$$$
+Harbor (External to Delta)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-DDN SFA400NVXE (Quantity: 2), each unit contains:
-
--  4 x SS9012 enclosures
--  NVME for metadata and small files
-
-DDN SFA18XE (Quantity: 1), each unit contains:
-
--  10 x SS9012 enclosures
--  NVME for metadata and small files
+Harbor is NCSA's global /u and /sw file systems, providing those areas to all open science systems at NCSA.
+This file system is mounted across all Delta systems at /u and /sw and is accessible on the Delta DTN endpoints.  The aggreagate performance of this system is ~80GB/s and users are given a 100GB/500,000 inode quota limit on the system.  
+See the `Harbor documentation <https://docs.ncsa.illinois.edu/systems/harbor/>`_ for more information. 
 
 |
