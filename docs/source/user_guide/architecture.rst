@@ -357,16 +357,17 @@ $$$$$$$$$
 
 | **Units underpinning /work/nvme:**
 | - DDN SFA400NVX2E (Quantity: 12), each unit contains:
-    - 24 x 15.36TB NVME SSDs
+|     - 24 x 15.36TB NVME SSDs
 
 | **Units underpinning /work/hdd:**
 | - DDN SFA7990XE (Quantity: 3), each unit contains:
-    -  One additional SS9012 enclosure
-    -  168 x 16TB SAS Drives
+|    -  One additional SS9012 enclosure
+|    -  168 x 16TB SAS Drives
 
 
-The /work/nvme file system has 96 OSTs and has Lustre Progressive File Layout (PFL) enabled which automatically restripes a file as the file grows.
+| The /work/nvme file system has 96 OSTs and has Lustre Progressive File Layout (PFL) enabled which automatically restripes a file as the file grows.
 | The thresholds for PFL striping for /work/nvme are:
+
 .. table:: PFL Striping for /work/nvme
 
    ========= ============
@@ -376,9 +377,9 @@ The /work/nvme file system has 96 OSTs and has Lustre Progressive File Layout (P
    16M-4G    4 OST
    4G+       48 OST
    ========= ============
-The /work/hdd file system has 12 OSTs and has Lustre Progressive File Layout (PFL) enabled which automatically restripes a file as the file grows. 
-
+| The /work/hdd file system has 12 OSTs and has Lustre Progressive File Layout (PFL) enabled which automatically restripes a file as the file grows. 
 | The thresholds for PFL striping for /work/hdd are:
+
 .. table:: PFL Striping for /work/hdd
 
    ========= ============
