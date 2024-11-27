@@ -355,14 +355,14 @@ These file systems run Lustre via DDN's ExaScaler 6.3 stack (Lustre 2.15 based).
 Hardware
 $$$$$$$$$
 
-**Units underpinning /work/nvme**  
-DDN SFA400NVX2E (Quantity: 12), each unit contains:  
-- 24 x 15.36TB NVME SSDs
+**Units underpinning /work/nvme**
+- DDN SFA400NVX2E (Quantity: 12), each unit contains:
+    - 24 x 15.36TB NVME SSDs
 
-**Units underpinning /work/hdd**  
-DDN SFA7990XE (Quantity: 3), each unit contains:  
--  One additional SS9012 enclosure  
--  168 x 16TB SAS Drives
+**Units underpinning /work/hdd**
+- DDN SFA7990XE (Quantity: 3), each unit contains:
+    -  One additional SS9012 enclosure
+    -  168 x 16TB SAS Drives
 
 
 The /work/nvme file system has 96 OSTs and has Lustre Progressive File Layout (PFL) enabled which automatically restripes a file as the file grows.
