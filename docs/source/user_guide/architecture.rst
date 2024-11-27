@@ -356,11 +356,11 @@ Hardware
 $$$$$$$$$
 
 | **Units underpinning /work/nvme:**
-| - DDN SFA400NVX2E (Quantity: 12), each unit contains:
+| - DDN 400NVX2E (Quantity: 12), each unit contains:
 |     - 24 x 15.36TB NVME SSDs
 
 | **Units underpinning /work/hdd:**
-| - DDN SFA7990XE (Quantity: 3), each unit contains:
+| - DDN 7990XE (Quantity: 3), each unit contains:
 |    -  One additional SS9012 enclosure
 |    -  168 x 16TB SAS Drives
 
