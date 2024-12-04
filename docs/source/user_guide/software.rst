@@ -1049,8 +1049,8 @@ MATLAB
 
 There is a **University-wide MATLAB license** linked on Delta; you no longer need to link your own license to use MATLAB on the system. Use ``module avail matlab`` to see the available versions. You can launch MATLAB on a compute node from a terminal on your local machine or in Delta's Open OnDemand Desktop app.
 
-Terminal
-~~~~~~~~~~~~~~
+Launch MATLAB from a Terminal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When you launch MATLAB from a terminal on your local machine, you can launch it with the GUI or run it directly in the command line (without the GUI).
 
@@ -1098,8 +1098,8 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 #. After your job starts, run ``matlab -nodisplay`` to launch MATLAB in the command line.
 
-Open OnDemand
-~~~~~~~~~~~~~~~
+Launch MATLAB from Open OnDemand
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can also use MATLAB on Delta through the Open OnDemand Desktop app. 
 
