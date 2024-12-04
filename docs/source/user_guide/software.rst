@@ -1084,7 +1084,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 #. Install the default version of MATLAB (or specify a version) with the ``module load`` command. You can see which versions are available with ``module avail matlab``.
 
-   .. code-block:: temrinal
+   .. code-block:: terminal
 
       module load matlab
 
@@ -1112,7 +1112,7 @@ You can also use MATLAB on Delta through the Open OnDemand Desktop app.
 
 #. In the terminal, run the following commands to load and run MATLAB. If you want to load a version other than the default, modify your ``module load`` command to load the specific version. You can see which versions are available with ``module avail matlab``.
 
-   .. code-block::
+   .. code-block:: terminal
 
       # load the matlab module
       module load matlab
