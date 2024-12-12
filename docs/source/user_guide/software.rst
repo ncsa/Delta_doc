@@ -1052,7 +1052,7 @@ There is a **University-wide MATLAB license** linked on Delta; you no longer nee
 Launch MATLAB from a Terminal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When you launch MATLAB from a terminal on your local machine, you can launch it with the GUI or run it directly in the command line (without the GUI).
+When you launch MATLAB from a terminal on your local machine, you can launch it with the Graphical User Interface (GUI) or run it directly in the command line (without the GUI).
 
 Graphical User Interface (GUI)
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
@@ -1063,13 +1063,13 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
       ssh -Y username@login.delta.ncsa.illinois.edu
 
-#. Install the default version of MATLAB (or specify a version) with the ``module load`` command. You can see which versions are available with ``module avail matlab``.
+#. Load the default version of MATLAB (or specify a version) with the ``module load`` command. You can see which versions are available with ``module avail matlab``.
 
    .. code-block:: terminal
 
       module load matlab
 
-#. After MATLAB installs, run the following ``srun`` command, with modifications. Replace ``account_name`` with the name of an account you have access to on Delta (you can find these by running the ``accounts`` command). Modify the ``time``, ``nodes``, ``partition``, and other variables, as needed.
+#. After the MATLAB module loads, run the following ``srun`` command, with modifications. Replace ``account_name`` with the name of an account you have access to on Delta (you can find these by running the ``accounts`` command). Modify the ``time``, ``nodes``, ``partition``, and other variables, as needed.
 
    .. code-block:: terminal
 
@@ -1082,13 +1082,13 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 Command Line Interface (no GUI)
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-#. Install the default version of MATLAB (or specify a version) with the ``module load`` command. You can see which versions are available with ``module avail matlab``.
+#. Load the default version of MATLAB (or specify a version) with the ``module load`` command. You can see which versions are available with ``module avail matlab``.
 
    .. code-block:: terminal
 
       module load matlab
 
-#. After MATLAB installs, run the following ``srun`` command, with modifications. Replace ``account_name`` with the name of an account you have access to on Delta (you can find these by running the ``accounts`` command). Modify the ``time``, ``nodes``, ``partition``, and other variables, as needed.
+#. After the MATLAB module loadss, run the following ``srun`` command, with modifications. Replace ``account_name`` with the name of an account you have access to on Delta (you can find these by running the ``accounts`` command). Modify the ``time``, ``nodes``, ``partition``, and other variables, as needed.
 
    .. code-block:: terminal
 
