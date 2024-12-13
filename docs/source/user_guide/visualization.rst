@@ -1,7 +1,7 @@
 Visualization
 =====================
 
-Delta A40 nodes support NVIDIA ray tracing hardware.
+Delta A40 nodes contain NVIDIA ray tracing cores (RT cores) and also support traditional rasterization graphics.
 
 ParaView 
 ----------
