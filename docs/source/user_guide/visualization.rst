@@ -6,40 +6,47 @@ Delta A40 nodes contain NVIDIA ray tracing cores (RT cores) and also support tra
 ParaView 
 ----------
 
-Client Server Mode - unsupported
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+`ParaView <https://www.paraview.org>`_ is an open-source visualization and data analysis tool.
 
-`MIT Engaging cluster ParaView client server mode documentation <https://engaging-web.mit.edu/eofe-wiki/software/paraview_client_server_mode/>`_.
+Interactive Use: ParaView in Open OnDemand (OOD)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Client server mode appears **broken**. When setting up SSH tunnel, as shown, you get this on the client side:
+The ParaView GUI client works via OOD on both CPU and GPU jobs, but interactivity is significantly improved on the latter.
 
-.. code-block::
+#. :ref:`Start an OOD Desktop session <ood-start-desktop>`.
 
-   Connection failed during handshake. 
-   vtkSocketCommunicator::GetVersion()
-    returns different values on the two connecting processes
-    (Current value: 100).
+#. In the Desktop app, open a **Terminal**.
 
-At least one site does not support client-server anymore (due to issues like this one from the `RWTH HPC IT Center help page <https://help.itc.rwth-aachen.de/en/service/rhr4fjjutttf/article/b98c687822874a30b740ef09f4330e7b/>`_).
+   .. figure:: images/visualization/ood-desktop-terminal-icon.png
+      :alt: OOD Desktop app with the terminal emulator icon at the bottom of the screen highlighted.
+      :width: 500
 
-PvPython and PvBatch
+#. Load ParaView, requires using the GUI-enabled ParaView module.
+   
+   .. code-block::
+   
+      $ module load paraview/5.10.1.gui
+
+#. Start ParaView.
+
+   .. code-block::
+   
+      $ paraview
+
+`ParaView User Guide <https://docs.paraview.org/en/latest/>`_
+
+Offline Use: pvbatch
 ~~~~~~~~~~~~~~~~~~~~~
 
-PvPython and PvBatch work and are available. Suggest reviewing the `ParaView PvPython and PvBatch wiki <https://www.paraview.org/Wiki/PvPython_and_PvBatch>`_ and using only the PvBatch part of ParaView:
+Batch rendering can be achieved with :code:`pvbatch`. Probably the best way to get started is to use Tools > Start Trace from the main menu in the GUI client to record an interactive session and then edit as needed.
 
-.. code-block::
+pvbatch requires using a "headless" module, either :code:`paraview/5.11.2.egl.cuda` for GPU jobs or :code:`paraview/5.11.2.osmesa.x86_64` for CPU jobs.
 
-   [arnoldg@dt-login02 ~]$ cd paraview_pvbatch/
-   [arnoldg@dt-login02 paraview_pvbatch]$ vi greenSphere.py  # sample from URL above for pvpython
-   [arnoldg@dt-login02 paraview_pvbatch]$ pvpython greenSphere.py 
-   [arnoldg@dt-login02 paraview_pvbatch]$ ls
-   greenSphere.py  greenSphereScreenshot.png
+`ParaView PvPython and PvBatch wiki <https://www.paraview.org/Wiki/PvPython_and_PvBatch>`_ 
 
-greenSphereScreenshot.png:
-
-..  image:: images/visualization/greenSphere.png
-    :alt: green sphere
-    :width: 500px
+Advanced Interactive Use: ParaView Client-Server Mode 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This is currently unsupported.
 
 VisIt
 --------
