@@ -53,7 +53,7 @@ VisIt
 
 `VisIt <https://visit-dav.github.io/visit-website/>`_ is an open-source visualization and data analysis tool. 
 
-How to Use VisIt in Open OnDemand (OOD)
+Interactive Use: VisIt in Open OnDemand (OOD)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #. :ref:`Start an OOD Desktop session <ood-start-desktop>`.
@@ -76,33 +76,43 @@ How to Use VisIt in Open OnDemand (OOD)
 
       $ visit
 
-To load the VisIt example data, ``noise.silo``, follow these steps:
+`VisIt User Manual <https://visit-sphinx-github-user-manual.readthedocs.io/en/develop/using_visit/index.html>`_
 
-#. Under **Sources**, click **Open**.
+..
+  To load the VisIt example data, ``noise.silo``, follow these steps:
+
+ #. Under **Sources**, click **Open**.
 
    .. figure:: images/visualization/ood-desktop-visit-open.png
       :alt: VisIt opened in the OOD Desktop app with the Open button highlighted.
       :width: 500
 
-#. In **Path**, navigate to ``/sw/external/visit/visit3_3_3.linux-x86_64/data`` and select the ``noise.silo`` file.
+ #. In **Path**, navigate to ``/sw/external/visit/visit3_3_3.linux-x86_64/data`` and select the ``noise.silo`` file.
 
    .. figure:: images/visualization/ood-desktop-visit-data-path.png
       :alt: VisIt File open window showing the "/sw/external/visit/visit3_3_3.linux-x86_64/data" path with the noise.silo file selected.
       :width: 500
 
-#. Click **Add** and select **Volume**, then **hardyglobal**.
+ #. Click **Add** and select **Volume**, then **hardyglobal**.
 
    .. figure:: images/visualization/ood-desktop-visit-add-volume.png
       :alt: VisIt Add menu showing Volume, and then hardyglobal selected.
       :width: 500
 
-#. Click **Draw**. The data will render in the adjacent window.
+ #. Click **Draw**. The data will render in the adjacent window.
 
    .. image:: images/visualization/ood-desktop-visit-draw.png
       :alt: The VisIt Draw button.
       :width: 500
 
-|
+Offline Use: visit scripts
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+(details coming soon.)
+
+Advanced Interactive Use: VisIt Client-Server Mode 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This is currently unsupported.
 
 .. The below VisIt client-server mode info is commented out because we have trouble getting it to work properly. 
 
