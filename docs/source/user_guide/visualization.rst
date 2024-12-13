@@ -109,8 +109,21 @@ The VisIt GUI client works via OOD on both CPU and GPU jobs, but interactivity i
 
 Offline Use: visit scripts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+VisIt can be used in batch scripts using either:
 
-(details coming soon.)
+  .. code-block::
+
+     module load visit
+     visit -s <python script>
+
+to execute a Python script, or
+
+  .. code-block::
+
+     module load visit
+     visit -sessionfile <stored interactive session>
+
+to execute a sessionfile created during an interactive session. For more details see the `Python Scripting <https://visit-sphinx-github-user-manual.readthedocs.io/en/develop/python_scripting/index.html>`_ section of the VisIt User Manual.
 
 Advanced Interactive Use: VisIt Client-Server Mode 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
