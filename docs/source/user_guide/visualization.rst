@@ -56,6 +56,8 @@ VisIt
 Interactive Use: VisIt in Open OnDemand (OOD)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+The VisIt GUI client works via OOD on both CPU and GPU jobs, but interactivity is improved on the latter.
+
 #. :ref:`Start an OOD Desktop session <ood-start-desktop>`.
 
 #. In the Desktop app, open a **Terminal**.
