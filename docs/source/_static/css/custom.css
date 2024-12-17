@@ -36,3 +36,12 @@ a.hub-link:visited{
 .hub-link{
     text-align: right;
 }
+
+/* making nav bar at top of page sticky so that docs hub link is visible when scrolling */
+[aria-label="Page navigation"]{
+    position: sticky;
+    top: -1px;
+    padding-top: 0.6em;
+    background: #FCFCFC;
+    z-index: 1;
+}
