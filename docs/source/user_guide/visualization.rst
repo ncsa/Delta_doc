@@ -40,9 +40,14 @@ Offline Use: pvbatch
 
 Batch rendering can be achieved with :code:`pvbatch`. Probably the best way to get started is to use Tools > Start Trace from the main menu in the GUI client to record an interactive session and then edit as needed.
 
-:code:`pvbatch` requires using a "headless" module, either :code:`paraview/5.11.2.egl.cuda` for GPU jobs or :code:`paraview/5.11.2.osmesa.x86_64` for CPU jobs.
+:code:`pvbatch` requires using a "headless" module, either :code:`paraview/5.11.2.egl.cuda` for GPU jobs or :code:`paraview/5.11.2.osmesa.x86_64` for CPU jobs. Inside of a job, use :code:`srun` and it will automatically use all of the allocated processors. E.g.:
 
-`ParaView PvPython and PvBatch wiki <https://www.paraview.org/Wiki/PvPython_and_PvBatch>`_ 
+.. code-block::
+
+   srun pvbatch <myscript.py>
+
+
+Additional information at: `ParaView PvPython and PvBatch wiki <https://www.paraview.org/Wiki/PvPython_and_PvBatch>`_
 
 Advanced Interactive Use: ParaView Client-Server Mode 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -109,21 +114,16 @@ The VisIt GUI client works via OOD on both CPU and GPU jobs, but interactivity i
 
 Offline Use: visit scripts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-VisIt can be used in batch scripts using either:
+VisIt can be used for offline, batch rendering using Python scripts:
 
   .. code-block::
 
      module load visit
-     visit -s <python script>
+     srun visit -np <N> -nowin -cli -s <python script>
 
-to execute a Python script, or
+Note: it might be necessary to explicitly call :code:`sys.exit` at the end of the script to prevent VisIt from dropping into a Python interpreter and consuming the remaining time after finishing rendering.
 
-  .. code-block::
-
-     module load visit
-     visit -sessionfile <stored interactive session>
-
-to execute a sessionfile created during an interactive session. For more details see the `Python Scripting <https://visit-sphinx-github-user-manual.readthedocs.io/en/develop/python_scripting/index.html>`_ section of the VisIt User Manual.
+For more details see the `Python Scripting <https://visit-sphinx-github-user-manual.readthedocs.io/en/develop/python_scripting/index.html>`_ section of the VisIt User Manual.
 
 Advanced Interactive Use: VisIt Client-Server Mode 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
