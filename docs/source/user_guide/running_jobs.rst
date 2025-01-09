@@ -1004,6 +1004,56 @@ Hybrid (MPI + OpenMP or MPI+X) on CPU Nodes
    </details>
 |
 
+Pytorch Multi-Node
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. raw:: html
+
+   <details>
+   <summary><a><b>Pytorch Multi-Node example script</b> <i>(click to expand/collapse)</i></a></summary>
+
+.. code-block::
+
+   #!/bin/bash
+   #SBATCH --account=account_name
+   #SBATCH --job-name=multinode-example
+   #SBATCH --partition=gpuA40x4
+   #SBATCH --nodes=2
+   #SBATCH --ntasks-per-node=1
+   #SBATCH --gpus-per-node=4
+   #SBATCH --cpus-per-task=8
+   #SBATCH --time=00:40:00
+   #SBATCH --output=ddp_training_%j.log
+   #SBATCH --error=ddp_training_%j.err
+
+   nodes=( $( scontrol show hostnames $SLURM_JOB_NODELIST ) )
+   nodes_array=($nodes)
+   head_node=${nodes_array[0]}
+   head_node_ip=$(srun --nodes=1 --ntasks=1 -w "$head_node" hostname --ip-address)
+   echo "Head node: $head_node"
+   echo "Head node IP: $head_node_ip"
+
+   export LOGLEVEL=INFO
+
+   module load anaconda3_gpu
+   export NCCL_DEBUG=INFO
+   export NCCL_SOCKET_IFNAME=hsn
+   module load nccl # loads the nccl built with the AWS nccl plugin for Slingshot11
+   module list
+   echo "Job is starting on `hostname`"
+
+   time srun torchrun --nnodes ${SLURM_NNODES} \
+   	--nproc_per_node ${SLURM_GPUS_PER_NODE} \
+  	--rdzv_id $RANDOM --rdzv_backend c10d \
+  	--rdzv_endpoint="$head_node_ip:29500" \
+  	${SLURM_SUBMIT_DIR}/multinode.py 50 10
+
+   rm -f snapshot.pt
+
+.. raw:: html
+
+   </details>
+
 Parametric / Array / HTC Jobs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
