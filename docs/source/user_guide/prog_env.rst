@@ -53,7 +53,8 @@ To build (compile and link) a MPI program in Fortran, C, and C++:
    |                                 |                                            |                                           |
    |                                 | .. code-block::                            | - **C++:** mpic++ myprog.cc               |
    |                                 |                                            |                                           |
-   |                                 |    intel openmpi                           |                                           |
+   |                                 |    intel openmpi                           | - link using mpi compilers for cuda codes |
+   |                                 |                                            |   compiled with nvc or nvc++              |
    +---------------------------------+--------------------------------------------+-------------------------------------------+
    | Cray MPICH (unsupported)        | .. code-block::                            |                                           |
    |                                 |                                            |                                           |
