@@ -1004,13 +1004,13 @@ Hybrid (MPI + OpenMP or MPI+X) on CPU Nodes
    </details>
 |
 
-Pytorch Multi-Node
+PyTorch Multi-Node
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
    <details>
-   <summary><a><b>Pytorch Multi-Node example script</b> <i>(click to expand/collapse)</i></a></summary>
+   <summary><a><b>PyTorch Multi-Node example script</b> <i>(click to expand/collapse)</i></a></summary>
 
 .. code-block::
 
@@ -1053,6 +1053,7 @@ Pytorch Multi-Node
 .. raw:: html
 
    </details>
+|
 
 Parametric / Array / HTC Jobs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
