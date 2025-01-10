@@ -1010,7 +1010,7 @@ PyTorch Multi-Node
 .. raw:: html
 
    <details>
-   <summary><a><b>PyTorch Multi-Node example script</b> <i>(click to expand/collapse)</i></a></summary>
+   <summary><a><b>pytorch multi-node example script</b> <i>(click to expand/collapse)</i></a></summary>
 
 .. code-block::
 
