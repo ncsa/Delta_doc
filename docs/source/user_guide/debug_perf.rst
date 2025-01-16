@@ -527,6 +527,89 @@ see:
       100.00    0.002351           8       290       200 total
       [arnoldg@dt-login03 stream]$ 
 
+mpiP MPI profiling
+------------------
+mpiP is a light-weight profiling library for MPI. It collects statistical information about MPI functions and has very little overhead.
+
+see:
+
+- `<https://github.com/LLNL/mpiP>`_
+
+   .. code-block::
+
+      [arnoldg@dt-login03 arnoldg]$ module load mpip
+      [arnoldg@dt-login03 arnoldg]$ module load ior
+      [arnoldg@dt-login03 arnoldg]$ srun ior
+      mpiP: 
+      mpiP: mpiP V3.5.0 (Build Jan 16 2025/11:00:55)
+      mpiP: 
+      IOR-3.3.0: MPI Coordinated Test of Parallel I/O
+      Began               : Thu Jan 16 11:17:06 2025
+      Command line        : /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/ior-3.3.0-yse3iig/bin/ior
+      Machine             : Linux cn002.delta.ncsa.illinois.edu
+      TestID              : 0
+      StartTime           : Thu Jan 16 11:17:06 2025
+      Path                : /work/hdd/bbka/arnoldg
+      FS                  : 134.8 TiB   Used FS: 10.5%   Inodes: 223.7 Mi   Used Inodes: 2.7%
+      ...
+      Summary of all tests:
+      Operation   Max(MiB)   Min(MiB)  Mean(MiB)     StdDev   Max(OPs)   Min(OPs)  Mean(OPs)     StdDev    Mean(s) Stonewall(s) Stonewall(MiB) Test# #Tasks tPN reps fPP reord reordoff reordrand seed segcnt   blksiz    xsize aggs(MiB)   API RefNum
+      write         339.10     339.10     339.10       0.00    1356.40    1356.40    1356.40       0.00    0.03539         NA            NA     0     12  12    1   0     0        1         0    0      1  1048576   262144      12.0 POSIX      0
+      read          640.69     640.69     640.69       0.00    2562.76    2562.76    2562.76       0.00    0.01873         NA            NA     0     12  12    1   0     0        1         0    0      1  1048576   262144      12.0 POSIX      0
+      Finished            : Thu Jan 16 11:17:07 2025
+      mpiP: 
+      mpiP: Storing mpiP output in [./ior.12.744965.1.mpiP].
+      mpiP: 
+      [arnoldg@dt-login03 arnoldg]$ more ior.12.744965.1.mpiP
+      @ mpiP
+      @ Command : /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/ior-3.3.0-yse3iig/bin/ior 
+      @ Version                  : 3.5.0
+      @ MPIP Build date          : Jan 16 2025, 11:00:55
+      @ Start time               : 2025 01 16 11:17:06
+      @ Stop time                : 2025 01 16 11:17:07
+      @ Timer Used               : PMPI_Wtime
+      @ MPIP env var             : [null]
+      @ Collector Rank           : 0
+      @ Collector PID            : 744965
+      @ Final Output Dir         : .
+      @ Report generation        : Single collector task
+      @ MPI Task Assignment      : 0 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 1 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 2 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 3 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 4 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 5 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 6 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 7 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 8 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 9 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 10 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 11 cn002.delta.ncsa.illinois.edu
+
+      ---------------------------------------------------------------------------
+      @--- MPI Time (seconds) ---------------------------------------------------
+      ---------------------------------------------------------------------------
+      Task    AppTime    MPITime     MPI%
+         0      0.274     0.0207     7.57
+         1      0.273      0.214    78.48
+         2      0.273      0.213    78.08
+         3      0.273      0.213    78.04
+         4      0.273      0.213    78.12
+         5      0.273      0.214    78.42
+      ...
+      ---------------------------------------------------------------------------
+      @--- Callsite Time statistics (all, milliseconds): 420 --------------------
+      ---------------------------------------------------------------------------
+      Name              Site Rank  Count      Max     Mean      Min   App%   MPI%
+      Allreduce            8    0      1    0.029    0.029    0.029   0.01   0.14
+      Allreduce            8    *      1    0.029    0.029    0.029   0.00   0.00
+
+      Allreduce           17    0      1    0.154    0.154    0.154   0.06   0.74
+      Allreduce           17    *      1    0.154    0.154    0.154   0.00   0.01
+
+      Allreduce           19    0      1   0.0275   0.0275   0.0275   0.01   0.13
+      Allreduce           19    *      1   0.0275   0.0275   0.0275   0.00   0.00
+
 
 `NVIDIA CUDA C++ programming guide <https://docs.nvidia.com/cuda/cuda-c-programming-guide>`_
 
