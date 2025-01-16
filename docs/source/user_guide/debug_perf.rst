@@ -421,6 +421,47 @@ Nsight Systems Setup on Local Workstation to Use with Delta
        :alt: GPU stats summary
        :width: 1000px
 
+Linux Perf
+----------
+
+refer to: `<https://perfwiki.github.io/main/>`_
+
+   .. code-block::
+
+      [arnoldg@dt-login03 stream]$ srun -n 1 perf stat ./stream.22gb
+      ...
+      -------------------------------------------------------------
+      Function    Best Rate MB/s  Avg time     Min time     Max time
+      Copy:           42048.7     0.380511     0.380511     0.380511
+      Scale:          23543.7     0.679587     0.679587     0.679587
+      Add:            26716.7     0.898315     0.898315     0.898315
+      Triad:          26639.3     0.900925     0.900925     0.900925
+      -------------------------------------------------------------
+      Solution Validates: avg error less than 1.000000e-13 on all three arrays
+      -------------------------------------------------------------
+
+       Performance counter stats for './stream.22gb':
+
+              17,206.19 msec task-clock:u              #    1.000 CPUs utilized          
+                      0      context-switches:u        #    0.000 /sec                   
+                      0      cpu-migrations:u          #    0.000 /sec                   
+              4,822,101      page-faults:u             #  280.254 K/sec                  
+         30,092,687,800      cycles:u                  #    1.749 GHz                      (83.33%)
+             36,504,747      stalled-cycles-frontend:u #    0.12% frontend cycles idle     (83.34%)
+          3,916,402,169      stalled-cycles-backend:u  #   13.01% backend cycles idle      (83.33%)
+         49,637,948,722      instructions:u            #    1.65  insn per cycle         
+                                                       #    0.08  stalled cycles per insn  (83.33%)
+          5,128,886,029      branches:u                #  298.084 M/sec                    (83.33%)
+              4,838,605      branch-misses:u           #    0.09% of all branches          (83.33%)
+
+           17.212796833 seconds time elapsed
+
+            8.291209000 seconds user
+            8.693619000 seconds sys
+
+
+      [arnoldg@dt-login03 stream]$ 
+
 `NVIDIA CUDA C++ programming guide <https://docs.nvidia.com/cuda/cuda-c-programming-guide>`_
 
 `NVIDIA Nsight Systems user guide <https://docs.nvidia.com/nsight-systems/UserGuide/index.html>`_ (nsys higher level and cuda api )
