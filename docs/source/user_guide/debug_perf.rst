@@ -421,8 +421,9 @@ Nsight Systems Setup on Local Workstation to Use with Delta
        :alt: GPU stats summary
        :width: 1000px
 
-Linux Perf
-----------
+Linux Perf performance counting
+-------------------------------
+The linux perf subsystem can access hardware performance counters and summarize them per application execution.
 
 refer to: `<https://perfwiki.github.io/main/>`_
 
@@ -461,6 +462,71 @@ refer to: `<https://perfwiki.github.io/main/>`_
 
 
       [arnoldg@dt-login03 stream]$ 
+
+Linux/Unix gprof
+----------------
+gprof generates a sampling profile of function calls in a program.  It's a good general purpose command-line profiler to use when
+getting started and it has low overhead.
+
+see:
+
+- `<https://ftp.gnu.org/old-gnu/Manuals/gprof-2.9.1/html_mono/gprof.html>`_
+- `<https://www.ibm.com/docs/en/aix/7.3?topic=g-gprof-command>`_
+- `<https://cvw.cac.cornell.edu/profiling-debugging/profiling/profiling-parallel>`_
+
+Per the last link, set GMON_OUT_PREFIX for MPI programs so that you get a gprof per rank and compile with "-pg" or "-p" flags.
+
+Linux/Unix strace
+-----------------
+strace will trace or summarize system call activity for a program (the portion of time going to system due to i/o, networking, memory allocations
+or anything else provided by the kernel to the executing code).
+
+see:
+
+- `<https://strace.io/>`_
+
+   .. code-block::
+
+      [arnoldg@dt-login03 stream]$ srun -n 1 strace -c ./stream.22gb
+      ...
+      -------------------------------------------------------------
+      Function    Best Rate MB/s  Avg time     Min time     Max time
+      Copy:           39529.6     0.404760     0.404760     0.404760
+      Scale:          19414.2     0.824138     0.824138     0.824138
+      Add:            16855.4     1.423877     1.423877     1.423877
+      Triad:           8487.3     2.827755     2.827755     2.827755
+      -------------------------------------------------------------
+      Solution Validates: avg error less than 1.000000e-13 on all three arrays
+      -------------------------------------------------------------
+      % time     seconds  usecs/call     calls    errors syscall
+      ------ ----------- ----------- --------- --------- ------------------
+       46.11    0.001084           9       113       107 openat
+       24.16    0.000568           5        99        91 stat
+       14.25    0.000335         335         1           execve
+        3.32    0.000078           5        14           mmap
+        2.30    0.000054           5        10           mprotect
+        2.17    0.000051          25         2           getdents64
+        1.62    0.000038           3        12           futex
+        1.15    0.000027           3         7           read
+        1.02    0.000024           3         7           fstat
+        0.81    0.000019           3         6           close
+        0.38    0.000009           9         1           write
+        0.38    0.000009           3         3           lseek
+        0.38    0.000009           9         1           munmap
+        0.38    0.000009           3         3           brk
+        0.26    0.000006           3         2           rt_sigaction
+        0.26    0.000006           6         1         1 access
+        0.26    0.000006           3         2         1 arch_prctl
+        0.17    0.000004           4         1           getrandom
+        0.13    0.000003           3         1           rt_sigprocmask
+        0.13    0.000003           3         1           sched_getaffinity
+        0.13    0.000003           3         1           set_tid_address
+        0.13    0.000003           3         1           set_robust_list
+        0.13    0.000003           3         1           prlimit64
+      ------ ----------- ----------- --------- --------- ------------------
+      100.00    0.002351           8       290       200 total
+      [arnoldg@dt-login03 stream]$ 
+
 
 `NVIDIA CUDA C++ programming guide <https://docs.nvidia.com/cuda/cuda-c-programming-guide>`_
 
