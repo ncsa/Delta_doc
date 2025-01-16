@@ -42,6 +42,7 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx_tabs.tabs',
     'sphinx_copybutton',
+    'sphinxcontrib.googleanalytics',
 ]
 
 intersphinx_mapping = {
@@ -80,3 +81,6 @@ html_theme_options = {
 
 # -- Page Title
 html_title = 'UIUC NCSA Delta User Guide'
+
+# -- Google Analytics ID
+googleanalytics_id = 'G-JG0GFE04G8'
