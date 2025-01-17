@@ -429,6 +429,192 @@ Nsight Systems Setup on Local Workstation to Use with Delta
 
 `GitHub - quasiben/nvtx-examples <https://github.com/quasiben/nvtx-examples>`_ (sample python test codes )
 
+Linux Perf performance counting
+-------------------------------
+The linux perf subsystem can access hardware performance counters and summarize them per application execution.
+
+Refer to the `Linux perf command wiki page <https://perfwiki.github.io/main/>`_.
+
+   .. code-block::
+
+      [arnoldg@dt-login03 stream]$ srun -n 1 perf stat ./stream.22gb
+      ...
+      -------------------------------------------------------------
+      Function    Best Rate MB/s  Avg time     Min time     Max time
+      Copy:           42048.7     0.380511     0.380511     0.380511
+      Scale:          23543.7     0.679587     0.679587     0.679587
+      Add:            26716.7     0.898315     0.898315     0.898315
+      Triad:          26639.3     0.900925     0.900925     0.900925
+      -------------------------------------------------------------
+      Solution Validates: avg error less than 1.000000e-13 on all three arrays
+      -------------------------------------------------------------
+
+       Performance counter stats for './stream.22gb':
+
+              17,206.19 msec task-clock:u              #    1.000 CPUs utilized          
+                      0      context-switches:u        #    0.000 /sec                   
+                      0      cpu-migrations:u          #    0.000 /sec                   
+              4,822,101      page-faults:u             #  280.254 K/sec                  
+         30,092,687,800      cycles:u                  #    1.749 GHz                      (83.33%)
+             36,504,747      stalled-cycles-frontend:u #    0.12% frontend cycles idle     (83.34%)
+          3,916,402,169      stalled-cycles-backend:u  #   13.01% backend cycles idle      (83.33%)
+         49,637,948,722      instructions:u            #    1.65  insn per cycle         
+                                                       #    0.08  stalled cycles per insn  (83.33%)
+          5,128,886,029      branches:u                #  298.084 M/sec                    (83.33%)
+              4,838,605      branch-misses:u           #    0.09% of all branches          (83.33%)
+
+           17.212796833 seconds time elapsed
+
+            8.291209000 seconds user
+            8.693619000 seconds sys
+
+
+      [arnoldg@dt-login03 stream]$ 
+
+Linux/Unix gprof
+----------------
+gprof generates a sampling profile of function calls in a program.  It's a good general purpose command-line profiler to use when
+getting started and it has low overhead.
+
+See:
+
+- `GNU gprof manual <https://ftp.gnu.org/old-gnu/Manuals/gprof-2.9.1/html_mono/gprof.html>`_
+- `IBM gprof command documentation <https://www.ibm.com/docs/en/aix/7.3?topic=g-gprof-command>`_
+- `Cornell profiling parallel programs documentation <https://cvw.cac.cornell.edu/profiling-debugging/profiling/profiling-parallel>`_
+
+Per the last link, set GMON_OUT_PREFIX for MPI programs so that you get a gprof per rank and compile with "-pg" or "-p" flags.
+
+Linux/Unix strace
+-----------------
+strace will trace or summarize system call activity for a program (the portion of time going to system due to i/o, networking, memory allocations
+or anything else provided by the kernel to the executing code).
+
+See the `strace documentation <https://strace.io/>`_.
+
+   .. code-block::
+
+      [arnoldg@dt-login03 stream]$ srun -n 1 strace -c ./stream.22gb
+      ...
+      -------------------------------------------------------------
+      Function    Best Rate MB/s  Avg time     Min time     Max time
+      Copy:           39529.6     0.404760     0.404760     0.404760
+      Scale:          19414.2     0.824138     0.824138     0.824138
+      Add:            16855.4     1.423877     1.423877     1.423877
+      Triad:           8487.3     2.827755     2.827755     2.827755
+      -------------------------------------------------------------
+      Solution Validates: avg error less than 1.000000e-13 on all three arrays
+      -------------------------------------------------------------
+      % time     seconds  usecs/call     calls    errors syscall
+      ------ ----------- ----------- --------- --------- ------------------
+       46.11    0.001084           9       113       107 openat
+       24.16    0.000568           5        99        91 stat
+       14.25    0.000335         335         1           execve
+        3.32    0.000078           5        14           mmap
+        2.30    0.000054           5        10           mprotect
+        2.17    0.000051          25         2           getdents64
+        1.62    0.000038           3        12           futex
+        1.15    0.000027           3         7           read
+        1.02    0.000024           3         7           fstat
+        0.81    0.000019           3         6           close
+        0.38    0.000009           9         1           write
+        0.38    0.000009           3         3           lseek
+        0.38    0.000009           9         1           munmap
+        0.38    0.000009           3         3           brk
+        0.26    0.000006           3         2           rt_sigaction
+        0.26    0.000006           6         1         1 access
+        0.26    0.000006           3         2         1 arch_prctl
+        0.17    0.000004           4         1           getrandom
+        0.13    0.000003           3         1           rt_sigprocmask
+        0.13    0.000003           3         1           sched_getaffinity
+        0.13    0.000003           3         1           set_tid_address
+        0.13    0.000003           3         1           set_robust_list
+        0.13    0.000003           3         1           prlimit64
+      ------ ----------- ----------- --------- --------- ------------------
+      100.00    0.002351           8       290       200 total
+      [arnoldg@dt-login03 stream]$ 
+
+mpiP MPI profiling
+------------------
+mpiP is a light-weight profiling library for MPI. It collects statistical information about MPI functions and has very little overhead.
+
+See the `mpiP GitHub repository <https://github.com/LLNL/mpiP>`_.
+
+   .. code-block::
+
+      [arnoldg@dt-login03 arnoldg]$ module load mpip
+      [arnoldg@dt-login03 arnoldg]$ module load ior
+      [arnoldg@dt-login03 arnoldg]$ srun ior
+      mpiP: 
+      mpiP: mpiP V3.5.0 (Build Jan 16 2025/11:00:55)
+      mpiP: 
+      IOR-3.3.0: MPI Coordinated Test of Parallel I/O
+      Began               : Thu Jan 16 11:17:06 2025
+      Command line        : /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/ior-3.3.0-yse3iig/bin/ior
+      Machine             : Linux cn002.delta.ncsa.illinois.edu
+      TestID              : 0
+      StartTime           : Thu Jan 16 11:17:06 2025
+      Path                : /work/hdd/bbka/arnoldg
+      FS                  : 134.8 TiB   Used FS: 10.5%   Inodes: 223.7 Mi   Used Inodes: 2.7%
+      ...
+      Summary of all tests:
+      Operation   Max(MiB)   Min(MiB)  Mean(MiB)     StdDev   Max(OPs)   Min(OPs)  Mean(OPs)     StdDev    Mean(s) Stonewall(s) Stonewall(MiB) Test# #Tasks tPN reps fPP reord reordoff reordrand seed segcnt   blksiz    xsize aggs(MiB)   API RefNum
+      write         339.10     339.10     339.10       0.00    1356.40    1356.40    1356.40       0.00    0.03539         NA            NA     0     12  12    1   0     0        1         0    0      1  1048576   262144      12.0 POSIX      0
+      read          640.69     640.69     640.69       0.00    2562.76    2562.76    2562.76       0.00    0.01873         NA            NA     0     12  12    1   0     0        1         0    0      1  1048576   262144      12.0 POSIX      0
+      Finished            : Thu Jan 16 11:17:07 2025
+      mpiP: 
+      mpiP: Storing mpiP output in [./ior.12.744965.1.mpiP].
+      mpiP: 
+      [arnoldg@dt-login03 arnoldg]$ more ior.12.744965.1.mpiP
+      @ mpiP
+      @ Command : /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/ior-3.3.0-yse3iig/bin/ior 
+      @ Version                  : 3.5.0
+      @ MPIP Build date          : Jan 16 2025, 11:00:55
+      @ Start time               : 2025 01 16 11:17:06
+      @ Stop time                : 2025 01 16 11:17:07
+      @ Timer Used               : PMPI_Wtime
+      @ MPIP env var             : [null]
+      @ Collector Rank           : 0
+      @ Collector PID            : 744965
+      @ Final Output Dir         : .
+      @ Report generation        : Single collector task
+      @ MPI Task Assignment      : 0 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 1 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 2 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 3 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 4 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 5 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 6 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 7 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 8 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 9 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 10 cn002.delta.ncsa.illinois.edu
+      @ MPI Task Assignment      : 11 cn002.delta.ncsa.illinois.edu
+
+      ---------------------------------------------------------------------------
+      @--- MPI Time (seconds) ---------------------------------------------------
+      ---------------------------------------------------------------------------
+      Task    AppTime    MPITime     MPI%
+         0      0.274     0.0207     7.57
+         1      0.273      0.214    78.48
+         2      0.273      0.213    78.08
+         3      0.273      0.213    78.04
+         4      0.273      0.213    78.12
+         5      0.273      0.214    78.42
+      ...
+      ---------------------------------------------------------------------------
+      @--- Callsite Time statistics (all, milliseconds): 420 --------------------
+      ---------------------------------------------------------------------------
+      Name              Site Rank  Count      Max     Mean      Min   App%   MPI%
+      Allreduce            8    0      1    0.029    0.029    0.029   0.01   0.14
+      Allreduce            8    *      1    0.029    0.029    0.029   0.00   0.00
+
+      Allreduce           17    0      1    0.154    0.154    0.154   0.06   0.74
+      Allreduce           17    *      1    0.154    0.154    0.154   0.00   0.01
+
+      Allreduce           19    0      1   0.0275   0.0275   0.0275   0.01   0.13
+      Allreduce           19    *      1   0.0275   0.0275   0.0275   0.00   0.00
+
+
 Debugging MPI (OpenMPI) codes
 -----------------------------
 
