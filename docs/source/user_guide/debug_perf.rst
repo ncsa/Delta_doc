@@ -421,11 +421,19 @@ Nsight Systems Setup on Local Workstation to Use with Delta
        :alt: GPU stats summary
        :width: 1000px
 
+`NVIDIA CUDA C++ programming guide <https://docs.nvidia.com/cuda/cuda-c-programming-guide>`_
+
+`NVIDIA Nsight Systems user guide <https://docs.nvidia.com/nsight-systems/UserGuide/index.html>`_ (nsys higher level and cuda api )
+
+`NVIDIA Nsight Compute CLI documentation <https://docs.nvidia.com/nsight-compute/NsightComputeCli/index.html>`_ (ncu lower level and counters )
+
+`GitHub - quasiben/nvtx-examples <https://github.com/quasiben/nvtx-examples>`_ (sample python test codes )
+
 Linux Perf performance counting
 -------------------------------
 The linux perf subsystem can access hardware performance counters and summarize them per application execution.
 
-refer to: `<https://perfwiki.github.io/main/>`_
+Refer to the `Linux perf command wiki page <https://perfwiki.github.io/main/>`_.
 
    .. code-block::
 
@@ -468,11 +476,11 @@ Linux/Unix gprof
 gprof generates a sampling profile of function calls in a program.  It's a good general purpose command-line profiler to use when
 getting started and it has low overhead.
 
-see:
+See:
 
-- `<https://ftp.gnu.org/old-gnu/Manuals/gprof-2.9.1/html_mono/gprof.html>`_
-- `<https://www.ibm.com/docs/en/aix/7.3?topic=g-gprof-command>`_
-- `<https://cvw.cac.cornell.edu/profiling-debugging/profiling/profiling-parallel>`_
+- `GNU gprof manual <https://ftp.gnu.org/old-gnu/Manuals/gprof-2.9.1/html_mono/gprof.html>`_
+- `IBM gprof command documentation <https://www.ibm.com/docs/en/aix/7.3?topic=g-gprof-command>`_
+- `Cornell profiling parallel programs documentation <https://cvw.cac.cornell.edu/profiling-debugging/profiling/profiling-parallel>`_
 
 Per the last link, set GMON_OUT_PREFIX for MPI programs so that you get a gprof per rank and compile with "-pg" or "-p" flags.
 
@@ -481,9 +489,7 @@ Linux/Unix strace
 strace will trace or summarize system call activity for a program (the portion of time going to system due to i/o, networking, memory allocations
 or anything else provided by the kernel to the executing code).
 
-see:
-
-- `<https://strace.io/>`_
+See the `strace documentation <https://strace.io/>`_.
 
    .. code-block::
 
@@ -531,9 +537,7 @@ mpiP MPI profiling
 ------------------
 mpiP is a light-weight profiling library for MPI. It collects statistical information about MPI functions and has very little overhead.
 
-see:
-
-- `<https://github.com/LLNL/mpiP>`_
+See the `mpiP GitHub repository <https://github.com/LLNL/mpiP>`_.
 
    .. code-block::
 
@@ -610,14 +614,6 @@ see:
       Allreduce           19    0      1   0.0275   0.0275   0.0275   0.01   0.13
       Allreduce           19    *      1   0.0275   0.0275   0.0275   0.00   0.00
 
-
-`NVIDIA CUDA C++ programming guide <https://docs.nvidia.com/cuda/cuda-c-programming-guide>`_
-
-`NVIDIA Nsight Systems user guide <https://docs.nvidia.com/nsight-systems/UserGuide/index.html>`_ (nsys higher level and cuda api )
-
-`NVIDIA Nsight Compute CLI documentation <https://docs.nvidia.com/nsight-compute/NsightComputeCli/index.html>`_ (ncu lower level and counters )
-
-`GitHub - quasiben/nvtx-examples <https://github.com/quasiben/nvtx-examples>`_ (sample python test codes )
 
 Debugging MPI (OpenMPI) codes
 -----------------------------
