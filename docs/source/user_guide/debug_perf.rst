@@ -620,6 +620,31 @@ Debugging MPI (OpenMPI) codes
 
 See: `Debugging applications in parallel - <https://www.open-mpi.org/faq/?category=debugging>`_ (OpenMPI faq on debugging MPI code )
 
+In addition, we have a (cpu only) MPI built with debug symbols: openmpi/4.1.6.debug .  Running codes compiled with "-g" and that MPI will allow you to dig in further to MPI layer issues (set: ulimit -c unlimited , in your shell to enable core file generation):
+
+   .. code-block::
+
+      [arnoldg@dt-login02 collective]$ gdb osu_ireduce core.osu*
+      ...
+      (gdb) where
+      #0  0x00007fa1de84b89c in ompi_coll_libnbc_progress () at ../../../../opal/class/opal_list.h:451
+      #1  0x00007fa1ed15a463 in opal_progress () at runtime/opal_progress.c:231
+      #2  0x00007fa1ee684735 in ompi_request_wait_completion (req=0x1749b80) at ../ompi/request/request.h:440
+      #3  ompi_request_default_wait (req_ptr=0x7fff36b54528, status=0x7fff36b54530) at request/req_wait.c:42
+      #4  0x00007fa1ee6eef24 in ompi_coll_base_sendrecv_zero (stag=-16, rtag=-16, comm=0x6115a0 <ompi_mpi_comm_world>, 
+          source=1, dest=1) at base/coll_base_barrier.c:64
+      #5  ompi_coll_base_barrier_intra_recursivedoubling (comm=0x6115a0 <ompi_mpi_comm_world>, module=<optimized out>)
+          at base/coll_base_barrier.c:219
+      #6  0x00007fa1ee69ceb8 in PMPI_Barrier (comm=0x6115a0 <ompi_mpi_comm_world>, 
+          comm@entry=<error reading variable: dwarf2_find_location_expression: Corrupted DWARF expression.>)
+          at pbarrier.c:74
+      #7  PMPI_Barrier (comm=0x6115a0 <ompi_mpi_comm_world>) at pbarrier.c:40
+      #8  0x000000000040285c in main (argc=4, argv=0x7fff36b547f8) at osu_ireduce.c:169
+      (gdb) 
+
+
+
+
 Debugging Open OnDemand Problems
 ---------------------------------
 
