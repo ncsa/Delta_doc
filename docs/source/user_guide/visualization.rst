@@ -135,7 +135,7 @@ VTK
 VTK Python API
 ~~~~~~~~~~~~~~~
 
-To use the VTK Python API, i.e. in order to ``import vtk``, just install with pip or conda following the guidance at :ref:`the Python documentation <python>`.
+To use the VTK Python API, i.e. in order to ``import vtk``, just install with pip or conda following the guidance at :ref:`Python <python>`.
 
 VTK C++ API
 ~~~~~~~~~~~
