@@ -129,6 +129,19 @@ Advanced Interactive Use: VisIt Client-Server Mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 This is currently unsupported.
 
+VTK
+--------
+
+VTK Python API
+~~~~~~~~~~~~~~~
+
+To use the VTK Python API, i.e. in order to ``import vtk``, just install with pip or conda following the guidance at :ref:`the Python documentation <python>`.
+
+VTK C++ API
+~~~~~~~~~~~
+
+To build against the VTK C++ API or link to the VTK C++ libs, load the module with: ``module load vtk``. The currently available version is 9.4.0.
+
 .. The below VisIt client-server mode info is commented out because we have trouble getting it to work properly. 
 
 .. VisIt Client-Server Mode
