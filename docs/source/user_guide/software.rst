@@ -80,6 +80,8 @@ Please :ref:`submit a support request <general_support>` for help with software 
   Delta support staff are available to provide limited assistance. 
 - For general installation requests, the Delta project office will review requests for broad use and installation effort.
 
+.. _delta-python:
+
 Python
 ----------
 
