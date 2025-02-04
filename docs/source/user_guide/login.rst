@@ -42,6 +42,14 @@ Login Node Hostnames
    |                                            | ``dt-login02``, ``dt-login03``, and ``dt-login04``.|
    +--------------------------------------------+----------------------------------------------------+
 
+Host Key Fingerprints:
+
+   .. code-block::
+
+      256 SHA256:u1Er7JjQeq/lEPnVfZrHxkLRVRhxCyG6XgVN9sZd7ps (ECDSA)
+      256 SHA256:mIv7OqNSuuWnu1tlY//wG4gWAn4z0mbE11KkBXDAY/g (ED25519)
+      3072 SHA256:CHs2pS8uq9VEMYfjpiEkQnP14EGy0yc2l3Z50mC3wVc (RSA)
+
 
 SSH Examples
 ~~~~~~~~~~~~~~
