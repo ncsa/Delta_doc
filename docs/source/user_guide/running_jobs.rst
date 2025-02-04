@@ -331,6 +331,9 @@ The following examples start up a bash shell terminal on a CPU or GPU node.
        --tasks-per-node=16 --cpus-per-task=1 --mem=20g \
        --pty bash 
 
+.. note::
+   For large, compute intensive compilations consider compiling your code on a compute node where you can get more power than on the shared login nodes. You can use srun to start an interactive job which will start a shell on a compute node with access to your files.
+
 .. _srun:
 
 srun
