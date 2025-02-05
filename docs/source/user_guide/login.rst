@@ -81,7 +81,7 @@ The following are steps to log in to Delta in a terminal.
 
    On successful log in to Delta, you will see a welcome message similar to the following.
 
-   .. image:: images/login/delta-login-screen.png
+   .. image:: images/accessing/delta-login-screen.png
       :alt: Terminal window showing Delta welcome message after log in.
 
 Other SSH Examples
