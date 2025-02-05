@@ -50,17 +50,44 @@ Host Key Fingerprints:
       256 SHA256:mIv7OqNSuuWnu1tlY//wG4gWAn4z0mbE11KkBXDAY/g (ED25519)
       3072 SHA256:CHs2pS8uq9VEMYfjpiEkQnP14EGy0yc2l3Z50mC3wVc (RSA)
 
+Use of SSH key pairs is disabled for general use.  This means that most individual users, even principal investigators (PIs), are **not allowed** to use SSH key pairs to log in instead of 2-factor authentication.  
 
-SSH Examples
-~~~~~~~~~~~~~~
+The one exception is: if you are the PI of a Gateway allocation (this is not most projects), then please :ref:`submit a support request <general_support>` to get the Gateway account's key pairs set up.  
 
-In the examples below, replace ``username`` with your Delta login username.
+SSH Log In Steps
+~~~~~~~~~~~~~~~~~~
 
-- Round robin log into a login node
+The following are steps to log in to Delta in a terminal.
 
-  .. code-block:: terminal
+#. Enter the following command in a terminal (replace ``username`` with your NCSA username).
 
-     ssh username@login.delta.ncsa.illinois.edu
+   .. code-block:: terminal
+
+      ssh username@login.delta.ncsa.illinois.edu
+
+#. Enter your NCSA (Kerberos) password, when prompted. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
+
+#. Complete DUO MFA, when prompted.
+
+   The prompt will look similar to the following. Enter ``1`` to choose the push notification option, or enter the six-digit passcode from your DUO app.
+
+   .. code-block:: terminal
+
+      Enter a passcode or select one of the following options:
+
+       1. Duo Push to XXX-XXX-2920
+
+      Passcode or option (1-1): 
+
+   On successful log in to Delta, you will see a welcome message similar to the following.
+
+   .. image:: images/login/delta-login-screen.png
+      :alt: Terminal window showing Delta welcome message after log in.
+
+Other SSH Examples
+~~~~~~~~~~~~~~~~~~~~
+
+In the examples below, replace ``username`` with your NCSA username.
 
 - ``-l username`` is an alternative syntax for ``<user>@<host>``
 
@@ -73,10 +100,6 @@ In the examples below, replace ``username`` with your Delta login username.
   .. code-block:: terminal
 
      ssh -Y username@login.delta.ncsa.illinois.edu
-
-Use of SSH key pairs is disabled for general use.  This means that most individual users, even principal investigators (PIs), are **not allowed** to use SSH key pairs to log in instead of 2-factor authentication.  
-
-The one exception is: if you are the PI of a Gateway allocation (this is not most projects), then please :ref:`submit a support request <general_support>` to get the Gateway account's key pairs set up.  
 
 Login Node Limits
 ~~~~~~~~~~~~~~~~~~
