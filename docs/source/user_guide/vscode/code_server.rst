@@ -35,10 +35,12 @@ Run the VS Code Code-Server on Delta in manual mode (without Open OnDemand) by f
    - ``dt-loginNN`` with the same login node you used in **step 3** (in **two** places).
 
    .. code-block:: terminal
+
       ssh -l username -L 127.0.0.1:8899:dt-loginNN.delta.ncsa.illinois.edu:8899 dt-loginNN.delta.ncsa.illinois.edu
    In the following example, the user is logged in to ``dt-login03``:
 
    .. code-block:: terminal 
+
       (base) galen@macbookair-m1-042020 ~ % ssh -l arnoldg -L 
       127.0.0.1:8899:dt-login03.delta.ncsa.illinois.edu:8899 dt-login03.delta.ncsa.illinois.edu
       ...
@@ -53,10 +55,7 @@ Run the VS Code Code-Server on Delta in manual mode (without Open OnDemand) by f
 #. Read the ``config.yaml`` file noted when you started the server (**step 3**) and copy the **password** to your clipboard.
 
    .. code-block:: terminal
-      more ~/.config/code-server/config.yaml
-   Example output:
 
-   .. code-block:: terminal
       [arnoldg@dt-login03 ~]$ more ~/.config/code-server/config.yaml
       bind-addr: 127.0.0.1:8080
       auth: password
@@ -66,6 +65,7 @@ Run the VS Code Code-Server on Delta in manual mode (without Open OnDemand) by f
 #. Open a web browser on your local desktop/laptop and go to the following URL.
 
    .. code-block:: terminal
+
       http://127.0.0.1:8899
 
 #. In the password field, enter the password you copied in **step 6** and begin using VS Code in your browser.
