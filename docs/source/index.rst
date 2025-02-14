@@ -73,7 +73,6 @@ Browse NCSA’s `HPC-Moodle <https://www.hpc-training.org>`_ for a full list of 
    :hidden:
 
    status_updates
-   quick_start
    faq
    support_services
    help
