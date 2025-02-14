@@ -20,8 +20,6 @@ Enabled science gateways seamlessly integrate Delta into the cyberinfrastructure
 To advance applications, the Delta project team continues the applications-focused, outcomes-oriented approach to drive the transition to GPU-accelerated applications alongside gateway-based productivity advances. 
 Integrated with the NSF's Advanced Cyberinfrastructure Coordination Ecosystem: Services & Support (ACCESS) ecosystems, Delta leverages the substantial portfolio of services and support offered therein and together deliver unprecedented advances in researcher productivity.
 
-Delta supports the ACCESS core software stack, including remote login, remote computation, data movement, science workflow support, and science gateway support toolkits.
-
 Quick Start
 =============
 
@@ -42,7 +40,7 @@ Quick Start
       :link-type: ref
       :link-alt: running jobs 
 
-      **Accessing the Compute Nodes**
+      **Access the Compute Nodes**
       ^^^
       Partitions (queues) information and how to submit batch and interactive jobs.
 
