@@ -11,3 +11,6 @@ sphinx-copybutton
 
 #Adding googleanalytics extension
 sphinxcontrib-googleanalytics
+
+#Adding sphinx-design extension
+sphinx-design
