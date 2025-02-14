@@ -8,10 +8,6 @@
 Delta User Documentation
 ################################################
 
-..  image:: images/delta_front_1.png
-    :alt: 12 racks in a machine room, with overhead power, with red to orange "DELTA" wrap on the rack doors.  
-    :width: 700px
-
 Introduction
 =============
 
@@ -26,12 +22,47 @@ Integrated with the NSF's Advanced Cyberinfrastructure Coordination Ecosystem: S
 
 Delta supports the ACCESS core software stack, including remote login, remote computation, data movement, science workflow support, and science gateway support toolkits.
 
-Status Updates and Notices
-============================
+Quick Start
+=============
 
-- `ACCESS support outages page <https://support.access-ci.org/outages>`_ (current outage information) 
-- `ACCESS infrastructure news <https://operations.access-ci.org/infrastructure_news>`_ (outage and reconfiguration news) 
-- `ACCESS Delta affinity group site <https://support.access-ci.org/affinity-groups/delta>`_ (links to news and the Slack channel for users)
+.. grid:: 1 2 2 4
+   :gutter: 3
+
+   .. grid-item-card::
+      :link: access
+      :link-type: ref
+      :link-alt: log in
+
+      **Log in**
+      ^^^
+      How to log in to Delta.
+
+   .. grid-item-card:: 
+      :link: running-jobs
+      :link-type: ref
+      :link-alt: running jobs 
+
+      **Accessing the Compute Nodes**
+      ^^^
+      Partitions (queues) information and how to submit batch and interactive jobs.
+
+   .. grid-item-card::
+      :link: examples      
+      :link-type: ref
+      :link-alt: examples
+
+      **Sample Scripts**  
+      ^^^
+      Sample CPU and GPU job scripts.
+      
+   .. grid-item-card:: 
+      :link: data-mgmt-filesystem
+      :link-type: ref
+      :link-alt: data management
+
+      **Data Management**
+      ^^^
+      Filesystem specifications and how to transfer data to/from Delta.
 
 Getting Started with High-Performance Computing
 ================================================
