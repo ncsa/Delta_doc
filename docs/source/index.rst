@@ -17,7 +17,6 @@ Delta provides high performance node-local SSD scratch filesystems, as well as b
 
 Envisioned to lead change across the dimensions of computing, storage, and usability, Delta employs standards-based, fully customized science gateways with per-domain interfaces provided alongside the traditional command-line batch system interface. 
 Enabled science gateways seamlessly integrate Delta into the cyberinfrastructure ecosystem alongside other resources to enable complex, multi-system workflows. 
-To advance applications, the Delta project team continues the applications-focused, outcomes-oriented approach to drive the transition to GPU-accelerated applications alongside gateway-based productivity advances. 
 Integrated with the NSF's Advanced Cyberinfrastructure Coordination Ecosystem: Services & Support (ACCESS) ecosystems, Delta leverages the substantial portfolio of services and support offered therein and together deliver unprecedented advances in researcher productivity.
 
 Quick Start
@@ -40,9 +39,9 @@ Quick Start
       :link-type: ref
       :link-alt: running jobs 
 
-      **Access the Compute Nodes**
+      **Running Jobs**
       ^^^
-      Partitions (queues) information and how to submit batch and interactive jobs.
+      Partition (queue) information and how to submit batch and interactive jobs.
 
    .. grid-item-card::
       :link: examples      
