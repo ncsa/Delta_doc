@@ -43,6 +43,7 @@ extensions = [
     'sphinx_tabs.tabs',
     'sphinx_copybutton',
     'sphinxcontrib.googleanalytics',
+    'sphinx_design',
 ]
 
 intersphinx_mapping = {
