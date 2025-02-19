@@ -9,9 +9,9 @@ Connecting to Open OnDemand
 ----------------------------
 
 #. Navigate to the `Delta Open OnDemand dashboard <https://openondemand.delta.ncsa.illinois.edu/>`_.
-#. Log in through CILogon with your NCSA username, NCSA password, and NCSA Duo MFA.
+#. Log in through CILogon with your **NCSA** username, **NCSA** password, and **NCSA** Duo MFA.
 
-If you get the error message “Error -- failed to map user (username@ncsa.illinois.edu)”, then your NCSA account on Delta is not complete. You may need to wait for an email from NCSA about setting up your NCSA account.
+If you get the error message “Error -- failed to map user (username\@ncsa.illinois.edu)”, then your **NCSA account** on Delta is not complete. You may need to wait for an email from NCSA about setting up your NCSA account.
 
 Shell Access
 --------------
