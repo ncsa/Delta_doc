@@ -8,7 +8,7 @@ Getting Help
 General Resource Support
 ---------------------------
 
-Use the `NCSA Help Portal <http://help.ncsa.illinois.edu>`_ for all other issues, regardless of allocation type. In this new portal you can:
+Use the `NCSA Help Portal <http://help.ncsa.illinois.edu>`_ for all other issues, regardless of allocation type. In the portal you can:
 
 - Submit support request tickets.
 - Search knowledge base articles to resolve common issues faster.
