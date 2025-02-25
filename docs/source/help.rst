@@ -3,6 +3,24 @@
 Getting Help
 ================
 
+.. _general_support:
+
+General Resource Support
+---------------------------
+
+Use the `NCSA Help Portal <http://help.ncsa.illinois.edu>`_ for all other issues, regardless of allocation type. In this new portal you can:
+
+- Submit support request tickets.
+- Search knowledge base articles to resolve common issues faster.
+- Monitor the status of your tickets.
+- Respond to NCSA staff as they work to resolve your tickets.
+
+Refer to the `Help Portal User Job Aid <https://docs.ncsa.illinois.edu/en/latest/_static/JSMUsersJobAid.pdf>`_ for information on how to navigate the portal.
+
+.. raw:: html
+   
+   <p>The <a href="http://help.ncsa.illinois.edu">NCSA Help Portal</a> is the preferred method to submit requests. However, if you run into problems using it, you can still email <a href="mailto:help@ncsa.illinois.edu?subject=Delta: ">help@ncsa.illinois.edu</a> for support. Expand the following section for guidelines on sending email requests so that NCSA staff can efficiently address them.</p>
+
 ACCESS Allocations
 ---------------------
 
@@ -26,23 +44,6 @@ The following are strategies to try before you submit a support request:
 
 When you submit a support request, please let us know what you tried, and what happened if it didn't seem to work.
 
-.. _general_support:
-
-General Resource Support
----------------------------
-
-Use the `NCSA Help Portal <http://help.ncsa.illinois.edu>`_ for all other issues, regardless of allocation type. Powered by Jira Service Manager (JSM), in this new portal you can:
-
-- Submit support request tickets.
-- Search knowledge base articles to resolve common issues faster.
-- Monitor the status of your tickets.
-- Respond to NCSA staff as they work to resolve your tickets.
-
-Refer to the `JSM User Job Aid <https://docs.ncsa.illinois.edu/en/latest/_static/JSMUsersJobAid.pdf>`_ for information on how to navigate the portal.
-
-.. raw:: html
-   
-   <p>The <a href="http://help.ncsa.illinois.edu">NCSA Help Portal</a> is the preferred method to submit requests. However, if you run into problems using it, you can still email <a href="mailto:help@ncsa.illinois.edu?subject=Delta: ">help@ncsa.illinois.edu</a> for support. Expand the following section for guidelines on sending email requests so that NCSA staff can efficiently address them.</p>
 
 Email Support Request Guidelines
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
