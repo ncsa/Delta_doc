@@ -8,7 +8,7 @@ Getting Help
 General Resource Support
 ---------------------------
 
-Use the `NCSA Help Portal <http://help.ncsa.illinois.edu>`_ for all other issues, regardless of allocation type. In the portal you can:
+Use the `NCSA Help Portal <http://help.ncsa.illinois.edu>`_ for all Delta and NCSA related issues, regardless of allocation type. In the portal you can:
 
 - Submit support request tickets.
 - Search knowledge base articles to resolve common issues faster.
@@ -21,15 +21,15 @@ Refer to the `Help Portal User Job Aid <https://docs.ncsa.illinois.edu/en/latest
    
    <p>The <a href="http://help.ncsa.illinois.edu">NCSA Help Portal</a> is the preferred method to submit requests. However, if you run into problems using it, you can still email <a href="mailto:help@ncsa.illinois.edu?subject=Delta: ">help@ncsa.illinois.edu</a> for support. Expand the following section for guidelines on sending email requests so that NCSA staff can efficiently address them.</p>
 
-ACCESS Allocations
+ACCESS Allocated Projects
 ---------------------
 
-For ACCESS allocation issues, create a ticket via the `ACCESS Help page <https://support.access-ci.org/open-a-ticket>`_ (ACCESS log in required). You can browse other ACCESS support resources on the `ACCESS Support page <https://support.access-ci.org>`_ (ACCESS log in *not* required).
+For ACCESS allocation or other non-Delta or non-NCSA issues, create a ticket via the `ACCESS Help page <https://support.access-ci.org/open-a-ticket>`_ (ACCESS log in required). You can browse other ACCESS support resources on the `ACCESS Support page <https://support.access-ci.org>`_ (ACCESS log in *not* required).
 
 NAIRR Pilot Projects
 ----------------------
 
-For issues specific to NAIRR Pilot projects awarded time on Delta, please submit your issues to NAIRR Pilot support by emailing usersupport@support.nairrpilot.org.
+For non-Delta and non-NCSA issues specific to NAIRR Pilot projects awarded time on Delta, please submit your issues to NAIRR Pilot support by emailing usersupport@support.nairrpilot.org.
 
 Explore Solutions
 -------------------
