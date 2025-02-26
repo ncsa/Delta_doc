@@ -12,7 +12,7 @@ File Systems
    +----------------+---------------+---------------------------------------------------+---------------+---------------+--------------------------------------------+
    | File System    | Path          | Quota                                             | Snapshots     | Purged        | Key Features                               |
    +================+===============+===================================================+===============+===============+============================================+
-   | HOME           | ``/u``        | **90 GB.** 500,000 files per user.                | Yes (14 days) | No            | Area for software, scripts, job files, and |
+   | HOME           | ``/u``        | **90 GB.** 500,000 files per user.                | Yes (30 days) | No            | Area for software, scripts, job files, and |
    |                |               |                                                   |               |               | so on. **Not** intended as a               |
    |                |               |                                                   |               |               | source/destination for I/O during jobs.    |
    |                |               |                                                   |               |               |                                            |
@@ -82,6 +82,16 @@ File System Notes
 
 The high performance ssd storage (740GB CPU, 1.5TB GPU) is available in ``/tmp`` (*unique to each node and job – not a shared file system*) and may contain less than the expected free space if the node(s) are running multiple jobs. 
 Codes that need to perform i/o to many small files should target ``/tmp`` on each node of the job and save results to other file systems before the job ends.
+
+File System Snapshots
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Daily snapshots are run on the file system for the ``/u`` area. 
+These snapshots allow you to go back to a point in time and retrieve data you may have accidentally modified, deleted, or overwritten. 
+These snapshots are not backups and reside on the same hardware as the primary copy of the data.
+
+To access snapshots for data in your ``/u`` directory, run ``cd ~/.snapshot/snapshot-daily-_YYYY-MM-DD_HH_mm_ss_UTC/`` where “YYY-MM-DD_HH_mm_ss” is the timestamp of the snapshot you want to recover from. 
+To list the available snapshots, run the command: ``ls ~/.snapshot/``
 
 Quota Usage
 ------------
