@@ -19,7 +19,7 @@ Refer to the `Help Portal User Job Aid <https://docs.ncsa.illinois.edu/en/latest
 
 .. raw:: html
    
-   <p>The <a href="http://help.ncsa.illinois.edu">NCSA Help Portal</a> is the preferred method to submit requests. However, if you run into problems using it, you can still email <a href="mailto:help@ncsa.illinois.edu?subject=Delta: ">help@ncsa.illinois.edu</a> for support. Expand the following section for guidelines on sending email requests so that NCSA staff can efficiently address them.</p>
+   <p>The <a href="http://help.ncsa.illinois.edu">NCSA Help Portal</a> is the preferred method to submit requests. However, if you run into problems using it, you can email <a href="mailto:help@ncsa.illinois.edu?subject=Delta: ">help@ncsa.illinois.edu</a> for support. Follow the :ref:`email-guidelines` so that NCSA staff can efficiently address your request.</p>
 
 ACCESS Allocated Projects
 ---------------------
@@ -44,14 +44,10 @@ The following are strategies to try before you submit a support request:
 
 When you submit a support request, please let us know what you tried, and what happened if it didn't seem to work.
 
+.. _email-guidelines: 
 
 Email Support Request Guidelines
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. raw:: html
-
-   <details>
-   <summary><a><b>Email support request guidelines</b> <i>(click to expand/collapse)</i></a></summary>
+----------------------------------
 
 **To help NCSA staff efficiently address your request, in your initial email, please include:**
 
@@ -73,9 +69,5 @@ Email Support Request Guidelines
 **If you have multiple, unrelated issues, please create a separate ticket for each by sending separate emails.**
 
 You will receive email correspondence as your ticket is worked on, please respond to any questions that are asked.
-
-.. raw:: html
-
-   </details>
 
 |
