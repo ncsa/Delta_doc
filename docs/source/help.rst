@@ -16,10 +16,8 @@ Use the `NCSA Help Portal <http://help.ncsa.illinois.edu>`_ for all Delta and NC
 - Respond to NCSA staff as they work to resolve your tickets.
 
 Refer to the `Help Portal User Job Aid <https://docs.ncsa.illinois.edu/en/latest/_static/JSMUsersJobAid.pdf>`_ for information on how to navigate the portal.
-
-.. raw:: html
    
-   <p>The <a href="http://help.ncsa.illinois.edu">NCSA Help Portal</a> is the preferred method to submit requests. However, if you run into problems using it, you can email <a href="mailto:help@ncsa.illinois.edu?subject=Delta: ">help@ncsa.illinois.edu</a> for support. Follow the :ref:`email-guidelines` so that NCSA staff can efficiently address your request.</p>
+The `NCSA Help Portal <http://help.ncsa.illinois.edu>`_ is the preferred method to submit requests. However, if you run into problems using it, you can email help@ncsa.illinois.edu for support. Follow the :ref:`email-guidelines` so that NCSA staff can efficiently address your request.
 
 ACCESS Allocated Projects
 ---------------------
