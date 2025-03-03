@@ -51,7 +51,46 @@ Additional information at: `ParaView PvPython and PvBatch wiki <https://www.para
 
 Advanced Interactive Use: ParaView Client-Server Mode 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-This is currently unsupported.
+For ParaView client-server connetions, you must have the exact same version as ParaView installed as on Delta, currently this is 5.11.2. Once this is installed, start the ParaView client application. Note that if you are on an ARM processor, you may see a warning about not being able to load the OSPRay plugin which requires x86_64, this may be ignored.
+
+FIGURE GOES HERE
+
+Make a connection by either by clicking on the Connect button:
+
+FIGURE GOES HERE
+
+or navigating to File | Connect...
+
+FIGURE GOES HERE
+
+The Choose Server Configuration dialog window will open, click on the Fetch Servers button
+
+FIGURE GOES HERE
+
+Scroll down and select the appropriate NCSA Delta profile, note that you must have a GPU allocation for the GPU profile to work:
+
+FIGURE GOES HERE
+
+Select the appropriate profile and click the Connect button which will open an Options window:
+
+FIGURE GOES HERE.
+
+Change the options as appropriate, in particular, you must enter your actual username and a chargable account. See below for more suggestions about the other options. Click OK. This will open a terminal window asking for your password and 2FA. This terminal window must be left open for the duration.
+
+FIGURE GOES HERE
+
+Note: On Windows, if nothing happens at this stage, or if a window opesn and immediately closes, please download and install PuTTY https://www.putty.org/
+
+Once you have authenticated, a job will be submitted based on the supplied options. The job file as well as the SLURM output will be in your $HOME directory. Messages will appear in the teriminal when the job starts and once the SSH tunnel has been made to pvserver running on the compute node, respectively.
+
+FIGURE GOES HERE
+
+Once the connection is complete, the ParaView client window should change to the default background color, and the pipeline browser should show a csrs:// connection to Delta
+
+FIGURE GOES HERE
+
+Suggestions on Job Options section goes here
+
 
 VisIt
 --------
