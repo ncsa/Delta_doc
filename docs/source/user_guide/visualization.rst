@@ -90,7 +90,7 @@ For ParaView client-server connetions, you must install the same version of Para
 #. In the **Connect Options** window, change the options, as approporaite. At a minimum, you need to update:
 
    - **Delta username** - enter your NCSA username that you use to log in to Delta.
-   - **--account** - enter an account name that you have access to on Delta.
+   - **-\-account** - enter an account name that you have access to on Delta.
 
    Click **OK**. 
 
@@ -102,14 +102,14 @@ For ParaView client-server connetions, you must install the same version of Para
 
    #. Authenticate with your NCSA (Kerberos) password and DUO MFA. (1)
    #. A job will be submitted based on the options you entered in the previous step. The job file as well as the SLURM output will be in your home directory. (2)
-   #. Messages will appear in the teriminal for when the job starts and once the SSH tunnel has been made to pvserver running on the compute node. (3) and (4). 
+   #. Messages will appear in the teriminal for when the job starts and once the SSH tunnel has been made to pvserver running on the compute node. (3) and (4)
+
+   .. note::
+      On Windows, if nothing happens at this stage, or if a window opens and immediately closes, try downloading and installing `PuTTY and plink.exe <https://www.putty.org/>`_.
 
    .. figure:: images/visualization/7_ParaView_Pop-up_Terminal.png
      :alt: Pop-up terminal session showing authentication, job submission, job status, and connection messages.
      :width: 960
-
-   .. note::
-      On Windows, if nothing happens at this stage, or if a window opens and immediately closes, try downloading and installing `PuTTY and plink.exe <https://www.putty.org/>`_.
 
 #. When the connection is complete, the ParaView client window should change to the default background color, and the pipeline browser should show a **csrs://** connection to Delta.
 
