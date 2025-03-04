@@ -99,7 +99,7 @@ This will open a terminal window which must remain open for the duration of the 
 
 Once the connection is complete, the ParaView client window should change to the default background color, and the pipeline browser should show a csrs:// connection to Delta
 
-.. figure: images/visualization/8_ParaView_successful_connection.png
+.. figure:: images/visualization/8_ParaView_successful_connection.png
   :alt: Pipeline browser showing successful connection to Delta.
   :width: 416
 
