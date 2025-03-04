@@ -51,45 +51,68 @@ Additional information at: `ParaView PvPython and PvBatch wiki <https://www.para
 
 Advanced Interactive Use: ParaView Client-Server Mode 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-For ParaView client-server connetions, you must have the exact same version as ParaView installed as on Delta, currently this is 5.11.2. Once this is installed, start the ParaView client application. Note that if you are on an ARM processor, you may see a warning about not being able to load the OSPRay plugin which requires x86_64, this may be ignored.
+For ParaView client-server connetions, you must have the exact same version as ParaView installed as on Delta, currently this is `5.11.2 <https://www.paraview.org/download/?version=v5.11>`_. Once this is installed, start the ParaView client application. (Note that if you are on an ARM processor, you may see a warning about not being able to load the OSPRay plugin which requires x86_64, this may be ignored.)
 
-FIGURE GOES HERE
+Make a connection by either clicking on the Connect button:
 
-Make a connection by either by clicking on the Connect button:
-
-FIGURE GOES HERE
+.. figure:: images/visualization/1_ParaView_Connect_button.png
+    :alt: Close-up view of the server Connect button.
+    :width: 500
 
 or navigating to File | Connect...
 
-FIGURE GOES HERE
+.. figure:: images/visualization/2_ParaView_File_Connect.png
+   :alt: Expanded file menu with connect option highlighted.
+   :width: 314
 
-The Choose Server Configuration dialog window will open, click on the Fetch Servers button
+The Choose Server Configuration dialog window will open, click on the Fetch Servers button:
 
-FIGURE GOES HERE
+.. figure:: images/visualization/3_ParaView_Choose_Server_Configuration.png
+  :alt: Choose server configuration modal dialog with fetch servers button highlighted.
+  :width: 529
 
-Scroll down and select the appropriate NCSA Delta profile, note that you must have a GPU allocation for the GPU profile to work:
+Scroll down and select the appropriate NCSA Delta profile. Note: you must have a GPU allocation for the GPU profile to work.
 
-FIGURE GOES HERE
+.. figure:: images/visualization/4_ParaView_Fetch_Server_Configurations.png
+  :alt: Fetch server configurations modal dialog with NCSA configurations highlighted.
+  :width: 529
 
-Select the appropriate profile and click the Connect button which will open an Options window:
+First, select the appropriate profile and then click the Connect button which will open a Connection Options window. 
 
-FIGURE GOES HERE.
+.. figure:: images/visualization/5_ParaView_Choose_and_Connect.png
+  :alt: Choose server configuration modal dialog with NCSA profile and connect button highlighted.
+  :width: 529
 
-Change the options as appropriate, in particular, you must enter your actual username and a chargable account. See below for more suggestions about the other options. Click OK. This will open a terminal window asking for your password and 2FA. This terminal window must be left open for the duration.
+The image below shows the CPU and GPU options side-by-side for comparision. Change the options as appropriate, in particular, you must enter your actual username and a chargable account. See below for more suggestions about the other options. Click OK. 
 
-FIGURE GOES HERE
+.. figure:: images/visualization/6_ParaView_CPU_GPU_Connection_Options.png
+  :alt: Side-by-side comparison of connection options modal dialog for CPU and GPU, respectively.
+  :width: 485
 
-Note: On Windows, if nothing happens at this stage, or if a window opesn and immediately closes, please download and install PuTTY https://www.putty.org/
+This will open a terminal window which must remain open for the duration of the session. It will prompt for (1) your password and a two-factor authentication method. Once you have authenticated, (2) a job will be submitted based on the supplied options. The job file as well as the SLURM output will be in your home directory. Messages will appear in the teriminal for when (3) the job starts and once (4) the SSH tunnel has been made to pvserver running on the compute node, respectively.
 
-Once you have authenticated, a job will be submitted based on the supplied options. The job file as well as the SLURM output will be in your $HOME directory. Messages will appear in the teriminal when the job starts and once the SSH tunnel has been made to pvserver running on the compute node, respectively.
+.. figure:: images/visualization/7_ParaView_Pop-up_Terminal.png
+  :alt: Pop-up terminal session showing authentication, job submission, job status, and connection messages.
+  :width: 960
 
-FIGURE GOES HERE
+(Note: On Windows, if nothing happens at this stage, or if a window opens and immediately closes, try downloading and installing PuTTY and plink.exe from https://www.putty.org/)
 
 Once the connection is complete, the ParaView client window should change to the default background color, and the pipeline browser should show a csrs:// connection to Delta
 
-FIGURE GOES HERE
+.. figure: images/visualization/8_ParaView_successful_connection.png
+  :alt: Pipeline browser showing successful connection to Delta.
+  :width: 416
 
-Suggestions on Job Options section goes here
+Suggestions on Connection Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ParaView's server application, pvserver, is a hybrid OpenMP-MPI application. This informs the following advice.
+
+#. Set --nodes to 1, unless your data is spatially decomposed into multiple files per timestep. In which case, try setting --nodes to the number of domains. ParaView will not automatically decompose data except for very specific instances. The D3 (data domain decomposition) filter might be able to decompse your data.
+
+#. --cpus-per-task also sets the default memory allocation of 1GB per cpu. Increase as necessary, but note that requesting more cores may result in longer queue wait times.
+
+#. For GPU jobs, start with --gpus-per-node at 1, it is likely there will be little to no benefit from using more than one. These jobs are run on the gpuA40x4 partition.
+
 
 
 VisIt
