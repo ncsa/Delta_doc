@@ -107,11 +107,11 @@ Suggestions on Connection Options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ParaView's server application, pvserver, is a hybrid OpenMP-MPI application. This informs the following advice.
 
-#. Set --nodes to 1, unless your data is spatially decomposed into multiple files per timestep. In which case, try setting --nodes to the number of domains. ParaView will not automatically decompose data except for very specific instances. The D3 (data domain decomposition) filter might be able to decompse your data.
+#. Set :code:`--nodes` to 1, unless your data is spatially decomposed into multiple files per timestep. In which case, try setting :code:`--nodes` to the number of domains. ParaView will not automatically decompose data except for very specific instances. The D3 (data domain decomposition) filter might be able to decompse your data.
 
-#. --cpus-per-task also sets the default memory allocation of 1GB per cpu. Increase as necessary, but note that requesting more cores may result in longer queue wait times.
+#. :code:`--cpus-per-task` also sets the default memory allocation of 1GB per cpu. Increase as necessary, but note that requesting more cores may result in longer queue wait times.
 
-#. For GPU jobs, start with --gpus-per-node at 1, it is likely there will be little to no benefit from using more than one. These jobs are run on the gpuA40x4 partition.
+#. For GPU jobs, start with :code:`--gpus-per-node` at 1, it is likely there will be little to no benefit from using more than one. These jobs are run on the :code:`gpuA40x4` partition.
 
 
 
