@@ -52,7 +52,7 @@ Additional information at: `ParaView PvPython and PvBatch wiki <https://www.para
 Advanced Interactive Use: ParaView Client-Server Mode 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For ParaView client-server connetions, you must install the same version of ParaView that is installed on Delta, currently this is `5.11.2 <https://www.paraview.org/download/?version=v5.11>`_. 
+For ParaView client-server connections, you must install the same version of ParaView that is installed on Delta, currently this is `5.11.2 <https://www.paraview.org/download/?version=v5.11>`_. 
 
 #. Start the ParaView client application. (Note, if you are on an ARM processor, you may see a warning about not being able to load the OSPRay plugin which requires x86_64, this can be ignored.)
 
@@ -83,7 +83,7 @@ For ParaView client-server connetions, you must install the same version of Para
      :alt: Choose server configuration modal dialog with NCSA profile and connect button highlighted.
      :width: 529
 
-#. In the **Connect Options** window, change the options, as approporaite. At a minimum, you need to update:
+#. In the **Connect Options** window, change the options, as appropriate. At a minimum, you need to update:
 
    - **Delta username** - enter your NCSA username that you use to log in to Delta.
    - **-\-account** - enter an account name that you have access to on Delta.
@@ -98,7 +98,7 @@ For ParaView client-server connetions, you must install the same version of Para
 
    #. Authenticate with your NCSA (Kerberos) password and DUO MFA. (1)
    #. A job will be submitted based on the options you entered in the previous step. The job file as well as the SLURM output will be in your home directory. (2)
-   #. Messages will appear in the teriminal for when the job starts and once the SSH tunnel has been made to pvserver running on the compute node. (3) and (4)
+   #. Messages will appear in the terminal for when the job starts and once the SSH tunnel has been made to pvserver running on the compute node. (3) and (4)
 
    .. note::
       On Windows, if nothing happens at this stage, or if a window opens and immediately closes, try downloading and installing `PuTTY and plink.exe <https://www.putty.org/>`_.
@@ -118,7 +118,7 @@ Suggestions on Connection Options
 
 ParaView's server application, pvserver, is a hybrid OpenMP-MPI application. This informs the following advice.
 
-#. Set ``--nodes`` to 1, unless your data is spatially decomposed into multiple files per timestep. In that case, try setting ``--nodes`` to the number of domains. ParaView will not automatically decompose data except for very specific instances. The D3 (data domain decomposition) filter might be able to decompse your data.
+#. Set ``--nodes`` to 1, unless your data is spatially decomposed into multiple files per timestep. In that case, try setting ``--nodes`` to the number of domains. ParaView will not automatically decompose data except for very specific instances. The D3 (data domain decomposition) filter might be able to decompose your data.
 
 #. ``--cpus-per-task`` also sets the default memory allocation of 1GB per cpu. Increase as necessary, but note that requesting more cores may result in longer queue wait times.
 
