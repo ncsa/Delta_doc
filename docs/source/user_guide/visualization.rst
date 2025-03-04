@@ -52,11 +52,12 @@ Additional information at: `ParaView PvPython and PvBatch wiki <https://www.para
 Advanced Interactive Use: ParaView Client-Server Mode 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For ParaView client-server connections, you must install the same version of ParaView that is installed on Delta, currently this is `5.11.2 <https://www.paraview.org/download/?version=v5.11>`_. 
+.. note::
+   For ParaView client-server connections, you must install the same version of ParaView that is installed on Delta, currently this is `5.11.2 <https://www.paraview.org/download/?version=v5.11>`_. 
 
 #. Start the ParaView client application. (Note, if you are on an ARM processor, you may see a warning about not being able to load the OSPRay plugin which requires x86_64, this can be ignored.)
 
-#. Make a connection by either clicking the **Connect** icon or navigating to **File** > **Connect**.
+#. Start a connection by clicking the **Connect** icon or navigating to **File** > **Connect**.
 
    .. figure:: images/visualization/1_ParaView_Connect_button.png
        :alt: Close-up view of the server Connect button.
