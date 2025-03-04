@@ -56,15 +56,11 @@ For ParaView client-server connetions, you must install the same version of Para
 
 #. Start the ParaView client application. (Note, if you are on an ARM processor, you may see a warning about not being able to load the OSPRay plugin which requires x86_64, this can be ignored.)
 
-#. Make a connection by either clicking the **Connect** icon or navigating to **File** > **Connect**:
+#. Make a connection by either clicking the **Connect** icon or navigating to **File** > **Connect**.
 
    .. figure:: images/visualization/1_ParaView_Connect_button.png
        :alt: Close-up view of the server Connect button.
        :width: 500
-
-   .. figure:: images/visualization/2_ParaView_File_Connect.png
-      :alt: Expanded file menu with connect option highlighted.
-      :width: 314
 
 #. In the **Choose Server Configuration** window, click **Fetch Servers** .
 
