@@ -1,8 +1,9 @@
+/* Makes content width 90% */
 .wy-nav-content {
     max-width: 90% !important;
 }
 
-/* making logo/home link hover color the same as background */
+/* Makes logo/home link hover color the same as background */
 body > div > nav > div > div.wy-side-nav-search > a:hover{
     background: #2980b9 !important;
 }
@@ -27,45 +28,45 @@ body > div > nav > div > div.wy-side-nav-search > a{
     cursor: default;
 } */
 
-/* making "System Documentation Hub" link visited color the same as unvisited 
+/* Makes "System Documentation Hub" link visited color the same as unvisited 
 a.hub-link:visited{
     color: #2980b9 !important;
 } */
 
-
+/* Right-aligns the 'System Documentation Hub' link */
 .hub-link{
     text-align: right;
 }
 
+/* Adds underline to link text and changes color accessibility */
 a:link {
   text-decoration: underline;
   color: #0073E6;
 }
 
+/* Adds hover color to link text for accessibility */
 a:hover {
-  color: #bb1122;
+  color: #D71427;
 }
 
+/* Changes visited color of link text for accessibility */
 a:visited {
-  color: #8701DA;
+  color: #9b59b6;
 }
 
+/* Changes left nav text color */
 .wy-nav-side a:link {
   color: #fcfcfc;
 }
 
-a[aria-expanded="true"]{
+/* Changes expanded left nav text, body text, and footer text for accessibility */
+a[aria-expanded="true"] .document footer{
     color: #121212;
 }
 
-.document {
-  color: #121212;
-}
-
+/* Adds underline to cookies button in footer for accessibility */
 #cookie-button {
   text-decoration: underline;
 }
 
-footer {
-  color: #121212;
-}
+
