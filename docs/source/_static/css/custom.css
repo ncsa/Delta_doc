@@ -36,3 +36,7 @@ a.hub-link:visited{
 .hub-link{
     text-align: right;
 }
+
+a:link {
+  text-decoration: underline;
+}
