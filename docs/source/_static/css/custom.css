@@ -50,6 +50,6 @@ a:visited {
   color: #8701DA;
 }
 
-.wy-nav-side {
+.wy-nav-side:link {
   color: #FFF !important;
 }
