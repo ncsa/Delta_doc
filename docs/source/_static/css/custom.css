@@ -37,9 +37,9 @@ a.hub-link:visited{
     text-align: right;
 }
 
-a:link {
+a:link:not(.wy-nav-side) {
   text-decoration: underline;
-  color: #3344dd;
+  color: #0073E6;
 }
 
 a:hover {
@@ -47,5 +47,5 @@ a:hover {
 }
 
 a:visited {
-  color: #884488;
+  color: #8701DA;
 }
