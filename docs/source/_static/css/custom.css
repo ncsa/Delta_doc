@@ -54,6 +54,10 @@ a:visited {
   color: #fcfcfc !important;
 }
 
+a[aria-expanded="true"]{
+    color: #000;
+}
+
 .document {
   color: #000;
 }
