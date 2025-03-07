@@ -57,3 +57,11 @@ a:visited {
 .document {
   color: #000;
 }
+
+#cookie-button {
+  text-decoration: underline;
+}
+
+footer {
+  color: #000;
+}
