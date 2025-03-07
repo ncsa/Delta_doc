@@ -53,3 +53,7 @@ a:visited {
 .wy-nav-side a:link {
   color: #fcfcfc !important;
 }
+
+.document {
+  color: #000;
+}
