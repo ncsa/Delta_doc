@@ -55,11 +55,11 @@ a:visited {
 }
 
 a[aria-expanded="true"]{
-    color: #000;
+    color: #030136;
 }
 
 .document {
-  color: #000;
+  color: #030136;
 }
 
 #cookie-button {
@@ -67,5 +67,5 @@ a[aria-expanded="true"]{
 }
 
 footer {
-  color: #000;
+  color: #030136;
 }
