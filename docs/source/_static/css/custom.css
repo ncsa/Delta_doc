@@ -42,6 +42,7 @@ a.hub-link:visited{
 a:link {
   text-decoration: underline;
   /* color: #0073E6; */
+  color: 2779B0;
 }
 
 /* Adds hover color to link text for accessibility */
