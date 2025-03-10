@@ -46,7 +46,7 @@ a:link {
 }
 
 /* Adds hover color to link text for accessibility */
-a:hover {
+a:hover a:focus a:active {
   color: #D71427;
 }
 
