@@ -17,6 +17,6 @@ $( document ).ready(function() {
 
   // Update the alt text of the NCSA logo in the left nav
   var ncsa_logo = document.querySelector(".logo");
-  ncsa_logo.setAttribute('alt', 'University of Illinois Block I logo on the left and the block letter NCSA logo on the right with a veritcal line seaparting them.', 'important');
+  ncsa_logo.setAttribute('alt', 'University of Illinois NCSA logo.', 'important');
   
 });
