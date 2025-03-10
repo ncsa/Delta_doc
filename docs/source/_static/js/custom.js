@@ -15,5 +15,8 @@ $( document ).ready(function() {
   // Replace "Edit on GitHub" with the hub link.
   aside.replaceWith(hub_link);
 
-
+  // Update the alt text of the NCSA logo in the left nav
+  var ncsa_logo = document.getElementsByClassName('logo');
+  ncsa_logo.alt = 'University of Illinois Block I logo on the left and the block letter NCSA logo on the right with a veritcal line seaparting them.';
+  
 });
