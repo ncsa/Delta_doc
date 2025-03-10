@@ -3,10 +3,10 @@
     max-width: 90% !important;
 }
 
-/* Makes logo/home link hover color the same as background */
+/* Makes logo/home link hover color the same as background 
 body > div > nav > div > div.wy-side-nav-search > a:hover{
     background: #2980b9 !important;
-}
+} */
 
 
 /* custom styling for 'about cookies' button in footer */
