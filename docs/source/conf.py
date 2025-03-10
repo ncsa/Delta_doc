@@ -77,7 +77,6 @@ html_theme_options = {
      'logo_only': False,
      'display_version': False,
      'flyout_display': 'attached',
-     'dark_mode_theme': 'auto'
  }
 
 # -- Page Title
