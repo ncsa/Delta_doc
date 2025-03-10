@@ -106,7 +106,8 @@ The A40 GPUs are connected via PCIe Gen4 and have the following affinitization t
 .. table:: 4-Way A40 Mapping and Affinitization
 
    +--------+----+----+----+----+---+------------+-------------+
-   |        |GPU0|GPU1|GPU2|GPU3|HSN|CPU Affinity|NUMA Affinity|
+   | GPU    |GPU0|GPU1|GPU2|GPU3|HSN|CPU Affinity|NUMA Affinity|
+   | numbers|    |    |    |    |   |            |             |
    +========+====+====+====+====+===+============+=============+
    |**GPU0**|X   |SYS |SYS |SYS |SYS|48-63       |3            |
    +--------+----+----+----+----+---+------------+-------------+
