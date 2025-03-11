@@ -106,7 +106,8 @@ The A40 GPUs are connected via PCIe Gen4 and have the following affinitization t
 .. table:: 4-Way A40 Mapping and Affinitization
 
    +--------+----+----+----+----+---+------------+-------------+
-   |        |GPU0|GPU1|GPU2|GPU3|HSN|CPU Affinity|NUMA Affinity|
+   | GPU    |GPU0|GPU1|GPU2|GPU3|HSN|CPU Affinity|NUMA Affinity|
+   | Number |    |    |    |    |   |            |             |
    +========+====+====+====+====+===+============+=============+
    |**GPU0**|X   |SYS |SYS |SYS |SYS|48-63       |3            |
    +--------+----+----+----+----+---+------------+-------------+
@@ -173,7 +174,8 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 .. table:: 4-Way A100 Mapping and Affinitization
 
    +--------+----+----+----+----+---+------------+-------------+
-   |        |GPU0|GPU1|GPU2|GPU3|HSN|CPU Affinity|NUMA Affinity|
+   | GPU    |GPU0|GPU1|GPU2|GPU3|HSN|CPU Affinity|NUMA Affinity|
+   | Number |    |    |    |    |   |            |             |
    +========+====+====+====+====+===+============+=============+
    |**GPU0**|X   |NV4 |NV4 |NV4 |SYS|48-63       |3            |
    +--------+----+----+----+----+---+------------+-------------+
@@ -240,9 +242,8 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 .. table:: 8-Way A100 Mapping and Affinitization
 
    +--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
-   |        | GPU0 | GPU1 | GPU2 | GPU3 | GPU4 | GPU5 | GPU6 | GPU7 | HSN | CPU Affinity | NUMA          |
-   |        |      |      |      |      |      |      |      |      |     |              |               |
-   |        |      |      |      |      |      |      |      |      |     |              | Affinity      |
+   | GPU    | GPU0 | GPU1 | GPU2 | GPU3 | GPU4 | GPU5 | GPU6 | GPU7 | HSN | CPU Affinity | NUMA          |
+   | Number |      |      |      |      |      |      |      |      |     |              | Affinity      |
    +========+======+======+======+======+======+======+======+======+=====+==============+===============+
    |**GPU0**| X    | NV12 | NV12 | NV12 | NV12 | NV12 | NV12 | NV12 | SYS | 48-63        | 3             |
    +--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
