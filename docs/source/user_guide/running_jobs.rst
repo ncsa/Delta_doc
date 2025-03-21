@@ -132,7 +132,7 @@ Job and Node Policies
 
      --exclusive --mem=0
 
-  GPU NVIDIA MIG (GPU slicing) for the A100 will be supported at a future date.
+  GPU NVIDIA MIG (GPU slicing) for the A100 is not supported at this time.
 
 .. _preempt:
 
