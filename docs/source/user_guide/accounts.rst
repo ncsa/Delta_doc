@@ -10,6 +10,11 @@ ACCESS projects use the `ACCESS user portal <https://support.access-ci.org/>`_ f
 
 Non-ACCESS project and account management, such as adding someone to a project, is handled by NCSA group management tools. For more information, go to `Group/Project Member Management <https://docs.ncsa.illinois.edu/en/latest/account-mgmt/group-mgmt.html#group-mgmt>`_.
 
+Reset Your Password
+--------------------
+
+For instructions on how to reset the NCSA password that you use to log in to Delta, go to `Manage Your NCSA Identity - Reset Your Password <https://docs.ncsa.illinois.edu/en/latest/account-mgmt/identity-mgmt.html#reset-your-password>`_.
+
 Configuring Your Account
 ----------------------------
 
