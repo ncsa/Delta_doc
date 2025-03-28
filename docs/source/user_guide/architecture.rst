@@ -5,15 +5,17 @@ Delta is designed to help applications transition from CPU-only to GPU or hybrid
 Delta has some important architectural features to facilitate new discovery and insight:
 
 -  A single processor architecture (AMD) across all node types: CPU and GPU
--  Support for NVIDIA A100 MIG GPU partitioning, allowing for fractional use of the A100s if your workload is not able to exploit an entire A100 efficiently
+-  A100 FP32 and FP64 support 
 -  Raytracing hardware support from the NVIDIA A40 GPUs
 -  Nine large memory (2 TB) nodes
 -  A low latency and high bandwidth HPE/Cray Slingshot interconnect between compute nodes
 -  Lustre for home, projects, and work file systems
 -  Support for relaxed and non-POSIX I/O (feature not yet implemented)
--  Shared-node jobs and the single core and single MIG GPU slice
+-  Shared-node jobs
 -  Resources for persistent services in support of Gateways, Open OnDemand, and Data Transport nodes
 -  Unique AMD MI100 resource
+
+**NOTE:** Delta A100 GPUs do NOT have MIG enabled.
 
 Model Compute Nodes
 ----------------------
