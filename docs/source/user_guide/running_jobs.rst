@@ -698,9 +698,6 @@ You have SSH access to nodes in your running job(s). Some of the basic monitorin
    [arnoldg@gpub045 ~]$ nvidia-smi
 
    [arnoldg@gpub045 ~]$ module load nvtop
-   ---------------------------------------------------------------------------------------------------------------------
-   The following dependent module(s) are not currently loaded: cuda/11.6.1 (required by: ucx/1.11.2, openmpi/4.1.2)
-   ---------------------------------------------------------------------------------------------------------------------
 
    The following have been reloaded with a version change:
    1) cuda/11.6.1 => cuda/11.7.0
