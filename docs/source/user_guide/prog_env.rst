@@ -39,7 +39,7 @@ To build (compile and link) a MPI program in Fortran, C, and C++:
    |                                 | .. code-block::                            |                                           |
    |                                 |                                            |                                           |
    | OpenMPI                         |    gcc openmpi                             |                                           |
-   |                                 |        openmpi/5.0.5+cuda                  | - **Fortran 77:** mpif77 myprog.f         |
+   |                                 |        openmpi/5.0.5+cuda (use mpirun)     | - **Fortran 77:** mpif77 myprog.f         |
    |                                 |        (GPU-direct)                        |                                           |
    |                                 |                                            |                                           |
    | - `Open MPI Home Page`_         | .. code-block::                            |                                           |
