@@ -317,6 +317,9 @@ Table Legend:
 The gpuMI100x8 GPU node is a good resource for large memory (2TB) jobs that do not need a GPU as the charging is
 set to promote use of this resource for its memory. The 9th GPU is a newer MI210.
 
+The amount of RAM available to jobs via the Slurm ``--mem`` option is 5 to 10 percent less than the total amount
+installed because of memory reserved for the operating system.
+
 Login Nodes
 ~~~~~~~~~~~~~
 
