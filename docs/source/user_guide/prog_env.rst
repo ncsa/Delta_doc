@@ -69,6 +69,9 @@ To build (compile and link) a MPI program in Fortran, C, and C++:
    |                                 |                                            | - **C++:** CC myprog.cc                   |
    +---------------------------------+--------------------------------------------+-------------------------------------------+
 
+.. note::
+   If your code fails with an error containing "H/W Event Queue overflow detected.", try setting this environment variable before srun and see if it resolves the problem: export FI_CXI_RX_MATCH_MODE=software .
+
 .. _Open MPI Home Page: http://www.open-mpi.org
 
 .. _Open MPI Documentation: http://www.open-mpi.org/doc
