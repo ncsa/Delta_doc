@@ -112,6 +112,29 @@ References
 ~~~~~~~~~~~~~
 `AMD uProf user guide <https://www.amd.com/content/dam/amd/en/documents/developer/uprof-v4.0-gaGA-user-guide.pdf>`_
 
+HPCtoolkit
+----------
+
+.. code-block::
+
+   $ module load openmpi+cuda hpctoolkit    
+   # get an salloc allocation or do the srun in a batch script, preface your executable with hpcrun
+   $ srun hpcrun ./osu_ibcast -d cuda
+   # after that, use hpcprof and hpcviewer on the results
+   $ hpcprof hpctoolkit-osu_ibcast-measurements-9173774/
+   INFO: Writing analysis results to default database hpctoolkit-osu_ibcast-database-9173774/
+   $ hpcviewer hpctoolkit-osu_ibcast-database-9173774/
+   Java version 11
+   Redirect standard error to /u/arnoldg/.hpctoolkit/hpcviewer/x86_64/hpcviewer.err
+
+..  image:: images/debug_perf/hpcviewer.png
+    :alt: hpcviewer GUI display of performance measurments
+    :width: 1000px
+   
+References
+~~~~~~~~~~~
+`HPCToolkit users manual <https://hpctoolkit.org/manual/HPCToolkit-users-manual.pdf>`_
+
 NVIDIA Nsight Systems
 -------------------------
 
