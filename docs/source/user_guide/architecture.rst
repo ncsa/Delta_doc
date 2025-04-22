@@ -6,6 +6,7 @@ Delta has some important architectural features to facilitate new discovery and 
 
 -  A single processor architecture (AMD) across all node types: CPU and GPU
 -  A100 FP32 and FP64 support 
+-  H200 FP8 and FP16 support
 -  Raytracing hardware support from the NVIDIA A40 GPUs
 -  Nine large memory (2 TB) nodes
 -  A low latency and high bandwidth HPE/Cray Slingshot interconnect between compute nodes
