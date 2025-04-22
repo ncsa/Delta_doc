@@ -34,7 +34,7 @@ The Delta compute ecosystem is composed of six node types:
 | The CPU-only node has 0.74 TB of local storage;  GPU nodes have 1.5 TB or 2 TB of local storage.
 
 | Each socket of the A40 and A100 GPU nodes contains an AMD 7763 processor. 
-| Each socket of the H200 GPU nodes contains an Intel Xeon Platnum 8558 processor. 
+| Each socket of the H200 GPU nodes contains an Intel Xeon Platinum 8558 processor. 
 | Consistent with Intel and AMD's advice for HPC nodes and NCSA's testing, all Delta nodes have Simultaneous Multi Treading (SMT) or HyperThreading turned off or disabled.  
 
 CPU Compute Node Specifications
