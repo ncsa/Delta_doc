@@ -4,7 +4,7 @@ System Architecture
 Delta is designed to help applications transition from CPU-only to GPU or hybrid CPU-GPU codes. 
 Delta has some important architectural features to facilitate new discovery and insight:
 
--  A single processor architecture (AMD) across all A40 and A100 node types: CPU and GPU. Intel CPUs on the H200a.
+-  A single processor architecture (AMD) across all A40 and A100 node types: CPU and GPU. Intel CPUs on the H200 nodes.
 -  A100 FP32 and FP64 support 
 -  H200 FP8 and FP16 support
 -  Raytracing hardware support from the NVIDIA A40 GPUs
