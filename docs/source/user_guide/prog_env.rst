@@ -39,7 +39,7 @@ To build (compile and link) a MPI program in Fortran, C, and C++:
    |                                 | .. code-block::                            |                                           |
    |                                 |                                            |                                           |
    | OpenMPI                         |    gcc openmpi                             |                                           |
-   |                                 |        openmpi/5.0.5+cuda                  | - **Fortran 77:** mpif77 myprog.f         |
+   |                                 |        openmpi/5.0.5+cuda (use mpirun)     | - **Fortran 77:** mpif77 myprog.f         |
    |                                 |        (GPU-direct)                        |                                           |
    |                                 |                                            |                                           |
    | - `Open MPI Home Page`_         | .. code-block::                            |                                           |
@@ -68,6 +68,9 @@ To build (compile and link) a MPI program in Fortran, C, and C++:
    |                                 |                                            |                                           |
    |                                 |                                            | - **C++:** CC myprog.cc                   |
    +---------------------------------+--------------------------------------------+-------------------------------------------+
+
+.. note::
+   If your code fails with an error containing "H/W Event Queue overflow detected.", try setting this environment variable before srun and see if it resolves the problem: export FI_CXI_RX_MATCH_MODE=software .
 
 .. _Open MPI Home Page: http://www.open-mpi.org
 
@@ -221,6 +224,8 @@ nv* commands when nvhpc is loaded
    nvfortran                nvidia-xconfig
 
 See the `NVIDIA HPC SDK <https://developer.nvidia.com/hpc-sdk>`_ page for more information.
+
+The compute capability for A100 GPUs is 8.0, for A40 GPUs it is 8.6 and for H200 GPUs it is 9.0.
 
 Note: The Multi-Process Service (MPS) is not enabled on Delta and there are no plans to support it in the future.  
 

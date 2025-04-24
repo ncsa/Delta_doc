@@ -4,8 +4,9 @@ System Architecture
 Delta is designed to help applications transition from CPU-only to GPU or hybrid CPU-GPU codes. 
 Delta has some important architectural features to facilitate new discovery and insight:
 
--  A single processor architecture (AMD) across all node types: CPU and GPU
+-  A single processor architecture (AMD) across all A40 and A100 node types: CPU and GPU. Intel CPUs on the H200 nodes.
 -  A100 FP32 and FP64 support 
+-  H200 FP8 and FP16 support
 -  Raytracing hardware support from the NVIDIA A40 GPUs
 -  Nine large memory (2 TB) nodes
 -  A low latency and high bandwidth HPE/Cray Slingshot interconnect between compute nodes
@@ -20,24 +21,27 @@ Delta has some important architectural features to facilitate new discovery and 
 Model Compute Nodes
 ----------------------
 
-The Delta compute ecosystem is composed of five node types:
+The Delta compute ecosystem is composed of six node types:
 
-- Dual-socket, CPU-only compute nodes
+- Dual-socket, CPU-only AMD compute nodes
 - Single socket, 4-way NVIDIA A100 GPU compute nodes
 - Single socket, 4-way NVIDIA A40 GPU compute nodes
 - Dual-socket, 8-way NVIDIA A100 GPU compute nodes
+- Dual-socket, 8-way NVIDIA H200 GPU compute nodes with Intel CPUs
 - Single socket, 8-way AMD MI100 GPU compute nodes
 
 | The CPU-only and 4-way GPU nodes have 256 GB of RAM per node; the 8-way GPU nodes have 2 TB of RAM. 
-| The CPU-only node has 0.74 TB of local storage; all GPU nodes have 1.5 TB of local storage.
+| The CPU-only node has 0.74 TB of local storage;  GPU nodes have 1.5 TB or 2 TB of local storage.
 
-Each socket contains an AMD 7763 processor. Consistent with AMD's advice for HPC nodes and NCSA's testing, all Delta nodes have Simultaneous Multi Treading (SMT) turned off.  
-
-..  image:: images/architecture/amd-7003-series.png
-    :alt: EPYC 7003 Series Architecture Quick Look
+| Each socket of the A40 and A100 GPU nodes contains an AMD 7763 processor. 
+| Each socket of the H200 GPU nodes contains an Intel Xeon Platinum 8558 processor. 
+| Consistent with Intel and AMD's advice for HPC nodes and NCSA's testing, all Delta nodes have Simultaneous Multi Treading (SMT) or HyperThreading turned off or disabled.  
 
 CPU Compute Node Specifications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  image:: images/architecture/amd-7003-series.png
+    :alt: EPYC 7003 Series Architecture Quick Look
 
 .. table:: CPU Compute Node Specs
 
@@ -70,8 +74,10 @@ The AMD CPUs are set for 4 NUMA domains per socket (NPS=4).
    +===========================+=========================================+
    | Number of nodes           | 100                                     |
    +---------------------------+-----------------------------------------+
-   | GPU                       | `NVIDIA A40 <https://www.nvidi          |
+   | GPU (PCIe)                | `NVIDIA A40 <https://www.nvidi          |
    |                           | a.com/en-us/data-center/a40/#specs>`_   |
+   +---------------------------+-----------------------------------------+
+   | NVIDIA Compute Capability | 8.6                                     |
    +---------------------------+-----------------------------------------+
    | GPUs per node             | 4                                       |
    +---------------------------+-----------------------------------------+
@@ -139,8 +145,10 @@ Table Legend:
    +===========================+=========================================+
    | Number of nodes           | 100                                     |
    +---------------------------+-----------------------------------------+
-   | GPU                       | `NVIDIA A100 <https://www.nvidia.com/en |
+   | GPU (SXM)                 | `NVIDIA A100 <https://www.nvidia.com/en |
    |                           | -us/data-center/a100/#specifications>`_ |
+   +---------------------------+-----------------------------------------+
+   | NVIDIA Compute Capability | 8.0                                     |
    +---------------------------+-----------------------------------------+
    | GPUs per node             | 4                                       |
    +---------------------------+-----------------------------------------+
@@ -206,8 +214,10 @@ Table Legend:
    +===========================+=========================================+
    | Number of nodes           | 6                                       |
    +---------------------------+-----------------------------------------+
-   | GPU                       | `NVIDIA A100 <https://www.nvidia.com/en |
+   | GPU (SXM)                 | `NVIDIA A100 <https://www.nvidia.com/en |
    |                           | -us/data-center/a100/#specifications>`_ |
+   +---------------------------+-----------------------------------------+
+   | NVIDIA Compute Capability | 8.0                                     |
    +---------------------------+-----------------------------------------+
    | GPUs per node             | 8                                       |
    +---------------------------+-----------------------------------------+
@@ -273,6 +283,85 @@ Table Legend:
 - PHB = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)
 - NV# = Connection traversing a bonded set of # NVLinks
 
+8-Way NVIDIA H200 GPU Large Memory Compute Node Specifications
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. table:: 8-Way H200 GPU compute node specs
+
+   +---------------------------+-----------------------------------------+
+   | Specification             | Value                                   |
+   +===========================+=========================================+
+   | Number of nodes           | 8                                       |
+   +---------------------------+-----------------------------------------+
+   | GPU (SXM)                 | `NVIDIA A100 <https://www.nvidia.com/en |
+   |                           | -us/data-center/h200/#specifications>`_ |
+   +---------------------------+-----------------------------------------+
+   | NVIDIA Compute Capability | 9.0                                     |
+   +---------------------------+-----------------------------------------+
+   | GPUs per node             | 8                                       |
+   +---------------------------+-----------------------------------------+
+   | GPU Memory (GB)           | 141                                     |
+   +---------------------------+-----------------------------------------+
+   | CPU                       | Intel Xeon Platinum 8558                |
+   +---------------------------+-----------------------------------------+
+   | CPU sockets per node      | 2                                       |
+   +---------------------------+-----------------------------------------+
+   | Cores per socket          | 48                                      |
+   +---------------------------+-----------------------------------------+
+   | Cores per node            | 96                                      |
+   +---------------------------+-----------------------------------------+
+   | Hardware threads per core | 1 (HyperThreads off)                    |
+   +---------------------------+-----------------------------------------+
+   | Hardware threads per node | 96                                      |
+   +---------------------------+-----------------------------------------+
+   | Clock rate (GHz)          | ~ 2.10                                  |
+   +---------------------------+-----------------------------------------+
+   | RAM (GB)                  | 2,048                                   |
+   +---------------------------+-----------------------------------------+
+   | Cache (KB) L1/L2/L3       | 48/2048/266240                          |
+   +---------------------------+-----------------------------------------+
+   | Local storage (TB)        | 2.0 TB                                  |
+   +---------------------------+-----------------------------------------+
+
+The Intel CPUs are set for 2 NUMA domains per socket.
+
+8-Way NVIDIA H200 Mapping and GPU-CPU Affinitization
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+.. table:: 8-Way H200 Mapping and Affinitization
+
+   +--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
+   |        | GPU0 | GPU1 | GPU2 | GPU3 | GPU4 | GPU5 | GPU6 | GPU7 | HSN | CPU Affinity | NUMA          |
+   |        |      |      |      |      |      |      |      |      |     |              |               |
+   |        |      |      |      |      |      |      |      |      |     |              | Affinity      |
+   +========+======+======+======+======+======+======+======+======+=====+==============+===============+
+   |**GPU0**| X    | NV18 | NV18 | NV18 | NV18 | NV18 | NV18 | NV18 | SYS |  0-23        | 0             |
+   +--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
+   |**GPU1**| NV18 | X    | NV18 | NV18 | NV18 | NV18 | NV18 | NV18 | SYS |  0-23        | 0             |
+   +--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
+   |**GPU2**| NV18 | NV18 | X    | NV18 | NV18 | NV18 | NV18 | NV18 | SYS |  0-23        | 0             |
+   +--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
+   |**GPU3**| NV18 | NV18 | NV18 | X    | NV18 | NV18 | NV18 | NV18 | SYS |  0-23        | 0             |
+   +--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
+   |**GPU4**| NV18 | NV18 | NV18 | NV18 | X    | NV18 | NV18 | NV18 | SYS | 48-71        | 2             |
+   +--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
+   |**GPU5**| NV18 | NV18 | NV18 | NV18 | NV18 | X    | NV18 | NV18 | SYS | 48-71        | 2             |
+   +--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
+   |**GPU6**| NV18 | NV18 | NV18 | NV18 | NV18 | NV18 | X    | NV18 | SYS | 48-71        | 2             |
+   +--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
+   |**GPU7**| NV18 | NV18 | NV18 | NV18 | NV18 | NV18 | NV18 | X    | SYS | 48-71        | 2             |
+   +--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
+   |**HSN** | SYS  | SYS  | SYS  | SYS  | SYS  | SYS  | SYS  | SYS  | X   |              |               |
+   +--------+------+------+------+------+------+------+------+------+-----+--------------+---------------+
+
+Table Legend:
+
+- X = Self
+- SYS = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)
+- NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node
+- PHB = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)
+- NV# = Connection traversing a bonded set of # NVLinks
+
 8-Way AMD MI100 GPU Large Memory Compute Node Specifications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -316,6 +405,12 @@ Table Legend:
 
 The gpuMI100x8 GPU node is a good resource for large memory (2TB) jobs that do not need a GPU as the charging is
 set to promote use of this resource for its memory. The 9th GPU is a newer MI210.
+
+Available Memory
+~~~~~~~~~~~~~
+
+The amount of RAM available to jobs via the Slurm ``--mem`` option is 5 to 10 percent less than the total amount
+installed because of memory reserved for the operating system.
 
 Login Nodes
 ~~~~~~~~~~~~~

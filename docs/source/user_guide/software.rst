@@ -26,8 +26,8 @@ Use ``module spider package_name`` to search for software in Lmod and see the st
    |    module list                   |      $ module list                                                                   |
    |                                  |                                                                                      |
    | Display the currently loaded     |      Currently Loaded Modules:                                                       |
-   | modules.                         |      1) gcc/11.2.0   3) openmpi/4.1.2                                                |
-   |                                  |      2) ucx/1.11.2   4) cuda/11.6.1                                                  |
+   | modules.                         |      1) gcc/11.4.0   3) openmpi/4.1.6                                                |
+   |                                  |      2) cuda/11.8.0                                                                  |
    |                                  |                                                                                      |
    |                                  |                                                                                      |
    +----------------------------------+--------------------------------------------------------------------------------------+
@@ -38,7 +38,7 @@ Use ``module spider package_name`` to search for software in Lmod and see the st
    | Loads a package or metamodule    |      $ module load                                                                   |
    | such as netcdf-c.                |                                                                                      |
    |                                  |      Due to MODULEPATH changes, the following have been reloaded:                    |
-   |                                  |      1) gcc/11.2.0     2) openmpi/4.1.2     3) ucx/1.11.2                            |
+   |                                  |      1) gcc/11.4.0     2) openmpi/4.1.5                                              |
    |                                  |                                                                                      |
    |                                  |                                                                                      |
    |                                  |                                                                                      |
@@ -135,12 +135,7 @@ You can add modules via ``pip3 install --user <modulename>``, `setup virtual env
 
    $ module load gcc python
    $ which python
-   /sw/spack/delta-2022-03/apps/python/3.10.4-gcc-11.2.0-3cjjp6w/bin/python
-   $ module list
-
-   Currently Loaded Modules:
-     1) modtree/gpu   3) gcc/11.2.0    5) ucx/1.11.2      7) python/3.10.4
-     2) default       4) cuda/11.6.1   6) openmpi/4.1.2
+   /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/python-3.12.1-ahcgi2c/bin/python
 
 List of modules available in python from ``pip3 list``:
 
@@ -191,12 +186,6 @@ If you require an older version of a python lib/module, NCSA staff suggest looki
    $ module load gcc anaconda3_cpu
    $ which conda
    /sw/external/python/anaconda3_cpu/conda
-   $ module list Currently Loaded Modules:
-     1) cue-login-env/1.0   6) libfabric/1.14.0     11) ucx/1.11.2
-     2) default             7) lustre/2.14.0_ddn23  12) openmpi/4.1.2
-     3) gcc/11.2.0          8) openssh/8.0p1        13) anaconda3_cpu/4.13.0
-     4) knem/1.1.4          9) pmix/3.2.3           
-     5) libevent/2.1.8     10) rdma-core/32.0
 
 List of modules in anaconda3_cpu
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
