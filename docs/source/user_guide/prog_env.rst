@@ -225,6 +225,8 @@ nv* commands when nvhpc is loaded
 
 See the `NVIDIA HPC SDK <https://developer.nvidia.com/hpc-sdk>`_ page for more information.
 
+The compute capability for A100 GPUs is 8.0, for A40 GPUs it is 8.6 and for H200 GPUs it is 9.0.
+
 Note: The Multi-Process Service (MPS) is not enabled on Delta and there are no plans to support it in the future.  
 
 
