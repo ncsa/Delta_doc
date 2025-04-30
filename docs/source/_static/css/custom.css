@@ -1,11 +1,12 @@
+/* Makes content width 90% */
 .wy-nav-content {
     max-width: 90% !important;
 }
 
-/* making logo/home link hover color the same as background */
+/* Makes logo/home link hover color the same as background 
 body > div > nav > div > div.wy-side-nav-search > a:hover{
     background: #2980b9 !important;
-}
+} */
 
 
 /* custom styling for 'about cookies' button in footer */
@@ -27,12 +28,44 @@ body > div > nav > div > div.wy-side-nav-search > a{
     cursor: default;
 } */
 
-/* making "System Documentation Hub" link visited color the same as unvisited */
+/* Makes "System Documentation Hub" link visited color the same as unvisited 
 a.hub-link:visited{
     color: #2980b9 !important;
-}
+} */
 
-
+/* Right-aligns the 'System Documentation Hub' link */
 .hub-link{
     text-align: right;
+}
+
+/* Adds underline to link text and changes color accessibility */
+a:link {
+  text-decoration: underline;
+  /* color: #0073E6; */
+  color: #2779B0;
+}
+
+/* Adds hover color to link text for accessibility */
+a:hover, a:focus, a:active {
+  color: #E5152A;
+}
+
+/* Changes visited color of link text for accessibility */
+a:visited {
+  color: #9b59b6;
+}
+
+/* Changes left nav text color */
+.wy-nav-side a:link {
+  color: #fcfcfc;
+}
+
+/* Changes expanded left nav text, body text, and footer text for accessibility */
+a[aria-expanded="true"], .document, footer {
+    color: #1c1c1c;
+}
+
+/* Adds underline to cookies button in footer for accessibility */
+#cookie-button {
+  text-decoration: underline;
 }
