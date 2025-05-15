@@ -214,6 +214,77 @@ VTK C++ API
 
 To build against the VTK C++ API or link to the VTK C++ libs, load the module with: ``module load vtk``. The currently available version is 9.4.0.
 
+PyVista in Jupyter Notebooks
+--------------------
+
+There are three supported ways to use the `PyVista <https://pyvista.org/>`_ Python visualization module on Delta:
+
+#. Through the Open OnDemand JupyterLab application.
+#. Through a notebook launched in an Open OnDemand XDesktop session.
+#. By connecting to a running, browser-less Open OnDemand Jupyter server via VSCode.
+
+Preparation
+~~~~~~~~~~~
+On Delta, activate the Python environment you intend to use, if any, and install the following packages via pip:
+
+.. code-block::
+
+   $ pip3 install jupyterlab pyvista[all]
+   $ pip3 install trame_jupyter_extension
+
+Notebooks should start by importing the PyVista module and setting an appropriate jupyter backend, e.g.:
+
+.. code-block::
+
+   import pyvista as pv
+   pv.set_jupyter_backend('client')
+   sphere = pv.Sphere()
+   sphere.plot()
+
+PyVista via a Open OnDemand Jupyter Lab instance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. :ref:`How to Start an OOD JupyterLab Session <ood-jupyterlab>`
+#. Open a new notebook using the environment in which PyVista was installed, or by choosing the appropriate kernel for an existing notebook.
+#. Set the jupyter backend to client.
+
+PyVista in a Jupyter notebook during an Open OnDemand XDesktop session
+~~~~~~~~~~~~~~~~~~~~~~~
+
+#. :ref:`Start an OOD Desktop session <ood-start-desktop>`
+#. Open a Terminal and load any relevant modules or virtual environments.
+#. Launch a notebook with:
+
+   .. code-block::
+      
+      $ jupyter-lab
+
+   This should open a Firefox browser with a JupyterLab session. 
+
+#. The jupyter backend can be set to client, server, or trame.
+
+Connect via VSCode
+~~~~~~~~~~~~~~~~~~~
+
+#. :ref:`Remote SSH to Delta in VS Code <vs-remote-ssh>`
+#. Connect to Delta over SSH from inside VSCode and install the Jupyter and Python extensions *on Delta*. 
+#. Open a new VSCode Terminal and load any relevant modules and environments. 
+#. Do steps (1) and (2) from the previous example.
+#. Launch a browser-less JupyterLab with:
+
+   .. code-block::
+
+      $ jupyter-lab --no-browser --ip=0.0.0.0
+
+#. Use the XDesktop clipboard app to copy the first URL
+
+   .. image:: images/visualization/jupyter-lab_URL_highlighted.png
+      :alt: A terminal session showing a highlighted URL from a browser-less jupyter-lab session
+      :width: 500
+
+#. Follow these `VSCode instruction to connect to a remote Jupyter server <https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server>`_, pasting in the URL copied in the previous step.
+#. The jupyter backend must be either `html` or `static`.
+
 .. The below VisIt client-server mode info is commented out because we have trouble getting it to work properly. 
 
 .. VisIt Client-Server Mode
@@ -266,4 +337,4 @@ To build against the VTK C++ API or link to the VTK C++ libs, load the module wi
        :alt: client view of noise example
        :width: 1000px
 
-|
+
