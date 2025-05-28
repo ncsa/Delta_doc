@@ -214,56 +214,73 @@ VTK C++ API
 
 To build against the VTK C++ API or link to the VTK C++ libs, load the module with: ``module load vtk``. The currently available version is 9.4.0.
 
-.. The below VisIt client-server mode info is commented out because we have trouble getting it to work properly. 
+PyVista in Jupyter Notebooks
+--------------------
 
-.. VisIt Client-Server Mode
-   -------------------------
+There are three supported ways to use the `PyVista <https://pyvista.org/>`_ Python visualization module on Delta:
 
-   Following the `SDSC VisIt getting started guide <https://www.sdsc.edu/education_and_training/tutorials1/visit.html>`_, below are the screenshots and setup for using Delta in a similar way.
+#. Through the Open OnDemand JupyterLab application.
+#. Through a notebook launched in an Open OnDemand XDesktop session.
+#. By connecting to a running, browser-less Open OnDemand Jupyter server via VSCode.
 
-   .. note::
-      **Pick a unique login node, .bashrc on Delta.** Choose one of dt-login01 through dt-login04 to keep SSH tunnel connections working smoothly. Be sure to SSH to that login node **before** you proceed (if you have not logged into it before). VisIt cannot deal with the initial login confirmation of a new host key.
-   
-      Add to your $HOME/.bashrc (for the remote VisIt GUI):
+Preparation
+~~~~~~~~~~~
+On Delta, activate the Python environment you intend to use, if any, and install the following packages via pip:
 
-      ``module load visit``
+.. code-block::
 
-   Get a batch allocation on a compute node and run ``visit`` in that allocation with ``srun``.  Enable ``x11`` forwarding.
+   $ pip3 install jupyterlab pyvista[all]
+   $ pip3 install trame_jupyter_extension
+
+Notebooks should start by importing the PyVista module and setting an appropriate jupyter backend, e.g.:
+
+.. code-block::
+
+   import pyvista as pv
+   pv.set_jupyter_backend('client')
+   sphere = pv.Sphere()
+   sphere.plot()
+
+PyVista via a Open OnDemand Jupyter Lab instance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. :ref:`How to Start an OOD JupyterLab Session <ood-jupyterlab>`
+#. Open a new notebook using the environment in which PyVista was installed, or by choosing the appropriate kernel for an existing notebook.
+#. Set the jupyter backend to client.
+
+PyVista in a Jupyter notebook during an Open OnDemand XDesktop session
+~~~~~~~~~~~~~~~~~~~~~~~
+
+#. :ref:`Start an OOD Desktop session <ood-start-desktop>`
+#. Open a Terminal and load any relevant modules or virtual environments.
+#. Launch a notebook with:
+
+   .. code-block::
+      
+      $ jupyter-lab
+
+   This should open a Firefox browser with a JupyterLab session. 
+
+#. The jupyter backend can be set to client, server, or trame.
+
+Connect via VSCode
+~~~~~~~~~~~~~~~~~~~
+
+#. :ref:`Remote SSH to Delta in VS Code <vs-remote-ssh>`
+#. Connect to Delta over SSH from inside VSCode and install the Jupyter and Python extensions *on Delta*. 
+#. Open a new VSCode Terminal and load any relevant modules and environments. 
+#. Do steps (1) and (2) from the previous example.
+#. Launch a browser-less JupyterLab with:
 
    .. code-block::
 
-      salloc --mem=32g --nodes=1 --ntasks-per-node=1 --cpus-per-task=16 --partition=cpu,cpu-interactive --account=bbka-delta-cpu --constraint=scratch --x11 --time=00:30:00
-      salloc: Pending job allocation 3063018
-      salloc: job 3063018 queued and waiting for resources
-      salloc: job 3063018 has been allocated resources
-      salloc: Granted job allocation 3063018
-      salloc: Waiting for resource configuration
-      salloc: Nodes cn095 are ready for job
-      [arnoldg@dt-login02 c]$ srun visit
-      Running: gui3.3.3
-      Running: viewer3.3.3 -geometry 1499x1080+421+0 -borders 40,11,11,11 -shift 0,0 -preshift 1,30 -defer -host 127.0.0.1 -port 5600
-      Running: mdserver3.3.3 -host 127.0.0.1 -port 5601
+      $ jupyter-lab --no-browser --ip=0.0.0.0
 
+#. Use the XDesktop clipboard app to copy the first URL
 
-   Fill in **Host Settings** and under **Launch Profiles**, adjust **Number of threads per task** to fit your requirements and the ``--cpus-   per-task`` from ``salloc`` above:
+   .. image:: images/visualization/jupyter-lab_URL_highlighted.png
+      :alt: A terminal session showing a highlighted URL from a browser-less jupyter-lab session
+      :width: 500
 
-   ..  image:: images/visualization/01_visit-host-settings.png
-       :alt: delta host profile settings
-       :width: 1000px
-
-   ..  image:: images/visualization/02_visit-thread-settings16.png
-       :alt: delta host profile settings
-       :width: 1000px
-
-   Leave the **Parallel** tab options unchecked; since this example is not using MPI, that tab isn't applicable.
-
-
-   **Options** → **Save Settings** after filling in the above.
-
-   Proceeding with the tutorial, this is the view from the client and noise.silo example (found in the VisIt installation data/):
-
-   ..  image:: images/visualization/05_visit-mpi-noise-final.png
-       :alt: client view of noise example
-       :width: 1000px
-
-|
+#. Follow these `VSCode instruction to connect to a remote Jupyter server <https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server>`_, pasting in the URL copied in the previous step.
+#. The jupyter backend must be either `html` or `static`.
