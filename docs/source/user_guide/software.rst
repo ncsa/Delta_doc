@@ -21,44 +21,46 @@ Use ``module spider package_name`` to search for software in Lmod and see the st
    | Module (Lmod) Command            | Example                                                                              |
    +==================================+======================================================================================+
    |                                  |                                                                                      |
-   |                                  |   .. code-block::                                                                    |
-   | ``module list``                  |                                                                                      |
-   |                                  |      $ module list                                                                   |
-   | (display the currently loaded    |                                                                                      |
-   | modules)                         |      Currently Loaded Modules:                                                       |
-   |                                  |      1) gcc/11.2.0   3) openmpi/4.1.2   5) modtree/gpu                               |
-   |                                  |      2) ucx/1.11.2   4) cuda/11.6.1                                                  |
+   | .. code-block:: terminal         |   .. code-block::                                                                    |
+   |                                  |                                                                                      |
+   |    module list                   |      $ module list                                                                   |
+   |                                  |                                                                                      |
+   | Display the currently loaded     |      Currently Loaded Modules:                                                       |
+   | modules.                         |      1) gcc/11.4.0   3) openmpi/4.1.6                                                |
+   |                                  |      2) cuda/11.8.0                                                                  |
    |                                  |                                                                                      |
    |                                  |                                                                                      |
    +----------------------------------+--------------------------------------------------------------------------------------+
-   | ``module load <package_name>``   |                                                                                      |
-   |                                  |   .. code-block::                                                                    |
-   | (loads a package or metamodule   |                                                                                      |
-   | such as                          |      $ module load modtree/cpu                                                       |
+   | .. code-block:: terminal         |                                                                                      |
    |                                  |                                                                                      |
-   | modtree/gpu or netcdf-c)         |      Due to MODULEPATH changes, the following have been reloaded:                    |
-   |                                  |      1) gcc/11.2.0     2) openmpi/4.1.2     3) ucx/1.11.2                            |
+   |    module load <package_name>    |   .. code-block::                                                                    |
    |                                  |                                                                                      |
-   |                                  |      The following have been reloaded with a version change:                         |
-   |                                  |      1) modtree/gpu => modtree/cpu                                                   |
+   | Loads a package or metamodule    |      $ module load                                                                   |
+   | such as netcdf-c.                |                                                                                      |
+   |                                  |      Due to MODULEPATH changes, the following have been reloaded:                    |
+   |                                  |      1) gcc/11.4.0     2) openmpi/4.1.5                                              |
+   |                                  |                                                                                      |
+   |                                  |                                                                                      |
    |                                  |                                                                                      |
    +----------------------------------+--------------------------------------------------------------------------------------+
-   | ``module spider <package_name>`` |                                                                                      |
-   |                                  |   .. code-block::                                                                    |
-   | (finds modules and displays the  |                                                                                      |
-   | ways to                          |      $ module spider openblas                                                        |
+   | .. code-block:: terminal         |                                                                                      |
    |                                  |                                                                                      |
-   | load them)                       |      ---------------------------------------------------------------------------     |
-   |                                  |      openblas: openblas/0.3.20                                                       |
+   |    module spider <package_name>  |   .. code-block::                                                                    |
+   |                                  |                                                                                      |
+   | Finds modules and displays the   |      $ module spider openblas                                                        |
+   | ways to load them.               |                                                                                      |
+   |                                  |      ---------------------------------------------------------------------------     |
+   | |                                |      openblas: openblas/0.3.20                                                       |
    |                                  |      ----------------------------------------------------------------------------    |
-   |                                  |      You will need to load all module(s) on any one of the lines below before the    |
+   | .. code-block:: terminal         |      You will need to load all module(s) on any one of the lines below before the    |
    |                                  |      "openblas/0.3.20" module is available to load.                                  |
-   | ``module -r spider "regular      |                                                                                      |
-   | expression"``                    |            aocc/3.2.0                                                                |
+   |    module -r spider "regular     |                                                                                      |
+   |    expression"                   |            aocc/3.2.0                                                                |
    |                                  |            gcc/11.2.0                                                                |
    |                                  |                                                                                      |
    |                                  |         Help:                                                                        |
    |                                  |           OpenBLAS: An optimized BLAS library                                        |
+   |                                  |                                                                                      |
    |                                  |      $ module -r spider "^r$"                                                        |
    |                                  |                                                                                      |
    |                                  |      ----------------------------------------------------------------------------    |
@@ -72,17 +74,19 @@ Use ``module spider package_name`` to search for software in Lmod and see the st
 
 See also: `User Guide for Lmod <https://lmod.readthedocs.io/en/latest/010_user.html>`_.
 
-Please :ref:`submit a support request <help>` for help with software not currently installed on the Delta system. 
+Please :ref:`submit a support request <general_support>` for help with software not currently installed on the Delta system. 
 
 - For single user or single project use cases the preference is for the user to use the Spack software package manager to install software locally against the system Spack installation. 
   Delta support staff are available to provide limited assistance. 
 - For general installation requests, the Delta project office will review requests for broad use and installation effort.
 
+.. _delta-python:
+
 Python
 ----------
 
 .. note::
-   When submitting :ref:`support requests <help>` for python, please provide the following and understand that Delta support staff time is a finite resource while python developments (new software and modules) are growing at nearly infinite velocity:
+   When submitting :ref:`support requests <general_support>` for python, please provide the following and understand that Delta support staff time is a finite resource while python developments (new software and modules) are growing at nearly infinite velocity:
 
    - Python version or environment used (describe fully, with the commands needed to reproduce)
    - Error output or log from what went wrong (screenshots are more difficult to work with than text data)
@@ -99,11 +103,11 @@ You may *use any of these methods* with any of the python versions or instances 
 
 - `conda (or miniconda) environments <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>`_
 
-  Similar to venv but with more flexibility, see this `comparison table <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html#virtual-environments>`_.  See also the miniconda environment option: `anaconda or miniconda <https://docs.anaconda.com/free/distro-or-miniconda/>`_.  pip and conda installs are local to the environment and the location defaults to ``$HOME/.conda``. You can override the default location in ``$HOME`` by using the ``--prefix`` syntax: ``conda create --prefix /path/to/env``.
+  Similar to venv but with more flexibility, see this `comparison table <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html#virtual-environments>`_.  See also the miniconda environment option: `anaconda or miniconda <https://docs.anaconda.com/free/distro-or-miniconda/>`_. pip and conda installs are local to the environment and the location defaults to ``$HOME/.conda``. You can override the default location in ``$HOME`` with the ``--prefix`` syntax: ``conda create --prefix /path/to/env``. You can also `relocate your .conda directory to your project space <https://docs.ncsa.illinois.edu/en/latest/common/relocate-conda-directory.html>`_, which has a larger quota than your home directory.
 
-- `pip3 <https://docs.python.org/3/installing/index.html>`_: ``pip3 install --user <python_package>`` (installs to ``$HOME/.local/`` unless you are using a venv or conda environment).
+- `pip3 <https://docs.python.org/3/installing/index.html>`_: ``pip3 install --user <python_package>`` 
 
-  Useful when you only need one python environment per python version.  CAUTION: Python modules installed this way into your ``$HOME/.local/`` will match on python versions. This can create incompatibilities between containers or python venv or conda environments when they have a common python version number.
+  CAUTION: Python modules installed this way into your ``$HOME/.local/`` will match on python versions. This can create incompatibilities between containers or python venv or conda environments when they have a common python version number.  You can work around this by using the `PYTHONUSERBASE <https://docs.python.org/3/using/cmdline.html#envvar-PYTHONUSERBASE>`_ environment variable.  That will also allow for shared pip installs if you choose a group-shared directory.
 
 - `conda-env-mod <https://github.com/amaji/conda-env-mod>`_: conda-env-mod lmod module generator from Purdue
 
@@ -119,7 +123,7 @@ Examples using all the above are shown in the `Intel scikit-learn-intelex reposi
    The :ref:`nvidia-contain` on Delta provide optimized python frameworks built for Delta's A100 and A40 GPUs. 
    Delta staff recommend using an NGC container when possible with the GPU nodes (or use the anaconda3_gpu module).
 
-The default GCC (latest version) programming environment for either modtree/cpu or modtree/gpu contains:
+The default GCC (latest version) programming environment contains:
 
 Python (a recent or latest version)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -131,12 +135,7 @@ You can add modules via ``pip3 install --user <modulename>``, `setup virtual env
 
    $ module load gcc python
    $ which python
-   /sw/spack/delta-2022-03/apps/python/3.10.4-gcc-11.2.0-3cjjp6w/bin/python
-   $ module list
-
-   Currently Loaded Modules:
-     1) modtree/gpu   3) gcc/11.2.0    5) ucx/1.11.2      7) python/3.10.4
-     2) default       4) cuda/11.6.1   6) openmpi/4.1.2
+   /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/python-3.12.1-ahcgi2c/bin/python
 
 List of modules available in python from ``pip3 list``:
 
@@ -168,7 +167,7 @@ $$$$$$$$$$$$$$$
 
 Use python from the anaconda3_cpu module if you need some of the modules provided by Anaconda in your python workflow. 
 See the `Managing Environments <https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html#managing-environments>`_ section of the conda getting started guide to learn how to customize conda for your workflow and add extra python modules to your environment. 
-NCSA staff recommend starting with anaconda3_cpu for modtree/cpu and the CPU nodes.
+NCSA staff recommend starting with anaconda3_cpu for the CPU nodes.
 **Do not use this module with GPUs, use anaconda3_gpu instead** (:ref:`anaconda_gpu`).
 The Delta team frequently updates anaconda3_* to track the latest packages.
 
@@ -183,16 +182,10 @@ If you require an older version of a python lib/module, NCSA staff suggest looki
 
 .. code-block::
 
-   $ module load modtree/cpu
+   $ 
    $ module load gcc anaconda3_cpu
    $ which conda
    /sw/external/python/anaconda3_cpu/conda
-   $ module list Currently Loaded Modules:
-     1) cue-login-env/1.0   6) libfabric/1.14.0     11) ucx/1.11.2
-     2) default             7) lustre/2.14.0_ddn23  12) openmpi/4.1.2
-     3) gcc/11.2.0          8) openssh/8.0p1        13) modtree/cpu
-     4) knem/1.1.4          9) pmix/3.2.3           14) anaconda3_cpu/4.13.0
-     5) libevent/2.1.8     10) rdma-core/32.0
 
 List of modules in anaconda3_cpu
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
@@ -703,10 +696,10 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 Similar to the setup for anaconda_cpu, Delta has GPU versions of anaconda3 (``module load anaconda3_gpu``) and installed PyTorch and TensorFlow CUDA aware python modules into these versions. 
 You may use these modules when working with the GPU nodes. 
 See ``conda list`` after loading the module to review what is already installed. 
-As with anaconda3_cpu, :ref:`submit a support request <help>` if there are generally useful modules you would like installed for the broader community. 
+As with anaconda3_cpu, :ref:`submit a support request <general_support>` if there are generally useful modules you would like installed for the broader community. 
 A sample TensorFlow test script:
 
-.. code-block::
+.. code-block:: terminal
 
    #!/bin/bash
    #SBATCH --mem=64g
@@ -766,7 +759,7 @@ Purge/unload/load modules as needed for that job.
 
 A clean slate might resemble (user has a conda init clause in bashrc for a custom environment):
 
-.. code-block::
+.. code-block:: terminal
 
    conda deactivate
    conda deactivate  # just making sure
@@ -838,202 +831,285 @@ Jupyter Notebooks
 **Do not run Jupyter on the shared login nodes.**
 Instead, follow these steps to attach a Jupyter notebook running on a compute node to your local web browser:
 
-.. tabs::
+- :ref:`jupyter-compute-node`
+- :ref:`jupyter-compute-node-ngc`
 
-   .. tab:: How to Run Jupyter on a Compute Node
+.. _jupyter-compute-node:
 
-      The Jupyter notebook executables are in your ``$PATH`` after loading the ``anaconda3`` module. If you run into problems from a previously saved Jupyter session (for example, you see paths where you do not have write permission), you may remove this file to get a fresh start: ``$HOME/.jupyter/lab/workspaces/default-*``. 
+How to Run Jupyter on a Compute Node
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-      Follow these steps to run Jupyter on a compute node (CPU or GPU):
+The Jupyter notebook executables are in your ``$PATH`` after loading the ``anaconda3`` module. If you run into problems from a previously saved Jupyter session (for example, you see paths where you do not have write permission), you may remove this file to get a fresh start: ``$HOME/.jupyter/lab/workspaces/default-*``. 
 
-      #. On your local machine/laptop, open a terminal.
+Follow these steps to run Jupyter on a compute node (CPU or GPU):
 
-      #. SSH into Delta. (Replace ``<my_delta_username>`` with your Delta login username).
+#. On your local machine/laptop, open a terminal.
 
-         .. code-block:: terminal
+#. SSH into Delta. (Replace ``<my_delta_username>`` with your Delta login username).
 
-            ssh <my_delta_username>@login.delta.ncsa.illinois.edu
+   .. code-block:: terminal
 
-      #. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
+      ssh <my_delta_username>@login.delta.ncsa.illinois.edu
 
-         .. warning::
-            If there is a conda environment active when you log into Delta, deactivate it before you continue. You will know you have an active conda environment if your terminal prompt has an environment name in parentheses prepended to it, like these examples:
+#. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
-            .. code-block::
+   .. warning::
+      If there is a conda environment active when you log into Delta, deactivate it before you continue. You will know you have an active conda environment if your terminal prompt has an environment name in parentheses prepended to it, like these examples:
 
-               (base) [<delta_username>@dt-login01 ~]$
+      .. code-block::
 
-               (mynewenv) [<delta_username>@dt-login01 ~]$
+         (base) [<delta_username>@dt-login01 ~]$
 
-            Run ``conda deactivate`` until there is no longer a name in parentheses prepended to your terminal prompt.  When you don't have any conda environment active, your prompt will look like this:
+         (mynewenv) [<delta_username>@dt-login01 ~]$
 
-            .. code-block::
+      Run ``conda deactivate`` until there is no longer a name in parentheses prepended to your terminal prompt.  When you don't have any conda environment active, your prompt will look like this:
 
-               [<delta_username>@dt-login01 ~]$
+      .. code-block::
 
-      #. Load the appropriate anaconda module. To see all of the available anaconda modules, run ``module avail anaconda``. This example uses ``anaconda3_cpu``. 
+         [<delta_username>@dt-login01 ~]$
 
-         .. code-block::
+#. Load the appropriate anaconda module. To see all of the available anaconda modules, run ``module avail anaconda``. This example uses ``anaconda3_cpu``. 
 
-            module load anaconda3_cpu
+   .. code-block::
 
-      #. Verify the module is loaded.
+      module load anaconda3_cpu
 
-         .. code-block::
+#. Verify the module is loaded.
 
-            module list
+   .. code-block::
 
-      #. Verify a jupyter-notebook is in your ``$PATH``.
+      module list
 
-         .. code-block::
+#. Verify a jupyter-notebook is in your ``$PATH``.
 
-            which jupyter-notebook
+   .. code-block::
 
-      #. Generate a ``MYPORT`` number and copy it to a notepad (you will use it in **steps 9 and 12**). 
+      which jupyter-notebook
 
-         .. code-block::
+#. Generate a ``MYPORT`` number and copy it to a notepad (you will use it in **steps 9 and 12**). 
 
-            MYPORT=$(($(($RANDOM % 10000))+49152)); echo $MYPORT
+   .. code-block::
 
-      #. Find the the ``account_name`` that you are going to use and copy it to a notepad (you will use it in **step 9**); your accounts are listed under ``Project`` when you run the ``accounts`` command.
+      MYPORT=$(($(($RANDOM % 10000))+49152)); echo $MYPORT
 
-         .. note::
-            To use a GPU node, you must pick a GPU account (the account name will end in "...-gpu").
+#. Find the the ``account_name`` that you are going to use and copy it to a notepad (you will use it in **step 9**); your accounts are listed under ``Project`` when you run the ``accounts`` command.
 
-         .. code-block::
+   .. note::
+      To use a GPU node, you must pick a GPU account (the account name will end in "...-gpu").
 
-            accounts
+   .. code-block::
 
-      #. Run the following ``srun`` command, with these replacements:
+      accounts
 
-         - Replace ``<account_name>`` with the account you are going to use, which you found and copied in **step 8**.
-         - Replace ``<$MYPORT>`` with the ``$MYPORT`` number you generated in **step 7**.
-         - Modify the ``--partition``, ``--time``, and ``--mem`` options and/or add other options to meet your needs.
+#. Run the following ``srun`` command, with these replacements:
 
-         \
+   - Replace ``<account_name>`` with the account you are going to use, which you found and copied in **step 8**.
+   - Replace ``<$MYPORT>`` with the ``$MYPORT`` number you generated in **step 7**.
+   - Modify the ``--partition``, ``--time``, and ``--mem`` options and/or add other options to meet your needs.
 
-         .. code-block::
+   \
 
-            srun --account=<account_name> --partition=cpu-interactive --time=00:30:00 --mem=32g jupyter-notebook --no-browser --port=<$MYPORT> --ip=0.0.0.0
+   .. code-block::
 
-      #. Copy the last 5 lines returned beginning with: **"To access the notebook, open this file in a browser..."** to a notepad (you will use this information **steps 12 and 14**). (It may take a few minutes for these lines to be returned.)
+      srun --account=<account_name> --partition=cpu-interactive --time=00:30:00 --mem=32g jupyter-notebook --no-browser --port=<$MYPORT> --ip=0.0.0.0
 
-         Note these two things about the URLs you copied:
+#. Copy the last 5 lines returned beginning with: **"To access the notebook, open this file in a browser..."** to a notepad (you will use this information **steps 12 and 14**). (It may take a few minutes for these lines to be returned.)
 
-         - The first URL begins with ``http://<cnXXX>.delta...``, ``<cnXXX>`` is the **internal hostname** and will be used in **step 12**.
-         - The second URL begins with ``http://127.0...``, you will use this entire URL in **step 14**.
+   Note these two things about the URLs you copied:
 
-         \
+   - The first URL begins with ``http://<cnXXX>.delta...``, ``<cnXXX>`` is the **internal hostname** and will be used in **step 12**.
+   - The second URL begins with ``http://127.0...``, you will use this entire URL in **step 14**.
 
-      #. Open a second terminal on your local machine/laptop.
+   \
 
-      #. Run the following ``ssh`` command, with these replacements: 
+#. Open a second terminal on your local machine/laptop.
 
-         - Replace ``<my_delta_username>`` with your Delta login username.
-         - Replace ``<$MYPORT>`` with the ``$MYPORT`` number you generated in **step 7**.
-         - Replace ``<cn0XX>`` with internal hostname you copied in **step 10**.
+#. Run the following ``ssh`` command, with these replacements: 
 
-         \
+   - Replace ``<my_delta_username>`` with your Delta login username.
+   - Replace ``<$MYPORT>`` with the ``$MYPORT`` number you generated in **step 7**.
+   - Replace ``<cn0XX>`` with internal hostname you copied in **step 10**.
 
-         .. code-block::
+   \
 
-            ssh -l <my_delta_username> -L 127.0.0.1:<$MYPORT>:<cn0XX>.delta.ncsa.illinois.edu:<$MYPORT> dt-login.delta.ncsa.illinois.edu
+   .. code-block::
 
-      #. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
+      ssh -l <my_delta_username> -L 127.0.0.1:<$MYPORT>:<cn0XX>.delta.ncsa.illinois.edu:<$MYPORT> dt-login.delta.ncsa.illinois.edu
 
-      #. Copy and paste the entire **second URL** from **step 10** (begins with ``https://127.0...``) into your browser. You will be connected to the Jupyter instance running on your compute node of Delta.
+#. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
-         .. image:: images/software/jupyter_screenshot.jpg
-            :alt: Jupyter screenshot
-            :width: 700
+#. Copy and paste the entire **second URL** from **step 10** (begins with ``https://127.0...``) into your browser. You will be connected to the Jupyter instance running on your compute node of Delta.
 
-   .. tab:: How to Run Jupyter on a Compute Node, in an NGC Container
+   .. image:: images/software/jupyter_screenshot.jpg
+      :alt: Jupyter screenshot
+      :width: 700
 
-      Follow these steps to run Jupyter on a compute node, in an NGC container:
+.. _jupyter-compute-node-ngc:
 
-      #. On your local machine/laptop, open a terminal.
+How to Run Jupyter on a Compute Node, in an NGC Container
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-      #. SSH into Delta. (Replace ``<my_delta_username>`` with your Delta login username.)
+Follow these steps to run Jupyter on a compute node, in an NGC container:
 
-         .. code-block:: terminal
+#. On your local machine/laptop, open a terminal.
 
-            ssh <my_delta_username>@login.delta.ncsa.illinois.edu
+#. SSH into Delta. (Replace ``<my_delta_username>`` with your Delta login username.)
 
-      #. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
+   .. code-block:: terminal
 
-      #. Generate a ``$MYPORT`` number and copy it to a notepad (you will use it in **steps 6, 8, and 14**). 
+      ssh <my_delta_username>@login.delta.ncsa.illinois.edu
 
-         .. code-block::
+#. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
-            MYPORT=$(($(($RANDOM % 10000))+49152)); echo $MYPORT
+#. Generate a ``$MYPORT`` number and copy it to a notepad (you will use it in **steps 6, 8, and 14**). 
 
-      #. Find the the ``account_name`` that you are going to use and copy it to a notepad (you will use it in **step 6**); your accounts are listed under ``Project`` when you run the ``accounts`` command. 
+   .. code-block::
 
-         .. note::
-            To use a GPU node, you must pick a GPU account (the account name will end in "...-gpu").
+      MYPORT=$(($(($RANDOM % 10000))+49152)); echo $MYPORT
 
-         .. code-block::
+#. Find the the ``account_name`` that you are going to use and copy it to a notepad (you will use it in **step 6**); your accounts are listed under ``Project`` when you run the ``accounts`` command. 
 
-            accounts
+   .. note::
+      To use a GPU node, you must pick a GPU account (the account name will end in "...-gpu").
 
-      #. Run the following ``srun`` command, with these replacements: 
+   .. code-block::
 
-         - Replace ``<account_name>`` with the account you are going to use, which you found and copied in step #5. 
-         - Replace ``<project_path>`` with the name of your projects folder (in two places).
-         - Replace ``<$MYPORT>`` with the ``MYPORT`` number you generated in **step 4**.
-         - Modify the ``--partition``, ``--time``, ``--mem``, and ``--gpus-per-node`` options and/or add other options to meet your needs.
+      accounts
 
-         \
+#. Run the following ``srun`` command, with these replacements: 
 
-         .. code-block::
+   - Replace ``<account_name>`` with the account you are going to use, which you found and copied in step #5. 
+   - Replace ``<project_path>`` with the name of your projects folder (in two places).
+   - Replace ``<$MYPORT>`` with the ``MYPORT`` number you generated in **step 4**.
+   - Modify the ``--partition``, ``--time``, ``--mem``, and ``--gpus-per-node`` options and/or add other options to meet your needs.
 
-            srun --account=<account_name> --partition=gpuA100x4-interactive --time=00:30:00 --mem=64g --gpus-per-node=1 apptainer run --nv --bind /projects/<project_path> /sw/external/NGC/pytorch:22.02-py3 jupyter-notebook --notebook-dir /projects/<project_path> --no-browser --port=<$MYPORT> --ip=0.0.0.0
+   \
 
-      #. Copy the last 2 lines returned (beginning with **"Or copy and paste this URL..."**) to a notepad. (It may take a few minutes for these lines to be returned.)
+   .. code-block::
 
-      #. Modify the URL you copied in **step 7** by changing ``hostname:8888`` to ``127.0.0.1:<$MYPORT>``. You will use the modified URL in **step 16**. (Replace ``<$MYPORT>`` with the ``$MYPORT`` number you generated in **step 4**.)
+      srun --account=<account_name> --partition=gpuA100x4-interactive --time=00:30:00 --mem=64g --gpus-per-node=1 apptainer run --nv --bind /projects/<project_path> /sw/external/NGC/pytorch:22.02-py3 jupyter-notebook --notebook-dir /projects/<project_path> --no-browser --port=<$MYPORT> --ip=0.0.0.0
 
-         \
+#. Copy the last 2 lines returned (beginning with **"Or copy and paste this URL..."**) to a notepad. (It may take a few minutes for these lines to be returned.)
 
-      #. Open a second terminal.
+#. Modify the URL you copied in **step 7** by changing ``hostname:8888`` to ``127.0.0.1:<$MYPORT>``. You will use the modified URL in **step 16**. (Replace ``<$MYPORT>`` with the ``$MYPORT`` number you generated in **step 4**.)
 
-      #. SSH into Delta. (Replace ``<my_delta_username>`` with your Delta login username.)
+   \
 
-         .. code-block:: terminal
+#. Open a second terminal.
 
-            ssh <my_delta_username>@login.delta.ncsa.illinois.edu
+#. SSH into Delta. (Replace ``<my_delta_username>`` with your Delta login username.)
 
-      #. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
+   .. code-block:: terminal
 
-      #. Find the **internal hostname** for your job and copy it to a notepad (you will use it in **step 14**).
+      ssh <my_delta_username>@login.delta.ncsa.illinois.edu
 
-         .. code-block::
+#. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
 
-            squeue -u $USER
+#. Find the **internal hostname** for your job and copy it to a notepad (you will use it in **step 14**).
 
-         The value returned under ``NODELIST`` is the internal hostname for your GPU job (``gpuaXXX``). You can now close this terminal.
+   .. code-block::
 
-      #. Open a third terminal.
+      squeue -u $USER
 
-      #. Run the following ``ssh`` command, with these replacements: 
+   The value returned under ``NODELIST`` is the internal hostname for your GPU job (``gpuaXXX``). You can now close this terminal.
 
-         - Replace ``<my_delta_username>`` with your Delta login username.
-         - Replace ``<$MYPORT>`` with the ``$MYPORT`` number you generated in **step 4**.
-         - Replace ``<gpuaXXX>`` with internal hostname you copied in **step 12**.
+#. Open a third terminal.
 
-         \
+#. Run the following ``ssh`` command, with these replacements: 
 
-         .. code-block::
+   - Replace ``<my_delta_username>`` with your Delta login username.
+   - Replace ``<$MYPORT>`` with the ``$MYPORT`` number you generated in **step 4**.
+   - Replace ``<gpuaXXX>`` with internal hostname you copied in **step 12**.
 
-            ssh -l <my_delta_username> -L 127.0.0.1:<$MYPORT>:<gpuaXXX>.delta.internal.ncsa.edu:<$MYPORT> dt-login.delta.ncsa.illinois.edu
+   \
 
-      #. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
+   .. code-block::
 
-      #. Copy and paste the entire **modified URL** (beginning with ``https://127.0...``) from **step 8** into your browser. You will be connected to the Jupyter instance running on your gpu node of Delta.
+      ssh -l <my_delta_username> -L 127.0.0.1:<$MYPORT>:<gpuaXXX>.delta.internal.ncsa.edu:<$MYPORT> dt-login.delta.ncsa.illinois.edu
 
-         .. image:: images/software/jupyter_screenshot.jpg
-            :alt: Jupyter screenshot
-            :width: 700
+#. Enter your **NCSA** password and complete the Duo MFA. Note, the terminal will not show your password (or placeholder symbols such as asterisks [*]) as you type.
+
+#. Copy and paste the entire **modified URL** (beginning with ``https://127.0...``) from **step 8** into your browser. You will be connected to the Jupyter instance running on your gpu node of Delta.
+
+   .. image:: images/software/jupyter_screenshot.jpg
+      :alt: Jupyter screenshot
+      :width: 700
+
+MATLAB
+---------
+
+There is a **University-wide MATLAB license** linked on Delta; you no longer need to link your own license to use MATLAB on the system. Use ``module avail matlab`` to see the available versions. You can launch MATLAB on a compute node from a terminal on your local machine or in Delta's Open OnDemand Desktop app.
+
+Launch MATLAB from a Terminal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When you launch MATLAB from a terminal on your local machine, you can launch it with the Graphical User Interface (GUI) or run it directly in the command line (without the GUI).
+
+Graphical User Interface (GUI)
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+#. To use the GUI, you need to have X11 forwarding enabled. If you did not enable X11 forwarding when you logged in to the system, re-log in and enable it with the following ``ssh`` command. Replace ``username`` with your NCSA username.
+
+   .. code-block:: terminal
+
+      ssh -Y username@login.delta.ncsa.illinois.edu
+
+#. Load the default version of MATLAB (or specify a version) with the ``module load`` command. You can see which versions are available with ``module avail matlab``.
+
+   .. code-block:: terminal
+
+      module load matlab
+
+#. After the MATLAB module loads, run the following ``srun`` command, with modifications. Replace ``account_name`` with the name of an account you have access to on Delta (you can find these by running the ``accounts`` command). Modify the ``time``, ``nodes``, ``partition``, and other variables, as needed.
+
+   .. code-block:: terminal
+
+      srun --x11 --time=00:15:00 --nodes=1 --ntasks-per-node=4 --account=account_name --partition=cpu-interactive --pty /bin/bash
+
+   See :ref:`Running Jobs - Interactive Jobs <interactive-jobs>` for more information about interactive jobs on Delta.
+
+#. After your job starts, run ``matlab`` to launch the MATLAB GUI.
+
+Command Line Interface (no GUI)
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+#. Load the default version of MATLAB (or specify a version) with the ``module load`` command. You can see which versions are available with ``module avail matlab``.
+
+   .. code-block:: terminal
+
+      module load matlab
+
+#. After the MATLAB module loadss, run the following ``srun`` command, with modifications. Replace ``account_name`` with the name of an account you have access to on Delta (you can find these by running the ``accounts`` command). Modify the ``time``, ``nodes``, ``partition``, and other variables, as needed.
+
+   .. code-block:: terminal
+
+      srun --time=00:15:00 --nodes=1 --ntasks-per-node=4 --account=account_name --partition=cpu-interactive --pty /bin/bash
+
+   See :ref:`Running Jobs - Interactive Jobs <interactive-jobs>` for more information about interactive jobs on Delta.
+
+#. After your job starts, run ``matlab -nodisplay`` to launch MATLAB in the command line.
+
+Launch MATLAB from Open OnDemand
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can also use MATLAB on Delta through the Open OnDemand Desktop app. 
+
+#. :ref:`Start an OOD Desktop session <ood-start-desktop>`. 
+#. In the Desktop app, open a terminal.
+
+   .. figure:: images/software/ood-desktop-terminal.png
+      :alt: Open OnDemand Desktop app desktop with the terminal app icon highlighted.
+      :width: 500
+
+#. In the terminal, run the following commands to load and run MATLAB. If you want to load a version other than the default, modify your ``module load`` command to load the specific version. You can see which versions are available with ``module avail matlab``.
+
+   .. code-block:: terminal
+
+      # load the matlab module
+      module load matlab
+
+      # run matlab
+      matlab
 
 List of Installed Software (CPU & GPU)
 ---------------------------------------

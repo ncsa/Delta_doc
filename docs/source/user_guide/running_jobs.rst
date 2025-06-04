@@ -11,58 +11,89 @@ Use the Slurm commands to run batch jobs or for interactive access (an "interact
 See the `Slurm quick start guide <https://slurm.schedmd.com/quickstart.html>`_ for an introduction to Slurm. 
 There are multiple ways to access compute nodes on Delta.
 
-Batch scripts (sbatch) or Interactive (srun , salloc), which is right for me?
+- Batch scripts (``sbatch``) or Interactive (``srun``, ``salloc``), which is right for me?
 
-- :ref:`sbatch` . Use batch scripts for jobs that are debugged, ready to run, and don't require interaction.
-  Sample Slurm batch job scripts are provided in the :ref:`examples` section.
-  For mixed resource heterogeneous jobs see the `Slurm job support documentation <https://slurm.schedmd.com/heterogeneous_jobs.html#submitting>`_. 
-  Slurm also supports job arrays for easy management of a set of similar jobs, see the `Slurm job array documentation <https://slurm.schedmd.com/job_array.html>`_ for more information.
+  - :ref:`sbatch`: Use batch scripts for jobs that are debugged, ready to run, and don't require interaction.
+    Sample Slurm batch job scripts are provided in the :ref:`examples` section.
+    For mixed resource heterogeneous jobs see the `Slurm job support documentation <https://slurm.schedmd.com/heterogeneous_jobs.html#submitting>`_. 
+    Slurm also supports job arrays for easy management of a set of similar jobs, see the `Slurm job array documentation <https://slurm.schedmd.com/job_array.html>`_ for more information.
 
-- :ref:`srun` .  srun will run a single command through Slurm on a compute node. srun blocks, it will wait until Slurm has scheduled compute resources, and when it returns, the job is complete.  srun can be used to launch a shell to get interactive access to compute node(s); this is an "interactive job", like so:
+  - :ref:`srun`: ``srun`` will run a single command through Slurm on a compute node. ``srun`` blocks, it will wait until Slurm has scheduled compute resources, and when it returns, the job is complete. ``srun`` can be used to launch a shell to get interactive access to compute node(s), this is an "interactive job". 
+    The one thing you can't do in an interactive job created by ``srun`` is to run srun commands; if you want to do that, use ``salloc``.  
 
-.. code-block::
+  - :ref:`salloc`: Also interactive, use ``salloc`` when you want to reserve compute resources for a period of time and interact with them using multiple commands. Each command you type after your ``salloc`` session begins will run on the login node if it is just a normal command, or on your reserved compute resources if prefixed with ``srun``.  Type ``exit`` when finished with a ``salloc`` allocation if you want to end it before the time expires.
 
-   srun -a my_account -p some_partition --pty bash 
+- `Open OnDemand <https://openondemand.delta.ncsa.illinois.edu>`_ provides compute node access via JupyterLab, VSCode Code Server, and the noVNC Desktop virtual desktop. 
 
-The one thing you can't do in an interactive job created by srun is to run srun commands; if you want to do that, use salloc below.  
+- Direct ``ssh`` access to a compute node in a **running job** is enabled once the job has **started**. 
+  See also, :ref:`mon_node`. In the following example, JobID 12345 is running on node cn001
 
-- :ref:`salloc` . Also interactive, use salloc when you want to reserve compute resources for a period of time and interact with them using multiple commands.  Each command you type after your salloc session begins will run on the login node if it is just a normal command, or on your reserved compute resources if prefixed with srun.  Type ``exit`` when finished with an salloc allocation if you want to end it before the time expires.
+  .. code-block::
 
-`Open OnDemand <https://openondemand.delta.ncsa.illinois.edu>`_ provides compute node access via Jupyter Lab, VSCode Code Server, and the noVNC Desktop virtual desktop. 
+     $ squeue --job jobid
+                  JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+                  12345       cpu     bash   gbauer  R       0:17      1 cn001
 
-Direct SSH access to a compute node in a running job from a dt-loginNN node is enabled once the job has started:
+  Then in a terminal session:
 
-.. code-block::
+  .. code-block::
 
-   $ squeue --job jobid
-                JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-                12345       cpu     bash   gbauer  R       0:17      1 cn001
-
-Then in a terminal session:
-
-.. code-block::
-
-   $ ssh cn001
-   cn001.delta.internal.ncsa.edu (172.28.22.64)
-     OS: RedHat 8.4   HW: HPE   CPU: 128x    RAM: 252 GB
-     Site: mgmt  Role: compute
-   $
-
-See also, :ref:`mon_node`.
-
-Scheduler
--------------
-
-For information, see the `Slurm quick start user guide <https://slurm.schedmd.com/quickstart.html>`_.
-
-..  figure:: images/running_jobs/slurm_summary.pdf
-    :alt: Slurm quick reference guide
-    :width: 500
+     $ ssh cn001
+     cn001.delta.internal.ncsa.edu (172.28.22.64)
+       OS: RedHat 8.4   HW: HPE   CPU: 128x    RAM: 252 GB
+       Site: mgmt  Role: compute
+     $
 
 .. _partitions:
 
 Partitions (Queues)
 -----------------------
+
+Delta Partitions/Queues
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. table:: Delta Partitions/Queues
+   :widths: 30 20 13 12 13 12
+
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | Partition/Queue       | Node Type | Max Nodes per job | Max Duration | Max Running in Queue/user | Charge Factor |
+   |                       |           |                   |              |                           |               |
+   +=======================+===========+===================+==============+===========================+===============+
+   | cpu                   | CPU       | TBD               | 48 hr        | TBD                       | 1.0           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | cpu-interactive       | CPU       | 4                 | 30 min       | TBD                       | 2.0           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | cpu-preempt           | CPU       | TBD               | 48 hr        | TBD                       | 0.5           | 
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuA100x4*            | quad-A100 | TBD               | 48 hr        | TBD                       | 1.0           |
+   |                       |           |                   |              |                           |               |
+   | (* this is the default|           |                   |              |                           |               |
+   | queue, but submit jobs|           |                   |              |                           |               |
+   | to gpuA100x4)         |           |                   |              |                           |               |
+   |                       |           |                   |              |                           |               |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuA100x4-interactive | quad-A100 | 4                 | 1 hr         | TBD                       | 2.0           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuA100x4-preempt     | quad-A100 | TBD               | 48 hr        | TBD                       | 0.5           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuA100x8             | octa-A100 | TBD               | 48 hr        | TBD                       | 1.5           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuA100x8-interactive | octa-A100 | 2                 | 1 hr         | TBD                       | 3.0           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuH200x8             | octa-H200 | 1                 | 48 hr        | TBD                       | 3.0           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuH200x8-interactive | octa-H200 | 1                 | 1 hr         | TBD                       | 6.0           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuA40x4              | quad-A40  | TBD               | 48 hr        | TBD                       | 0.5           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuA40x4-interactive  | quad-A40  | 4                 | 1 hr         | TBD                       | 1.0           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuA40x4-preempt      | quad-A40  | TBD               | 48 hr        | TBD                       | 0.25          |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuMI100x8            | octa-MI100| TBD               | 48 hr        | TBD                       | 0.25          |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
+   | gpuMI100x8-interactive| octa-MI100| TBD               | 1 hr         | TBD                       | 0.5           |
+   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
 
 Delta Production Default Partition Values
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -76,82 +107,36 @@ Delta Production Default Partition Values
    Default Wall-clock time 30 minutes
    ======================= ==================
 
-Delta Production Partitions/Queues
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sview 
+~~~~~~~~~~~~~~~~
 
-.. table:: Delta Partitions/Queues
-
-   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-   | Partition/Queue       | Node Type | Max Nodes         | Max Duration | Max Running in            | Charge Factor |
-   |                       |           |                   |              |                           |               |
-   |                       |           | per Job           |              | Queue/user*               |               |
-   +=======================+===========+===================+==============+===========================+===============+
-   | cpu                   | CPU       | TBD               | 48 hr        | TBD                       | 1.0           |
-   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-   | cpu-interactive       | CPU       | TBD               | 30 min       | TBD                       | 2.0           |
-   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-   | cpu-preempt           | CPU       | TBD               | 48 hr        | TBD                       | 0.5           | 
-   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-   | gpuA100x4             | quad-A100 | TBD               | 48 hr        | TBD                       | 1.0           |
-   |                       |           |                   |              |                           |               |
-   | gpuA100x4*            |           |                   |              |                           |               |
-   |                       |           |                   |              |                           |               |
-   | (* this is the default|           |                   |              |                           |               |
-   |                       |           |                   |              |                           |               |
-   | queue, but submit jobs|           |                   |              |                           |               |
-   |                       |           |                   |              |                           |               |
-   | to gpuA100x4)         |           |                   |              |                           |               |
-   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-   | gpuA100x4-interactive | quad-A100 | TBD               | 1 hr         | TBD                       | 2.0           |
-   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-   | gpuA100x4-preempt     | quad-A100 | TBD               | 48 hr        | TBD                       | 0.5           |
-   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-   | gpuA100x8             | octa-A100 | TBD               | 48 hr        | TBD                       | 1.5           |
-   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-   | gpuA100x8-interactive | octa-A100 | TBD               | 1 hr         | TBD                       | 3.0           |
-   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-   | gpuA40x4              | quad-A40  | TBD               | 48 hr        | TBD                       | 0.5           |
-   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-   | gpuA40x4-interactive  | quad-A40  | TBD               | 1 hr         | TBD                       | 1.0           |
-   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-   | gpuA40x4-preempt      | quad-A40  | TBD               | 48 hr        | TBD                       | 0.25          |
-   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-   | gpuMI100x8            | octa-MI100| TBD               | 48 hr        | TBD                       | 0.25          |
-   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-   | gpuMI100x8-interactive| octa-MI100| TBD               | 1 hr         | TBD                       | 0.5           |
-   +-----------------------+-----------+-------------------+--------------+---------------------------+---------------+
-
-sview View of Slurm Partitions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Use ``sview`` for a GUI of the partitions. See the `Slurm - sview documentation <https://slurm.schedmd.com/sview.html>`_ for more information.
 
 ..  image:: images/running_jobs/sview_sinfo.png
     :alt: sview view of Slurm partitions
     :width: 500
 
-Node Policies
-~~~~~~~~~~~~~
+Job and Node Policies
+-----------------------------
 
-Node-sharing is the default for jobs. 
-Node-exclusive mode can be obtained by specifying all the consumable resources for that node type or adding the following Slurm options:
+- The default job requeue or restart policy is set to not allow jobs to be automatically requeued or restarted (as of 12/19/2022).
+  To enable automatic requeue and restart of a job by Slurm, please add the following Slurm directive:
 
-.. code-block::
+  .. code-block::
 
-   --exclusive --mem=0
+     --requeue 
 
-GPU NVIDIA MIG (GPU slicing) for the A100 will be supported at a future date.
+  When a job is requeued due to an event like a node failure, the batch script is initiated from its beginning. 
+  Job scripts need to be written to handle automatically restarting from checkpoints.
 
-Job Policies
-----------------
+- Node-sharing is the default for jobs. 
+  Node-exclusive mode can be obtained by specifying all the consumable resources for that node type or adding the following Slurm options:
 
-The default job requeue or restart policy is set to not allow jobs to be automatically requeued or restarted (as of 12/19/2022).
-To enable automatic requeue and restart of a job by Slurm, please add the following Slurm directive:
+  .. code-block::
 
-.. code-block::
+     --exclusive --mem=0
 
-   --requeue 
-
-When a job is requeued due to an event like a node failure, the batch script is initiated from its beginning. 
-Job scripts need to be written to handle automatically restarting from checkpoints.
+  GPU NVIDIA MIG (GPU slicing) for the A100 is not supported at this time.
 
 .. _preempt:
 
@@ -275,19 +260,20 @@ There are many online resources to learn more about preemption, checkpointing, s
 - `Bash Guide for Beginners - 12.2. Traps <https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_12_02.html>`_
 - `Python signal documentation <https://docs.python.org/3/library/signal.html>`_
 
-.. _job_mgmt:
+.. _batch-jobs:
 
-Job Management
------------------
+Batch Jobs
+-----------
+
+Batch jobs are submitted through a *job script* (as in the :ref:`examples`) using the ``sbatch`` command. 
+Job scripts generally start with a series of Slurm *directives* that describe requirements of the job, such as number of nodes and wall time required, to the batch system/scheduler. The rest of the batch script consists of user commands. See :ref:`Sample Scripts <examples>` for example batch job scripts.
 
 .. _sbatch:
 
 sbatch
 ~~~~~~
 
-Batch jobs are submitted through a *job script* (as in the :ref:`examples`) using the ``sbatch`` command. 
-Job scripts generally start with a series of Slurm *directives* that describe requirements of the job, such as number of nodes and wall time required, to the batch system/scheduler (Slurm directives can also be specified as options on the sbatch command line; command line options take precedence over those in the script). 
-The rest of the batch script consists of user commands.
+Slurm directives can also be specified as options on the sbatch command line; command line options take precedence over those in the script. 
 
 The syntax for sbatch is: ``sbatch [list of sbatch options] script_name``. Refer to the sbatch man page for detailed information on the options.
 
@@ -299,42 +285,67 @@ The syntax for sbatch is: ``sbatch [list of sbatch options] script_name``. Refer
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
            2337924 cpu-inter    tfcpu  mylogin  R       0:46      1 cn006
 
-squeue/scontrol/sinfo
-~~~~~~~~~~~~~~~~~~~~~
+Useful Batch Job Environment Variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Commands that display batch job and partition information.
+.. table:: Useful Batch Job Environment Variables
+   :widths: 25 25 50
 
-.. Table:: squeue, scontrol, and sinfo Commands
+   +-------------------------+----------------------------+-------------------------------------------------------------------------+
+   | Description             | Slurm Environment Variable | Detail Description                                                      |
+   +=========================+============================+=========================================================================+
+   | Array JobID             | $SLURM_ARRAY_JOB_ID        | Each member of a job array is assigned a unique identifier.             |
+   |                         | \                          |                                                                         |
+   |                         | $SLURM_ARRAY_TASK_ID       |                                                                         |
+   +-------------------------+----------------------------+-------------------------------------------------------------------------+
+   | Job Submission Directory| $SLURM_SUBMIT_DIR          | By default, jobs start in the directory that the job was submitted      |
+   |                         |                            | from. So the ``cd $SLURM_SUBMIT_DIR`` command is not needed.            |
+   +-------------------------+----------------------------+-------------------------------------------------------------------------+
+   | JobID                   | $SLURM_JOB_ID              | Job identifier assigned to the job.                                     |
+   +-------------------------+----------------------------+-------------------------------------------------------------------------+
+   | Machine(node) list      | $SLURM_NODELIST            | Variable name that contains the list of nodes assigned to the batch job.|
+   +-------------------------+----------------------------+-------------------------------------------------------------------------+
 
-   +-------------------------+-------------------------------------------+
-   | Slurm Example Command   | Description                               |
-   +=========================+===========================================+
-   | squeue -a               | Lists the status of all jobs on the       |
-   |                         | system.                                   |
-   +-------------------------+-------------------------------------------+
-   | squeue -u $USER         | Lists the status of all your jobs in the  |
-   |                         | batch system.                             |
-   +-------------------------+-------------------------------------------+
-   | squeue -j JobID         | Lists nodes allocated to a running job in |
-   |                         | addition to basic information..           |
-   +-------------------------+-------------------------------------------+
-   | scontrol show job JobID | Lists detailed information on a particular|
-   |                         | job.                                      |
-   +-------------------------+-------------------------------------------+
-   | sinfo -a                | Lists summary information on all the      |
-   |                         | partition.                                |
-   +-------------------------+-------------------------------------------+
+See the sbatch man page for additional environment variables available.
 
-See the man pages for other available options.
+.. _interactive-jobs:
+
+Interactive Jobs
+-------------------------
+
+Interactive jobs can be implemented in several ways, depending on what is needed. 
+The following examples start up a bash shell terminal on a CPU or GPU node. 
+(Replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command.)
+
+- Single core with 16GB of memory, with one task on a CPU node
+
+  .. code-block::
+
+     srun --account=account_name --partition=cpu-interactive \
+       --nodes=1 --tasks=1 --tasks-per-node=1 \
+       --cpus-per-task=4 --mem=16g \
+       --pty bash
+
+- Single core with 20GB of memory, with one task on a A40 GPU node
+
+  .. code-block::
+
+     srun --account=account_name --partition=gpuA40x4-interactive \
+       --nodes=1 --gpus-per-node=1 --tasks=1 \
+       --tasks-per-node=16 --cpus-per-task=1 --mem=20g \
+       --pty bash 
+
+.. note::
+   For large, compute intensive compilations consider compiling your code on a compute node where you can get more power than on the shared login nodes. You can use srun to start an interactive job which will start a shell on a compute node with access to your files.
 
 .. _srun:
 
 srun
 ~~~~~
 
-The **srun** command initiates an interactive job or process on compute nodes.
-
-For example, the following command will run an interactive job in the gpuA100x4 or gpuA40x4 partition with a wall-clock time limit of 30 minutes, using one node and 16 cores per node and 1 GPU. (Replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command.)
+The ``srun`` command initiates an interactive job or process on compute nodes.
+For example, the following command will run an interactive job in the gpuA100x4 or gpuA40x4 partition with a wall-clock time limit of 30 minutes, using one node and 16 cores per node and 1 GPU. 
+(Replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command.)
 
 .. code-block::
 
@@ -361,15 +372,15 @@ You will see something like this:
    exit
    $ 
 
-When finished, use the ``exit`` command to end the bash shell on the compute resource and hence the Slurm srun job.
+When finished, use the ``exit`` command to end the bash shell on the compute resource and hence the Slurm ``srun`` job.
 
 .. _salloc:
 
 salloc
-~~~~~
+~~~~~~~~
 
 While being interactive like ``srun``, ``salloc`` allocates compute resources for you, while leaving your shell on the login node.
-Run commands on the login node as usual, use``exit`` to end an salloc session early, and use srun with no extra flags to launch processes on the compute resources. (Replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command.)
+Run commands on the login node as usual, use ``exit`` to end an salloc session early, and use srun with no extra flags to launch processes on the compute resources. (Replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command.)
 
 .. code-block::
 
@@ -400,230 +411,12 @@ Run commands on the login node as usual, use``exit`` to end an salloc session ea
    $ exit
    salloc: Relinquishing job allocation 2323230
 
-
-scancel
-~~~~~~~~
-
-The scancel command deletes a queued job or terminates a running job. The example below deletes/terminates the job with the associated JobID.
-
-.. code-block::
-
-   scancel JobID 
-
-Job Status
-~~~~~~~~~~~
-
-If the NODELIST(REASON) is MaxGRESPerAccount, that means that a user has exceeded the number of cores or GPUs allotted per user or project for a given partition.
-
-Useful Batch Job Environment Variables
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. table:: Useful Batch Job Environment Variables
-
-   +-------------------------+----------------------------+-------------------------------------------------------------------------+
-   | Description             | Slurm Environment Variable | Detail Description                                                      |
-   +=========================+============================+=========================================================================+
-   | Array JobID             | $SLURM_ARRAY_JOB_ID        | Each member of a job array is assigned a unique identifier.             |
-   |                         |                            |                                                                         |
-   |                         | $SLURM_ARRAY_TASK_ID       |                                                                         |
-   +-------------------------+----------------------------+-------------------------------------------------------------------------+
-   | Job Submission Directory| $SLURM_SUBMIT_DIR          | By default, jobs start in the directory that the job was submitted      |
-   |                         |                            |                                                                         |
-   |                         |                            | from. So the "cd $SLURM_SUBMIT_DIR" command is not needed.              |
-   +-------------------------+----------------------------+-------------------------------------------------------------------------+
-   | JobID                   | $SLURM_JOB_ID              | Job identifier assigned to the job.                                     |
-   +-------------------------+----------------------------+-------------------------------------------------------------------------+
-   | Machine(node) list      | $SLURM_NODELIST            | Variable name that contains the list of nodes assigned to the batch job.|
-   +-------------------------+----------------------------+-------------------------------------------------------------------------+
-
-See the sbatch man page for additional environment variables available.
-
-.. _sbatch-delay:
-
-Using Job Dependency to Stagger Job Starts
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-When submitting multiple jobs, consider using ``--dependency`` to prevent all of the jobs from starting at the same time. Staggering the job startup resource load prevents system slowdowns. This is especially recommended for Python users because **multiple jobs that load Python on startup can slow down the system if they are all started at the same time**.
-
-From the ``--dependency`` man page:
-
-.. code-block::
-
-   -d, --dependency=<dependency_list> 
-              
-                    after:job_id[[+time][:jobid[+time]...]]
-
-   After the specified jobs start or are cancelled and 'time' in minutes from job start or cancellation happens, this job can begin  execution. If  no 'time' is given then there is no delay after start or cancellation.
-
-Sample Script that Automates the Delay Dependency
-$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
-The sample script below staggers the start of five jobs by 5 minutes each. You can use this script as a template and modify it to the number of jobs you have. The minimum recommended delay time is 3 minutes; 5 minutes is a more conservative choice. 
-
-.. code-block:: terminal
-
-   [gbauer@dt-login01 depend]$ cat start
-   #!/bin/bash
-
-   # this is the time in minutes to have Slurm wait before starting the next job after the previous one started.
-
-   export DELAY=5   # in minutes
-
-   # submit first job and grab jobid
-   JOBID=`sbatch testjob.slurm | cut -d" " -f4`
-   echo "submitted $JOBID"
-
-   # loop 4 times submitting a job depending on the previous job to start
-   for count in `seq 1 4`; do
-
-   OJOBID=$JOBID
-
-   JOBID=`sbatch --dependency=after:${OJOBID}+${DELAY} testjob.slurm | cut -d" " -f4`
-
-   echo "submitted $JOBID with $DELAY minute delayed start from $OJOBID "
-
-   done  
-
-Here is what the jobs look like when submitting using the above example script:
-
-.. code-block:: terminal
-
-    [gbauer@dt-login01 depend]$ ./start 
-    submitted 2267583
-    submitted 2267584 with 5 minute delayed start from 2267583 
-    submitted 2267585 with 5 minute delayed start from 2267584 
-    submitted 2267586 with 5 minute delayed start from 2267585 
-    submitted 2267587 with 5 minute delayed start from 2267586 
-
-After 5 minutes from the start of the first job, the next job starts, and so on.
-
-.. code-block:: terminal
-
-    [gbauer@dt-login01 depend]$ squeue -u gbauer
-             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-           2267587 cpu-inter testjob.   gbauer PD       0:00      1 (Dependency)
-           2267586 cpu-inter testjob.   gbauer PD       0:00      1 (Dependency)
-           2267585 cpu-inter testjob.   gbauer PD       0:00      1 (Dependency)
-           2267584 cpu-inter testjob.   gbauer  R       2:14      1 cn093
-           2267583 cpu-inter testjob.   gbauer  R       7:21      1 cn093
-
-You can use the ``sacct`` command with a specific job number to see how the job was submitted and show the dependency.
-
-.. code-block:: terminal
-
-    [gbauer@dt-login01 depend]$ sacct --job=2267584 --format=submitline -P
-    SubmitLine
-    sbatch --dependency=after:2267583+5 testjob.slurm 
-
-.. _mon_node:
-
-Monitoring a Node During a Job
----------------------------------
-
-You have SSH access to nodes in your running job(s). Some of the basic monitoring tools are demonstrated in the example transcript below. Screen shots are appended so that you can see the output from the tools. Most common Linux utilities are available from the compute nodes (free, strace, ps, and so on).
-
-.. code-block::
-
-   [arnoldg@dt-login03 python]$ squeue -u $USER
-                JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-              1214412 gpuA40x4- interact  arnoldg  R       8:14      1 gpub045
-   [arnoldg@dt-login03 python]$ ssh gpub045
-   gpub045.delta.internal.ncsa.edu (141.142.145.145)
-     OS: RedHat 8.4   HW: HPE   CPU: 64x    RAM: 252 GB
-   Last login: Wed Dec 14 09:45:26 2022 from 141.142.144.42
-   [arnoldg@gpub045 ~]$ nvidia-smi
-
-   [arnoldg@gpub045 ~]$ module load nvtop
-   ---------------------------------------------------------------------------------------------------------------------
-   The following dependent module(s) are not currently loaded: cuda/11.6.1 (required by: ucx/1.11.2, openmpi/4.1.2)
-   ---------------------------------------------------------------------------------------------------------------------
-
-   The following have been reloaded with a version change:
-   1) cuda/11.6.1 => cuda/11.7.0
-
-   [arnoldg@gpub045 ~]$ nvtop
-
-   [arnoldg@gpub045 ~]$ module load anaconda3_gpu
-   [arnoldg@gpub045 ~]$ nvitop
-
-   [arnoldg@gpub045 ~]$ top -u $USER
-
-nvidia-smi:
-
-..  image:: images/running_jobs/01_nvidia-smi.png
-    :alt: nvidia smi
-    :width: 1000px
-
-nvtop:
-
-..  image:: images/running_jobs/02_nvtop.png
-    :alt: nvtop
-    :width: 1000px
-
-nvitop:
-
-..  image:: images/running_jobs/03_nvitop.png
-    :alt: nvitop
-    :width: 1000px
-
-top -u $USER:
-
-..  image:: images/running_jobs/04_top.png
-    :alt: top
-    :width: 1000px
-
-Monitoring Nodes Using Grafana
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-#. Navigate to: https://metrics.ncsa.illinois.edu
-
-#. Sign in (top-right).
-
-   .. image:: images/running_jobs/metrics_signin_icon.png
-      :alt: sign in icon
-      :width: 400
-
-#. Navigate to the Delta metrics of interest.
-
-   ..  image:: images/running_jobs/06_grafana_metrics_home.png
-       :alt: metrics home
-       :width: 1000px
-
-   You may choose a node from the list of nodes and get detailed information in real time.
-
-   ..  image:: images/running_jobs/07_grafana_metrics_details.png
-       :alt: get detailed info
-       :width: 1000px
-
-Interactive Jobs
--------------------------
-
-Interactive jobs can be implemented in several ways, depending on what is needed. The examples below start up a bash shell terminal on a CPU or GPU node. (Replace ``account_name`` with one of your available accounts; these are listed under "Project" when you run the ``accounts`` command.)
-
-- Single core with 16GB of memory, with one task on a CPU node
-
-  .. code-block::
-
-     srun --account=account_name --partition=cpu-interactive \
-       --nodes=1 --tasks=1 --tasks-per-node=1 \
-       --cpus-per-task=4 --mem=16g \
-       --pty bash
-
-- Single core with 20GB of memory, with one task on a A40 GPU node
-
-  .. code-block::
-
-     srun --account=account_name --partition=gpuA40x4-interactive \
-       --nodes=1 --gpus-per-node=1 --tasks=1 \
-       --tasks-per-node=16 --cpus-per-task=1 --mem=20g \
-       --pty bash 
-
 MPI Interactive Jobs: Use salloc Followed by srun
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Interactive jobs are already a child process of srun, therefore, one cannot srun (or mpirun) applications from within them. 
+Interactive jobs are already a child process of ``srun``, therefore, one cannot srun (or mpirun) applications from within them. 
 Within standard batch jobs submitted via sbatch, use ``srun`` to launch MPI codes. 
-For true interactive MPI, use ``salloc`` in place of srun shown above, then "srun my_mpi.exe" after you get a prompt from salloc (exit to end the salloc interactive allocation).
+For true interactive MPI, use ``salloc`` in place of ``srun`` shown above, then "srun my_mpi.exe" after you get a prompt from salloc (``exit`` to end the salloc interactive allocation).
 
 .. raw:: html
 
@@ -693,14 +486,279 @@ For example, to run a single core job that uses 1G of memory with X11 (in this c
      --x11  xterm
 
 .. _file-system-dependency-specification-for-jobs-1:
+.. _depend_arch:
 
 File System Dependency Specification for Jobs
 ---------------------------------------------
 
-Please see the :ref:`depend_arch` section in System Architecture for information on setting job file system dependencies for jobs.
+NCSA requests that jobs specify the file system or systems being used to enable response to resource availability issues. 
+All jobs are assumed to depend on the HOME file system. Jobs that do not specify a dependency on WORK (``/projects``) and SCRATCH (``/scratch``) will be assumed to depend only on the HOME (``/u``) file system.
 
-Jobs that do not specify a dependency on WORK (/projects) and SCRATCH (/scratch) will be assumed to depend only on the HOME (/u) file system.
+.. table:: Slurm Feature/Constraint Labels
+   
+   ================= ======================== ==================
+   File System       Feature/Constraint Label Note
+   ================= ======================== ==================
+   WORK (/projects)  projects                 
+   SCRACH (/scratch) scratch                  
+   IME (/ime)        ime                      depends on scratch
+   TAIGA (/taiga)    taiga                    
+   ================= ======================== ==================
 
+The Slurm constraint specifier and Slurm Feature attribute for jobs are used to add file system dependencies to a job.
+
+Slurm Feature Specification
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For already submitted and pending (PD) jobs, please use the Slurm Feature attribute as follows:
+
+.. code-block::
+
+   $ scontrol update job=JOBID Features="feature1&feature2"
+
+For example, to add scratch and ime Features to an already submitted job:
+
+.. code-block::
+
+   $ scontrol update job=713210 Features="scratch&ime"
+
+To verify the setting:
+
+.. code-block::
+
+   $ scontrol show job 713210 | grep Feature
+      Features=scratch&ime DelayBoot=00:00:00
+
+Slurm Constraint Specification
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To add Slurm job constraint attributes when submitting a job with sbatch (or with ``srun`` as a command line argument) use:
+
+.. code-block::
+
+   #SBATCH --constraint="constraint1&constraint2.."
+
+For example, to add scratch and ime constraints when submitting a job:
+
+.. code-block::
+
+   #SBATCH --constraint="scratch&ime"
+
+To verify the setting:
+
+.. code-block::
+
+   $ scontrol show job 713267 | grep Feature
+      Features=scratch&ime DelayBoot=00:00:00
+
+.. _job_mgmt:
+
+Job Management
+-----------------
+
+squeue/scontrol/sinfo
+~~~~~~~~~~~~~~~~~~~~~
+
+The ``squeue``, ``scontrol``, and ``sinfo`` commands display batch job and partition information. The following table has a list of common commands, see the man pages for other available options.
+
+In ``squeue`` results, if the ``NODELIST(REASON)`` for a job is ``MaxGRESPerAccount``, the user has exceeded the number of cores or GPUs allotted per user or project for a given partition.
+
+.. table:: Common squeue, scontrol, and sinfo Commands
+   :widths: 25 75
+
+   +------------------------------+--------------------------------------------------------+
+   | Slurm Command                | Description                                            |
+   +==============================+========================================================+
+   | .. code-block::              | Lists the status of all jobs on the system.            |
+   |                              |                                                        |
+   |    squeue -a                 |                                                        |
+   +------------------------------+--------------------------------------------------------+
+   | .. code-block::              | Lists the status of all your jobs in the batch system. | 
+   |                              | Replace ``$USER`` with your username.                  |
+   |    squeue -u $USER           |                                                        |
+   +------------------------------+--------------------------------------------------------+
+   | .. code-block::              | Lists nodes allocated to a running job in addition     |
+   |                              | to basic information. Replace ``JobID`` with the JobID | 
+   |    squeue -j JobID           | of interest.                                           |
+   +------------------------------+--------------------------------------------------------+
+   | .. code-block::              | Lists detailed information on a particular job. Replace| 
+   |                              | ``JobID`` with the JobID of interest.                  |
+   |    scontrol show job JobID   |                                                        |
+   +------------------------------+--------------------------------------------------------+
+   | .. code-block::              | Lists summary information on all the partition.        |
+   |                              |                                                        |
+   |    sinfo -a                  |                                                        |
+   +------------------------------+--------------------------------------------------------+
+
+scancel
+~~~~~~~~
+
+The scancel command deletes a queued job or terminates a running job. The example below deletes/terminates the job with the associated JobID.
+
+.. code-block::
+
+   scancel JobID 
+
+.. _sbatch-delay:
+
+Using Job Dependency to Stagger Job Starts
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When submitting multiple jobs, consider using ``--dependency`` to prevent all of the jobs from starting at the same time. Staggering the job startup resource load prevents system slowdowns. This is especially recommended for Python users because **multiple jobs that load Python on startup can slow down the system if they are all started at the same time**.
+
+From the ``--dependency`` man page:
+
+.. code-block::
+
+   -d, --dependency=<dependency_list> 
+              
+                    after:job_id[[+time][:jobid[+time]...]]
+
+   After the specified jobs start or are cancelled and 'time' in minutes from job start or cancellation happens, this job can begin  execution. If  no 'time' is given then there is no delay after start or cancellation.
+
+The following sample script staggers the start of five jobs by 5 minutes each. You can use this script as a template and modify it to the number of jobs you have. The minimum recommended delay time is 3 minutes; 5 minutes is a more conservative choice.
+
+.. raw:: html
+
+   <details>
+   <summary><a><b>Sample script that automates the delay dependency</b> <i>(click to expand/collapse)</i></a></summary> 
+
+.. code-block:: terminal
+
+   [gbauer@dt-login01 depend]$ cat start
+   #!/bin/bash
+
+   # this is the time in minutes to have Slurm wait before starting the next job after the previous one started.
+
+   export DELAY=5   # in minutes
+
+   # submit first job and grab jobid
+   JOBID=`sbatch testjob.slurm | cut -d" " -f4`
+   echo "submitted $JOBID"
+
+   # loop 4 times submitting a job depending on the previous job to start
+   for count in `seq 1 4`; do
+
+   OJOBID=$JOBID
+
+   JOBID=`sbatch --dependency=after:${OJOBID}+${DELAY} testjob.slurm | cut -d" " -f4`
+
+   echo "submitted $JOBID with $DELAY minute delayed start from $OJOBID "
+
+   done  
+
+Here is what the jobs look like when submitting using the above example script:
+
+.. code-block:: terminal
+
+    [gbauer@dt-login01 depend]$ ./start 
+    submitted 2267583
+    submitted 2267584 with 5 minute delayed start from 2267583 
+    submitted 2267585 with 5 minute delayed start from 2267584 
+    submitted 2267586 with 5 minute delayed start from 2267585 
+    submitted 2267587 with 5 minute delayed start from 2267586 
+
+After 5 minutes from the start of the first job, the next job starts, and so on.
+
+.. code-block:: terminal
+
+    [gbauer@dt-login01 depend]$ squeue -u gbauer
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           2267587 cpu-inter testjob.   gbauer PD       0:00      1 (Dependency)
+           2267586 cpu-inter testjob.   gbauer PD       0:00      1 (Dependency)
+           2267585 cpu-inter testjob.   gbauer PD       0:00      1 (Dependency)
+           2267584 cpu-inter testjob.   gbauer  R       2:14      1 cn093
+           2267583 cpu-inter testjob.   gbauer  R       7:21      1 cn093
+
+You can use the ``sacct`` command with a specific job number to see how the job was submitted and show the dependency.
+
+.. code-block:: terminal
+
+    [gbauer@dt-login01 depend]$ sacct --job=2267584 --format=submitline -P
+    SubmitLine
+    sbatch --dependency=after:2267583+5 testjob.slurm 
+
+.. raw:: html
+
+   </details>
+|
+
+.. _mon_node:
+
+Monitoring a Node During a Job
+---------------------------------
+
+You have SSH access to nodes in your running job(s). Some of the basic monitoring tools are demonstrated in the example transcript below. Screen shots are appended so that you can see the output from the tools. Most common Linux utilities are available from the compute nodes (free, strace, ps, and so on).
+
+.. code-block::
+
+   [arnoldg@dt-login03 python]$ squeue -u $USER
+                JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+              1214412 gpuA40x4- interact  arnoldg  R       8:14      1 gpub045
+   [arnoldg@dt-login03 python]$ ssh gpub045
+   gpub045.delta.internal.ncsa.edu (141.142.145.145)
+     OS: RedHat 8.4   HW: HPE   CPU: 64x    RAM: 252 GB
+   Last login: Wed Dec 14 09:45:26 2022 from 141.142.144.42
+   [arnoldg@gpub045 ~]$ nvidia-smi
+
+   [arnoldg@gpub045 ~]$ module load nvtop
+
+   The following have been reloaded with a version change:
+   1) cuda/11.6.1 => cuda/11.7.0
+
+   [arnoldg@gpub045 ~]$ nvtop
+
+   [arnoldg@gpub045 ~]$ module load anaconda3_gpu
+   [arnoldg@gpub045 ~]$ nvitop
+
+   [arnoldg@gpub045 ~]$ top -u $USER
+
+nvidia-smi:
+
+..  image:: images/running_jobs/01_nvidia-smi.png
+    :alt: nvidia smi
+    :width: 1000px
+
+nvtop:
+
+..  image:: images/running_jobs/02_nvtop.png
+    :alt: nvtop
+    :width: 1000px
+
+nvitop:
+
+..  image:: images/running_jobs/03_nvitop.png
+    :alt: nvitop
+    :width: 1000px
+
+top -u $USER:
+
+..  image:: images/running_jobs/04_top.png
+    :alt: top
+    :width: 1000px
+
+.. Monitoring Nodes Using Grafana
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  #. Navigate to: https://metrics.ncsa.illinois.edu
+  
+  #. Sign in (top-right).
+  
+     .. image:: images/running_jobs/metrics_signin_icon.png
+        :alt: sign in icon
+        :width: 400
+  
+  #. Navigate to the Delta metrics of interest.
+  
+     ..  image:: images/running_jobs/06_grafana_metrics_home.png
+         :alt: metrics home
+         :width: 1000px
+  
+     You may choose a node from the list of nodes and get detailed information in real time.
+  
+     ..  image:: images/running_jobs/07_grafana_metrics_details.png
+         :alt: get detailed info
+         :width: 1000px
 
 .. _examples:
 
@@ -950,7 +1008,60 @@ Hybrid (MPI + OpenMP or MPI+X) on CPU Nodes
    </details>
 |
 
+PyTorch Multi-Node
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. raw:: html
+
+   <details>
+   <summary><a><b>pytorch multi-node example script</b> <i>(click to expand/collapse)</i></a></summary>
+
+.. code-block::
+
+   #!/bin/bash
+   #SBATCH --account=account_name
+   #SBATCH --job-name=multinode-example
+   #SBATCH --partition=gpuA40x4
+   #SBATCH --nodes=2
+   #SBATCH --ntasks-per-node=1
+   #SBATCH --gpus-per-node=4
+   #SBATCH --cpus-per-task=8
+   #SBATCH --time=00:40:00
+   #SBATCH --output=ddp_training_%j.log
+   #SBATCH --error=ddp_training_%j.err
+
+   nodes=( $( scontrol show hostnames $SLURM_JOB_NODELIST ) )
+   nodes_array=($nodes)
+   head_node=${nodes_array[0]}
+   head_node_ip=$(srun --nodes=1 --ntasks=1 -w "$head_node" hostname --ip-address)
+   echo "Head node: $head_node"
+   echo "Head node IP: $head_node_ip"
+
+   export LOGLEVEL=INFO
+
+   module load anaconda3_gpu
+   export NCCL_DEBUG=INFO
+   export NCCL_SOCKET_IFNAME=hsn
+   module load nccl # loads the nccl built with the AWS nccl plugin for Slingshot11
+   module list
+   echo "Job is starting on `hostname`"
+
+   time srun torchrun --nnodes ${SLURM_NNODES} \
+   	--nproc_per_node ${SLURM_GPUS_PER_NODE} \
+  	--rdzv_id $RANDOM --rdzv_backend c10d \
+  	--rdzv_endpoint="$head_node_ip:29500" \
+  	${SLURM_SUBMIT_DIR}/multinode.py 50 10
+
+   rm -f snapshot.pt
+
+.. raw:: html
+
+   </details>
+|
+
 Parametric / Array / HTC Jobs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Not yet implemented.
+
+|

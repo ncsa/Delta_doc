@@ -19,26 +19,37 @@ Direct Access Login Nodes
 
 Direct access to the Delta login nodes is via SSH using your NCSA username, password, and NCSA Duo MFA. The login nodes provide access to the CPU and GPU resources on Delta. See the `NCSA Allocation and Account Management <https://wiki.ncsa.illinois.edu/display/USSPPRT/NCSA+Allocation+and+Account+Management>`_ page for links to NCSA Identity and NCSA Duo services. 
 
-**ACCESS awarded projects** - Your NCSA username is in your `ACCESS Profile <https://allocations.access-ci.org/profile>`_; once logged in, scroll to the bottom of the page to the "Resource Provider Site Usernames" table. If you don't know your NCSA username, :ref:`submit a support request <help>` for assistance.
+**ACCESS awarded projects** - Your NCSA username is in your `ACCESS Profile <https://allocations.access-ci.org/profile>`_; once logged in, scroll to the bottom of the page to the "Resource Provider Site Usernames" table. If you don't know your NCSA username, :ref:`submit a support request <general_support>` for assistance.
 
 Login Node Hostnames
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-.. warning::
-
-  In January 2024, Delta was upgraded to Slingshot11. Please use the round robin login, login.delta.ncsa.illinois.edu, to SSH into the system. For single host SSH, use dt-login01.delta.ncsa.illinois.edu, dt-login02.delta.ncsa.illinois.edu, or dt-login03.delta.ncsa.illinois.edu. See the `ACCESS Delta Notice: Delta maintenance 01-23-2024 - 01-25-2024 <https://operations.access-ci.org/node/671>`_ for more details. 
-
 .. table:: Login Node Hostnames
+   :widths: 40 60 
 
-   =======================================   ==============================
-   Login Node Hostname                       Description
-   =======================================   ==============================
-   ``login.delta.ncsa.illinois.edu``         *This is the preferred hostname*. Alias that round robin logs into one of the two Delta login nodes. 
-   ``dt-login.delta.ncsa.illinois.edu``      Alias that round robin logs into one of the two Delta login nodes.
-   ``dt-login01.delta.ncsa.illinois.edu``    One of the Delta login nodes.
-   ``dt-login02.delta.ncsa.illinois.edu``    One of the Delta login nodes.
-   ``dt-login03.delta.ncsa.illinois.edu``    One of the Delta login nodes.
-   =======================================   ==============================
+   +--------------------------------------------+----------------------------------------------------+
+   | Login Node Hostname                        | Description                                        |
+   +============================================+====================================================+
+   | .. code-block::                            | **Preferred hostname.** Alias that round-robin     |
+   |                                            | logs in to one of Delta login nodes.               |
+   |    login.delta.ncsa.illinois.edu           |                                                    |
+   +--------------------------------------------+----------------------------------------------------+
+   | .. code-block::                            | Alias that round-robin logs in to one of the       |
+   |                                            | Delta login nodes.                                 |
+   |    dt-login.delta.ncsa.illinois.edu        |                                                    |
+   +--------------------------------------------+----------------------------------------------------+
+   | ``dt-login[01-04].delta.ncsa.illinois.edu``| There are four Delta login nodes, ``dt-login01``,  |
+   |                                            | ``dt-login02``, ``dt-login03``, and ``dt-login04``.|
+   +--------------------------------------------+----------------------------------------------------+
+
+Host Key Fingerprints:
+
+   .. code-block::
+
+      256 SHA256:u1Er7JjQeq/lEPnVfZrHxkLRVRhxCyG6XgVN9sZd7ps (ECDSA)
+      256 SHA256:mIv7OqNSuuWnu1tlY//wG4gWAn4z0mbE11KkBXDAY/g (ED25519)
+      3072 SHA256:CHs2pS8uq9VEMYfjpiEkQnP14EGy0yc2l3Z50mC3wVc (RSA)
+
 
 SSH Examples
 ~~~~~~~~~~~~~~
@@ -65,7 +76,16 @@ In the examples below, replace ``username`` with your Delta login username.
 
 Use of SSH key pairs is disabled for general use.  This means that most individual users, even principal investigators (PIs), are **not allowed** to use SSH key pairs to log in instead of 2-factor authentication.  
 
-The one exception is: if you are the PI of a Gateway allocation (this is not most projects), then please :ref:`submit a support request <help>` to get the Gateway account's key pairs set up.  
+The one exception is: if you are the PI of a Gateway allocation (this is not most projects), then please :ref:`submit a support request <general_support>` to get the Gateway account's key pairs set up.  
+
+Login Node Limits
+~~~~~~~~~~~~~~~~~~
+
+To keep the login nodes responsive and usable by all, limits on effective CPU-core use and memory by user on a node are enabled through Linux cgroups.
+
+Currently, the effective CPU-core utilization is limited to 16 cores although the actual CPU-core count is not limited. This means that installers that look at the number of CPUs will see 128 cores, while actual effective use will be limited to 16 cores by an individual user (not per shell or per process).
+
+To prevent the login nodes from running out of memory, and please note that login nodes do not have swap enabled, the memory cgroup settings are 37G (15% of total memory) for High and 62G (25% of total memory) for Max memory use by an individual user (not per shell or per process).
 
 Maintaining Persistent Login Sessions: tmux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
