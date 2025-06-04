@@ -39,7 +39,7 @@ To build (compile and link) a MPI program in Fortran, C, and C++:
    |                                 | .. code-block::                            |                                           |
    |                                 |                                            |                                           |
    | OpenMPI                         |    gcc openmpi                             |                                           |
-   |                                 |        openmpi+cuda                        | - **Fortran 77:** mpif77 myprog.f         |
+   |                                 |        openmpi/5.0.5+cuda (use mpirun)     | - **Fortran 77:** mpif77 myprog.f         |
    |                                 |        (GPU-direct)                        |                                           |
    |                                 |                                            |                                           |
    | - `Open MPI Home Page`_         | .. code-block::                            |                                           |
@@ -53,20 +53,24 @@ To build (compile and link) a MPI program in Fortran, C, and C++:
    |                                 |                                            |                                           |
    |                                 | .. code-block::                            | - **C++:** mpic++ myprog.cc               |
    |                                 |                                            |                                           |
-   |                                 |    intel openmpi                           |                                           |
+   |                                 |    intel openmpi                           | - link using mpi compilers for cuda codes |
+   |                                 |                                            |   compiled with nvc or nvc++              |
    +---------------------------------+--------------------------------------------+-------------------------------------------+
-   | Cray MPICH                      | .. code-block::                            |                                           |
+   | Cray MPICH (unsupported)        | .. code-block::                            |                                           |
    |                                 |                                            |                                           |
    |                                 |     PrgEnv-gnu cuda craype-x86-milan \     |                                           |
    |                                 |     craype-accel-ncsa                      | - **Fortran 77:** fortran myprog.f        |
    |                                 |     (GPU-direct)                           |                                           |
-   | - PrgEnv-gnu                    |                                            | - **Fortran 90:** fortran myprog.f90      |
+   | - PrgEnv-gnu (unsupported)      |                                            | - **Fortran 90:** fortran myprog.f90      |
    |   *or*                          |                                            |                                           |
    | - PrgEnv-cray (unsupported)     |                                            | - **C:** cc myprog.c                      |
    |                                 |                                            |                                           |
    |                                 |                                            |                                           |
    |                                 |                                            | - **C++:** CC myprog.cc                   |
    +---------------------------------+--------------------------------------------+-------------------------------------------+
+
+.. note::
+   If your code fails with an error containing "H/W Event Queue overflow detected.", try setting this environment variable before srun and see if it resolves the problem: export FI_CXI_RX_MATCH_MODE=software .
 
 .. _Open MPI Home Page: http://www.open-mpi.org
 
@@ -221,7 +225,9 @@ nv* commands when nvhpc is loaded
 
 See the `NVIDIA HPC SDK <https://developer.nvidia.com/hpc-sdk>`_ page for more information.
 
-Note: The Multi-Process Service (MPS) is not currently enabled on Delta GPU nodes. :ref:`Submit a support request <help>` for assistance if you have questions about MPS status.
+The compute capability for A100 GPUs is 8.0, for A40 GPUs it is 8.6 and for H200 GPUs it is 9.0.
+
+Note: The Multi-Process Service (MPS) is not enabled on Delta and there are no plans to support it in the future.  
 
 
 HIP/ROCm (AMD MI100)
@@ -266,130 +272,17 @@ Visual Studio Code
 ---------------------
 
 .. note::
-   The Delta Open OnDemand (OOD) portal provides an easy method to use VS Code in a web browser.
+   The Code Server (VS Code) app in Open OnDemand provides an easy method to use VS Code in a web browser.
 
-   Go to the :ref:`OOD Code Server (VS Code) interactive app <ood-code-server>` page for instructions on how to start an OOD VS Code session.
+The following pages provide step-by-step instructions on how to use VS Code, in different configurations, on Delta.
 
-VS Code code-server
-~~~~~~~~~~~~~~~~~~~~
+.. toctree::
+   :maxdepth: 1
 
-`Microsoft VS Code documentation <https://code.visualstudio.com/docs>`_
-
-The code-server for VS Code can be run on Delta in manual mode (without Open OnDemand) by following these steps:
-
-#. Start the server.
-
-   | **/sw/external/vscode/code-server/bin/code-server:**
-   .. code-block::
-
-      [arnoldg@dt-login03 bin]$  ./code-server --bind-addr 
-      dt-login03:8899
-      [2023-04-14T15:57:03.059Z] info  code-server 4.11.0 85e083580dec27ef19827ff42d3c9257d56ea7e3
-      [2023-04-14T15:57:03.060Z] info  Using user-data-dir ~/.local/share/code-server
-      [2023-04-14T15:57:03.132Z] info  Using config file ~/.config/code-server/config.yaml
-      [2023-04-14T15:57:03.133Z] info  HTTP server listening on http://141.142.140.196:8899/
-      [2023-04-14T15:57:03.133Z] info    - Authentication is enabled
-      [2023-04-14T15:57:03.133Z] info      - Using password from ~/.config/code-server/config.yaml
-      [2023-04-14T15:57:03.133Z] info    - Not serving HTTPS
-      [10:57:12] 
-
-#. SSH to the login node where the server is waiting. Read the config.yaml noted above and copy the password to your clipboard.
-
-   | **SSH tunnel to login node running code-server:**
-   .. code-block::
-
-      (base) galen@macbookair-m1-042020 ~ % ssh -l arnoldg -L 
-      127.0.0.1:8899:dt-login03.delta.ncsa.illinois.edu:8899 dt-login03.delta.ncsa.illinois.edu
-      ...
-      Success. Logging you in...
-      dt-login03.delta.internal.ncsa.edu (141.142.140.196)
-        OS: RedHat 8.6   HW: HPE   CPU: 128x    RAM: 252 GB
-
-            ΔΔΔΔΔ    ΔΔΔΔΔΔ   ΔΔ     ΔΔΔΔΔΔ   ΔΔ
-            ΔΔ  ΔΔ   ΔΔ       ΔΔ       ΔΔ    ΔΔΔΔ
-            ΔΔ  ΔΔ   ΔΔΔΔ     ΔΔ       ΔΔ   ΔΔ  ΔΔ
-            ΔΔ  ΔΔ   ΔΔ       ΔΔ       ΔΔ   ΔΔΔΔΔΔ
-            ΔΔΔΔΔ    ΔΔΔΔΔΔ   ΔΔΔΔΔΔ   ΔΔ   ΔΔ  ΔΔ
-
-      [arnoldg@dt-login03 ~]$ more ~/.config/code-server/config.yaml
-      bind-addr: 127.0.0.1:8080
-      auth: password
-      password: 9e8081e80d9999c3c525fe26
-      cert: false
-
-#. Open a local browser on your desktop system with URL = http://127.0.0.1:8899. Log in with the password copied from above and begin using VS Code in your browser.
-
-   ..  image:: images/prog_env/vscode_in_browser.png
-       :alt: vscode in a web browser
-       :width: 1000px
-
-.. _vs-remote-ssh:
-
-Remote - SSH
-~~~~~~~~~~~~~~~~~
-
-Follow the `Visual Studio Code remote development using SSH <https://code.visualstudio.com/docs/remote/ssh>`_ guide.
-
-#. As stated in the guide, install "Remote - SSH" into Visual Studio:
-
-   ..  image:: images/prog_env/01_remote_ssh.png
-       :alt: remote ssh extension in visual studio
-       :width: 500px
-
-#. Continue to follow the guide to set up a remote connection to Delta.
-   It helps if you have a local $HOME/.ssh/config with your commonly used hosts already present on the laptop and SSH client where you will be using Visual Studio. 
-   Here is an example entry for Delta, change your username to your login name on Delta. Visual Studio will show hosts in your config in a pick list.
-
-   | **SSH config:**
-   .. code-block::
-   
-      Host delta
-              HostName login.delta.ncsa.illinois.edu
-              User arnoldg
-              ForwardX11 True
-
-#. Once connected, you can work with the remote system as if it were local.
-   When Visual Studio needs to install extension items on the remote system, it will go into your $HOME/.vscode-server on Delta. 
-   Visual Studio takes care of all the details for you:
-
-   | **remote server VS extensions:**
-   .. code-block::
-
-      [arnoldg@dt-login03 ~]$ du -sh .vscode-server/
-      523M    .vscode-server/
-      [arnoldg@dt-login03 ~]$ 
-
-#. Proceed to F1 → Remote SSH and connect to Delta. Then, following the guide, use Visual Studio as normal. 
-   
-   Windows users: The login box of vscode will display your login as 2fa<delta_username>, and you may not see a 2nd login box for 2fa Duo until you press the "details" link at lower right after you enter your password. Use the Duo passcode after pressing "details" link when the next password prompt appears at the top.  Also see the `Visual Studio Code remote development troubleshooting <https://code.visualstudio.com/docs/remote/troubleshooting>`_ guide and search for "two-factor".
-
-   If VS Code fails to connect after you have been using it for a while, check your quota (a full $HOME can prevent it from updating $HOME/.vscode on Delta). We have also seen cases where it was necessary to remove $HOME/.vscode on Delta similar the `VS Code documentation - clean uninstall <https://code.visualstudio.com/docs/setup/uninstall#_clean-uninstall>`_.
-
-   Example of working with a C file remote on Delta:
-
-   ..  image:: images/prog_env/02_remote_c_file.png
-       :alt: using visual studio to work with a C file on delta
-       :width: 1000px
-
-Remote Jupyter
-~~~~~~~~~~~~~~~~~
-
-See the `Visual Studio Code working with Juypter Notebooks <https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server>`_ guide and :ref:`jupyter` (open two new browser tabs).
-
-#. Install the Jupyter extension for Visual Studio, if you have not already done so.
-
-#. Complete the first step from the Delta user guide (second link above) where you srun a jupyter-notebook on a compute node. 
-
-#. Make note of and copy the first URL after the job is running, that is the URI you will provide to Visual Studio's "Connect to a Remote Jupyter Server" after clicking the Kernels button. 
-
-   You may also need to select the remote jupyter kernel under the kernels in VScode.
-
-..  image:: images/prog_env/03_jupyter_url.png
-    :alt: terminal with Jupyter workbook URL to use
-    :width: 600px
-
-..  image:: images/prog_env/04_jupyter_in_vscode.png
-    :alt: accessing Jupyter notebook using visual studio
-    :width: 1000px
+   Code Server (VS Code) App in Open OnDemand <ood/code-server>
+   vscode/code_server
+   vscode/remote_ssh
+   vscode/remote_jupyter
+   vscode/performance_issues
 
 |

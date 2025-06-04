@@ -8,12 +8,17 @@ Management Tools
 
 ACCESS projects use the `ACCESS user portal <https://support.access-ci.org/>`_ for project and account management.
 
-Non-ACCESS project and account management, such as adding someone to a project, is handled by NCSA Identity and NCSA group management tools. For more information, see the `NCSA Allocation and Account Management <https://wiki.ncsa.illinois.edu/display/USSPPRT/NCSA+Allocation+and+Account+Management>`_ page.
+Non-ACCESS project and account management, such as adding someone to a project, is handled by NCSA group management tools. For more information, go to `Group/Project Member Management <https://docs.ncsa.illinois.edu/en/latest/account-mgmt/group-mgmt.html#group-mgmt>`_.
+
+Reset Your Password
+--------------------
+
+For instructions on how to reset the NCSA password that you use to log in to Delta, go to `Manage Your NCSA Identity - Reset Your Password <https://docs.ncsa.illinois.edu/en/latest/account-mgmt/identity-mgmt.html#reset-your-password>`_.
 
 Configuring Your Account
 ----------------------------
 
-Bash is the default shell. To change the default shell, :ref:`submit a support request <help>`.
+Bash is the default shell. To change the default shell, :ref:`submit a support request <general_support>`.
 
 Allocations
 -------------
@@ -41,7 +46,16 @@ There is a 30-day grace period for expired Delta projects to allow for data mana
 Allocation Supplements and Extensions
 ---------------------------------------
 
-Request resource allocation supplements (compute, GPU, or storage) and extensions via the appropriate XRAS website.
+Request **resource allocation supplements** (CPU or GPU compute) and date extensions via the appropriate XRAS website:
 
 - ACCESS allocation PIs can find instructions on the `ACCESS Allocations: How To <https://allocations.access-ci.org/how-to>`_ page.
 - NCSA allocation PIs can find instructions on the `Delta Allocations <https://wiki.ncsa.illinois.edu/display/USSPPRT/Delta+Allocations#DeltaAllocations-Requestingan%22Extension%22or%22Supplement%22foranexistingDeltaallocation>`_ page.
+
+To request a **storage quota increase**, :ref:`submit a support request <general_support>`. In the request include:
+
+- A detailed justification for the size of the increase.
+- How long you need the increase.
+
+Keep in mind that Delta is storage constrained and can only provide storage for data in active use by computations on the system.
+
+|

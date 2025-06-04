@@ -1,53 +1,139 @@
 Visualization
 =====================
 
-Delta A40 nodes support NVIDIA ray tracing hardware.
+Delta A40 nodes contain NVIDIA ray tracing cores (RT cores) and also support traditional rasterization graphics.
 
 ParaView 
 ----------
 
-Client Server Mode - unsupported
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+`ParaView <https://www.paraview.org>`_ is an open-source visualization and data analysis tool.
 
-`MIT Engaging cluster ParaView client server mode documentation <https://engaging-web.mit.edu/eofe-wiki/software/paraview_client_server_mode/>`_.
+Interactive Use: ParaView in Open OnDemand (OOD)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Client server mode appears **broken**. When setting up SSH tunnel, as shown, you get this on the client side:
+The ParaView GUI client works via OOD on both CPU and GPU jobs, but interactivity is significantly improved on the latter.
 
-.. code-block::
+#. :ref:`Start an OOD Desktop session <ood-start-desktop>`.
 
-   Connection failed during handshake. 
-   vtkSocketCommunicator::GetVersion()
-    returns different values on the two connecting processes
-    (Current value: 100).
+#. In the Desktop app, open a **Terminal**.
 
-At least one site does not support client-server anymore (due to issues like this one from the `RWTH HPC IT Center help page <https://help.itc.rwth-aachen.de/en/service/rhr4fjjutttf/article/b98c687822874a30b740ef09f4330e7b/>`_).
+   .. figure:: images/visualization/ood-desktop-terminal-icon.png
+      :alt: OOD Desktop app with the terminal emulator icon at the bottom of the screen highlighted.
+      :width: 500
 
-PvPython and PvBatch
+#. Load ParaView, requires using the GUI-enabled ParaView module.
+   
+   .. code-block::
+   
+      $ module load paraview/5.10.1.gui
+
+#. Start ParaView.
+
+   .. code-block::
+   
+      $ paraview
+
+`ParaView User Guide <https://docs.paraview.org/en/latest/>`_
+
+Offline Use: pvbatch
 ~~~~~~~~~~~~~~~~~~~~~
 
-PvPython and PvBatch work and are available. Suggest reviewing the `ParaView PvPython and PvBatch wiki <https://www.paraview.org/Wiki/PvPython_and_PvBatch>`_ and using only the PvBatch part of ParaView:
+Batch rendering can be achieved with :code:`pvbatch`. Probably the best way to get started is to use Tools > Start Trace from the main menu in the GUI client to record an interactive session and then edit as needed.
+
+:code:`pvbatch` requires using a "headless" module, either :code:`paraview/5.11.2.egl.cuda` for GPU jobs or :code:`paraview/5.11.2.osmesa.x86_64` for CPU jobs. Inside of a job, use :code:`srun` and it will automatically use all of the allocated processors. E.g.:
 
 .. code-block::
 
-   [arnoldg@dt-login02 ~]$ cd paraview_pvbatch/
-   [arnoldg@dt-login02 paraview_pvbatch]$ vi greenSphere.py  # sample from URL above for pvpython
-   [arnoldg@dt-login02 paraview_pvbatch]$ pvpython greenSphere.py 
-   [arnoldg@dt-login02 paraview_pvbatch]$ ls
-   greenSphere.py  greenSphereScreenshot.png
+   srun pvbatch <myscript.py>
 
-greenSphereScreenshot.png:
 
-..  image:: images/visualization/greenSphere.png
-    :alt: green sphere
-    :width: 500px
+Additional information at: `ParaView PvPython and PvBatch wiki <https://www.paraview.org/Wiki/PvPython_and_PvBatch>`_
+
+Advanced Interactive Use: ParaView Client-Server Mode 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+   For ParaView client-server connections, you must install the same version of ParaView that is installed on Delta, currently this is `5.11.2 <https://www.paraview.org/download/?version=v5.11>`_. 
+
+#. Start the ParaView client application. (Note, if you are on an ARM processor, you may see a warning about not being able to load the OSPRay plugin which requires x86_64, this can be ignored.)
+
+#. Start a connection by clicking the **Connect** icon or navigating to **File** > **Connect**.
+
+   .. figure:: images/visualization/1_ParaView_Connect_button.png
+       :alt: Close-up view of the server Connect button.
+       :width: 500
+
+#. In the **Choose Server Configuration** window, click **Fetch Servers** .
+
+   .. figure:: images/visualization/3_ParaView_Choose_Server_Configuration.png
+     :alt: Choose server configuration modal dialog with fetch servers button highlighted.
+     :width: 529
+
+#. Scroll down and select the **NCSA Delta CPU** or **NCSA Delta GPU** profile and click **Import Selected**. 
+  
+   .. note::
+      You must have a GPU allocation for the GPU profile to work.
+
+   .. figure:: images/visualization/4_ParaView_Fetch_Server_Configurations.png
+     :alt: Fetch server configurations modal dialog with NCSA configurations highlighted.
+     :width: 529
+
+#. In the **Choose Server Configuration** window, select the profile and click **Connect**. This will open a **Connection Options** window. 
+
+   .. figure:: images/visualization/5_ParaView_Choose_and_Connect.png
+     :alt: Choose server configuration modal dialog with NCSA profile and connect button highlighted.
+     :width: 529
+
+#. In the **Connect Options** window, change the options, as appropriate. At a minimum, you need to update:
+
+   - **Delta username** - enter your NCSA username that you use to log in to Delta.
+   - **-\-account** - enter an account name that you have access to on Delta.
+
+   Click **OK**. 
+
+   .. figure:: images/visualization/6_ParaView_CPU_GPU_Connection_Options.png
+     :alt: Side-by-side comparison of connection options modal dialog for CPU and GPU, respectively.
+     :width: 485
+
+#. A terminal window will open. This terminal must remain open for the duration of the session. In the terminal:
+
+   #. Authenticate with your NCSA (Kerberos) password and DUO MFA. (1)
+   #. A job will be submitted based on the options you entered in the previous step. The job file as well as the SLURM output will be in your home directory. (2)
+   #. Messages will appear in the terminal for when the job starts and once the SSH tunnel has been made to pvserver running on the compute node. (3) and (4)
+
+   .. note::
+      On Windows, if nothing happens at this stage, or if a window opens and immediately closes, try downloading and installing `PuTTY and plink.exe <https://www.putty.org/>`_.
+
+   .. figure:: images/visualization/7_ParaView_Pop-up_Terminal.png
+     :alt: Pop-up terminal session showing authentication, job submission, job status, and connection messages.
+     :width: 960
+
+#. When the connection is complete, the ParaView client window should change to the default background color, and the pipeline browser should show a **csrs://** connection to Delta.
+
+   .. figure:: images/visualization/8_ParaView_successful_connection.png
+     :alt: Pipeline browser showing successful connection to Delta.
+     :width: 416
+
+Suggestions on Connection Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ParaView's server application, pvserver, is a hybrid OpenMP-MPI application. This informs the following advice.
+
+#. Set ``--nodes`` to 1, unless your data is spatially decomposed into multiple files per timestep. In that case, try setting ``--nodes`` to the number of domains. ParaView will not automatically decompose data except for very specific instances. The D3 (data domain decomposition) filter might be able to decompose your data.
+
+#. ``--cpus-per-task`` also sets the default memory allocation of 1GB per cpu. Increase as necessary, but note that requesting more cores may result in longer queue wait times.
+
+#. For GPU jobs, start with ``--gpus-per-node`` at 1, it is likely there will be little to no benefit from using more than one. These jobs are run on the ``gpuA40x4`` partition.
 
 VisIt
 --------
 
 `VisIt <https://visit-dav.github.io/visit-website/>`_ is an open-source visualization and data analysis tool. 
 
-How to Use VisIt in Open OnDemand (OOD)
+Interactive Use: VisIt in Open OnDemand (OOD)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The VisIt GUI client works via OOD on both CPU and GPU jobs, but interactivity is improved on the latter.
 
 #. :ref:`Start an OOD Desktop session <ood-start-desktop>`.
 
@@ -69,84 +155,132 @@ How to Use VisIt in Open OnDemand (OOD)
 
       $ visit
 
-To load the VisIt example data, ``noise.silo``, follow these steps:
+`VisIt User Manual <https://visit-sphinx-github-user-manual.readthedocs.io/en/develop/using_visit/index.html>`_
 
-#. Under **Sources**, click **Open**.
+..
+  To load the VisIt example data, ``noise.silo``, follow these steps:
+
+ #. Under **Sources**, click **Open**.
 
    .. figure:: images/visualization/ood-desktop-visit-open.png
       :alt: VisIt opened in the OOD Desktop app with the Open button highlighted.
       :width: 500
 
-#. In **Path**, navigate to ``/sw/external/visit/visit3_3_3.linux-x86_64/data`` and select the ``noise.silo`` file.
+ #. In **Path**, navigate to ``/sw/external/visit/visit3_3_3.linux-x86_64/data`` and select the ``noise.silo`` file.
 
    .. figure:: images/visualization/ood-desktop-visit-data-path.png
       :alt: VisIt File open window showing the "/sw/external/visit/visit3_3_3.linux-x86_64/data" path with the noise.silo file selected.
       :width: 500
 
-#. Click **Add** and select **Volume**, then **hardyglobal**.
+ #. Click **Add** and select **Volume**, then **hardyglobal**.
 
    .. figure:: images/visualization/ood-desktop-visit-add-volume.png
       :alt: VisIt Add menu showing Volume, and then hardyglobal selected.
       :width: 500
 
-#. Click **Draw**. The data will render in the adjacent window.
+ #. Click **Draw**. The data will render in the adjacent window.
 
    .. image:: images/visualization/ood-desktop-visit-draw.png
       :alt: The VisIt Draw button.
       :width: 500
 
-|
+Offline Use: visit scripts
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+VisIt can be used for offline, batch rendering using Python scripts:
 
-.. The below VisIt client-server mode info is commented out because we have trouble getting it to work properly. 
+  .. code-block::
 
-.. VisIt Client-Server Mode
-   -------------------------
+     module load visit
+     srun visit -np <N> -nowin -cli -s <python script>
 
-   Following the `SDSC VisIt getting started guide <https://www.sdsc.edu/education_and_training/tutorials1/visit.html>`_, below are the screenshots and setup for using Delta in a similar way.
+Note: it might be necessary to explicitly call :code:`sys.exit` at the end of the script to prevent VisIt from dropping into a Python interpreter and consuming the remaining time after finishing rendering.
 
-   .. note::
-      **Pick a unique login node, .bashrc on Delta.** Choose one of dt-login01 through dt-login04 to keep SSH tunnel connections working smoothly. Be sure to SSH to that login node **before** you proceed (if you have not logged into it before). VisIt cannot deal with the initial login confirmation of a new host key.
-   
-      Add to your $HOME/.bashrc (for the remote VisIt GUI):
+For more details see the `Python Scripting <https://visit-sphinx-github-user-manual.readthedocs.io/en/develop/python_scripting/index.html>`_ section of the VisIt User Manual.
 
-      ``module load visit``
+Advanced Interactive Use: VisIt Client-Server Mode 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This is currently unsupported.
 
-   Get a batch allocation on a compute node and run ``visit`` in that allocation with ``srun``.  Enable ``x11`` forwarding.
+VTK
+--------
+
+VTK Python API
+~~~~~~~~~~~~~~~
+
+To use the VTK Python API (in order to ``import vtk``), install with pip or conda following the guidance at :ref:`Installed Software - Python <delta-python>`.
+
+VTK C++ API
+~~~~~~~~~~~
+
+To build against the VTK C++ API or link to the VTK C++ libs, load the module with: ``module load vtk``. The currently available version is 9.4.0.
+
+PyVista in Jupyter Notebooks
+--------------------
+
+There are three supported ways to use the `PyVista <https://pyvista.org/>`_ Python visualization module on Delta:
+
+#. Through the Open OnDemand JupyterLab application.
+#. Through a notebook launched in an Open OnDemand XDesktop session.
+#. By connecting to a running, browser-less Open OnDemand Jupyter server via VSCode.
+
+Preparation
+~~~~~~~~~~~
+On Delta, activate the Python environment you intend to use, if any, and install the following packages via pip:
+
+.. code-block::
+
+   $ pip3 install jupyterlab pyvista[all]
+   $ pip3 install trame_jupyter_extension
+
+Notebooks should start by importing the PyVista module and setting an appropriate jupyter backend, e.g.:
+
+.. code-block::
+
+   import pyvista as pv
+   pv.set_jupyter_backend('client')
+   sphere = pv.Sphere()
+   sphere.plot()
+
+PyVista via a Open OnDemand Jupyter Lab instance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. :ref:`How to Start an OOD JupyterLab Session <ood-jupyterlab>`
+#. Open a new notebook using the environment in which PyVista was installed, or by choosing the appropriate kernel for an existing notebook.
+#. Set the jupyter backend to client.
+
+PyVista in a Jupyter notebook during an Open OnDemand XDesktop session
+~~~~~~~~~~~~~~~~~~~~~~~
+
+#. :ref:`Start an OOD Desktop session <ood-start-desktop>`
+#. Open a Terminal and load any relevant modules or virtual environments.
+#. Launch a notebook with:
+
+   .. code-block::
+      
+      $ jupyter-lab
+
+   This should open a Firefox browser with a JupyterLab session. 
+
+#. The jupyter backend can be set to client, server, or trame.
+
+Connect via VSCode
+~~~~~~~~~~~~~~~~~~~
+
+#. :ref:`Remote SSH to Delta in VS Code <vs-remote-ssh>`
+#. Connect to Delta over SSH from inside VSCode and install the Jupyter and Python extensions *on Delta*. 
+#. Open a new VSCode Terminal and load any relevant modules and environments. 
+#. Do steps (1) and (2) from the previous example.
+#. Launch a browser-less JupyterLab with:
 
    .. code-block::
 
-      salloc --mem=32g --nodes=1 --ntasks-per-node=1 --cpus-per-task=16 --partition=cpu,cpu-interactive --account=bbka-delta-cpu --constraint=scratch --x11 --time=00:30:00
-      salloc: Pending job allocation 3063018
-      salloc: job 3063018 queued and waiting for resources
-      salloc: job 3063018 has been allocated resources
-      salloc: Granted job allocation 3063018
-      salloc: Waiting for resource configuration
-      salloc: Nodes cn095 are ready for job
-      [arnoldg@dt-login02 c]$ srun visit
-      Running: gui3.3.3
-      Running: viewer3.3.3 -geometry 1499x1080+421+0 -borders 40,11,11,11 -shift 0,0 -preshift 1,30 -defer -host 127.0.0.1 -port 5600
-      Running: mdserver3.3.3 -host 127.0.0.1 -port 5601
+      $ jupyter-lab --no-browser --ip=0.0.0.0
 
+#. Use the XDesktop clipboard app to copy the first URL
 
-   Fill in **Host Settings** and under **Launch Profiles**, adjust **Number of threads per task** to fit your requirements and the ``--cpus-   per-task`` from ``salloc`` above:
+   .. image:: images/visualization/jupyter-lab_URL_highlighted.png
+      :alt: A terminal session showing a highlighted URL from a browser-less jupyter-lab session
+      :width: 500
 
-   ..  image:: images/visualization/01_visit-host-settings.png
-       :alt: delta host profile settings
-       :width: 1000px
-
-   ..  image:: images/visualization/02_visit-thread-settings16.png
-       :alt: delta host profile settings
-       :width: 1000px
-
-   Leave the **Parallel** tab options unchecked; since this example is not using MPI, that tab isn't applicable.
-
-
-   **Options** → **Save Settings** after filling in the above.
-
-   Proceeding with the tutorial, this is the view from the client and noise.silo example (found in the VisIt installation data/):
-
-   ..  image:: images/visualization/05_visit-mpi-noise-final.png
-       :alt: client view of noise example
-       :width: 1000px
-
-|
+#. Follow these `VSCode instruction to connect to a remote Jupyter server <https://code.visualstudio.com/docs/datascience/jupyter-notebooks#_connect-to-a-remote-jupyter-server>`_, pasting in the URL copied in the previous step.
+#. The jupyter backend must be either `html` or `static`.

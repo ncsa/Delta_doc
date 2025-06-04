@@ -14,6 +14,9 @@ $( document ).ready(function() {
 
   // Replace "Edit on GitHub" with the hub link.
   aside.replaceWith(hub_link);
-
+  
+  // Update the alt text of the NCSA logo in the left nav
+  var ncsa_logo = document.querySelector(".logo");
+  ncsa_logo.setAttribute('alt', 'University of Illinois NCSA logo.', 'important');
 
 });

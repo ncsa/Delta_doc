@@ -9,6 +9,29 @@ author = 'NCSA'
 release = '0.1'
 version = '0.1.0'
 
+# RTD recommended config file additions
+
+import os
+
+# Define the canonical URL if you are using a custom domain on Read the Docs
+html_baseurl = os.environ.get("READTHEDOCS_CANONICAL_URL", "")
+
+# Tell Jinja2 templates the build is running on Read the Docs
+if os.environ.get("READTHEDOCS", "") == "True":
+    if "html_context" not in globals():
+        html_context = {}
+    html_context["READTHEDOCS"] = True
+
+# Restoring GitHub link
+
+html_context = {
+    "display_github": True, # Integrate GitHub
+    "github_user": "ncsa", # Username
+    "github_repo": "Delta_doc", # Repo name
+    "github_version": os.environ.get("READTHEDOCS_GIT_IDENTIFIER"),  # Version
+    "conf_py_path": "/docs/source/", # Path in the checkout to the docs root
+}
+
 # -- General configuration
 
 extensions = [
@@ -19,6 +42,7 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx_tabs.tabs',
     'sphinx_copybutton',
+    'sphinxcontrib.googleanalytics',
 ]
 
 intersphinx_mapping = {
@@ -38,6 +62,7 @@ epub_show_urls = 'footnote'
 
 html_css_files = [
     'css/custom.css',
+    'css/table.css',
 ]
 
 # -- custom JS
@@ -51,7 +76,11 @@ html_logo = "images/BlockI-NCSA-Full-Color-RGB_border4.png"
 html_theme_options = {
      'logo_only': False,
      'display_version': False,
+     'flyout_display': 'attached',
  }
 
 # -- Page Title
 html_title = 'UIUC NCSA Delta User Guide'
+
+# -- Google Analytics ID
+googleanalytics_id = 'G-JG0GFE04G8'
