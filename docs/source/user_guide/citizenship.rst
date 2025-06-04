@@ -24,4 +24,4 @@ Login Node Process Restriction
 
 We prefer that users self-restrict what they run on the login nodes, as explained above on this page.  Some production processes still get run on the login nodes for whatever reason.  This causes problems by using up I/O slots, RAM, and processor cores on the login nodes. As a result, we have implemented automatic safeguard scripts that stop codes that appear to be applications running on the login nodes.  
 
-If have a code running on the logins and it suddenly stops, look for an email of this format.  If you don't understand why your process was killed, please send in a ticket and we'll be happy to sit down and talk to you.  
+If have a code running on the logins and it suddenly stops, look for an email of this format.  If you don't understand why your process was killed, please :ref:`send in a ticket <help>`; and we'll be happy to sit down and talk to you.  
