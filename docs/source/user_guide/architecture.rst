@@ -26,7 +26,7 @@ Login Nodes
 
 Login nodes provide interactive support for editing files, managing and launching jobs, and code compilation.  See :ref:`access` for information about how to get *to* the login nodes.  Users typically log into the login nodes as their first step to using the system.  
 
-While the login nodes have similar CPUs to the computational nodes and large memories, these are to enable users to run large code compilations interactively.  The logins are never to be used for production computation.  Please see the :ref:`good citizenship <citizenship>` page for details.
+While the login nodes have similar CPUs to the computational nodes and large memories, these are to enable users to run large code compilations interactively.  The logins are never to be used for production computation.  Please see the :ref:`good citizenship <citizenship>` page for details.  Login nodes DO NOT have GPUs.  To do interactive work with GPUs you must start an interactive job on a GPU compute node.  
 
 Computational ("Compute") Nodes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
