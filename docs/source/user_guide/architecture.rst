@@ -18,10 +18,20 @@ Delta has some important architectural features to facilitate new discovery and 
 
 **NOTE:** Delta A100 GPUs do NOT have MIG enabled.
 
-Model Compute Nodes
-----------------------
+Types of Nodes in Delta System
+-----------------------------------
 
-The Delta compute ecosystem is composed of six node types:
+Login Nodes
+~~~~~~~~~~~~~
+
+Login nodes provide interactive support for editing files, managing and launching jobs, and code compilation.  See :ref:`access` for information about how to get *to* the login nodes.  Users typically log into the login nodes as their first step to using the system.  
+
+While the login nodes have similar CPUs to the computational nodes and large memories, these are to enable users to run large code compilations interactively.  The logins are never to be used for production computation.  Please see the :ref:`good_citizenship` page for details.
+
+Computational ("Compute") Nodes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Delta compute node ecosystem is composed of these node types:
 
 - Dual-socket, CPU-only AMD compute nodes
 - Single socket, 4-way NVIDIA A100 GPU compute nodes
@@ -413,10 +423,6 @@ Available Memory
 The amount of RAM available to jobs via the Slurm ``--mem`` option is 5 to 10 percent less than the total amount
 installed because of memory reserved for the operating system.
 
-Login Nodes
-~~~~~~~~~~~~~
-
-Login nodes provide interactive support for code compilation. See :ref:`access` for more information.
 
 Specialized Nodes
 ~~~~~~~~~~~~~~~~~~~~
@@ -517,5 +523,3 @@ Harbor (External to Delta)
 Harbor is NCSA's global /u and /sw file systems, providing those areas to all open science systems at NCSA.
 This file system is mounted across all Delta systems at /u and /sw and is accessible on the Delta DTN endpoints.  The aggreagate performance of this system is ~80GB/s and users are given a 100GB/500,000 inode quota limit on the system.  
 See the `Harbor documentation <https://docs.ncsa.illinois.edu/systems/harbor/>`_ for more information. 
-
-|
