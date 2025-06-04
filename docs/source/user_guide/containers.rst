@@ -11,20 +11,6 @@ Container support on Delta is provided by Apptainer.
 Docker images can be converted to Apptainer sif format via the `apptainer pull <https://apptainer.org/docs/user/main/cli/apptainer_pull.html>`_ command. 
 Commands can be run from within a container using the `apptainer run <https://apptainer.org/docs/user/main/cli/apptainer_run.html>`_ command.
 
-If you encounter ``$HOME`` quota issues with Apptainer caching in ``~/.apptainer``, the environment variable ``APPTAINER_CACHEDIR`` can be used to select a different location such as a directory under ``/scratch``. See also, `apptainer build environment <https://apptainer.org/docs/user/main/build_env.html>`_
-
-Temporary Files
-~~~~~~~~~~~~~~~~~~~
-Apptainer creates temporary files its local /tmp directory.  Users occasionally encounter problems building images with apptainer when the /tmp space on a compute node (which is finite) filling up, which results in this error message: 
-
-.. code-block::
-
-   FATAL:   While performing build: while creating squashfs: create command
-   failed: exit status 1:
-   Write failed because No space left on device
-
-If apptainer fails in this way, run the command ``rm rf /tmp/build-temp*`` to remove apptainer's temporary files.  
-
 Your ``$HOME`` is automatically available from containers run via Apptainer. 
 You can ``pip3 install --user`` against a container's python, setup virtual environments, or similar while using a containerized application. 
 Just run the container's ``/bin/bash`` to get an Apptainer> prompt (or use ``apptainer shell <container>`` for a quick look from a login node). 
@@ -52,6 +38,24 @@ Below is an ``srun`` example of that with TensorFlow:
    /usr/bin/python
    Apptainer> python --version
    Python 3.8.10
+
+Home Directory (/u) File Considerations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you encounter ``$HOME`` quota issues with Apptainer caching in ``~/.apptainer``, the environment variable ``APPTAINER_CACHEDIR`` can be used to select a different location such as a directory under ``/scratch``. See also, `apptainer build environment <https://apptainer.org/docs/user/main/build_env.html>`_
+
+Temporary Files (/tmp Considerations)
+~~~~~~~~~~~~~~~~~~~
+Apptainer creates temporary files its local /tmp directory.  Users occasionally encounter problems building images with apptainer when the /tmp space on a compute node (which is finite) filling up, which results in this error message: 
+
+.. code-block::
+
+   FATAL:   While performing build: while creating squashfs: create command
+   failed: exit status 1:
+   Write failed because No space left on device
+
+If apptainer fails in this way, run the command ``rm rf /tmp/build-temp*`` to remove apptainer's temporary files.  
+
 
 .. _nvidia-contain:
 
