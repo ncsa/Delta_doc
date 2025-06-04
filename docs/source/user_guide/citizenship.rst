@@ -1,3 +1,5 @@
+.. _citizenship:
+
 Good Cluster Citizenship
 ============================
 
